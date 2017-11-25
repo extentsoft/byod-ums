@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title><%= title %></title>
+
+    <!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    -->
+
+    <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://v4-alpha.getbootstrap.com/examples/album/album.css" rel="stylesheet">
+    <link href="../stylesheets/modal.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- <div class="collapse bg-inverse" id="navbarHeader" style="background-image: url('../images/background.jpg')"> -->
+    <div class="collapse bg-inverse" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 py-4">
+            <h4 class="text-white">thanakorn.piroonsith@excise.go.th [UID @excise.go.th]</h4>
+            <p class="text-muted">Thanakorn Piroonsith [CN]</p>
+          </div>
+          <div class="col-sm-4 py-4">
+            <!--<h4 class="text-white">Operation</h4>
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-white">Add Device</a></li>
+            </ul>
+            <br/>-->
+            <!--<h4 class="text-white">Operation</h4>-->
+            <ul class="list-unstyled">
+              <li><a href="changepassword" class="text-white" data-toggle="modal" data-target="#modalChangePasswd">Change Password</a></li>
+              <!-- <li><a href="history" class="text-white">History</a></li> -->
+              <li>&nbsp;</li>
+              <li><a href="../assets/usermanual.pdf" class="text-white">User Manual</a></li>
+              <li><a href="mailto:byod@excise.go.th" class="text-white">Contact Administrator</a></li>
+              <li><a href="logout" class="text-white">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-inverse bg-inverse">
+      <div class="container d-flex justify-content-between">
+        <a href="#" class="navbar-brand">User Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+<!--
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Album example</h1>
+        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+        <p>
+          <a href="#" class="btn btn-primary">Main call to action</a>
+          <a href="#" class="btn btn-secondary">Secondary action</a>
+        </p>
+      </div>
+    </section>
+-->
+    <div class="album text-muted">
+      <div class="container">
+
+        <div class="row">
+          <div class="card">
+            <img src="../images/devices/ios.png" alt="Card image cap" style="width:150px; display: block;margin: 0 auto;"><br>
+            <button type="button" class="btn btn-danger">Deactivate</button>
+          </div>
+          <div class="card">
+            <img src="../images/devices/win10-logo.jpg" alt="Card image cap" style="width:200px; display: block;margin: 0 auto;"><br>
+            <button type="button" class="btn btn-danger">Deactivate</button>
+          </div>
+          <div class="card">
+            <img src="../images/devices/win10-logo.jpg" alt="Card image cap" style="width:200px; display: block;margin: 0 auto;"><br>
+            <button type="button" class="btn btn-danger">Deactivate</button>
+          </div>
+          <div class="card">
+            <button class="btn btn-link btn-lg" data-toggle="modal" data-target="#myModalHorizontal">
+              <img src="../images/icons/add.png" alt="Card image cap" style="width:150px; display: block;margin: 0 auto;">
+            </button><br>
+          </div>
+          <div class="card">
+            <button class="btn btn-link btn-lg" data-toggle="modal" data-target="#myModalHorizontal">
+              <img src="../images/icons/add.png" alt="Card image cap" style="width:150px; display: block;margin: 0 auto;">
+            </button><br>
+          </div>
+          <div class="card">
+            <button class="btn btn-link btn-lg" data-toggle="modal" data-target="#myModalHorizontal">
+              <img src="../images/icons/add.png" alt="Card image cap" style="width:150px; display: block;margin: 0 auto;">
+            </button><br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Change Password -->
+    <div class="modal fade" id="modalChangePasswd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Password</h4>
+          </div>
+
+          <!-- Modal Body -->
+          <div class="modal-body">
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <input type="password" class="form-control" id="inputPassword" placeholder="Password"/>
+                </div>
+              </div>
+            </form>
+            <form class="form-horizontal" role="form">
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputCFPassword" placeholder="Confirmed Password"/>
+              </div>
+            </form>
+
+          </div>
+
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Modal for New Device -->
+    <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+              </button>
+              <h4 class="modal-title" id="myModalLabel">Device Information</h4>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <!--<label class="col-sm-2 control-label" for="inputMACAddr">MAC Address</label>-->
+                  <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputMACAddr" placeholder="MAC Address : 88-55-77-22-77-13"/>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+
+    <!--
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    -->
+
+    <script>window.jQuery || document.write('<script src="https://v4-alpha.getbootstrap.com/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://v4-alpha.getbootstrap.com/assets/js/vendor/holder.min.js"></script>
+    <script>
+     $(function () {
+       Holder.addTheme("thumb", { background: "#55595c", foreground: "#eceeef", text: "Thumbnail" });
+     });
+
+     $(".image-container").mouseover(function () {
+        $(this).attr('src', $(this).data("hover"));
+      }).mouseout(function () {
+        $(this).attr('src', $(this).data("src"));
+      });
+
+    </script>
+    <script src="https://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
