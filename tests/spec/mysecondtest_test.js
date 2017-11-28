@@ -1,5 +1,5 @@
 
-Feature('Myfirsttest');
+Feature('Mysecondtest');
 
 Scenario('test something', (I) => {
 
