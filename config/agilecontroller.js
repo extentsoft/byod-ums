@@ -1,8 +1,9 @@
+
 module.exports = {
   development: {
-    connectionString: "fewfw",
-    username: "fwefw",
-    password: "fewfw",
+    server: "192.168.226.110",
+    userName: "sa",
+    password: "P@ssw0rd",
     pool: {
       min: 2,
       max: 4,
@@ -10,9 +11,9 @@ module.exports = {
     }
   },
   test: {
-    connectString: "fewfw 123",
-    username: "Fewfwe",
-    password: "fwefw",
+    server: "10.57.1.200",
+    userName: "sa",
+    password: "Changeme123",
     pool: {
       min: 2,
       max: 4,
@@ -20,9 +21,9 @@ module.exports = {
     }
   },
   production: {
-    connectString: "fewfw",
-    username: "Fewfwe",
-    password: "fwefw",
+    server: "127.0.0.1",
+    userName: "sa",
+    password: "P@ssw0rd",
     pool: {
       min: 2,
       max: 4,

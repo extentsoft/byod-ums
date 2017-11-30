@@ -11,16 +11,17 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 var bCrypt = require('bcrypt-nodejs');
-var dpisConfig = require('./config/dpis');
 
+// new
+var dpisConfig = require('./config/dpis');
 
 var index = require('./routes/index');
 var admin = require('./routes/admin');
 var profile = require('./routes/profile');
 
 var listdevice = require('./routes/listdevice');
-//var listmac = require('./routes/listmac');
-//var updatemac = require('./routes/updatemac');
+var listmac = require('./routes/listmac');
+var updatemac = require('./routes/updatemac');
 var adddevice = require('./routes/adddevice');
 var deletedevice = require('./routes/deletedevice');
 var alldevices = require('./routes/alldevices');
@@ -51,7 +52,7 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(flash());
-app.use(passport.session());
+app.use(passport.session({secret: 'byodatexcise.go.th'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Mongoose
@@ -174,13 +175,13 @@ passport.use('signup', new LocalStrategy({
             return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
         }
 
-//app.use('/', index);
+app.use('/', profile);
 app.use('/profile', profile);
 app.use('/admin', admin);
 
 app.use('/listdevice', listdevice);
-//app.use('/listmac', listmac);
-//app.use('/updatemac', updatemac);
+app.use('/listmac', listmac);
+app.use('/updatemac', updatemac);
 app.use('/adddevice', adddevice);
 app.use('/deletedevice', deletedevice);
 app.use('/alldevices', alldevices);
