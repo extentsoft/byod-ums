@@ -43,10 +43,10 @@ router.post('/signup', passport.authenticate('signup', {
 	failureFlash : true
 }));
 ///////////////////////////////////////////////////////////////////////////
-router.get('/devices', function(req,res,next){
+router.get('/device', function(req,res,next){
   res.render('admin/device', {title: 'Administrative Console - Devices'});
 });
-router.get('/users', function(req,res,next){
+router.get('/user', function(req,res,next){
   res.render('admin/user', {title: 'Administrative Console - Users'});
 });
 router.get('/dashboard', function(req,res,next){

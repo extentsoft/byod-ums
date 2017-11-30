@@ -35,6 +35,10 @@ router.get('/signup', function(req, res){
 	res.render('profile/register', {message: req.flash('message')});
 });
 
+router.get('/device', function(req, res){
+	res.render('profile/device');
+});
+
 /* Handle Registration POST */
 router.post('/signup', passport.authenticate('signup', {
 	successRedirect: '/profile/',
