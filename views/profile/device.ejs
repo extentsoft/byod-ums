@@ -1534,9 +1534,23 @@
 				i = -1;
 			
 			}
+			
 			//alert(JSON.stringify(data));
 			document.getElementById('listterminal').innerHTML = '';
-			for (i = 0; i < data.length+1; i++) {
+			
+			if(data.length==0){
+				var div = document.createElement('div');
+
+				div.className = 'form-group m-form__group row';
+				//div.style = 'width:30%; height:30%;align-items: center;';
+
+				div.innerHTML = 		
+					'<div><button type="button" class="btn btn-link btn-lg" style="display: block;margin: 0 auto;" data-toggle="modal" data-target="#m_modal_5" ><img src="images/icons/add.jpg" style="width:40%; height:40%; display: block;margin: 0 auto;"></button></div>';
+
+				document.getElementById('listterminal').appendChild(div);
+			}
+			else{
+				for (i = 0; i < data.length; i++) {
 				if(i==data.length && i < data[0].limit){
 				//if(i==data.length){
 					var div = document.createElement('div');
@@ -1578,6 +1592,9 @@
 
 					document.getElementById('listterminal').appendChild(div);
 				}
+			
+			}
+			
 			
 			}	
 		}
