@@ -13,7 +13,7 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 
-    var request = new Request("delete from [AgileControllerDB].[dbo].[TSM_E_Endpoint] where id = '"+req.param('terid')+"';delete from [AgileControllerDB].[dbo].[TSM_R_EndpointGroupRelation] where endpoint_id = '"+req.param('terid')+"';", function(err, rowCount){
+    var request = new Request("UPDATE [AgileControllerDB].[dbo].[TSM_E_Endpoint] SET [host_name] = '',[login_account] = '' WHERE id = '"+req.param('terid')+"';", function(err, rowCount){
 
 	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 

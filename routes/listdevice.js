@@ -19,7 +19,7 @@ var deviceList = function(req,res,next){
 
     //var request = new Request('select * from [test].[dbo].t1', function(err, rowCount){
 	var q = '"';
-    var request = new Request("SELECT [id],[account] ,[userName],[orgName],[host_name],[mac],[os_name],[update_time],[match_time],CASE WHEN SUBSTRING([content],307,1) = '"+q+"' THEN SUBSTRING([content],306,1) ELSE SUBSTRING([content],306,2) END as limit FROM [AgileControllerDB].[dbo].[TSM_E_Account] a  join [AgileControllerDB].[dbo].[TSM_E_Endpoint] on [account] = [login_account]  join [AgileControllerDB].[dbo].[TSM_E_Organization] b on a.[orgID] = b.[orgID] join [AgileControllerDB].[dbo].[TSM_R_TParameterAssign] c on [accountID]=[itemID] join [AgileControllerDB].[dbo].[TSM_E_TerminalParameter] d on c.[parameterID]=d.[parameterID]  where typeID = 'autoBindIpMac' and account = '"+req.param('accname')+"'", function(err, rowCount){
+    var request = new Request("SELECT [id],[account] ,[userName],[orgName],[host_name],[mac],[os_name],[update_time],[match_time],CASE WHEN SUBSTRING([content],307,1) = '"+q+"' THEN SUBSTRING([content],306,1) ELSE SUBSTRING([content],306,2) END as limit FROM [AgileControllerDB].[dbo].[TSM_E_Account] a  join [AgileControllerDB].[dbo].[TSM_E_Endpoint] on [account] = [login_account]  join [AgileControllerDB].[dbo].[TSM_E_Organization] b on a.[orgID] = b.[orgID] join [AgileControllerDB].[dbo].[TSM_R_TParameterAssign] c on [accountID]=[itemID] join [AgileControllerDB].[dbo].[TSM_E_TerminalParameter] d on c.[parameterID]=d.[parameterID]  where typeID = 'autoBindIpMac' and [login_account] = '"+req.param('accname')+"'", function(err, rowCount){
 
       if(err){
         console.error(err);
