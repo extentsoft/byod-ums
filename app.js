@@ -11,16 +11,17 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 var bCrypt = require('bcrypt-nodejs');
-var dpisConfig = require('./config/dpis');
 
+// new
+var dpisConfig = require('./config/dpis');
 
 var index = require('./routes/index');
 var admin = require('./routes/admin');
 var profile = require('./routes/profile');
 
 var listdevice = require('./routes/listdevice');
-//var listmac = require('./routes/listmac');
-//var updatemac = require('./routes/updatemac');
+var listmac = require('./routes/listmac');
+var updatemac = require('./routes/updatemac');
 var adddevice = require('./routes/adddevice');
 var deletedevice = require('./routes/deletedevice');
 var alldevices = require('./routes/alldevices');
@@ -51,11 +52,11 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(flash());
-app.use(passport.session());
+app.use(passport.session({secret: 'byodatexcise.go.th'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Mongoose
-mongoose.connect('mongodb://admin2:123456@ds127994.mlab.com:27994/ums');
+//mongoose.connect('mongodb://admin2:123456@ds127994.mlab.com:27994/ums');
 
 // Passport Configuration
 var Account = require('./models/account');
@@ -69,12 +70,22 @@ passport.serializeUser(function(account, done) {
   console.log('serializing user: ');
   console.log(account);
   done(null, account._id);
+
 });
 
 passport.deserializeUser(function(id, done) {
-  Account.findById(id, function(err, account) {
+  /*Account.findById(id, function(err, account) {
     console.log('deserializing user:',account);
     done(err, account);
+  });*/
+
+  done(null, {
+    _id:'nattawat_a',
+    username:'test1',
+    password:'123456',
+    email:'',
+    firstName:'Natthawa',
+    lastName:'Arun'
   });
 });
 
@@ -89,7 +100,23 @@ passport.use('login', new LocalStrategy({
     //console.log(username);
     //console.log(password);
 
+
+
+    // change to ldap
+    if( username == 'test1' && password == "123456"){
+      var user = {
+        _id: 'nattawat_a',
+        name: 'natthawat_a',
+        phone: '1234444'
+      };
+      return done(null, user);
+    }
+    else{
+      return done(null, false, req.flash('message', 'User Not found.'));
+    }
+
     // check in mongo if a user with username exists or not
+    /*
     Account.findOne({ 'username' :  username },
       function(err, account) {
         // In case of any error, return using the done method
@@ -112,6 +139,7 @@ passport.use('login', new LocalStrategy({
         return done(null, account);
       }
     );
+    */
 }));
 
 var isValidPassword = function(account, password){
@@ -174,13 +202,13 @@ passport.use('signup', new LocalStrategy({
             return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
         }
 
-//app.use('/', index);
+app.use('/', profile);
 app.use('/profile', profile);
 app.use('/admin', admin);
 
 app.use('/listdevice', listdevice);
-//app.use('/listmac', listmac);
-//app.use('/updatemac', updatemac);
+app.use('/listmac', listmac);
+app.use('/updatemac', updatemac);
 app.use('/adddevice', adddevice);
 app.use('/deletedevice', deletedevice);
 app.use('/alldevices', alldevices);
