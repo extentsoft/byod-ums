@@ -1,7 +1,7 @@
 var express = require('express');
 var passport = require('passport');
 var Account = require('../models/account');
-var envConfig = require('../modules/environment');
+var envConfig = require('../config/environment');
 var Authentication = require('../modules/authentication');
 var auth = new Authentication();
 var router = express.Router();
