@@ -27,6 +27,9 @@ Authentication.prototype.authenticate = function(username,password,done){
     attributes: []
   };
   client.search(OpenLDAP[envConfig.environment]['baseDN'], opts, function(err,res){
+    if(err){
+      done(new Error('Authentication failure'));
+    }
     res.on('searchEntry', function(entry) {
       console.log('authenticated');
       console.log('entry: ' + JSON.stringify(entry.object));
@@ -40,7 +43,6 @@ Authentication.prototype.authenticate = function(username,password,done){
     });
     res.on('error', function(err) {
       console.error('error: ' + err.message);
-      done(new Error('Authentication failure'));
     });
     res.on('end', function(result) {
       console.log('status: ' + result.status);
