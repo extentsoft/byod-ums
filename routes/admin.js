@@ -16,11 +16,23 @@ router.get('/', isAuthenticated, function(req,res,next){
 router.get('/login', (req, res) => {
   res.render('admin/login', { user : req.user, error : req.flash('error')});
 });
+
+/*
 router.post('/login', passport.authenticate('login', {
 	successRedirect: '/admin/',
 	failureRedirect: '/admin/login',
 	failureFlash : true
 }));
+*/
+var myAuthentication = function(req,res,next){
+  auth.authenticate(req.body.username,req.body.password,next);
+};
+
+router.post('/login', myAuthentication, function(req,res,next){
+  res.render('admin/', {message: req.flash('message')});
+});
+
+
 router.get('/logout', (req, res, next) => {
   req.logout();
   req.session.save( (err) => {
