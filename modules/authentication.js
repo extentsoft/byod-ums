@@ -27,24 +27,25 @@ Authentication.prototype.authenticate = function(username,password,done){
     attributes: []
   };
   client.search(OpenLDAP[envConfig.environment]['baseDN'], opts, function(err,res){
-    
+
     res.on('searchEntry', function(entry) {
       console.log('authenticated');
       console.log('entry: ' + JSON.stringify(entry.object));
-      client.unbind(function(err){
-        console.log("unbind LDAP server");
-        done();
-      });
     });
     res.on('searchReference', function(referral) {
       console.log('referral: ' + referral.uris.join());
     });
     res.on('error', function(err) {
       console.error('error: ' + err.message);
-      done(new Error('Authentication failure'));
+      done(new Error('Connection failure'));
     });
     res.on('end', function(result) {
-      console.log('status: ' + result.status);
+      client.unbind(function(err){
+        console.log('status: ' + result.status);
+        console.log("unbind LDAP server");
+        done();
+      });
+
     });
   });
 }
