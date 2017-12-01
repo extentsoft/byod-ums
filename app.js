@@ -13,7 +13,13 @@ var flash = require('connect-flash');
 var bCrypt = require('bcrypt-nodejs');
 
 // new
-var dpisConfig = require('./config/dpis');
+var envConfig = require('./config/environment');
+var OpenLDAP = require('./config/openldap');
+console.log(envConfig.environment);
+console.log(OpenLDAP.development);
+console.log(OpenLDAP.development.url);
+console.log(OpenLDAP[envConfig.environment]['url']);
+
 
 var index = require('./routes/index');
 var admin = require('./routes/admin');

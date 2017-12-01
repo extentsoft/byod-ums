@@ -27,7 +27,7 @@
 		<!--end::Page Vendors -->
 		<link href="../assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="../assets/demo/demo5/base/style.bundle.css" rel="stylesheet" type="text/css" />
-		
+
 		<!--end::Base Styles -->
 		<link rel="shortcut icon" href="../assets/demo/demo5/media/img/logo/favicon.ico" />
   </head>
@@ -1640,7 +1640,7 @@
 		</div>
 		<!-- end::Scroll Top -->			<!-- begin::Quick Nav -->
 <!--		<ul class="m-nav-sticky" style="margin-top: 30px;">
-			
+
 			<li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Showcase" data-placement="left">
 				<a href="">
 					<i class="la la-eye"></i>
@@ -1651,7 +1651,7 @@
 					<i class="la la-comments-o"></i>
 				</a>
 			</li>
-			
+
 			<li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Purchase" data-placement="left">
 				<a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" target="_blank">
 					<i class="la la-cart-arrow-down"></i>
@@ -1667,7 +1667,7 @@
 					<i class="la la-life-ring"></i>
 				</a>
 			</li>
-			
+
 		</ul>
 -->
 
@@ -1696,11 +1696,11 @@
 					data_res = JSON.parse(JSON.stringify(json));
 					bindata_site(data_res);
 				}
-			});	
+			});
 		}
-		
 
-		function bindata_site(data_sql){	
+
+		function bindata_site(data_sql){
 		//alert('bind');
 			//alert(data_sql);
 			data = [];
@@ -1711,7 +1711,7 @@
 					district_name='อื่นๆ';
 				}
 				else {district_name=data_sql[0];}
-				
+
 				data_json = {type:district_name,amount:data_sql[1]};
 				total = total+data_sql[1];
 				//alert(JSON.stringify(data_json));
@@ -1719,7 +1719,7 @@
 				//alert(JSON.stringify(data));
 				data_sql.splice(0,2);
 				i = -1;
-			
+
 			}
 			//alert(JSON.stringify(data));
 			c1(data);
@@ -1800,7 +1800,7 @@
 			}
 		})
 	}*/
-	
+
 	function refresh_device(sd,ed){
 		//alert('refresh');
 			$.ajax('http://localhost:3000/reports/report678', {
@@ -1811,11 +1811,11 @@
 					data_res = JSON.parse(JSON.stringify(json));
 					bindata_device(data_res);
 				}
-			});	
+			});
 		}
-		
 
-		function bindata_device(data_sql){	
+
+		function bindata_device(data_sql){
 		//alert('bind');
 			//alert(data_sql);
 			data = [];
@@ -1826,7 +1826,7 @@
 					device_type='อื่นๆ';
 				}
 				else {device_type=data_sql[0];}
-				
+
 				data_json = {type:device_type,amount:data_sql[1]};
 				total = total+data_sql[1];
 				//alert(JSON.stringify(data_json));
@@ -1834,7 +1834,7 @@
 				//alert(JSON.stringify(data));
 				data_sql.splice(0,2);
 				i = -1;
-			
+
 			}
 			//alert(JSON.stringify(data));
 			c2(data);
@@ -1878,7 +1878,7 @@
 			}
 		})
 	}
-	
+
 	function refresh_os(sd,ed){
 
 		//alert('refresh');
@@ -1890,11 +1890,11 @@
 					data_res = JSON.parse(JSON.stringify(json));
 					bindata_os(data_res);
 				}
-			});	
+			});
 		}
-		
 
-		function bindata_os(data_sql){	
+
+		function bindata_os(data_sql){
 		//alert('bind');
 			//alert(data_sql);
 			data = [];
@@ -1905,7 +1905,7 @@
 					device_type='อื่นๆ';
 				}
 				else {device_type=data_sql[0];}
-				
+
 				data_json = {type:device_type,amount:data_sql[1]};
 				total = total+data_sql[1];
 				//alert(JSON.stringify(data_json));
@@ -1913,7 +1913,7 @@
 				//alert(JSON.stringify(data));
 				data_sql.splice(0,2);
 				i = -1;
-			
+
 			}
 			//alert(JSON.stringify(data));
 			c3(data);
@@ -1954,7 +1954,7 @@
 			}
 		})
 	}
-	
+
 	function refresh_group(sd,ed){
 		//alert('refresh');
 			$.ajax('http://localhost:3000/reports/report672', {
@@ -1965,11 +1965,11 @@
 					data_res = JSON.parse(JSON.stringify(json));
 					bindata_group(data_res);
 				}
-			});	
+			});
 		}
-		
 
-		function bindata_group(data_sql){	
+
+		function bindata_group(data_sql){
 		//alert('bind');
 			//alert(data_sql);
 			data = [];
@@ -1980,7 +1980,7 @@
 					device_type='อื่นๆ';
 				}
 				else {device_type=data_sql[0];}
-				
+
 				data_json = {type:device_type,amount:data_sql[1]};
 				total = total+data_sql[1];
 				//alert(JSON.stringify(data_json));
@@ -1988,12 +1988,12 @@
 				//alert(JSON.stringify(data));
 				data_sql.splice(0,2);
 				i = -1;
-			
+
 			}
 			//alert(JSON.stringify(data));
 			c4(data);
 		}
-		
+
 		c4 = function (data) {
 		//var site = [{"siteName":"Central","amountOfuser":"154"},{"siteName":"Eastern","amountOfuser":"65"},{"siteName":"Southern","amountOfuser":"35"},{"siteName":"Northern","amountOfuser":"41"},{"siteName":"Northeastern","amountOfuser":"21"}];
 		//alert(device.length)
@@ -2033,7 +2033,7 @@
 			}
 		})
 	}
-	
+
 	function datepick() {
 		function e(e, a, r) {
 		refresh_site(e.format("Y-M-D"),a.format("Y-M-D"));
@@ -2042,7 +2042,7 @@
 		refresh_group(e.format("Y-M-D"),a.format("Y-M-D"));
 		//alert(e.format("Y-M-D"));
 		//alert(a.format("Y-M-D"));
-		
+
 			var o = "",
 			l = "";
 			a - e < 100 ? (o = "Today:", l = e.format("MMM D")) : "Yesterday" == r ? (o = "Yesterday:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
@@ -2070,9 +2070,9 @@
 			e(a, r, "")
 		}
 	}
-	
+
 	datepick();
-	
+
  </script>
   </body>
 </html>
