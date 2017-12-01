@@ -442,6 +442,12 @@
 															</div>
 														</div>
 														<!-- history table -->
+														<div class="container">
+										<table id="jqGrid"></table>
+											<div id="jqGridPager"></div>
+											
+										  
+										</div>
 													</div>
 
 												</form>
@@ -1080,6 +1086,106 @@
     <!--begin::Base Scripts -->
 		<script src="../assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
 		<script src="../assets/demo/demo5/base/scripts.bundle.js" type="text/javascript"></script>
+		
+		<script>window.jQuery || document.write('<script src="https://v4-alpha.getbootstrap.com/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://v4-alpha.getbootstrap.com/assets/js/vendor/holder.min.js"></script>
+	
+	
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/jquery-ui.min.js" type="text/javascript"></script>
+	
+    <!-- We support more than 40 localizations -->
+	
+    <script type="text/ecmascript" src="javascripts/js/i18n/grid.locale-en.js"></script>
+	<script type="text/ecmascript" src="http://www.guriddo.net/demo/js/context-menu.js"></script>
+	
+    <!-- This is the Javascript file of jqGrid -->   
+	
+    <script type="text/ecmascript" src="javascripts/js/jquery.jqGrid.min.js"></script>
+	
+    <!-- This is the localization file of the grid controlling messages, labels, etc.
+	<!-- A link to a jQuery UI ThemeRoller theme, more than 22 built-in and many more custom -->
+	
+	<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.1/themes/black-tie/jquery-ui.css" />
+	
+    <!-- The link to the CSS that the grid needs -->
+	
+    <link rel="stylesheet" type="text/css" media="screen" href="javascripts/css/ui.jqgrid.css" />
+		
+		<script>
+			function gengrid() {
+	  alert('gen');
+			mydata = [{browser:'Chrome',ip:'192.168.1.5',time:'2017-11-09 11:10:50'}];
+            $("#jqGrid").jqGrid({
+				editurl: 'clientArray',
+                datatype: "local",
+				data: mydata,
+                colModel: [
+					{ label: 'Browser', name: 'browser', width: 150, key:true},
+                    { label: 'IP', name: 'ip', width: 200},
+                    { label: 'Timestamp', name: 'time', width: 90}
+                ],
+                viewrecords: true,
+
+
+                pager: "#jqGridPager",
+				//gridComplete: initGrid
+            });	
+alert('a');			
+    }
+	
+	function initGrid() {
+	//alert('init');
+            $(".jqgrow", "#jqGrid").contextMenu('contextMenu', {
+                bindings: {
+                    'edit': function (t) {
+                        editRow();
+                    },
+                    /*'add': function (t) {
+                        addRow();
+                    },*/
+                    'del': function (t) {
+                        delRow();
+                    }
+                },
+                onContextMenu: function (event, menu) {
+                    var rowId = $(event.target).parent("tr").attr("id")
+                    var grid = $("#jqGrid");
+                    grid.setSelection(rowId);
+
+                    return true;
+                }
+            });
+
+           /* function addRow() {
+                var grid = $("#jqGrid");
+                grid.editGridRow("new", { closeAfterAdd: true});
+            }*/
+
+            function editRow() {
+                var grid = $("#jqGrid");
+                var rowKey = grid.getGridParam("selrow");
+                if (rowKey) {
+                    grid.editGridRow(rowKey, {closeAfterEdit: true});
+                }
+                else {
+                    alert("No rows are selected");
+                }
+            }
+
+            function delRow() {
+                var grid = $("#jqGrid");
+                var rowKey = grid.getGridParam("selrow");
+                if (rowKey) {
+                    grid.delGridRow(rowKey);
+                }
+                else {
+                    alert("No rows are selected");
+                }
+            }
+        }
+	gengrid();
+		</script>
 		<!--end::Base Scripts -->
 	</body>
 	<!-- end::Body -->
