@@ -1,6 +1,8 @@
 var express = require('express');
 var passport = require('passport');
 var Account = require('../models/account');
+var Authentication = require('../modules/authentication');
+var auth = new Authentication();
 var router = express.Router();
 ///////////////////////////////////////////////////////////////////////////
 var isAuthenticated = function(req,res,next){
