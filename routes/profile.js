@@ -8,6 +8,7 @@ var auth = new Authentication();
 var router = express.Router();
 ///////////////////////////////////////////////////////////////////////////
 var isAuthenticated = function(req,res,next){
+  console.log(req);
   if( req.isAuthenticated())
     return next();
   res.redirect('/profile/login');
@@ -30,6 +31,7 @@ var myAuthentication = function(req,res,next){
   if( ! envConfig.bypass ){
     auth.authenticate(req.body.username,req.body.password,next);
   }
+
   next();
 };
 
@@ -53,7 +55,13 @@ router.get('/signup', function(req, res){
 });
 
 router.get('/device', function(req, res){
-	res.render('profile/device');
+	res.render('profile/device',{title: 'Personal Profile', message: req.flash('message')});
+});
+router.get('/setting', function(req, res){
+	res.render('profile/setting',{title: 'Personal Profile', message: req.flash('message')});
+});
+router.get('/history', function(req, res){
+	res.render('profile/history',{title: 'Personal Profile', message: req.flash('message')});
 });
 
 /* Handle Registration POST */
