@@ -34,7 +34,7 @@ var myAuthentication = function(req,res,next){
 };
 
 router.post('/login', myAuthentication, function(req,res,next){
-  res.render('profile/', {message: req.flash('message')});
+  res.render('profile/', {title: 'Personal Profile', message: req.flash('message')});
 });
 
 router.get('/logout', (req, res, next) => {
