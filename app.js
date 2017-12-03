@@ -13,7 +13,7 @@ var flash = require('connect-flash');
 var bCrypt = require('bcrypt-nodejs');
 
 var envConfig = require('./config/environment');
-var OpenLDAP = require('./config/openldap');
+
 
 var index = require('./routes/index');
 var admin = require('./routes/admin');
@@ -217,6 +217,65 @@ app.use('/reports/report678', report678);
 app.use('/reports/report67152', report67152);
 app.use('/reports/report672', report672);
 app.use('/reports/report675', report675);
+
+var Crypt = require('./modules/crypt_sha');
+var crypt = new Crypt();
+console.log('Crypting process');
+/*
+crypt.checkPassword('Nattha501', '{SHA}LmIAac5WRrZRdvvsVGhNzkuJCiI=', function(result){
+//crypt.checkPassword('Nattha501', '{SSHA}pSwicOfZpLXwXRoSi0+22GlP+FXY8cxm', function(result){
+//crypt.checkPassword('password', '{SHA}W6ph5Mm5Pz8GgiULbPgzG37mj9g=', function(result){
+//crypt.checkPassword('password', '{SSHA}aBKF48heZ6/evLWfdfcuH1EIR00jMKzN', function(result){
+  console.log(result);
+});
+*/
+
+console.log(crypt.checkPassword('Nattha501', '{SHA}LmIAac5WRrZRdvvsVGhNzkuJCiI='));
+console.log(crypt.checkPassword('Nattha501', '{SSHA}pSwicOfZpLXwXRoSi0+22GlP+FXY8cxm'));
+console.log(crypt.checkPassword('password', '{SHA}W6ph5Mm5Pz8GgiULbPgzG37mj9g='));
+console.log(crypt.checkPassword('password', '{SSHA}aBKF48heZ6/evLWfdfcuH1EIR00jMKzN'));
+
+
+console.log('Crypting done');
+
+var OpenLdap = require('./modules/openldap');
+var openldap = new OpenLdap();
+
+var isAuthenticated = function(req, res, next){
+
+  /*openldap.search('guest1', function(result){
+    console.log('done callback and get back to main');
+    console.log(result);
+    if(result instanceof Error){
+      console.log('Error');
+      next(result);
+    }
+    else{
+      console.log('Success');
+      req.user = result;
+      next();
+    }
+  });*/
+  openldap.authenticate('ro_admin', 'guest1@zflexsoftware.com', function(result){
+    console.log('done callback and get back to main');
+    console.log(result);
+    if(result instanceof Error){
+      console.log('Error');
+      next(result);
+    }
+    else{
+      console.log('Success');
+      req.user = result;
+      next();
+    }
+  });
+
+}
+
+app.use('/testcallback', isAuthenticated, function(req,res,next){
+  res.send('test callback');
+});
+
 
 app.get('/mon_create', function(req,res,next){
   var cz = new Account({

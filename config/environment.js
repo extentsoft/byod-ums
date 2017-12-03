@@ -1,4 +1,4 @@
 module.exports = {
   environment: 'development',
-  bypass: true
+  bypass: false
 }
