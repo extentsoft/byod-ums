@@ -30,10 +30,18 @@ router.post('/login', passport.authenticate('login', {
 */
 var myAuthentication = function(req,res,next){
   if( ! envConfig.bypass ){
-    auth.authenticate(req.body.username,req.body.password,next);
+    auth.authenticate(req.body.username,req.body.password,function(result){
+      if( result instanceof Error ){
+        console.log("myAuthentication Error");
+      }
+      else{
+        console.log("myAuthentication Success");
+      }
+      next(result);
+    });
   }
 
-  next();
+  //next();
 };
 
 router.post('/login', myAuthentication, function(req,res,next){
