@@ -5,6 +5,7 @@ var envConfig = require('../config/environment');
 var Authentication = require('../modules/authentication');
 var auth = new Authentication();
 
+var winston = require('winston');
 var router = express.Router();
 ///////////////////////////////////////////////////////////////////////////
 var isAuthenticated = function(req,res,next){
@@ -72,6 +73,8 @@ router.post('/signup', passport.authenticate('signup', {
 }));
 ///////////////////////////////////////////////////////////////////////////
 router.get('/ping', (req, res) => {
+  winston.log('info','errr /ping');
+  winston.log('warn','errr /ping');
   res.status(200).send("pong !");
   //res.send(Account.find)
 });

@@ -5,6 +5,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var envConfig = require('./config/environment');
+
+const winston = require('winston');
+winston.level = envConfig.log_level;
 
 var mongoose = require('mongoose');
 var passport = require('passport');
@@ -12,7 +16,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 var bCrypt = require('bcrypt-nodejs');
 
-var envConfig = require('./config/environment');
+
 
 
 var index = require('./routes/index');
