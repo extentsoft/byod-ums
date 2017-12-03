@@ -33,7 +33,8 @@ var myAuthentication = function(req,res,next){
     auth.authenticate(req.body.username,req.body.password,function(result){
       if( result instanceof Error ){
         console.log("myAuthentication Error");
-        next(result);
+        //next(result);
+        res.redirect('/profile/login');
       }
       else{
         console.log("myAuthentication Success");
