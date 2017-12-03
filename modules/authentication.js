@@ -5,12 +5,15 @@ var OpenLDAP = require('../config/openldap');
 var Crypt = require('./crypt_sha');
 var crypt = new Crypt();
 
-
-var Authentication = function(){};
-
 var client = ldap.createClient({
   url: OpenLDAP[envConfig.environment]['url']
 });
+
+var Authentication = function(){
+  client.bind(OpenLDAP[envConfig.environment]['rootDN'],OpenLDAP[envConfig.environment]['rootPassword'],function(err){
+    console.log('Binding with error : ' + err);
+  });
+};
 
 Authentication.prototype.greeting = function(name){
   return "Authentication " + name;
@@ -18,9 +21,7 @@ Authentication.prototype.greeting = function(name){
 
 Authentication.prototype.authenticate = function(username,password,done){
   console.log('authenticating');
-  client.bind(OpenLDAP[envConfig.environment]['rootDN'],OpenLDAP[envConfig.environment]['rootPassword'],function(err){
-    console.log('Binding with error : ' + err);
-  });
+
   var opts = {
     //filter: '(&(l=Seattle)(email=*@foo.com))',
     //attributes: ['dn', 'sn', 'cn']
