@@ -12,3 +12,9 @@ junk/xxx - experiments
 # Refering Commands
 1. git log --graph --oneline --decorate
 2. git log --pretty=oneline | head -n 5
+
+# Modules
+1. debug, winston, uuid
+https://blog.risingstack.com/node-js-logging-tutorial/
+
+2. 

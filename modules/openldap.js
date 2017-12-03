@@ -95,7 +95,4 @@ OpenLdap.prototype.authenticate = function(username, password, done){
 };
 
 
-
-
-
 module.exports = OpenLdap;

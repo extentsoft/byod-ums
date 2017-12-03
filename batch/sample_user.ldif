@@ -1,0 +1,25 @@
+version: 1
+
+dn: uid=ums1,ou=users,ou=guests,dc=zflexsoftware,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: UMS Number One
+sn: Number One
+departmentNumber: 0001
+displayname: UMS NumberOne
+employeeNumber: 11003
+employeetype: temp
+facsimileTelephoneNumber: 330-333-3342
+givenName: Guest
+l: Boston
+mail: guest1@zflexsoftware.com
+mobile: 909-983-4552
+pager: 303-223-9876
+postalAddress: 3088 NewMain Street
+postalCode: 30994
+street: 403 Anywhere Lane
+title: Contractor1
+uid: ums1
+userPassword: 123456
