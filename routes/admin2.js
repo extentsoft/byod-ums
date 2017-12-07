@@ -7,17 +7,26 @@ module.exports = function(app, passport){
   });
 
   app.get('/admin/', isLoggedIn, function(req,res){
-    //res.send('/admin');
-    res.render('admin/index', {title: 'Administrative Console'});
+    console.log(req.user.email);
+    res.render('admin/index', {
+      title: 'Administrative Console - Dashboard',
+      userid: req.user.email
+    });
   });
   app.get('/admin/dashboard', isLoggedIn, function(req,res,next){
-    res.render('admin/index', {title: 'Administrative Console - Dashboard'});
+    console.log(req.user.email);
+    res.render('admin/index', {
+      title: 'Administrative Console - Dashboard',
+      userid: req.user.email
+    });
   });
 
   app.get('/admin/device', isLoggedIn, function(req,res,next){
+    console.log(req.user.email);
     res.render('admin/device', {title: 'Administrative Console - Devices'});
   });
   app.get('/admin/user', isLoggedIn, function(req,res,next){
+    console.log(req.user.email);
     res.render('admin/user', {title: 'Administrative Console - Users'});
   });
 
