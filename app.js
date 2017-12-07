@@ -23,6 +23,7 @@ var index = require('./routes/index');
 var admin = require('./routes/admin');
 var profile = require('./routes/profile');
 
+/*
 var listdevice = require('./routes/listdevice');
 var listmac = require('./routes/listmac');
 var updatemac = require('./routes/updatemac');
@@ -34,9 +35,8 @@ var report678 = require('./routes/reports/report678');
 var report67152 = require('./routes/reports/report67152');
 var report672 = require('./routes/reports/report672');
 var report675 = require('./routes/reports/report675');
-
+*/
 var app = express();
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -59,10 +59,12 @@ app.use(passport.session({secret: 'byodatexcise'}));
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', profile);
-app.use('/profile',isLoggedIn, profile);
-app.use('/admin', admin);
+//app.use('/', profile);
+//app.use('/profile',isLoggedIn, profile);
+//app.use('/admin', admin);
 
+require('./routes/profile2.js')(app,passport);
+/*
 app.use('/listdevice', listdevice);
 app.use('/listmac', listmac);
 app.use('/updatemac', updatemac);
@@ -74,19 +76,8 @@ app.use('/reports/report678', report678);
 app.use('/reports/report67152', report67152);
 app.use('/reports/report672', report672);
 app.use('/reports/report675', report675);
+*/
 
-// LOGOUT ==============================
-app.get('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/');
-});
-// route middleware to ensure user is logged in
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
-
-    res.redirect('/login');
-}
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
