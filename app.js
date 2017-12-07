@@ -63,7 +63,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/profile',isLoggedIn, profile);
 //app.use('/admin', admin);
 
-
 require('./routes/profile2')(app,passport);
 require('./routes/admin2')(app,passport);
 

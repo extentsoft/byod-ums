@@ -10,13 +10,13 @@ module.exports = function(app, passport){
   });
 
 
-  router.get('/admin/device', function(req,res,next){
+  app.get('/admin/device', function(req,res,next){
     res.render('admin/device', {title: 'Administrative Console - Devices'});
   });
-  router.get('/admin/user', function(req,res,next){
+  app.get('/admin/user', function(req,res,next){
     res.render('admin/user', {title: 'Administrative Console - Users'});
   });
-  router.get('/admin/dashboard', function(req,res,next){
+  app.get('/admin/dashboard', function(req,res,next){
     res.render('admin/dashboard', {title: 'Administrative Console - Dashboard'});
   });
 
