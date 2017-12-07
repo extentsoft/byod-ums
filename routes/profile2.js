@@ -14,6 +14,38 @@ module.exports = function(app, passport){
   app.get('/profile/device', function(req, res){
   	res.render('profile/device',{title: 'Personal Profile', message: req.flash('message')});
   });
+  app.get('/profile/device/add', function(req, res){
+    res.send('Add device service');
+    //res.render('profile/device',{title: 'Personal Profile', message: req.flash('message')});
+  });
+  app.get('/profile/device/delete', function(req, res){
+    res.send('Delete device service');
+    //res.render('profile/device',{title: 'Personal Profile', message: req.flash('message')});
+  });
+
+  app.get('/profile/preference', function(req, res){
+    res.send('GET /profile/preference');
+  	//res.render('profile/device',{title: 'Personal Profile', message: req.flash('message')});
+  });
+  app.post('/profile/preference', function(req, res){
+    res.send('POST /profile/preference');
+  	//res.render('profile/device',{title: 'Personal Profile', message: req.flash('message')});
+  });
+
+  app.get('/profile/notification', function(req, res){
+    res.json([{_id: 123, message: 'Hello'},{_id: 124, message: 'Bye'} ]);
+  	//res.render('profile/device',{title: 'Personal Profile', message: req.flash('message')});
+  });
+
+  app.get('/profile/message', function(req, res){
+    res.send('GET /profile/message');
+    //res.json([{_id: 123, message: 'Hello'},{_id: 124, message: 'Bye'} ]);
+  });
+  app.post('/profile/message', function(req, res){
+    res.send('POST /profile/message');
+    //res.json([{_id: 123, message: 'Hello'},{_id: 124, message: 'Bye'} ]);
+  });
+
 
 
   // LOGOUT ==============================
