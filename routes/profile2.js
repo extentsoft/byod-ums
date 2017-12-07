@@ -6,7 +6,7 @@ module.exports = function(app, passport){
   app.get('/profile', isLoggedIn, function(req,res){
     console.log('done /profile');
     console.log(req.user.email);
-    res.send('profile');
+    //res.send('profile');
     res.render('profile/index', {title: 'Personal Profile'});
   });
 
