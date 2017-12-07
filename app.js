@@ -62,11 +62,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/', profile);
 //app.use('/profile',isLoggedIn, profile);
 //app.use('/admin', admin);
-app.use('/', function(req,res){
+app.get('/', function(req,res){
   res.send('index ');
 });
 
-require('./routes/profile2')(app,passport);
+//require('./routes/profile2')(app,passport);
+
 /*
 app.use('/listdevice', listdevice);
 app.use('/listmac', listmac);
