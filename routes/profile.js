@@ -20,6 +20,8 @@ var isAuthenticated = function(req,res,next){
 }
 ///////////////////////////////////////////////////////////////////////////
 router.get('/', isAuthenticated, function(req,res,next){
+  console.log(req.user.email);
+
   res.render('profile/index', {title: 'Personal Profile'});
 });
 router.get('/login', (req, res) => {
@@ -51,9 +53,13 @@ var myAuthentication = function(req,res,next){
   //next();
 };
 
-router.post('/login', myAuthentication, function(req,res,next){
-  res.render('profile/', {title: 'Personal Profile', message: req.flash('message')});
-});
+
+app.post('/login', passport.authenticate('local-login', {
+    successRedirect : '/profile', // redirect to the secure profile section
+    failureRedirect : '/login', // redirect back to the signup page if there is an error
+    failureFlash : true // allow flash messages
+}));
+
 
 router.get('/logout', (req, res, next) => {
   req.logout();

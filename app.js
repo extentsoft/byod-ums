@@ -60,7 +60,7 @@ app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', profile);
-app.use('/profile', profile);
+app.use('/profile',isLoggedIn, profile);
 app.use('/admin', admin);
 
 app.use('/listdevice', listdevice);
@@ -75,6 +75,18 @@ app.use('/reports/report67152', report67152);
 app.use('/reports/report672', report672);
 app.use('/reports/report675', report675);
 
+// LOGOUT ==============================
+app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
+});
+// route middleware to ensure user is logged in
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
+
+    res.redirect('/login');
+}
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
