@@ -13,7 +13,7 @@ $ DEBUG=byod-ums:* npm start
   1.2 rpt12 - Too frequent device update
   1.3 rpt13 - Too frequent profile update
   1.4 rpt14 - Suspicious distant access
-  1.5 rpt15 - suspicious device limit
+  1.5 rpt15 - Suspicious device limit
 
 2. Static report
   2.1 rpt21 - fwfw
