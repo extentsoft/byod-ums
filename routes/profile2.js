@@ -1,19 +1,33 @@
 module.exports = function(app, passport){
-  app.get('/', function(req,res){
-    res.send('profile ');
+  app.get('/', isLoggedIn, function(req,res){
+    res.render('profile/index', {
+      title: 'Personal Profile',
+      user_id: req.user.email,
+      user_cn: req.user.email
+    });
   });
 
   app.get('/profile', isLoggedIn, function(req,res){
     console.log('done /profile');
     console.log(req.user.email);
     //res.send('profile');
-    res.render('profile/index', {title: 'Personal Profile'});
+    res.render('profile/index', {
+      title: 'Personal Profile',
+      user_id: req.user.email,
+      user_cn: req.user.email
+    });
   });
 
 
-  app.get('/profile/device', function(req, res){
-  	res.render('profile/device',{title: 'Personal Profile', message: req.flash('message')});
+  app.get('/profile/device', isLoggedIn, function(req, res){
+  	res.render('profile/device',{
+      title: 'Personal Profile',
+      message: req.flash('message'),
+      user_id: req.user.email,
+      user_cn: req.user.email
+    });
   });
+  
   app.get('/profile/device/add', function(req, res){
     res.send('Add device service');
     //res.render('profile/device',{title: 'Personal Profile', message: req.flash('message')});
