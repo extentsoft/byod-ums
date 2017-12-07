@@ -15,14 +15,6 @@ module.exports = function(app, passport){
   	res.render('profile/device',{title: 'Personal Profile', message: req.flash('message')});
   });
 
-  app.get('/profile/setting', function(req, res){
-  	res.render('profile/setting',{title: 'Personal Profile', message: req.flash('message')});
-  });
-
-  app.get('/profile/history', function(req, res){
-  	res.render('profile/history',{title: 'Personal Profile', message: req.flash('message')});
-  });
-
 
   // LOGOUT ==============================
   app.get('/profile/logout', function(req, res){
