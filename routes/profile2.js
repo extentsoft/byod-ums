@@ -1,4 +1,7 @@
 module.exports = function(app, passport){
+  app.get('/', function(req,res){
+    res.send('profile ');
+  });
 
   app.get('/profile', isLoggedIn, function(req,res){
     console.log('done /profile');
@@ -46,7 +49,9 @@ module.exports = function(app, passport){
 
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
+
   console.log('Authenticating');
+
   if (req.isAuthenticated())
     return next();
 
