@@ -1,6 +1,6 @@
 module.exports = {
   environment: 'development',
-  bypass: false,
+  bypass: true,
   log_level: 'warn'
 }
 

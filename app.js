@@ -10,12 +10,6 @@ var envConfig = require('./config/environment');
 const winston = require('winston');
 winston.level = envConfig.log_level;
 
-winston.log('error',"error");
-winston.log('warn',"warn");
-winston.log('info',"info");
-
-
-
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -234,25 +228,6 @@ var openldap = new OpenLdap();
 var crypt = new Crypt();
 
 var isAuthenticated = function(req, res, next){
-  /*openldap.search('guest1', function(result){
-    console.log('done callback and get back to main');
-    console.log(result);
-    if(result instanceof Error){
-      console.log('Error');
-      next(result);
-    }
-    else{
-      console.log('Success');
-      req.user = result;
-      next();
-    }
-  });*/
-  winston.log('info',crypt.checkPassword('Nattha501', '{SHA}LmIAac5WRrZRdvvsVGhNzkuJCiI='));
-  winston.log('info',crypt.checkPassword('Nattha501', '{SSHA}pSwicOfZpLXwXRoSi0+22GlP+FXY8cxm'));
-  winston.log('info',crypt.checkPassword('password', '{SHA}W6ph5Mm5Pz8GgiULbPgzG37mj9g='));
-  winston.log('info',crypt.checkPassword('password', '{SSHA}aBKF48heZ6/evLWfdfcuH1EIR00jMKzN'));
-
-
   openldap.authenticate('ro_admin', 'guest1@zflexsoftware.com', function(result){
     winston.log('info', 'done callback and get back to main');
     winston.log('info', result);

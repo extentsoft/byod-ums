@@ -4,12 +4,16 @@ var Account = require('../models/account');
 var envConfig = require('../config/environment');
 var Authentication = require('../modules/authentication');
 var auth = new Authentication();
+var envConfig = require('./config/environment');
+const winston = require('winston');
+winston.level = envConfig.log_level;
 
-var winston = require('winston');
+
+
 var router = express.Router();
 ///////////////////////////////////////////////////////////////////////////
 var isAuthenticated = function(req,res,next){
-  console.log(req);
+  winston.log('info',req);
   if( req.isAuthenticated())
     return next();
   res.redirect('/profile/login');
@@ -32,12 +36,12 @@ var myAuthentication = function(req,res,next){
   if( ! envConfig.bypass ){
     auth.authenticate(req.body.username,req.body.password,function(result){
       if( result instanceof Error ){
-        console.log("myAuthentication Error");
+        winston.log('debug', "myAuthentication Error");
         //next(result);
         res.redirect('/profile/login');
       }
       else{
-        console.log("myAuthentication Success");
+        console.log('debug',"myAuthentication Success");
         next();
       }
 
