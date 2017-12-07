@@ -23,7 +23,7 @@ module.exports = function(app, passport){
     res.render('admin/configuration', {title: 'Administrative Console - Configuration'});
   });
   app.get('/admin/report/site_usage', isLoggedIn, function(req,res,next){
-    res.render('admin/report/site_usage', {title: 'Administrative Console - Configuration'});
+    res.render('admin/reports/site_usage', {title: 'Administrative Console - Configuration'});
   });
 
   // LOGOUT ==============================
