@@ -1,14 +1,18 @@
 module.exports = function(app, passport){
 
-  app.get('/admin/', isLoggedIn, function(req,res){
-    //res.send('/admin');
-    res.render('admin/index', {title: 'Administrative Console'});
-  });
+
 
   app.get('/admin/login', (req, res) => {
     res.render('admin/login', { user : req.user, error : req.flash('error')});
   });
 
+  app.get('/admin/', isLoggedIn, function(req,res){
+    //res.send('/admin');
+    res.render('admin/index', {title: 'Administrative Console'});
+  });
+  app.get('/admin/dashboard', isLoggedIn, function(req,res,next){
+    res.render('admin/index', {title: 'Administrative Console - Dashboard'});
+  });
 
   app.get('/admin/device', isLoggedIn, function(req,res,next){
     res.render('admin/device', {title: 'Administrative Console - Devices'});
@@ -16,14 +20,28 @@ module.exports = function(app, passport){
   app.get('/admin/user', isLoggedIn, function(req,res,next){
     res.render('admin/user', {title: 'Administrative Console - Users'});
   });
-  app.get('/admin/dashboard', isLoggedIn, function(req,res,next){
-    res.render('admin/dashboard', {title: 'Administrative Console - Dashboard'});
-  });
+
   app.get('/admin/configuration', isLoggedIn, function(req,res,next){
     res.render('admin/configuration', {title: 'Administrative Console - Configuration'});
   });
   app.get('/admin/report/site_usage', isLoggedIn, function(req,res,next){
     res.render('admin/report/site_usage', {title: 'Administrative Console - Configuration'});
+  });
+
+  app.get('/admin/report/too_freq_access', isLoggedIn, function(req,res,next){
+    res.render('admin/report/too_freq_access', {title: 'Administrative Console - Report'});
+  });
+  app.get('/admin/report/too_freq_device_update', isLoggedIn, function(req,res,next){
+    res.render('/admin/report/too_freq_device_update', {title: 'Administrative Console - Report'});
+  });
+  app.get('/admin/report/suspicious_distant_access', isLoggedIn, function(req,res,next){
+    res.render('/admin/report/suspicious_distant_access', {title: 'Administrative Console - Report'});
+  });
+  app.get('/admin/report/too_freq_profile_update', isLoggedIn, function(req,res,next){
+    res.render('/admin/report/too_freq_profile_update', {title: 'Administrative Console - Report'});
+  });
+  app.get('/admin/report/suspicious_device_limit', isLoggedIn, function(req,res,next){
+    res.render('/admin/report/suspicious_device_limit', {title: 'Administrative Console - Report'});
   });
 
   // LOGOUT ==============================
