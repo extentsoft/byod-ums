@@ -25,42 +25,81 @@ module.exports = function(app, passport){
 
   app.get('/admin/device', isLoggedIn, function(req,res,next){
     console.log(req.user.email);
-    res.render('admin/device', {title: 'Administrative Console - Devices'});
+    res.render('admin/device', {
+      title: 'Administrative Console - Devices',
+      user_id: req.user.email,
+      user_cn: req.user.email
+    });
   });
   app.get('/admin/user', isLoggedIn, function(req,res,next){
     console.log(req.user.email);
-    res.render('admin/user', {title: 'Administrative Console - Users'});
+    res.render('admin/user', {
+      title: 'Administrative Console - Users',
+      user_id: req.user.email,
+      user_cn: req.user.email
+    });
   });
 
   app.get('/admin/configuration', isLoggedIn, function(req,res,next){
-    res.render('admin/configuration', {title: 'Administrative Console - Configuration'});
+    res.render('admin/configuration', {
+      title: 'Administrative Console - Configuration',
+      user_id: req.user.email,
+      user_cn: req.user.email
+    });
   });
 
   app.get('/admin/message', isLoggedIn, function(req,res,next){
-    res.render('admin/message', {title: 'Administrative Console - Messaging'});
+    res.render('admin/message', {
+      title: 'Administrative Console - Messaging',
+      user_id: req.user.email,
+      user_cn: req.user.email
+    });
   });
 
   app.get('/admin/report/site_usage', isLoggedIn, function(req,res,next){
-    res.render('admin/report/site_usage', {title: 'Administrative Console - Configuration'});
+    res.render('admin/report/site_usage', {
+      title: 'Administrative Console - Configuration',
+      user_id: req.user.email,
+      user_cn: req.user.email
+    });
   });
 
   // Report
 
-
   app.get('/admin/report/rpt11', isLoggedIn, function(req,res,next){
-    res.render('admin/report/rpt11', {title: 'Administrative Console - Report'});
+    res.render('admin/report/rpt11', {
+      title: 'Administrative Console - Report',
+      user_id: req.user.email,
+      user_cn: req.user.email
+    });
   });
   app.get('/admin/report/rpt12', isLoggedIn, function(req,res,next){
-    res.render('admin/report/rpt12', {title: 'Administrative Console - Report'});
+    res.render('admin/report/rpt12', {
+      title: 'Administrative Console - Report',
+      user_id: req.user.email,
+      user_cn: req.user.email
+    });
   });
   app.get('/admin/report/rpt13', isLoggedIn, function(req,res,next){
-    res.render('admin/report/rpt13', {title: 'Administrative Console - Report'});
+    res.render('admin/report/rpt13', {
+      title: 'Administrative Console - Report',
+      user_id: req.user.email,
+      user_cn: req.user.email
+    });
   });
   app.get('/admin/report/rpt14', isLoggedIn, function(req,res,next){
-    res.render('admin/report/rpt14', {title: 'Administrative Console - Report'});
+    res.render('admin/report/rpt14', {
+      title: 'Administrative Console - Report',
+      user_id: req.user.email,
+      user_cn: req.user.email
+    });
   });
   app.get('/admin/report/rpt15', isLoggedIn, function(req,res,next){
-    res.render('admin/report/rpt15', {title: 'Administrative Console - Report'});
+    res.render('admin/report/rpt15', {
+      title: 'Administrative Console - Report',
+      user_id: req.user.email,
+      user_cn: req.user.email
+    });
   });
 
   // LOGOUT ==============================
