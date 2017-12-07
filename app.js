@@ -16,7 +16,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 var bCrypt = require('bcrypt-nodejs');
 
-require('./config/passport_local');
+require('./config/passport_local')(passport);
 
 /*
 var index = require('./routes/index');
