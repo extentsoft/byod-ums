@@ -10,14 +10,16 @@ module.exports = function(app, passport){
     console.log(req.user.email);
     res.render('admin/index', {
       title: 'Administrative Console - Dashboard',
-      userid: req.user.email
+      user_id: req.user.email,
+      user_cn: req.user.email
     });
   });
   app.get('/admin/dashboard', isLoggedIn, function(req,res,next){
     console.log(req.user.email);
     res.render('admin/index', {
       title: 'Administrative Console - Dashboard',
-      userid: req.user.email
+      user_id: req.user.email,
+      user_cn: req.user.email
     });
   });
 
