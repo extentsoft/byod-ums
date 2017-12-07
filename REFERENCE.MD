@@ -3,6 +3,10 @@
 2. Git Cheat Sheet: https://gist.github.com/hofmannsven/6814451
 3. Git Branching: https://gist.github.com/blackfalcon/8428401
 
+# Services
+1. https://mailtrap.io/inboxes/299524/messages/610487680
+
+
 # Naming Convention
 wip/xxx - work in progress
 feat/xxx - adding feature
@@ -17,4 +21,4 @@ junk/xxx - experiments
 1. debug, winston, uuid
 https://blog.risingstack.com/node-js-logging-tutorial/
 
-2. 
+2.
