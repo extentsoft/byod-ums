@@ -18,11 +18,11 @@ var bCrypt = require('bcrypt-nodejs');
 
 require('./config/passport_local');
 
-
+/*
 var index = require('./routes/index');
 var admin = require('./routes/admin');
 var profile = require('./routes/profile');
-
+*/
 /*
 var listdevice = require('./routes/listdevice');
 var listmac = require('./routes/listmac');
@@ -63,7 +63,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/profile',isLoggedIn, profile);
 //app.use('/admin', admin);
 
-require('./routes/profile2.js')(app,passport);
+require('./routes/profile2')(app,passport);
 /*
 app.use('/listdevice', listdevice);
 app.use('/listmac', listmac);
