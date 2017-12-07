@@ -1,14 +1,71 @@
 var ldap = require('ldapjs');
 var envConfig = require('../config/environment');
 var LdapCfg = require('../config/openldap');
+var Crypt = require('./crypt_sha');
+var crypt = new Crypt();
 
-var client = ldap.createClient({
-  url: LdapCfg[envConfig.environment]['url']
-});
+var client;
 
 var OpenLdap = function(){
+  client = ldap.createClient({
+    url: LdapCfg[envConfig.environment]['url']
+  });
   console.log('constructor called');
   this.bind();
+};
+
+
+OpenLdap.prototype.test = function(params, done){
+
+
+  var opts = {
+    filter: 'uid=' + params.uid,
+    //filter: '(&(uid='+ params.uid + ')(userPassword={SHA}LmIAac5WRrZRdvvsVGhNzkuJCiI=))',
+    scope: 'sub',
+    attributes: []
+  };
+
+  client.search(LdapCfg[envConfig.environment]['baseDN'], opts, function(err,res){
+    if(err){
+      console.log('Searching error : ' + err);
+      done(new Error('Connection failure'));
+    }
+    var tmp;
+    // 1st step
+    res.on('searchEntry', function(entry) {
+      console.log('authenticated');
+      console.log('entry: ' + JSON.stringify(entry.object));
+      tmp = entry.object;
+    });
+
+    res.on('searchReference', function(referral) {
+      console.log('referral: ' + referral.uris.join());
+    });
+    res.on('error', function(err) {
+      console.error('error: ' + err.message);
+      done(new Error('Connection failure'));
+    });
+
+    //2nd step
+    res.on('end', function(result) {
+      console.log('searched');
+
+      if( typeof(tmp) === "undefined"){
+          console.log('no user');
+          done(new Error('No user found'));
+      }
+      else{
+        if(crypt.checkPassword(params.password, tmp.userPassword)){
+          console.log('Credential Matched');
+          done(tmp);
+        }
+        else{
+          console.log('Incorrect Password');
+          done(new Error('Incorrect Password'));
+        }
+      }
+    });
+  });
 };
 
 OpenLdap.prototype.bind = function(){
