@@ -15,7 +15,13 @@ $ DEBUG=byod-ums:* npm start
   1.4 rpt14 - Suspicious distant access
   1.5 rpt15 - suspicious device limit
 
-2. fw
+2. Static report
+  2.1 rpt21 - fwfw
+  2.2 rpt22 - fwfw
+  2.3 rpt23 - fwfw
+  2.4 rpt24 - fwfw
+  2.5 rpt25 - fwfw
+  2.6 rpt26 - fwfw
 
 
 IncomingMessage {

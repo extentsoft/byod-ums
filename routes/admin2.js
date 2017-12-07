@@ -24,6 +24,11 @@ module.exports = function(app, passport){
   app.get('/admin/configuration', isLoggedIn, function(req,res,next){
     res.render('admin/configuration', {title: 'Administrative Console - Configuration'});
   });
+
+  app.get('/admin/message', isLoggedIn, function(req,res,next){
+    res.render('admin/message', {title: 'Administrative Console - Messaging'});
+  });
+
   app.get('/admin/report/site_usage', isLoggedIn, function(req,res,next){
     res.render('admin/report/site_usage', {title: 'Administrative Console - Configuration'});
   });
