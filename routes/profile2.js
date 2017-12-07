@@ -1,3 +1,5 @@
+var nodemailer = require('nodemailer');
+
 module.exports = function(app, passport){
   app.get('/', isLoggedIn, function(req,res){
     res.render('profile/index', {
@@ -27,7 +29,7 @@ module.exports = function(app, passport){
       user_cn: req.user.email
     });
   });
-  
+
   app.get('/profile/device/add', function(req, res){
     res.send('Add device service');
     //res.render('profile/device',{title: 'Personal Profile', message: req.flash('message')});
@@ -101,6 +103,34 @@ module.exports = function(app, passport){
       failureRedirect : '/signup', // redirect back to the signup page if there is an error
       failureFlash : true // allow flash messages
   }));
+
+  // process the signup form
+  app.get('/profile/forgotpwd', function(req,res){
+    const mailOptions = {
+      from: 'BYODatExcise@gmail.com', // sender address
+      to: 'cheerzmc@gmail.com', // list of receivers
+      subject: 'Password Reset', // Subject line
+      html: '<p>Please sign in with generated password below</p><br>ogw93kg3'// plain text body
+    };
+    var transporter = nodemailer.createTransport({
+      host: 'smtp.mailtrap.io',
+      port: 2525,
+      auth: {
+        user: '59ad65f3b7fa3b',
+        pass: '7e4387ba355422'
+      }
+    });
+    transporter.sendMail(mailOptions, function (err, info) {
+      if(err){
+        console.log(err)
+        res.send('ERROR');
+      }
+      else{
+        console.log(info);
+        res.send('Success');
+      }
+    });
+  });
 };
 
 // route middleware to ensure user is logged in
