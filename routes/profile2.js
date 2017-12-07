@@ -1,7 +1,7 @@
-module.exports = function(app,passport){
-  app.get('/', isLoggedIn, function(req,res){
+module.exports = function(app, passport){
+  app.get('/', function(req,res){
     console.log('done /');
-    res.send('profile');
+    res.send('index');
   });
   app.get('/profile', isLoggedIn, function(req,res){
     console.log('done /profile');

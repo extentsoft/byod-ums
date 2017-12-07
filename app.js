@@ -10,7 +10,7 @@ var envConfig = require('./config/environment');
 const winston = require('winston');
 winston.level = envConfig.log_level;
 
-var mongoose = require('mongoose');
+//var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
