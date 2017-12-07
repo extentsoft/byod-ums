@@ -28,20 +28,22 @@ module.exports = function(app, passport){
     res.render('admin/report/site_usage', {title: 'Administrative Console - Configuration'});
   });
 
-  app.get('/admin/report/too_freq_access', isLoggedIn, function(req,res,next){
-    res.render('admin/report/too_freq_access', {title: 'Administrative Console - Report'});
+  // Report
+
+  app.get('/admin/report/rpt11', isLoggedIn, function(req,res,next){
+    res.render('admin/report/rpt11', {title: 'Administrative Console - Report'});
   });
-  app.get('/admin/report/too_freq_device_update', isLoggedIn, function(req,res,next){
-    res.render('/admin/report/too_freq_device_update', {title: 'Administrative Console - Report'});
+  app.get('/admin/report/rpt12', isLoggedIn, function(req,res,next){
+    res.render('/admin/report/rpt12', {title: 'Administrative Console - Report'});
   });
-  app.get('/admin/report/suspicious_distant_access', isLoggedIn, function(req,res,next){
-    res.render('/admin/report/suspicious_distant_access', {title: 'Administrative Console - Report'});
+  app.get('/admin/report/rpt13', isLoggedIn, function(req,res,next){
+    res.render('/admin/report/rpt13', {title: 'Administrative Console - Report'});
   });
-  app.get('/admin/report/too_freq_profile_update', isLoggedIn, function(req,res,next){
-    res.render('/admin/report/too_freq_profile_update', {title: 'Administrative Console - Report'});
+  app.get('/admin/report/rpt14', isLoggedIn, function(req,res,next){
+    res.render('/admin/report/rpt14', {title: 'Administrative Console - Report'});
   });
-  app.get('/admin/report/suspicious_device_limit', isLoggedIn, function(req,res,next){
-    res.render('/admin/report/suspicious_device_limit', {title: 'Administrative Console - Report'});
+  app.get('/admin/report/rpt15', isLoggedIn, function(req,res,next){
+    res.render('/admin/report/rpt15', {title: 'Administrative Console - Report'});
   });
 
   // LOGOUT ==============================

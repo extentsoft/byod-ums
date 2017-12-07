@@ -7,6 +7,15 @@ BYOD - User Management System
 # run
 $ DEBUG=byod-ums:* npm start
 
+# Report
+1. Warning
+  1.1 rpt11 - Too frequent access
+  1.2 rpt12 - Too frequent device update
+  1.3 rpt13 - Too frequent profile update
+  1.4 rpt14 - Suspicious distant access
+  1.5 rpt15 - suspicious device limit
+
+2. fw
 
 
 IncomingMessage {
