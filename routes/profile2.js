@@ -5,8 +5,11 @@ module.exports = function(app, passport){
 
   app.get('/profile', isLoggedIn, function(req,res){
     console.log('done /profile');
+    console.log(req.user.email);
     res.send('profile');
+    res.render('profile/index', {title: 'Personal Profile'});
   });
+
 
   // LOGOUT ==============================
   app.get('/profile/logout', function(req, res){
@@ -23,7 +26,9 @@ module.exports = function(app, passport){
   // LOGIN ===============================
   // show the login form
   app.get('/profile/login', function(req, res) {
-      res.render('profile/login.ejs', { message: req.flash('loginMessage') });
+    res.render('profile/login', { user : req.user, error : req.flash('error')});
+
+    //res.render('profile/login.ejs', { message: req.flash('loginMessage') });
   });
 
   // process the login form
@@ -49,9 +54,7 @@ module.exports = function(app, passport){
 
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
-
   console.log('Authenticating');
-
   if (req.isAuthenticated())
     return next();
 
