@@ -30,28 +30,21 @@ module.exports = function(app, passport){
 
   // Report
 
-  app.get('/admin/report/rpt12', isLoggedIn, function(req,res,next){
-    res.render('admin/report/rpt12', {title: 'Administrative Console - Report'});
-  });
 
   app.get('/admin/report/rpt11', isLoggedIn, function(req,res,next){
     res.render('admin/report/rpt11', {title: 'Administrative Console - Report'});
   });
-/*
   app.get('/admin/report/rpt12', isLoggedIn, function(req,res,next){
-    res.render('/admin/report/rpt12', {title: 'Administrative Console - Report'});
+    res.render('admin/report/rpt12', {title: 'Administrative Console - Report'});
   });
-*/
   app.get('/admin/report/rpt13', isLoggedIn, function(req,res,next){
-    res.render('/admin/report/rpt13', {title: 'Administrative Console - Report'});
+    res.render('admin/report/rpt13', {title: 'Administrative Console - Report'});
   });
-
   app.get('/admin/report/rpt14', isLoggedIn, function(req,res,next){
-    res.render('/admin/report/rpt14', {title: 'Administrative Console - Report'});
+    res.render('admin/report/rpt14', {title: 'Administrative Console - Report'});
   });
-
   app.get('/admin/report/rpt15', isLoggedIn, function(req,res,next){
-    res.render('/admin/report/rpt15', {title: 'Administrative Console - Report'});
+    res.render('admin/report/rpt15', {title: 'Administrative Console - Report'});
   });
 
   // LOGOUT ==============================
