@@ -87,8 +87,8 @@
 																	<div class="tab-pane active" id="topbar_notifications_notifications" role="tabpanel">
 																		<div class="m-scrollable" data-scrollable="true" data-max-height="250" data-mobile-max-height="200">
 																			<div class="m-list-timeline m-list-timeline--skin-light">
-																				<div class="m-list-timeline__items">																					
-																					
+																				<div class="m-list-timeline__items">
+
 																					<div class="m-list-timeline__item">
 																						<span class="m-list-timeline__badge"></span>
 																						<span class="m-list-timeline__text">
@@ -116,7 +116,7 @@
 																							1 month
 																						</span>
 																					</div>
-																					
+
 																				</div>
 																			</div>
 																		</div>
@@ -207,7 +207,7 @@
 														Hello,&nbsp;
 													</span>
 													<span class="m-topbar__username">
-														Natthawat
+														<%= user_id %>
 													</span>
 													<span class="m-topbar__userpic">
 														<img src="../assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt=""/>
@@ -223,10 +223,10 @@
 																</div>
 																<div class="m-card-user__details">
 																	<span class="m-card-user__name m--font-weight-500">
-																		Natthawat Arunweerungroj
+																		<%= user_cn %>
 																	</span>
 																	<a href="" class="m-card-user__email m--font-weight-300 m-link">
-																		natthawat_a@excise.go.th
+																		<%= user_id %>@excise.go.th
 																	</a>
 																</div>
 															</div>
@@ -641,7 +641,7 @@
 										</div>
 									</div>
 								</div>
-							
+
 							</div>
 							<div class="m-messenger__seperator"></div>
 							<div class="m-messenger__form">
