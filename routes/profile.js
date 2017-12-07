@@ -4,7 +4,7 @@ var Account = require('../models/account');
 var envConfig = require('../config/environment');
 var Authentication = require('../modules/authentication');
 var auth = new Authentication();
-var envConfig = require('./config/environment');
+
 const winston = require('winston');
 winston.level = envConfig.log_level;
 
