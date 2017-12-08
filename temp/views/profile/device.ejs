@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en" >
+	<!-- begin::Head -->
+	<head>
+		<meta charset="utf-8" />
+		<title>
+			Metronic | My Profile
+		</title>
+		<meta name="description" content="User profile view and edit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!--begin::Web font -->
+		<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+		<script>
+          WebFont.load({
+            google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700"]},
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+          });
+		</script>
+		<!--end::Web font -->
+        <!--begin::Base Styles -->
+		<link href="../assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="../assets/demo/demo5/base/style.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Base Styles -->
+		<link rel="shortcut icon" href="../assets/demo/demo5/media/img/logo/favicon.ico" />
+	</head>
+	<!-- end::Head -->
+    <!-- end::Body -->
+	<body class="m-page--wide m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
+		<!-- begin:: Page -->
+		<div class="m-grid m-grid--hor m-grid--root m-page">
+			<!-- begin::Header -->
+			<header class="m-grid__item		m-header "  data-minimize="minimize" data-minimize-offset="200" data-minimize-mobile-offset="200" >
+				<div class="m-header__top">
+					<div class="m-container m-container--responsive m-container--xxl m-container--full-height m-page__container">
+						<div class="m-stack m-stack--ver m-stack--desktop">
+							<!-- begin::Brand -->
+							<div class="m-stack__item m-brand">
+								<div class="m-stack m-stack--ver m-stack--general m-stack--inline">
+									<div class="m-stack__item m-stack__item--middle m-brand__logo">
+										<a href="/profile/" class="m-brand__logo-wrapper">
+											<!--<img alt="" src="assets/demo/demo5/media/img/logo/logo.png"/>-->
+											<img width="90px" height="90px" alt="" src="../assets/demo/demo5/media/img/logo/logo.png"/>
+										</a>
+									</div>
+
+								</div>
+							</div>
+							<!-- end::Brand -->
+				<!-- begin::Topbar -->
+							<div class="m-stack__item m-stack__item--fluid m-header-head" id="m_header_nav">
+								<div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
+									<div class="m-stack__item m-topbar__nav-wrapper">
+										<ul class="m-topbar__nav m-nav m-nav--inline">
+											<li class="m-nav__item m-topbar__notifications m-topbar__notifications--img m-dropdown m-dropdown--large m-dropdown--header-bg-fill m-dropdown--arrow m-dropdown--align-center 	m-dropdown--mobile-full-width" data-dropdown-toggle="click" data-dropdown-persistent="true">
+												<a href="#" class="m-nav__link m-dropdown__toggle" id="m_topbar_notification_icon">
+													<span class="m-nav__link-badge m-badge m-badge--dot m-badge--dot-small m-badge--danger"></span>
+													<span class="m-nav__link-icon">
+														<span class="m-nav__link-icon-wrapper">
+															<i class="flaticon-music-2"></i>
+														</span>
+													</span>
+												</a>
+												<div class="m-dropdown__wrapper">
+													<span class="m-dropdown__arrow m-dropdown__arrow--center"></span>
+													<div class="m-dropdown__inner">
+														<div class="m-dropdown__header m--align-center" style="background: url(../assets/app/media/img/misc/notification_bg.jpg); background-size: cover;">
+															<span class="m-dropdown__header-title">
+																3 News
+															</span>
+															<span class="m-dropdown__header-subtitle">
+																User Notifications
+															</span>
+														</div>
+														<div class="m-dropdown__body">
+															<div class="m-dropdown__content">
+																<ul class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--brand" role="tablist">
+																	<li class="nav-item m-tabs__item">
+																		<a class="nav-link m-tabs__link active" data-toggle="tab" href="#topbar_notifications_notifications" role="tab">
+																			Alerts
+																		</a>
+																	</li>
+																</ul>
+																<div class="tab-content">
+																	<div class="tab-pane active" id="topbar_notifications_notifications" role="tabpanel">
+																		<div class="m-scrollable" data-scrollable="true" data-max-height="250" data-mobile-max-height="200">
+																			<div class="m-list-timeline m-list-timeline--skin-light">
+																				<div class="m-list-timeline__items">																					
+																					
+																					<div class="m-list-timeline__item">
+																						<span class="m-list-timeline__badge"></span>
+																						<span class="m-list-timeline__text">
+																							แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 4 ธันวาคม 2560
+																						</span>
+																						<span class="m-list-timeline__time">
+																							20 mins
+																						</span>
+																					</div>
+																					<div class="m-list-timeline__item">
+																						<span class="m-list-timeline__badge"></span>
+																						<span class="m-list-timeline__text">
+																							ขณะนี้ระบบสามารถใช้งานได้ตามปกติแล้ว
+																						</span>
+																						<span class="m-list-timeline__time">
+																							1 month
+																						</span>
+																					</div>
+																					<div class="m-list-timeline__item">
+																						<span class="m-list-timeline__badge"></span>
+																						<span class="m-list-timeline__text">
+																							แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 1 พฤศจิกายน 2560
+																						</span>
+																						<span class="m-list-timeline__time">
+																							1 month
+																						</span>
+																					</div>
+																					
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="tab-pane" id="topbar_notifications_events" role="tabpanel">
+																		<div class="m-scrollable" m-scrollabledata-scrollable="true" data-max-height="250" data-mobile-max-height="200">
+																			<div class="m-list-timeline m-list-timeline--skin-light">
+																				<div class="m-list-timeline__items">
+																					<div class="m-list-timeline__item">
+																						<span class="m-list-timeline__badge m-list-timeline__badge--state1-success"></span>
+																						<a href="" class="m-list-timeline__text">
+																							New order received
+																						</a>
+																						<span class="m-list-timeline__time">
+																							Just now
+																						</span>
+																					</div>
+																					<div class="m-list-timeline__item">
+																						<span class="m-list-timeline__badge m-list-timeline__badge--state1-danger"></span>
+																						<a href="" class="m-list-timeline__text">
+																							New invoice received
+																						</a>
+																						<span class="m-list-timeline__time">
+																							20 mins
+																						</span>
+																					</div>
+																					<div class="m-list-timeline__item">
+																						<span class="m-list-timeline__badge m-list-timeline__badge--state1-success"></span>
+																						<a href="" class="m-list-timeline__text">
+																							Production server up
+																						</a>
+																						<span class="m-list-timeline__time">
+																							5 hrs
+																						</span>
+																					</div>
+																					<div class="m-list-timeline__item">
+																						<span class="m-list-timeline__badge m-list-timeline__badge--state1-info"></span>
+																						<a href="" class="m-list-timeline__text">
+																							New order received
+																						</a>
+																						<span class="m-list-timeline__time">
+																							7 hrs
+																						</span>
+																					</div>
+																					<div class="m-list-timeline__item">
+																						<span class="m-list-timeline__badge m-list-timeline__badge--state1-info"></span>
+																						<a href="" class="m-list-timeline__text">
+																							System shutdown
+																						</a>
+																						<span class="m-list-timeline__time">
+																							11 mins
+																						</span>
+																					</div>
+																					<div class="m-list-timeline__item">
+																						<span class="m-list-timeline__badge m-list-timeline__badge--state1-info"></span>
+																						<a href="" class="m-list-timeline__text">
+																							Production server down
+																						</a>
+																						<span class="m-list-timeline__time">
+																							3 hrs
+																						</span>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="tab-pane" id="topbar_notifications_logs" role="tabpanel">
+																		<div class="m-stack m-stack--ver m-stack--general" style="min-height: 180px;">
+																			<div class="m-stack__item m-stack__item--center m-stack__item--middle">
+																				<span class="">
+																					All caught up!
+																					<br>
+																					No new logs.
+																				</span>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+
+											<li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img  m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" data-dropdown-toggle="click">
+												<a href="#" class="m-nav__link m-dropdown__toggle">
+													<span class="m-topbar__welcome">
+														Hello,&nbsp;
+													</span>
+													<span class="m-topbar__username">
+														Natthawat
+													</span>
+													<span class="m-topbar__userpic">
+														<img src="../assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt=""/>
+													</span>
+												</a>
+												<div class="m-dropdown__wrapper">
+													<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
+													<div class="m-dropdown__inner">
+														<div class="m-dropdown__header m--align-center" style="background: url(../assets/app/media/img/misc/user_profile_bg.jpg); background-size: cover;">
+															<div class="m-card-user m-card-user--skin-dark">
+																<div class="m-card-user__pic">
+																	<img src="../assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless" alt=""/>
+																</div>
+																<div class="m-card-user__details">
+																	<span class="m-card-user__name m--font-weight-500">
+																		Natthawat Arunweerungroj
+																	</span>
+																	<a href="" class="m-card-user__email m--font-weight-300 m-link">
+																		natthawat_a@excise.go.th
+																	</a>
+																</div>
+															</div>
+														</div>
+														<div class="m-dropdown__body">
+															<div class="m-dropdown__content">
+																<ul class="m-nav m-nav--skin-light">
+
+																	<li class="m-nav__separator m-nav__separator--fit"></li>
+																	<li class="m-nav__item">
+																		<a href="snippets/pages/user/login-1.html" class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">
+																			Logout
+																		</a>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li id="m_quick_sidebar_toggle" class="m-nav__item">
+												<a href="#" class="m-nav__link m-dropdown__toggle">
+													<span class="m-nav__link-icon m-nav__link-icon--aside-toggle">
+														<span class="m-nav__link-icon-wrapper">
+															<i class="flaticon-menu-button"></i>
+														</span>
+													</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- end::Topbar -->
+						</div>
+					</div>
+				</div>
+				<div class="m-header__bottom">
+					<div class="m-container m-container--responsive m-container--xxl m-container--full-height m-page__container">
+						<div class="m-stack m-stack--ver m-stack--desktop">
+							<!-- begin::Horizontal Menu -->
+							<div class="m-stack__item m-stack__item--middle m-stack__item--fluid">
+								<button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-light " id="m_aside_header_menu_mobile_close_btn">
+									<i class="la la-close"></i>
+								</button>
+								<div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-dark m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-light m-aside-header-menu-mobile--submenu-skin-light "  >
+									<ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
+										<li class="m-menu__item "  aria-haspopup="true">
+											<a  href="/profile/" class="m-menu__link ">
+												<span class="m-menu__item-here"></span>
+												<span class="m-menu__link-text">
+													My Profile
+												</span>
+											</a>
+										</li>
+										<li class="m-menu__item "  aria-haspopup="true">
+											<a  href="/profile/device" class="m-menu__link m-menu__toggle">
+												<span class="m-menu__item-here"></span>
+												<span class="m-menu__link-text">
+													Devices
+												</span>
+											</a>
+										</li>
+
+									</ul>
+								</div>
+							</div>
+							<!-- end::Horizontal Menu -->
+
+						</div>
+					</div>
+				</div>
+			</header>
+			<!-- end::Header -->
+		<!-- begin::Body -->
+			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor-desktop m-grid--desktop m-body">
+				<div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver	m-container m-container--responsive m-container--xxl m-page__container">
+
+					<div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+						<div class="m-content">
+							<div class="row">
+								<div class="col-lg-4">
+									<div class="m-portlet m-portlet--full-height  ">
+										<div class="m-portlet__body">
+											<div class="m-card-profile">
+												<div class="m-card-profile__title m--hide">
+													Your Profile
+												</div>
+												<div class="m-card-profile__pic">
+													<div class="m-card-profile__pic-wrapper">
+														<img src="../assets/app/media/img/users/user4.jpg" alt=""/>
+													</div>
+												</div>
+												<div class="m-card-profile__details">
+													<span class="m-card-profile__name">
+														Natthawat Arunweerungroj
+													</span>
+													<a href="" class="m-card-profile__email m-link">
+														natthawat_a@excise.go.th
+													</a>
+												</div>
+											</div>
+											<ul class="m-nav m-nav--hover-bg m-portlet-fit--sides">
+												<li class="m-nav__separator m-nav__separator--fit"></li>
+
+
+											</ul>
+
+										</div>
+									</div>
+								</div>
+								<!-- BEGIN: Brand -->
+
+						<!--end::Portlet-->
+
+						<!--begin::Modal-->
+						<div class="modal fade" id="m_modal_5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-sm" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">
+											New Device
+										</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">
+												&times;
+											</span>
+										</button>
+									</div>
+									<div class="modal-body">
+									  <form>
+										<div class="form-group">
+										  <!--<label class="col-sm-2 control-label" for="inputMACAddr">MAC Address</label>-->
+										  <div class="col-sm-10">
+											<input type="text" class="form-control" id="term_name" placeholder="Device Name"/>
+											<input type="text" class="form-control" id="term_mac" placeholder="MAC Address"/>
+											<select class="form-control"  id="term_os">
+												<option value="iOS">iOS</option>
+												<option value="Android">Android</option>
+												<option value="Windows">Windows</option>
+												<option value="Linux">Linux</option>
+											</select>
+										  </div>
+										</div>
+									  </form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">
+											Close
+										</button>
+										<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="adddevice(document.getElementById('term_name').value,document.getElementById('term_mac').value,document.getElementById('term_os').value)">
+											Save Device
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--end::Modal-->
+
+								<div class="col-lg-8">
+									<div class="m-portlet m-portlet--full-height m-portlet--tabs  ">
+										<div class="m-portlet__head">
+											<div class="m-portlet__head-tools">
+												<ul class="nav nav-tabs m-tabs m-tabs-line   m-tabs-line--left m-tabs-line--primary" role="tablist">
+													<li class="nav-item m-tabs__item">
+														<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_user_profile_tab_1" role="tab">
+															<i class="flaticon-share m--hide"></i>
+															Devices List
+														</a>
+													</li>
+												</ul>
+											</div>
+
+										</div>
+										<div class="tab-content">
+											<div class="tab-pane active" id="m_user_profile_tab_1">
+												<form class="m-form m-form--fit m-form--label-align-right">
+													<div class="m-portlet__body" id="listterminal">
+
+													</div>
+												</form>
+											</div>
+											<div class="tab-pane active" id="m_user_profile_tab_3"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end::Body -->
+<!-- begin::Footer -->
+			<footer class="m-grid__item m-footer ">
+				<div class="m-container m-container--responsive m-container--xxl m-container--full-height m-page__container">
+					<div class="m-footer__wrapper">
+						<div class="m-stack m-stack--flex-tablet-and-mobile m-stack--ver m-stack--desktop">
+							<div class="m-stack__item m-stack__item--left m-stack__item--middle m-stack__item--last">
+								<span class="m-footer__copyright">
+									2017 &copy; UMS Theme by
+									<a href="#" class="m-link">
+										Extentsoft
+									</a>
+								</span>
+							</div>
+							<div class="m-stack__item m-stack__item--right m-stack__item--middle m-stack__item--first">
+								<ul class="m-footer__nav m-nav m-nav--inline m--pull-right">
+									<li class="m-nav__item">
+										<a href="#" class="m-nav__link">
+											<span class="m-nav__link-text">
+												About
+											</span>
+										</a>
+									</li>
+									<li class="m-nav__item">
+										<a href="#"  class="m-nav__link">
+											<span class="m-nav__link-text">
+												Privacy
+											</span>
+										</a>
+									</li>
+									<li class="m-nav__item m-nav__item--last">
+										<a href="#" class="m-nav__link" data-toggle="m-tooltip" title="Support Center" data-placement="left">
+											<i class="m-nav__link-icon flaticon-info m--icon-font-size-lg3"></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- end::Footer -->
+		</div>
+		<!-- end:: Page -->
+    	            <!-- begin::Quick Sidebar -->
+		<div id="m_quick_sidebar" class="m-quick-sidebar m-quick-sidebar--tabbed m-quick-sidebar--skin-light">
+			<div class="m-quick-sidebar__content m--hide">
+				<span id="m_quick_sidebar_close" class="m-quick-sidebar__close">
+					<i class="la la-close"></i>
+				</span>
+				<ul id="m_quick_sidebar_tabs" class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--brand" role="tablist">
+					<li class="nav-item m-tabs__item">
+						<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_quick_sidebar_tabs_messenger" role="tab">
+							Messages
+						</a>
+					</li>
+					<li class="nav-item m-tabs__item">
+						<a class="nav-link m-tabs__link" 		data-toggle="tab" href="#m_quick_sidebar_tabs_settings" role="tab">
+							Settings
+						</a>
+					</li>
+					<li class="nav-item m-tabs__item">
+						<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_quick_sidebar_tabs_logs" role="tab">
+							Logs
+						</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active m-scrollable" id="m_quick_sidebar_tabs_messenger" role="tabpanel">
+						<div class="m-messenger m-messenger--message-arrow m-messenger--skin-light">
+							<div class="m-messenger__messages">
+								<div class="m-messenger__datetime">
+									2:30PM
+								</div>
+								<div class="m-messenger__message m-messenger__message--out">
+									<div class="m-messenger__message-body">
+										<div class="m-messenger__message-arrow"></div>
+										<div class="m-messenger__message-content">
+											<div class="m-messenger__message-text">
+												มีปัญหาการใช้งาน ไม่สามารถเพิ่มอุปกรณ์เข้าสู่ระบบได้ครับ
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="m-messenger__message m-messenger__message--in">
+									<div class="m-messenger__message-pic">
+										<img src="../assets/app/media/img//users/user3.jpg"  alt=""/>
+									</div>
+									<div class="m-messenger__message-body">
+										<div class="m-messenger__message-arrow"></div>
+										<div class="m-messenger__message-content">
+											<div class="m-messenger__message-username">
+												Natsha wrote
+											</div>
+											<div class="m-messenger__message-text">
+												ตอนนี้ระบบเพิ่มอุปกรณ์มีปัญหาอยู่ค่ะ ทางทีมที่ดูแลกำลังรีบแก้ไข ขออภัยในความไม่สะดวกค่ะ
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="m-messenger__message m-messenger__message--out">
+									<div class="m-messenger__message-body">
+										<div class="m-messenger__message-arrow"></div>
+										<div class="m-messenger__message-content">
+											<div class="m-messenger__message-text">
+												ขอบคุณครับ
+											</div>
+										</div>
+									</div>
+								</div>
+							
+							</div>
+							<div class="m-messenger__seperator"></div>
+							<div class="m-messenger__form">
+								<div class="m-messenger__form-controls">
+									<input type="text" name="" placeholder="Type here..." class="m-messenger__form-input">
+								</div>
+								<div class="m-messenger__form-tools">
+									<a href="" class="m-messenger__form-attachment">
+										<i class="la la-paperclip"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane  m-scrollable" id="m_quick_sidebar_tabs_settings" role="tabpanel">
+						<div class="m-list-settings">
+							<div class="m-list-settings__group">
+								<div class="m-list-settings__heading">
+									General Settings
+								</div>
+								<div class="m-list-settings__item">
+									<span class="m-list-settings__item-label">
+										Notifications
+									</span>
+									<span class="m-list-settings__item-control">
+										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+											<label>
+												<input type="checkbox" checked="checked" name="">
+												<span></span>
+											</label>
+										</span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane  m-scrollable" id="m_quick_sidebar_tabs_logs" role="tabpanel">
+						<div class="m-list-timeline">
+							<div class="m-list-timeline__group">
+								<div class="m-list-timeline__heading">
+									Access Logs
+								</div>
+								<div class="m-list-timeline__items">
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+										<a href="" class="m-list-timeline__text">
+											เข้าสู่ระบบด้วย IP : 192.168.1.54 ผ่าน Browser : Chrome
+										</a>
+										<span class="m-list-timeline__time">
+											2017-11-30 11:30
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+										<a href="" class="m-list-timeline__text">
+											เข้าสู่ระบบด้วย IP : 192.168.112 ผ่าน Browser : Chrome
+										</a>
+										<span class="m-list-timeline__time">
+											2017-11-28 9.12
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+										<a href="" class="m-list-timeline__text">
+											เข้าสู่ระบบด้วย IP : 192.168.1.63 ผ่าน Browser : Firefox
+										</a>
+										<span class="m-list-timeline__time">
+											2017-11-25 13.21
+										</span>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end::Quick Sidebar -->
+	    <!-- begin::Scroll Top -->
+		<div class="m-scroll-top m-scroll-top--skin-top" data-toggle="m-scroll-top" data-scroll-offset="500" data-scroll-speed="300">
+			<i class="la la-arrow-up"></i>
+		</div>
+
+
+
+
+    <!--begin::Base Scripts -->
+		<script src="../assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+		<script src="../assets/demo/demo5/base/scripts.bundle.js" type="text/javascript"></script>
+		<!--end::Base Scripts -->
+		<script>
+		account_now = 'natthawat_a';
+		function refreshlist(){
+		//alert('refresh');
+			$.ajax('http://localhost:3000/listdevice', {
+				type: "get",
+				data: {accname:account_now},
+				success: function(json) {
+					//alert(JSON.stringify(json));
+					data_res = JSON.parse(JSON.stringify(json));
+					bindata(data_res);
+				}
+			});
+		}
+
+
+		function bindata(data_sql){
+		//alert('bind');
+			//alert(data_sql);
+			data = [];
+			for (i = 0; i < data_sql.length; i++) {
+				data_json = {};
+				data_json = {terminalid:data_sql[0],account:data_sql[1],name:data_sql[2],group:data_sql[3],hostname:data_sql[4],terminalmac:data_sql[5],terminalos:data_sql[6],updatetime:data_sql[7],matchtime:data_sql[8],limit:data_sql[9]};
+				//alert(JSON.stringify(data_json));
+				data.push(data_json);
+				//alert(JSON.stringify(data));
+				data_sql.splice(0,10);
+				i = -1;
+
+			}
+
+			//alert(JSON.stringify(data));
+			document.getElementById('listterminal').innerHTML = '';
+
+			if(data.length==0){
+				var div = document.createElement('div');
+
+				div.className = 'form-group m-form__group row';
+				//div.style = 'width:30%; height:30%;align-items: center;';
+
+				div.innerHTML =
+					'<div><button type="button" class="btn btn-link btn-lg" style="display: block;margin: 0 auto;" data-toggle="modal" data-target="#m_modal_5" ><img src="images/icons/add.jpg" style="width:40%; height:40%; display: block;margin: 0 auto;"></button></div>';
+
+				document.getElementById('listterminal').appendChild(div);
+			}
+			else{
+				for (i = 0; i < data.length+1; i++) {
+				if(i==data.length && i < data[0].limit){
+				//if(i==data.length){
+					var div = document.createElement('div');
+
+					div.className = 'form-group m-form__group row';
+					//div.style = 'width:30%; height:30%;align-items: center;';
+
+					div.innerHTML =
+						'<div><button type="button" class="btn btn-link btn-lg" style="display: block;margin: 0 auto;" data-toggle="modal" data-target="#m_modal_5" ><img src="images/icons/add.jpg" style="width:40%; height:40%; display: block;margin: 0 auto;"></button></div>';
+
+					document.getElementById('listterminal').appendChild(div);
+				}
+
+				else {
+
+					var div = document.createElement('div');
+
+					div.className = 'form-group m-form__group row';
+					//div2.style = 'width:70%; height:30%;align-items: left;';
+					//div.id =
+					if(data[i].hostname==''){
+						host_name = 'ไม่ระบุ';
+					}
+					else {
+						host_name = data[i].hostname;
+					}
+					update_time = new Date(data[i].updatetime);
+					date_str = update_time.toString();
+					q = "'";
+					div.innerHTML =
+
+						'<div id="'+data[i].terminalmac+'"><img src="images/devices/'+data[i].terminalos+'.jpg"  style="width:60%; height:60%; display: block;margin: 0 auto;"><br>\
+						<button type="button" class="btn btn-danger" style="display: block;margin: 0 auto;" onclick="removedevice(this,'+q+data[i].terminalmac+q+')">Deactivate</button></div> \
+						<div><p>Device Name : '+host_name+'</p>\
+						<p>MAC Address : '+data[i].terminalmac+'</p>\
+						<p>OS : '+data[i].terminalos+'</p>\
+						<p>Last Update : '+date_str+'</p></div>\
+						';
+
+					document.getElementById('listterminal').appendChild(div);
+				}
+
+			}
+
+
+			}
+		}
+
+		function removedevice(input,mac) {
+		//alert(input.parentNode.id);
+			var r = confirm("ยืนยันการลบอุปกรณ์");
+			if (r == true) {
+				refreshmac(mac)
+				deletedevice(input.parentNode.id);
+			}
+		}
+
+		function adddevice(name,mac,os){
+		$.ajax('http://localhost:3000/adddevice', {
+			type: "get",
+			data: {tername:name,termac:mac,teros:os,teracc:account_now},
+			success: function(json) {
+			  addmac(mac);
+			  refreshlist();
+			}
+		  });
+
+		}
+
+		function deletedevice(ter_mac){
+		//alert(ter_id);
+		$.ajax('http://localhost:3000/deletedevice', {
+			type: "get",
+			data: {termac:ter_mac,teracc:account_now},
+			success: function(json) {
+			  //alert(JSON.stringify(json));
+			  refreshlist();
+			}
+		  });
+		 }
+
+		function refreshmac(mac){
+		//alert('refresh');
+			$.ajax('http://localhost:3000/listmac', {
+				type: "get",
+				data: {accname:account_now},
+				success: function(json) {
+					//alert(json);
+					//data_res = JSON.parse(JSON.stringify(json));
+					bindmac(JSON.stringify(json),mac);
+					//alert(JSON.stringify(data_res));
+				}
+			});
+		}
+
+
+		function bindmac(data_sql,mac){
+			data_sql = data_sql.substring(2,data_sql.length);
+			//alert(data_sql);
+			mac_bind = '';
+			for (i = 1; i < data_sql.length; i++) {
+				data_mac = data_sql.substring(0, 17);
+				//alert(data_mac);
+				if(data_mac==mac){}
+				else {mac_bind=mac_bind+data_mac;}
+				data_sql = data_sql.substring(18,data_sql.length);
+				if(data_sql.length>1&&mac_bind!=0){mac_bind=mac_bind+',';}
+				i = 1;
+				//alert(data_sql);
+
+			}
+			//alert(mac_bind);
+			updatemac(mac_bind)
+		}
+
+		function addmac(mac){
+		//alert('refresh');
+			$.ajax('http://localhost:3000/listmac', {
+				type: "get",
+				data: {accname:account_now},
+				success: function(json) {
+					//alert(json);
+					//data_res = JSON.parse(JSON.stringify(json));
+					addbindmac(JSON.stringify(json),mac);
+					//alert(JSON.stringify(data_res));
+				}
+			});
+		}
+
+
+		function addbindmac(data_sql,mac){
+			data_sql = data_sql.substring(2,data_sql.length-2)+','+mac;
+			//alert(data_sql);
+			updatemac(data_sql);
+		}
+
+		function updatemac(mac){
+		//alert('refresh');
+			$.ajax('http://localhost:3000/updatemac', {
+				type: "get",
+				data: {accname:account_now,macbind:mac},
+				success: function(json) {
+				}
+			});
+		}
+
+
+		refreshlist();
+
+    </script>
+	</body>
+	<!-- end::Body -->
+</html>
