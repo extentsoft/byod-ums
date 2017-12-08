@@ -72,7 +72,7 @@
 													<li class="nav-item m-tabs__item">
 														<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_user_profile_tab_1" role="tab">
 															<i class="flaticon-share m--hide"></i>
-															กรุณากรอกประวัติ
+															Password Request
 														</a>
 													</li>
 												</ul>
@@ -81,93 +81,18 @@
 										</div>
 										<div class="tab-content">
 											<div class="tab-pane active" id="m_user_profile_tab_1">
-												<form class="m-form m-form--fit m-form--label-align-right">
+												<form class="m-form m-form--fit m-form--label-align-right" action="/profile/sendemail" method="post">
 													<div class="m-portlet__body">
-														<div class="form-group m-form__group m--margin-top-10 m--hide">
-															<div class="alert m-alert m-alert--default" role="alert">
-																ประวัติข้อมูลผู้ใช้งาน
-															</div>
-														</div>
-														<div class="form-group m-form__group row">
-															<div class="col-10 ml-auto">
-																<h3 class="m-form__section">
-																	ข้อมูลส่วนบุคคล
-																</h3>
-															</div>
-														</div>
-														<div class="form-group m-form__group row">
-															<label for="example-text-input" class="col-2 col-form-label">
-																ชื่อจริง (ภาษาอังกฤษ)
-															</label>
-															<div class="col-7">
-																<input class="form-control m-input" type="text" value="Natthawat">
-															</div>
-														</div>
-                            <div class="form-group m-form__group row">
-															<label for="example-text-input" class="col-2 col-form-label">
-																นามสกุลจริง (ภาษาอังกฤษ)
-															</label>
-															<div class="col-7">
-																<input class="form-control m-input" type="text" value="Arunweerungroj">
-															</div>
-														</div>
-														<div class="form-group m-form__group row">
-															<label for="example-text-input" class="col-2 col-form-label">
-																เบอร์ติดต่อ
-															</label>
-															<div class="col-7">
-																<input class="form-control m-input" type="text" value="+456669067890">
-															</div>
-														</div>
+
 
 														<div class="form-group m-form__group row">
 															<label for="example-text-input" class="col-2 col-form-label">
-																กลุ่มผู้ใช้งาน
+																Email
 															</label>
 															<div class="col-7">
-																<input class="form-control m-input" type="text" value="CTO">
-															</div>
-														</div>
-														<div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
-														<div class="form-group m-form__group row">
-															<div class="col-10 ml-auto">
-																<h3 class="m-form__section">
-																	ข้อมูลอื่นๆ
-																</h3>
-															</div>
-														</div>
-														<div class="form-group m-form__group row">
-															<label for="example-text-input" class="col-2 col-form-label">
-																Linkedin
-															</label>
-															<div class="col-7">
-																<input class="form-control m-input" type="text" value="thanakorn.prs">
-															</div>
-														</div>
-														<div class="form-group m-form__group row">
-															<label for="example-text-input" class="col-2 col-form-label">
-																Facebook
-															</label>
-															<div class="col-7">
-																<input class="form-control m-input" type="text" value="Thanakorn Piroonsith">
-															</div>
-														</div>
-														<div class="form-group m-form__group row">
-															<label for="example-text-input" class="col-2 col-form-label">
-																Line
-															</label>
-															<div class="col-7">
-																<input class="form-control m-input" type="text" value="cheer.io">
-															</div>
-														</div>
-														<div class="form-group m-form__group row">
-															<label for="example-text-input" class="col-2 col-form-label">
-																Personal Email
-															</label>
-															<div class="col-7">
-																<input class="form-control m-input" type="text" value="thanakorn.prs@gmail.com">
+																<input class="form-control m-input" name="email" type="text" value="thanakorn.prs@gmail.com">
 																<span class="m-form__help">
-																	รหัสผ่านจะถูกส่งไปที่ Email นี้
+																	รหัสผ่านจะถูกส่งไปที่ Email ที่ระบุนี้
 																</span>
 															</div>
 														</div>
@@ -177,7 +102,7 @@
 															<div class="row">
 																<div class="col-2"></div>
 																<div class="col-7">
-																	<button type="reset" class="btn btn-accent m-btn m-btn--air m-btn--custom">
+																	<button type="submit" class="btn btn-accent m-btn m-btn--air m-btn--custom">
 																		Submit
 																	</button>
 																	&nbsp;&nbsp;
