@@ -1,3 +1,6 @@
+var nodemailer = require('nodemailer');
+var Crypt = require('../modules/crypt_sha');
+var crypt = new Crypt();
 module.exports = function(app, passport){
   app.get('/', isLoggedIn, function(req,res){
     res.render('profile/index', {
@@ -27,7 +30,7 @@ module.exports = function(app, passport){
       user_cn: req.user.email
     });
   });
-  
+
   app.get('/profile/device/add', function(req, res){
     res.send('Add device service');
     //res.render('profile/device',{title: 'Personal Profile', message: req.flash('message')});
@@ -92,7 +95,8 @@ module.exports = function(app, passport){
   // SIGNUP =================================
   // show the signup form
   app.get('/profile/signup', function(req, res) {
-      res.render('register.ejs', { message: req.flash('signupMessage') });
+    console.log('xxsdwfw');
+    res.render('profile/register.ejs', { message: req.flash('signupMessage') });
   });
 
   // process the signup form
@@ -101,6 +105,51 @@ module.exports = function(app, passport){
       failureRedirect : '/signup', // redirect back to the signup page if there is an error
       failureFlash : true // allow flash messages
   }));
+
+  // process the signup form
+  app.get('/profile/forgotpwd', function(req,res){
+    res.render('profile/forgotpwd', {title:'wefw', message: req.flash('signupMessage') });
+  });
+
+  app.post('/profile/sendemail', function(req,res){
+
+    //console.log('email : ' + req.body.email);
+
+
+
+    var newpass = makeid();
+    var newhash = crypt.generateSSHA(newpass,'')
+    console.log(newpass);
+    console.log(newhash);
+
+    const mailOptions = {
+      from: 'BYODatExcise@gmail.com', // sender address
+      to: req.body.email, // list of receivers
+      subject: 'Password Reset', // Subject line
+      html: '<p>Please sign in with generated password: ' + newpass + '</p>'// plain text body
+    };
+
+
+    var transporter = nodemailer.createTransport({
+      host: 'smtp.mailtrap.io',
+      port: 2525,
+      auth: {
+        user: '59ad65f3b7fa3b',
+        pass: '7e4387ba355422'
+      }
+    });
+    transporter.sendMail(mailOptions, function (err, info) {
+      if(err){
+        console.log(err)
+        console.log('ERROR');
+      }
+      else{
+        console.log(info);
+        console.log('Success');
+      }
+      res.redirect('/profile/login');
+    });
+  });
 };
 
 // route middleware to ensure user is logged in
@@ -110,4 +159,14 @@ function isLoggedIn(req, res, next) {
     return next();
 
   res.redirect('/profile/login');
+}
+
+function makeid() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < 6; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
 }
