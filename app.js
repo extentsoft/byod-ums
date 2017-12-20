@@ -23,7 +23,6 @@ var index = require('./routes/index');
 var admin = require('./routes/admin');
 var profile = require('./routes/profile');
 */
-/*
 var listdevice = require('./routes/listdevice');
 var listmac = require('./routes/listmac');
 var updatemac = require('./routes/updatemac');
@@ -31,11 +30,20 @@ var adddevice = require('./routes/adddevice');
 var deletedevice = require('./routes/deletedevice');
 var alldevices = require('./routes/alldevices');
 var allusers = require('./routes/allusers');
+var accesslog = require('./routes/accesslog');
+var limitdevice = require('./routes/limitdevice');
+
+var deviceinmon = require('./routes/monitor/deviceinmon');
+var deviceoutmon = require('./routes/monitor/deviceoutmon');
+var adddevicemon = require('./routes/monitor/adddevicemon');
+var removedevicemon = require('./routes/monitor/removedevicemon');
+
 var report678 = require('./routes/reports/report678');
 var report67152 = require('./routes/reports/report67152');
 var report672 = require('./routes/reports/report672');
 var report675 = require('./routes/reports/report675');
-*/
+var report677 = require('./routes/reports/report677');
+var report67153 = require('./routes/reports/report67153');
 var app = express();
 
 // view engine setup
@@ -79,6 +87,28 @@ app.use('/reports/report67152', report67152);
 app.use('/reports/report672', report672);
 app.use('/reports/report675', report675);
 */
+
+app.use('/listdevice', listdevice);
+app.use('/listmac', listmac);
+app.use('/updatemac', updatemac);
+app.use('/adddevice', adddevice);
+app.use('/deletedevice', deletedevice);
+app.use('/alldevices', alldevices);
+app.use('/allusers', allusers);
+app.use('/accesslog', accesslog);
+app.use('/limitdevice', limitdevice);
+
+app.use('/deviceinmon', deviceinmon);
+app.use('/deviceoutmon', deviceoutmon);
+app.use('/adddevicemon', adddevicemon);
+app.use('/removedevicemon', removedevicemon);
+
+app.use('/reports/report678', report678);
+app.use('/reports/report67152', report67152);
+app.use('/reports/report672', report672);
+app.use('/reports/report675', report675);
+app.use('/reports/report677', report677);
+app.use('/reports/report67153', report67153);
 
 
 // catch 404 and forward to error handler
