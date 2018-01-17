@@ -21,12 +21,12 @@ module.exports = function(app, passport){
       if(err){
         console.log(err)
         console.log('ERROR');
-        res.send(0);
+        res.send('0');
       }
       else{
         console.log(info);
         console.log('Success');
-        res.send(1);
+        res.send('1');
       }
       //res.redirect('/profile/login');
     });
