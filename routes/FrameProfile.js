@@ -32,7 +32,8 @@ module.exports = function(app){
   app.get('/fprofile/device/:perno/:firstname/:lastname/:position/:level/:group/:area', function(req,res,next){
     console.log('match');
     // Check LDAP Account
-    var newAccount = req.params.firstname + '.' + req.params.firstname.substring(0,1);
+    var newAccount = req.params.firstname + '.' + req.params.lastname.substring(0,1);
+    console.log(newAccount);
     openldap.search(newAccount, function(entry){
       if( entry instanceof Error){
         // If not existed, then create it
@@ -47,31 +48,15 @@ module.exports = function(app){
         var newDN = "uid=" + newAccount + ",ou=People,dc=excise,dc=go,dc=th";
         var newEntry = {
           uid: newAccount,
-          cn: req.params.firstname + " " + req.params.lastname,
-          gecos: "BYOD1 Skyhigh",
-          displayName: req.params.firstname + " " + req.params.lastname,
-          uidNumber: "10000",
+          cn: newAccount,
           sn: newAccount,
-          givenName: newAccount,
-          uid: newAccount,
-          homeDirectory: "/",
-          objectClass: ["posixAccount", "top", "inetOrgPerson", "shadowAccount"],
-          gidNumber: "10000",
-          loginShell: "/",
-          telephoneNumber: "10000",
-          shadowFlag: "0",
-          shadowMin: "0",
-          shadowMax: "99999",
-          shadowWarning: "0",
-          shadowInactive: "99999",
-          shadowLastChange: "10000",
-          shadowExpire: "99999",
-          userPassword: "{SSHA}aBKF48heZ6/evLWfdfcuH1EIR00jMKzN" // "password"
+          objectClass: [ "top", "inetOrgPerson", "shadowAccount"],
+          userPassword: "{SSHA}aBKF48heZ6/evLWfdfcuH1EIR00jMKzN" // password
         };
 
         client.bind(rootDN, rootPassword, function(err) {
           console.log(err);
-          console.log("Authentication Successful");
+          console.log("Bind Successful");
         });
 
         client.add(newDN,newEntry,function(err){
