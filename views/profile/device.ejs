@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>
-			<%= title %>
+			Metronic | My Profile
 		</title>
 		<meta name="description" content="User profile view and edit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,7 +68,7 @@
 													<div class="m-dropdown__inner">
 														<div class="m-dropdown__header m--align-center" style="background: url(../assets/app/media/img/misc/notification_bg.jpg); background-size: cover;">
 															<span class="m-dropdown__header-title">
-																9 New
+																3 News
 															</span>
 															<span class="m-dropdown__header-subtitle">
 																User Notifications
@@ -87,32 +87,12 @@
 																	<div class="tab-pane active" id="topbar_notifications_notifications" role="tabpanel">
 																		<div class="m-scrollable" data-scrollable="true" data-max-height="250" data-mobile-max-height="200">
 																			<div class="m-list-timeline m-list-timeline--skin-light">
-																				<div class="m-list-timeline__items">
-																					<div class="m-list-timeline__item">
-																						<span class="m-list-timeline__badge -m-list-timeline__badge--state-success"></span>
-																						<span class="m-list-timeline__text">
-																							12 new users registered
-																						</span>
-																						<span class="m-list-timeline__time">
-																							Just now
-																						</span>
-																					</div>
+																				<div class="m-list-timeline__items">																					
+																					
 																					<div class="m-list-timeline__item">
 																						<span class="m-list-timeline__badge"></span>
 																						<span class="m-list-timeline__text">
-																							System shutdown
-																							<span class="m-badge m-badge--success m-badge--wide">
-																								pending
-																							</span>
-																						</span>
-																						<span class="m-list-timeline__time">
-																							14 mins
-																						</span>
-																					</div>
-																					<div class="m-list-timeline__item">
-																						<span class="m-list-timeline__badge"></span>
-																						<span class="m-list-timeline__text">
-																							New invoice received
+																							แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 4 ธันวาคม 2560
 																						</span>
 																						<span class="m-list-timeline__time">
 																							20 mins
@@ -121,57 +101,22 @@
 																					<div class="m-list-timeline__item">
 																						<span class="m-list-timeline__badge"></span>
 																						<span class="m-list-timeline__text">
-																							DB overloaded 80%
-																							<span class="m-badge m-badge--info m-badge--wide">
-																								settled
-																							</span>
+																							ขณะนี้ระบบสามารถใช้งานได้ตามปกติแล้ว
 																						</span>
 																						<span class="m-list-timeline__time">
-																							1 hr
+																							1 month
 																						</span>
 																					</div>
 																					<div class="m-list-timeline__item">
 																						<span class="m-list-timeline__badge"></span>
 																						<span class="m-list-timeline__text">
-																							System error -
-																							<a href="#" class="m-link">
-																								Check
-																							</a>
+																							แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 1 พฤศจิกายน 2560
 																						</span>
 																						<span class="m-list-timeline__time">
-																							2 hrs
+																							1 month
 																						</span>
 																					</div>
-																					<div class="m-list-timeline__item m-list-timeline__item--read">
-																						<span class="m-list-timeline__badge"></span>
-																						<span href="" class="m-list-timeline__text">
-																							New order received
-																							<span class="m-badge m-badge--danger m-badge--wide">
-																								urgent
-																							</span>
-																						</span>
-																						<span class="m-list-timeline__time">
-																							7 hrs
-																						</span>
-																					</div>
-																					<div class="m-list-timeline__item m-list-timeline__item--read">
-																						<span class="m-list-timeline__badge"></span>
-																						<span class="m-list-timeline__text">
-																							Production server down
-																						</span>
-																						<span class="m-list-timeline__time">
-																							3 hrs
-																						</span>
-																					</div>
-																					<div class="m-list-timeline__item">
-																						<span class="m-list-timeline__badge"></span>
-																						<span class="m-list-timeline__text">
-																							Production server up
-																						</span>
-																						<span class="m-list-timeline__time">
-																							5 hrs
-																						</span>
-																					</div>
+																					
 																				</div>
 																			</div>
 																		</div>
@@ -262,7 +207,7 @@
 														Hello,&nbsp;
 													</span>
 													<span class="m-topbar__username">
-														<%= user_id %>
+														Natthawat
 													</span>
 													<span class="m-topbar__userpic">
 														<img src="../assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt=""/>
@@ -278,10 +223,10 @@
 																</div>
 																<div class="m-card-user__details">
 																	<span class="m-card-user__name m--font-weight-500">
-																		<%= user_cn %>
+																		Natthawat Arunweerungroj
 																	</span>
 																	<a href="" class="m-card-user__email m--font-weight-300 m-link">
-																		<%= user_id %>@excise.go.th
+																		natthawat_a@excise.go.th
 																	</a>
 																</div>
 															</div>
@@ -292,7 +237,7 @@
 
 																	<li class="m-nav__separator m-nav__separator--fit"></li>
 																	<li class="m-nav__item">
-																		<a href="/profile/logout" class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">
+																		<a href="snippets/pages/user/login-1.html" class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">
 																			Logout
 																		</a>
 																	</li>
@@ -378,10 +323,10 @@
 												</div>
 												<div class="m-card-profile__details">
 													<span class="m-card-profile__name">
-														<%= user_cn %>
+														Natthawat Arunweerungroj
 													</span>
 													<a href="" class="m-card-profile__email m-link">
-														<%= user_id %>@excise.go.th
+														natthawat_a@excise.go.th
 													</a>
 												</div>
 											</div>
@@ -545,124 +490,15 @@
 					<div class="tab-pane active m-scrollable" id="m_quick_sidebar_tabs_messenger" role="tabpanel">
 						<div class="m-messenger m-messenger--message-arrow m-messenger--skin-light">
 							<div class="m-messenger__messages">
-								<div class="m-messenger__message m-messenger__message--in">
-									<div class="m-messenger__message-pic">
-										<img src="../assets/app/media/img//users/user3.jpg" alt=""/>
-									</div>
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-username">
-												Megan wrote
-											</div>
-											<div class="m-messenger__message-text">
-												Hi Bob. What time will be the meeting ?
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__message m-messenger__message--out">
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-text">
-												Hi Megan. It's at 2.30PM
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__message m-messenger__message--in">
-									<div class="m-messenger__message-pic">
-										<img src="../assets/app/media/img//users/user3.jpg" alt=""/>
-									</div>
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-username">
-												Megan wrote
-											</div>
-											<div class="m-messenger__message-text">
-												Will the development team be joining ?
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__message m-messenger__message--out">
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-text">
-												Yes sure. I invited them as well
-											</div>
-										</div>
-									</div>
-								</div>
 								<div class="m-messenger__datetime">
 									2:30PM
 								</div>
-								<div class="m-messenger__message m-messenger__message--in">
-									<div class="m-messenger__message-pic">
-										<img src="../assets/app/media/img//users/user3.jpg"  alt=""/>
-									</div>
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-username">
-												Megan wrote
-											</div>
-											<div class="m-messenger__message-text">
-												Noted. For the Coca-Cola Mobile App project as well ?
-											</div>
-										</div>
-									</div>
-								</div>
 								<div class="m-messenger__message m-messenger__message--out">
 									<div class="m-messenger__message-body">
 										<div class="m-messenger__message-arrow"></div>
 										<div class="m-messenger__message-content">
 											<div class="m-messenger__message-text">
-												Yes, sure.
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__message m-messenger__message--out">
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-text">
-												Please also prepare the quotation for the Loop CRM project as well.
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__datetime">
-									3:15PM
-								</div>
-								<div class="m-messenger__message m-messenger__message--in">
-									<div class="m-messenger__message-no-pic m--bg-fill-danger">
-										<span>
-											M
-										</span>
-									</div>
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-username">
-												Megan wrote
-											</div>
-											<div class="m-messenger__message-text">
-												Noted. I will prepare it.
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__message m-messenger__message--out">
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-text">
-												Thanks Megan. I will see you later.
+												มีปัญหาการใช้งาน ไม่สามารถเพิ่มอุปกรณ์เข้าสู่ระบบได้ครับ
 											</div>
 										</div>
 									</div>
@@ -675,14 +511,25 @@
 										<div class="m-messenger__message-arrow"></div>
 										<div class="m-messenger__message-content">
 											<div class="m-messenger__message-username">
-												Megan wrote
+												Natsha wrote
 											</div>
 											<div class="m-messenger__message-text">
-												Sure. See you in the meeting soon.
+												ตอนนี้ระบบเพิ่มอุปกรณ์มีปัญหาอยู่ค่ะ ทางทีมที่ดูแลกำลังรีบแก้ไข ขออภัยในความไม่สะดวกค่ะ
 											</div>
 										</div>
 									</div>
 								</div>
+								<div class="m-messenger__message m-messenger__message--out">
+									<div class="m-messenger__message-body">
+										<div class="m-messenger__message-arrow"></div>
+										<div class="m-messenger__message-content">
+											<div class="m-messenger__message-text">
+												ขอบคุณครับ
+											</div>
+										</div>
+									</div>
+								</div>
+							
 							</div>
 							<div class="m-messenger__seperator"></div>
 							<div class="m-messenger__form">
@@ -727,27 +574,54 @@
 								</div>
 								<div class="m-list-timeline__items">
 									<div class="m-list-timeline__item">
-										<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
 										<a href="" class="m-list-timeline__text">
-											12 new users registered
+											เข้าสู่ระบบด้วย  
 											<span class="m-badge m-badge--warning m-badge--wide">
-												important
+												Chrome
 											</span>
+											</br>
+											<span class="m-badge m-badge--info m-badge--wide">
+												bangkok1-ac
+										</span>
 										</a>
+										
 										<span class="m-list-timeline__time">
-											Just now
+											2017-11-30 11:30
 										</span>
 									</div>
 									<div class="m-list-timeline__item">
 										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
 										<a href="" class="m-list-timeline__text">
-											System shutdown
+											เข้าสู่ระบบด้วย  
+											<span class="m-badge m-badge--warning m-badge--wide">
+												Chrome
+											</span>
+											</br>
+											<span class="m-badge m-badge--info m-badge--wide">
+												bangkok1-ac
+										</span>
 										</a>
 										<span class="m-list-timeline__time">
-											11 mins
+											2017-11-28 9.12
 										</span>
 									</div>
-								</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+										<a href="" class="m-list-timeline__text">
+											เข้าสู่ระบบด้วย  
+											<span class="m-badge m-badge--danger m-badge--wide">
+												Firefox
+											</span>
+											</br>
+											<span class="m-badge m-badge--info m-badge--wide">
+												nakornpathom1-ac
+										</span>
+										</a>
+										<span class="m-list-timeline__time">
+											2017-11-25 13.21
+										</span>
+									</div>
 							</div>
 						</div>
 					</div>
@@ -768,11 +642,12 @@
 		<script src="../assets/demo/demo5/base/scripts.bundle.js" type="text/javascript"></script>
 		<!--end::Base Scripts -->
 		<script>
+		account_now = 'natthawat_a';
 		function refreshlist(){
 		//alert('refresh');
 			$.ajax('http://localhost:3000/listdevice', {
 				type: "get",
-				data: {accname:'natthawat_a'},
+				data: {accname:account_now},
 				success: function(json) {
 					//alert(JSON.stringify(json));
 					data_res = JSON.parse(JSON.stringify(json));
@@ -817,8 +692,6 @@
 				//if(i==data.length){
 					var div = document.createElement('div');
 
-					
-
 					div.className = 'form-group m-form__group row';
 					//div.style = 'width:30%; height:30%;align-items: center;';
 
@@ -846,7 +719,7 @@
 					q = "'";
 					div.innerHTML =
 
-						'<div id="'+data[i].terminalid+'"><img src="images/devices/'+data[i].terminalos+'.jpg"  style="width:60%; height:60%; display: block;margin: 0 auto;"><br>\
+						'<div id="'+data[i].terminalmac+'"><img src="images/devices/'+data[i].terminalos+'.jpg"  style="width:60%; height:60%; display: block;margin: 0 auto;"><br>\
 						<button type="button" class="btn btn-danger" style="display: block;margin: 0 auto;" onclick="removedevice(this,'+q+data[i].terminalmac+q+')">Deactivate</button></div> \
 						<div><p>Device Name : '+host_name+'</p>\
 						<p>MAC Address : '+data[i].terminalmac+'</p>\
@@ -875,7 +748,7 @@
 		function adddevice(name,mac,os){
 		$.ajax('http://localhost:3000/adddevice', {
 			type: "get",
-			data: {tername:name,termac:mac,teros:os,teracc:'natthawat_a'},
+			data: {tername:name,termac:mac,teros:os,teracc:account_now},
 			success: function(json) {
 			  addmac(mac);
 			  refreshlist();
@@ -884,11 +757,11 @@
 
 		}
 
-		function deletedevice(ter_id){
+		function deletedevice(ter_mac){
 		//alert(ter_id);
 		$.ajax('http://localhost:3000/deletedevice', {
 			type: "get",
-			data: {terid:ter_id},
+			data: {termac:ter_mac,teracc:account_now},
 			success: function(json) {
 			  //alert(JSON.stringify(json));
 			  refreshlist();
@@ -900,7 +773,7 @@
 		//alert('refresh');
 			$.ajax('http://localhost:3000/listmac', {
 				type: "get",
-				data: {accname:'natthawat_a'},
+				data: {accname:account_now},
 				success: function(json) {
 					//alert(json);
 					//data_res = JSON.parse(JSON.stringify(json));
@@ -915,18 +788,27 @@
 			data_sql = data_sql.substring(2,data_sql.length);
 			//alert(data_sql);
 			mac_bind = '';
+			b = 0;
 			for (i = 1; i < data_sql.length; i++) {
 				data_mac = data_sql.substring(0, 17);
 				//alert(data_mac);
-				if(data_mac==mac){}
-				else {mac_bind=mac_bind+data_mac;}
+				if(data_mac==mac){data_sql = data_sql.substring(18,data_sql.length);}
+				else {
+				mac_bind=mac_bind+data_mac;
 				data_sql = data_sql.substring(18,data_sql.length);
 				if(data_sql.length>1&&mac_bind!=0){mac_bind=mac_bind+',';}
+				}
+				
+
+				
 				i = 1;
-				//alert(data_sql);
+				alert(mac_bind);
 
 			}
-			//alert(mac_bind);
+			test = mac_bind.substring(mac_bind.length-1,mac_bind.length);
+			if(test==','){
+				mac_bind = mac_bind.substring(0,mac_bind.length-1);
+			}
 			updatemac(mac_bind)
 		}
 
@@ -934,7 +816,7 @@
 		//alert('refresh');
 			$.ajax('http://localhost:3000/listmac', {
 				type: "get",
-				data: {accname:'natthawat_a'},
+				data: {accname:account_now},
 				success: function(json) {
 					//alert(json);
 					//data_res = JSON.parse(JSON.stringify(json));
@@ -946,16 +828,47 @@
 
 
 		function addbindmac(data_sql,mac){
-			data_sql = data_sql.substring(2,data_sql.length-2)+','+mac;
-			//alert(data_sql);
+		
+		if(data_sql.length<15)
+		{
+			data_sql = mac;
 			updatemac(data_sql);
+		}
+		else
+			{
+			data_sql_1 = data_sql.substring(2,data_sql.length-2);;
+			data_sql = data_sql.substring(2,data_sql.length);
+			//alert(data_sql);
+			//alert(data_sql_1);
+			mac_bind = '';
+			a = 0
+			for (i = 1; i < data_sql.length; i++) {
+				data_mac = data_sql.substring(0, 17);
+				//alert(data_mac);
+				if(data_mac==mac){a = 1;}
+				else {mac_bind=mac_bind+data_mac;}
+				data_sql = data_sql.substring(18,data_sql.length);
+				if(data_sql.length>1&&mac_bind!=0){mac_bind=mac_bind+',';}
+				i = 1;
+				//alert(data_sql);
+
+			}
+			if(a==1){
+			}
+			else{
+				data_sql_1 = data_sql_1+','+mac;
+			}
+			
+			//alert(data_sql);
+			updatemac(data_sql_1);
+			}
 		}
 
 		function updatemac(mac){
 		//alert('refresh');
 			$.ajax('http://localhost:3000/updatemac', {
 				type: "get",
-				data: {accname:'natthawat_a',macbind:mac},
+				data: {accname:account_now,macbind:mac},
 				success: function(json) {
 				}
 			});

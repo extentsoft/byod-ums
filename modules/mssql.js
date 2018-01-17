@@ -9,8 +9,8 @@ var poolConfig = {
 };
 
 var config = {
-  userName: 'sa',
-  password: 'P@ssw0rd',
+  userName: 'AgileControllerDBA',
+  password: 'Huawei@123',
   server: '192.168.163.25'
 };
 
