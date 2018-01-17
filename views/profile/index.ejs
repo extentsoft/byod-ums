@@ -739,7 +739,7 @@
 				//var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 4 ธันวาคม 2560</span><span class='m-list-timeline__time'>20 mins</span></div>";
 				//$('#notification_center').append(msg);
 			});*/
-			
+
 			$.ajax('http://localhost:3000/getnotimsg', {
 			type: "get",
 			data: {chanel:'0'},
@@ -758,10 +758,20 @@
 					i = -1;
 
 				}
-				alert(data.length);
+				//alert(data.length);
+				//var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 4 ธันวาคม 2560</span><span class='m-list-timeline__time'>20 mins</span></div>";
+				//$('#notification_center').append(msg);
 				for(i=0;i<data.length;i++)
 				{
-					alert(JSON.stringify(data[i]));
+
+					data[i].channel
+					data[i].timestamp
+					data[i].msg
+					if( data[i].channel <= 1 ){
+						var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>" + data[i].msg + "</span><span class='m-list-timeline__time'>" + data[i].timestamp.split("T")[0] + "</span></div>";
+						$('#notification_center').append(msg);
+					}
+
 				}
 				//alert(JSON.stringify(data));
 				//bindata(data_res);

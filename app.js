@@ -25,6 +25,19 @@ var admin = require('./routes/admin');
 var profile = require('./routes/profile');
 */
 
+app.get('/inspect/' , function(req,res,next){
+  next(); //#1 log in different site
+});
+app.get('/inspect/' , function(req,res,next){
+  next(); //#2
+});
+app.get('/inspect/' , function(req,res,next){
+  next(); //#3
+});
+app.get('/inspect/' , function(req,res,next){
+  res.send('done'); //#4
+});
+
 // List user's terminal - TBL_ENDPOINT
 // param = uid
 var listdevice = require('./routes/listdevice');
@@ -86,6 +99,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 require('./routes/profile2')(app,passport);
 require('./routes/admin2')(app,passport);
 require('./routes/frameprofile')(app);
+
+
 
 /*
 app.use('/listdevice', listdevice);
