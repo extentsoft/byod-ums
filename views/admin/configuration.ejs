@@ -333,6 +333,20 @@
 						</div>
 						<!-- END: Subheader -->
 						<div class="m-content">
+              <!-- -start- -->
+              <input type="text" name="notifymessage" id="notifymessage" placeholder="ข้อความที่ต้องการนำสื่อสารกับกลุ่มผู้ใช้งาน">
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">ช่องทาง
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">ทั้งหมด</a></li>
+                  <li><a href="#">กลุ่มบุคลากรภายใน</a></li>
+                  <li><a href="#">กลุ่มบุคลากรภายนอก</a></li>
+                </ul>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block" onClick="notify()">Send</button>
+              <!-- -end- -->
 							<!--Begin::Main Portlet-->
 							<div class="m-portlet">
 								<div class="m-portlet__body  m-portlet__body--no-padding">
@@ -506,6 +520,28 @@
 
     <script>
 	//alert('a');
+      function notify(){
+          $('#notifymessage').val()
+          $('#notifychannel li').click(function(){
+            alert('index is ' + $(this).index());
+            alert('text is ' + $(this).text());
+          })
+
+          <input type="text" name="notifymessage" id="notifymessage" placeholder="ข้อความที่ต้องการนำสื่อสารกับกลุ่มผู้ใช้งาน">
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">ช่องทาง
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" id="notifychannel">
+              <li><a href="#">ทั้งหมด</a></li>
+              <li><a href="#">กลุ่มบุคลากรภายใน</a></li>
+              <li><a href="#">กลุ่มบุคลากรภายนอก</a></li>
+            </ul>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" onClick="notify()">Send</button>
+      }
+
+
 	function devicelist(){
 		$.ajax('http://localhost:3000/alldevices', {
 		type: "get",

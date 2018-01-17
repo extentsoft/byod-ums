@@ -23,8 +23,16 @@ var index = require('./routes/index');
 var admin = require('./routes/admin');
 var profile = require('./routes/profile');
 */
+
+// List user's terminal - TBL_ENDPOINT
+// param = uid
 var listdevice = require('./routes/listdevice');
+
+// List all user's bind MAC - TBL_ACCOUNT
+// param = uid
 var listmac = require('./routes/listmac');
+
+// - TBL_ENDPOINT, TBL_ACCOUNT
 var updatemac = require('./routes/updatemac');
 var adddevice = require('./routes/adddevice');
 var deletedevice = require('./routes/deletedevice');
@@ -73,6 +81,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 require('./routes/profile2')(app,passport);
 require('./routes/admin2')(app,passport);
+require('./routes/frameprofile')(app);
 
 /*
 app.use('/listdevice', listdevice);
