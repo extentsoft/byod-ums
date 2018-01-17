@@ -3,6 +3,7 @@ var Crypt = require('../modules/crypt_sha');
 var crypt = new Crypt();
 var OpenLdap = require('../modules/openldap');
 var openldap = new OpenLdap();
+var ldap = require('ldapjs');
 
 module.exports = function(app){
 /*
