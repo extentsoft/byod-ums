@@ -356,7 +356,11 @@
 									<div class="row m-row--no-padding m-row--col-separator-xl">
 
 										<div class="container">
+<<<<<<< HEAD
 										
+=======
+
+>>>>>>> 60c207bf1c8a3aab610e08fafe5acacfea301d60
 
 										</div>
 									  </div>
@@ -520,7 +524,9 @@
           $.ajax({
             url: 'http://localhost:3000/notify/0/helloworld'
           }).then(function(data){
-            $('#notifystatus').html('Success');
+            //$('#notifystatus').html('Success');
+            //INSERT INTO [dbo].[UMS_Message]   ([message] ,[receive_group])  VALUES (param1,param2)
+            alert('message sent!');
           });
       }
 
