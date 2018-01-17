@@ -356,7 +356,11 @@
 									<div class="row m-row--no-padding m-row--col-separator-xl">
 
 										<div class="container">
+<<<<<<< HEAD
+										
+=======
 
+>>>>>>> 60c207bf1c8a3aab610e08fafe5acacfea301d60
 
 										</div>
 									  </div>
@@ -507,134 +511,37 @@
     <script>
       function getCustomerSatisfaction(){
         alert('getCustomerSatisfaction');
-        $.ajax({
+        /*$.ajax({
           url: 'http://localhost:3000/sendCustSat'
         }).then(function(data){
           alert('suryet sent!');
-        });
+        });*/
       }
 
       function notify(){
+		//alert('t');
           alert($('#notifymessage').val());
           alert($('#notifychannel').val());
-          $.ajax({
+          /*$.ajax({
             url: 'http://localhost:3000/notify/0/helloworld'
           }).then(function(data){
             //$('#notifystatus').html('Success');
             //INSERT INTO [dbo].[UMS_Message]   ([message] ,[receive_group])  VALUES (param1,param2)
             alert('message sent!');
-          });
+          });*/
+		  
+		  $.ajax('http://localhost:3000/addnotimsg', {
+			type: "get",
+			data: {chanel:$('#notifychannel').val(),msg:$('#notifymessage').val()},
+			success: function(json) {
+			  //alert(JSON.stringify(json));
+			  alert('message sent!');
+			}
+		  });
       }
 
 
-	function devicelist(){
-		$.ajax('http://localhost:3000/alldevices', {
-		type: "get",
-        success: function(json) {
-			//alert(json);
-			//alert(JSON.stringify(json));
-			data_res = JSON.parse(JSON.stringify(json));
-			mkdata(data_res);
-        },
-		error: function(fa) {alert(JSON.stringify(fa));}
-      });
-	}
-
-	function mkdata(data_sql){
-		//alert(data_sql);
-		data = [];
-		for (i = 0; i < data_sql.length; i++) {
-			data_json = {};
-			data_json = {terid:data_sql[0],terusr:data_sql[1],tername:data_sql[2],termac:data_sql[3],teros:data_sql[4],update:data_sql[5],regist:data_sql[6]};
-			//alert(JSON.stringify(data_json));
-			data.push(data_json);
-			//alert(JSON.stringify(data));
-			data_sql.splice(0,7);
-			i = -1;
-		}
-		//alert(JSON.stringify(data));
-		gengrid(data);
-	}
-
-
-      function gengrid(mydata) {
-	  //alert(JSON.stringify(mydata));
-            $("#jqGrid").jqGrid({
-				editurl: 'clientArray',
-                datatype: "local",
-				data: mydata,
-                colModel: [
-					{ label: 'ID', name: 'terid', width: 150, key:true, editrules : { required: true}},
-                    { label: 'Username', name: 'terusr', width: 200, editable: true },
-                    { label: 'Devicename', name: 'tername', width: 90, editable: true },
-					{ label: 'MAC', name: 'termac', width: 150, editable: true },
-					{ label: 'OS', name: 'teros', width: 90, editable: true },
-					{ label: 'Last Update', name: 'update', width: 250, editable: true },
-                    { label: 'Register Date', name: 'regist', width: 250, editable: true }
-                ],
-                viewrecords: true,
-
-
-                pager: "#jqGridPager",
-				gridComplete: initGrid
-            });
-    }
-
-	function initGrid() {
-	//alert('init');
-            $(".jqgrow", "#jqGrid").contextMenu('contextMenu', {
-                bindings: {
-                    'edit': function (t) {
-                        editRow();
-                    },
-                    /*'add': function (t) {
-                        addRow();
-                    },*/
-                    'del': function (t) {
-                        delRow();
-                    }
-                },
-                onContextMenu: function (event, menu) {
-                    var rowId = $(event.target).parent("tr").attr("id")
-                    var grid = $("#jqGrid");
-                    grid.setSelection(rowId);
-
-                    return true;
-                }
-            });
-
-           /* function addRow() {
-                var grid = $("#jqGrid");
-                grid.editGridRow("new", { closeAfterAdd: true});
-            }*/
-
-            function editRow() {
-                var grid = $("#jqGrid");
-                var rowKey = grid.getGridParam("selrow");
-                if (rowKey) {
-                    grid.editGridRow(rowKey, {closeAfterEdit: true});
-                }
-                else {
-                    alert("No rows are selected");
-                }
-            }
-
-            function delRow() {
-                var grid = $("#jqGrid");
-                var rowKey = grid.getGridParam("selrow");
-                if (rowKey) {
-                    grid.delGridRow(rowKey);
-                }
-                else {
-                    alert("No rows are selected");
-                }
-            }
-        }
-
-
-
- //alert('b');
- devicelist();
+	
    </script>
   </body>
 </html>

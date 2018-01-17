@@ -66,6 +66,16 @@ module.exports = function(app, passport){
       user_cn: req.user.email
     });
   });
+
+  app.get('/admin/devicemon', isLoggedIn, function(req,res,next){
+    console.log(req.user.email);
+    res.render('admin/devicemon', {
+      title: 'Administrative Console - Devices Monitoring',
+      user_id: req.user.email,
+      user_cn: req.user.email
+    });
+  });
+
   app.get('/admin/user', isLoggedIn, function(req,res,next){
     console.log(req.user.email);
     res.render('admin/user', {
@@ -131,6 +141,15 @@ module.exports = function(app, passport){
   });
   app.get('/admin/report/rpt15', isLoggedIn, function(req,res,next){
     res.render('admin/report/rpt15', {
+      title: 'Administrative Console - Report',
+      user_id: req.user.email,
+      user_cn: req.user.email
+    });
+  });
+
+   app.get('/admin/report/reportbyuser', isLoggedIn, function(req,res,next){
+    console.log(req.user.email);
+    res.render('admin/report/reportbyuser', {
       title: 'Administrative Console - Report',
       user_id: req.user.email,
       user_cn: req.user.email
@@ -210,6 +229,67 @@ module.exports = function(app, passport){
   
   app.get('/notify/:channel/:msg', function(req,res,next){
     //insert into notification table
+var express = require('express');
+var pool = require('../modules/mssql').pool;
+var Request = require('tedious').Request;
+var router = express.Router();
+
+var deviceList = function(req,res,next){
+
+  //console.log('deviceList middleware');
+
+  //req.test1 = "Insert";
+
+  var result = [];
+  pool.acquire(function(err, connection){
+    if(err){
+      console.error(err);
+      return;
+    }
+    console.log('Connection successful');
+
+    var request = new Request("INSERT INTO [dbo].[UMS_Message] ([message] ,[receive_group],[created_at])  VALUES ('"+req.param('msg')+"','"+req.param('chanel')+"',current_timestamp)", function(err, rowCount){
+
+	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
+
+      if(err){
+        console.error(err);
+        return;
+      }
+      console.log('rowCount: ' + rowCount);
+      //console.log(JSON.stringify(result));
+      req.test2 = result;
+      connection.release();
+      next();
+    });
+
+    request.on('row', function(columns){
+      //result.push(columns);
+      columns.forEach(function(column){
+        if(column.value === null) {
+          console.log('NULL');
+        }
+        else{
+			result.push(column.value);
+          //console.log(column.value);
+        }
+      });
+    });
+    connection.execSql(request);
+  });
+
+
+}
+
+
+router.get('/', deviceList, function(req, res, next) {
+  //console.log('middleware 1 ' + req.test2);
+  //console.log('middleware 2 ' + JSON.stringify(req.test2));
+  res.send(req.test2);
+  //res.send('respond with a resource');
+});
+
+module.exports = router;
     /*
   INSERT INTO [dbo].[UMS_Message]   ([message] ,[receive_group])  VALUES (param1,param2)
     */
