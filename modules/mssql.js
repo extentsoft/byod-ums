@@ -11,7 +11,7 @@ var poolConfig = {
 var config = {
   userName: 'sa',
   password: 'P@ssw0rd',
-  server: '192.168.226.110'
+  server: '192.168.163.25'
 };
 
 var pool = new ConnectionPool(poolConfig, config);
