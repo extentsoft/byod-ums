@@ -42,6 +42,9 @@ var allusers = require('./routes/allusers');
 var accesslog = require('./routes/accesslog');
 var limitdevice = require('./routes/limitdevice');
 
+var addnotimsg = require('./routes/addnotimsg');
+var getnotimsg = require('./routes/getnotimsg');
+
 var deviceinmon = require('./routes/monitor/deviceinmon');
 var deviceoutmon = require('./routes/monitor/deviceoutmon');
 var adddevicemon = require('./routes/monitor/adddevicemon');
@@ -107,6 +110,9 @@ app.use('/alldevices', alldevices);
 app.use('/allusers', allusers);
 app.use('/accesslog', accesslog);
 app.use('/limitdevice', limitdevice);
+
+app.use('/addnotimsg', addnotimsg);
+app.use('/getnotimsg', getnotimsg);
 
 app.use('/deviceinmon', deviceinmon);
 app.use('/deviceoutmon', deviceoutmon);

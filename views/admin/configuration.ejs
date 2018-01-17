@@ -511,23 +511,33 @@
     <script>
       function getCustomerSatisfaction(){
         alert('getCustomerSatisfaction');
-        $.ajax({
+        /*$.ajax({
           url: 'http://localhost:3000/sendCustSat'
         }).then(function(data){
           alert('suryet sent!');
-        });
+        });*/
       }
 
       function notify(){
+		//alert('t');
           alert($('#notifymessage').val());
           alert($('#notifychannel').val());
-          $.ajax({
+          /*$.ajax({
             url: 'http://localhost:3000/notify/0/helloworld'
           }).then(function(data){
             //$('#notifystatus').html('Success');
             //INSERT INTO [dbo].[UMS_Message]   ([message] ,[receive_group])  VALUES (param1,param2)
             alert('message sent!');
-          });
+          });*/
+		  
+		  $.ajax('http://localhost:3000/addnotimsg', {
+			type: "get",
+			data: {chanel:$('#notifychannel').val(),msg:$('#notifymessage').val()},
+			success: function(json) {
+			  //alert(JSON.stringify(json));
+			  alert('message sent!');
+			}
+		  });
       }
 
 
