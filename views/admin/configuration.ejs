@@ -315,7 +315,7 @@
 							<div class="d-flex align-items-center">
 								<div class="mr-auto">
 									<h3 class="m-subheader__title ">
-										General Configuration
+										General Configuration <button type="button" class="btn btn-danger" onclick="getCustomerSatisfaction()">Get Customer Satisfaction</button>
 									</h3>
 								</div>
 								<div>
@@ -334,18 +334,21 @@
 						<!-- END: Subheader -->
 						<div class="m-content">
               <!-- -start- -->
-              <input type="text" name="notifymessage" id="notifymessage" placeholder="ข้อความที่ต้องการนำสื่อสารกับกลุ่มผู้ใช้งาน">
-              <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">ช่องทาง
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a href="#">ทั้งหมด</a></li>
-                  <li><a href="#">กลุ่มบุคลากรภายใน</a></li>
-                  <li><a href="#">กลุ่มบุคลากรภายนอก</a></li>
-                </ul>
+              <div class="form-group">
+                <label for="inputsm">ช่องทางการสื่อสารผู้ใช้งาน</label>
+                <input class="form-control input-sm" id="notifymessage" type="text" placeholder="ข้อความที่ต้องการนำสื่อสารกับกลุ่มผู้ใช้งาน">
               </div>
-              <button class="btn btn-lg btn-primary btn-block" onClick="notify()">Send</button>
+              <div class="form-group">
+                <select class="form-control input-sm" id="notifychannel">
+                  <option value="0">ทุกกลุ่ม</option>
+                  <option value="1">กลุ่มบุคลากรภายใน</option>
+                  <option value="2">กลุ่มบุคลากรภายนอก</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block btn-sm" onClick="notify()">Send</button>
+              </div>
+              <div id="notifystatus"></div>
               <!-- -end- -->
 							<!--Begin::Main Portlet-->
 							<div class="m-portlet">
@@ -519,26 +522,22 @@
     <link rel="stylesheet" type="text/css" media="screen" href="javascripts/css/ui.jqgrid.css" />
 
     <script>
-	//alert('a');
-      function notify(){
-          $('#notifymessage').val()
-          $('#notifychannel li').click(function(){
-            alert('index is ' + $(this).index());
-            alert('text is ' + $(this).text());
-          })
+      function getCustomerSatisfaction(){
+        $.ajax({
+          url: 'http://localhost:3000/sendCustSat'
+        }).then(function(data){
+          alert('suryet sent!');
+        });
+      }
 
-          <input type="text" name="notifymessage" id="notifymessage" placeholder="ข้อความที่ต้องการนำสื่อสารกับกลุ่มผู้ใช้งาน">
-          <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">ช่องทาง
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" id="notifychannel">
-              <li><a href="#">ทั้งหมด</a></li>
-              <li><a href="#">กลุ่มบุคลากรภายใน</a></li>
-              <li><a href="#">กลุ่มบุคลากรภายนอก</a></li>
-            </ul>
-          </div>
-          <button class="btn btn-lg btn-primary btn-block" onClick="notify()">Send</button>
+      function notify(){
+          alert($('#notifymessage').val());
+          alert($('#notifychannel').val());
+          $.ajax({
+            url: 'http://localhost:3000/notify/0/helloworld'
+          }).then(function(data){
+            $('#notifystatus').html('Success');
+          });
       }
 
 
