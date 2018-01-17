@@ -24,7 +24,7 @@ var index = require('./routes/index');
 var admin = require('./routes/admin');
 var profile = require('./routes/profile');
 */
-
+/*
 app.get('/inspect/' , function(req,res,next){
   next(); //#1 log in different site
 });
@@ -33,7 +33,7 @@ app.get('/inspect/' , function(req,res,next){
 });
 app.get('/inspect/' , function(req,res,next){
   next(); //#3
-});
+});*/
 app.get('/inspect/' , function(req,res,next){
   res.send('done'); //#4
 });
