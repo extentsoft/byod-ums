@@ -58,6 +58,8 @@ var limitdevice = require('./routes/limitdevice');
 var addnotimsg = require('./routes/addnotimsg');
 var getnotimsg = require('./routes/getnotimsg');
 
+var countlogin = require('./routes/countlogin');
+
 var deviceinmon = require('./routes/monitor/deviceinmon');
 var deviceoutmon = require('./routes/monitor/deviceoutmon');
 var adddevicemon = require('./routes/monitor/adddevicemon');
@@ -128,6 +130,7 @@ app.use('/limitdevice', limitdevice);
 
 app.use('/addnotimsg', addnotimsg);
 app.use('/getnotimsg', getnotimsg);
+app.use('/countlogin', countlogin);
 
 app.use('/deviceinmon', deviceinmon);
 app.use('/deviceoutmon', deviceoutmon);
