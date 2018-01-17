@@ -2,6 +2,11 @@ var nodemailer = require('nodemailer');
 var Crypt = require('../modules/crypt_sha');
 var crypt = new Crypt();
 module.exports = function(app, passport){
+
+  app.get('/profile/notification', function(req,res){
+    res.json([{ message: "1", duration: "20"},{ message: "2", duration: "30"}]);
+  });
+
   app.get('/', isLoggedIn, function(req,res){
     res.render('profile/index', {
       title: 'Personal Profile',
