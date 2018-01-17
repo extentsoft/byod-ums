@@ -33,10 +33,10 @@ app.get('/inspect/' , function(req,res,next){
 });
 app.get('/inspect/' , function(req,res,next){
   next(); //#3
-});*/
+});
 app.get('/inspect/' , function(req,res,next){
   res.send('done'); //#4
-});
+});*/
 
 // List user's terminal - TBL_ENDPOINT
 // param = uid

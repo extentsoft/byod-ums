@@ -89,7 +89,33 @@
 																			<div class="m-list-timeline m-list-timeline--skin-light">
 																				<div class="m-list-timeline__items" id="notification_center">
 
-
+																					<div class="m-list-timeline__item">
+																						<span class="m-list-timeline__badge"></span>
+																						<span class="m-list-timeline__text">
+																							แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 4 ธันวาคม 2560
+																						</span>
+																						<span class="m-list-timeline__time">
+																							20 mins
+																						</span>
+																					</div>
+																					<div class="m-list-timeline__item">
+																						<span class="m-list-timeline__badge"></span>
+																						<span class="m-list-timeline__text">
+																							ขณะนี้ระบบสามารถใช้งานได้ตามปกติแล้ว
+																						</span>
+																						<span class="m-list-timeline__time">
+																							1 month
+																						</span>
+																					</div>
+																					<div class="m-list-timeline__item">
+																						<span class="m-list-timeline__badge"></span>
+																						<span class="m-list-timeline__text">
+																							แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 1 พฤศจิกายน 2560
+																						</span>
+																						<span class="m-list-timeline__time">
+																							1 month
+																						</span>
+																					</div>
 
 																				</div>
 																			</div>
@@ -713,7 +739,7 @@
 				//var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 4 ธันวาคม 2560</span><span class='m-list-timeline__time'>20 mins</span></div>";
 				//$('#notification_center').append(msg);
 			});*/
-
+			
 			$.ajax('http://localhost:3000/getnotimsg', {
 			type: "get",
 			data: {chanel:'0'},
@@ -732,28 +758,62 @@
 					i = -1;
 
 				}
-				//alert(data.length);
-				//var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 4 ธันวาคม 2560</span><span class='m-list-timeline__time'>20 mins</span></div>";
-				//$('#notification_center').append(msg);
+				//alert(data.length); <----- จำนวนข้อความ
 				for(i=0;i<data.length;i++)
 				{
-
-					/*data[i].channel
-					data[i].timestamp
-					data[i].msg*/
-					//alert(data[i].channel);
-					if( data[i].chanel <= 1 ){
-						//alert(data[i].msg);
-						var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>" + data[i].msg + "</span><span class='m-list-timeline__time'>" + data[i].timestamp.split("T")[0] + "</span></div>";
-						$('#notification_center').append(msg);
-					}
-
+					//alert(JSON.stringify(data[i])); <------ วน loop ทีละข้อความ
+					alert(JSON.stringify(data[i]));
 				}
 				//alert(JSON.stringify(data));
 				//bindata(data_res);
 			}
 		  });
 		});
+		
+		function get_browser() {
+			var ua=navigator.userAgent,tem,M=ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || []; 
+			if(/trident/i.test(M[1])){
+				tem=/\brv[ :]+(\d+)/g.exec(ua) || []; 
+				return {name:'IE',version:(tem[1]||'')};
+				}   
+			if(M[1]==='Chrome'){
+				tem=ua.match(/\bOPR|Edge\/(\d+)/)
+				if(tem!=null)   {return {name:'Opera', version:tem[1]};}
+				}   
+			M=M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+			if((tem=ua.match(/version\/(\d+)/i))!=null) {M.splice(1,1,tem[1]);}
+			return {
+			  name: M[0],
+			  version: M[1]
+			};
+		}
+		
+		//var browser=get_browser();
+		//alert(browser.name+browser.version);
+		//browser.name = 'Chrome'
+		//browser.version = '40'
+		function acclogin(){
+			$.ajax('https://freegeoip.net/json/', {
+			type: "get",
+			success: function(data) {
+				var browser=get_browser();
+				login_log(browser.name,data.ip);
+			},
+			error: function(fa) {alert(JSON.stringify(fa));}
+		  });
+		}
+		
+		function login_log(b,i){
+			$.ajax('http://localhost:3000/accesslog', {
+			type: "get",
+			data: {browser:b,ip:i,status:'Login',accname:'natthawat_a'},
+			success: function(json) {
+				//alert(b+i)	;			
+			},
+			error: function(fa) {alert(JSON.stringify(fa));}
+		 });
+		}
+	acclogin();
 
 
 		</script>
