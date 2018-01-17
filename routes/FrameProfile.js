@@ -1,6 +1,8 @@
 var nodemailer = require('nodemailer');
 var Crypt = require('../modules/crypt_sha');
 var crypt = new Crypt();
+var OpenLdap = require('../modules/openldap');
+var openldap = new OpenLdap();
 
 module.exports = function(app){
 /*
@@ -28,7 +30,58 @@ module.exports = function(app){
   });
   app.get('/fprofile/device/:perno/:firstname/:lastname/:position/:level/:group/:area', function(req,res,next){
     console.log('match');
-    next();
+    // Check LDAP Account
+    var newAccount = req.params.firstname + '.' + req.params.firstname.substring(0,1);
+    openldap.search(newAccount, function(entry){
+      if( entry instanceof Error){
+        // If not existed, then create it
+        var client = ldap.createClient({
+          url: 'ldap://192.168.163.31:389'
+        });
+
+        var rootDN = "cn=ldapadm,dc=excise,dc=go,dc=th";
+        var rootPassword = "P@ssw0rd";
+        var baseDN = "ou=People,dc=excise,dc=go,dc=th";
+
+        var newDN = "uid=" + newAccount + ",ou=People,dc=excise,dc=go,dc=th";
+        var newEntry = {
+          uid: newAccount,
+          cn: req.params.firstname + " " + req.params.lastname,
+          gecos: "BYOD1 Skyhigh",
+          displayName: req.params.firstname + " " + req.params.lastname,
+          uidNumber: "10000",
+          sn: newAccount,
+          givenName: newAccount,
+          uid: newAccount,
+          homeDirectory: "/",
+          objectClass: ["posixAccount", "top", "inetOrgPerson", "shadowAccount"],
+          gidNumber: "10000",
+          loginShell: "/",
+          telephoneNumber: "10000",
+          shadowFlag: "0",
+          shadowMin: "0",
+          shadowMax: "99999",
+          shadowWarning: "0",
+          shadowInactive: "99999",
+          shadowLastChange: "10000",
+          shadowExpire: "99999",
+          userPassword: "{SSHA}aBKF48heZ6/evLWfdfcuH1EIR00jMKzN" // "password"
+        };
+
+        client.bind(rootDN, rootPassword, function(err) {
+          console.log(err);
+          console.log("Authentication Successful");
+        });
+
+        client.add(newDN,newEntry,function(err){
+          console.log(err);
+          client.unbind(function(err){
+            console.log("unbind LDAP server");
+          });
+        });
+      }
+      next();
+    });
   });
   app.get('/fprofile/device/:perno/:firstname/:lastname/:position/:level/:group/:area', function(req,res,next){
     //res.send('hi 2');

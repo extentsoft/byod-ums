@@ -207,7 +207,7 @@ module.exports = function(app, passport){
     });
   });
 
-  app.get('/)
+  
   app.get('/notify/:channel/:msg', function(req,res,next){
     //insert into notification table
     /*

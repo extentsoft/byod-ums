@@ -130,6 +130,49 @@ OpenLdap.prototype.search = function(username, done){
   });
 };
 
+OpenLdap.prototype.blindsearch = function(accountPattern, done){
+  var opts = {
+    filter: accountPattern,
+    scope: 'sub',
+    attributes: []
+  };
+
+  client.search(LdapCfg[envConfig.environment]['baseDN'], opts, function(err,res){
+    if(err){
+      console.log('Searching error : ' + err);
+    }
+    var tmp;
+    // 1st step
+    res.on('searchEntry', function(entry) {
+      console.log('authenticated');
+      console.log('entry: ' + JSON.stringify(entry.object));
+      tmp = entry.object;
+    });
+
+    res.on('searchReference', function(referral) {
+      console.log('referral: ' + referral.uris.join());
+    });
+    res.on('error', function(err) {
+      console.error('error: ' + err.message);
+      done(new Error('Connection failure'));
+    });
+
+    //2nd step
+    res.on('end', function(result) {
+      console.log('searched');
+
+      if( typeof(tmp) === "undefined"){
+          console.log('no user');
+          done(new Error('No user found'));
+      }
+      else{
+          done(tmp);
+      }
+
+    });
+  });
+};
+
 OpenLdap.prototype.authenticate = function(username, password, done){
   this.search(username,function(userInfo){
     console.log(userInfo);
