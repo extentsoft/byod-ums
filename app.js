@@ -59,6 +59,8 @@ var addnotimsg = require('./routes/addnotimsg');
 var getnotimsg = require('./routes/getnotimsg');
 
 var countlogin = require('./routes/countlogin');
+var addchat = require('./routes/addchat');
+var getchat = require('./routes/getchat');
 
 var deviceinmon = require('./routes/monitor/deviceinmon');
 var deviceoutmon = require('./routes/monitor/deviceoutmon');
@@ -130,6 +132,8 @@ app.use('/limitdevice', limitdevice);
 
 app.use('/addnotimsg', addnotimsg);
 app.use('/getnotimsg', getnotimsg);
+app.use('/addchat', addchat);
+app.use('/getchat', getchat);
 app.use('/countlogin', countlogin);
 
 app.use('/deviceinmon', deviceinmon);

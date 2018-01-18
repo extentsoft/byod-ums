@@ -587,11 +587,11 @@
 							<div class="m-messenger__seperator"></div>
 							<div class="m-messenger__form">
 								<div class="m-messenger__form-controls">
-									<input type="text" name="" placeholder="Type here..." class="m-messenger__form-input">
+									<input type="text" name="" id="chatbox2" placeholder="Type here..." class="m-messenger__form-input">
 								</div>
 								<div class="m-messenger__form-tools">
 									<a href="" class="m-messenger__form-attachment">
-										<i class="la la-paperclip"></i>
+										<i class="la la-paperclip" onclick="sendchat($('#chatbox2').val())"></i>
 									</a>
 								</div>
 							</div>
@@ -671,8 +671,56 @@
 		<!--end::Base Scripts -->
 		<script>
 			
-			account_now = $("#userid").text();
+		acc_now = $("#userid").text();
+		account_now = acc_now.replace(/[\n\t\r]/g,"")
+		//alert(account_now);
+		//alert('_'+account_now+'_');
+		
 		$(document).ready(function(){
+		
+			$.ajax('http://localhost:3000/getchat', {
+				type: "get",
+				success: function(json) {
+					//alert(JSON.stringify(json));
+					data_c = JSON.parse(JSON.stringify(json));
+					datac = [];
+					for (i = 0; i < data_c.length; i++) {
+						data_json = {};
+						data_json = {msg_id:data_c[0],name:data_c[1],msg:data_c[2],timestamp:data_c[3]};
+						//alert(JSON.stringify(data_json));
+						datac.push(data_json);
+						//alert(JSON.stringify(data));
+						data_c.splice(0,4);
+						i = -1;
+
+					}
+					
+					for(i=0;i<datac.length;i++)
+					{
+						//tmp = String(JSON.stringify(datac[i])).replace('\t','');
+						//alert(JSON.stringify(datac[i]));
+						/*data[i].channel
+						data[i].timestamp
+						data[i].msg*/
+						//alert(data[i].channel);
+
+
+
+						//var uid = $("#userid").text();
+						if( datac[i].name == account_now ){
+							//alert(data[i].msg);
+							var me_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
+							$('#chatbox').append(me_msg);
+						}
+						else{
+							var other_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--in'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-username'>" + datac[i].name + " : wrote</div><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
+							$('#chatbox').append(other_msg);
+						}
+					}
+				}
+			});
+		
+		
 			$.ajax('http://localhost:3000/getnotimsg', {
 			type: "get",
 			data: {chanel:'0'},
@@ -766,13 +814,25 @@
 				success: function(json) {
 					if(json[0] > 3)
 					{
-						alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบทำการส่ง Email ไปยังผู้ดูแลระบบ');
+						alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
 					}
 					
 				}
 			});
 		}
 		
+		function sendchat(msg){
+		//alert(account_now);
+		//alert(msg);
+		$.ajax('http://localhost:3000/addchat', {
+				type: "get",
+				data: {usr:account_now,msgchat:msg},
+				success: function(json) {
+								
+				}
+			});
+			
+		}
 	acclogin();
 	countlog();
 
