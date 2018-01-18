@@ -71,7 +71,7 @@
 																User Notifications
 															</span>
 															<span class="m-dropdown__header-subtitle">
-																
+
 															</span>
 														</div>
 														<div class="m-dropdown__body">
@@ -180,7 +180,7 @@
 													<span class="m-topbar__welcome">
 														Hello,&nbsp;
 													</span>
-													<span class="m-topbar__username">
+													<span class="m-topbar__username" id="userid">
 														<%= user_id %>
 													</span>
 													<span class="m-topbar__userpic">
@@ -575,46 +575,13 @@
 				<div class="tab-content">
 					<div class="tab-pane active m-scrollable" id="m_quick_sidebar_tabs_messenger" role="tabpanel">
 						<div class="m-messenger m-messenger--message-arrow m-messenger--skin-light">
-							<div class="m-messenger__messages">
+							<div class="m-messenger__messages" id="chatbox">
+								<!--
 								<div class="m-messenger__datetime">
 									2:30PM
 								</div>
-								<div class="m-messenger__message m-messenger__message--out">
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-text">
-												มีปัญหาการใช้งาน ไม่สามารถเพิ่มอุปกรณ์เข้าสู่ระบบได้ครับ
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__message m-messenger__message--in">
-									<div class="m-messenger__message-pic">
-										<img src="../assets/app/media/img//users/user3.jpg"  alt=""/>
-									</div>
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-username">
-												Natsha wrote
-											</div>
-											<div class="m-messenger__message-text">
-												ตอนนี้ระบบเพิ่มอุปกรณ์มีปัญหาอยู่ค่ะ ทางทีมที่ดูแลกำลังรีบแก้ไข ขออภัยในความไม่สะดวกค่ะ
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__message m-messenger__message--out">
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-text">
-												ขอบคุณครับ
-											</div>
-										</div>
-									</div>
-								</div>
+								-->
+
 
 							</div>
 							<div class="m-messenger__seperator"></div>
@@ -705,14 +672,76 @@
 		<script>
 
 		$(document).ready(function(){
+// CHAT
+			$.ajax('http://localhost:3000/addchat', {
+			type: "get",
+			data: {chanel:'0'},
+			success: function(json) {
+			  //alert(JSON.stringify(json));
+			  //alert('message sent!');
+				data_sql = JSON.parse(JSON.stringify(json));
+				data = [];
+				for (i = 0; i < data_sql.length; i++) {
+					data_json = {};
+					data_json = {msg_id:data_sql[0],msg:data_sql[1],chanel:data_sql[2],timestamp:data_sql[3]};
+					//alert(JSON.stringify(data_json));
+					data.push(data_json);
+					//alert(JSON.stringify(data));
+					data_sql.splice(0,4);
+					i = -1;
 
-			/*$.ajax({
-				url: 'http://localhost:3000/profile/notification'
-			}).then(function(data){
-				alert(data);
+				}
+				//alert(data.length);
 				//var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 4 ธันวาคม 2560</span><span class='m-list-timeline__time'>20 mins</span></div>";
 				//$('#notification_center').append(msg);
-			});*/
+				for(i=0;i<data.length;i++)
+				{
+
+					/*data[i].channel
+					data[i].timestamp
+					data[i].msg*/
+					//alert(data[i].channel);
+
+
+
+					var uid = $("#userid").text();
+					if( data[i].uid == uid ){
+						//alert(data[i].msg);
+						var me_msg = "<div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + data[i].msg + "</div></div></div></div>";
+						$('#chatbox').append(me_msg);
+					}
+					else{
+						var other_msg = "<div class='m-messenger__message m-messenger__message--in'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-username'>" + data[i].uid + "wrote</div><div class='m-messenger__message-text'>" + data[i].msg + "</div></div></div></div>";
+						$('#chatbox').append(other_msg);
+					}
+
+				}
+				//alert(JSON.stringify(data));
+				//bindata(data_res);
+			}
+		  });
+
+
+/*
+<div class="m-messenger__message m-messenger__message--in">
+	<div class="m-messenger__message-pic">
+		<img src="../assets/app/media/img//users/user3.jpg"  alt=""/>
+	</div>
+	<div class="m-messenger__message-body">
+		<div class="m-messenger__message-arrow"></div>
+		<div class="m-messenger__message-content">
+			<div class="m-messenger__message-username">
+				Natsha wrote
+			</div>
+			<div class="m-messenger__message-text">
+				ตอนนี้ระบบเพิ่มอุปกรณ์มีปัญหาอยู่ค่ะ ทางทีมที่ดูแลกำลังรีบแก้ไข ขออภัยในความไม่สะดวกค่ะ
+			</div>
+		</div>
+	</div>
+</div>
+*/
+
+
 
 			$.ajax('http://localhost:3000/getnotimsg', {
 			type: "get",
@@ -754,17 +783,17 @@
 			}
 		  });
 		});
-		
+
 		function get_browser() {
-			var ua=navigator.userAgent,tem,M=ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || []; 
+			var ua=navigator.userAgent,tem,M=ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
 			if(/trident/i.test(M[1])){
-				tem=/\brv[ :]+(\d+)/g.exec(ua) || []; 
+				tem=/\brv[ :]+(\d+)/g.exec(ua) || [];
 				return {name:'IE',version:(tem[1]||'')};
-				}   
+				}
 			if(M[1]==='Chrome'){
 				tem=ua.match(/\bOPR|Edge\/(\d+)/)
 				if(tem!=null)   {return {name:'Opera', version:tem[1]};}
-				}   
+				}
 			M=M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
 			if((tem=ua.match(/version\/(\d+)/i))!=null) {M.splice(1,1,tem[1]);}
 			return {
@@ -772,7 +801,7 @@
 			  version: M[1]
 			};
 		}
-		
+
 		//var browser=get_browser();
 		//alert(browser.name+browser.version);
 		//browser.name = 'Chrome'
@@ -787,13 +816,13 @@
 			error: function(fa) {alert(JSON.stringify(fa));}
 		  });
 		}
-		
+
 		function login_log(b,i){
 			$.ajax('http://localhost:3000/accesslog', {
 			type: "get",
 			data: {browser:b,ip:i,status:'Login',accname:'natthawat_a'},
 			success: function(json) {
-				//alert(b+i)	;			
+				//alert(b+i)	;
 			},
 			error: function(fa) {alert(JSON.stringify(fa));}
 		 });

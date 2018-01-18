@@ -27,7 +27,7 @@ var deviceList = function(req,res,next){
       }
       console.log('rowCount: ' + rowCount);
       //console.log(JSON.stringify(result));
-      req.test2 = result; 
+      req.test2 = result;
       connection.release();
       next();
     });
@@ -59,5 +59,3 @@ router.get('/', deviceList, function(req, res, next) {
 });
 
 module.exports = router;
-
-
