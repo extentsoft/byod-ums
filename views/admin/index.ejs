@@ -63,7 +63,7 @@
 													<span class="m-topbar__welcome">
 														Hello,&nbsp;
 													</span>
-													<span class="m-topbar__username">
+													<span class="m-topbar__username" id="userid">
 														<%= user_id %>
 													</span>
 													<span class="m-topbar__userpic">
@@ -496,13 +496,13 @@
 					<i class="la la-close"></i>
 				</span>
 				<ul id="m_quick_sidebar_tabs" class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--brand" role="tablist">
-          <!--
+
           <li class="nav-item m-tabs__item">
 						<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_quick_sidebar_tabs_messenger" role="tab">
 							Messages
 						</a>
 					</li>
-        -->
+
 					<li class="nav-item m-tabs__item">
 						<a class="nav-link m-tabs__link" 		data-toggle="tab" href="#m_quick_sidebar_tabs_settings" role="tab">
 							Settings
@@ -517,148 +517,16 @@
         -->
 				</ul>
 				<div class="tab-content">
-          <!--
-					<div class="tab-pane active m-scrollable" id="m_quick_sidebar_tabs_messenger" role="tabpanel">
+          <div class="tab-pane active m-scrollable" id="m_quick_sidebar_tabs_messenger" role="tabpanel">
 						<div class="m-messenger m-messenger--message-arrow m-messenger--skin-light">
-							<div class="m-messenger__messages">
-								<div class="m-messenger__message m-messenger__message--in">
-									<div class="m-messenger__message-pic">
-										<img src="../assets/app/media/img//users/user3.jpg" alt=""/>
-									</div>
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-username">
-												Megan wrote
-											</div>
-											<div class="m-messenger__message-text">
-												Hi Bob. What time will be the meeting ?
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__message m-messenger__message--out">
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-text">
-												Hi Megan. It's at 2.30PM
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__message m-messenger__message--in">
-									<div class="m-messenger__message-pic">
-										<img src="../assets/app/media/img//users/user3.jpg" alt=""/>
-									</div>
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-username">
-												Megan wrote
-											</div>
-											<div class="m-messenger__message-text">
-												Will the development team be joining ?
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__message m-messenger__message--out">
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-text">
-												Yes sure. I invited them as well
-											</div>
-										</div>
-									</div>
-								</div>
+							<div class="m-messenger__messages" id="chatbox">
+								<!--
 								<div class="m-messenger__datetime">
 									2:30PM
 								</div>
-								<div class="m-messenger__message m-messenger__message--in">
-									<div class="m-messenger__message-pic">
-										<img src="../assets/app/media/img//users/user3.jpg"  alt=""/>
-									</div>
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-username">
-												Megan wrote
-											</div>
-											<div class="m-messenger__message-text">
-												Noted. For the Coca-Cola Mobile App project as well ?
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__message m-messenger__message--out">
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-text">
-												Yes, sure.
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__message m-messenger__message--out">
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-text">
-												Please also prepare the quotation for the Loop CRM project as well.
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__datetime">
-									3:15PM
-								</div>
-								<div class="m-messenger__message m-messenger__message--in">
-									<div class="m-messenger__message-no-pic m--bg-fill-danger">
-										<span>
-											M
-										</span>
-									</div>
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-username">
-												Megan wrote
-											</div>
-											<div class="m-messenger__message-text">
-												Noted. I will prepare it.
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__message m-messenger__message--out">
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-text">
-												Thanks Megan. I will see you later.
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__message m-messenger__message--in">
-									<div class="m-messenger__message-pic">
-										<img src="../assets/app/media/img//users/user3.jpg"  alt=""/>
-									</div>
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-username">
-												Megan wrote
-											</div>
-											<div class="m-messenger__message-text">
-												Sure. See you in the meeting soon.
-											</div>
-										</div>
-									</div>
-								</div>
+								-->
+
+
 							</div>
 							<div class="m-messenger__seperator"></div>
 							<div class="m-messenger__form">
@@ -673,7 +541,6 @@
 							</div>
 						</div>
 					</div>
-        -->
 					<div class="tab-pane  m-scrollable" id="m_quick_sidebar_tabs_settings" role="tabpanel">
 						<div class="m-list-settings">
 							<div class="m-list-settings__group">
@@ -1131,6 +998,58 @@
 		<script src="../assets/vendors/custom/flot/flot.bundle.js" type="text/javascript"></script>
 		<!--end::Page Snippets -->
 		<script>
+
+    $(document).ready(function(){
+// CHAT
+			$.ajax('http://localhost:3000/addchat', {
+			     type: "get",
+			     data: {chanel:'0'},
+			     success: function(json) {
+			          //alert(JSON.stringify(json));
+			         //alert('message sent!');
+				data_sql = JSON.parse(JSON.stringify(json));
+				data = [];
+				for (i = 0; i < data_sql.length; i++) {
+					data_json = {};
+					data_json = {msg_id:data_sql[0],msg:data_sql[1],chanel:data_sql[2],timestamp:data_sql[3]};
+					//alert(JSON.stringify(data_json));
+					data.push(data_json);
+					//alert(JSON.stringify(data));
+					data_sql.splice(0,4);
+					i = -1;
+
+				}
+				//alert(data.length);
+				//var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 4 ธันวาคม 2560</span><span class='m-list-timeline__time'>20 mins</span></div>";
+				//$('#notification_center').append(msg);
+				for(i=0;i<data.length;i++)
+				{
+
+					/*data[i].channel
+					data[i].timestamp
+					data[i].msg*/
+					//alert(data[i].channel);
+
+
+
+					var uid = $("#userid").text();
+					if( data[i].uid == uid ){
+						//alert(data[i].msg);
+						var me_msg = "<div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + data[i].msg + "</div></div></div></div>";
+						$('#chatbox').append(me_msg);
+					}
+					else{
+						var other_msg = "<div class='m-messenger__message m-messenger__message--in'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-username'>" + data[i].uid + "wrote</div><div class='m-messenger__message-text'>" + data[i].msg + "</div></div></div></div>";
+						$('#chatbox').append(other_msg);
+					}
+
+				}
+				//alert(JSON.stringify(data));
+				//bindata(data_res);
+			}
+		  });
+    });
+
 		function refresh_site(sd,ed){
 		//alert('refresh');
 			$.ajax('http://localhost:3000/reports/report675', {
