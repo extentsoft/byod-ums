@@ -102,15 +102,7 @@
 													</div>
 												</div>
 											</li>
-											<li id="m_quick_sidebar_toggle" class="m-nav__item">
-												<a href="#" class="m-nav__link m-dropdown__toggle">
-													<span class="m-nav__link-icon m-nav__link-icon--aside-toggle">
-														<span class="m-nav__link-icon-wrapper">
-															<i class="flaticon-menu-button"></i>
-														</span>
-													</span>
-												</a>
-											</li>
+
 										</ul>
 									</div>
 								</div>
@@ -158,7 +150,7 @@
 												</span>
 											</a>
 										</li>
-
+                  
 										<li class="m-menu__item  m-menu__item--submenu"  data-menu-submenu-toggle="click" data-redirect="true" aria-haspopup="true">
 											<a  href="#" class="m-menu__link m-menu__toggle">
 												<span class="m-menu__item-here"></span>
@@ -436,42 +428,90 @@
 				</div>
 			</div>
 			<!-- end::Body -->
-<<<<<<< HEAD
-		</div>	            <!-- begin::Quick Sidebar -->
-=======
 <!-- begin::Footer -->
+<!--			<footer class="m-grid__item m-footer ">
+				<div class="m-container m-container--responsive m-container--xxl m-container--full-height m-page__container">
+					<div class="m-footer__wrapper">
+						<div class="m-stack m-stack--flex-tablet-and-mobile m-stack--ver m-stack--desktop">
+							<div class="m-stack__item m-stack__item--left m-stack__item--middle m-stack__item--last">
+								<span class="m-footer__copyright">
+									2017 &copy;
+									<a href="#" class="m-link">
 
-
+									</a>
+								</span>
+							</div>
+							<div class="m-stack__item m-stack__item--right m-stack__item--middle m-stack__item--first">
+								<ul class="m-footer__nav m-nav m-nav--inline m--pull-right">
+									<li class="m-nav__item">
+										<a href="#" class="m-nav__link">
+											<span class="m-nav__link-text">
+												About
+											</span>
+										</a>
+									</li>
+									<li class="m-nav__item">
+										<a href="#"  class="m-nav__link">
+											<span class="m-nav__link-text">
+												Privacy
+											</span>
+										</a>
+									</li>
+									<li class="m-nav__item">
+										<a href="#" class="m-nav__link">
+											<span class="m-nav__link-text">
+												T&C
+											</span>
+										</a>
+									</li>
+									<li class="m-nav__item">
+										<a href="#" class="m-nav__link">
+											<span class="m-nav__link-text">
+												Purchase
+											</span>
+										</a>
+									</li>
+									<li class="m-nav__item m-nav__item--last">
+										<a href="#" class="m-nav__link" data-toggle="m-tooltip" title="Support Center" data-placement="left">
+											<i class="m-nav__link-icon flaticon-info m--icon-font-size-lg3"></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer> -->
 			<!-- end::Footer -->
-		            <!-- begin::Quick Sidebar -->
->>>>>>> master
+		</div>	            <!-- begin::Quick Sidebar -->
 		<div id="m_quick_sidebar" class="m-quick-sidebar m-quick-sidebar--tabbed m-quick-sidebar--skin-light">
 			<div class="m-quick-sidebar__content m--hide">
 				<span id="m_quick_sidebar_close" class="m-quick-sidebar__close">
 					<i class="la la-close"></i>
 				</span>
 				<ul id="m_quick_sidebar_tabs" class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--brand" role="tablist">
-					<li class="nav-item m-tabs__item">
+
+          <li class="nav-item m-tabs__item">
 						<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_quick_sidebar_tabs_messenger" role="tab">
 							Messages
 						</a>
 					</li>
+
 					<li class="nav-item m-tabs__item">
 						<a class="nav-link m-tabs__link" 		data-toggle="tab" href="#m_quick_sidebar_tabs_settings" role="tab">
 							Settings
 						</a>
 					</li>
-<<<<<<< HEAD
-=======
+          <!--
 					<li class="nav-item m-tabs__item">
 						<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_quick_sidebar_tabs_logs" role="tab">
 							Logs
 						</a>
 					</li>
->>>>>>> master
+        -->
 				</ul>
 				<div class="tab-content">
-					<div class="tab-pane active m-scrollable" id="m_quick_sidebar_tabs_messenger" role="tabpanel">
+          <div class="tab-pane active m-scrollable" id="m_quick_sidebar_tabs_messenger" role="tabpanel">
 						<div class="m-messenger m-messenger--message-arrow m-messenger--skin-light">
 							<div class="m-messenger__messages" id="chatbox">
 								<!--
@@ -485,11 +525,11 @@
 							<div class="m-messenger__seperator"></div>
 							<div class="m-messenger__form">
 								<div class="m-messenger__form-controls">
-									<input type="text" name="" id="chatbox2" placeholder="Type here..." class="m-messenger__form-input">
+									<input type="text" name="" placeholder="Type here..." class="m-messenger__form-input">
 								</div>
 								<div class="m-messenger__form-tools">
 									<a href="" class="m-messenger__form-attachment">
-										<i class="la la-paperclip" onclick="sendchat($('#chatbox2').val())"></i>
+										<i class="la la-paperclip"></i>
 									</a>
 								</div>
 							</div>
@@ -503,7 +543,59 @@
 								</div>
 								<div class="m-list-settings__item">
 									<span class="m-list-settings__item-label">
-										Notifications
+										Email Notifications
+									</span>
+									<span class="m-list-settings__item-control">
+										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+											<label>
+												<input type="checkbox" checked="checked" name="">
+												<span></span>
+											</label>
+										</span>
+									</span>
+								</div>
+								<div class="m-list-settings__item">
+									<span class="m-list-settings__item-label">
+										Site Tracking
+									</span>
+									<span class="m-list-settings__item-control">
+										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+											<label>
+												<input type="checkbox" name="">
+												<span></span>
+											</label>
+										</span>
+									</span>
+								</div>
+								<div class="m-list-settings__item">
+									<span class="m-list-settings__item-label">
+										SMS Alerts
+									</span>
+									<span class="m-list-settings__item-control">
+										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+											<label>
+												<input type="checkbox" name="">
+												<span></span>
+											</label>
+										</span>
+									</span>
+								</div>
+								<div class="m-list-settings__item">
+									<span class="m-list-settings__item-label">
+										Backup Storage
+									</span>
+									<span class="m-list-settings__item-control">
+										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+											<label>
+												<input type="checkbox" name="">
+												<span></span>
+											</label>
+										</span>
+									</span>
+								</div>
+								<div class="m-list-settings__item">
+									<span class="m-list-settings__item-label">
+										Audit Logs
 									</span>
 									<span class="m-list-settings__item-control">
 										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
@@ -515,60 +607,343 @@
 									</span>
 								</div>
 							</div>
+							<div class="m-list-settings__group">
+								<div class="m-list-settings__heading">
+									System Settings
+								</div>
+								<div class="m-list-settings__item">
+									<span class="m-list-settings__item-label">
+										System Logs
+									</span>
+									<span class="m-list-settings__item-control">
+										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+											<label>
+												<input type="checkbox" name="">
+												<span></span>
+											</label>
+										</span>
+									</span>
+								</div>
+								<div class="m-list-settings__item">
+									<span class="m-list-settings__item-label">
+										Error Reporting
+									</span>
+									<span class="m-list-settings__item-control">
+										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+											<label>
+												<input type="checkbox" name="">
+												<span></span>
+											</label>
+										</span>
+									</span>
+								</div>
+								<div class="m-list-settings__item">
+									<span class="m-list-settings__item-label">
+										Applications Logs
+									</span>
+									<span class="m-list-settings__item-control">
+										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+											<label>
+												<input type="checkbox" name="">
+												<span></span>
+											</label>
+										</span>
+									</span>
+								</div>
+								<div class="m-list-settings__item">
+									<span class="m-list-settings__item-label">
+										Backup Servers
+									</span>
+									<span class="m-list-settings__item-control">
+										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+											<label>
+												<input type="checkbox" checked="checked" name="">
+												<span></span>
+											</label>
+										</span>
+									</span>
+								</div>
+								<div class="m-list-settings__item">
+									<span class="m-list-settings__item-label">
+										Audit Logs
+									</span>
+									<span class="m-list-settings__item-control">
+										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+											<label>
+												<input type="checkbox" name="">
+												<span></span>
+											</label>
+										</span>
+									</span>
+								</div>
+							</div>
 						</div>
 					</div>
-<<<<<<< HEAD
-=======
-					<div class="tab-pane  m-scrollable" id="m_quick_sidebar_tabs_logs" role="tabpanel">
+          <!--
+          <div class="tab-pane  m-scrollable" id="m_quick_sidebar_tabs_logs" role="tabpanel">
 						<div class="m-list-timeline">
 							<div class="m-list-timeline__group">
 								<div class="m-list-timeline__heading">
-									Access Logs
+									System Logs
+								</div>
+								<div class="m-list-timeline__items">
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+										<a href="" class="m-list-timeline__text">
+											12 new users registered
+											<span class="m-badge m-badge--warning m-badge--wide">
+												important
+											</span>
+										</a>
+										<span class="m-list-timeline__time">
+											Just now
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+										<a href="" class="m-list-timeline__text">
+											System shutdown
+										</a>
+										<span class="m-list-timeline__time">
+											11 mins
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-danger"></span>
+										<a href="" class="m-list-timeline__text">
+											New invoice received
+										</a>
+										<span class="m-list-timeline__time">
+											20 mins
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-warning"></span>
+										<a href="" class="m-list-timeline__text">
+											Database overloaded 89%
+											<span class="m-badge m-badge--success m-badge--wide">
+												resolved
+											</span>
+										</a>
+										<span class="m-list-timeline__time">
+											1 hr
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+										<a href="" class="m-list-timeline__text">
+											System error
+										</a>
+										<span class="m-list-timeline__time">
+											2 hrs
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+										<a href="" class="m-list-timeline__text">
+											Production server down
+											<span class="m-badge m-badge--danger m-badge--wide">
+												pending
+											</span>
+										</a>
+										<span class="m-list-timeline__time">
+											3 hrs
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+										<a href="" class="m-list-timeline__text">
+											Production server up
+										</a>
+										<span class="m-list-timeline__time">
+											5 hrs
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="m-list-timeline__group">
+								<div class="m-list-timeline__heading">
+									Applications Logs
 								</div>
 								<div class="m-list-timeline__items">
 									<div class="m-list-timeline__item">
 										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
 										<a href="" class="m-list-timeline__text">
-											เข้าสู่ระบบด้วย IP : 192.168.1.54 ผ่าน Browser : Chrome
+											New order received
+											<span class="m-badge m-badge--info m-badge--wide">
+												urgent
+											</span>
 										</a>
 										<span class="m-list-timeline__time">
-											2017-11-30 11:30
+											7 hrs
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+										<a href="" class="m-list-timeline__text">
+											12 new users registered
+										</a>
+										<span class="m-list-timeline__time">
+											Just now
 										</span>
 									</div>
 									<div class="m-list-timeline__item">
 										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
 										<a href="" class="m-list-timeline__text">
-											เข้าสู่ระบบด้วย IP : 192.168.112 ผ่าน Browser : Chrome
+											System shutdown
 										</a>
 										<span class="m-list-timeline__time">
-											2017-11-28 9.12
+											11 mins
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-danger"></span>
+										<a href="" class="m-list-timeline__text">
+											New invoices received
+										</a>
+										<span class="m-list-timeline__time">
+											20 mins
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-warning"></span>
+										<a href="" class="m-list-timeline__text">
+											Database overloaded 89%
+										</a>
+										<span class="m-list-timeline__time">
+											1 hr
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+										<a href="" class="m-list-timeline__text">
+											System error
+											<span class="m-badge m-badge--info m-badge--wide">
+												pending
+											</span>
+										</a>
+										<span class="m-list-timeline__time">
+											2 hrs
 										</span>
 									</div>
 									<div class="m-list-timeline__item">
 										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
 										<a href="" class="m-list-timeline__text">
-											เข้าสู่ระบบด้วย IP : 192.168.1.63 ผ่าน Browser : Firefox
+											Production server down
 										</a>
 										<span class="m-list-timeline__time">
-											2017-11-25 13.21
+											3 hrs
 										</span>
 									</div>
+								</div>
+							</div>
+							<div class="m-list-timeline__group">
+								<div class="m-list-timeline__heading">
+									Server Logs
+								</div>
+								<div class="m-list-timeline__items">
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+										<a href="" class="m-list-timeline__text">
+											Production server up
+										</a>
+										<span class="m-list-timeline__time">
+											5 hrs
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+										<a href="" class="m-list-timeline__text">
+											New order received
+										</a>
+										<span class="m-list-timeline__time">
+											7 hrs
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+										<a href="" class="m-list-timeline__text">
+											12 new users registered
+										</a>
+										<span class="m-list-timeline__time">
+											Just now
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+										<a href="" class="m-list-timeline__text">
+											System shutdown
+										</a>
+										<span class="m-list-timeline__time">
+											11 mins
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-danger"></span>
+										<a href="" class="m-list-timeline__text">
+											New invoice received
+										</a>
+										<span class="m-list-timeline__time">
+											20 mins
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-warning"></span>
+										<a href="" class="m-list-timeline__text">
+											Database overloaded 89%
+										</a>
+										<span class="m-list-timeline__time">
+											1 hr
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+										<a href="" class="m-list-timeline__text">
+											System error
+										</a>
+										<span class="m-list-timeline__time">
+											2 hrs
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+										<a href="" class="m-list-timeline__text">
+											Production server down
+										</a>
+										<span class="m-list-timeline__time">
+											3 hrs
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+										<a href="" class="m-list-timeline__text">
+											Production server up
+										</a>
+										<span class="m-list-timeline__time">
+											5 hrs
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+										<a href="" class="m-list-timeline__text">
+											New order received
+										</a>
+										<span class="m-list-timeline__time">
+											1117 hrs
+										</span>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
->>>>>>> master
+        -->
 				</div>
 			</div>
-		</div>
 		</div>
 		<!-- end::Quick Sidebar -->  <!-- begin::Scroll Top -->
 		<div class="m-scroll-top m-scroll-top--skin-top" data-toggle="m-scroll-top" data-scroll-offset="500" data-scroll-speed="300">
 			<i class="la la-arrow-up"></i>
 		</div>
-<<<<<<< HEAD
-		<!-- end::Scroll Top -->
-=======
-		
 		<!-- end::Scroll Top -->			<!-- begin::Quick Nav -->
 <!--		<ul class="m-nav-sticky" style="margin-top: 30px;">
 
@@ -602,7 +977,6 @@
 		</ul>
 -->
 
->>>>>>> master
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -621,47 +995,53 @@
 
     $(document).ready(function(){
 // CHAT
-			$.ajax('http://localhost:3000/getchat', {
-				type: "get",
-				success: function(json) {
-					//alert(JSON.stringify(json));
-					data_c = JSON.parse(JSON.stringify(json));
-					datac = [];
-					for (i = 0; i < data_c.length; i++) {
-						data_json = {};
-						data_json = {msg_id:data_c[0],name:data_c[1],msg:data_c[2],timestamp:data_c[3]};
-						//alert(JSON.stringify(data_json));
-						datac.push(data_json);
-						//alert(JSON.stringify(data));
-						data_c.splice(0,4);
-						i = -1;
+			$.ajax('http://localhost:3000/addchat', {
+			     type: "get",
+			     data: {chanel:'0'},
+			     success: function(json) {
+			          //alert(JSON.stringify(json));
+			         //alert('message sent!');
+				data_sql = JSON.parse(JSON.stringify(json));
+				data = [];
+				for (i = 0; i < data_sql.length; i++) {
+					data_json = {};
+					data_json = {msg_id:data_sql[0],msg:data_sql[1],chanel:data_sql[2],timestamp:data_sql[3]};
+					//alert(JSON.stringify(data_json));
+					data.push(data_json);
+					//alert(JSON.stringify(data));
+					data_sql.splice(0,4);
+					i = -1;
 
-					}
-					
-					for(i=0;i<datac.length;i++)
-					{
-						//tmp = String(JSON.stringify(datac[i])).replace('\t','');
-						//alert(JSON.stringify(datac[i]));
-						/*data[i].channel
-						data[i].timestamp
-						data[i].msg*/
-						//alert(data[i].channel);
-
-
-
-						//var uid = $("#userid").text();
-						if( datac[i].name == 'Admin' ){
-							//alert(data[i].msg);
-							var me_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
-							$('#chatbox').append(me_msg);
-						}
-						else{
-							var other_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--in'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-username'>" + datac[i].name + " : wrote</div><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
-							$('#chatbox').append(other_msg);
-						}
-					}
 				}
-			});
+				//alert(data.length);
+				//var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 4 ธันวาคม 2560</span><span class='m-list-timeline__time'>20 mins</span></div>";
+				//$('#notification_center').append(msg);
+				for(i=0;i<data.length;i++)
+				{
+
+					/*data[i].channel
+					data[i].timestamp
+					data[i].msg*/
+					//alert(data[i].channel);
+
+
+
+					var uid = $("#userid").text();
+					if( data[i].uid == uid ){
+						//alert(data[i].msg);
+						var me_msg = "<div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + data[i].msg + "</div></div></div></div>";
+						$('#chatbox').append(me_msg);
+					}
+					else{
+						var other_msg = "<div class='m-messenger__message m-messenger__message--in'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-username'>" + data[i].uid + "wrote</div><div class='m-messenger__message-text'>" + data[i].msg + "</div></div></div></div>";
+						$('#chatbox').append(other_msg);
+					}
+
+				}
+				//alert(JSON.stringify(data));
+				//bindata(data_res);
+			}
+		  });
     });
 
 		function refresh_site(sd,ed){
@@ -1049,18 +1429,6 @@
 		}
 	}
 
-	function sendchat(msg){
-		//alert(account_now);
-		//alert(msg);
-		$.ajax('http://localhost:3000/addchat', {
-				type: "get",
-				data: {usr:'Admin',msgchat:msg},
-				success: function(json) {
-								
-				}
-			});
-			
-		}
 	datepick();
 
  </script>

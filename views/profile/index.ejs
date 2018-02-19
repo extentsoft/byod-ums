@@ -587,11 +587,11 @@
 							<div class="m-messenger__seperator"></div>
 							<div class="m-messenger__form">
 								<div class="m-messenger__form-controls">
-									<input type="text" name="" placeholder="Type here..." class="m-messenger__form-input">
+									<input type="text" name="" id="chatbox2" placeholder="Type here..." class="m-messenger__form-input">
 								</div>
 								<div class="m-messenger__form-tools">
 									<a href="" class="m-messenger__form-attachment">
-										<i class="la la-paperclip"></i>
+										<i class="la la-paperclip" onclick="sendchat($('#chatbox2').val())"></i>
 									</a>
 								</div>
 							</div>
@@ -670,39 +670,30 @@
 		<script src="../assets/demo/demo5/base/scripts.bundle.js" type="text/javascript"></script>
 		<!--end::Base Scripts -->
 		<script>
-
+			
+		acc_now = $("#userid").text();
+		account_now = acc_now.replace(/[\n\t\r]/g,"")
+		//alert(account_now);
+		//alert('_'+account_now+'_');
+		
 		$(document).ready(function(){
-// CHAT
-			$.ajax('http://localhost:3000/addchat', {
-			type: "get",
-			data: {chanel:'0'},
-			success: function(json) {
-			  //alert(JSON.stringify(json));
-			  //alert('message sent!');
-				data_sql = JSON.parse(JSON.stringify(json));
-				data = [];
-				for (i = 0; i < data_sql.length; i++) {
-					data_json = {};
-					data_json = {msg_id:data_sql[0],msg:data_sql[1],chanel:data_sql[2],timestamp:data_sql[3]};
-					//alert(JSON.stringify(data_json));
-					data.push(data_json);
-					//alert(JSON.stringify(data));
-					data_sql.splice(0,4);
-					i = -1;
+		
+			$.ajax('http://localhost:3000/getchat', {
+				type: "get",
+				success: function(json) {
+					//alert(JSON.stringify(json));
+					data_c = JSON.parse(JSON.stringify(json));
+					datac = [];
+					for (i = 0; i < data_c.length; i++) {
+						data_json = {};
+						data_json = {msg_id:data_c[0],name:data_c[1],msg:data_c[2],timestamp:data_c[3]};
+						//alert(JSON.stringify(data_json));
+						datac.push(data_json);
+						//alert(JSON.stringify(data));
+						data_c.splice(0,4);
+						i = -1;
 
-				}
-				//alert(data.length);
-				//var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 4 ธันวาคม 2560</span><span class='m-list-timeline__time'>20 mins</span></div>";
-				//$('#notification_center').append(msg);
-				for(i=0;i<data.length;i++)
-				{
-
-					/*data[i].channel
-					data[i].timestamp
-					data[i].msg*/
-					//alert(data[i].channel);
-
-
+<<<<<<< HEAD
 
 					var uid = $("#userid").text();
 					if( data[i].uid == uid ){
@@ -713,36 +704,36 @@
 					else{
 						var other_msg = "<div class='m-messenger__message m-messenger__message--in'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-username'>" + data[i].uid + "wrote</div><div class='m-messenger__message-text'>" + data[i].msg + "</div></div></div></div>";
 						$('#chatbox').html($('#chatbox').html() + other_msg);
+=======
 					}
+					
+					for(i=0;i<datac.length;i++)
+					{
+						//tmp = String(JSON.stringify(datac[i])).replace('\t','');
+						//alert(JSON.stringify(datac[i]));
+						/*data[i].channel
+						data[i].timestamp
+						data[i].msg*/
+						//alert(data[i].channel);
 
+
+
+						//var uid = $("#userid").text();
+						if( datac[i].name == account_now ){
+							//alert(data[i].msg);
+							var me_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
+							$('#chatbox').append(me_msg);
+						}
+						else{
+							var other_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--in'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-username'>" + datac[i].name + " : wrote</div><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
+							$('#chatbox').append(other_msg);
+						}
+>>>>>>> master
+					}
 				}
-				//alert(JSON.stringify(data));
-				//bindata(data_res);
-			}
-		  });
-
-
-/*
-<div class="m-messenger__message m-messenger__message--in">
-	<div class="m-messenger__message-pic">
-		<img src="../assets/app/media/img//users/user3.jpg"  alt=""/>
-	</div>
-	<div class="m-messenger__message-body">
-		<div class="m-messenger__message-arrow"></div>
-		<div class="m-messenger__message-content">
-			<div class="m-messenger__message-username">
-				Natsha wrote
-			</div>
-			<div class="m-messenger__message-text">
-				ตอนนี้ระบบเพิ่มอุปกรณ์มีปัญหาอยู่ค่ะ ทางทีมที่ดูแลกำลังรีบแก้ไข ขออภัยในความไม่สะดวกค่ะ
-			</div>
-		</div>
-	</div>
-</div>
-*/
-
-
-
+			});
+		
+		
 			$.ajax('http://localhost:3000/getnotimsg', {
 			type: "get",
 			data: {chanel:'0'},
@@ -827,8 +818,36 @@
 			error: function(fa) {alert(JSON.stringify(fa));}
 		 });
 		}
+		
+		function countlog(){
+		//alert('refresh');
+			$.ajax('http://localhost:3000/countlogin', {
+				type: "get",
+				data: {accname:account_now},
+				success: function(json) {
+					if(json[0] > 3)
+					{
+						alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
+					}
+					
+				}
+			});
+		}
+		
+		function sendchat(msg){
+		//alert(account_now);
+		//alert(msg);
+		$.ajax('http://localhost:3000/addchat', {
+				type: "get",
+				data: {usr:account_now,msgchat:msg},
+				success: function(json) {
+								
+				}
+			});
+			
+		}
 	acclogin();
-
+	countlog();
 
 		</script>
 	</body>
