@@ -708,11 +708,11 @@
 					if( data[i].uid == uid ){
 						//alert(data[i].msg);
 						var me_msg = "<div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + data[i].msg + "</div></div></div></div>";
-						$('#chatbox').append(me_msg);
+						$('#chatbox').html($('#chatbox').html() + me_msg);
 					}
 					else{
 						var other_msg = "<div class='m-messenger__message m-messenger__message--in'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-username'>" + data[i].uid + "wrote</div><div class='m-messenger__message-text'>" + data[i].msg + "</div></div></div></div>";
-						$('#chatbox').append(other_msg);
+						$('#chatbox').html($('#chatbox').html() + other_msg);
 					}
 
 				}
