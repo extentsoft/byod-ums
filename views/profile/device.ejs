@@ -204,10 +204,10 @@
 											<li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img  m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" data-dropdown-toggle="click">
 												<a href="#" class="m-nav__link m-dropdown__toggle">
 													<span class="m-topbar__welcome">
-														Hello,&nbsp;
+														สวัสดี &nbsp;
 													</span>
 													<span class="m-topbar__username">
-														<%= user_id %>
+														Natthawat Arunweerungroj
 													</span>
 													<span class="m-topbar__userpic">
 														<img src="../assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt=""/>
@@ -223,7 +223,7 @@
 																</div>
 																<div class="m-card-user__details">
 																	<span class="m-card-user__name m--font-weight-500">
-																		<%= user_id %>
+																		Natthawat Arunweerungroj
 																	</span>
 																	<a href="" class="m-card-user__email m--font-weight-300 m-link">
 																		<%= user_id %>@excise.go.th
@@ -278,7 +278,7 @@
 											<a  href="/profile/" class="m-menu__link ">
 												<span class="m-menu__item-here"></span>
 												<span class="m-menu__link-text">
-													My Profile
+													หน้าหลัก
 												</span>
 											</a>
 										</li>
@@ -286,7 +286,7 @@
 											<a  href="/profile/device" class="m-menu__link m-menu__toggle">
 												<span class="m-menu__item-here"></span>
 												<span class="m-menu__link-text">
-													Devices
+													จัดการอุปกรณ์
 												</span>
 											</a>
 										</li>
@@ -323,7 +323,7 @@
 												</div>
 												<div class="m-card-profile__details">
 													<span class="m-card-profile__name">
-														<%= user_id %>
+														Natthawat Arunweerungroj
 													</span>
 													<a href="" class="m-card-profile__email m-link">
 														<%= user_id %>@excise.go.th
@@ -349,7 +349,7 @@
 								<div class="modal-content">
 									<div class="modal-header">
 										<h5 class="modal-title" id="exampleModalLabel">
-											New Device
+											ลงทะเบียนอุปกรณ์ใหม่
 										</h5>
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">
@@ -362,7 +362,7 @@
 										<div class="form-group">
 										  <!--<label class="col-sm-2 control-label" for="inputMACAddr">MAC Address</label>-->
 										  <div class="col-sm-10">
-											<input type="text" class="form-control" id="term_name" placeholder="Device Name"/>
+											<input type="text" class="form-control" id="term_name" placeholder="ชื่ออุปกรณ์"/>
 											<input type="text" class="form-control" id="term_mac" placeholder="MAC Address"/>
 											<select class="form-control"  id="term_os">
 												<option value="iOS">iOS</option>
@@ -375,12 +375,13 @@
 									  </form>
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">
-											Close
+										<button type="button" class="btn btn-primary" style="width:50%" data-dismiss="modal" onclick="adddevice(document.getElementById('term_name').value,document.getElementById('term_mac').value,document.getElementById('term_os').value)">
+											บันทึก
 										</button>
-										<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="adddevice(document.getElementById('term_name').value,document.getElementById('term_mac').value,document.getElementById('term_os').value)">
-											Save Device
+										<button type="button" class="btn btn-secondary" style="width:50%" data-dismiss="modal">
+											ยกเลิก
 										</button>
+										
 									</div>
 								</div>
 							</div>
@@ -395,7 +396,7 @@
 													<li class="nav-item m-tabs__item">
 														<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_user_profile_tab_1" role="tab">
 															<i class="flaticon-share m--hide"></i>
-															Devices List
+															รายชื่ออุปกรณ์
 														</a>
 													</li>
 												</ul>
@@ -472,73 +473,40 @@
 				<ul id="m_quick_sidebar_tabs" class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--brand" role="tablist">
 					<li class="nav-item m-tabs__item">
 						<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_quick_sidebar_tabs_messenger" role="tab">
-							Messages
+							สนทนาออนไลน์
 						</a>
 					</li>
 					<li class="nav-item m-tabs__item">
 						<a class="nav-link m-tabs__link" 		data-toggle="tab" href="#m_quick_sidebar_tabs_settings" role="tab">
-							Settings
+							ตั้งค่า
 						</a>
 					</li>
 					<li class="nav-item m-tabs__item">
 						<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_quick_sidebar_tabs_logs" role="tab">
-							Logs
+							ประวัติการเข้าใช้งาน
 						</a>
 					</li>
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active m-scrollable" id="m_quick_sidebar_tabs_messenger" role="tabpanel">
 						<div class="m-messenger m-messenger--message-arrow m-messenger--skin-light">
-							<div class="m-messenger__messages">
+							<div class="m-messenger__messages" id="chatbox">
+								<!--
 								<div class="m-messenger__datetime">
 									2:30PM
 								</div>
-								<div class="m-messenger__message m-messenger__message--out">
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-text">
-												มีปัญหาการใช้งาน ไม่สามารถเพิ่มอุปกรณ์เข้าสู่ระบบได้ครับ
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__message m-messenger__message--in">
-									<div class="m-messenger__message-pic">
-										<img src="../assets/app/media/img//users/user3.jpg"  alt=""/>
-									</div>
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-username">
-												Natsha wrote
-											</div>
-											<div class="m-messenger__message-text">
-												ตอนนี้ระบบเพิ่มอุปกรณ์มีปัญหาอยู่ค่ะ ทางทีมที่ดูแลกำลังรีบแก้ไข ขออภัยในความไม่สะดวกค่ะ
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__message m-messenger__message--out">
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-text">
-												ขอบคุณครับ
-											</div>
-										</div>
-									</div>
-								</div>
-							
+								-->
+
+
 							</div>
 							<div class="m-messenger__seperator"></div>
 							<div class="m-messenger__form">
 								<div class="m-messenger__form-controls">
-									<input type="text" name="" placeholder="Type here..." class="m-messenger__form-input">
+									<input type="text" name="" id="chatbox2" placeholder="ข้อความ..." class="m-messenger__form-input">
 								</div>
 								<div class="m-messenger__form-tools">
 									<a href="" class="m-messenger__form-attachment">
-										<i class="la la-paperclip"></i>
+										<i class="la la-paperclip" onclick="sendchat($('#chatbox2').val())"></i>
 									</a>
 								</div>
 							</div>
@@ -548,11 +516,11 @@
 						<div class="m-list-settings">
 							<div class="m-list-settings__group">
 								<div class="m-list-settings__heading">
-									General Settings
+									การรับข่าวสาร
 								</div>
 								<div class="m-list-settings__item">
 									<span class="m-list-settings__item-label">
-										Notifications
+										ข้อความแจ้งเตือน
 									</span>
 									<span class="m-list-settings__item-control">
 										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
@@ -570,22 +538,14 @@
 						<div class="m-list-timeline">
 							<div class="m-list-timeline__group">
 								<div class="m-list-timeline__heading">
-									Access Logs
+									
 								</div>
 								<div class="m-list-timeline__items">
 									<div class="m-list-timeline__item">
 										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
 										<a href="" class="m-list-timeline__text">
-											เข้าสู่ระบบด้วย  
-											<span class="m-badge m-badge--warning m-badge--wide">
-												Chrome
-											</span>
-											</br>
-											<span class="m-badge m-badge--info m-badge--wide">
-												bangkok1-ac
-										</span>
+											เข้าสู่ระบบด้วย IP : 192.168.1.54 ผ่าน Browser : Chrome
 										</a>
-										
 										<span class="m-list-timeline__time">
 											2017-11-30 11:30
 										</span>
@@ -593,14 +553,7 @@
 									<div class="m-list-timeline__item">
 										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
 										<a href="" class="m-list-timeline__text">
-											เข้าสู่ระบบด้วย  
-											<span class="m-badge m-badge--warning m-badge--wide">
-												Chrome
-											</span>
-											</br>
-											<span class="m-badge m-badge--info m-badge--wide">
-												bangkok1-ac
-										</span>
+											เข้าสู่ระบบด้วย IP : 192.168.112 ผ่าน Browser : Chrome
 										</a>
 										<span class="m-list-timeline__time">
 											2017-11-28 9.12
@@ -609,14 +562,7 @@
 									<div class="m-list-timeline__item">
 										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
 										<a href="" class="m-list-timeline__text">
-											เข้าสู่ระบบด้วย  
-											<span class="m-badge m-badge--danger m-badge--wide">
-												Firefox
-											</span>
-											</br>
-											<span class="m-badge m-badge--info m-badge--wide">
-												nakornpathom1-ac
-										</span>
+											เข้าสู่ระบบด้วย IP : 192.168.1.63 ผ่าน Browser : Firefox
 										</a>
 										<span class="m-list-timeline__time">
 											2017-11-25 13.21
@@ -720,11 +666,11 @@
 					div.innerHTML =
 
 						'<div id="'+data[i].terminalmac+'"><img src="images/devices/'+data[i].terminalos+'.jpg"  style="width:60%; height:60%; display: block;margin: 0 auto;"><br>\
-						<button type="button" class="btn btn-danger" style="display: block;margin: 0 auto;" onclick="removedevice(this,'+q+data[i].terminalmac+q+')">Deactivate</button></div> \
-						<div><p>Device Name : '+host_name+'</p>\
-						<p>MAC Address : '+data[i].terminalmac+'</p>\
+						<button type="button" class="btn btn-danger" style="display: block;margin: 0 auto;" onclick="removedevice(this,'+q+data[i].terminalmac+q+')">ยกเลิกอุปกรณ์</button></div> \
+						<div><p>ชื่ออุปกรณ์ : '+host_name+'</p>\
+						<p>MAC : '+data[i].terminalmac+'</p>\
 						<p>OS : '+data[i].terminalos+'</p>\
-						<p>Last Update : '+date_str+'</p></div>\
+						<p>อัพเดทครั้งล่าสุด : '+date_str+'</p></div>\
 						';
 
 					document.getElementById('listterminal').appendChild(div);

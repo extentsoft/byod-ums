@@ -68,7 +68,7 @@
 													<div class="m-dropdown__inner">
 														<div class="m-dropdown__header m--align-center" style="background: url(../assets/app/media/img/misc/notification_bg.jpg); background-size: cover;">
 															<span class="m-dropdown__header-title">
-																User Notifications
+																ข้อความแจ้งเตือน
 															</span>
 															<span class="m-dropdown__header-subtitle">
 
@@ -79,7 +79,7 @@
 																<ul class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--brand" role="tablist">
 																	<li class="nav-item m-tabs__item">
 																		<a class="nav-link m-tabs__link active" data-toggle="tab" href="#topbar_notifications_notifications" role="tab">
-																			Alerts
+																			
 																		</a>
 																	</li>
 																</ul>
@@ -178,10 +178,10 @@
 											<li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img  m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" data-dropdown-toggle="click">
 												<a href="#" class="m-nav__link m-dropdown__toggle">
 													<span class="m-topbar__welcome">
-														Hello,&nbsp;
+														สวัสดี &nbsp;
 													</span>
 													<span class="m-topbar__username" id="userid">
-														<%= user_id %>
+														Natthawat Arunweerungroj
 													</span>
 													<span class="m-topbar__userpic">
 														<img src="../assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt=""/>
@@ -197,7 +197,7 @@
 																</div>
 																<div class="m-card-user__details">
 																	<span class="m-card-user__name m--font-weight-500">
-																		<%= user_cn %>
+																		Natthawat Arunweerungroj
 																	</span>
 																	<a href="" class="m-card-user__email m--font-weight-300 m-link">
 																		<%= user_id %>@excise.go.th
@@ -252,7 +252,7 @@
 											<a  href="/profile/" class="m-menu__link ">
 												<span class="m-menu__item-here"></span>
 												<span class="m-menu__link-text">
-													My Profile
+													หน้าหลัก
 												</span>
 											</a>
 										</li>
@@ -260,7 +260,7 @@
 											<a  href="/profile/device" class="m-menu__link m-menu__toggle">
 												<span class="m-menu__item-here"></span>
 												<span class="m-menu__link-text">
-													Devices
+													จัดการอุปกรณ์
 												</span>
 											</a>
 										</li>
@@ -289,7 +289,7 @@
 										<div class="m-portlet__body">
 											<div class="m-card-profile">
 												<div class="m-card-profile__title m--hide">
-													Your Profile
+													
 												</div>
 												<div class="m-card-profile__pic">
 													<div class="m-card-profile__pic-wrapper">
@@ -298,7 +298,7 @@
 												</div>
 												<div class="m-card-profile__details">
 													<span class="m-card-profile__name">
-														<%= user_cn %>
+														Natthawat Arunweerungroj
 													</span>
 													<a href="" class="m-card-profile__email m-link">
 														<%= user_id %>@excise.go.th
@@ -336,7 +336,7 @@
 													<li class="nav-item m-tabs__item">
 														<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_user_profile_tab_1" role="tab">
 															<i class="flaticon-share m--hide"></i>
-															Profile
+															ข้อมูลส่วนบุคคล
 														</a>
 													</li>
 												</ul>
@@ -355,128 +355,60 @@
 														<div class="form-group m-form__group row">
 															<div class="col-10 ml-auto">
 																<h3 class="m-form__section">
-																	1. Personal Details
+																	
 																</h3>
 															</div>
 														</div>
 														<div class="form-group m-form__group row">
 															<label for="example-text-input" class="col-2 col-form-label">
-																Full Name (cn)
+																ชื่อ
 															</label>
 															<div class="col-7">
-																<input class="form-control m-input" type="text" value="Natthawat Arunweerungroj" disabled>
+																<input class="form-control m-input" type="text" value="Natthawat">
 															</div>
 														</div>
 														<div class="form-group m-form__group row">
 															<label for="example-text-input" class="col-2 col-form-label">
-																Occupation
+																นามสกุล
 															</label>
 															<div class="col-7">
-																<input class="form-control m-input" type="text" value="CTO">
+																<input class="form-control m-input" type="text" value="Arunweerungroj">
+															</div>
+														</div>
+														
+														<div class="form-group m-form__group row">
+															<label for="example-text-input" class="col-2 col-form-label">
+																ตำแหน่ง
+															</label>
+															<div class="col-7">
+																<input class="form-control m-input" type="text">
 															</div>
 														</div>
 														<div class="form-group m-form__group row">
 															<label for="example-text-input" class="col-2 col-form-label">
-																Company Name
+																สังกัด
 															</label>
 															<div class="col-7">
-																<input class="form-control m-input" type="text" value="Keenthemes">
-																<span class="m-form__help">
-																	If you want your invoices addressed to a company. Leave blank to use your full name.
-																</span>
+																<input class="form-control m-input" type="text">
 															</div>
 														</div>
 														<div class="form-group m-form__group row">
 															<label for="example-text-input" class="col-2 col-form-label">
-																Phone No.
+																ระดับ
 															</label>
 															<div class="col-7">
-																<input class="form-control m-input" type="text" value="+456669067890">
-															</div>
-														</div>
-														<div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
-														<div class="form-group m-form__group row">
-															<div class="col-10 ml-auto">
-																<h3 class="m-form__section">
-																	2. Address
-																</h3>
+																<input class="form-control m-input" type="text">
 															</div>
 														</div>
 														<div class="form-group m-form__group row">
 															<label for="example-text-input" class="col-2 col-form-label">
-																Address
+																พื้นที่
 															</label>
 															<div class="col-7">
-																<input class="form-control m-input" type="text" value="L-12-20 Vertex, Cybersquare">
+																<input class="form-control m-input" type="text">
 															</div>
 														</div>
-														<div class="form-group m-form__group row">
-															<label for="example-text-input" class="col-2 col-form-label">
-																City
-															</label>
-															<div class="col-7">
-																<input class="form-control m-input" type="text" value="San Francisco">
-															</div>
-														</div>
-														<div class="form-group m-form__group row">
-															<label for="example-text-input" class="col-2 col-form-label">
-																State
-															</label>
-															<div class="col-7">
-																<input class="form-control m-input" type="text" value="California">
-															</div>
-														</div>
-														<div class="form-group m-form__group row">
-															<label for="example-text-input" class="col-2 col-form-label">
-																Postcode
-															</label>
-															<div class="col-7">
-																<input class="form-control m-input" type="text" value="45000">
-															</div>
-														</div>
-														<div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
-														<div class="form-group m-form__group row">
-															<div class="col-10 ml-auto">
-																<h3 class="m-form__section">
-																	3. Extra Information
-																</h3>
-															</div>
-														</div>
-														<div class="form-group m-form__group row">
-															<label for="example-text-input" class="col-2 col-form-label">
-																Linkedin
-															</label>
-															<div class="col-7">
-																<input class="form-control m-input" type="text" value="www.linkedin.com/Mark.Andre">
-															</div>
-														</div>
-														<div class="form-group m-form__group row">
-															<label for="example-text-input" class="col-2 col-form-label">
-																Facebook
-															</label>
-															<div class="col-7">
-																<input class="form-control m-input" type="text" value="www.facebook.com/Mark.Andre">
-															</div>
-														</div>
-														<div class="form-group m-form__group row">
-															<label for="example-text-input" class="col-2 col-form-label">
-																Line
-															</label>
-															<div class="col-7">
-																<input class="form-control m-input" type="text" value="www.twitter.com/Mark.Andre">
-															</div>
-														</div>
-														<div class="form-group m-form__group row">
-															<label for="example-text-input" class="col-2 col-form-label">
-																Personal Email
-															</label>
-															<div class="col-7">
-																<input class="form-control m-input" type="text" value="natthawat_a@excise.go.th">
-																<span class="m-form__help">
-																	Password renewal will be sent to this email.
-																</span>
-															</div>
-														</div>
+
 													</div>
 													<div class="m-portlet__foot m-portlet__foot--fit">
 														<div class="m-form__actions">
@@ -484,11 +416,11 @@
 																<div class="col-2"></div>
 																<div class="col-7">
 																	<button type="reset" class="btn btn-accent m-btn m-btn--air m-btn--custom">
-																		Save changes
+																		บันทึก
 																	</button>
 																	&nbsp;&nbsp;
 																	<button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">
-																		Cancel
+																		ยกเลิก
 																	</button>
 																</div>
 															</div>
@@ -558,17 +490,17 @@
 				<ul id="m_quick_sidebar_tabs" class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--brand" role="tablist">
 					<li class="nav-item m-tabs__item">
 						<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_quick_sidebar_tabs_messenger" role="tab">
-							Messages
+							สนทนาออนไลน์
 						</a>
 					</li>
 					<li class="nav-item m-tabs__item">
 						<a class="nav-link m-tabs__link" 		data-toggle="tab" href="#m_quick_sidebar_tabs_settings" role="tab">
-							Settings
+							ตั้งค่า
 						</a>
 					</li>
 					<li class="nav-item m-tabs__item">
 						<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_quick_sidebar_tabs_logs" role="tab">
-							Logs
+							ประวัติการเข้าใช้งาน
 						</a>
 					</li>
 				</ul>
@@ -587,7 +519,7 @@
 							<div class="m-messenger__seperator"></div>
 							<div class="m-messenger__form">
 								<div class="m-messenger__form-controls">
-									<input type="text" name="" id="chatbox2" placeholder="Type here..." class="m-messenger__form-input">
+									<input type="text" name="" id="chatbox2" placeholder="ข้อความ..." class="m-messenger__form-input">
 								</div>
 								<div class="m-messenger__form-tools">
 									<a href="" class="m-messenger__form-attachment">
@@ -601,11 +533,11 @@
 						<div class="m-list-settings">
 							<div class="m-list-settings__group">
 								<div class="m-list-settings__heading">
-									General Settings
+									การรับข่าวสาร
 								</div>
 								<div class="m-list-settings__item">
 									<span class="m-list-settings__item-label">
-										Notifications
+										ข้อความแจ้งเตือน
 									</span>
 									<span class="m-list-settings__item-control">
 										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
@@ -623,7 +555,7 @@
 						<div class="m-list-timeline">
 							<div class="m-list-timeline__group">
 								<div class="m-list-timeline__heading">
-									Access Logs
+									
 								</div>
 								<div class="m-list-timeline__items">
 									<div class="m-list-timeline__item">
@@ -791,7 +723,10 @@
 				var browser=get_browser();
 				login_log(browser.name,data.ip);
 			},
-			error: function(fa) {alert(JSON.stringify(fa));}
+			error: function(fa) {
+				//alert(JSON.stringify(fa));
+				//alert('b');
+				}
 		  });
 		}
 
@@ -802,7 +737,10 @@
 			success: function(json) {
 				//alert(b+i)	;
 			},
-			error: function(fa) {alert(JSON.stringify(fa));}
+			error: function(fa) {
+				//alert(JSON.stringify(fa));
+				alert('a');
+				}
 		 });
 		}
 		

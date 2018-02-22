@@ -19,7 +19,7 @@ module.exports = function(app, passport){
     console.log('done /profile');
     console.log(req.user.email);
     //res.send('profile');
-    res.render('profile/index', {
+    res.render('profile/vendroid_html/index', {
       title: 'Personal Profile',
       user_id: req.user.email,
       user_cn: req.user.email
@@ -35,6 +35,14 @@ module.exports = function(app, passport){
       user_cn: req.user.email
     });
   });
+  
+    app.get('/profile/new-device', isLoggedIn, function(req, res){
+  	res.render('profile/vendroid_html/index',{
+      title: 'Personal Profile',
+      message: req.flash('message')
+    });
+  });
+  
 
   app.get('/profile/device/add', function(req, res){
     res.send('Add device service');

@@ -43,13 +43,28 @@ module.exports = function(app, passport){
 
   app.get('/admin/', isLoggedIn, function(req,res){
     console.log(req.user.email);
-    res.render('admin/index', {
+    res.render('admin/vendroid_html/index', {
       title: 'Administrative Console - Dashboard',
       user_id: req.user.email,
       user_cn: req.user.email
     });
   });
-  app.get('/admin/dashboard', isLoggedIn, function(req,res,next){
+  
+   app.get('/admin/test', isLoggedIn, function(req,res){
+    console.log(req.user.email);
+    res.render('admin/vendroid_html/test', {
+      title: 'Administrative Console - Dashboard'
+    });
+  });
+  
+  app.get('/admin/new-dashboard', isLoggedIn, function(req,res,next){
+    console.log(req.user.email);
+    res.render('admin/vendroid_html/index', {
+      title: 'Administrative Console - Dashboard'
+    });
+  });
+
+    app.get('/admin/dashboard', isLoggedIn, function(req,res,next){
     console.log(req.user.email);
     res.render('admin/index', {
       title: 'Administrative Console - Dashboard',
@@ -57,7 +72,6 @@ module.exports = function(app, passport){
       user_cn: req.user.email
     });
   });
-
   app.get('/admin/device', isLoggedIn, function(req,res,next){
     console.log(req.user.email);
     res.render('admin/device', {
