@@ -8,11 +8,21 @@ var poolConfig = {
     log: true
 };
 
-var config = {
+
+
+var prod = {
   userName: 'AgileControllerDBA',
   password: 'Huawei@123',
   server: '192.168.163.25'
 };
+
+var test = {
+  userName: 'sa',
+  password: 'P@ssw0rd',
+  server: '192.168.226.110'
+};
+
+var config = test;
 
 var pool = new ConnectionPool(poolConfig, config);
 //var connection = new Connection(config);
