@@ -57,6 +57,11 @@ router.get('/signup', function(req, res){
 router.get('/device', function(req, res){
 	res.render('profile/device',{title: 'Personal Profile', message: req.flash('message')});
 });
+
+router.get('/new-device', function(req, res){
+	res.render('profile/vendroid_html/index',{title: 'Personal Profile', message: req.flash('message')});
+});
+
 router.get('/setting', function(req, res){
 	res.render('profile/setting',{title: 'Personal Profile', message: req.flash('message')});
 });

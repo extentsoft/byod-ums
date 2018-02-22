@@ -68,10 +68,10 @@
 													<div class="m-dropdown__inner">
 														<div class="m-dropdown__header m--align-center" style="background: url(../assets/app/media/img/misc/notification_bg.jpg); background-size: cover;">
 															<span class="m-dropdown__header-title">
-																3 News
+																User Notifications
 															</span>
 															<span class="m-dropdown__header-subtitle">
-																User Notifications
+
 															</span>
 														</div>
 														<div class="m-dropdown__body">
@@ -89,33 +89,7 @@
 																			<div class="m-list-timeline m-list-timeline--skin-light">
 																				<div class="m-list-timeline__items" id="notification_center">
 
-																					<div class="m-list-timeline__item">
-																						<span class="m-list-timeline__badge"></span>
-																						<span class="m-list-timeline__text">
-																							แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 4 ธันวาคม 2560
-																						</span>
-																						<span class="m-list-timeline__time">
-																							20 mins
-																						</span>
-																					</div>
-																					<div class="m-list-timeline__item">
-																						<span class="m-list-timeline__badge"></span>
-																						<span class="m-list-timeline__text">
-																							ขณะนี้ระบบสามารถใช้งานได้ตามปกติแล้ว
-																						</span>
-																						<span class="m-list-timeline__time">
-																							1 month
-																						</span>
-																					</div>
-																					<div class="m-list-timeline__item">
-																						<span class="m-list-timeline__badge"></span>
-																						<span class="m-list-timeline__text">
-																							แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 1 พฤศจิกายน 2560
-																						</span>
-																						<span class="m-list-timeline__time">
-																							1 month
-																						</span>
-																					</div>
+
 
 																				</div>
 																			</div>
@@ -204,9 +178,9 @@
 											<li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img  m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" data-dropdown-toggle="click">
 												<a href="#" class="m-nav__link m-dropdown__toggle">
 													<span class="m-topbar__welcome">
-														Hello,&nbsp;
+														สวัสดี,&nbsp;
 													</span>
-													<span class="m-topbar__username">
+													<span class="m-topbar__username" id="userid">
 														<%= user_id %>
 													</span>
 													<span class="m-topbar__userpic">
@@ -601,56 +575,23 @@
 				<div class="tab-content">
 					<div class="tab-pane active m-scrollable" id="m_quick_sidebar_tabs_messenger" role="tabpanel">
 						<div class="m-messenger m-messenger--message-arrow m-messenger--skin-light">
-							<div class="m-messenger__messages">
+							<div class="m-messenger__messages" id="chatbox">
+								<!--
 								<div class="m-messenger__datetime">
 									2:30PM
 								</div>
-								<div class="m-messenger__message m-messenger__message--out">
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-text">
-												มีปัญหาการใช้งาน ไม่สามารถเพิ่มอุปกรณ์เข้าสู่ระบบได้ครับ
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__message m-messenger__message--in">
-									<div class="m-messenger__message-pic">
-										<img src="../assets/app/media/img//users/user3.jpg"  alt=""/>
-									</div>
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-username">
-												Natsha wrote
-											</div>
-											<div class="m-messenger__message-text">
-												ตอนนี้ระบบเพิ่มอุปกรณ์มีปัญหาอยู่ค่ะ ทางทีมที่ดูแลกำลังรีบแก้ไข ขออภัยในความไม่สะดวกค่ะ
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="m-messenger__message m-messenger__message--out">
-									<div class="m-messenger__message-body">
-										<div class="m-messenger__message-arrow"></div>
-										<div class="m-messenger__message-content">
-											<div class="m-messenger__message-text">
-												ขอบคุณครับ
-											</div>
-										</div>
-									</div>
-								</div>
+								-->
+
 
 							</div>
 							<div class="m-messenger__seperator"></div>
 							<div class="m-messenger__form">
 								<div class="m-messenger__form-controls">
-									<input type="text" name="" placeholder="Type here..." class="m-messenger__form-input">
+									<input type="text" name="" id="chatbox2" placeholder="Type here..." class="m-messenger__form-input">
 								</div>
 								<div class="m-messenger__form-tools">
 									<a href="" class="m-messenger__form-attachment">
-										<i class="la la-paperclip"></i>
+										<i class="la la-paperclip" onclick="sendchat($('#chatbox2').val())"></i>
 									</a>
 								</div>
 							</div>
@@ -729,17 +670,57 @@
 		<script src="../assets/demo/demo5/base/scripts.bundle.js" type="text/javascript"></script>
 		<!--end::Base Scripts -->
 		<script>
-
-		$(document).ready(function(){
-
-			/*$.ajax({
-				url: 'http://localhost:3000/profile/notification'
-			}).then(function(data){
-				alert(data);
-				//var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 4 ธันวาคม 2560</span><span class='m-list-timeline__time'>20 mins</span></div>";
-				//$('#notification_center').append(msg);
-			});*/
 			
+		acc_now = $("#userid").text();
+		account_now = acc_now.replace(/[\n\t\r]/g,"")
+		//alert(account_now);
+		//alert('_'+account_now+'_');
+		
+		$(document).ready(function(){
+		
+			$.ajax('http://localhost:3000/getchat', {
+				type: "get",
+				success: function(json) {
+					//alert(JSON.stringify(json));
+					data_c = JSON.parse(JSON.stringify(json));
+					datac = [];
+					for (i = 0; i < data_c.length; i++) {
+						data_json = {};
+						data_json = {msg_id:data_c[0],name:data_c[1],msg:data_c[2],timestamp:data_c[3]};
+						//alert(JSON.stringify(data_json));
+						datac.push(data_json);
+						//alert(JSON.stringify(data));
+						data_c.splice(0,4);
+						i = -1;
+
+					}
+					
+					for(i=0;i<datac.length;i++)
+					{
+						//tmp = String(JSON.stringify(datac[i])).replace('\t','');
+						//alert(JSON.stringify(datac[i]));
+						/*data[i].channel
+						data[i].timestamp
+						data[i].msg*/
+						//alert(data[i].channel);
+
+
+
+						//var uid = $("#userid").text();
+						if( datac[i].name == account_now ){
+							//alert(data[i].msg);
+							var me_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
+							$('#chatbox').append(me_msg);
+						}
+						else{
+							var other_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--in'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-username'>" + datac[i].name + " : wrote</div><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
+							$('#chatbox').append(other_msg);
+						}
+					}
+				}
+			});
+		
+		
 			$.ajax('http://localhost:3000/getnotimsg', {
 			type: "get",
 			data: {chanel:'0'},
@@ -758,28 +739,39 @@
 					i = -1;
 
 				}
-				//alert(data.length); <----- จำนวนข้อความ
+				//alert(data.length);
+				//var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 4 ธันวาคม 2560</span><span class='m-list-timeline__time'>20 mins</span></div>";
+				//$('#notification_center').append(msg);
 				for(i=0;i<data.length;i++)
 				{
-					//alert(JSON.stringify(data[i])); <------ วน loop ทีละข้อความ
-					alert(JSON.stringify(data[i]));
+
+					/*data[i].channel
+					data[i].timestamp
+					data[i].msg*/
+					//alert(data[i].channel);
+					if( data[i].chanel <= 1 ){
+						//alert(data[i].msg);
+						var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>" + data[i].msg + "</span><span class='m-list-timeline__time'>" + data[i].timestamp.split("T")[0] + "</span></div>";
+						$('#notification_center').append(msg);
+					}
+
 				}
 				//alert(JSON.stringify(data));
 				//bindata(data_res);
 			}
 		  });
 		});
-		
+
 		function get_browser() {
-			var ua=navigator.userAgent,tem,M=ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || []; 
+			var ua=navigator.userAgent,tem,M=ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
 			if(/trident/i.test(M[1])){
-				tem=/\brv[ :]+(\d+)/g.exec(ua) || []; 
+				tem=/\brv[ :]+(\d+)/g.exec(ua) || [];
 				return {name:'IE',version:(tem[1]||'')};
-				}   
+				}
 			if(M[1]==='Chrome'){
 				tem=ua.match(/\bOPR|Edge\/(\d+)/)
 				if(tem!=null)   {return {name:'Opera', version:tem[1]};}
-				}   
+				}
 			M=M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
 			if((tem=ua.match(/version\/(\d+)/i))!=null) {M.splice(1,1,tem[1]);}
 			return {
@@ -787,7 +779,7 @@
 			  version: M[1]
 			};
 		}
-		
+
 		//var browser=get_browser();
 		//alert(browser.name+browser.version);
 		//browser.name = 'Chrome'
@@ -802,19 +794,47 @@
 			error: function(fa) {alert(JSON.stringify(fa));}
 		  });
 		}
-		
+
 		function login_log(b,i){
 			$.ajax('http://localhost:3000/accesslog', {
 			type: "get",
 			data: {browser:b,ip:i,status:'Login',accname:'natthawat_a'},
 			success: function(json) {
-				//alert(b+i)	;			
+				//alert(b+i)	;
 			},
 			error: function(fa) {alert(JSON.stringify(fa));}
 		 });
 		}
+		
+		function countlog(){
+		//alert('refresh');
+			$.ajax('http://localhost:3000/countlogin', {
+				type: "get",
+				data: {accname:account_now},
+				success: function(json) {
+					if(json[0] > 3)
+					{
+						alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
+					}
+					
+				}
+			});
+		}
+		
+		function sendchat(msg){
+		//alert(account_now);
+		//alert(msg);
+		$.ajax('http://localhost:3000/addchat', {
+				type: "get",
+				data: {usr:account_now,msgchat:msg},
+				success: function(json) {
+								
+				}
+			});
+			
+		}
 	acclogin();
-
+	countlog();
 
 		</script>
 	</body>

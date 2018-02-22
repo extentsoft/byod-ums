@@ -6,8 +6,8 @@ module.exports = {
     baseDN: "ou=users,ou=guests,dc=zflexsoftware,dc=com"
   },
   test: {
-    url: 'ldap://10.57.1.31:389',
-    rootDN: "cn=ldapadm,dc=excise,dc=go,dc=th",
+    url: 'ldap://192.168.226.110:389',
+    rootDN: "cn=manager,dc=excise,dc=go,dc=th",
     rootPassword: "P@ssw0rd",
     baseDN: "ou=People,dc=excise,dc=go,dc=th"
   },

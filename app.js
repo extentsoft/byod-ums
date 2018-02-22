@@ -67,9 +67,11 @@ var deviceoutmon = require('./routes/monitor/deviceoutmon');
 var adddevicemon = require('./routes/monitor/adddevicemon');
 var removedevicemon = require('./routes/monitor/removedevicemon');
 
+var traffic = require('./routes/reports/traffic');
 var report678 = require('./routes/reports/report678');
 var report67152 = require('./routes/reports/report67152');
 var report672 = require('./routes/reports/report672');
+var report673 = require('./routes/reports/report673');
 var report675 = require('./routes/reports/report675');
 var report677 = require('./routes/reports/report677');
 var report67153 = require('./routes/reports/report67153');
@@ -141,9 +143,11 @@ app.use('/deviceoutmon', deviceoutmon);
 app.use('/adddevicemon', adddevicemon);
 app.use('/removedevicemon', removedevicemon);
 
+app.use('/reports/traffic', traffic);
 app.use('/reports/report678', report678);
 app.use('/reports/report67152', report67152);
 app.use('/reports/report672', report672);
+app.use('/reports/report673', report673);
 app.use('/reports/report675', report675);
 app.use('/reports/report677', report677);
 app.use('/reports/report67153', report67153);

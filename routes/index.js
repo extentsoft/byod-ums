@@ -24,6 +24,10 @@ router.get('/device', isAuthenticated, function(req, res, next) {
   res.render('device', { title: 'Device', user: req.user });
 });
 
+router.get('/vendroid_html/device', isAuthenticated, function(req, res, next) {
+  res.render('device', { title: 'Device', user: req.user });
+});
+
 router.get('/user', isAuthenticated, function(req, res, next) {
   res.render('user', { title: 'User', user: req.user });
 });
