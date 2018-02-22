@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title><%= title %></title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+		<script>
+          WebFont.load({
+            google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700"]},
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+          });
+		</script>
+		<!--end::Web font -->
+        <!--begin::Base Styles -->
+        <!--begin::Page Vendors -->
+		<link href="../assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Page Vendors -->
+		<link href="../assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="../assets/demo/demo5/base/style.bundle.css" rel="stylesheet" type="text/css" />
+
+		<!--end::Base Styles -->
+		<link rel="shortcut icon" href="../assets/demo/demo5/media/img/logo/favicon.ico" />
+  </head>
+  <body class="m-page--wide m-header--fixed m-header--fixed-mobile m-footer--push m-aside--offcanvas-default"  >
+    <!-- begin:: Page -->
+		<div class="m-grid m-grid--hor m-grid--root m-page">
+			<!-- begin::Header -->
+			<header class="m-grid__item		m-header "  data-minimize="minimize" data-minimize-offset="200" data-minimize-mobile-offset="200" >
+				<div class="m-header__top">
+					<div class="m-container m-container--responsive m-container--xxl m-container--full-height m-page__container">
+						<div class="m-stack m-stack--ver m-stack--desktop">
+							<!-- begin::Brand -->
+							<div class="m-stack__item m-brand">
+								<div class="m-stack m-stack--ver m-stack--general m-stack--inline">
+									<div class="m-stack__item m-stack__item--middle m-brand__logo">
+										<a href="/admin/" class="m-brand__logo-wrapper">
+											<img width="90px" height="90px" alt="" src="../assets/demo/demo5/media/img/logo/logo.png"/>
+										</a>
+									</div>
+
+								</div>
+							</div>
+							<!-- end::Brand -->
+				<!-- begin::Topbar -->
+							<div class="m-stack__item m-stack__item--fluid m-header-head" id="m_header_nav">
+								<div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
+									<div class="m-stack__item m-topbar__nav-wrapper">
+										<ul class="m-topbar__nav m-nav m-nav--inline">
+
+
+											<li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img  m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" data-dropdown-toggle="click">
+												<a href="#" class="m-nav__link m-dropdown__toggle">
+													<span class="m-topbar__welcome">
+														Hello,&nbsp;
+													</span>
+													<span class="m-topbar__username" id="userid">
+														<%= user_id %>
+													</span>
+													<span class="m-topbar__userpic">
+														<img src="../assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt=""/>
+													</span>
+												</a>
+												<div class="m-dropdown__wrapper">
+													<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
+													<div class="m-dropdown__inner">
+														<div class="m-dropdown__header m--align-center" style="background: url(../assets/app/media/img/misc/user_profile_bg.jpg); background-size: cover;">
+															<div class="m-card-user m-card-user--skin-dark">
+																<div class="m-card-user__pic">
+																	<img src="../assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless" alt=""/>
+																</div>
+																<div class="m-card-user__details">
+																	<span class="m-card-user__name m--font-weight-500">
+																		<%= user_cn %>
+																	</span>
+																	<a href="" class="m-card-user__email m--font-weight-300 m-link">
+																		<%= user_id %>@excise.go.th
+																	</a>
+																</div>
+															</div>
+														</div>
+														<div class="m-dropdown__body">
+															<div class="m-dropdown__content">
+																<ul class="m-nav m-nav--skin-light">
+																	<li class="m-nav__item">
+																		<a href="/admin/logout" class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">
+																			Logout
+																		</a>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li id="m_quick_sidebar_toggle" class="m-nav__item">
+												<a href="#" class="m-nav__link m-dropdown__toggle">
+													<span class="m-nav__link-icon m-nav__link-icon--aside-toggle">
+														<span class="m-nav__link-icon-wrapper">
+															<i class="flaticon-menu-button"></i>
+														</span>
+													</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- end::Topbar -->
+						</div>
+					</div>
+				</div>
+				<div class="m-header__bottom">
+					<div class="m-container m-container--responsive m-container--xxl m-container--full-height m-page__container">
+						<div class="m-stack m-stack--ver m-stack--desktop">
+							<!-- begin::Horizontal Menu -->
+							<div class="m-stack__item m-stack__item--middle m-stack__item--fluid">
+								<button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-light " id="m_aside_header_menu_mobile_close_btn">
+									<i class="la la-close"></i>
+								</button>
+								<div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-dark m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-light m-aside-header-menu-mobile--submenu-skin-light "  >
+									<ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
+										<li class="m-menu__item  m-menu__item--active"  aria-haspopup="true">
+											<a  href="/admin/" class="m-menu__link ">
+												<span class="m-menu__item-here"></span>
+												<span class="m-menu__link-text">
+													Dashboard
+												</span>
+											</a>
+										</li>
+										<li class="m-menu__item  m-menu__item--active"  aria-haspopup="true">
+											<a  href="/admin/user" class="m-menu__link m-menu__toggle">
+												<span class="m-menu__link-text">
+													Users
+												</span>
+											</a>
+										</li>
+										<li class="m-menu__item  m-menu__item--active"  aria-haspopup="true">
+											<a  href="/admin/device" class="m-menu__link m-menu__toggle">
+												<span class="m-menu__link-text">
+													Devices
+												</span>
+											</a>
+										</li>
+                    <li class="m-menu__item  m-menu__item--active"  aria-haspopup="true">
+											<a href="/admin/configuration" class="m-menu__link m-menu__toggle">
+												<span class="m-menu__link-text">
+													Configurations
+												</span>
+											</a>
+										</li>
+                  
+										<li class="m-menu__item  m-menu__item--submenu"  data-menu-submenu-toggle="click" data-redirect="true" aria-haspopup="true">
+											<a  href="#" class="m-menu__link m-menu__toggle">
+												<span class="m-menu__item-here"></span>
+												<span class="m-menu__link-text">
+													Reports
+												</span>
+												<i class="m-menu__hor-arrow la la-angle-down"></i>
+												<i class="m-menu__ver-arrow la la-angle-right"></i>
+											</a>
+											<div class="m-menu__submenu  m-menu__submenu--fixed-xl m-menu__submenu--center" >
+												<span class="m-menu__arrow m-menu__arrow--adjust"></span>
+												<div class="m-menu__subnav">
+													<ul class="m-menu__content">
+														<li class="m-menu__item">
+															<h3 class="m-menu__heading m-menu__toggle">
+																<span class="m-menu__link-text">
+																	Policy Violation Reports
+																</span>
+																<i class="m-menu__ver-arrow la la-angle-right"></i>
+															</h3>
+															<ul class="m-menu__inner">
+																<li class="m-menu__item "  data-redirect="true" aria-haspopup="true">
+																	<a  href="/admin/report/rpt11" class="m-menu__link ">
+																		<i class="m-menu__link-icon flaticon-map"></i>
+																		<span class="m-menu__link-text">
+																			Login บ่อยมากกว่าครั้งที่กำหนด
+																		</span>
+																	</a>
+																</li>
+																<li class="m-menu__item "  data-redirect="true" aria-haspopup="true">
+																	<a  href="/admin/report/rpt12" class="m-menu__link ">
+																		<i class="m-menu__link-icon flaticon-user"></i>
+																		<span class="m-menu__link-text">
+																			เพิ่ม/ลบ อุปกรณ์มากเกินกว่าที่กำหนด
+																		</span>
+																	</a>
+																</li>
+                                <li class="m-menu__item "  data-redirect="true" aria-haspopup="true">
+																	<a  href="/admin/report/rpt13" class="m-menu__link ">
+																		<i class="m-menu__link-icon flaticon-graphic-1"></i>
+																		<span class="m-menu__link-text">
+																			ปรับปรุงข้อมูลส่วนตัวมากกว่าจำนวนที่กำหนด
+																		</span>
+																	</a>
+																</li>
+																<li class="m-menu__item "  data-redirect="true" aria-haspopup="true">
+																	<a  href="/admin/report/rpt14" class="m-menu__link ">
+																		<i class="m-menu__link-icon flaticon-clipboard"></i>
+																		<span class="m-menu__link-text">
+																			Login ต่างสถานที่ภายในระยะเวลาที่กำหนด
+																		</span>
+																	</a>
+																</li>
+																<li class="m-menu__item "  data-redirect="true" aria-haspopup="true">
+																	<a  href="/admin/report/rpt15" class="m-menu__link ">
+																		<i class="m-menu__link-icon flaticon-graphic-2"></i>
+																		<span class="m-menu__link-text">
+																			บุคคลากรที่ลงทะเบียนอุปกรณ์ครบตามจำนวนที่กำหนด
+																		</span>
+																	</a>
+																</li>
+															</ul>
+														</li>
+														<li class="m-menu__item">
+															<h3 class="m-menu__heading m-menu__toggle">
+																<span class="m-menu__link-text">
+																	รายงานอื่นๆ
+																</span>
+																<i class="m-menu__ver-arrow la la-angle-right"></i>
+															</h3>
+															<ul class="m-menu__inner">
+																<li class="m-menu__item "  data-redirect="true" aria-haspopup="true">
+																	<a  href="/admin/report/rpt21" class="m-menu__link ">
+																		<i class="m-menu__link-bullet m-menu__link-bullet--line">
+																			<span></span>
+																		</i>
+																		<span class="m-menu__link-text">
+																			รายงานที่ 1
+																		</span>
+																	</a>
+																</li>
+																<li class="m-menu__item "  data-redirect="true" aria-haspopup="true">
+																	<a  href="/admin/report/rpt22" class="m-menu__link ">
+																		<i class="m-menu__link-bullet m-menu__link-bullet--line">
+																			<span></span>
+																		</i>
+																		<span class="m-menu__link-text">
+																			รายงานที่ 2
+																		</span>
+																	</a>
+																</li>
+																<li class="m-menu__item "  data-redirect="true" aria-haspopup="true">
+																	<a  href="/admin/report/rpt23" class="m-menu__link ">
+																		<i class="m-menu__link-bullet m-menu__link-bullet--line">
+																			<span></span>
+																		</i>
+																		<span class="m-menu__link-text">
+																			รายงานที่ 3
+																		</span>
+																	</a>
+																</li>
+																<li class="m-menu__item "  data-redirect="true" aria-haspopup="true">
+																	<a  href="/admin/report/rpt24" class="m-menu__link ">
+																		<i class="m-menu__link-bullet m-menu__link-bullet--line">
+																			<span></span>
+																		</i>
+																		<span class="m-menu__link-text">
+																			รายงานที่ 4
+																		</span>
+																	</a>
+																</li>
+																<li class="m-menu__item "  data-redirect="true" aria-haspopup="true">
+																	<a  href="/admin/report/rpt25" class="m-menu__link ">
+																		<i class="m-menu__link-bullet m-menu__link-bullet--line">
+																			<span></span>
+																		</i>
+																		<span class="m-menu__link-text">
+																			รายงานที่ 5
+																		</span>
+																	</a>
+																</li>
+																<li class="m-menu__item "  data-redirect="true" aria-haspopup="true">
+																	<a  href="/admin/report/rpt26" class="m-menu__link ">
+																		<i class="m-menu__link-bullet m-menu__link-bullet--line">
+																			<span></span>
+																		</i>
+																		<span class="m-menu__link-text">
+																			รายงานที่ 6
+																		</span>
+																	</a>
+																</li>
+															</ul>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</li>
+
+									</ul>
+								</div>
+							</div>
+							<!-- end::Horizontal Menu -->
+
+
+						</div>
+					</div>
+				</div>
+			</header>
+			<!-- end::Header -->
+		<!-- begin::Body -->
+			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor-desktop m-grid--desktop m-body">
+				<div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver	m-container m-container--responsive m-container--xxl m-page__container">
+					<div class="m-grid__item m-grid__item--fluid m-wrapper">
+						<!-- BEGIN: Subheader -->
+						<div class="m-subheader ">
+							<div class="d-flex align-items-center">
+								<div class="mr-auto">
+									<h3 class="m-subheader__title ">
+										Dashboard
+									</h3>
+								</div>
+								<div>
+									<span class="m-subheader__daterange" id="daterangepicker">
+										<span class="m-subheader__daterange-label">
+											<span class="m-subheader__daterange-title"></span>
+											<span class="m-subheader__daterange-date m--font-brand"></span>
+										</span>
+										<a href="#" class="btn btn-sm btn-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill">
+											<i class="la la-angle-down"></i>
+										</a>
+									</span>
+								</div>
+							</div>
+						</div>
+						<!-- END: Subheader -->
+						<div class="m-content">
+							<!--Begin::Main Portlet-->
+							<div class="m-portlet">
+								<div class="m-portlet__body  m-portlet__body--no-padding">
+									<div class="row m-row--no-padding m-row--col-separator-xl">
+										<div class="col-xl-4">
+											<!--begin:: Widgets/Daily Sales-->
+											<div class="m-widget14">
+												<div class="m-widget14__header m--margin-bottom-30">
+													<h3 class="m-widget14__title">
+														Site Usage
+													</h3>
+												</div>
+												<div class="m-widget14__chart" style="height:300px;">
+													<div id="m_flotcharts_1" style="height: 300px;"></div>
+												</div>
+											</div>
+											<!--end:: Widgets/Daily Sales-->
+										</div>
+										<div class="col-xl-4">
+											<!--begin:: Widgets/Daily Sales-->
+											<div class="m-widget14">
+												<div class="m-widget14__header m--margin-bottom-30">
+													<h3 class="m-widget14__title">
+														Device Share
+													</h3>
+												</div>
+												<div class="m-widget14__chart" style="height:300px;">
+													<div id="m_flotcharts_2" style="height: 300px;"></div>
+												</div>
+											</div>
+											<!--end:: Widgets/Profit Share-->
+										</div>
+										<div class="col-xl-4">
+											<!--begin:: Widgets/Daily Sales-->
+											<div class="m-widget14">
+												<div class="m-widget14__header m--margin-bottom-30">
+													<h3 class="m-widget14__title">
+														OS Share
+													</h3>
+												</div>
+												<div class="m-widget14__chart" style="height:300px;">
+													<div id="m_flotcharts_3" style="height: 300px;"></div>
+												</div>
+											</div>
+											<!--end:: Widgets/Profit Share-->
+										</div>
+										<div class="col-xl-4">
+											<!--begin:: Widgets/Daily Sales-->
+											<div class="m-widget14">
+												<div class="m-widget14__header m--margin-bottom-30">
+													<h3 class="m-widget14__title">
+														Group Usage
+													</h3>
+												</div>
+												<div class="m-widget14__chart" style="height:300px;">
+													<div id="m_flotcharts_4" style="height: 300px;"></div>
+												</div>
+											</div>
+											<!--end:: Widgets/Profit Share-->
+										</div>
+										<div class="col-xl-4">
+											<!--begin:: Widgets/Daily Sales-->
+											<div class="m-widget14">
+												<div class="m-widget14__header m--margin-bottom-30">
+													<h3 class="m-widget14__title">
+														Browser Share
+													</h3>
+												</div>
+												<div class="m-widget14__chart" style="height:300px;">
+													<div id="m_flotcharts_5" style="height: 300px;"></div>
+												</div>
+											</div>
+											<!--end:: Widgets/Profit Share-->
+										</div>
+										<div class="col-xl-4">
+											<!--begin:: Widgets/Daily Sales-->
+											<div class="m-widget14">
+												<div class="m-widget14__header m--margin-bottom-30">
+													<h3 class="m-widget14__title">
+														Level Usage
+													</h3>
+												</div>
+												<div class="m-widget14__chart" style="height:300px;">
+													<div id="m_flotcharts_6" style="height: 300px;"></div>
+												</div>
+											</div>
+											<!--end:: Widgets/Profit Share-->
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--End::Main Portlet-->
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end::Body -->
+<!-- begin::Footer -->
+
+
+			<!-- end::Footer -->
+		            <!-- begin::Quick Sidebar -->
+		<div id="m_quick_sidebar" class="m-quick-sidebar m-quick-sidebar--tabbed m-quick-sidebar--skin-light">
+			<div class="m-quick-sidebar__content m--hide">
+				<span id="m_quick_sidebar_close" class="m-quick-sidebar__close">
+					<i class="la la-close"></i>
+				</span>
+				<ul id="m_quick_sidebar_tabs" class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--brand" role="tablist">
+					<li class="nav-item m-tabs__item">
+						<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_quick_sidebar_tabs_messenger" role="tab">
+							Messages
+						</a>
+					</li>
+					<li class="nav-item m-tabs__item">
+						<a class="nav-link m-tabs__link" 		data-toggle="tab" href="#m_quick_sidebar_tabs_settings" role="tab">
+							Settings
+						</a>
+					</li>
+					<li class="nav-item m-tabs__item">
+						<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_quick_sidebar_tabs_logs" role="tab">
+							Logs
+						</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active m-scrollable" id="m_quick_sidebar_tabs_messenger" role="tabpanel">
+						<div class="m-messenger m-messenger--message-arrow m-messenger--skin-light">
+							<div class="m-messenger__messages" id="chatbox">
+								<!--
+								<div class="m-messenger__datetime">
+									2:30PM
+								</div>
+								-->
+
+
+							</div>
+							<div class="m-messenger__seperator"></div>
+							<div class="m-messenger__form">
+								<div class="m-messenger__form-controls">
+									<input type="text" name="" id="chatbox2" placeholder="Type here..." class="m-messenger__form-input">
+								</div>
+								<div class="m-messenger__form-tools">
+									<a href="" class="m-messenger__form-attachment">
+										<i class="la la-paperclip" onclick="sendchat($('#chatbox2').val())"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane  m-scrollable" id="m_quick_sidebar_tabs_settings" role="tabpanel">
+						<div class="m-list-settings">
+							<div class="m-list-settings__group">
+								<div class="m-list-settings__heading">
+									General Settings
+								</div>
+								<div class="m-list-settings__item">
+									<span class="m-list-settings__item-label">
+										Notifications
+									</span>
+									<span class="m-list-settings__item-control">
+										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+											<label>
+												<input type="checkbox" checked="checked" name="">
+												<span></span>
+											</label>
+										</span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane  m-scrollable" id="m_quick_sidebar_tabs_logs" role="tabpanel">
+						<div class="m-list-timeline">
+							<div class="m-list-timeline__group">
+								<div class="m-list-timeline__heading">
+									Access Logs
+								</div>
+								<div class="m-list-timeline__items">
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+										<a href="" class="m-list-timeline__text">
+											เข้าสู่ระบบด้วย IP : 192.168.1.54 ผ่าน Browser : Chrome
+										</a>
+										<span class="m-list-timeline__time">
+											2017-11-30 11:30
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+										<a href="" class="m-list-timeline__text">
+											เข้าสู่ระบบด้วย IP : 192.168.112 ผ่าน Browser : Chrome
+										</a>
+										<span class="m-list-timeline__time">
+											2017-11-28 9.12
+										</span>
+									</div>
+									<div class="m-list-timeline__item">
+										<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+										<a href="" class="m-list-timeline__text">
+											เข้าสู่ระบบด้วย IP : 192.168.1.63 ผ่าน Browser : Firefox
+										</a>
+										<span class="m-list-timeline__time">
+											2017-11-25 13.21
+										</span>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<!-- end::Quick Sidebar -->  <!-- begin::Scroll Top -->
+		<div class="m-scroll-top m-scroll-top--skin-top" data-toggle="m-scroll-top" data-scroll-offset="500" data-scroll-speed="300">
+			<i class="la la-arrow-up"></i>
+		</div>
+		
+		<!-- end::Scroll Top -->			<!-- begin::Quick Nav -->
+<!--		<ul class="m-nav-sticky" style="margin-top: 30px;">
+
+			<li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Showcase" data-placement="left">
+				<a href="">
+					<i class="la la-eye"></i>
+				</a>
+			</li>
+			<li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Pre-sale Chat" data-placement="left">
+				<a href="" >
+					<i class="la la-comments-o"></i>
+				</a>
+			</li>
+
+			<li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Purchase" data-placement="left">
+				<a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" target="_blank">
+					<i class="la la-cart-arrow-down"></i>
+				</a>
+			</li>
+			<li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Documentation" data-placement="left">
+				<a href="http://keenthemes.com/metronic/documentation.html" target="_blank">
+					<i class="la la-code-fork"></i>
+				</a>
+			</li>
+			<li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Support" data-placement="left">
+				<a href="http://keenthemes.com/forums/forum/support/metronic5/" target="_blank">
+					<i class="la la-life-ring"></i>
+				</a>
+			</li>
+
+		</ul>
+-->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!--begin::Base Scripts -->
+		<script src="../assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+		<script src="../assets/demo/demo5/base/scripts.bundle.js" type="text/javascript"></script>
+		<!--end::Base Scripts -->
+        <!--begin::Page Vendors -->
+		<script src="../assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
+        <!--begin::Page Snippets -->
+		<!--end::Page Vendors -->
+		<script src="../assets/app/js/dashboard.js" type="text/javascript"></script>
+		<script src="../assets/vendors/custom/flot/flot.bundle.js" type="text/javascript"></script>
+		<!--end::Page Snippets -->
+		<script>
+
+    /*$(document).ready(function(){
+// CHAT
+			$.ajax('http://localhost:3000/getchat', {
+				type: "get",
+				success: function(json) {
+					//alert(JSON.stringify(json));
+					data_c = JSON.parse(JSON.stringify(json));
+					datac = [];
+					for (i = 0; i < data_c.length; i++) {
+						data_json = {};
+						data_json = {msg_id:data_c[0],name:data_c[1],msg:data_c[2],timestamp:data_c[3]};
+						//alert(JSON.stringify(data_json));
+						datac.push(data_json);
+						//alert(JSON.stringify(data));
+						data_c.splice(0,4);
+						i = -1;
+
+					}
+					
+					for(i=0;i<datac.length;i++)
+					{
+						//tmp = String(JSON.stringify(datac[i])).replace('\t','');
+						//alert(JSON.stringify(datac[i]));
+						//data[i].channel
+						//data[i].timestamp
+						//data[i].msg
+						//alert(data[i].channel);
+
+
+
+						//var uid = $("#userid").text();
+						if( datac[i].name == 'Admin' ){
+							//alert(data[i].msg);
+							var me_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
+							$('#chatbox').append(me_msg);
+						}
+						else{
+							var other_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--in'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-username'>" + datac[i].name + " : wrote</div><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
+							$('#chatbox').append(other_msg);
+						}
+					}
+				}
+			});
+    });*/
+
+		function refresh_site(sd,ed){
+		//alert('refresh');
+			$.ajax('http://localhost:3000/reports/report675', {
+				type: "get",
+				data: {start:sd,end:ed},
+				success: function(json) {
+					alert(JSON.stringify(json));
+					data_res = JSON.parse(JSON.stringify(json));
+					bindata_site(data_res);
+				}
+			});
+		}
+
+
+		function bindata_site(data_sql){
+		//alert('bind');
+			//alert(data_sql);
+			data = [];
+			total = 0;
+			for (i = 0; i < data_sql.length; i++) {
+				data_json = {};
+				if(data_sql[0]==''){
+					district_name='อื่นๆ';
+				}
+				else {district_name=data_sql[0];}
+
+				data_json = {type:district_name,amount:data_sql[1]};
+				total = total+data_sql[1];
+				//alert(JSON.stringify(data_json));
+				data.push(data_json);
+				//alert(JSON.stringify(data));
+				data_sql.splice(0,2);
+				i = -1;
+
+			}
+			//alert(JSON.stringify(data));
+			c1(data);
+		}
+		c1 = function (data) {
+		//var site = [{"siteName":"Central","amountOfuser":"154"},{"siteName":"Eastern","amountOfuser":"65"},{"siteName":"Southern","amountOfuser":"35"},{"siteName":"Northern","amountOfuser":"41"},{"siteName":"Northeastern","amountOfuser":"21"}];
+		var t = [],
+		//e = Math.floor(10 * Math.random()) + 1;
+		//e = e < 5 ? 5 : e;
+		e = data.length;
+		for (var o = 0; o < e; o++)
+			t[o] = {
+				//label: "Series" + (o + 1),
+				label: data[o].type,
+				//data: Math.floor(100 * Math.random()) + 1
+				data: data[o].amount
+			};
+		document.getElementById('m_flotcharts_1').innerHTML = '';
+		$.plot($("#m_flotcharts_1"), t, {
+			series: {
+				pie: {
+					show: !0,
+					radius: 1,
+					label: {
+						show: !0,
+						radius: 1,
+						formatter: function (t, e) {
+							//return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + t + "<br/>" + Math.round(e.percent) + "%</div>"
+							return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + t + "<br/>" + e.data[0][1] + "<br/>" + Math.round(e.percent) + "%</div>"
+						},
+						background: {
+							opacity: .8
+						}
+					}
+				}
+			},
+			legend: {
+				show: !1
+			}
+		})
+	}
+		/*c1 = function () {
+		var site = [{"siteName":"Central","amountOfuser":"154"},{"siteName":"Eastern","amountOfuser":"65"},{"siteName":"Southern","amountOfuser":"35"},{"siteName":"Northern","amountOfuser":"41"},{"siteName":"Northeastern","amountOfuser":"21"}];
+		//alert(device.length)
+		//alert(JSON.stringify(device[0].endpointOS));
+		var t = [],
+		//e = Math.floor(10 * Math.random()) + 1;
+		//e = e < 5 ? 5 : e;
+		e = site.length;
+		for (var o = 0; o < e; o++)
+			t[o] = {
+				//label: "Series" + (o + 1),
+				label: site[o].siteName,
+				//data: Math.floor(100 * Math.random()) + 1
+				data: site[o].amountOfuser
+			};
+		document.getElementById('m_flotcharts_1').innerHTML = '';
+		$.plot($("#m_flotcharts_1"), t, {
+			series: {
+				pie: {
+					show: !0,
+					radius: 1,
+					label: {
+						show: !0,
+						radius: 1,
+						formatter: function (t, e) {
+							//return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + t + "<br/>" + Math.round(e.percent) + "%</div>"
+							return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + t + "<br/>" + e.data[0][1] + "<br/>" + Math.round(e.percent) + "%</div>"
+						},
+						background: {
+							opacity: .8
+						}
+					}
+				}
+			},
+			legend: {
+				show: !1
+			}
+		})
+	}*/
+
+	function refresh_device(sd,ed){
+		//alert('refresh');
+			$.ajax('http://localhost:3000/reports/report678', {
+				type: "get",
+				data: {start:sd,end:ed},
+				success: function(json) {
+					//alert(JSON.stringify(json));
+					data_res = JSON.parse(JSON.stringify(json));
+					bindata_device(data_res);
+				}
+			});
+		}
+
+
+		function bindata_device(data_sql){
+		//alert('bind');
+			//alert(data_sql);
+			data = [];
+			total = 0;
+			for (i = 0; i < data_sql.length; i++) {
+				data_json = {};
+				if(data_sql[0]==''){
+					device_type='อื่นๆ';
+				}
+				else {device_type=data_sql[0];}
+
+				data_json = {type:device_type,amount:data_sql[1]};
+				total = total+data_sql[1];
+				//alert(JSON.stringify(data_json));
+				data.push(data_json);
+				//alert(JSON.stringify(data));
+				data_sql.splice(0,2);
+				i = -1;
+
+			}
+			//alert(JSON.stringify(data));
+			c2(data);
+		}
+		c2 = function (data) {
+		//var site = [{"siteName":"Central","amountOfuser":"154"},{"siteName":"Eastern","amountOfuser":"65"},{"siteName":"Southern","amountOfuser":"35"},{"siteName":"Northern","amountOfuser":"41"},{"siteName":"Northeastern","amountOfuser":"21"}];
+		//alert(device.length)
+		//alert(JSON.stringify(device[0].endpointOS));
+		var t = [],
+		//e = Math.floor(10 * Math.random()) + 1;
+		//e = e < 5 ? 5 : e;
+		e = data.length;
+		for (var o = 0; o < e; o++)
+			t[o] = {
+				//label: "Series" + (o + 1),
+				label: data[o].type,
+				//data: Math.floor(100 * Math.random()) + 1
+				data: data[o].amount
+			};
+		document.getElementById('m_flotcharts_2').innerHTML = '';
+		$.plot($("#m_flotcharts_2"), t, {
+			series: {
+				pie: {
+					show: !0,
+					radius: 1,
+					label: {
+						show: !0,
+						radius: 1,
+						formatter: function (t, e) {
+							//return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + t + "<br/>" + Math.round(e.percent) + "%</div>"
+							return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + t + "<br/>" + e.data[0][1] + "<br/>" + Math.round(e.percent) + "%</div>"
+						},
+						background: {
+							opacity: .8
+						}
+					}
+				}
+			},
+			legend: {
+				show: !1
+			}
+		})
+	}
+
+	function refresh_os(sd,ed){
+
+		//alert('refresh');
+			$.ajax('http://localhost:3000/reports/report67152', {
+				type: "get",
+				data: {start:sd,end:ed},
+				success: function(json) {
+					//alert(JSON.stringify(json));
+					data_res = JSON.parse(JSON.stringify(json));
+					bindata_os(data_res);
+				}
+			});
+		}
+
+
+		function bindata_os(data_sql){
+		//alert('bind');
+			//alert(data_sql);
+			data = [];
+			total = 0;
+			for (i = 0; i < data_sql.length; i++) {
+				data_json = {};
+				if(data_sql[0]==''){
+					device_type='อื่นๆ';
+				}
+				else {device_type=data_sql[0];}
+
+				data_json = {type:device_type,amount:data_sql[1]};
+				total = total+data_sql[1];
+				//alert(JSON.stringify(data_json));
+				data.push(data_json);
+				//alert(JSON.stringify(data));
+				data_sql.splice(0,2);
+				i = -1;
+
+			}
+			//alert(JSON.stringify(data));
+			c3(data);
+		}
+		c3 = function (data) {
+		var t = [],
+		//e = Math.floor(10 * Math.random()) + 1;
+		//e = e < 5 ? 5 : e;
+		e = data.length;
+		for (var o = 0; o < e; o++)
+			t[o] = {
+				//label: "Series" + (o + 1),
+				label: data[o].type,
+				//data: Math.floor(100 * Math.random()) + 1
+				data: data[o].amount
+			};
+		document.getElementById('m_flotcharts_3').innerHTML = '';
+		$.plot($("#m_flotcharts_3"), t, {
+			series: {
+				pie: {
+					show: !0,
+					radius: 1,
+					label: {
+						show: !0,
+						radius: 1,
+						formatter: function (t, e) {
+							//return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + t + "<br/>" + Math.round(e.percent) + "%</div>"
+							return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + t + "<br/>" + e.data[0][1] + "<br/>" + Math.round(e.percent) + "%</div>"
+						},
+						background: {
+							opacity: .8
+						}
+					}
+				}
+			},
+			legend: {
+				show: !1
+			}
+		})
+	}
+
+	function refresh_group(sd,ed){
+		//alert('refresh');
+			$.ajax('http://localhost:3000/reports/report672', {
+				type: "get",
+				data: {start:sd,end:ed},
+				success: function(json) {
+					//alert(JSON.stringify(json));
+					data_res = JSON.parse(JSON.stringify(json));
+					bindata_group(data_res);
+				}
+			});
+		}
+
+
+		function bindata_group(data_sql){
+		//alert('bind');
+			//alert(data_sql);
+			data = [];
+			total = 0;
+			for (i = 0; i < data_sql.length; i++) {
+				data_json = {};
+				if(data_sql[0]==''){
+					device_type='อื่นๆ';
+				}
+				else {device_type=data_sql[0];}
+
+				data_json = {type:device_type,amount:data_sql[1]};
+				total = total+data_sql[1];
+				//alert(JSON.stringify(data_json));
+				data.push(data_json);
+				//alert(JSON.stringify(data));
+				data_sql.splice(0,2);
+				i = -1;
+
+			}
+			//alert(JSON.stringify(data));
+			c4(data);
+		}
+
+		c4 = function (data) {
+		//var site = [{"siteName":"Central","amountOfuser":"154"},{"siteName":"Eastern","amountOfuser":"65"},{"siteName":"Southern","amountOfuser":"35"},{"siteName":"Northern","amountOfuser":"41"},{"siteName":"Northeastern","amountOfuser":"21"}];
+		//alert(device.length)
+		//alert(JSON.stringify(device[0].endpointOS));
+		var t = [],
+		//e = Math.floor(10 * Math.random()) + 1;
+		//e = e < 5 ? 5 : e;
+		e = data.length;
+		for (var o = 0; o < e; o++)
+			t[o] = {
+				//label: "Series" + (o + 1),
+				label: data[o].type,
+				//data: Math.floor(100 * Math.random()) + 1
+				data: data[o].amount
+			};
+		document.getElementById('m_flotcharts_4').innerHTML = '';
+		$.plot($("#m_flotcharts_4"), t, {
+			series: {
+				pie: {
+					show: !0,
+					radius: 1,
+					label: {
+						show: !0,
+						radius: 1,
+						formatter: function (t, e) {
+							//return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + t + "<br/>" + Math.round(e.percent) + "%</div>"
+							return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + t + "<br/>" + e.data[0][1] + "<br/>" + Math.round(e.percent) + "%</div>"
+						},
+						background: {
+							opacity: .8
+						}
+					}
+				}
+			},
+			legend: {
+				show: !1
+			}
+		})
+	}
+
+	function datepick() {
+		function e(e, a, r) {
+		refresh_site(e.format("Y-M-D"),a.format("Y-M-D"));
+		refresh_device(e.format("Y-M-D"),a.format("Y-M-D"));
+		refresh_os(e.format("Y-M-D"),a.format("Y-M-D"));
+		refresh_group(e.format("Y-M-D"),a.format("Y-M-D"));
+		//alert(e.format("Y-M-D"));
+		//alert(a.format("Y-M-D"));
+
+			var o = "",
+			l = "";
+			a - e < 100 ? (o = "Today:", l = e.format("MMM D")) : "Yesterday" == r ? (o = "Yesterday:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
+			t.find(".m-subheader__daterange-date").html(l),
+			t.find(".m-subheader__daterange-title").html(o)
+		}
+		if (0 != $("#daterangepicker").length) {
+			var t = $("#daterangepicker"),
+			a = moment(),
+			r = moment();
+			t.daterangepicker({
+				startDate: a,
+				endDate: r,
+				opens: "left",
+				ranges: {
+					Today: [moment(), moment()],
+					//Yesterday: [moment().subtract(1, "days"), moment().subtract(1, "days")],
+					"Last 7 Days": [moment().subtract(6, "days"), moment()],
+					"Last 30 Days": [moment().subtract(29, "days"), moment()],
+					"This Month": [moment().startOf("month"), moment().endOf("month")],
+					"This Year": [moment().startOf("year"), moment().endOf("year")],
+					//"Last Month": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
+				}
+			}, e),
+			e(a, r, "")
+		}
+	}
+
+	function sendchat(msg){
+		//alert(account_now);
+		//alert(msg);
+		$.ajax('http://localhost:3000/addchat', {
+				type: "get",
+				data: {usr:'Admin',msgchat:msg},
+				success: function(json) {
+								
+				}
+			});
+			
+		}
+	datepick();
+
+ </script>
+  </body>
+</html>

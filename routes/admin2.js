@@ -43,7 +43,7 @@ module.exports = function(app, passport){
 
   app.get('/admin/', isLoggedIn, function(req,res){
     console.log(req.user.email);
-    res.render('admin/vendroid_html/index', {
+    res.render('admin/index', {
       title: 'Administrative Console - Dashboard',
       user_id: req.user.email,
       user_cn: req.user.email
