@@ -11,23 +11,23 @@ var poolConfig = {
 
 
 var prod = {
-  userName: 'AgileControllerDBA',
-  password: 'Huawei@123',
-  server: '192.168.163.25'
+    userName: 'AgileControllerDBA',
+    password: 'Huawei@123',
+    server: '192.168.163.25'
 };
 
 var test = {
-  userName: 'sa',
-  password: 'P@ssw0rd',
-  server: '192.168.226.110'
+    userName: 'sa',
+    password: 'P@ssw0rd',
+    server: '192.168.226.110'
 };
 
-var config = test;
+var config = prod;
 
 var pool = new ConnectionPool(poolConfig, config);
 //var connection = new Connection(config);
-pool.on('error', function(err){
-  console.error(err);
+pool.on('error', function(err) {
+    console.error(err);
 });
 
 exports.pool = pool;

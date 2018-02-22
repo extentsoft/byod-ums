@@ -1,4 +1,3 @@
-
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -89,12 +88,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(require('express-session')({
-  secret: 'byodatexcise',
-  resave: true,
-  saveUninitialized: true
+    secret: 'byodatexcise',
+    resave: true,
+    saveUninitialized: true
 }));
 app.use(passport.initialize());
-app.use(passport.session({secret: 'byodatexcise'}));
+app.use(passport.session({ secret: 'byodatexcise' }));
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -102,10 +101,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/profile',isLoggedIn, profile);
 //app.use('/admin', admin);
 
-require('./routes/profile2')(app,passport);
-require('./routes/admin2')(app,passport);
+require('./routes/profile2')(app, passport);
+require('./routes/admin2')(app, passport);
 require('./routes/frameprofile')(app);
-
+require('./routes/systemcenter')(app);
 
 
 /*
@@ -122,53 +121,54 @@ app.use('/reports/report672', report672);
 app.use('/reports/report675', report675);
 */
 
-app.use('/listdevice', listdevice);
-app.use('/listmac', listmac);
-app.use('/updatemac', updatemac);
-app.use('/adddevice', adddevice);
-app.use('/deletedevice', deletedevice);
-app.use('/alldevices', alldevices);
-app.use('/allusers', allusers);
-app.use('/accesslog', accesslog);
-app.use('/limitdevice', limitdevice);
 
-app.use('/addnotimsg', addnotimsg);
-app.use('/getnotimsg', getnotimsg);
-app.use('/addchat', addchat);
-app.use('/getchat', getchat);
-app.use('/countlogin', countlogin);
+app.use('/api/listdevice', listdevice);
+app.use('/api/listmac', listmac);
+app.use('/api/updatemac', updatemac);
+app.use('/api/adddevice', adddevice);
+app.use('/api/deletedevice', deletedevice);
+app.use('/api/alldevices', alldevices);
+app.use('/api/allusers', allusers);
+app.use('/api/accesslog', accesslog);
+app.use('/api/limitdevice', limitdevice);
 
-app.use('/deviceinmon', deviceinmon);
-app.use('/deviceoutmon', deviceoutmon);
-app.use('/adddevicemon', adddevicemon);
-app.use('/removedevicemon', removedevicemon);
+app.use('/api/addnotimsg', addnotimsg);
+app.use('/api/getnotimsg', getnotimsg);
+app.use('/api/addchat', addchat);
+app.use('/api/getchat', getchat);
+app.use('/api/countlogin', countlogin);
 
-app.use('/reports/traffic', traffic);
-app.use('/reports/report678', report678);
-app.use('/reports/report67152', report67152);
-app.use('/reports/report672', report672);
-app.use('/reports/report673', report673);
-app.use('/reports/report675', report675);
-app.use('/reports/report677', report677);
-app.use('/reports/report67153', report67153);
+app.use('/api/deviceinmon', deviceinmon);
+app.use('/api/deviceoutmon', deviceoutmon);
+app.use('/api/adddevicemon', adddevicemon);
+app.use('/api/removedevicemon', removedevicemon);
+
+app.use('/report/traffic', traffic);
+app.use('/report/report678', report678);
+app.use('/report/report67152', report67152);
+app.use('/report/report672', report672);
+app.use('/report/report673', report673);
+app.use('/report/report675', report675);
+app.use('/report/report677', report677);
+app.use('/report/report67153', report67153);
 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 module.exports = app;

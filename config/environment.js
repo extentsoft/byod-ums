@@ -1,7 +1,7 @@
 module.exports = {
-  environment: 'test',
-  bypass: true,
-  log_level: 'warn'
+    environment: 'production',
+    bypass: true,
+    log_level: 'warn'
 }
 
 /*
