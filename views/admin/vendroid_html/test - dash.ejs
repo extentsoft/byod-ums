@@ -1769,11 +1769,11 @@
 			for (i = 0; i < data_sql.length; i++) {
 				data_json = {};
 				if(data_sql[0]==''){
-					district_name='อื่นๆ';
+					os_name='อื่นๆ';
 				}
-				else {district_name=data_sql[0];}
+				else {os_name=data_sql[0];}
 
-				data_json = {type:district_name,amount:data_sql[1]};
+				data_json = {type:os_name,amount:data_sql[1]};
 				total = total+data_sql[1];
 				//alert(JSON.stringify(data_json));
 				data.push(data_json);
