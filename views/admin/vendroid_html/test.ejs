@@ -1457,7 +1457,7 @@
                                                                 </div>
                                                                 <div class="row mgbt-xs-0">
                                                                     <div class="col-xs-12" align="center">
-                                                                        <div class="vd_grey"><p id="val-iOS"></p></div>
+                                                                        <div class="vd_grey"><p id="val-iOS">0</p></div>
                                                                         <!-- <div id="total-sparkline" class="mgtp-15 mgr-10 text-right"></div> -->
                                                                     </div>
                                                                 </div>
@@ -1481,7 +1481,7 @@
                                                                 </div>
                                                                 <div class="row mgbt-xs-0">
                                                                     <div class="col-xs-12" align="center">
-                                                                        <div class="vd_grey"><p id="val-Android"></p></div>
+                                                                        <div class="vd_grey"><p id="val-Android">0</p></div>
                                                                         <!-- <div id="total-sparkline" class="mgtp-15 mgr-10 text-right"></div> -->
                                                                     </div>
                                                                 </div>
@@ -1507,7 +1507,7 @@
                                                                 </div>
                                                                 <div class="row mgbt-xs-0">
                                                                     <div class="col-xs-12" align="center">
-                                                                        <div class="vd_grey"><p id="val-Linux"></p></div>
+                                                                        <div class="vd_grey"><p id="val-Linux">0</p></div>
                                                                         <!-- <div id="total-sparkline" class="mgtp-15 mgr-10 text-right"></div> -->
                                                                     </div>
                                                                 </div>
@@ -1531,7 +1531,7 @@
                                                                 </div>
                                                                 <div class="row mgbt-xs-0">
                                                                     <div class="col-xs-12" align="center">
-                                                                        <div class="vd_grey"><p id="val-Windows"></p></div>
+                                                                        <div class="vd_grey"><p id="val-Windows">0</p></div>
                                                                         <!-- <div id="total-sparkline" class="mgtp-15 mgr-10 text-right"></div> -->
                                                                     </div>
                                                                 </div>
@@ -1557,7 +1557,7 @@
                                                                 </div>
                                                                 <div class="row mgbt-xs-0">
                                                                     <div class="col-xs-12" align="center">
-                                                                        <div class="vd_grey">100</div>
+                                                                        <div class="vd_grey"><p id="val-other">0</p></div>
                                                                         <!-- <div id="total-sparkline" class="mgtp-15 mgr-10 text-right"></div> -->
                                                                     </div>
                                                                 </div>
@@ -1581,7 +1581,7 @@
                                                                 </div>
                                                                 <div class="row mgbt-xs-0">
                                                                     <div class="col-xs-12" align="center">
-                                                                        <div class="vd_grey">1000</div>
+                                                                        <div class="vd_grey"><p id="val-sum">0</p></div>
                                                                         <!-- <div id="total-sparkline" class="mgtp-15 mgr-10 text-right"></div> -->
                                                                     </div>
                                                                 </div>
@@ -1604,7 +1604,7 @@
                                                                 <span class="menu-icon "><i class="icon-mobile "></i></span>
                                                             </div>
                                                             <div class="col-md-9 menu-text clearfix ">
-                                                                24<br>mobile
+                                                                <p id='val-Mobile'>0</p><br>mobile
                                                             </div>
                                                         </div>
                                                     </a>
@@ -1621,7 +1621,7 @@
                                                                 <span class="menu-icon "><i class="fa fa-laptop "></i></span>
                                                             </div>
                                                             <div class="col-md-9 menu-text clearfix ">
-                                                                49<br>Computer
+                                                                <p id='val-Computer'>0</p><br>Computer
                                                             </div>
                                                         </div>
                                                     </a>
@@ -1640,7 +1640,7 @@
                                                                 <span class="menu-icon "><i class="icon-question "></i></span>
                                                             </div>
                                                             <div class="col-md-9 menu-text clearfix ">
-                                                                102<br>อื่นๆ
+                                                                <p id='val-etc'>0</p><br>อื่นๆ
                                                             </div>
                                                         </div>
                                                     </a>
@@ -2069,14 +2069,53 @@
 			for (i = 0; i < data_sql.length; i++) {
 				data_json = {};
 				if(data_sql[0]==''){
-					district_name='อื่นๆ';
+					os_name='other';
 				}
-				else {district_name=data_sql[0];}
-
-				data_json = {type:district_name,amount:data_sql[1]};
+				else {os_name=data_sql[0];}
+				document.getElementById('val-'+os_name).innerHTML = data_sql[1];
+				//data_json = {type:os_name,amount:data_sql[1]};
 				total = total+data_sql[1];
 				//alert(JSON.stringify(data_json));
-				data.push(data_json);
+				//data.push(data_json);
+				//alert(JSON.stringify(data));
+				data_sql.splice(0,2);
+				i = -1;
+
+			}
+			document.getElementById('val-sum').innerHTML = total;
+			//alert(JSON.stringify(data));
+		}
+		
+		function refresh_device(sd,ed){
+		//alert('refresh');
+			$.ajax('http://localhost:3000/reports/report678', {
+				type: "get",
+				data: {start:sd,end:ed},
+				success: function(json) {
+					//alert(JSON.stringify(json));
+					data_res = JSON.parse(JSON.stringify(json));
+					bindata_device(data_res);
+				}
+			});
+		}
+
+
+		function bindata_device(data_sql){
+		//alert('bind');
+			//alert(data_sql);
+			data = [];
+			total = 0;
+			for (i = 0; i < data_sql.length; i++) {
+				data_json = {};
+				if(data_sql[0]==''){
+					device_type='etc';
+				}
+				else {device_type=data_sql[0];}
+				document.getElementById('val-'+device_type).innerHTML = data_sql[1];
+				//data_json = {type:os_name,amount:data_sql[1]};
+				total = total+data_sql[1];
+				//alert(JSON.stringify(data_json));
+				//data.push(data_json);
 				//alert(JSON.stringify(data));
 				data_sql.splice(0,2);
 				i = -1;
@@ -2088,7 +2127,7 @@
 		function datepick() {
 		function e(e, a, r) {
 		//refresh_site(e.format("Y-M-D"),a.format("Y-M-D"));
-		//refresh_device(e.format("Y-M-D"),a.format("Y-M-D"));
+		refresh_device(e.format("Y-M-D"),a.format("Y-M-D"));
 		refresh_os(e.format("Y-M-D"),a.format("Y-M-D"));
 		refresh_group(e.format("Y-M-D"),a.format("Y-M-D"));
 		refresh_browser(e.format("Y-M-D"),a.format("Y-M-D"));
