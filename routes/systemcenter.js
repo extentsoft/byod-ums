@@ -6,7 +6,7 @@ module.exports = function(app, passport) {
     app.get('/systemcenter/login', function(req, res) {
         res.send("login");
     });
-    app.get('/systemcenter/dashboard', function(req, res) {
+    app.get('/dashboard', function(req, res) {
         //res.send("Hello System Center");
         res.render('systemcenter/admin/dashboard', {
             title: 'Dashboard',
@@ -14,20 +14,18 @@ module.exports = function(app, passport) {
             message: req.flash('message'),
         });
     });
-    app.get('/systemcenter/dashboard', function(req, res) {
-        res.send("/systemcenter/dashbaord");
-        res.render('systemcenter/admin/dashboard', {
-            title: 'Dashboard',
-            message: req.flash('message'),
-        });
-    });
+    
 
     app.get('/systemcenter/profile', function(req, res) {
         res.send("/systemcenter/profile");
     });
 
-    app.get('/systemcenter/device', function(req, res) {
-        res.send("/systemcenter/device");
+    app.get('/device', function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+		res.render('systemcenter/device', {
+            title: 'Device',
+            message: req.flash('message'),
+        });
     });
 
     app.get('/systemcenter/setting', function(req, res) {
@@ -37,10 +35,115 @@ module.exports = function(app, passport) {
     app.get('/systemcenter/configuration', function(req, res) {
         res.send("/systemcenter/configuration");
     });
-
-    app.get('/systemcenter/report/device/activate', function(req, res) {
-        res.send("/systemcenter/report/device/activate");
+//////////////////// TZ /////////////////////////////////////
+    app.get('/report/device/activate', function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+		res.render('systemcenter/report/device/activate', {
+            title: 'Report',
+            message: req.flash('message'),
+        });
     });
+	
+	app.get('/report/device/deactivate/today', function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+		res.render('systemcenter/report/device/deactivate/today', {
+            title: 'Report',
+            message: req.flash('message'),
+        });
+    });
+	
+	app.get('/report/device/deactivate/week', function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+		res.render('systemcenter/report/device/deactivate/week', {
+            title: 'Report',
+            message: req.flash('message'),
+        });
+    });
+	
+	app.get('/report/device/deactivate/month', function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+		res.render('systemcenter/report/device/deactivate/month', {
+            title: 'Report',
+            message: req.flash('message'),
+        });
+    });
+	
+	app.get('/report/device/deactivate/year', function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+		res.render('systemcenter/report/device/deactivate/year', {
+            title: 'Report',
+            message: req.flash('message'),
+        });
+    });
+	
+	
+	app.get('/report/usage/person/today', function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+		res.render('systemcenter/report/usage/person/today', {
+            title: 'Report',
+            message: req.flash('message'),
+        });
+    });
+	
+	app.get('/report/usage/person/week', function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+		res.render('systemcenter/report/usage/person/week', {
+            title: 'Report',
+            message: req.flash('message'),
+        });
+    });
+	
+	app.get('/report/usage/person/month', function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+		res.render('systemcenter/report/usage/person/month', {
+            title: 'Report',
+            message: req.flash('message'),
+        });
+    });
+	
+	app.get('/report/usage/person/year', function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+		res.render('systemcenter/report/usage/person/year', {
+            title: 'Report',
+            message: req.flash('message'),
+        });
+    });
+	
+	
+	app.get('/report/usage/group/today', function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+		res.render('systemcenter/report/usage/group/today', {
+            title: 'Report',
+            message: req.flash('message'),
+        });
+    });
+	
+	app.get('/report/usage/group/week', function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+		res.render('systemcenter/report/usage/group/week', {
+            title: 'Report',
+            message: req.flash('message'),
+        });
+    });
+	
+	app.get('/report/usage/group/month', function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+		res.render('systemcenter/report/usage/group/month', {
+            title: 'Report',
+            message: req.flash('message'),
+        });
+    });
+	
+	app.get('/report/usage/group/year', function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+		res.render('systemcenter/report/usage/group/year', {
+            title: 'Report',
+            message: req.flash('message'),
+        });
+    });
+	
+	
+//////////////////// TZ /////////////////////////////////////
     app.get('/systemcenter/report/device/deactivate', function(req, res) {
         res.send("/systemcenter/report/device/deactivate" + " today");
     });

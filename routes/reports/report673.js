@@ -14,7 +14,7 @@ var deviceList = function(req,res,next){
     console.log('Connection successful');
 
     //var request = new Request('select * from [test].[dbo].t1', function(err, rowCount){
-    var request = new Request("SELECT [userName] 'User',detail 'Event',[devicemac] 'MAC',[os_name] 'OS',[host_name] 'Name',[created_at] 'Date' FROM [AgileControllerDB].[dbo].[UMS_ActivityLog] a join [AgileControllerDB].[dbo].[TSM_E_Account] b on  a.[userId] = b.[account] join [AgileControllerDB].[dbo].[TSM_E_Endpoint] c on a.[devicemac] = c.[mac] where detail = 'DeleteDevice'", function(err, rowCount){
+    var request = new Request("SELECT [userName] 'User',detail 'Event',[devicemac] 'MAC',[os_name] 'OS',[host_name] 'Name',[created_at] 'Date' FROM [AgileControllerDB].[dbo].[UMS_ActivityLog] a join [AgileControllerDB].[dbo].[TSM_E_Account] b on  a.[userId] = b.[account] join [AgileControllerDB].[dbo].[TSM_E_Endpoint] c on a.[devicemac] = c.[mac] where detail = 'DeleteDevice' and CONVERT (date, created_at) between '"+req.param('start')+"' and '"+req.param('end')+"'", function(err, rowCount){
 
       if(err){
         console.error(err);

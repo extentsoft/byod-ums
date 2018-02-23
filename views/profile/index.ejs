@@ -641,8 +641,8 @@
 						//var uid = $("#userid").text();
 						if( datac[i].name == account_now ){
 							//alert(data[i].msg);
-							var me_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
-							$('#chatbox').append(me_msg);
+							var my_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
+							$('#chatbox').append(my_msg);
 						}
 						else{
 							var other_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--in'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-username'>" + datac[i].name + " : wrote</div><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
