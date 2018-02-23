@@ -568,7 +568,7 @@
                         <div class="vd_menu">
                             <ul>
                                 <li>
-                                    <a href="/dashboard" data-action="click-trigger">
+                                    <a href="/dashboard" >
                                         <span class="menu-icon"><i class="fa fa-dashboard"></i></span>
                                         <span class="menu-text">แผงควบคุมหลัก</span>
 
@@ -579,7 +579,7 @@
 
                                 </li>
                                 <li>
-                                    <a href="/profile" data-action="click-trigger">
+                                    <a href="/systemcenter/profile" >
                                         <span class="menu-icon"><i class="fa fa-user"></i></span>
                                         <span class="menu-text">ข้อมูลส่วนบุคคล</span>
                                         <!--<span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>-->
@@ -1404,16 +1404,17 @@
               <div class="col-md-12">
                 <div class="panel widget">
                   <div class="panel-heading vd_bg-grey">
-                    <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายงานการใช้งานจำแนกตามกลุ่ม </h3>
+                    <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายงานการใช้งานระบุบุคคล </h3>
+					<input type="text" id="myInput" onkeyup="myFunction()" placeholder="โปรดระบุชื่อบุคคล" title="Type in a name">
                   </div>
-                  <div class="panel-body table-responsive">
+                  <div class="panel-body table-responsive" id="tab-body">
                     <table class="table table-striped" id="data-tables">
                       <thead>
                         <tr>
                           <th>เจ้าของอุปกรณ์</th>
-                          <th>MAC</th>
-                          <th>กลุ่มผู้ใช้งาน</th>
-                          <th>วันที่ยกเลิกอุปกรณ์</th>
+                          <th>ระบบปฏิบัติการ</th>
+                          <th>IP</th>
+                          <th>วันที่ใช้งาน</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -1533,11 +1534,12 @@
 	<script>
 				account_now = 'natthawat_a';
 	
-		function refresh_table(sd,ed){
+		function refresh_table(sd,ed,data){
 		//alert('refresh');
-			$.ajax('http://localhost:3000/report/report676', {
+		//alert(data);
+			$.ajax('http://localhost:3000/report/report677', {
 				type: "get",
-				data: {start:sd,end:ed},
+				data: {start:sd,end:ed,usrname:data},
 				success: function(json) {
 					//alert(JSON.stringify(json));
 					data_res = JSON.parse(JSON.stringify(json));
@@ -1554,17 +1556,17 @@
 			total = 0;
 			for (i = 0; i < data_sql.length; i++) {
 				data_json = {};
-				update_time = new Date(data_sql[3]);
+				update_time = new Date(data_sql[4]);
 				date_str = update_time.getHours() + ":" + (update_time.getMinutes()<10?'0':'') + update_time.getMinutes() + ":" + (update_time.getSeconds()<10?'0':'') + update_time.getSeconds() +' - ' + update_time.getDate() + "/" + update_time.getMonth() + "/" + update_time.getFullYear();
 
 
 				//data_json = {name:data_sql[0],mac:data_sql[2],os:data_sql[3],date:date_str};
-				$('#data-tables').find('tbody').append( "<tr><td>"+data_sql[0]+"</td><td>"+data_sql[1]+"</td><td>"+data_sql[2]+"</td><td>"+date_str+"</td></tr>" );
+				$('#data-tables').find('tbody').append( "<tr><td>"+data_sql[0]+"</td><td>"+data_sql[1]+"</td><td>"+data_sql[3]+"</td><td>"+date_str+"</td></tr>" );
 				total = total+data_sql[1];
 				//alert(JSON.stringify(data_json));
 				data.push(data_json);
 				//alert(JSON.stringify(data));
-				data_sql.splice(0,4);
+				data_sql.splice(0,5);
 				i = -1;
 
 			}
@@ -1575,10 +1577,11 @@
 			
 		}
 		
-		function datepick() {
+		function datepick(data) {
 		
 		var today = new Date();
 		var dd = today.getDate();
+		var ddd = today.getDate();
 		var mm = today.getMonth()+1; //January is 0!
 
 		var yyyy = today.getFullYear();
@@ -1589,9 +1592,39 @@
 		if(mm<10){
 			mm='0'+mm;
 		} 
-		refresh_table(yyy+'-'+mm+'-'+dd,yyyy+'-'+mm+'-'+dd);
+		refresh_table(yyy+'-'+mm+'-'+dd,yyyy+'-'+mm+'-'+ddd,data);
 	}
-	datepick();
+	
+	function myFunction() {
+	//$( "#data-tables" ).load( "/report/usage/person/today #data-tables" );
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+	//document.getElementById("tab-body").innerHTML="";
+	document.getElementById("tab-body").innerHTML='<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>ระบบปฏิบัติการ</th><th>IP</th><th>วันที่ใช้งาน</th></tr></thead><tbody></tbody></table>';
+	//$('#data-tables').find('tbody').empty();
+	
+	filter = input.value.toUpperCase();
+	//alert(filter);
+	if(filter==''){
+		$('#data-tables').dataTable();		
+	}
+	else{datepick(filter);}
+	
+	
+    /*filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+
+        }
+    }*/
+}
+	
 	</script>
 
 

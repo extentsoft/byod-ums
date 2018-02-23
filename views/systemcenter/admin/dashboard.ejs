@@ -572,7 +572,7 @@
                         <div class="vd_menu">
                             <ul>
                                 <li>
-                                    <a href="/dashboard" data-action="click-trigger">
+                                    <a href="/dashboard" >
                                         <span class="menu-icon"><i class="fa fa-dashboard"></i></span>
                                         <span class="menu-text">แผงควบคุมหลัก</span>
 
@@ -583,7 +583,7 @@
 
                                 </li>
                                 <li>
-                                    <a href="/profile" data-action="click-trigger">
+                                    <a href="/systemcenter/profile" >
                                         <span class="menu-icon"><i class="fa fa-user"></i></span>
                                         <span class="menu-text">ข้อมูลส่วนบุคคล</span>
                                         <!--<span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>-->
@@ -1839,7 +1839,96 @@
 
 
     <script type="text/javascript ">
-        $(document).ready();
+        $(document).ready(function(){
+
+			$.ajax('http://localhost:3000/api/getchat', {
+				type: "get",
+				success: function(json) {
+					//alert(JSON.stringify(json));
+					data_c = JSON.parse(JSON.stringify(json));
+					datac = [];
+					for (i = 0; i < data_c.length; i++) {
+						data_json = {};
+						data_json = {msg_id:data_c[0],name:data_c[1],msg:data_c[2],timestamp:data_c[3]};
+						//alert(JSON.stringify(data_json));
+						datac.push(data_json);
+						//alert(JSON.stringify(data));
+						data_c.splice(0,4);
+						i = -1;
+
+					}
+
+					for(i=0;i<datac.length;i++)
+					{
+						//tmp = String(JSON.stringify(datac[i])).replace('\t','');
+						//alert(JSON.stringify(datac[i]));
+						/*data[i].channel
+						data[i].timestamp
+						data[i].msg*/
+						//alert(data[i].channel);
+
+
+
+						//var uid = $("#userid").text();
+						if( datac[i].name == account_now ){
+							//alert(data[i].msg);
+							//var my_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
+							var my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+							$('#chatbox').append(my_msg);
+						}
+						else{
+							//var other_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--in'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-username'>" + datac[i].name + " : wrote</div><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
+							var other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+							$('#chatbox').append(other_msg);
+						}
+					}
+				}
+			});
+
+
+			$.ajax('http://localhost:3000/getnotimsg', {
+			type: "get",
+			data: {chanel:'0'},
+			success: function(json) {
+			  //alert(JSON.stringify(json));
+			  //alert('message sent!');
+				data_sql = JSON.parse(JSON.stringify(json));
+				data = [];
+				for (i = 0; i < data_sql.length; i++) {
+					data_json = {};
+					data_json = {msg_id:data_sql[0],msg:data_sql[1],chanel:data_sql[2],timestamp:data_sql[3]};
+					//alert(JSON.stringify(data_json));
+					data.push(data_json);
+					//alert(JSON.stringify(data));
+					data_sql.splice(0,4);
+					i = -1;
+
+				}
+				//alert(data.length);
+				//var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 4 ธันวาคม 2560</span><span class='m-list-timeline__time'>20 mins</span></div>";
+				//$('#notification_center').append(msg);
+				for(i=0;i<data.length;i++)
+				{
+
+					/*data[i].channel
+					data[i].timestamp
+					data[i].msg*/
+					//alert(data[i].channel);
+					if( data[i].chanel <= 1 ){
+						//alert(data[i].msg);
+						//var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>" + data[i].msg + "</span><span class='m-list-timeline__time'>" + data[i].timestamp.split("T")[0] + "</span></div>";
+
+            var msg = "<li><a href='#'><div class='menu-icon vd_green'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + data[i].msg + "<div class='menu-info'><span class='menu-date'>" + data[i].timestamp.split("T")[0] + "</span></div></div></a></li>";
+
+						$('#notification_center').append(msg);
+					}
+
+				}
+				//alert(JSON.stringify(data));
+				//bindata(data_res);
+			}
+		  });
+		});
         $(window).load(function() {});
     </script>
     <!-- Specific Page Scripts END -->
