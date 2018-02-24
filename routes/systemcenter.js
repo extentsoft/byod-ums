@@ -52,6 +52,15 @@ module.exports = function(app, passport) {
         });
     });
 
+    app.get('/test', function(req, res) {
+        //res.send("Hello System Center");
+        res.render('systemcenter/admin/test', {
+            title: 'Dashboard',
+            path: 'systemcenter/',
+            message: req.flash('message'),
+        });
+    });
+
 
 
 
@@ -74,6 +83,10 @@ module.exports = function(app, passport) {
     app.get('/systemcenter/configuration', function(req, res) {
         res.send("/systemcenter/configuration");
     });
+
+    //////////////////// TZ /////////////////////////////////////
+
+    //////////////////// TZ /////////////////////////////////////
     app.get('/systemcenter/profile', function(req, res) {
         //res.send("Hello System Center");
         res.render('systemcenter/admin/dashboard', {
@@ -195,6 +208,11 @@ module.exports = function(app, passport) {
         });
     });
 
+
+
+    //////////////////// TZ /////////////////////////////////////
+
+
     app.get('/report/policy/usage', function(req, res) {
         res.render('systemcenter/report/policy/usage', {
             title: 'Report',
@@ -209,6 +227,8 @@ module.exports = function(app, passport) {
     });
 
 
+
+    //////////////////// TZ /////////////////////////////////////
 
     app.get('/systemcenter/report/device/deactivate', function(req, res) {
         res.send("/systemcenter/report/device/deactivate" + " today");
