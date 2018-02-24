@@ -145,6 +145,9 @@ app.use('/api/deviceoutmon', deviceoutmon);
 app.use('/api/adddevicemon', adddevicemon);
 app.use('/api/removedevicemon', removedevicemon);
 
+
+app.use('/api/chat/attachment', require('./routes/chat/attachment'));
+
 app.use('/report/traffic', traffic);
 app.use('/report/report678', report678);
 app.use('/report/report67152', report67152);
