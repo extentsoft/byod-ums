@@ -53,9 +53,7 @@ module.exports = function(app, passport) {
     });
 
 
-    app.get('/systemcenter/profile', function(req, res) {
-        res.send("/systemcenter/profile");
-    });
+    
 
     app.get('/device', function(req, res) {
         //res.send("/systemcenter/report/device/activate");
@@ -65,14 +63,37 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/systemcenter/setting', function(req, res) {
-        res.send("/systemcenter/setting");
+    app.get('/setting', function(req, res) {
+        //res.send("/systemcenter/setting");
+		res.render('systemcenter/setting', {
+            title: 'Setting',
+            message: req.flash('message'),
+        });
     });
 
     app.get('/systemcenter/configuration', function(req, res) {
         res.send("/systemcenter/configuration");
     });
+<<<<<<< HEAD
     //////////////////// TZ /////////////////////////////////////
+=======
+//////////////////// TZ /////////////////////////////////////
+app.get('/systemcenter/profile', function(req, res) {
+        //res.send("Hello System Center");
+        res.render('systemcenter/admin/dashboard', {
+            title: 'Dashboard',
+            //path: 'systemcenter/',
+            message: req.flash('message'),
+        });
+    });
+	app.get('/configuration', function(req, res) {
+        res.render('systemcenter/admin/dashboard', {
+            title: 'Dashboard',
+            //path: 'systemcenter/',
+            message: req.flash('message'),
+        });
+    });
+>>>>>>> 6b87195b2e71d063ec6398203c544b1cdfb7a916
     app.get('/report/device/activate', function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/report/device/activate', {
@@ -178,9 +199,29 @@ module.exports = function(app, passport) {
             message: req.flash('message'),
         });
     });
+<<<<<<< HEAD
 
 
     //////////////////// TZ /////////////////////////////////////
+=======
+	
+	app.get('/report/policy/usage', function(req, res) {
+        res.render('systemcenter/report/policy/usage', {
+            title: 'Report',
+            message: req.flash('message'),
+        });
+    });
+    app.get('/report/policy/device', function(req, res) {
+        res.render('systemcenter/report/policy/device', {
+            title: 'Report',
+            message: req.flash('message'),
+        });
+    });
+
+	
+	
+//////////////////// TZ /////////////////////////////////////
+>>>>>>> 6b87195b2e71d063ec6398203c544b1cdfb7a916
     app.get('/systemcenter/report/device/deactivate', function(req, res) {
         res.send("/systemcenter/report/device/deactivate" + " today");
     });
