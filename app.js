@@ -147,6 +147,7 @@ app.use('/api/removedevicemon', removedevicemon);
 
 
 app.use('/api/chat/attachment', require('./routes/chat/attachment'));
+app.use('/api/eoffice', require('./routes/api/eoffice'));
 
 app.use('/report/traffic', traffic);
 app.use('/report/report678', report678);
