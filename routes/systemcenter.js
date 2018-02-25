@@ -58,7 +58,7 @@ module.exports = function(app, passport) {
     /* ================================================================
                               Admin Section
     =================================================================== */
-    app.get('/systemcenter/dashboard', function(req, res) {
+    app.get('/systemcenter/dashboard', isLoggedIn, function(req, res) {
         //res.send("Hello System Center");
         res.render('systemcenter/admin/dashboard', {
             title: 'แผงควบคุมหลัก',
@@ -68,7 +68,7 @@ module.exports = function(app, passport) {
     });
 
 
-    app.get('/systemcenter/setting', function(req, res) {
+    app.get('/systemcenter/setting', isLoggedIn, function(req, res) {
         res.render('systemcenter/setting', {
             title: 'ตั้งค่าระบบ',
             //path: 'systemcenter/',
@@ -77,7 +77,7 @@ module.exports = function(app, passport) {
     });
 
 
-	app.get('/systemcenter/configuration', function(req, res) {
+	app.get('/systemcenter/configuration', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/setting");
         res.render('systemcenter/admin/configuration', {
             title: 'ปรับแต่ง',
@@ -90,7 +90,7 @@ module.exports = function(app, passport) {
     /* ================================================================
                               User Section
     =================================================================== */
-    app.get('/systemcenter/device', function(req, res) {
+    app.get('/systemcenter/device', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/device', {
             title: 'อุปกรณ์',
@@ -98,7 +98,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/systemcenter/setting', function(req, res) {
+    app.get('/systemcenter/setting', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/setting");
         res.render('systemcenter/setting', {
             title: 'ตั้งค่า',
@@ -113,7 +113,7 @@ module.exports = function(app, passport) {
 
     //////////////////// TZ /////////////////////////////////////
 
-    app.get('/systemcenter/profile', function(req, res) {
+    app.get('/systemcenter/profile', isLoggedIn, function(req, res) {
         //res.send("Hello System Center");
         res.render('systemcenter/profile', {
             title: 'ข้อมูลผู้ใช้งาน',
@@ -126,7 +126,7 @@ module.exports = function(app, passport) {
     /* ================================================================
                             Report Section
     =================================================================== */
-    app.get('/systemcenter/report/device/activate', function(req, res) {
+    app.get('/systemcenter/report/device/activate', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/report/device/activate', {
             title: 'Report',
