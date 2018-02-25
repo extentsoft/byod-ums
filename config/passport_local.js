@@ -62,14 +62,14 @@ module.exports = function(passport) {
 
 
                     console.log('Identity is being authorizing against e-Office');
-                    request('http://localhost:3000/api/eoffice/profile/'+Account.email, function(error, response, body) {
-                        
+                    request('http://localhost:3000/api/eoffice/profile/' + Account.email, function(error, response, body) {
+
                         if (!error && response.statusCode == 200) {
                             if (body != null) {
                                 //res.send(body) // Print the google web page.
                                 //Authorization Done
-								parsed_body = JSON.parse(body);
-								Account.firstname = parsed_body.fn;
+                                parsed_body = JSON.parse(body);
+                                Account.firstname = parsed_body.fn;
                                 Account.lastname = parsed_body.ln;
                                 Account.ssn = parsed_body.ssn;
                                 Account.position = parsed_body.position;
@@ -80,13 +80,11 @@ module.exports = function(passport) {
                                 return done(null, Account);
 
                             } else {
-								console.log("3");
                                 //No authorization
                                 return done(null, false, req.flash('loginMessage', 'Authorizing Failure'));
                             }
 
                         } else {
-							console.log("4");
                             //if ERRROR happens once authorizing 
                             return done(null, false, req.flash('loginMessage', 'Authorizing Failure'));
                         }
