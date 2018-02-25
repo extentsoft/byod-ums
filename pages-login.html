@@ -89,12 +89,12 @@
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script type="text/javascript" src="js/html5shiv.js"></script>
-      <script type="text/javascript" src="js/respond.min.js"></script>     
+      <script type="text/javascript" src="js/respond.min.js"></script>
     <![endif]-->
 
 </head>
 
-<body id="pages" style="background-image: url('img/ed2.jpg');background-repeat: repeat-y;" class="full-layout no-nav-left no-nav-right  nav-top-fixed      responsive remove-navbar login-layout   clearfix" data-active="pages " data-smooth-scrolling="1">
+<body id="pages" class="full-layout no-nav-left no-nav-right  nav-top-fixed background-login     responsive remove-navbar login-layout   clearfix" data-active="pages " data-smooth-scrolling="1">
 
     <div class="vd_body" >
         <!-- Header Start -->
@@ -109,11 +109,11 @@
                     <div class="vd_container">
                         <div class="vd_content clearfix" >
 
-                            <div class="vd_content-section clearfix" style="background-image: url('img/ed2.jpg');background-repeat: repeat-y;" > <!-- style="background-image: url('ed.jpg');background-repeat: no-repeat;" -->
+                            <div class="vd_content-section clearfix" style="background-image: url('ed2.jpg');background-repeat: repeat-y;" > <!-- style="background-image: url('ed.jpg');background-repeat: no-repeat;" -->
                                 <div class="vd_login-page" style="background:#f2f2f2"  >
                                     <div class="heading clearfix" >
                                         <div class="logo">
-                                            <h2 class="mgbt-xs-5"><img src="/img/logo2.png" alt="logo" width="40%" height="40%"></h2>
+                                            <h2 class="mgbt-xs-5"><img src="img/logo2.png" alt="logo" width="40%" height="40%"></h2>
                                         </div>
                                         <h4 class="text-center font-semibold vd_grey">LOGIN TO YOUR ACCOUNT</h4>
                                         <!--<small class="subtitle "><font color="red">ระบบบริหารจัดการทรัพยากร ICT</font></small>-->
@@ -124,7 +124,7 @@
                                     <div class="panel widget">
                                         <div class="panel-body">
                                             <!-- <div class="login-icon entypo-icon"> <i class="icon-key"></i> </div>-->
-                                            <form class="form-horizontal" id="login-form" action="/systemcenter/login" method="post" role="form">
+                                            <form class="form-horizontal" id="login-form" action="#" role="form">
                                                 <div class="alert alert-danger vd_hidden">
                                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="icon-cross"></i></button>
                                                     <span class="vd_alert-icon"><i class="fa fa-exclamation-circle vd_red"></i></span><strong>Oh snap!</strong> Change a few things up and try submitting again. </div>
@@ -134,10 +134,10 @@
                                                 <div class="form-group  mgbt-xs-20">
                                                     <div class="col-md-12">
                                                         <div class="label-wrapper sr-only">
-                                                            <label class="control-label" for="username">Email</label>
+                                                            <label class="control-label" for="email">Email</label>
                                                         </div>
                                                         <div class="vd_input-wrapper" id="email-input-wrapper"> <span class="menu-icon"> <i class="fa fa-envelope"></i> </span>
-                                                            <input type="text" placeholder="Email" id="email" name="username" class="required" required>
+                                                            <input type="email" placeholder="Email" id="email" name="email" class="required" required>
                                                         </div>
                                                         <div class="label-wrapper">
                                                             <label class="control-label sr-only" for="password">Password</label>
@@ -184,7 +184,6 @@
                         </div>
                         <!-- .vd_content -->
                     </div>
-					
                     <!-- .vd_container -->
                 </div>
                 <!-- .vd_content-wrapper -->
@@ -208,7 +207,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src="js/jquery.js"></script>
     <!--[if lt IE 9]>
-  <script type="text/javascript" src="js/excanvas.js"></script>      
+  <script type="text/javascript" src="js/excanvas.js"></script>
 <![endif]-->
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
@@ -234,7 +233,80 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
-           
+            "use strict";
+
+            var form_register_2 = $('#login-form');
+            var error_register_2 = $('.alert-danger', form_register_2);
+            var success_register_2 = $('.alert-success', form_register_2);
+
+            form_register_2.validate({
+                errorElement: 'div', //default input error message container
+                errorClass: 'vd_red', // default input error message class
+                focusInvalid: false, // do not focus the last invalid input
+                ignore: "",
+                rules: {
+
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        required: true,
+                        minlength: 6
+                    },
+
+                },
+
+                errorPlacement: function(error, element) {
+                    if (element.parent().hasClass("vd_checkbox") || element.parent().hasClass("vd_radio")) {
+                        element.parent().append(error);
+                    } else if (element.parent().hasClass("vd_input-wrapper")) {
+                        error.insertAfter(element.parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                },
+
+                invalidHandler: function(event, validator) { //display error alert on form submit
+                    success_register_2.hide();
+                    error_register_2.show();
+
+
+                },
+
+                highlight: function(element) { // hightlight error inputs
+
+                    $(element).addClass('vd_bd-red');
+                    $(element).parent().siblings('.help-inline').removeClass('help-inline hidden');
+                    if ($(element).parent().hasClass("vd_checkbox") || $(element).parent().hasClass("vd_radio")) {
+                        $(element).siblings('.help-inline').removeClass('help-inline hidden');
+                    }
+
+                },
+
+                unhighlight: function(element) { // revert the change dony by hightlight
+                    $(element)
+                        .closest('.control-group').removeClass('error'); // set error class to the control group
+                },
+
+                success: function(label, element) {
+                    label
+                        .addClass('valid').addClass('help-inline hidden') // mark the current input as valid and display OK icon
+                        .closest('.control-group').removeClass('error').addClass('success'); // set success class to the control group
+                    $(element).removeClass('vd_bd-red');
+
+
+                },
+
+                submitHandler: function(form) {
+                    $(form).find('#login-submit').prepend('<i class="fa fa-spinner fa-spin mgr-10"></i>') /*.addClass('disabled').attr('disabled')*/ ;
+                    success_register_2.show();
+                    error_register_2.hide();
+                    setTimeout(function() {
+                        window.location.href = "index.html"
+                    }, 2000);
+                }
+            });
 
 
         });
@@ -259,7 +331,6 @@
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(ga, s);
         })();
-		
     </script>
 
 </body>

@@ -106,7 +106,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 require('./routes/profile2')(app, passport);
 require('./routes/admin2')(app, passport);
 require('./routes/frameprofile')(app);
-require('./routes/systemcenter')(app);
+require('./routes/systemcenter')(app, passport);
 
 
 /*

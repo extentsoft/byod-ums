@@ -39,9 +39,16 @@ module.exports = function(app, passport) {
             title: 'Test'
         });
     });
+	
+	app.get('/systemcenter/', isLoggedIn, function(req, res) {
+        console.log(req.user.email);
+        res.render('systemcenter/admin/dashboard', {
+            title: 'Dashboard'
+        });
+    });
 
 
-    app.get('/systemcenter/dashboard', function(req, res) {
+    app.get('/systemcenter/dashboard', isLoggedIn, function(req, res) {
         //res.send("Hello System Center");
         res.render('systemcenter/admin/dashboard', {
             title: 'Dashboard',
@@ -50,7 +57,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/test', function(req, res) {
+    app.get('/test', isLoggedIn, function(req, res) {
         //res.send("Hello System Center");
         res.render('systemcenter/admin/test', {
             title: 'Dashboard',
@@ -59,13 +66,11 @@ module.exports = function(app, passport) {
         });
     });
 
-	app.get('/systemcenter/login', (req, res) => {
-        res.render('login', { user: req.user, error: req.flash('error') });
-    });
 
 
 
-    app.get('/device', function(req, res) {
+
+    app.get('/device', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/device', {
             title: 'Device',
@@ -73,7 +78,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/setting', function(req, res) {
+    app.get('/setting', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/setting");
         res.render('systemcenter/setting', {
             title: 'Setting',
@@ -81,14 +86,14 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/systemcenter/configuration', function(req, res) {
+    app.get('/systemcenter/configuration', isLoggedIn, function(req, res) {
         res.send("/systemcenter/configuration");
     });
 
     //////////////////// TZ /////////////////////////////////////
 
     //////////////////// TZ /////////////////////////////////////
-    app.get('/systemcenter/profile', function(req, res) {
+    app.get('/systemcenter/profile', isLoggedIn, function(req, res) {
         //res.send("Hello System Center");
         res.render('systemcenter/admin/dashboard', {
             title: 'Dashboard',
@@ -96,14 +101,14 @@ module.exports = function(app, passport) {
             message: req.flash('message'),
         });
     });
-    app.get('/configuration', function(req, res) {
+    app.get('/configuration', isLoggedIn, function(req, res) {
         res.render('systemcenter/admin/dashboard', {
             title: 'Dashboard',
             //path: 'systemcenter/',
             message: req.flash('message'),
         });
     });
-    app.get('/report/device/activate', function(req, res) {
+    app.get('/report/device/activate', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/report/device/activate', {
             title: 'Report',
@@ -111,7 +116,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/report/device/deactivate/today', function(req, res) {
+    app.get('/report/device/deactivate/today', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/report/device/deactivate/today', {
             title: 'Report',
@@ -119,7 +124,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/report/device/deactivate/week', function(req, res) {
+    app.get('/report/device/deactivate/week', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/report/device/deactivate/week', {
             title: 'Report',
@@ -127,7 +132,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/report/device/deactivate/month', function(req, res) {
+    app.get('/report/device/deactivate/month', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/report/device/deactivate/month', {
             title: 'Report',
@@ -135,7 +140,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/report/device/deactivate/year', function(req, res) {
+    app.get('/report/device/deactivate/year', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/report/device/deactivate/year', {
             title: 'Report',
@@ -144,7 +149,7 @@ module.exports = function(app, passport) {
     });
 
 
-    app.get('/report/usage/person/today', function(req, res) {
+    app.get('/report/usage/person/today', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/report/usage/person/today', {
             title: 'Report',
@@ -152,7 +157,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/report/usage/person/week', function(req, res) {
+    app.get('/report/usage/person/week', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/report/usage/person/week', {
             title: 'Report',
@@ -160,7 +165,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/report/usage/person/month', function(req, res) {
+    app.get('/report/usage/person/month', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/report/usage/person/month', {
             title: 'Report',
@@ -168,7 +173,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/report/usage/person/year', function(req, res) {
+    app.get('/report/usage/person/year', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/report/usage/person/year', {
             title: 'Report',
@@ -177,7 +182,7 @@ module.exports = function(app, passport) {
     });
 
 
-    app.get('/report/usage/group/today', function(req, res) {
+    app.get('/report/usage/group/today', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/report/usage/group/today', {
             title: 'Report',
@@ -185,7 +190,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/report/usage/group/week', function(req, res) {
+    app.get('/report/usage/group/week', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/report/usage/group/week', {
             title: 'Report',
@@ -193,7 +198,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/report/usage/group/month', function(req, res) {
+    app.get('/report/usage/group/month', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/report/usage/group/month', {
             title: 'Report',
@@ -201,7 +206,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/report/usage/group/year', function(req, res) {
+    app.get('/report/usage/group/year', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/report/usage/group/year', {
             title: 'Report',
@@ -214,13 +219,13 @@ module.exports = function(app, passport) {
     //////////////////// TZ /////////////////////////////////////
 
 
-    app.get('/report/policy/usage', function(req, res) {
+    app.get('/report/policy/usage', isLoggedIn, function(req, res) {
         res.render('systemcenter/report/policy/usage', {
             title: 'Report',
             message: req.flash('message'),
         });
     });
-    app.get('/report/policy/device', function(req, res) {
+    app.get('/report/policy/device', isLoggedIn, function(req, res) {
         res.render('systemcenter/report/policy/device', {
             title: 'Report',
             message: req.flash('message'),
@@ -231,28 +236,28 @@ module.exports = function(app, passport) {
 
     //////////////////// TZ /////////////////////////////////////
 
-    app.get('/systemcenter/report/device/deactivate', function(req, res) {
+    app.get('/systemcenter/report/device/deactivate', isLoggedIn, function(req, res) {
         res.send("/systemcenter/report/device/deactivate" + " today");
     });
-    app.get('/systemcenter/report/device/deactivate/:period', function(req, res) {
+    app.get('/systemcenter/report/device/deactivate/:period', isLoggedIn, function(req, res) {
         res.send("/systemcenter/report/device/deactivate" + " " + req.params.period);
     });
-    app.get('/systemcenter/report/usage/group', function(req, res) {
+    app.get('/systemcenter/report/usage/group', isLoggedIn, function(req, res) {
         res.send("/systemcenter/report/usage/group" + " today");
     });
-    app.get('/systemcenter/report/usage/group/:period', function(req, res) {
+    app.get('/systemcenter/report/usage/group/:period', isLoggedIn, function(req, res) {
         res.send("/systemcenter/report/usage/group" + " " + req.params.period);
     });
-    app.get('/systemcenter/report/usage/person', function(req, res) {
+    app.get('/systemcenter/report/usage/person', isLoggedIn, function(req, res) {
         res.send("/systemcenter/report/usage/person" + " today");
     });
-    app.get('/systemcenter/report/usage/person/:period', function(req, res) {
+    app.get('/systemcenter/report/usage/person/:period', isLoggedIn, function(req, res) {
         res.send("/systemcenter/report/usage/person" + " " + req.params.period);
     });
-    app.get('/systemcenter/report/policy/usage', function(req, res) {
+    app.get('/systemcenter/report/policy/usage', isLoggedIn, function(req, res) {
         res.send("/systemcenter/report/policy/usage");
     });
-    app.get('/systemcenter/report/policy/device', function(req, res) {
+    app.get('/systemcenter/report/policy/device', isLoggedIn, function(req, res) {
         res.send("/systemcenter/report/policy/device");
     });
 
@@ -261,7 +266,7 @@ module.exports = function(app, passport) {
     
     // Authentication
     app.get('/systemcenter/login', function(req, res) {
-        res.render('profile/login', { user: req.user, error: req.flash('error') });
+        res.render('systemcenter/login', { user: req.user, error: req.flash('error') });
 
         //res.render('profile/login.ejs', { message: req.flash('loginMessage') });
     });
@@ -274,7 +279,7 @@ module.exports = function(app, passport) {
     }));
     app.get('/systemcenter/logout', function(req, res) {
         req.logout();
-        res.redirect('/profile/login');
+        res.redirect('/systemcenter/login');
     });
 };
 
