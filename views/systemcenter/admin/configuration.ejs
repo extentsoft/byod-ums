@@ -67,6 +67,7 @@
     <link href="css/chrome.css" rel="stylesheet" type="text/chrome">
     <!-- chrome only css -->
 
+    <link href="plugins/dataTables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 
 
     <!-- Responsive CSS -->
@@ -398,6 +399,8 @@
         <!-- Include Date Range Picker -->
         <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+		        <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
 
 
 
@@ -526,7 +529,7 @@
 		error: function(fa) {alert(JSON.stringify(fa));}
       });
 	  //document.getElementById("tab-body").innerHTML='<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>ระบบปฏิบัติการ</th><th>IP</th><th>วันที่ใช้งาน</th></tr></thead><tbody></tbody></table>';
-	  //refresh_table();
+	 // datepick();
 	}
 	datepick();
 	</script>
