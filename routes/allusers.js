@@ -14,7 +14,7 @@ var deviceList = function(req,res,next){
     console.log('Connection successful');
 	q = '"';
     //var request = new Request('select * from [test].[dbo].t1', function(err, rowCount){
-    var request = new Request("SELECT [accountID],[account],[userName],[orgName],CASE when t1.[accountID] in (select [itemID] from [AgileControllerDB].[dbo].[TSM_R_TParameterAssign]) then (SELECT CASE WHEN SUBSTRING([content],307,1) = '"+q+"' THEN SUBSTRING([content],306,1) ELSE SUBSTRING([content],306,2)END FROM [AgileControllerDB].[dbo].[TSM_E_Account] a join [AgileControllerDB].[dbo].[TSM_E_Organization] b on a.[orgID] = b.[orgID] join [AgileControllerDB].[dbo].[TSM_R_TParameterAssign] c on a.[accountID] = c.[itemID] join [AgileControllerDB].[dbo].[TSM_E_TerminalParameter] d on c.[parameterID] = d.[parameterID]where accountID = t1.[accountID]) else '3' END as limit FROM [AgileControllerDB].[dbo].[TSM_E_Account] t1 join [AgileControllerDB].[dbo].[TSM_E_Organization] t2 on t1.[orgID] = t2.[orgID] ", function(err, rowCount){
+    var request = new Request("SELECT [accountID],[account],[userName],[orgName],CASE when t1.[accountID] in (select [user_id] from [AgileControllerDB].[dbo].[UMS_Limitdevice]) then (SELECT [limitdevice] FROM [AgileControllerDB].[dbo].[UMS_Limitdevice] where [user_id] = t1.[accountID]) else (SELECT [limitdevice] FROM [AgileControllerDB].[dbo].[UMS_Limitdevice] where [user_id] = '999999' )END as limit FROM [AgileControllerDB].[dbo].[TSM_E_Account] t1 join [AgileControllerDB].[dbo].[TSM_E_Organization] t2 on t1.[orgID] = t2.[orgID] ", function(err, rowCount){
 
       if(err){
         console.error(err);

@@ -112,7 +112,21 @@
                 <div class="vd_content-wrapper">
                     <div class="vd_container">
                         <div class="vd_content clearfix">
+                           <!-- <div class="vd_head-section clearfix">
+                                <div class="vd_panel-header">
+                                    <ul class="breadcrumb">
+                                        <li><a href="index.html">Home</a> </li>
+                                        <li class="active">Default Dashboard</li>
+                                    </ul>
+                                    <div class="vd_panel-menu hidden-sm hidden-xs" data-intro="<strong>Expand Control</strong><br/>To expand content page horizontally, vertically, or Both. If you just need one button just simply remove the other button code." data-step=5 data-position="left">
+                                        <div data-action="remove-navbar" data-original-title="Remove Navigation Bar Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-navbar-button menu"> <i class="fa fa-arrows-h"></i> </div>
+                                        <div data-action="remove-header" data-original-title="Remove Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-header-button menu"> <i class="fa fa-arrows-v"></i> </div>
+                                        <div data-action="fullscreen" data-original-title="Remove Navigation Bar and Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="fullscreen-button menu"> <i class="glyphicon glyphicon-fullscreen"></i> </div>
 
+                                    </div>
+
+                                </div>
+                            </div> !-->
                             <!-- vd_head-section -->
 
                             <div class="vd_title-section clearfix">
@@ -122,120 +136,190 @@
                                     <div class="vd_panel-menu  hidden-xs">
                                         <div class="menu no-bg vd_green" data-original-title="Start Layout Tour Guide" data-toggle="modal" data-target="#myModal" data-placement="bottom" onClick=""> <span class="menu-icon font-md"><i class="fa fa-plus"></i></span> </div>
                                         <!-- menu -->
-
+										<!--
+                                        <div class="menu">
+                                            <div data-action="click-trigger"> <span class="menu-icon mgr-10"><i class="fa fa-filter"></i></span>Filter <i class="fa fa-angle-down"></i> </div>
+                                            <div class="vd_mega-menu-content width-xs-2 left-xs" data-action="click-target">
+                                                <div class="child-menu">
+                                                    <div class="content-list content-menu">
+                                                        <ul class="list-wrapper pd-lr-10">
+                                                            <li>
+                                                                <a href="#">
+                                                                    <div class="menu-icon"><i class=" fa fa-user"></i></div>
+                                                                    <div class="menu-text">Filter User</div>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    <div class="menu-icon"><i class=" fa fa-calendar"></i></div>
+                                                                    <div class="menu-text">Filter Date</div>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> !-->
                                         <!-- menu -->
                                     </div>
                                     <!-- vd_panel-menu -->
                                 </div>
                                 <!-- vd_panel-header -->
                             </div>
-                            <!-- Modal -->
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" style="width:30%">
-                                    <div class="modal-content">
-                                        <div class="modal-header vd_bg-blue vd_white">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
-                                            <h4 class="modal-title" id="myModalLabel">ลงทะเบียนอุปกรณ์ใหม่</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form class="form-horizontal">
-                                                <div class="form-group">
-                                                    <!--<label class="col-sm-2 control-label" for="inputMACAddr">MAC Address</label>-->
-                                                    <div class="text-center" style="margin-left:5%;width:90%">
-                                                        <input type="text" class="form-control text-center" id="term_name" placeholder="ชื่ออุปกรณ์" />
-                                                        <input type="text" class="form-control text-center" id="term_mac" placeholder="MAC Address" />
-                                                        <select class="form-control" style="text-align-last:center;" id="term_os">
-                                                            <option value="iOS">iOS</option>
-                                                            <option value="Android">Android</option>
-                                                            <option value="Windows">Windows</option>
-                                                            <option value="Linux">Linux</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-
-
-                                            </form>
-
-                                        </div>
-                                        <div class="modal-footer background-login">
-                                            <button type="button" class="btn vd_btn vd_bg-green" style="width:47%" data-dismiss="modal" onclick="adddevice(document.getElementById('term_name').value,document.getElementById('term_mac').value,document.getElementById('term_os').value)">บันทึก</button>
-                                            <button type="button" class="btn vd_btn vd_bg-grey" style="width:47%" data-dismiss="modal">ยกเลิก</button>
-
-                                        </div>
-                                    </div>
-                                    <!-- /.modal-content -->
-                                </div>
-                                <!-- /.modal-dialog -->
-                            </div>
-                            <!-- /.modal -->
-                            <!--begin::Modal-->
-                            <div class="modal fade" id="m_modal_5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header vd_bg-blue vd_white">
-                                            <h5 class="modal-title" id="exampleModalLabel">
-                                                ลงทะเบียนอุปกรณ์ใหม่
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							                  <!-- Modal -->
+                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" style="width:30%">
+                      <div class="modal-content">
+                        <div class="modal-header vd_bg-blue vd_white">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                          <h4 class="modal-title" id="myModalLabel">ลงทะเบียนอุปกรณ์ใหม่</h4>
+                        </div>
+                        <div class="modal-body"> 
+                        	<form class="form-horizontal">
+							<div class="form-group">
+							  <!--<label class="col-sm-2 control-label" for="inputMACAddr">MAC Address</label>-->
+							  <div class="text-center" style="margin-left:5%;width:90%">
+								<input type="text" class="form-control text-center" id="term_name" placeholder="ชื่ออุปกรณ์"/>
+								<input type="text" class="form-control text-center" id="term_mac" placeholder="MAC Address"/>
+								<select class="form-control" style="text-align-last:center;"  id="term_os">
+									<option value="iOS">iOS</option>
+									<option value="Android">Android</option>
+									<option value="Windows">Windows</option>
+									<option value="Linux">Linux</option>
+								</select>
+							  </div>
+							</div>
+                            
+                            
+                            
+                          </form>
+                        
+                        </div>
+                        <div class="modal-footer background-login">
+							<button type="button" class="btn vd_btn vd_bg-green" style="width:47%" data-dismiss="modal" onclick="adddevice(document.getElementById('term_name').value,document.getElementById('term_mac').value,document.getElementById('term_os').value)">บันทึก</button>
+							<button type="button" class="btn vd_btn vd_bg-grey" style="width:47%" data-dismiss="modal">ยกเลิก</button>
+                          
+                        </div>
+                      </div>
+                      <!-- /.modal-content --> 
+                    </div>
+                    <!-- /.modal-dialog --> 
+                  </div>
+                  <!-- /.modal --> 
+							<!--begin::Modal-->
+						<div class="modal fade" id="m_modal_5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header vd_bg-blue vd_white">
+										<h5 class="modal-title" id="exampleModalLabel">
+											ลงทะเบียนอุปกรณ์ใหม่
+										</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">
 												&times;
 											</span>
 										</button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form>
-                                                <div class="form-group">
-                                                    <!--<label class="col-sm-2 control-label" for="inputMACAddr">MAC Address</label>-->
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="term_name" placeholder="ชื่ออุปกรณ์" />
-                                                        <input type="text" class="form-control" id="term_mac" placeholder="MAC Address" />
-                                                        <select class="form-control" id="term_os">
+									</div>
+									<div class="modal-body">
+									  <form>
+										<div class="form-group">
+										  <!--<label class="col-sm-2 control-label" for="inputMACAddr">MAC Address</label>-->
+										  <div class="col-sm-10">
+											<input type="text" class="form-control" id="term_name" placeholder="ชื่ออุปกรณ์"/>
+											<input type="text" class="form-control" id="term_mac" placeholder="MAC Address"/>
+											<select class="form-control"  id="term_os">
 												<option value="iOS">iOS</option>
 												<option value="Android">Android</option>
 												<option value="Windows">Windows</option>
 												<option value="Linux">Linux</option>
 											</select>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" style="width:50%" data-dismiss="modal" onclick="adddevice(document.getElementById('term_name').value,document.getElementById('term_mac').value,document.getElementById('term_os').value)">
+										  </div>
+										</div>
+									  </form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-primary" style="width:50%" data-dismiss="modal" onclick="adddevice(document.getElementById('term_name').value,document.getElementById('term_mac').value,document.getElementById('term_os').value)">
 											บันทึก
 										</button>
-                                            <button type="button" class="btn btn-secondary" style="width:50%" data-dismiss="modal">
+										<button type="button" class="btn btn-secondary" style="width:50%" data-dismiss="modal">
 											ยกเลิก
 										</button>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end::Modal-->
+										
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--end::Modal-->
                             <!-- vd_title-section -->
 
                             <div class="vd_content-section clearfix">
                                 <div class="row">
+                                    <!--
+                                    <div class="col-md-7 mgbt-md-20 mgbt-lg-0">
+                                        <div class="panel vd_interactive-widget light-widget widget">
+                                            <div class="panel-body-list">
+                                                <div class="vd_panel-menu">
+                                                    <div data-action="refresh" class="menu entypo-icon smaller-font" data-placement="bottom" data-toggle="tooltip" data-original-title="Refresh"> <i class="icon-cycle"></i> </div>
+                                                    <div class="menu entypo-icon smaller-font" data-placement="bottom" data-toggle="tooltip" data-original-title="Config">
+                                                        <div data-action="click-trigger" class="menu-trigger"> <i class="icon-cog"></i> </div>
+                                                        <div class="vd_mega-menu-content  width-xs-2  left-xs" data-action="click-target">
+                                                            <div class="child-menu">
+                                                                <div class="content-list content-menu">
+                                                                    <ul class="list-wrapper pd-lr-10">
+                                                                        <li>
+                                                                            <a href="#">
+                                                                                <div class="menu-icon"><i class=" fa fa-user"></i></div>
+                                                                                <div class="menu-text">Panel Menu</div>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="menu entypo-icon" data-placement="bottom" data-toggle="tooltip" data-original-title="Close" data-action="close"> <i class="icon-cross"></i> </div>
+                                                </div>
+                                                # vd_panel-menu
 
+
+                                    <div class="pd-20">
+                                        <h5 class="mgbt-xs-20 mgtp-20"><span class="menu-icon append-icon"><i class="icon-graph"></i></span> <strong>Revenue Vs Cost Graph</strong> (November) </h5>
+                                        <div id="revenue-line-chart" style="height:255px; "></div>
+                                    </div>
+                                    <div class="row mgbt-xs-0">
+                                        <div class="col-sm-4 mgbt-xs-15 mgbt-sm-0">
+                                            <div class="item-left pd-15">
+                                                <div id="revenue-donut-chart" style="height:100px;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="item-right pd-15">
+                                                <div id="revenue-bar-chart" style="height: 100px;"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                                    # Panel Widget 
+                                </div> -->
                                     <!--col-md-7 -->
                                     <div class="col-md-3"></div>
                                     <div class="col-md-7" id="listterminal">
 
+                                        
+                                        
 
-
-
-                                    </div>
-                                    <!-- .vd_content-section -->
-
-                                </div>
-                                <!-- .vd_content -->
                             </div>
-                            <!-- .vd_container -->
-                        </div>
-                        <!-- .vd_content-wrapper -->
+                            <!-- .vd_content-section -->
 
-                        <!-- Middle Content End -->
+                        </div>
+                        <!-- .vd_content -->
+                    </div>
+                    <!-- .vd_container -->
+                </div>
+                <!-- .vd_content-wrapper -->
+
+                <!-- Middle Content End -->
 
                     </div>
                     <!-- .container -->
