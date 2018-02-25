@@ -55,7 +55,8 @@
     <link href="plugins/colorpicker/css/colorpicker.css" rel="stylesheet" type="text/css">
 
     <!-- Specific CSS -->
-	<link href="plugins/dataTables/css/jquery.dataTables.css" rel="stylesheet" type="text/css"><link href="plugins/dataTables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">    
+    <link href="plugins/dataTables/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+    <link href="plugins/dataTables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 
     <!-- Theme CSS -->
     <link href="css/theme.min.css" rel="stylesheet" type="text/css">
@@ -96,1270 +97,17 @@
 
 <body id="dashboard" class="full-layout  nav-right-hide nav-right-start-hide  nav-top-fixed      responsive    clearfix" data-active="dashboard " data-smooth-scrolling="1">
     <div class="vd_body">
-        <!-- Header Start -->
-        <header class="header-1" id="header">
-            <div class="vd_top-menu-wrapper">
-                <div class="container ">
-                    <div class="vd_top-nav vd_nav-width  ">
-                        <div class="vd_panel-header">
-                            <div class="logo">
+        <%- include('../../../admin/partial/header'); %>
 
-                                <a href="index.html"><!--<img alt="logo" src="img/logo1.png" width="200%">-->ระบบจัดการทรัพยากร</a>
+            <!-- Content start -->
+
+            <div class="content">
+                <div class="container">
+                    <%- include('../../../admin/partial/menu'); %>
 
 
-                            </div>
-                            <!-- logo -->
-                            <div class="vd_panel-menu hidden-sm hidden-xs " data-intro="<strong>Minimize Left Navigation</strong><br/>Toggle navigation size to medium or small size. You can set both button or one button only. See full option at documentation." data-step=1>
-
-                                <span class="nav-medium-button menu" data-toggle="tooltip" data-placement="bottom" data-original-title="Medium Nav Toggle" data-action="nav-left-medium">
-	                                <i class="fa fa-bars"></i>
-                                </span>
-                                <!--
-                                <span class="nav-small-button menu" data-toggle="tooltip" data-placement="bottom" data-original-title="Small Nav Toggle" data-action="nav-left-small">
-	                                <i class="fa fa-ellipsis-v"></i>
-                                </span>
-                                -->
-                            </div>
-
-                            <div class="vd_panel-menu left-pos visible-sm visible-xs">
-                                <span class="menu" data-action="toggle-navbar-left">
-                                    <i class="fa fa-ellipsis-v"></i>
-                                </span>
-                            </div>
-
-                            <div class="vd_panel-menu visible-sm visible-xs">
-                                <span class="menu visible-xs" data-action="submenu">
-	                                <i class="fa fa-bars"></i>
-                                 </span>
-
-                                <span class="menu visible-sm visible-xs" data-action="toggle-navbar-right">
-                                    <i class="fa fa-comments"></i>
-                                </span>
-
-                            </div>
-                            <!-- vd_panel-menu -->
-                        </div>
-                        <!-- vd_panel-header -->
-
-                    </div>
-                    <div class="vd_container">
-                        <div class="row">
-                            <div class="col-sm-5 col-xs-12">
-                                <!--
-                                <div class="vd_menu-search">
-                                    <form id="search-box" method="post" action="#">
-                                        <input type="text" name="search" class="vd_menu-search-text width-60" placeholder="Search">
-                                        <div class="vd_menu-search-category">
-                                            <span data-action="click-trigger"> 
-                                                <span class="separator"></span>
-                                            <span class="text">Category</span>
-                                            <span class="icon"> 
-                                                    <i class="fa fa-caret-down"></i>
-                                                </span>
-                                            </span>
-                                            <div class="vd_mega-menu-content width-xs-2 center-xs-2 right-sm" data-action="click-target">
-                                                <div class="child-menu">
-                                                    <div class="content-list content-menu content">
-                                                        <ul class="list-wrapper">
-                                                            <li>
-                                                                <label>
-                                                                    <input type="checkbox" value="all-files">
-                                                                    <span>All Files</span>
-                                                                </label>
-                                                            </li>
-                                                            <li>
-                                                                <label>
-                  <input type="checkbox" value="photos">
-                  <span>Photos</span></label>
-                                                            </li>
-                                                            <li>
-                                                                <label>
-                  <input type="checkbox" value="illustrations">
-                  <span>Illustrations</span></label>
-                                                            </li>
-                                                            <li>
-                                                                <label>
-                  <input type="checkbox" value="video">
-                  <span>Video</span></label>
-                                                            </li>
-                                                            <li>
-                                                                <label>
-                  <input type="checkbox" value="audio">
-                  <span>Audio</span></label>
-                                                            </li>
-                                                            <li>
-                                                                <label>
-                  <input type="checkbox" value="flash">
-                  <span>Flash</span></label>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <span class="vd_menu-search-submit"><i class="fa fa-search"></i> </span>
-                                    </form>
-                                </div>-->
-                            </div>
-                            <div class="col-sm-7 col-xs-12">
-                                <div class="vd_mega-menu-wrapper">
-                                    <div class="vd_mega-menu pull-right">
-                                        <ul class="mega-ul">
-                                            <li class="one-icon mega-li">
-                                                <a href="index.html" class="mega-link" data-action="click-trigger">
-                                                    <span class="mega-icon"><i class="fa fa-users"></i></span>
-                                                    <span class="badge vd_bg-red">10</span>
-                                                </a>
-                                                <div class="vd_mega-menu-content width-xs-3 width-sm-4 width-md-5 width-lg-4 right-xs left-sm" data-action="click-target">
-                                                    <div class="child-menu">
-                                                        <div class="title">
-                                                            สนทนาออนไลน์ <i></i>
-
-                                                        </div>
-                                                        <div class="content-list content-image content-menu">
-                                                            <div data-rel="scroll">
-                                                                <ul class="list-wrapper pd-lr-10">
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="menu-icon"><img alt="example image" src="img/avatar/avatar.jpg"></div>
-                                                                            <div class="menu-text"> Do you play or follow any sports?
-                                                                                <div class="menu-info">
-                                                                                    <span class="menu-date">12 Minutes Ago </span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="align-right">
-                                                                        <a href="#">
-                                                                            <div class="menu-icon"><img alt="example image" src="img/avatar/avatar-2.jpg"></div>
-                                                                            <div class="menu-text"> Good job mate !
-                                                                                <div class="menu-info">
-                                                                                    <span class="menu-date">1 Hour 20 Minutes Ago </span>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="menu-icon"><img alt="example image" src="img/avatar/avatar.jpg"></div>
-                                                                            <div class="menu-text"> Just calm down babe, everything will work out.
-                                                                                <div class="menu-info">
-                                                                                    <span class="menu-date">12 Days Ago</span>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="align-right">
-                                                                        <a href="#">
-                                                                            <div class="menu-icon"><img alt="example image" src="img/avatar/avatar-2.jpg"></div>
-                                                                            <div class="menu-text"> Euuh so gross....
-                                                                                <div class="menu-info">
-                                                                                    <span class="menu-date">19 Days Ago</span>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="menu-icon"><img alt="example image" src="img/avatar/avatar.jpg"></div>
-                                                                            <div class="menu-text"> That's the way.. I like it :D
-                                                                                <div class="menu-info">
-                                                                                    <span class="menu-date">20 Days Ago</span>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="align-right">
-                                                                        <a href="#">
-                                                                            <div class="menu-icon"><img alt="example image" src="img/avatar/avatar-2.jpg"></div>
-                                                                            <div class="menu-text"> Oooh don't be shy ;P
-                                                                                <div class="menu-info">
-                                                                                    <span class="menu-date">21 Days Ago</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="menu-icon"><img alt="example image" src="img/avatar/avatar.jpg"></div>
-                                                                            <div class="menu-text"> Hello, please call my number..
-                                                                                <div class="menu-info">
-                                                                                    <span class="menu-date">24 Days Ago</span>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="align-right">
-                                                                        <a href="#">
-                                                                            <div class="menu-icon"><img alt="example image" src="img/avatar/avatar-2.jpg"></div>
-                                                                            <div class="menu-text"> Don't go anywhere, i will be coming soon
-                                                                                <div class="menu-info">
-                                                                                    <span class="menu-date">1 Month 2 days Ago</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-
-                                                                </ul>
-                                                            </div>
-                                                            <div class="closing chat-area">
-                                                                <div class="chat-box">
-                                                                    <input type="text" placeholder="chat here.." />
-                                                                </div>
-                                                                <!--    <div class="vd_panel-menu">
-                                                        <div data-rel="tooltip" data-original-title="Insert Picture" class="menu">
-                                                            <i class="icon-camera"></i>
-                                                        </div>
-                                                        <div data-rel="tooltip" data-original-title="Emoticons" class="menu">
-                                                            <i class="fa fa-smile-o"></i>
-                                                        </div>
-                                                    </div> !-->
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- child-menu -->
-                                                </div>
-                                                <!-- vd_mega-menu-content -->
-                                            </li>
-                                            <li id="top-menu-3" class="one-icon mega-li">
-
-                                                <a href="index.html" class="mega-link" data-action="click-trigger">
-
-                                                    <span class="mega-icon"><i class="fa fa-envelope"></i></span>
-                                                    <!--<span class="mega-icon"><i class="fa fa-globe"></i></span>-->
-                                                    <span class="badge vd_bg-red">51</span>
-                                                </a>
-                                                <div class="vd_mega-menu-content  width-xs-3 width-sm-4  center-xs-3 left-sm" data-action="click-target">
-                                                    <div class="child-menu">
-                                                        <div class="title">
-                                                            Notifications
-                                                            <div class="vd_panel-menu">
-                                                                <span data-original-title="Notification Setting" data-toggle="tooltip" data-placement="bottom" class="menu">
-                        <i class="fa fa-cog"></i>
-                    </span>
-                                                                <!--                     <span class="text-menu" data-original-title="Settings" data-toggle="tooltip" data-placement="bottom">
-                        Settings
-                    </span> -->
-                                                            </div>
-                                                        </div>
-                                                        <div class="content-list">
-                                                            <div data-rel="scroll">
-                                                                <ul class="list-wrapper pd-lr-10">
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="menu-icon vd_yellow"><i class="fa fa-suitcase"></i></div>
-                                                                            <div class="menu-text"> Someone has give you a surprise
-                                                                                <div class="menu-info"><span class="menu-date">12 Minutes Ago</span></div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="menu-icon vd_blue"><i class=" fa fa-user"></i></div>
-                                                                            <div class="menu-text"> Change your user profile details
-                                                                                <div class="menu-info"><span class="menu-date">1 Hour 20 Minutes Ago</span></div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="menu-icon vd_red"><i class=" fa fa-cogs"></i></div>
-                                                                            <div class="menu-text"> Your setting is updated
-                                                                                <div class="menu-info"><span class="menu-date">12 Days Ago</span></div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="menu-icon vd_green"><i class=" fa fa-book"></i></div>
-                                                                            <div class="menu-text"> Added new article
-                                                                                <div class="menu-info"><span class="menu-date">19 Days Ago</span></div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="menu-icon vd_green"><img alt="example image" src="img/avatar/avatar.jpg"></div>
-                                                                            <div class="menu-text"> Change Profile Pic
-                                                                                <div class="menu-info"><span class="menu-date">20 Days Ago</span></div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="menu-icon vd_red"><i class=" fa fa-cogs"></i></div>
-                                                                            <div class="menu-text"> Your setting is updated
-                                                                                <div class="menu-info"><span class="menu-date">12 Days Ago</span></div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="menu-icon vd_green"><i class=" fa fa-book"></i></div>
-                                                                            <div class="menu-text"> Added new article
-                                                                                <div class="menu-info"><span class="menu-date">19 Days Ago</span></div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <div class="menu-icon vd_green"><img alt="example image" src="img/avatar/avatar.jpg"></div>
-                                                                            <div class="menu-text"> Change Profile Pic
-                                                                                <div class="menu-info"><span class="menu-date">20 Days Ago</span></div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-
-                                                                </ul>
-                                                            </div>
-                                                            <div class="closing text-center" style="">
-                                                                <a href="#">See All Notifications <i class="fa fa-angle-double-right"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- child-menu -->
-                                                </div>
-                                                <!-- vd_mega-menu-content -->
-                                            </li>
-
-                                            <li id="top-menu-profile" class="profile mega-li">
-                                                <a href="#" class="mega-link" data-action="click-trigger">
-                                                    <span class="mega-image">
-                <img src="img/users/user1.jpg" alt="example image" />
-            </span>
-                                                    <span class="mega-name">
-                Caroline <i class="fa fa-caret-down fa-fw"></i>
-            </span>
-                                                </a>
-                                                <div class="vd_mega-menu-content  width-xs-2  left-xs left-sm" data-action="click-target">
-                                                    <div class="child-menu">
-                                                        <div class="content-list content-menu">
-                                                            <ul class="list-wrapper pd-lr-10">
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <div class="menu-icon"><i class=" fa fa-user"></i></div>
-                                                                        <div class="menu-text">แก้ไขประวัติ</div>
-                                                                    </a>
-                                                                </li>
-                                                                <!--
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <div class="menu-icon"><i class=" fa fa-trophy"></i></div>
-                                                                        <div class="menu-text">My Achievements</div>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <div class="menu-icon"><i class=" fa fa-envelope"></i></div>
-                                                                        <div class="menu-text">Messages</div>
-                                                                        <div class="menu-badge">
-                                                                            <div class="badge vd_bg-red">10</div>
-                                                                        </div>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <div class="menu-icon"><i class=" fa fa-tasks
-"></i></div>
-                                                                        <div class="menu-text"> Tasks</div>
-                                                                        <div class="menu-badge">
-                                                                            <div class="badge vd_bg-red">5</div>
-                                                                        </div>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="line"></li>
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <div class="menu-icon"><i class=" fa fa-lock
-"></i></div>
-                                                                        <div class="menu-text">Privacy</div>
-                                                                    </a>
-                                                                </li>
-                                                            -->
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <div class="menu-icon"><i class=" fa fa-cogs"></i></div>
-                                                                        <div class="menu-text">ปรับแต่ง</div>
-                                                                    </a>
-                                                                </li>
-                                                                <!--
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <div class="menu-icon"><i class="  fa fa-key"></i></div>
-                                                                        <div class="menu-text">Lock</div>
-                                                                    </a>
-                                                                </li>
-                                                            -->
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <div class="menu-icon"><i class=" fa fa-sign-out"></i></div>
-                                                                        <div class="menu-text">ออกจากระบบ</div>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="line"></li>
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <div class="menu-icon"><i class=" fa fa-question-circle"></i></div>
-                                                                        <div class="menu-text">คู่มือการใช้งาน</div>
-                                                                    </a>
-                                                                </li>
-                                                                <!--
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <div class="menu-icon"><i class=" glyphicon glyphicon-bullhorn"></i></div>
-                                                                        <div class="menu-text">Report a Problem</div>
-                                                                    </a>
-                                                                </li>
-                                                            -->
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </li>
-
-                                            <!--
-                                            <li id="top-menu-settings" class="one-big-icon hidden-xs hidden-sm mega-li" data-intro="<strong>Toggle Right Navigation </strong><br/>On smaller device such as tablet or phone you can click on the middle content to close the right or left navigation."
-                                                data-step=2 data-position="left">
-                                                <a href="#" class="mega-link" data-action="toggle-navbar-right">
-                                                    <span class="mega-icon">
-                <i class="fa fa-comments"></i>
-            </span>
-                                                    #            <span  class="mega-image">
-                #<img src="img/avatar/avatar.jpg" alt="example image" />
-            #</span> 
-                                            <span class="badge vd_bg-red">8</span>
-                                            </a>
-
-                                            </li>
-                                            -->
-                                        </ul>
-                                        <!-- Head menu search form ends -->
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
-                <!-- container -->
-            </div>
-            <!-- vd_primary-menu-wrapper -->
 
-        </header>
-        <!-- Header Ends -->
-        <div class="content">
-            <div class="container">
-                <div class="vd_navbar vd_nav-width vd_navbar-tabs-menu vd_navbar-left  ">
-
-                    <div class="navbar-menu clearfix">
-                        <div class="vd_panel-menu hidden-xs">
-                            <span data-original-title="Expand All" data-toggle="tooltip" data-placement="bottom" data-action="expand-all" class="menu" data-intro="<strong>Expand Button</strong><br/>To expand all menu on left navigation menu." data-step=4>
-                <i class="fa fa-sort-amount-asc"></i>
-            </span>
-                        </div>
-                        <h3 class="menu-title hide-nav-medium hide-nav-small">เมนูการใช้งาน</h3>
-
-                        <div class="vd_menu">
-                            <ul>
-                                <li>
-                                    <a href="/dashboard" >
-                                        <span class="menu-icon"><i class="fa fa-dashboard"></i></span>
-                                        <span class="menu-text">แผงควบคุมหลัก</span>
-
-
-                                        </span>
-                                        <!--<span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>-->
-                                    </a>
-
-                                </li>
-                                <li>
-                                    <a href="/systemcenter/profile" >
-                                        <span class="menu-icon"><i class="fa fa-user"></i></span>
-                                        <span class="menu-text">ข้อมูลส่วนบุคคล</span>
-                                        <!--<span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>-->
-                                    </a>
-
-                                </li>
-                                <li>
-                                    <a href="/device">
-                                        <span class="menu-icon"><i class="fa fa-tablet"></i></span>
-                                        <span class="menu-text">ลงทะเบียนอุปกรณ์</span>
-                                        <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/setting">
-                                        <span class="menu-icon"><i class="fa fa-gear"></i></span>
-                                        <span class="menu-text">ปรับแต่งการใช้งาน</span>
-                                        <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/configuration">
-                                        <span class="menu-icon"><i class="icon-tools"> </i></span>
-                                        <span class="menu-text">ตั้งค่าระบบ</span>
-                                        <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);" data-action="click-trigger">
-                                        <span class="menu-icon entypo-icon"><i class="icon-newspaper"> </i></span>
-                                        <span class="menu-text">รายงาน</span>
-                                        <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                    </a>
-                                    <div class="child-menu" data-action="click-target">
-                                        <ul>
-                                            <li>
-                                                <a href="/report/device/activate">
-                                                    <span class="menu-text">รายงานการลงทะเบียนอุปกรณ์</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/report/device/deactivate/today" data-action="click-trigger">
-                                                    <span class="menu-text">รายงานการยกเลิกอุปกรณ์</span>
-                                                    <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                                </a>
-                                                <div class="child-menu" data-action="click-target">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="/report/device/deactivate/today">
-                                                                <span class="menu-text">รายงานการยกเลิกอุปกรณ์ในวันนี้</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/report/device/deactivate/week">
-                                                                <span class="menu-text">รายงานการยกเลิกอุปกรณ์ในช่วง 7 วันล่าสุด</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/report/device/deactivate/month">
-                                                                <span class="menu-text">รายงานการยกเลิกอุปกรณ์ในเดือนนี้</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/report/device/deactivate/year">
-                                                                <span class="menu-text">รายงานการยกเลิกอุปกรณ์ในปีนี้</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a href="/report/usage/group/today" data-action="click-trigger">
-                                                    <span class="menu-text">รายงานการใช้งานจำแนกตามกลุ่ม</span>
-                                                    <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                                </a>
-                                                <div class="child-menu" data-action="click-target">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="/report/usage/group/today">
-                                                                <span class="menu-text">รายงานการใช้งานในวันนี้</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/report/usage/group/week">
-                                                                <span class="menu-text">รายงานการใช้งานในช่วง 7 วันล่าสุด</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/report/usage/group/month">
-                                                                <span class="menu-text">รายงานการใช้งานในเดือนนี้</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/report/usage/group/year">
-                                                                <span class="menu-text">รายงานการใช้งานในปีนี้</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a href="/report/usage/person/today" data-action="click-trigger">
-                                                    <span class="menu-text">รายงานการใช้งานระบุบุคคล</span>
-                                                    <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                                </a>
-                                                <div class="child-menu" data-action="click-target">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="/report/usage/person/today">
-                                                                <span class="menu-text">รายงานการใช้งานในวันนี้</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/report/usage/person/week">
-                                                                <span class="menu-text">รายงานการใช้งานในช่วง 7 วันล่าสุด</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/report/usage/person/month">
-                                                                <span class="menu-text">รายงานการใช้งานในเดือนนี้</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/report/usage/person/year">
-                                                                <span class="menu-text">รายงานการใช้งานในปีนี้</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a href="/report/policy/usage/">
-                                                    <span class="menu-text">รายงานการใช้งานที่ไม่เป็นไปตามกฏ</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/report/policy/device">
-                                                    <span class="menu-text">รายงานบุคคลที่มีอุปกรณ์ครบตามกำหนด</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <!--
-                                    <li>
-                                        <a href="javascript:void(0);" data-action="click-trigger">
-                                            <span class="menu-icon"><i class="fa fa-sitemap"> </i></span>
-                                            <span class="menu-text">Nav Variations</span>
-                                            <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                        </a>
-                                        <div class="child-menu" data-action="click-target">
-                                            <ul class="clearfix">
-                                                <li>
-                                                    <a href="javascript:" data-action="click-trigger">
-                                                        <span class="menu-text">Side Navigation</span>
-                                                        <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                                    </a>
-                                                    <div class="child-menu" data-action="click-target">
-                                                        <ul class="clearfix">
-                                                            <li>
-                                                                <a href="nav-side-large-menu-tab.html">
-                                                                    <span class="menu-text">Large Menu Tab</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="nav-side-large-tabs-tab.html">
-                                                                    <span class="menu-text">Large Tabs Tab</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="nav-side-large-profile-tab.html">
-                                                                    <span class="menu-text">Large Profile Tab</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="nav-side-large-no-tab.html">
-                                                                    <span class="menu-text">Large No Tab</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="nav-side-large-chat-content.html">
-                                                                    <span class="menu-text">Large Chat Content</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="nav-side-large-email.html">
-                                                                    <span class="menu-text">Large Email</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="nav-side-medium-menu-tab.html">
-                                                                    <span class="menu-text">Medium Menu Tab </span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="nav-side-medium-tabs-tab.html">
-                                                                    <span class="menu-text">Medium Tabs Tab</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="nav-side-medium-profile-tab.html">
-                                                                    <span class="menu-text">Medium Profile Tab </span>
-                                                                    <span class="menu-badge"><span class="badge vd_bg-red">HOT</span></span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="nav-side-medium-no-tab.html">
-                                                                    <span class="menu-text">Medium No Tab </span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="nav-side-small-menu-tab.html">
-                                                                    <span class="menu-text">Small Menu Tab</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="nav-side-small-tabs-tab.html">
-                                                                    <span class="menu-text">Small Tabs Tab</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="nav-side-small-profile-tab.html">
-                                                                    <span class="menu-text">Small Profile Tab</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="nav-side-small-no-tab.html">
-                                                                    <span class="menu-text">Small No Tab</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:" data-action="click-trigger">
-                                                        <span class="menu-text">Top Navigation</span>
-                                                        <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                                    </a>
-                                                    <div class="child-menu" data-action="click-target">
-                                                        <ul class="clearfix">
-                                                            <li> <a href="nav-top-search.html">Search </a> </li>
-                                                            <li> <a href="nav-top-menu.html">Mega Menu </a> </li>
-                                                            <li> <a href="nav-top-clean-style.html"> Clean Style </a> </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:" data-action="click-trigger">
-                                                        <span class="menu-text">Bottom Navigation</span>
-                                                        <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                                    </a>
-                                                    <div class="child-menu" data-action="click-target">
-                                                        <ul class="clearfix">
-                                                            <li> <a href="nav-bottom-widget.html"> Chat Widget </a> </li>
-                                                            <li> <a href="nav-bottom-clean-menu.html"> Clean With Menu </a> </li>
-                                                            <li> <a href="nav-bottom-clean-center.html"> Clean Center Text </a> </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="functions-index.html">
-                                            <span class="menu-icon"><i class="fa fa-code"></i></span>
-                                            <span class="menu-text">Custom Functions</span>
-                                            <span class="menu-badge"><span class="badge vd_bg-yellow"><i class="fa fa-star"></i></span></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" data-action="click-trigger">
-                                            <span class="menu-icon"><i class="fa fa-th-list"></i></span>
-                                            <span class="menu-text">Forms</span>
-                                            <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                        </a>
-                                        <div class="child-menu" data-action="click-target">
-                                            <ul>
-                                                <li>
-                                                    <a href="forms-elements.html">
-                                                        <span class="menu-text">Form Elements</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="forms-layouts.html">
-                                                        <span class="menu-text">Form Layouts</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="forms-wizard.html">
-                                                        <span class="menu-text">Form Wizard</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="forms-validation.html">
-                                                        <span class="menu-text">Form Validation</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="forms-sliders.html">
-                                                        <span class="menu-text">Form Slider</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="forms-multiple-file-upload.html">
-                                                        <span class="menu-text">Form Multiple File Upload</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="forms-inline-editing.html">
-                                                        <span class="menu-text">Form Inline Editing</span>
-                                                        <span class="menu-badge"><span class="badge vd_bg-yellow">NEW</span></span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" data-action="click-trigger">
-                                            <span class="menu-icon entypo-icon"><i class="icon-tools"></i></span>
-                                            <span class="menu-text">UI Elements</span>
-                                            <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                        </a>
-                                        <div class="child-menu" data-action="click-target">
-                                            <ul>
-                                                <li>
-                                                    <a href="ui-panels.html">
-                                                        <span class="menu-text">Panels</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="ui-panels-draggable.html">
-                                                        <span class="menu-text">Panels Draggable</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="ui-buttons.html">
-                                                        <span class="menu-text">Buttons</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="ui-typography.html">
-                                                        <span class="menu-text">Typography</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="ui-icons.html">
-                                                        <span class="menu-text">Icons</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="ui-tabs-accordion.html">
-                                                        <span class="menu-text">Tabs and Accordion</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="ui-alert-notifications.html">
-                                                        <span class="menu-text">Alert and Notifications</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="ui-pricing-tables.html">
-                                                        <span class="menu-text">Pricing Tables</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" data-action="click-trigger">
-                                            <span class="menu-icon"><i class="fa fa-table"></i></span>
-                                            <span class="menu-text">List &amp; Tables</span>
-                                            <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                        </a>
-                                        <div class="child-menu" data-action="click-target">
-                                            <ul>
-                                                <li>
-                                                    <a href="listtables-tables-variation.html">
-                                                        <span class="menu-text">Tables Variation</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="listtables-data-tables.html">
-                                                        <span class="menu-text">Data Tables</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="listtables-small-list.html">
-                                                        <span class="menu-text">Small List</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="listtables-medium-list.html">
-                                                        <span class="menu-text">Medium List</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="listtables-blog-small-list.html">
-                                                        <span class="menu-text">Blog Small List</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="listtables-blog-large-list.html">
-                                                        <span class="menu-text">Blog Large List</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="listtables-grid-list.html">
-                                                        <span class="menu-text">Grid List</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" data-action="click-trigger">
-                                            <span class="menu-icon"><i class="fa fa-signal"></i></span>
-                                            <span class="menu-text">Charts</span>
-                                            <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                        </a>
-                                        <div class="child-menu" data-action="click-target">
-                                            <ul>
-                                                <li>
-                                                    <a href="charts-morris.html">
-                                                        <span class="menu-text">Morris Chart</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="charts-flot.html">
-                                                        <span class="menu-text">Flot Chart</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="charts-sparkline.html">
-                                                        <span class="menu-text">Sparkline Chart</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" data-action="click-trigger">
-                                            <span class="menu-icon"><i class="fa fa-map-marker"></i></span>
-                                            <span class="menu-text">Maps</span>
-                                            <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                        </a>
-                                        <div class="child-menu" data-action="click-target">
-                                            <ul>
-                                                <li>
-                                                    <a href="maps-vector.html">
-                                                        <span class="menu-text">Vector Map</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="maps-google.html">
-                                                        <span class="menu-text">Google Map</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" data-action="click-trigger">
-                                            <span class="menu-icon"><i class="fa fa-picture-o"></i></span>
-                                            <span class="menu-text">Gallery</span>
-                                            <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                        </a>
-                                        <div class="child-menu" data-action="click-target">
-                                            <ul>
-                                                <li>
-                                                    <a href="gallery-page.html">
-                                                        <span class="menu-text">Gallery Page</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="gallery-masonry.html">
-                                                        <span class="menu-text">Gallery Masonry</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="gallery-text-filter.html">
-                                                        <span class="menu-text">Gallery Text Filter</span>
-                                                        <span class="menu-badge"><span class="badge vd_bg-red">HOT</span></span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" data-action="click-trigger">
-                                            <span class="menu-icon entypo-icon"><i class="icon-newspaper"></i></span>
-                                            <span class="menu-text">Extra Pages</span>
-                                            <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                        </a>
-                                        <div class="child-menu" data-action="click-target">
-                                            <ul>
-                                                <li>
-                                                    <a href="pages-custom-product.html">
-                                                        <span class="menu-text">Custom Product Form</span>
-                                                        <span class="menu-badge"><span class="badge vd_bg-red">HOT</span></span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="pages-essay.html">
-                                                        <span class="menu-text">Essay Form</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="pages-invoice.html">
-                                                        <span class="menu-text">Invoice</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="pages-user-profile-form.html">
-                                                        <span class="menu-text">User Profiles Form</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="pages-user-profile.html">
-                                                        <span class="menu-text">User Profiles Page</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="pages-timeline.html">
-                                                        <span class="menu-text">Timeline</span>
-                                                        <span class="menu-badge"><span class="badge vd_bg-yellow">NEW</span></span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="pages-calendar.html">
-                                                        <span class="menu-text">Calendar</span>
-                                                        <span class="menu-badge"><span class="badge vd_bg-yellow">NEW</span></span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="pages-ecommerce-products.html">
-                                                        <span class="menu-text">Ecommerce Products List</span>
-                                                        <span class="menu-badge"><span class="badge vd_bg-yellow">NEW</span></span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="pages-ecommerce-product-add.html">
-                                                        <span class="menu-text">Ecommerce Product add</span>
-                                                        <span class="menu-badge"><span class="badge vd_bg-yellow">NEW</span></span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="pages-login.html">
-                                                        <span class="menu-text">Login Page</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="pages-forget-password.html">
-                                                        <span class="menu-text">Forget Password Page</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="pages-register.html">
-                                                        <span class="menu-text">Register Page</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="pages-logout.html">
-                                                        <span class="menu-text">Log Out Page</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="pages-lockscreen.html">
-                                                        <span class="menu-text">Lock Screen</span>
-                                                        <span class="menu-badge"><span class="badge vd_bg-yellow">NEW</span></span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="pages-404-error.html">
-                                                        <span class="menu-text">404 Error</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="pages-500-error.html">
-                                                        <span class="menu-text">500 Error</span>
-                                                    </a>
-                                                </li>
-    
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" data-action="click-trigger">
-                                            <span class="menu-icon"><i class="fa fa-desktop"></i></span>
-                                            <span class="menu-text">Front End</span>
-                                            <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                        </a>
-                                        <div class="child-menu" data-action="click-target">
-                                            <ul>
-                                                <li>
-                                                    <a href="front-1.html">
-                                                        <span class="menu-text">Flat Theme</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="front-2.html">
-                                                        <span class="menu-text">Layer Slider</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="front-blog.html">
-                                                        <span class="menu-text">Front Blog</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="front-blog-content.html">
-                                                        <span class="menu-text">Front Blog Content</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/vendroid-super-flexible-multipurpose-admin-theme/7717536?ref=Venmond">
-                                            <span class="menu-icon"><i class="fa fa-shopping-cart"></i></span>
-                                            <span class="menu-text">Buy This Theme</span>
-                                            <span class="menu-badge"><span class="badge vd_bg-red"><i class="fa fa-exclamation"></i></span></span>
-                                        </a>
-                                    </li>
-                                -->
-                            </ul>
-                            <!-- Head menu search form ends -->
-                        </div>
-                    </div>
-                    <div class="navbar-spacing clearfix">
-                    </div>
-                    <div class="vd_menu vd_navbar-bottom-widget">
-                        <ul>
-                            <li>
-                                <a href="pages-logout.html">
-                                    <span class="menu-icon"><i class="fa fa-sign-out"></i></span>
-                                    <span class="menu-text">ออกจากระบบ</span>
-                                </a>
-
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="vd_navbar vd_nav-width vd_navbar-chat vd_bg-black-80 vd_navbar-right   ">
-                    <div class="navbar-tabs-menu clearfix">
-                        <span class="expand-menu" data-action="expand-navbar-tabs-menu">
-            	<span class="menu-icon menu-icon-left">
-            		<i class="fa fa-ellipsis-h"></i>
-                    <span class="badge vd_bg-red">
-                        20
-                    </span>
-                        </span>
-                        <span class="menu-icon menu-icon-right">
-            		<i class="fa fa-ellipsis-h"></i>
-                    <span class="badge vd_bg-red">
-                        20
-                    </span>
-                        </span>
-                        </span>
-                        <div class="menu-container">
-                            <div class="navbar-search-wrapper">
-                                <div class="navbar-search vd_bg-black-30">
-                                    <span class="append-icon"><i class="fa fa-search"></i></span>
-                                    <input type="text" placeholder="Search" class="vd_menu-search-text no-bg no-bd vd_white width-70" name="search">
-                                    <div class="pull-right search-config">
-                                        <a data-toggle="dropdown" href="javascript:void(0);" class="dropdown-toggle"><span class="prepend-icon vd_grey"><i class="fa fa-cog"></i></span></a>
-                                        <ul role="menu" class="dropdown-menu">
-                                            <li><a href="#">Action</a></li>
-                                            <li><a href="#">Another action</a></li>
-                                            <li><a href="#">Something else here</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#">Separated link</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="navbar-menu clearfix">
-                        <div class="content-list content-image content-chat">
-                            <ul class="list-wrapper no-bd-btm pd-lr-10">
-                                <li class="group-heading vd_bg-black-20">FAVORITE</li>
-                                <li>
-                                    <a href="#">
-                                        <div class="menu-icon"><img src="img/avatar/avatar.jpg" alt="example image"></div>
-                                        <div class="menu-text">Jessylin
-                                            <div class="menu-info">
-                                                <span class="menu-date">Administrator </span>
-                                            </div>
-                                        </div>
-                                        <div class="menu-badge"><span class="badge status vd_bg-green">&nbsp;</span></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="menu-icon"><img src="img/avatar/avatar-2.jpg" alt="example image"></div>
-                                        <div class="menu-text">Rodney Mc.Cardo
-                                            <div class="menu-info">
-                                                <span class="menu-date">Designer </span>
-                                            </div>
-                                        </div>
-                                        <div class="menu-badge"><span class="badge status vd_bg-grey">&nbsp;</span></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="menu-icon"><img src="img/avatar/avatar-3.jpg" alt="example image"></div>
-                                        <div class="menu-text">Theresia Minoque
-                                            <div class="menu-info">
-                                                <span class="menu-date">Engineering </span>
-                                            </div>
-                                        </div>
-                                        <div class="menu-badge"><span class="badge status vd_bg-green">&nbsp;</span></div>
-                                    </a>
-                                </li>
-                                <li class="group-heading vd_bg-black-20">FRIENDS</li>
-                                <li>
-                                    <a href="#">
-                                        <div class="menu-icon"><img src="img/avatar/avatar-4.jpg" alt="example image"></div>
-                                        <div class="menu-text">Greg Grog
-                                            <div class="menu-info">
-                                                <span class="menu-date">Developer </span>
-                                            </div>
-                                        </div>
-                                        <div class="menu-badge"><span class="badge status vd_bg-grey">&nbsp;</span></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="menu-icon"><img src="img/avatar/avatar-5.jpg" alt="example image"></div>
-                                        <div class="menu-text">Stefanie Imburgh
-                                            <div class="menu-info">
-                                                <span class="menu-date">Dancer</span>
-                                            </div>
-                                        </div>
-                                        <div class="menu-badge"><span class="vd_grey font-sm"><i class="fa fa-mobile"></i></span></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="menu-icon"><img src="img/avatar/avatar-6.jpg" alt="example image"></div>
-                                        <div class="menu-text">Matt Demon
-                                            <div class="menu-info">
-                                                <span class="menu-date">Musician </span>
-                                            </div>
-                                        </div>
-                                        <div class="menu-badge"><span class="vd_grey font-sm"><i class="fa fa-mobile"></i></span></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="menu-icon"><img src="img/avatar/avatar-7.jpg" alt="example image"></div>
-                                        <div class="menu-text">Jeniffer Anastasia
-                                            <div class="menu-info">
-                                                <span class="menu-date">Senior Developer </span>
-                                            </div>
-                                        </div>
-                                        <div class="menu-badge"><span class="badge status vd_bg-green">&nbsp;</span></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="menu-icon"><img src="img/avatar/avatar-8.jpg" alt="example image"></div>
-                                        <div class="menu-text">Daniel Dreamon
-                                            <div class="menu-info">
-                                                <span class="menu-date">Sales Executive </span>
-                                            </div>
-                                        </div>
-                                        <div class="menu-badge"><span class="badge status vd_bg-green">&nbsp;</span></div>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </div>
-
-
-                    </div>
-                    <div class="navbar-spacing clearfix">
-                    </div>
-                </div>
                 <!-- Middle Content Start -->
 
                 <div class="vd_content-wrapper">
@@ -1388,48 +136,48 @@
                                 <div class="vd_panel-header">
                                     <h1>รายงาน</h1>
 
-                                    
-                                        <!-- menu -->
-                                    </div>
+
+                                    <!-- menu -->
                                 </div>
-                                <!-- vd_panel-header -->
                             </div>
-                            <!-- vd_title-section -->
+                            <!-- vd_panel-header -->
+                        </div>
+                        <!-- vd_title-section -->
 
-                            <div class="vd_content-section clearfix">
-                                <!-- start row-->
+                        <div class="vd_content-section clearfix">
+                            <!-- start row-->
 
 
-                                <div class="row">
-              <div class="col-md-12">
-                <div class="panel widget">
-                  <div class="panel-heading vd_bg-grey">
-                    <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายงานการยกเลิกอุปกรณ์ </h3>
-                  </div>
-                  <div class="panel-body table-responsive">
-                    <table class="table table-striped" id="data-tables">
-                      <thead>
-                        <tr>
-                          <th>เจ้าของอุปกรณ์</th>
-                          <th>MAC</th>
-                          <th>ระบบปฏิบัติการ</th>
-                          <th>วันที่ยกเลิกอุปกรณ์</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-    
-                        
-                      </tbody>
-                    </table>
-                  
-                </div>
-                <!-- Panel Widget --> 
-              </div>
-              <!-- col-md-12 --> 
-            </div>
-            <!-- row --> 
-                                
-                                
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel widget">
+                                        <div class="panel-heading vd_bg-grey">
+                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายงานการยกเลิกอุปกรณ์ </h3>
+                                        </div>
+                                        <div class="panel-body table-responsive">
+                                            <table class="table table-striped" id="data-tables">
+                                                <thead>
+                                                    <tr>
+                                                        <th>เจ้าของอุปกรณ์</th>
+                                                        <th>MAC</th>
+                                                        <th>ระบบปฏิบัติการ</th>
+                                                        <th>วันที่ยกเลิกอุปกรณ์</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        <!-- Panel Widget -->
+                                    </div>
+                                    <!-- col-md-12 -->
+                                </div>
+                                <!-- row -->
+
+
                             </div>
                             <!-- .vd_content-section -->
 
@@ -1444,156 +192,150 @@
 
             </div>
             <!-- .container -->
-        </div>
-        <!-- .content -->
-
-        <!-- Footer Start -->
-        <footer class="footer-1 " id="footer ">
-            <div class="vd_bottom ">
-                <div class="container ">
-                    <div class="row ">
-                        <div class=" col-xs-12 ">
-                            <div class="copyright ">
-                                Copyright &copy;2018 Extentsoft Inc. All Rights Reserved
-                            </div>
-                        </div>
-                    </div>
-                    <!-- row -->
-                </div>
-                <!-- container -->
-            </div>
-        </footer>
-        <!-- Footer END -->
-
-
-
     </div>
+    <!-- .content -->
+    <%- include('../../../admin/partial/footer'); %>
 
-    <!-- .vd_body END  -->
-    <a id="back-top " href="# " data-action="backtop " class="vd_back-top visible "> <i class="fa fa-angle-up "> </i> </a>
 
-    <!--
+
+        </div>
+
+        <!-- .vd_body END  -->
+        <a id="back-top " href="# " data-action="backtop " class="vd_back-top visible "> <i class="fa fa-angle-up "> </i> </a>
+
+        <!--
 <a class="back-top " href="# " id="back-top "> <i class="icon-chevron-up icon-white "> </i> </a> -->
 
-    <!-- Javascript =============================================== -->
-<!-- Placed at the end of the document so the pages load faster --> 
-<script type="text/javascript" src="js/jquery.js"></script> 
-<!--[if lt IE 9]>
+        <!-- Javascript =============================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <!--[if lt IE 9]>
   <script type="text/javascript" src="js/excanvas.js"></script>      
 <![endif]-->
-<script type="text/javascript" src="js/bootstrap.min.js"></script> 
-<script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
-<script type="text/javascript" src="plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
+        <script type="text/javascript" src="plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 
-<script type="text/javascript" src="js/caroufredsel.js"></script> 
-<script type="text/javascript" src="js/plugins.js"></script>
+        <script type="text/javascript" src="js/caroufredsel.js"></script>
+        <script type="text/javascript" src="js/plugins.js"></script>
 
-<script type="text/javascript" src="plugins/breakpoints/breakpoints.js"></script>
-<script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="plugins/prettyPhoto-plugin/js/jquery.prettyPhoto.js"></script> 
+        <script type="text/javascript" src="plugins/breakpoints/breakpoints.js"></script>
+        <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="plugins/prettyPhoto-plugin/js/jquery.prettyPhoto.js"></script>
 
-<script type="text/javascript" src="plugins/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-<script type="text/javascript" src="plugins/tagsInput/jquery.tagsinput.min.js"></script>
-<script type="text/javascript" src="plugins/bootstrap-switch/bootstrap-switch.min.js"></script>
-<script type="text/javascript" src="plugins/blockUI/jquery.blockUI.js"></script>
-<script type="text/javascript" src="plugins/pnotify/js/jquery.pnotify.min.js"></script>
+        <script type="text/javascript" src="plugins/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script type="text/javascript" src="plugins/tagsInput/jquery.tagsinput.min.js"></script>
+        <script type="text/javascript" src="plugins/bootstrap-switch/bootstrap-switch.min.js"></script>
+        <script type="text/javascript" src="plugins/blockUI/jquery.blockUI.js"></script>
+        <script type="text/javascript" src="plugins/pnotify/js/jquery.pnotify.min.js"></script>
 
-<script type="text/javascript" src="js/theme.js"></script>
-<script type="text/javascript" src="custom/custom.js"></script>
- 
-<!-- Specific Page Scripts Put Here -->
+        <script type="text/javascript" src="js/theme.js"></script>
+        <script type="text/javascript" src="custom/custom.js"></script>
 
-<script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
+        <!-- Specific Page Scripts Put Here -->
 
-<script type="text/javascript">
-		$(document).ready(function() {
-				
-		} );
-</script>
+        <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
 
-<!-- Specific Page Scripts END -->
+        <script type="text/javascript">
+            $(document).ready(function() {
 
+            });
+        </script>
 
+        <!-- Specific Page Scripts END -->
 
 
-<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
-
-<script>
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-XXXXX-X']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-</script> 
-	<script>
-				account_now = 'natthawat_a';
-	
-		function refresh_table(sd,ed){
-		//alert('refresh');
-			$.ajax('http://localhost:3000/report/report673', {
-				type: "get",
-				data: {start:sd,end:ed},
-				success: function(json) {
-					//alert(JSON.stringify(json));
-					data_res = JSON.parse(JSON.stringify(json));
-					bindata_table(data_res);
-				}
-			});
-		}
 
 
-		function bindata_table(data_sql){
-		//alert('bind');
-			//alert(data_sql);
-			data = [];
-			total = 0;
-			for (i = 0; i < data_sql.length; i++) {
-				data_json = {};
-				update_time = new Date(data_sql[5]);
-				date_str = update_time.getHours() + ":" + (update_time.getMinutes()<10?'0':'') + update_time.getMinutes() + ":" + (update_time.getSeconds()<10?'0':'') + update_time.getSeconds() +' - ' + update_time.getDate() + "/" + update_time.getMonth() + "/" + update_time.getFullYear();
+        <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
+
+        <script>
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-XXXXX-X']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+        <script>
+            account_now = 'natthawat_a';
+
+            function refresh_table(sd, ed) {
+                //alert('refresh');
+                $.ajax('http://localhost:3000/report/report673', {
+                    type: "get",
+                    data: {
+                        start: sd,
+                        end: ed
+                    },
+                    success: function(json) {
+                        //alert(JSON.stringify(json));
+                        data_res = JSON.parse(JSON.stringify(json));
+                        bindata_table(data_res);
+                    }
+                });
+            }
 
 
-				data_json = {name:data_sql[0],mac:data_sql[2],os:data_sql[3],date:date_str};
-				$('#data-tables').find('tbody').append( "<tr><td>"+data_sql[0]+"</td><td>"+data_sql[2]+"</td><td>"+data_sql[3]+"</td><td>"+date_str+"</td></tr>" );
-				total = total+data_sql[1];
-				//alert(JSON.stringify(data_json));
-				data.push(data_json);
-				//alert(JSON.stringify(data));
-				data_sql.splice(0,6);
-				i = -1;
+            function bindata_table(data_sql) {
+                //alert('bind');
+                //alert(data_sql);
+                data = [];
+                total = 0;
+                for (i = 0; i < data_sql.length; i++) {
+                    data_json = {};
+                    update_time = new Date(data_sql[5]);
+                    date_str = update_time.getHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getDate() + "/" + update_time.getMonth() + "/" + update_time.getFullYear();
 
-			}
-			//alert(JSON.stringify(data));
-			//c1(data);
-				
-			$('#data-tables').dataTable();
-			
-		}
-		
-		function datepick() {
-		
-		var today = new Date();
-		var dd = today.getDate()-7;
-		var ddd = today.getDate();
-		var mm = today.getMonth()+1; //January is 0!
 
-		var yyyy = today.getFullYear();
-		var yyy = today.getFullYear();
-		if(dd<10){
-			dd='0'+dd;
-		} 
-		if(mm<10){
-			mm='0'+mm;
-		} 
-		refresh_table(yyy+'-'+mm+'-'+dd,yyyy+'-'+mm+'-'+ddd);
-	}
-	datepick();
-	</script>
+                    data_json = {
+                        name: data_sql[0],
+                        mac: data_sql[2],
+                        os: data_sql[3],
+                        date: date_str
+                    };
+                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[0] + "</td><td>" + data_sql[2] + "</td><td>" + data_sql[3] + "</td><td>" + date_str + "</td></tr>");
+                    total = total + data_sql[1];
+                    //alert(JSON.stringify(data_json));
+                    data.push(data_json);
+                    //alert(JSON.stringify(data));
+                    data_sql.splice(0, 6);
+                    i = -1;
+
+                }
+                //alert(JSON.stringify(data));
+                //c1(data);
+
+                $('#data-tables').dataTable();
+
+            }
+
+            function datepick() {
+
+                var today = new Date();
+                var dd = today.getDate() - 7;
+                var ddd = today.getDate();
+                var mm = today.getMonth() + 1; //January is 0!
+
+                var yyyy = today.getFullYear();
+                var yyy = today.getFullYear();
+                if (dd < 10) {
+                    dd = '0' + dd;
+                }
+                if (mm < 10) {
+                    mm = '0' + mm;
+                }
+                refresh_table(yyy + '-' + mm + '-' + dd, yyyy + '-' + mm + '-' + ddd);
+            }
+            datepick();
+        </script>
 
 
 </body>
