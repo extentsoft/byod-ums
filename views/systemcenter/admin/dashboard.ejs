@@ -1133,7 +1133,8 @@
                                 var my_msg = "";
                                 if (datac[i].rdata == '') {
                                     my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
-                                } else {
+                                } else { // binary file
+                                    datac[i].msg.
                                     my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'><a download='" + datac[i].msg + "' href='data:application/octet-stream;base64," + datac[i].rdata + "'>" + datac[i].msg + "</a><div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
                                 }
 
@@ -1145,7 +1146,7 @@
                                 var other_msg = "";
                                 if (datac[i].rdata == '') {
                                     other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
-                                } else {
+                                } else { // binary file
                                     other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'><a download='" + datac[i].msg + "' href='data:application/octet-stream;base64," + datac[i].rdata + "'>" + datac[i].msg + "</a><div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
                                 }
 
