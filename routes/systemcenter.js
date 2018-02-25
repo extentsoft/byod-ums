@@ -5,104 +5,57 @@ var soap = require('soap');
 var crypt = new Crypt();
 module.exports = function(app, passport) {
 
-    app.get('/systemcenter/api', function(req, res) {
-        //var url = 'http://www.webservicex.net/length.asmx?wsdl';
-        var url = 'http://192.168.42.166:8088/OPMUI/service/AccountManagerServices?wsdl';
 
-        //var args = { LengthValue: 5, fromLengthUnit: 'Nanometers', toLengthUnit: 'Millimeters' };
-        var args = {
-            in0: 'natthawat_a',
-            in1: {
-                account: 'natthawat_a',
-                accountType: 1,
-                orgName: '\LDAP Users2',
-                bindMac: '80-AA-96-94-AE-80,70-AA-96-94-AE-70',
-                loginType: 7,
-                userName: 'Natthawat Arunweerungroj'
-            }
-        };
-
-        /*soap.createClient(url, function(err, client) {
-            client.ChangeLengthUnit(args, function(err, result) {
-                console.log(result);
-            });
-        });*/
-        soap.modifyAccount(url, function(err, client) {
-            client.ChangeLengthUnit(args, function(err, result) {
-                console.log(result);
-            });
-        });
-    });
-
-    app.get('/systemcenter/test', function(req, res) {
-        res.render("systemcenter/admin/test", {
-            title: 'Test'
-        });
-    });
-
-
+    /* ================================================================
+                              Admin Section
+    =================================================================== */
     app.get('/systemcenter/dashboard', function(req, res) {
         //res.send("Hello System Center");
         res.render('systemcenter/admin/dashboard', {
-            title: 'Dashboard',
+            title: 'แผงควบคุมหลัก',
             path: 'systemcenter/',
             message: req.flash('message'),
         });
     });
-
-    app.get('/test', function(req, res) {
-        //res.send("Hello System Center");
-        res.render('systemcenter/admin/test', {
-            title: 'Dashboard',
-            path: 'systemcenter/',
+    app.get('/systemcenter/configuration', function(req, res) {
+        res.render('systemcenter/admin/configuration', {
+            title: 'ตั้งค่าระบบ',
+            //path: 'systemcenter/',
             message: req.flash('message'),
         });
     });
 
-	app.get('/systemcenter/login', (req, res) => {
-        res.render('login', { user: req.user, error: req.flash('error') });
-    });
-
-
-
-    app.get('/device', function(req, res) {
+    /* ================================================================
+                              User Section
+    =================================================================== */
+    app.get('/systemcenter/device', function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/device', {
-            title: 'Device',
+            title: 'อุปกรณ์',
             message: req.flash('message'),
         });
     });
 
-    app.get('/setting', function(req, res) {
+    app.get('/systemcenter/setting', function(req, res) {
         //res.send("/systemcenter/setting");
         res.render('systemcenter/setting', {
-            title: 'Setting',
+            title: 'ปรับแต่ง',
             message: req.flash('message'),
         });
     });
 
-    app.get('/systemcenter/configuration', function(req, res) {
-        res.send("/systemcenter/configuration");
-    });
-
-    //////////////////// TZ /////////////////////////////////////
-
-    //////////////////// TZ /////////////////////////////////////
     app.get('/systemcenter/profile', function(req, res) {
         //res.send("Hello System Center");
-        res.render('systemcenter/admin/dashboard', {
-            title: 'Dashboard',
+        res.render('systemcenter/profile', {
+            title: 'ข้อมูลผู้ใช้งาน',
             //path: 'systemcenter/',
             message: req.flash('message'),
         });
     });
-    app.get('/configuration', function(req, res) {
-        res.render('systemcenter/admin/dashboard', {
-            title: 'Dashboard',
-            //path: 'systemcenter/',
-            message: req.flash('message'),
-        });
-    });
+
+    /* ================================================================
+                            Report Section
+    =================================================================== */
     app.get('/report/device/activate', function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         res.render('systemcenter/report/device/activate', {
@@ -209,11 +162,6 @@ module.exports = function(app, passport) {
         });
     });
 
-
-
-    //////////////////// TZ /////////////////////////////////////
-
-
     app.get('/report/policy/usage', function(req, res) {
         res.render('systemcenter/report/policy/usage', {
             title: 'Report',
@@ -226,10 +174,6 @@ module.exports = function(app, passport) {
             message: req.flash('message'),
         });
     });
-
-
-
-    //////////////////// TZ /////////////////////////////////////
 
     app.get('/systemcenter/report/device/deactivate', function(req, res) {
         res.send("/systemcenter/report/device/deactivate" + " today");
@@ -257,8 +201,59 @@ module.exports = function(app, passport) {
     });
 
 
+    /* ================================================================
+                              Others 
+    =================================================================== */
 
-    
+    app.get('/systemcenter/api', function(req, res) {
+        //var url = 'http://www.webservicex.net/length.asmx?wsdl';
+        var url = 'http://192.168.42.166:8088/OPMUI/service/AccountManagerServices?wsdl';
+
+        //var args = { LengthValue: 5, fromLengthUnit: 'Nanometers', toLengthUnit: 'Millimeters' };
+        var args = {
+            in0: 'natthawat_a',
+            in1: {
+                account: 'natthawat_a',
+                accountType: 1,
+                orgName: '\LDAP Users2',
+                bindMac: '80-AA-96-94-AE-80,70-AA-96-94-AE-70',
+                loginType: 7,
+                userName: 'Natthawat Arunweerungroj'
+            }
+        };
+
+        /*soap.createClient(url, function(err, client) {
+            client.ChangeLengthUnit(args, function(err, result) {
+                console.log(result);
+            });
+        });*/
+        soap.modifyAccount(url, function(err, client) {
+            client.ChangeLengthUnit(args, function(err, result) {
+                console.log(result);
+            });
+        });
+    });
+
+    app.get('/systemcenter/test', function(req, res) {
+        res.render("systemcenter/admin/test", {
+            title: 'Test'
+        });
+    });
+
+
+    app.get('/test', function(req, res) {
+        //res.send("Hello System Center");
+        res.render('systemcenter/admin/test', {
+            title: 'Dashboard',
+            path: 'systemcenter/',
+            message: req.flash('message'),
+        });
+    });
+
+    app.get('/systemcenter/login', (req, res) => {
+        res.render('login', { user: req.user, error: req.flash('error') });
+    });
+
     // Authentication
     app.get('/systemcenter/login', function(req, res) {
         res.render('profile/login', { user: req.user, error: req.flash('error') });
