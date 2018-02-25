@@ -55,7 +55,8 @@
     <link href="plugins/colorpicker/css/colorpicker.css" rel="stylesheet" type="text/css">
 
     <!-- Specific CSS -->
-	<link href="plugins/dataTables/css/jquery.dataTables.css" rel="stylesheet" type="text/css"><link href="plugins/dataTables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">    
+    <link href="plugins/dataTables/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+    <link href="plugins/dataTables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 
     <!-- Theme CSS -->
     <link href="css/theme.min.css" rel="stylesheet" type="text/css">
@@ -568,7 +569,7 @@
                         <div class="vd_menu">
                             <ul>
                                 <li>
-                                    <a href="/dashboard" >
+                                    <a href="/dashboard">
                                         <span class="menu-icon"><i class="fa fa-dashboard"></i></span>
                                         <span class="menu-text">แผงควบคุมหลัก</span>
 
@@ -579,7 +580,7 @@
 
                                 </li>
                                 <li>
-                                    <a href="/systemcenter/profile" >
+                                    <a href="/systemcenter/profile">
                                         <span class="menu-icon"><i class="fa fa-user"></i></span>
                                         <span class="menu-text">ข้อมูลส่วนบุคคล</span>
                                         <!--<span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>-->
@@ -1388,82 +1389,82 @@
                                 <div class="vd_panel-header">
                                     <h1>รายงาน</h1>
 
-                                    
-                                        <!-- menu -->
+
+                                    <!-- menu -->
+                                </div>
+                            </div>
+                            <!-- vd_panel-header -->
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" style="width:30%">
+                                <div class="modal-content">
+                                    <div class="modal-header vd_bg-blue vd_white">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                                        <h4 class="modal-title" id="myModalLabel">กำหนดจำนวนอุปกรณ์</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <!--<label class="col-sm-2 control-label" for="inputMACAddr">MAC Address</label>-->
+                                                <div class="text-center" style="margin-left:5%;width:90%">
+                                                    <input type="text" class="form-control text-center" id="amount_dev" placeholder="ระบุจำนวนอุปกรณ์" />
+                                                </div>
+                                            </div>
+
+
+
+                                        </form>
+
+                                    </div>
+                                    <div class="modal-footer background-login">
+                                        <button type="button" class="btn vd_btn vd_bg-green" style="width:47%" data-dismiss="modal" id="btn-limit" value="pp" onclick="addlimit($('#amount_dev').val(),$(this).attr('value'))">บันทึก</button>
+                                        <button type="button" class="btn vd_btn vd_bg-grey" style="width:47%" data-dismiss="modal">ยกเลิก</button>
+
                                     </div>
                                 </div>
-                                <!-- vd_panel-header -->
+                                <!-- /.modal-content -->
                             </div>
-							<!-- Modal -->
-                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" style="width:30%">
-                      <div class="modal-content">
-                        <div class="modal-header vd_bg-blue vd_white">
-                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
-                          <h4 class="modal-title" id="myModalLabel">กำหนดจำนวนอุปกรณ์</h4>
+                            <!-- /.modal-dialog -->
                         </div>
-                        <div class="modal-body"> 
-                        	<form class="form-horizontal">
-							<div class="form-group">
-							  <!--<label class="col-sm-2 control-label" for="inputMACAddr">MAC Address</label>-->
-							  <div class="text-center" style="margin-left:5%;width:90%">
-								<input type="text" class="form-control text-center" id="amount_dev" placeholder="ระบุจำนวนอุปกรณ์"/>
-							  </div>
-							</div>
-                            
-                            
-                            
-                          </form>
-                        
-                        </div>
-                        <div class="modal-footer background-login">
-							<button type="button" class="btn vd_btn vd_bg-green" style="width:47%" data-dismiss="modal" id="btn-limit" value="pp" onclick="addlimit($('#amount_dev').val(),$(this).attr('value'))">บันทึก</button>
-							<button type="button" class="btn vd_btn vd_bg-grey" style="width:47%" data-dismiss="modal">ยกเลิก</button>
-                          
-                        </div>
-                      </div>
-                      <!-- /.modal-content --> 
-                    </div>
-                    <!-- /.modal-dialog --> 
-                  </div>
-                  <!-- /.modal --> 
-                            <!-- vd_title-section -->
+                        <!-- /.modal -->
+                        <!-- vd_title-section -->
 
-                            <div class="vd_content-section clearfix">
-                                <!-- start row-->
+                        <div class="vd_content-section clearfix">
+                            <!-- start row-->
 
 
-                                <div class="row">
-              <div class="col-md-12">
-                <div class="panel widget">
-                  <div class="panel-heading vd_bg-grey">
-                    <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายชื่อผู้ใช้งาน</h3>
-                  </div>
-                  <div class="panel-body table-responsive" id="tab-body">
-                    <table class="table table-striped" id="data-tables">
-                      <thead>
-                        <tr>
-                          <th>ชื่อผู้ใช้งาน</th>
-                          <th>ชื่อ-นามสกุลจริง</th>
-                          <th>กลุ่มผู้ใช้งาน</th>
-                          <th>จำนวนอุปกรณ์สูงสุด</th>
-						  <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-    
-                        
-                      </tbody>
-                    </table>
-                  
-                </div>
-                <!-- Panel Widget --> 
-              </div>
-              <!-- col-md-12 --> 
-            </div>
-            <!-- row --> 
-                                
-                                
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel widget">
+                                        <div class="panel-heading vd_bg-grey">
+                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายชื่อผู้ใช้งาน</h3>
+                                        </div>
+                                        <div class="panel-body table-responsive" id="tab-body">
+                                            <table class="table table-striped" id="data-tables">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ชื่อผู้ใช้งาน</th>
+                                                        <th>ชื่อ-นามสกุลจริง</th>
+                                                        <th>กลุ่มผู้ใช้งาน</th>
+                                                        <th>จำนวนอุปกรณ์สูงสุด</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        <!-- Panel Widget -->
+                                    </div>
+                                    <!-- col-md-12 -->
+                                </div>
+                                <!-- row -->
+
+
                             </div>
                             <!-- .vd_content-section -->
 
@@ -1510,141 +1511,150 @@
 <a class="back-top " href="# " id="back-top "> <i class="icon-chevron-up icon-white "> </i> </a> -->
 
     <!-- Javascript =============================================== -->
-<!-- Placed at the end of the document so the pages load faster --> 
-<script type="text/javascript" src="js/jquery.js"></script> 
-<!--[if lt IE 9]>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <!--[if lt IE 9]>
   <script type="text/javascript" src="js/excanvas.js"></script>      
 <![endif]-->
-<script type="text/javascript" src="js/bootstrap.min.js"></script> 
-<script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
-<script type="text/javascript" src="plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
+    <script type="text/javascript" src="plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 
-<script type="text/javascript" src="js/caroufredsel.js"></script> 
-<script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" src="js/caroufredsel.js"></script>
+    <script type="text/javascript" src="js/plugins.js"></script>
 
-<script type="text/javascript" src="plugins/breakpoints/breakpoints.js"></script>
-<script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="plugins/prettyPhoto-plugin/js/jquery.prettyPhoto.js"></script> 
+    <script type="text/javascript" src="plugins/breakpoints/breakpoints.js"></script>
+    <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="plugins/prettyPhoto-plugin/js/jquery.prettyPhoto.js"></script>
 
-<script type="text/javascript" src="plugins/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-<script type="text/javascript" src="plugins/tagsInput/jquery.tagsinput.min.js"></script>
-<script type="text/javascript" src="plugins/bootstrap-switch/bootstrap-switch.min.js"></script>
-<script type="text/javascript" src="plugins/blockUI/jquery.blockUI.js"></script>
-<script type="text/javascript" src="plugins/pnotify/js/jquery.pnotify.min.js"></script>
+    <script type="text/javascript" src="plugins/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="plugins/tagsInput/jquery.tagsinput.min.js"></script>
+    <script type="text/javascript" src="plugins/bootstrap-switch/bootstrap-switch.min.js"></script>
+    <script type="text/javascript" src="plugins/blockUI/jquery.blockUI.js"></script>
+    <script type="text/javascript" src="plugins/pnotify/js/jquery.pnotify.min.js"></script>
 
-<script type="text/javascript" src="js/theme.js"></script>
-<script type="text/javascript" src="custom/custom.js"></script>
- 
-<!-- Specific Page Scripts Put Here -->
+    <script type="text/javascript" src="js/theme.js"></script>
+    <script type="text/javascript" src="custom/custom.js"></script>
 
-<script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
+    <!-- Specific Page Scripts Put Here -->
 
-<script type="text/javascript">
-		$(document).ready(function() {
-				
-		} );
-</script>
+    <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
 
-<!-- Specific Page Scripts END -->
+    <script type="text/javascript">
+        $(document).ready(function() {
 
+        });
+    </script>
 
+    <!-- Specific Page Scripts END -->
 
 
-<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
-
-<script>
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-XXXXX-X']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-</script> 
-	<script>
-				account_now = 'natthawat_a';
-	
-		function refresh_table(){
-		//alert('refresh');
-			$.ajax('http://localhost:3000/api/allusers', {
-				type: "get",
-				//data: {start:sd,end:ed},
-				success: function(json) {
-					//alert(JSON.stringify(json));
-					data_res = JSON.parse(JSON.stringify(json));
-					bindata_table(data_res);
-				}
-			});
-		}
 
 
-		function bindata_table(data_sql){
-		//alert('bind');
-			//alert(data_sql);
-			data = [];
-			total = 0;
-			var q="'";
-			for (i = 0; i < data_sql.length; i++) {
-				data_json = {};
-				//update_time = new Date(data_sql[5]);
-				//date_str = update_time.getHours() + ":" + (update_time.getMinutes()<10?'0':'') + update_time.getMinutes() + ":" + (update_time.getSeconds()<10?'0':'') + update_time.getSeconds() +' - ' + update_time.getDate() + "/" + update_time.getMonth() + "/" + update_time.getFullYear();
+    <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
+
+    <script>
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-XXXXX-X']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <script>
+        account_now = 'natthawat_a';
+
+        function refresh_table() {
+            //alert('refresh');
+            $.ajax('http://localhost/api/allusers', {
+                type: "get",
+                //data: {start:sd,end:ed},
+                success: function(json) {
+                    //alert(JSON.stringify(json));
+                    data_res = JSON.parse(JSON.stringify(json));
+                    bindata_table(data_res);
+                }
+            });
+        }
 
 
-				$('#data-tables').find('tbody').append( '<tr><td>'+data_sql[1]+'</td><td>'+data_sql[2]+'</td><td>'+data_sql[3]+'</td><td>'+data_sql[4]+'</td><td class="menu-action"><a id="'+data_sql[0]+'" data-original-title="edit" data-toggle="modal" data-target="#myModal" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow" onclick="$('+q+'#btn-limit'+q+').val('+q+data_sql[1]+q+');" > <i class="fa fa-pencil"></i> </a> </td></tr>');
-				//data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
-				//total = total+data_sql[1];
-				//alert(JSON.stringify(data_json));
-				data.push(data_json);
-				//alert(JSON.stringify(data));
-				data_sql.splice(0,5);
-				i = -1;
+        function bindata_table(data_sql) {
+            //alert('bind');
+            //alert(data_sql);
+            data = [];
+            total = 0;
+            var q = "'";
+            for (i = 0; i < data_sql.length; i++) {
+                data_json = {};
+                //update_time = new Date(data_sql[5]);
+                //date_str = update_time.getHours() + ":" + (update_time.getMinutes()<10?'0':'') + update_time.getMinutes() + ":" + (update_time.getSeconds()<10?'0':'') + update_time.getSeconds() +' - ' + update_time.getDate() + "/" + update_time.getMonth() + "/" + update_time.getFullYear();
 
-			}
-			//alert(JSON.stringify(data));
-			//c1(data);
-				
-			$('#data-tables').dataTable();
-			
-		}
-		
-		function datepick() {
-		
-		var today = new Date();
-		var dd = today.getDate()-7;
-		var ddd = today.getDate();
-		var mm = today.getMonth()+1; //January is 0!
 
-		var yyyy = today.getFullYear();
-		var yyy = today.getFullYear();
-		if(dd<10){
-			dd='0'+dd;
-		} 
-		if(mm<10){
-			mm='0'+mm;
-		} 
-		refresh_table(yyy+'-'+mm+'-'+dd,yyyy+'-'+mm+'-'+ddd);
-	}
-	function addlimit(lim,acc){
-	//alert(lim);
-	//alert(acc);
-		$.ajax('http://localhost:3000/api/limitdevice', {
-		type: "get",
-		data: {limit:lim,accname:acc},
-        success: function(json) {
-			//alert(json);
-			//alert(JSON.stringify(json));
-			data_res = JSON.parse(JSON.stringify(json));
-        },
-		error: function(fa) {alert(JSON.stringify(fa));}
-      });
-	  //document.getElementById("tab-body").innerHTML='<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>ระบบปฏิบัติการ</th><th>IP</th><th>วันที่ใช้งาน</th></tr></thead><tbody></tbody></table>';
-	  //refresh_table();
-	}
-	datepick();
-	</script>
+                $('#data-tables').find('tbody').append('<tr><td>' + data_sql[1] + '</td><td>' + data_sql[2] + '</td><td>' + data_sql[3] + '</td><td>' + data_sql[4] + '</td><td class="menu-action"><a id="' + data_sql[0] + '" data-original-title="edit" data-toggle="modal" data-target="#myModal" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow" onclick="$(' + q + '#btn-limit' + q + ').val(' + q + data_sql[1] + q + ');" > <i class="fa fa-pencil"></i> </a> </td></tr>');
+                //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
+                //total = total+data_sql[1];
+                //alert(JSON.stringify(data_json));
+                data.push(data_json);
+                //alert(JSON.stringify(data));
+                data_sql.splice(0, 5);
+                i = -1;
+
+            }
+            //alert(JSON.stringify(data));
+            //c1(data);
+
+            $('#data-tables').dataTable();
+
+        }
+
+        function datepick() {
+
+            var today = new Date();
+            var dd = today.getDate() - 7;
+            var ddd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+
+            var yyyy = today.getFullYear();
+            var yyy = today.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+            refresh_table(yyy + '-' + mm + '-' + dd, yyyy + '-' + mm + '-' + ddd);
+        }
+
+        function addlimit(lim, acc) {
+            //alert(lim);
+            //alert(acc);
+            $.ajax('http://localhost/api/limitdevice', {
+                type: "get",
+                data: {
+                    limit: lim,
+                    accname: acc
+                },
+                success: function(json) {
+                    //alert(json);
+                    //alert(JSON.stringify(json));
+                    data_res = JSON.parse(JSON.stringify(json));
+                },
+                error: function(fa) {
+                    alert(JSON.stringify(fa));
+                }
+            });
+            //document.getElementById("tab-body").innerHTML='<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>ระบบปฏิบัติการ</th><th>IP</th><th>วันที่ใช้งาน</th></tr></thead><tbody></tbody></table>';
+            //refresh_table();
+        }
+        datepick();
+    </script>
 
 
 </body>

@@ -137,82 +137,82 @@
                                 <div class="vd_panel-header">
                                     <h1>รายงาน</h1>
 
-                                    
-                                        <!-- menu -->
+
+                                    <!-- menu -->
+                                </div>
+                            </div>
+                            <!-- vd_panel-header -->
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" style="width:30%">
+                                <div class="modal-content">
+                                    <div class="modal-header vd_bg-blue vd_white">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                                        <h4 class="modal-title" id="myModalLabel">กำหนดจำนวนอุปกรณ์</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <!--<label class="col-sm-2 control-label" for="inputMACAddr">MAC Address</label>-->
+                                                <div class="text-center" style="margin-left:5%;width:90%">
+                                                    <input type="text" class="form-control text-center" id="amount_dev" placeholder="ระบุจำนวนอุปกรณ์" />
+                                                </div>
+                                            </div>
+
+
+
+                                        </form>
+
+                                    </div>
+                                    <div class="modal-footer background-login">
+                                        <button type="button" class="btn vd_btn vd_bg-green" style="width:47%" data-dismiss="modal" id="btn-limit" value="pp" onclick="addlimit($('#amount_dev').val(),$(this).attr('value'))">บันทึก</button>
+                                        <button type="button" class="btn vd_btn vd_bg-grey" style="width:47%" data-dismiss="modal">ยกเลิก</button>
+
                                     </div>
                                 </div>
-                                <!-- vd_panel-header -->
+                                <!-- /.modal-content -->
                             </div>
-							<!-- Modal -->
-                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" style="width:30%">
-                      <div class="modal-content">
-                        <div class="modal-header vd_bg-blue vd_white">
-                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
-                          <h4 class="modal-title" id="myModalLabel">กำหนดจำนวนอุปกรณ์</h4>
+                            <!-- /.modal-dialog -->
                         </div>
-                        <div class="modal-body"> 
-                        	<form class="form-horizontal">
-							<div class="form-group">
-							  <!--<label class="col-sm-2 control-label" for="inputMACAddr">MAC Address</label>-->
-							  <div class="text-center" style="margin-left:5%;width:90%">
-								<input type="text" class="form-control text-center" id="amount_dev" placeholder="ระบุจำนวนอุปกรณ์"/>
-							  </div>
-							</div>
-                            
-                            
-                            
-                          </form>
-                        
-                        </div>
-                        <div class="modal-footer background-login">
-							<button type="button" class="btn vd_btn vd_bg-green" style="width:47%" data-dismiss="modal" id="btn-limit" value="pp" onclick="addlimit($('#amount_dev').val(),$(this).attr('value'))">บันทึก</button>
-							<button type="button" class="btn vd_btn vd_bg-grey" style="width:47%" data-dismiss="modal">ยกเลิก</button>
-                          
-                        </div>
-                      </div>
-                      <!-- /.modal-content --> 
-                    </div>
-                    <!-- /.modal-dialog --> 
-                  </div>
-                  <!-- /.modal --> 
-                            <!-- vd_title-section -->
+                        <!-- /.modal -->
+                        <!-- vd_title-section -->
 
-                            <div class="vd_content-section clearfix">
-                                <!-- start row-->
+                        <div class="vd_content-section clearfix">
+                            <!-- start row-->
 
 
-                                <div class="row">
-              <div class="col-md-12">
-                <div class="panel widget">
-                  <div class="panel-heading vd_bg-grey">
-                    <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายชื่อผู้ใช้งาน</h3>
-                  </div>
-                  <div class="panel-body table-responsive" id="tab-body">
-                    <table class="table table-striped" id="data-tables">
-                      <thead>
-                        <tr>
-                          <th>ชื่อผู้ใช้งาน</th>
-                          <th>ชื่อ-นามสกุลจริง</th>
-                          <th>กลุ่มผู้ใช้งาน</th>
-                          <th>จำนวนอุปกรณ์สูงสุด</th>
-						  <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-    
-                        
-                      </tbody>
-                    </table>
-                  
-                </div>
-                <!-- Panel Widget --> 
-              </div>
-              <!-- col-md-12 --> 
-            </div>
-            <!-- row --> 
-                                
-                                
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel widget">
+                                        <div class="panel-heading vd_bg-grey">
+                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายชื่อผู้ใช้งาน</h3>
+                                        </div>
+                                        <div class="panel-body table-responsive" id="tab-body">
+                                            <table class="table table-striped" id="data-tables">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ชื่อผู้ใช้งาน</th>
+                                                        <th>ชื่อ-นามสกุลจริง</th>
+                                                        <th>กลุ่มผู้ใช้งาน</th>
+                                                        <th>จำนวนอุปกรณ์สูงสุด</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        <!-- Panel Widget -->
+                                    </div>
+                                    <!-- col-md-12 -->
+                                </div>
+                                <!-- row -->
+
+
                             </div>
                             <!-- .vd_content-section -->
 
@@ -337,7 +337,7 @@
         <script type="text/javascript ">
             function refresh_group(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://localhost:3000/report/report672', {
+                $.ajax('http://localhost/report/report672', {
                     type: "get",
                     data: {
                         start: sd,
@@ -444,7 +444,7 @@
 
             function refresh_browser(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://localhost:3000/report/report67153', {
+                $.ajax('http://localhost/report/report67153', {
                     type: "get",
                     data: {
                         start: sd,
@@ -545,7 +545,7 @@
 
             function refresh_os(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://localhost:3000/report/report67152', {
+                $.ajax('http://localhost/report/report67152', {
                     type: "get",
                     data: {
                         start: sd,
@@ -563,7 +563,7 @@
                 alert('555');
 
 
-                $.ajax('http://localhost:3000/api/chat/attachment', {
+                $.ajax('http://localhost/api/chat/attachment', {
                     type: "get",
 
                     success: function(json) {
@@ -718,7 +718,7 @@
 
             function refresh_traffic() {
                 //alert('refresh');
-                $.ajax('http://localhost:3000/report/traffic', {
+                $.ajax('http://localhost/report/traffic', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -825,7 +825,7 @@
             refresh_traffic();
 
             function get_chat() {
-                $.ajax('http://localhost:3000/api/getchat', {
+                $.ajax('http://localhost/api/getchat', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -876,7 +876,7 @@
             function sendchat(msg) {
                 //alert(account_now);
                 //alert(msg);
-                $.ajax('http://localhost:3000/api/addchat', {
+                $.ajax('http://localhost/api/addchat', {
                     type: "get",
                     data: {
                         usr: account_now,
@@ -893,7 +893,7 @@
             }
 
             function get_noti() {
-                $.ajax('http://localhost:3000/api/getnotimsg', {
+                $.ajax('http://localhost/api/getnotimsg', {
                     type: "get",
                     data: {
                         chanel: '0'

@@ -62,7 +62,7 @@ module.exports = function(passport) {
 
 
                     console.log('Identity is being authorizing against e-Office');
-                    request('http://localhost:3000/api/eoffice/profile/' + Account.email, function(error, response, body) {
+                    request('http://localhost/api/eoffice/profile/' + Account.email, function(error, response, body) {
 
                         if (!error && response.statusCode == 200) {
                             if (body != null) {

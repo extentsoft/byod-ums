@@ -286,7 +286,7 @@
     }
     */
     function get_chat() {
-        $.ajax('http://localhost:3000/api/getchat', {
+        $.ajax('http://localhost/api/getchat', {
             type: "get",
             success: function(json) {
                 //alert(JSON.stringify(json));
@@ -352,7 +352,7 @@
         //alert(account_now);
         alert(msg);
         //console.log(rdt);
-        $.ajax('http://localhost:3000/api/addchat', {
+        $.ajax('http://localhost/api/addchat', {
             type: "post",
             data: {
                 usr: account_now,
@@ -372,7 +372,7 @@
     }
 
     function get_noti() {
-        $.ajax('http://localhost:3000/api/getnotimsg', {
+        $.ajax('http://localhost/api/getnotimsg', {
             type: "get",
             data: {
                 chanel: '0'

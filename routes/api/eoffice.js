@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/test', function(req, res) {
 
-    request('http://localhost:3000/api/eoffice/profile/thanakdorn_p', function(error, response, body) {
+    request('http://localhost/api/eoffice/profile/thanakdorn_p', function(error, response, body) {
         console.log(error);
         console.log(body);
         if (!error && response.statusCode == 200) {
@@ -37,6 +37,10 @@ router.get('/profile/:email', function(req, res, next) {
         res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Phanit', ln: 'Temjai', email: 'phanit@excise.go.th', position: '500', level: '10', area: '1', authorized: false });
     } else if (req.params.email == 'usamas') {
         res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Usamas', ln: 'Ruamchai', email: 'usamas@excise.go.th', position: '500', level: '10', area: '1', authorized: false });
+    } else if (req.params.email == 'supornchai') {
+        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Supornchai', ln: 'Klinfoung', email: 'supornchai@excise.go.th', position: '500', level: '10', area: '1', authorized: false });
+    } else if (req.params.email == 'maytee') {
+        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Maytee', ln: 'Thangsripong', email: 'maytee@excise.go.th', position: '500', level: '10', area: '1', authorized: false });
     } else {
         res.json(null);
     }
