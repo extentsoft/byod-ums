@@ -114,28 +114,27 @@
                 <div class="vd_content-wrapper">
                     <div class="vd_container">
                         <div class="vd_content clearfix">
-
+                         
                             <!-- vd_head-section -->
 
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
                                     <h1>แผงควบคุมหลัก</h1>
 
-                                    <div class="vd_panel-menu  hidden-xs">
-                                        <div class="menu">
-
-                                            <span class="fa fa-calendar" id="daterangepicker">
+									<div class="vd_panel-menu  hidden-xs">
+										<div class="menu">
+										
+										<span class="fa fa-calendar" id="daterangepicker">
 											<span class="m-subheader__daterange-label">
 												<span class="m-subheader__daterange-title"></span>
-                                            <span class="m-subheader__daterange-date m--font-brand"></span>
-                                            <a href="#" class="btn btn-sm btn-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill">
-                                                <i class="la la-angle-down"></i>
-                                            </a>
-                                            </span>
-
-                                            </span>
-                                        </div>
-                                        <!-- menu -->
+												<span class="m-subheader__daterange-date m--font-brand"></span>
+												<a href="#" class="btn btn-sm btn-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill">
+												<i class="la la-angle-down"></i>
+											</a>
+											</span>
+											
+										</span>
+										</div>                                       <!-- menu -->
                                     </div>
                                 </div>
                                 <!-- vd_panel-header -->
@@ -158,15 +157,7 @@
                                         </div>
 
 
-                                        <!--
-                                        <div class="pd-20">
-
-                                            <h5 class="mgbt-xs-20 mgtp-20"><span class="menu-icon append-icon"><i class=""></i></span> <strong>ปริมาณการใช้งาน</strong> </h5>
-
-
-
-                                            <div id="revenue-line-chart" style="height:255px; "></div>
-                                        </div>-->
+                                       
                                     </div>
                                     <div class="col-md-4 mgbt-md-20 mgbt-lg-0">
                                         <div class="panel vd_interactive-widget light-widget widget">
@@ -191,9 +182,7 @@
                                                                 </div>
                                                                 <div class="row mgbt-xs-0">
                                                                     <div class="col-xs-12" align="center">
-                                                                        <div class="vd_grey">
-                                                                            <p id="val-iOS"></p>
-                                                                        </div>
+                                                                        <div class="vd_grey"><p id="val-iOS">0</p></div>
                                                                         <!-- <div id="total-sparkline" class="mgtp-15 mgr-10 text-right"></div> -->
                                                                     </div>
                                                                 </div>
@@ -217,9 +206,7 @@
                                                                 </div>
                                                                 <div class="row mgbt-xs-0">
                                                                     <div class="col-xs-12" align="center">
-                                                                        <div class="vd_grey">
-                                                                            <p id="val-Android"></p>
-                                                                        </div>
+                                                                        <div class="vd_grey"><p id="val-Android">0</p></div>
                                                                         <!-- <div id="total-sparkline" class="mgtp-15 mgr-10 text-right"></div> -->
                                                                     </div>
                                                                 </div>
@@ -245,9 +232,7 @@
                                                                 </div>
                                                                 <div class="row mgbt-xs-0">
                                                                     <div class="col-xs-12" align="center">
-                                                                        <div class="vd_grey">
-                                                                            <p id="val-Linux"></p>
-                                                                        </div>
+                                                                        <div class="vd_grey"><p id="val-Linux">0</p></div>
                                                                         <!-- <div id="total-sparkline" class="mgtp-15 mgr-10 text-right"></div> -->
                                                                     </div>
                                                                 </div>
@@ -271,9 +256,7 @@
                                                                 </div>
                                                                 <div class="row mgbt-xs-0">
                                                                     <div class="col-xs-12" align="center">
-                                                                        <div class="vd_grey">
-                                                                            <p id="val-Windows"></p>
-                                                                        </div>
+                                                                        <div class="vd_grey"><p id="val-Windows">0</p></div>
                                                                         <!-- <div id="total-sparkline" class="mgtp-15 mgr-10 text-right"></div> -->
                                                                     </div>
                                                                 </div>
@@ -299,7 +282,7 @@
                                                                 </div>
                                                                 <div class="row mgbt-xs-0">
                                                                     <div class="col-xs-12" align="center">
-                                                                        <div class="vd_grey">100</div>
+                                                                        <div class="vd_grey"><p id="val-other">0</p></div>
                                                                         <!-- <div id="total-sparkline" class="mgtp-15 mgr-10 text-right"></div> -->
                                                                     </div>
                                                                 </div>
@@ -323,7 +306,7 @@
                                                                 </div>
                                                                 <div class="row mgbt-xs-0">
                                                                     <div class="col-xs-12" align="center">
-                                                                        <div class="vd_grey">1000</div>
+                                                                        <div class="vd_grey"><p id="val-sum">0</p></div>
                                                                         <!-- <div id="total-sparkline" class="mgtp-15 mgr-10 text-right"></div> -->
                                                                     </div>
                                                                 </div>
@@ -346,7 +329,7 @@
                                                                 <span class="menu-icon "><i class="icon-mobile "></i></span>
                                                             </div>
                                                             <div class="col-md-9 menu-text clearfix ">
-                                                                24<br>mobile
+                                                                <p id='val-Mobile'>0</p><br>mobile
                                                             </div>
                                                         </div>
                                                     </a>
@@ -363,7 +346,7 @@
                                                                 <span class="menu-icon "><i class="fa fa-laptop "></i></span>
                                                             </div>
                                                             <div class="col-md-9 menu-text clearfix ">
-                                                                49<br>Computer
+                                                                <p id='val-Computer'>0</p><br>Computer
                                                             </div>
                                                         </div>
                                                     </a>
@@ -382,7 +365,7 @@
                                                                 <span class="menu-icon "><i class="icon-question "></i></span>
                                                             </div>
                                                             <div class="col-md-9 menu-text clearfix ">
-                                                                102<br>อื่นๆ
+                                                                <p id='val-etc'>0</p><br>อื่นๆ
                                                             </div>
                                                         </div>
                                                     </a>
@@ -475,6 +458,7 @@
                 <!-- .vd_content-wrapper -->
 
                 <!-- Middle Content End -->
+
 
             </div>
             <!-- .container -->
@@ -572,11 +556,7 @@
         <script type="text/javascript ">
             $(document).ready(function() {
                 account_now = 'natthawat_a';
-                $("#chat-text").keyup(function(event) {
-                    if (event.keyCode === 13) {
-                        sendchat($('#chat-text').val());
-                    }
-                });
+                
 
             });
             $(window).load(function() {});
@@ -604,631 +584,516 @@
         </script>
 
         <script type="text/javascript ">
-            function refresh_group(sd, ed) {
-                //alert('refresh');
-                $.ajax('http://localhost:3000/report/report672', {
-                    type: "get",
-                    data: {
-                        start: sd,
-                        end: ed
-                    },
-                    success: function(json) {
-                        //alert(JSON.stringify(json));
-                        data_res = JSON.parse(JSON.stringify(json));
-                        bindata_group(data_res);
-                    }
-                });
-            }
+            function refresh_group(sd,ed){
+		//alert('refresh');
+			$.ajax('http://localhost:3000/report/report672', {
+				type: "get",
+				data: {start:sd,end:ed},
+				success: function(json) {
+					//alert(JSON.stringify(json));
+					data_res = JSON.parse(JSON.stringify(json));
+					bindata_group(data_res);
+				}
+			});
+		}
 
 
-            function bindata_group(data_sql) {
-                //alert('bind');
-                //alert(data_sql);
-                data = [];
-                total = 0;
-                for (i = 0; i < data_sql.length; i++) {
-                    data_json = {};
-                    if (data_sql[0] == '') {
-                        district_name = 'อื่นๆ';
-                    } else {
-                        district_name = data_sql[0];
-                    }
+		function bindata_group(data_sql){
+		//alert('bind');
+			//alert(data_sql);
+			data = [];
+			total = 0;
+			for (i = 0; i < data_sql.length; i++) {
+				data_json = {};
+				if(data_sql[0]==''){
+					district_name='อื่นๆ';
+				}
+				else {district_name=data_sql[0];}
 
-                    data_json = {
-                        type: district_name,
-                        amount: data_sql[1]
-                    };
-                    total = total + data_sql[1];
-                    //alert(JSON.stringify(data_json));
-                    data.push(data_json);
-                    //alert(JSON.stringify(data));
-                    data_sql.splice(0, 2);
-                    i = -1;
+				data_json = {type:district_name,amount:data_sql[1]};
+				total = total+data_sql[1];
+				//alert(JSON.stringify(data_json));
+				data.push(data_json);
+				//alert(JSON.stringify(data));
+				data_sql.splice(0,2);
+				i = -1;
 
-                }
-                //alert(JSON.stringify(data));
-                c1(data);
-            }
-            c1 = function(data) {
-                //var site = [{"siteName":"Central","amountOfuser":"154"},{"siteName":"Eastern","amountOfuser":"65"},{"siteName":"Southern","amountOfuser":"35"},{"siteName":"Northern","amountOfuser":"41"},{"siteName":"Northeastern","amountOfuser":"21"}];
-                var pie_data = [],
-                    //e = Math.floor(10 * Math.random()) + 1;
-                    //e = e < 5 ? 5 : e;
-                    e = data.length;
-                for (var o = 0; o < e; o++)
-                    pie_data[o] = {
-                        //label: "Series" + (o + 1),
-                        label: data[o].type,
-                        //data: Math.floor(100 * Math.random()) + 1
-                        data: data[o].amount
-                    };
-                //alert(pie_data);
-                document.getElementById('pie-chart-1').innerHTML = '';
+			}
+			//alert(JSON.stringify(data));
+			c1(data);
+		}
+        c1 = function(data) {
+            //var site = [{"siteName":"Central","amountOfuser":"154"},{"siteName":"Eastern","amountOfuser":"65"},{"siteName":"Southern","amountOfuser":"35"},{"siteName":"Northern","amountOfuser":"41"},{"siteName":"Northeastern","amountOfuser":"21"}];
+            var pie_data = [],
+                //e = Math.floor(10 * Math.random()) + 1;
+                //e = e < 5 ? 5 : e;
+                e = data.length;
+            for (var o = 0; o < e; o++)
+                pie_data[o] = {
+                    //label: "Series" + (o + 1),
+                    label: data[o].type,
+                    //data: Math.floor(100 * Math.random()) + 1
+                    data: data[o].amount
+                };
+            //alert(pie_data);
+            document.getElementById('pie-chart-1').innerHTML = '';
 
-                var pie_placeholder = $("#pie-chart-1");
+            var pie_placeholder = $("#pie-chart-1");
 
 
-                $.plot(pie_placeholder, pie_data, {
-                    series: {
-                        pie: {
+            $.plot(pie_placeholder, pie_data, {
+                series: {
+                    pie: {
+                        show: true,
+                        label: {
                             show: true,
-                            label: {
-                                show: true,
-                                radius: .5,
-                                formatter: labelFormatter,
-                                background: {
-                                    opacity: 0
-                                }
-                            },
-
-                        }
-                    },
-                    grid: {
-                        hoverable: true,
-                        clickable: true
-                    },
-                    colors: ["#FCB660", "#ce91db", "#56A2CF", "#52D793", "#FC8660", "#CCCCCC"]
-                });
-
-                pie_placeholder.bind("plothover", function(event, pos, obj) {
-                    if (!obj) {
-                        return;
-                    }
-                    var percent = parseFloat(obj.series.percent).toFixed(2);
-                    $("#hover").html("<span style='font-weight:bold; color:" + obj.series.color + "'>" + obj.series.label + " (" + percent + "%)</span>");
-                });
-
-                pie_placeholder.bind("plotclick", function(event, pos, obj) {
-                    if (!obj) {
-                        return;
-                    }
-                    percent = parseFloat(obj.series.percent).toFixed(2);
-                    alert("" + obj.series.label + ": " + percent + "%");
-                });
-
-                function labelFormatter(label, series) {
-                    return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
-                }
-            }
-
-            function refresh_browser(sd, ed) {
-                //alert('refresh');
-                $.ajax('http://localhost:3000/report/report67153', {
-                    type: "get",
-                    data: {
-                        start: sd,
-                        end: ed
-                    },
-                    success: function(json) {
-                        //alert(JSON.stringify(json));
-                        data_res = JSON.parse(JSON.stringify(json));
-                        bindata_browser(data_res);
-                    }
-                });
-            }
-
-
-            function bindata_browser(data_sql) {
-                //alert('bind');
-                //alert(data_sql);
-                data = [];
-                total = 0;
-                for (i = 0; i < data_sql.length; i++) {
-                    data_json = {};
-                    data_json = {
-                        browser: data_sql[0],
-                        amount: data_sql[1]
-                    };
-                    total = total + data_sql[1];
-                    //alert(JSON.stringify(data_json));
-                    data.push(data_json);
-                    //alert(JSON.stringify(data));
-                    data_sql.splice(0, 2);
-                    i = -1;
-
-                }
-                //alert(JSON.stringify(data));
-                c2(data);
-            }
-            c2 = function(data) {
-                //var site = [{"siteName":"Central","amountOfuser":"154"},{"siteName":"Eastern","amountOfuser":"65"},{"siteName":"Southern","amountOfuser":"35"},{"siteName":"Northern","amountOfuser":"41"},{"siteName":"Northeastern","amountOfuser":"21"}];
-                var pie_data = [],
-                    //e = Math.floor(10 * Math.random()) + 1;
-                    //e = e < 5 ? 5 : e;
-                    e = data.length;
-                for (var o = 0; o < e; o++)
-                    pie_data[o] = {
-                        //label: "Series" + (o + 1),
-                        label: data[o].browser,
-                        //data: Math.floor(100 * Math.random()) + 1
-                        data: data[o].amount
-                    };
-                //alert(pie_data);
-                document.getElementById('pie-chart-2').innerHTML = '';
-
-                var pie_placeholder = $("#pie-chart-2");
-
-
-                $.plot(pie_placeholder, pie_data, {
-                    series: {
-                        pie: {
-                            show: true,
-                            label: {
-                                show: true,
-                                radius: .5,
-                                formatter: labelFormatter,
-                                background: {
-                                    opacity: 0
-                                }
-                            },
-
-                        }
-                    },
-                    grid: {
-                        hoverable: true,
-                        clickable: true
-                    },
-                    colors: ["#FCB660", "#ce91db", "#56A2CF", "#52D793", "#FC8660", "#CCCCCC"]
-                });
-
-                pie_placeholder.bind("plothover", function(event, pos, obj) {
-                    if (!obj) {
-                        return;
-                    }
-                    var percent = parseFloat(obj.series.percent).toFixed(2);
-                    $("#hover").html("<span style='font-weight:bold; color:" + obj.series.color + "'>" + obj.series.label + " (" + percent + "%)</span>");
-                });
-
-                pie_placeholder.bind("plotclick", function(event, pos, obj) {
-                    if (!obj) {
-                        return;
-                    }
-                    percent = parseFloat(obj.series.percent).toFixed(2);
-                    alert("" + obj.series.label + ": " + percent + "%");
-                });
-
-                function labelFormatter(label, series) {
-                    return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
-                }
-            }
-
-            function refresh_os(sd, ed) {
-                //alert('refresh');
-                $.ajax('http://localhost:3000/report/report67152', {
-                    type: "get",
-                    data: {
-                        start: sd,
-                        end: ed
-                    },
-                    success: function(json) {
-                        //alert(JSON.stringify(json));
-                        data_res = JSON.parse(JSON.stringify(json));
-                        bindata_os(data_res);
-                    }
-                });
-            }
-
-            function testAPI() {
-                alert('555');
-
-
-                $.ajax('http://localhost:3000/api/chat/attachment', {
-                    type: "get",
-
-                    success: function(json) {
-                        alert('done');
-                        //alert(JSON.stringify(json));
-                        //data_res = JSON.parse(JSON.stringify(json));
-                        //bindata_os(data_res);
-                    }
-                });
-            }
-
-
-            function bindata_os(data_sql) {
-                //alert('bind');
-                //alert(data_sql);
-                data = [];
-                total = 0;
-                for (i = 0; i < data_sql.length; i++) {
-                    data_json = {};
-                    if (data_sql[0] == '') {
-                        district_name = 'อื่นๆ';
-                    } else {
-                        district_name = data_sql[0];
-                    }
-
-                    data_json = {
-                        type: district_name,
-                        amount: data_sql[1]
-                    };
-                    total = total + data_sql[1];
-                    //alert(JSON.stringify(data_json));
-                    data.push(data_json);
-                    //alert(JSON.stringify(data));
-                    data_sql.splice(0, 2);
-                    i = -1;
-
-                }
-                //alert(JSON.stringify(data));
-            }
-
-            function datepick() {
-                function e(e, a, r) {
-                    //refresh_site(e.format("Y-M-D"),a.format("Y-M-D"));
-                    //refresh_device(e.format("Y-M-D"),a.format("Y-M-D"));
-                    refresh_os(e.format("Y-M-D"), a.format("Y-M-D"));
-                    refresh_group(e.format("Y-M-D"), a.format("Y-M-D"));
-                    refresh_browser(e.format("Y-M-D"), a.format("Y-M-D"));
-                    //alert(e.format("Y-M-D"));
-                    //alert(a.format("Y-M-D"));
-
-                    //group_chart();
-
-                    var o = "",
-                        l = "";
-                    a - e < 100 ? (o = "Today:", l = e.format("MMM D")) : "Yesterday" == r ? (o = "Yesterday:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
-                        t.find(".m-subheader__daterange-date").html(l),
-                        t.find(".m-subheader__daterange-title").html(o)
-                }
-                if (0 != $("#daterangepicker").length) {
-                    var t = $("#daterangepicker"),
-                        a = moment(),
-                        r = moment();
-                    t.daterangepicker({
-                            startDate: a,
-                            endDate: r,
-                            opens: "left",
-                            ranges: {
-                                Today: [moment(), moment()],
-                                //Yesterday: [moment().subtract(1, "days"), moment().subtract(1, "days")],
-                                "Last 7 Days": [moment().subtract(6, "days"), moment()],
-                                "Last 30 Days": [moment().subtract(29, "days"), moment()],
-                                "This Month": [moment().startOf("month"), moment().endOf("month")],
-                                "This Year": [moment().startOf("year"), moment().endOf("year")]
-                                    //"Last Month": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
+                            radius: .5,
+                            formatter: labelFormatter,
+                            background: {
+                                opacity: 0
                             }
-                        }, e),
-                        e(a, r, "")
+                        },
+
+                    }
+                },
+                grid: {
+                    hoverable: true,
+                    clickable: true
+                },
+                colors: ["#FCB660", "#ce91db", "#56A2CF", "#52D793", "#FC8660", "#CCCCCC"]
+            });
+
+            pie_placeholder.bind("plothover", function(event, pos, obj) {
+                if (!obj) {
+                    return;
                 }
+                var percent = parseFloat(obj.series.percent).toFixed(2);
+                $("#hover").html("<span style='font-weight:bold; color:" + obj.series.color + "'>" + obj.series.label + " (" + percent + "%)</span>");
+            });
+
+            pie_placeholder.bind("plotclick", function(event, pos, obj) {
+                if (!obj) {
+                    return;
+                }
+                percent = parseFloat(obj.series.percent).toFixed(2);
+                alert("" + obj.series.label + ": " + percent + "%");
+            });
+
+            function labelFormatter(label, series) {
+                return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
             }
+        }
 
-            function line_chart(data) {
-                /* REVENUE LINE CHART */
+        function refresh_browser(sd,ed){
+		//alert('refresh');
+			$.ajax('http://localhost:3000/report/report67153', {
+				type: "get",
+				data: {start:sd,end:ed},
+				success: function(json) {
+					//alert(JSON.stringify(json));
+					data_res = JSON.parse(JSON.stringify(json));
+					bindata_browser(data_res);
+				}
+			});
+		}
 
-                var d2 = data;
 
-                var plot = $.plotAnimator($("#revenue-line-chart"), [{
-                        label: "Revenue",
-                        data: d2,
-                        lines: {
-                            fill: 0.4,
-                            lineWidth: 0,
+		function bindata_browser(data_sql){
+		//alert('bind');
+			//alert(data_sql);
+			data = [];
+			total = 0;
+			for (i = 0; i < data_sql.length; i++) {
+				data_json = {};
+				data_json = {browser:data_sql[0],amount:data_sql[1]};
+				total = total+data_sql[1];
+				//alert(JSON.stringify(data_json));
+				data.push(data_json);
+				//alert(JSON.stringify(data));
+				data_sql.splice(0,2);
+				i = -1;
+
+			}
+			//alert(JSON.stringify(data));
+			c2(data);
+		}
+        c2 = function(data) {
+            //var site = [{"siteName":"Central","amountOfuser":"154"},{"siteName":"Eastern","amountOfuser":"65"},{"siteName":"Southern","amountOfuser":"35"},{"siteName":"Northern","amountOfuser":"41"},{"siteName":"Northeastern","amountOfuser":"21"}];
+            var pie_data = [],
+                //e = Math.floor(10 * Math.random()) + 1;
+                //e = e < 5 ? 5 : e;
+                e = data.length;
+            for (var o = 0; o < e; o++)
+                pie_data[o] = {
+                    //label: "Series" + (o + 1),
+                    label: data[o].browser,
+                    //data: Math.floor(100 * Math.random()) + 1
+                    data: data[o].amount
+                };
+            //alert(pie_data);
+            document.getElementById('pie-chart-2').innerHTML = '';
+
+            var pie_placeholder = $("#pie-chart-2");
+
+
+            $.plot(pie_placeholder, pie_data, {
+                series: {
+                    pie: {
+                        show: true,
+                        label: {
+                            show: true,
+                            radius: .5,
+                            formatter: labelFormatter,
+                            background: {
+                                opacity: 0
+                            }
                         },
-                        color: ['#f2be3e']
-                    },
 
-                ], {
-                    xaxis: {
-                        tickLength: 0,
-                        tickDecimals: 0,
-                        min: 0,
-                        max: 23,
-
-                        font: {
-                            lineHeight: 13,
-                            style: "normal",
-                            weight: "bold",
-                            family: "sans-serif",
-                            variant: "small-caps",
-                            color: "#6F7B8A"
-                        }
-                    },
-                    yaxis: {
-                        ticks: 3,
-                        tickDecimals: 0,
-                        tickColor: "#f0f0f0",
-                        font: {
-                            lineHeight: 13,
-                            style: "normal",
-                            weight: "bold",
-                            family: "sans-serif",
-                            variant: "small-caps",
-                            color: "#6F7B8A"
-                        }
-                    },
-                    grid: {
-                        backgroundColor: {
-                            colors: ["#fff", "#fff"]
-                        },
-                        borderWidth: 1,
-                        borderColor: "#f0f0f0",
-                        margin: 0,
-                        minBorderMargin: 0,
-                        labelMargin: 20,
-                        hoverable: true,
-                        clickable: true,
-                        mouseActiveRadius: 6
-                    },
-                    legend: {
-                        show: false
                     }
-                });
+                },
+                grid: {
+                    hoverable: true,
+                    clickable: true
+                },
+                colors: ["#FCB660", "#ce91db", "#56A2CF", "#52D793", "#FC8660", "#CCCCCC"]
+            });
 
-                //$("#revenue-line-chart").UseTooltip();
+            pie_placeholder.bind("plothover", function(event, pos, obj) {
+                if (!obj) {
+                    return;
+                }
+                var percent = parseFloat(obj.series.percent).toFixed(2);
+                $("#hover").html("<span style='font-weight:bold; color:" + obj.series.color + "'>" + obj.series.label + " (" + percent + "%)</span>");
+            });
 
-                $(window).on("resize", function() {
-                    plot.resize();
-                    plot.setupGrid();
-                    plot.draw();
-                });
-                //alert('a')
+            pie_placeholder.bind("plotclick", function(event, pos, obj) {
+                if (!obj) {
+                    return;
+                }
+                percent = parseFloat(obj.series.percent).toFixed(2);
+                alert("" + obj.series.label + ": " + percent + "%");
+            });
+
+            function labelFormatter(label, series) {
+                return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
             }
+        }
+		
+		function refresh_os(sd,ed){
+		//alert('refresh');
+			$.ajax('http://localhost:3000/report/report67152', {
+				type: "get",
+				data: {start:sd,end:ed},
+				success: function(json) {
+					//alert(JSON.stringify(json));
+					data_res = JSON.parse(JSON.stringify(json));
+					bindata_os(data_res);
+				}
+			});
+		}
 
-            function refresh_traffic() {
-                //alert('refresh');
-                $.ajax('http://localhost:3000/report/traffic', {
-                    type: "get",
-                    success: function(json) {
-                        //alert(JSON.stringify(json));
-                        data_res = JSON.parse(JSON.stringify(json));
-                        bindata_traffic(data_res);
+
+		function bindata_os(data_sql){
+		//alert('bind');
+			//alert(data_sql);
+			data = [];
+			total = 0;
+			for (i = 0; i < data_sql.length; i++) {
+				data_json = {};
+				if(data_sql[0]==''){
+					os_name='other';
+				}
+				else {os_name=data_sql[0];}
+				document.getElementById('val-'+os_name).innerHTML = data_sql[1];
+				//data_json = {type:os_name,amount:data_sql[1]};
+				total = total+data_sql[1];
+				//alert(JSON.stringify(data_json));
+				//data.push(data_json);
+				//alert(JSON.stringify(data));
+				data_sql.splice(0,2);
+				i = -1;
+
+			}
+			document.getElementById('val-sum').innerHTML = total;
+			//alert(JSON.stringify(data));
+		}
+		
+		function refresh_device(sd,ed){
+		//alert('refresh');
+			$.ajax('http://localhost:3000/report/report678', {
+				type: "get",
+				data: {start:sd,end:ed},
+				success: function(json) {
+					//alert(JSON.stringify(json));
+					data_res = JSON.parse(JSON.stringify(json));
+					bindata_device(data_res);
+				}
+			});
+		}
+
+
+		function bindata_device(data_sql){
+		//alert('bind');
+			//alert(data_sql);
+			data = [];
+			total = 0;
+			for (i = 0; i < data_sql.length; i++) {
+				data_json = {};
+				if(data_sql[0]==''){
+					device_type='etc';
+				}
+				else {device_type=data_sql[0];}
+				document.getElementById('val-'+device_type).innerHTML = data_sql[1];
+				//data_json = {type:os_name,amount:data_sql[1]};
+				total = total+data_sql[1];
+				//alert(JSON.stringify(data_json));
+				//data.push(data_json);
+				//alert(JSON.stringify(data));
+				data_sql.splice(0,2);
+				i = -1;
+
+			}
+			//alert(JSON.stringify(data));
+		}
+		
+		function datepick() {
+		function e(e, a, r) {
+		refresh_area(e.format("Y-M-D"),a.format("Y-M-D"));
+		refresh_device(e.format("Y-M-D"),a.format("Y-M-D"));
+		refresh_os(e.format("Y-M-D"),a.format("Y-M-D"));
+		refresh_group(e.format("Y-M-D"),a.format("Y-M-D"));
+		refresh_browser(e.format("Y-M-D"),a.format("Y-M-D"));
+		//alert(e.format("Y-M-D"));
+		//alert(a.format("Y-M-D"));
+		
+		//group_chart();
+
+			var o = "",
+			l = "";
+			a - e < 100 ? (o = "Today:", l = e.format("MMM D")) : "Yesterday" == r ? (o = "Yesterday:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
+			t.find(".m-subheader__daterange-date").html(l),
+			t.find(".m-subheader__daterange-title").html(o)
+		}
+		if (0 != $("#daterangepicker").length) {
+			var t = $("#daterangepicker"),
+			a = moment(),
+			r = moment();
+			t.daterangepicker({
+				startDate: a,
+				endDate: r,
+				opens: "left",
+				ranges: {
+					Today: [moment(), moment()],
+					//Yesterday: [moment().subtract(1, "days"), moment().subtract(1, "days")],
+					"Last 7 Days": [moment().subtract(6, "days"), moment()],
+					"Last 30 Days": [moment().subtract(29, "days"), moment()],
+					"This Month": [moment().startOf("month"), moment().endOf("month")],
+					"This Year": [moment().startOf("year"), moment().endOf("year")]
+					//"Last Month": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
+				}
+			}, e),
+			e(a, r, "")
+		}
+	}
+
+     function line_chart(data){
+	/* REVENUE LINE CHART */
+
+            var d2 = data;
+
+            var plot = $.plotAnimator($("#revenue-line-chart"), [
+			{  	label: "Revenue",
+				data: d2, 	
+				lines: {				
+					fill: 0.4,
+					lineWidth: 0,				
+				},
+				color:['#f2be3e']
+			},
+	
+		], {
+                xaxis: {
+                    tickLength: 0,
+                    tickDecimals: 0,
+                    min: 0,
+					max: 23,
+
+                    font: {
+                        lineHeight: 13,
+                        style: "normal",
+                        weight: "bold",
+                        family: "sans-serif",
+                        variant: "small-caps",
+                        color: "#6F7B8A"
                     }
-                });
-            }
+                },
+                yaxis: {
+                    ticks: 3,
+                    tickDecimals: 0,
+                    tickColor: "#f0f0f0",
+                    font: {
+                        lineHeight: 13,
+                        style: "normal",
+                        weight: "bold",
+                        family: "sans-serif",
+                        variant: "small-caps",
+                        color: "#6F7B8A"
+                    }
+                },
+                grid: {
+                    backgroundColor: {
+                        colors: ["#fff", "#fff"]
+                    },
+                    borderWidth: 1,
+                    borderColor: "#f0f0f0",
+                    margin: 0,
+                    minBorderMargin: 0,
+                    labelMargin: 20,
+                    hoverable: true,
+                    clickable: true,
+                    mouseActiveRadius: 6
+                },
+                legend: {
+                    show: false
+                }
+            });
 
-            function bar_chart() {
-                /* REVENUE BAR CHART */
+            //$("#revenue-line-chart").UseTooltip();
 
-                var bar_chart_data = [
-                    ["เขต1", 50],
-                    ["เขต2", 23],
-                    ["กรุงเทพ", 55],
-                    ["ภูเก็ต", 12],
-                    ["นครนายก", 17],
-                    ["เชียงใหม่", 9],
-                    ["เขต4", 10],
-                    ["เขต5", 8],
-                    ["อยุธยา", 4],
-                    ["นครสวรรค์", 13],
-                    ["ปราจีนบุรี", 17],
-                    ["เชียงราย", 9]
-                ];
+            $(window).on("resize", function() {
+                plot.resize();
+                plot.setupGrid();
+                plot.draw();
+            });
+	//alert('a')
+	}
+	
+	function refresh_traffic(){
+		//alert('refresh');
+			$.ajax('http://localhost:3000/report/traffic', {
+				type: "get",
+				success: function(json) {
+					//alert(JSON.stringify(json));
+					data_res = JSON.parse(JSON.stringify(json));
+					bindata_traffic(data_res);
+				}
+			});
+		}
+		
+		function bar_chart(data){
+			/* REVENUE BAR CHART */
 
-                var bar_chart = $.plot(
-                    $("#revenue-bar-chart"), [{
-                        data: bar_chart_data,
-                        //           color: "rgba(31,174,102, 0.8)",
-                        color: "#F85D2C",
-                        shadowSize: 0,
+            var bar_chart_data = data;
+
+            var bar_chart = $.plot(
+                $("#revenue-bar-chart"), [{
+                    data: bar_chart_data,
+                    //           color: "rgba(31,174,102, 0.8)",
+                    color: "#F85D2C",
+                    shadowSize: 0,
+                    bars: {
+                        show: true,
+                        lineWidth: 0,
+                        fill: true,
+                        fillColor: {
+                            colors: [{
+                                opacity: 1
+                            }, {
+                                opacity: 1
+                            }]
+                        }
+                    }
+                }], {
+                    series: {
                         bars: {
                             show: true,
-                            lineWidth: 0,
-                            fill: true,
-                            fillColor: {
-                                colors: [{
-                                    opacity: 1
-                                }, {
-                                    opacity: 1
-                                }]
-                            }
+                            barWidth: 0.9,
+                            align: "center"
                         }
-                    }], {
-                        series: {
-                            bars: {
-                                show: true,
-                                barWidth: 0.9,
-                                align: "center"
-                            }
-                        },
-                        grid: {
-                            show: true,
-                            hoverable: true,
-                            borderWidth: 0
-                        },
-                        yaxis: {
-                            min: 0,
-                            max: 20,
-                            show: false
-                        },
-                        xaxis: {
-                            mode: "categories",
-                            tickLength: 0,
-                            color: "#FFFFFF",
-                        }
-                    });
-
-            }
-
-            function bindata_traffic(data_sql) {
-                //alert('bind');
-                //alert(data_sql);
-                data = [];
-
-                total = 0;
-                count = 0;
-                for (i = 0; i < 24; i++) {
-                    data_json = [];
-                    if (data_sql[0] == count && data_sql.length > 0) {
-                        data_json = [
-                            [data_sql[0], data_sql[1]]
-                        ];
-                        data_sql.splice(0, 2);
-                    } else {
-                        data_json = [
-                            [count, 0]
-                        ];
-                    }
-
-                    count++;
-                    total = total + data_sql[1];
-                    //alert(JSON.stringify(data_json));
-                    data = data.concat(data_json);
-                    //alert(JSON.stringify(data));
-
-                }
-                //alert(JSON.stringify(data));
-                line_chart(data);
-            }
-            bar_chart();
-            refresh_traffic();
-
-            function get_chat() {
-                $.ajax('http://localhost:3000/api/getchat', {
-                    type: "get",
-                    success: function(json) {
-                        //alert(JSON.stringify(json));
-                        data_c = JSON.parse(JSON.stringify(json));
-                        datac = [];
-                        for (i = 0; i < data_c.length; i++) {
-                            data_json = {};
-                            data_json = {
-                                msg_id: data_c[0],
-                                name: data_c[1],
-                                msg: data_c[2],
-                                rdata: data_c[3],
-                                timestamp: data_c[4]
-                            };
-                            //alert(JSON.stringify(data_json));
-                            datac.push(data_json);
-                            //alert(JSON.stringify(data));
-                            data_c.splice(0, 5);
-                            i = -1;
-                        }
-
-                        for (i = 0; i < datac.length; i++) {
-                            //tmp = String(JSON.stringify(datac[i])).replace('\t','');
-                            //alert(JSON.stringify(datac[i]));
-                            /*data[i].channel
-                            data[i].timestamp
-                            data[i].msg*/
-                            //alert(data[i].channel);
-
-
-
-                            //var uid = $("#userid").text();
-                            if (datac[i].name == account_now) {
-                                //alert(data[i].msg);
-                                //var my_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
-                                var my_msg = "";
-                                if (datac[i].rdata == '') {
-                                    my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
-                                } else {
-                                    my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'><a download='" + datac[i].msg + "' href='data:application/octet-stream;base64," + datac[i].rdata + "'>" + datac[i].msg + "</a><div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
-                                }
-
-                                $('#chatbox').append(my_msg);
-                            } else {
-                                //var other_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--in'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-username'>" + datac[i].name + " : wrote</div><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
-                                //var other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
-
-                                var other_msg = "";
-                                if (datac[i].rdata == '') {
-                                    other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
-                                } else {
-                                    other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'><a download='" + datac[i].msg + "' href='data:application/octet-stream;base64," + datac[i].rdata + "'>" + datac[i].msg + "</a><div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
-                                }
-
-                                $('#chatbox').append(other_msg);
-                            }
-                        }
-                    }
-                });
-            }
-
-            function sendchat(msg) {
-                //alert(account_now);
-                //alert(msg);
-                $.ajax('http://localhost:3000/api/addchat', {
-                    type: "get",
-                    data: {
-                        usr: account_now,
-                        msgchat: msg
                     },
-                    success: function(json) {
-                        $('#chatbox').empty();
-                        document.getElementById('chat-text').value = ''
-                        get_chat();
-
-                    }
-                });
-
-            }
-
-            function get_noti() {
-                $.ajax('http://localhost:3000/api/getnotimsg', {
-                    type: "get",
-                    data: {
-                        chanel: '0'
+                    grid: {
+                        show: true,
+                        hoverable: true,
+                        borderWidth: 0
                     },
-                    success: function(json) {
-                        //alert(JSON.stringify(json));
-                        //alert('message sent!');
-                        data_sql = JSON.parse(JSON.stringify(json));
-                        data = [];
-                        for (i = 0; i < data_sql.length; i++) {
-                            data_json = {};
-                            data_json = {
-                                msg_id: data_sql[0],
-                                msg: data_sql[1],
-                                chanel: data_sql[2],
-                                timestamp: data_sql[3]
-                            };
-                            //alert(JSON.stringify(data_json));
-                            data.push(data_json);
-                            //alert(JSON.stringify(data));
-                            data_sql.splice(0, 4);
-                            i = -1;
-
-                        }
-                        //alert(data.length);
-                        //var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 4 ธันวาคม 2560</span><span class='m-list-timeline__time'>20 mins</span></div>";
-                        //$('#notification_center').append(msg);
-                        for (i = 0; i < data.length; i++) {
-
-                            /*data[i].channel
-                            data[i].timestamp
-                            data[i].msg*/
-                            //alert(data[i].channel);
-                            if (data[i].chanel <= 1) {
-                                //alert(data[i].msg);
-                                //var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>" + data[i].msg + "</span><span class='m-list-timeline__time'>" + data[i].timestamp.split("T")[0] + "</span></div>";
-
-                                var msg = "<li><a href='#' data-toggle='modal' data-target='#myModal'><div class='menu-icon vd_green'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + data[i].msg.substring(0, 50) + "<div class='menu-info'><span class='menu-date'>" + data[i].timestamp.split("T")[0] + "</span></div></div></a></li>";
-
-                                $('#notification_center').append(msg);
-                            }
-
-                        }
-                        //alert(JSON.stringify(data));
-                        //bindata(data_res);
+                    yaxis: {
+                        min: 0,
+                        max: 20,
+                        show: false
+                    },
+                    xaxis: {
+                        mode: "categories",
+                        tickLength: 0,
+                        color: "#FFFFFF",
                     }
                 });
+		
+		}
+		
+		function bindata_traffic(data_sql){
+		//alert('bind');
+			//alert(data_sql);
+			data = [];
+			
+			total = 0;
+			count = 0;
+			for (i = 0; i < 24; i++) {
+				data_json = [];
+				if(data_sql[0]==count && data_sql.length> 0){
+					data_json = [[data_sql[0],data_sql[1]]];
+					data_sql.splice(0,2);
+				}
+				else {data_json = [[count,0]];}
 
-            }
-            get_noti();
-            get_chat();
-            datepick();
+				count++;
+				total = total+data_sql[1];
+				//alert(JSON.stringify(data_json));
+				data=data.concat(data_json);
+				//alert(JSON.stringify(data));
+
+			}
+			//alert(JSON.stringify(data));
+			line_chart(data);
+		}
+		
+		function refresh_area(sd,ed){
+		//alert('refresh');
+			$.ajax('http://localhost:3000/report/report67154', {
+				type: "get",
+				data: {start:sd,end:ed},
+				success: function(json) {
+					//alert(JSON.stringify(json));
+					data_res = JSON.parse(JSON.stringify(json));
+					bindata_area(data_res);
+				}
+			});
+		}
+		
+		function bindata_area(data_sql){
+		//alert('bind');
+			//alert(data_sql);
+			data = [];
+			
+			total = 0;
+			//count = 0;
+			for (i = 0; i < data_sql.length; i++) {
+				data_json = [];
+				data_json = [[data_sql[0],data_sql[1]]];
+				data_sql.splice(0,2);
+
+				total = total+data_sql[1];
+				//alert(JSON.stringify(data_json));
+				data=data.concat(data_json);
+				//alert(JSON.stringify(data));
+								i = -1;
+
+			}
+			//alert(JSON.stringify(data));
+			bar_chart(data);
+		}
+        refresh_traffic();
+		
+		datepick();
             //document.getElementById('val-iOS').innerHTML = '50';
         </script>
 
