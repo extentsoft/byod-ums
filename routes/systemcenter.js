@@ -56,6 +56,21 @@ module.exports = function(app, passport) {
     });
 
 
+    app.get('/systemcenter/theme', isLoggedIn, function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+        if (req.user.theme == 0) req.user.theme = 1;
+        else req.user.theme = 0;
+
+
+        res.render('systemcenter/admin/dashboard', {
+            title: 'อุปกรณ์',
+            message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
+        });
+    });
+
     /* ================================================================
                               Admin Section
     =================================================================== */

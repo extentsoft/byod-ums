@@ -77,6 +77,11 @@ module.exports = function(passport) {
                                 Account.area = parsed_body.area;
                                 Account.authorized = parsed_body.authorized;
 
+                                request('http://localhost/api/ums/preference/' + Account.email, function(error, response, body) {
+
+
+                                });
+
                                 return done(null, Account);
 
                             } else {
