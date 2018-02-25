@@ -11,7 +11,7 @@ module.exports = function(app, passport) {
         var url = 'http://192.168.42.166:8088/secoWS/service/NewAccountManagerServices?wsdl';
 
         //var args = { LengthValue: 5, fromLengthUnit: 'Nanometers', toLengthUnit: 'Millimeters' };
-	var args = {
+        var args = {
             in0: 'natthawat_a',
             in1: {
                 account: 'natthawat_a',
@@ -29,14 +29,14 @@ module.exports = function(app, passport) {
             });
         });*/
         soap.createClient(url, function(err, client) {
-	var options = {
-		mustUnderstand: true,
-		hasTimeStamp: false,
+            var options = {
+                mustUnderstand: true,
+                hasTimeStamp: false,
 
-		passwordType: 'PasswordText'
-	};
-	var wsSecurity = new soap.WSSecurity('admin', 'P@ssw0rd123', options);
-	client.setSecurity(wsSecurity);
+                passwordType: 'PasswordText'
+            };
+            var wsSecurity = new soap.WSSecurity('admin', 'P@ssw0rd123', options);
+            client.setSecurity(wsSecurity);
             client.modifyAccount(args, function(err, result) {
                 console.log(result);
             });
@@ -48,10 +48,11 @@ module.exports = function(app, passport) {
             title: 'Test'
         });
     });
-	
-	app.get('/systemcenter/', isLoggedIn, function(req, res) {
+
+    app.get('/systemcenter/', isLoggedIn, function(req, res) {
+        console.log("Now you are logged in");
         console.log(req.user.email);
-		res.redirect('/systemcenter/dashboard');
+        res.redirect('/systemcenter/dashboard');
     });
 
 
@@ -77,7 +78,7 @@ module.exports = function(app, passport) {
     });
 
 
-	app.get('/systemcenter/configuration', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/configuration', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/setting");
         res.render('systemcenter/admin/configuration', {
             title: 'ปรับแต่ง',
@@ -106,8 +107,8 @@ module.exports = function(app, passport) {
         });
     });
 
-	
-	 
+
+
 
     //////////////////// TZ /////////////////////////////////////
 
@@ -254,12 +255,12 @@ module.exports = function(app, passport) {
 
     //////////////////// TZ /////////////////////////////////////
 
-    
+
     /* ================================================================
                               Others 
     =================================================================== */
 
-    
+
 
 
 
