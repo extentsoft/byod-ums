@@ -40,9 +40,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/systemcenter/login', function(req, res) {
-        res.send("login");
-    });
+
     app.get('/systemcenter/dashboard', function(req, res) {
         //res.send("Hello System Center");
         res.render('systemcenter/admin/dashboard', {
@@ -61,6 +59,9 @@ module.exports = function(app, passport) {
         });
     });
 
+	app.get('/systemcenter/login', (req, res) => {
+        res.render('login', { user: req.user, error: req.flash('error') });
+    });
 
 
 
@@ -257,7 +258,7 @@ module.exports = function(app, passport) {
 
 
 
-    /*
+    
     // Authentication
     app.get('/systemcenter/login', function(req, res) {
         res.render('profile/login', { user: req.user, error: req.flash('error') });
@@ -274,7 +275,7 @@ module.exports = function(app, passport) {
     app.get('/systemcenter/logout', function(req, res) {
         req.logout();
         res.redirect('/profile/login');
-    });*/
+    });
 };
 
 // route middleware to ensure user is logged in
