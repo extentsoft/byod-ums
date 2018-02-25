@@ -140,23 +140,41 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">เลขที่บัตรประจำตัวประชาชน</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input type="text" disabled="" placeholder="1300211022551" readonly>
+                                                            <input type="text" disabled="" placeholder="<%= email %>" readonly>
                                                             <span class="help-inline">เลขที่บัตรประจำตัวประชาชนไม่สามารถแก้ไขได้</span> </div>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">ชื่อจริง (ภาษาอังกฤษ)</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input type="text" placeholder="Natthawat" class="input-border-btm">
+                                                            <input type="text" placeholder="<%= firstname %>" class="input-border-btm">
                                                             <span class="help-inline">ex. Natthawat</span> </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">นามสกุลจริง (ภาษาอังกฤษ)</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input type="text" placeholder="Arunwattana" class="input-border-btm">
+                                                            <input type="text" placeholder="<%= lastname %>" class="input-border-btm">
                                                             <span class="help-inline">ex. Arunwattana</span> </div>
                                                     </div>
-
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 control-label">เลขตำแหน่ง/สังกัด</label>
+                                                        <div class="col-sm-7 controls">
+                                                            <input type="text" placeholder="<%= position %>" class="input-border-btm">
+                                                            <span class="help-inline">ex. 501</span> </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 control-label">ระดับข้าราชการ</label>
+                                                        <div class="col-sm-7 controls">
+                                                            <input type="text" placeholder="<%= level %>" class="input-border-btm">
+                                                            <span class="help-inline">8</span> </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 control-label">พื้นที่</label>
+                                                        <div class="col-sm-7 controls">
+                                                            <input type="text" placeholder="<%= area %>" class="input-border-btm">
+                                                            <span class="help-inline">52</span> </div>
+                                                    </div>
+                                                    <!--
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">ตำแหน่ง/สังกัด</label>
                                                         <div class="col-sm-7 controls">
@@ -203,7 +221,7 @@
                                                                  </select>
                                                         </div>
                                                     </div>
-
+                                                -->
                                                     <div class="form-group form-actions">
                                                         <div class="col-sm-4"> </div>
                                                         <div class="col-sm-7">
@@ -310,12 +328,6 @@
 
         <script type="text/javascript ">
             $(document).ready(function() {
-                account_now = 'natthawat_a';
-                $("#chat-text").keyup(function(event) {
-                    if (event.keyCode === 13) {
-                        sendchat($('#chat-text').val());
-                    }
-                });
 
             });
             $(window).load(function() {});

@@ -85,8 +85,8 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({ limit: '50mb',extended: true }));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(cookieParser());
 
 app.use(require('express-session')({
@@ -148,6 +148,7 @@ app.use('/api/removedevicemon', removedevicemon);
 
 app.use('/api/chat/attachment', require('./routes/chat/attachment'));
 app.use('/api/eoffice', require('./routes/api/eoffice'));
+app.use('/api/ums', require('./routes/api/ums'));
 
 app.use('/report/traffic', traffic);
 app.use('/report/report678', report678);

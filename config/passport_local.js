@@ -78,11 +78,27 @@ module.exports = function(passport) {
                                 Account.authorized = parsed_body.authorized;
 
                                 request('http://localhost/api/ums/preference/' + Account.email, function(error, response, body) {
+                                    if (!error && response.statusCode == 200) {
+                                        if (body != null) {
+                                            console.log("profiling --> " + JSON.parse(body));
+                                            var parsed_body = JSON.parse(body);
 
+                                            Account.pref_theme = parsed_body.pref_theme;
+                                            Account.pref_notification = parsed_body.pref_notification;
 
+                                            return done(null, Account);
+                                        } else {
+                                            console.log("2");
+                                            return done(null, false, req.flash('loginMessage', 'Profiling Failure'));
+                                        }
+                                    } else {
+                                        console.log("3");
+                                        return done(null, false, req.flash('loginMessage', 'Profiling Failure'));
+                                    }
                                 });
 
-                                return done(null, Account);
+                                // If only authentication & authorization are enough, comment out below line
+                                //return done(null, Account);
 
                             } else {
                                 //No authorization

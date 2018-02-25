@@ -76,14 +76,28 @@ module.exports = function(app, passport) {
     =================================================================== */
     app.get('/systemcenter/dashboard', isLoggedIn, function(req, res) {
         //res.send("Hello System Center");
-        res.render('systemcenter/admin/dashboard', {
-            title: 'แผงควบคุมหลัก',
-            path: 'systemcenter/',
-            message: req.flash('message'),
-            email: req.user.email,
-            firstname: req.user.firstname,
-            lastname: req.user.lastname
-        });
+
+        if (req.user.pref_theme == 1) {
+            res.render('systemcenter/admin/dashboard', {
+                title: 'แผงควบคุมหลัก',
+                path: 'systemcenter/',
+                message: req.flash('message'),
+                email: req.user.email,
+                firstname: req.user.firstname,
+                lastname: req.user.lastname
+            });
+        } else {
+            res.render('systemcenter/admin/dashboard_dark', {
+                title: 'แผงควบคุมหลัก',
+                path: 'systemcenter/',
+                message: req.flash('message'),
+                email: req.user.email,
+                firstname: req.user.firstname,
+                lastname: req.user.lastname
+            });
+        }
+
+
     });
 
 
@@ -157,7 +171,11 @@ module.exports = function(app, passport) {
             message: req.flash('message'),
             email: req.user.email,
             firstname: req.user.firstname,
-            lastname: req.user.lastname
+            lastname: req.user.lastname,
+            email: req.user.ssn,
+            position: req.user.position,
+            level: req.user.level,
+            area: req.user.area
         });
     });
 
