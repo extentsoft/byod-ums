@@ -62,29 +62,31 @@ module.exports = function(passport) {
 
 
                     console.log('Identity is being authorizing against e-Office');
-                    request('http://localhost:3000/api/eoffice/profile/thanakdorn_p', function(error, response, body) {
-                        console.log(error);
-                        console.log(body);
+                    request('http://localhost:3000/api/eoffice/profile/'+Account.email, function(error, response, body) {
+                        
                         if (!error && response.statusCode == 200) {
-                            if (!body) {
+                            if (body != null) {
                                 //res.send(body) // Print the google web page.
                                 //Authorization Done
-                                Account.firstname = body.fn;
-                                Account.lastname = body.ln;
-                                Account.ssn = body.ssn;
-                                Account.position = body.position;
-                                Account.level = body.level;
-                                Account.area = body.area;
-                                Account.authorized = body.authorized;
+								parsed_body = JSON.parse(body);
+								Account.firstname = parsed_body.fn;
+                                Account.lastname = parsed_body.ln;
+                                Account.ssn = parsed_body.ssn;
+                                Account.position = parsed_body.position;
+                                Account.level = parsed_body.level;
+                                Account.area = parsed_body.area;
+                                Account.authorized = parsed_body.authorized;
 
                                 return done(null, Account);
 
                             } else {
+								console.log("3");
                                 //No authorization
                                 return done(null, false, req.flash('loginMessage', 'Authorizing Failure'));
                             }
 
                         } else {
+							console.log("4");
                             //if ERRROR happens once authorizing 
                             return done(null, false, req.flash('loginMessage', 'Authorizing Failure'));
                         }
