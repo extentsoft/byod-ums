@@ -97,13 +97,14 @@
 
 <body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">
     <div class="vd_body">
-        <%- include('../../admin/partial_dark/header'); %>
+        <%- include('../../../admin/partial_dark/header'); %>
 
             <!-- Content start -->
 
             <div class="content">
                 <div class="container">
-                    <%- include('../../admin/partial_dark/menu'); %>
+                    <%- include('../../../admin/partial_dark/menu'); %>
+
 
                 </div>
 
@@ -151,7 +152,7 @@
                                 <div class="col-md-12">
                                     <div class="panel widget">
                                         <div class="panel-heading vd_bg-grey">
-                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายงานการใช้งานที่ไม่เป็นไปตามกฎ</h3>
+                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายงานการใช้งานจำแนกตามกลุ่ม </h3>
                                         </div>
                                         <div class="panel-body table-responsive">
                                             <table class="table table-striped" id="data-tables">
@@ -159,9 +160,8 @@
                                                     <tr>
                                                         <th>เจ้าของอุปกรณ์</th>
                                                         <th>MAC</th>
-                                                        <th>ระบบปฏิบัติการ</th>
-                                                        <th>วันที่ทำผิดกฏ</th>
-                                                        <th>รายละเอียด</th>
+                                                        <th>กลุ่มผู้ใช้งาน</th>
+                                                        <th>วันที่ยกเลิกอุปกรณ์</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -194,9 +194,7 @@
             <!-- .container -->
     </div>
     <!-- .content -->
-    <%- include('../../admin/partial_dark/footer'); %>
-
-
+    <%- include('../../../admin/partial_dark/footer'); %>
 
 
         </div>
@@ -270,7 +268,7 @@
 
             function refresh_table(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://localhost/report/report671', {
+                $.ajax('http://localhost/report/report676', {
                     type: "get",
                     data: {
                         start: sd,
@@ -292,17 +290,17 @@
                 total = 0;
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
-                    update_time = new Date(data_sql[5]);
+                    update_time = new Date(data_sql[3]);
                     date_str = update_time.getHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getDate() + "/" + update_time.getMonth() + "/" + update_time.getFullYear();
 
 
-                    //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
-                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[1] + "</td><td>" + data_sql[3] + "</td><td>" + data_sql[4] + "</td><td>" + date_str + "</td><td>" + data_sql[6] + "</td></tr>");
+                    //data_json = {name:data_sql[0],mac:data_sql[2],os:data_sql[3],date:date_str};
+                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[0] + "</td><td>" + data_sql[1] + "</td><td>" + data_sql[2] + "</td><td>" + date_str + "</td></tr>");
                     total = total + data_sql[1];
                     //alert(JSON.stringify(data_json));
                     data.push(data_json);
                     //alert(JSON.stringify(data));
-                    data_sql.splice(0, 7);
+                    data_sql.splice(0, 4);
                     i = -1;
 
                 }
@@ -330,7 +328,7 @@
                 }
                 refresh_table(yyy + '-' + mm + '-' + dd, yyyy + '-' + mm + '-' + ddd);
             }
-            //datepick();
+            datepick();
         </script>
 
 

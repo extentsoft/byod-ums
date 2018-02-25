@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<!-- Specific Page Data -->
+
+<!-- End of Data -->
+
+<head>
+    <meta charset="utf-8" />
+    <title>BYOD Excise Department</title>
+    <meta name="keywords" content="BYOD, Excise, Excise Department, Bring Your Own Device" />
+    <meta name="description" content="BYOD ICT">
+    <meta name="author" content="Extentsoft Co.,Ltd.">
+
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="img/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="img/ico/favicon.ico">
+
+
+    <!-- CSS -->
+
+    <!-- Bootstrap & FontAwesome & Entypo CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--[if IE 7]><link type="text/css" rel="stylesheet" href="css/font-awesome-ie7.min.css"><![endif]-->
+    <link href="css/font-entypo.css" rel="stylesheet" type="text/css">
+
+    <!-- Fonts CSS -->
+    <link href="css/fonts.css" rel="stylesheet" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link href="plugins/jquery-ui/jquery-ui.custom.min.css" rel="stylesheet" type="text/css">
+    <link href="plugins/prettyPhoto-plugin/css/prettyPhoto.css" rel="stylesheet" type="text/css">
+    <link href="plugins/isotope/css/isotope.css" rel="stylesheet" type="text/css">
+    <link href="plugins/pnotify/css/jquery.pnotify.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="plugins/google-code-prettify/prettify.css" rel="stylesheet" type="text/css">
+
+
+    <link href="plugins/mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
+    <link href="plugins/tagsInput/jquery.tagsinput.css" rel="stylesheet" type="text/css">
+    <link href="plugins/bootstrap-switch/bootstrap-switch.css" rel="stylesheet" type="text/css">
+    <link href="plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css">
+    <link href="plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css">
+    <link href="plugins/colorpicker/css/colorpicker.css" rel="stylesheet" type="text/css">
+
+    <!-- Specific CSS -->
+    <link href="plugins/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css">
+    <link href="plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css">
+    <link href="plugins/introjs/css/introjs.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="css/theme.min.css" rel="stylesheet" type="text/css">
+    <!--[if IE]> <link href="css/ie.css" rel="stylesheet" > <![endif]-->
+    <link href="css/chrome.css" rel="stylesheet" type="text/chrome">
+    <!-- chrome only css -->
+
+
+
+    <!-- Responsive CSS -->
+    <link href="css/theme-responsive.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+    <!-- for specific page in style css -->
+
+    <!-- for specific page responsive in style css -->
+
+
+    <!-- Custom CSS -->
+    <link href="custom/custom.css" rel="stylesheet" type="text/css">
+
+
+
+    <!-- Head SCRIPTS -->
+    <script type="text/javascript" src="js/modernizr.js"></script>
+    <script type="text/javascript" src="js/mobile-detect.min.js"></script>
+    <script type="text/javascript" src="js/mobile-detect-modernizr.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script type="text/javascript" src="js/html5shiv.js"></script>
+      <script type="text/javascript" src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">
+    <div class="vd_body">
+        <%- include('admin/partial_dark/header'); %>
+
+            <!-- Content start -->
+
+            <div class="content">
+                <div class="container">
+                    <%- include('admin/partial_dark/menu'); %>
+
+                </div>
+                <!-- Middle Content Start -->
+
+                <div class="vd_content-wrapper">
+                    <div class="vd_container">
+                        <div class="vd_content clearfix">
+                            <!-- <div class="vd_head-section clearfix">
+                                <div class="vd_panel-header">
+                                    <ul class="breadcrumb">
+                                        <li><a href="index.html">Home</a> </li>
+                                        <li class="active">Default Dashboard</li>
+                                    </ul>
+                                    <div class="vd_panel-menu hidden-sm hidden-xs" data-intro="<strong>Expand Control</strong><br/>To expand content page horizontally, vertically, or Both. If you just need one button just simply remove the other button code." data-step=5 data-position="left">
+                                        <div data-action="remove-navbar" data-original-title="Remove Navigation Bar Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-navbar-button menu"> <i class="fa fa-arrows-h"></i> </div>
+                                        <div data-action="remove-header" data-original-title="Remove Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-header-button menu"> <i class="fa fa-arrows-v"></i> </div>
+                                        <div data-action="fullscreen" data-original-title="Remove Navigation Bar and Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="fullscreen-button menu"> <i class="glyphicon glyphicon-fullscreen"></i> </div>
+
+                                    </div>
+
+                                </div>
+                            </div> !-->
+                            <!-- vd_head-section -->
+
+                            <div class="vd_title-section clearfix">
+                                <div class="vd_panel-header">
+                                    <h1>รายชื่ออุปกรณ์</h1>
+                                    <small class="subtitle"></small>
+                                    <div class="vd_panel-menu  hidden-xs">
+                                        <div class="menu no-bg vd_green" data-original-title="Start Layout Tour Guide" data-toggle="modal" data-target="#myModal" data-placement="bottom" onClick=""> <span class="menu-icon font-md"><i class="fa fa-plus"></i></span> </div>
+                                        <!-- menu -->
+                                        <!--
+                                        <div class="menu">
+                                            <div data-action="click-trigger"> <span class="menu-icon mgr-10"><i class="fa fa-filter"></i></span>Filter <i class="fa fa-angle-down"></i> </div>
+                                            <div class="vd_mega-menu-content width-xs-2 left-xs" data-action="click-target">
+                                                <div class="child-menu">
+                                                    <div class="content-list content-menu">
+                                                        <ul class="list-wrapper pd-lr-10">
+                                                            <li>
+                                                                <a href="#">
+                                                                    <div class="menu-icon"><i class=" fa fa-user"></i></div>
+                                                                    <div class="menu-text">Filter User</div>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    <div class="menu-icon"><i class=" fa fa-calendar"></i></div>
+                                                                    <div class="menu-text">Filter Date</div>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> !-->
+                                        <!-- menu -->
+                                    </div>
+                                    <!-- vd_panel-menu -->
+                                </div>
+                                <!-- vd_panel-header -->
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" style="width:30%">
+                                    <div class="modal-content">
+                                        <div class="modal-header vd_bg-blue vd_white">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                                            <h4 class="modal-title" id="myModalLabel">ลงทะเบียนอุปกรณ์ใหม่</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-horizontal">
+                                                <div class="form-group">
+                                                    <!--<label class="col-sm-2 control-label" for="inputMACAddr">MAC Address</label>-->
+                                                    <div class="text-center" style="margin-left:5%;width:90%">
+                                                        <input type="text" class="form-control text-center" id="term_name" placeholder="ชื่ออุปกรณ์" />
+                                                        <input type="text" class="form-control text-center" id="term_mac" placeholder="MAC Address" />
+                                                        <select class="form-control" style="text-align-last:center;" id="term_os">
+									<option value="iOS">iOS</option>
+									<option value="Android">Android</option>
+									<option value="Windows">Windows</option>
+									<option value="Linux">Linux</option>
+								</select>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </form>
+
+                                        </div>
+                                        <div class="modal-footer background-login">
+                                            <button type="button" class="btn vd_btn vd_bg-green" style="width:47%" data-dismiss="modal" onclick="adddevice(document.getElementById('term_name').value,document.getElementById('term_mac').value,document.getElementById('term_os').value)">บันทึก</button>
+                                            <button type="button" class="btn vd_btn vd_bg-grey" style="width:47%" data-dismiss="modal">ยกเลิก</button>
+
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <!-- /.modal -->
+                            <!--begin::Modal-->
+                            <div class="modal fade" id="m_modal_5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header vd_bg-blue vd_white">
+                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                ลงทะเบียนอุปกรณ์ใหม่
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">
+												&times;
+											</span>
+										</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <!--<label class="col-sm-2 control-label" for="inputMACAddr">MAC Address</label>-->
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="term_name" placeholder="ชื่ออุปกรณ์" />
+                                                        <input type="text" class="form-control" id="term_mac" placeholder="MAC Address" />
+                                                        <select class="form-control" id="term_os">
+												<option value="iOS">iOS</option>
+												<option value="Android">Android</option>
+												<option value="Windows">Windows</option>
+												<option value="Linux">Linux</option>
+											</select>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" style="width:50%" data-dismiss="modal" onclick="adddevice(document.getElementById('term_name').value,document.getElementById('term_mac').value,document.getElementById('term_os').value)">
+											บันทึก
+										</button>
+                                            <button type="button" class="btn btn-secondary" style="width:50%" data-dismiss="modal">
+											ยกเลิก
+										</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Modal-->
+                            <!-- vd_title-section -->
+
+                            <div class="vd_content-section clearfix">
+                                <div class="row">
+                                    <!--
+                                    <div class="col-md-7 mgbt-md-20 mgbt-lg-0">
+                                        <div class="panel vd_interactive-widget light-widget widget">
+                                            <div class="panel-body-list">
+                                                <div class="vd_panel-menu">
+                                                    <div data-action="refresh" class="menu entypo-icon smaller-font" data-placement="bottom" data-toggle="tooltip" data-original-title="Refresh"> <i class="icon-cycle"></i> </div>
+                                                    <div class="menu entypo-icon smaller-font" data-placement="bottom" data-toggle="tooltip" data-original-title="Config">
+                                                        <div data-action="click-trigger" class="menu-trigger"> <i class="icon-cog"></i> </div>
+                                                        <div class="vd_mega-menu-content  width-xs-2  left-xs" data-action="click-target">
+                                                            <div class="child-menu">
+                                                                <div class="content-list content-menu">
+                                                                    <ul class="list-wrapper pd-lr-10">
+                                                                        <li>
+                                                                            <a href="#">
+                                                                                <div class="menu-icon"><i class=" fa fa-user"></i></div>
+                                                                                <div class="menu-text">Panel Menu</div>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="menu entypo-icon" data-placement="bottom" data-toggle="tooltip" data-original-title="Close" data-action="close"> <i class="icon-cross"></i> </div>
+                                                </div>
+                                                # vd_panel-menu
+
+
+                                    <div class="pd-20">
+                                        <h5 class="mgbt-xs-20 mgtp-20"><span class="menu-icon append-icon"><i class="icon-graph"></i></span> <strong>Revenue Vs Cost Graph</strong> (November) </h5>
+                                        <div id="revenue-line-chart" style="height:255px; "></div>
+                                    </div>
+                                    <div class="row mgbt-xs-0">
+                                        <div class="col-sm-4 mgbt-xs-15 mgbt-sm-0">
+                                            <div class="item-left pd-15">
+                                                <div id="revenue-donut-chart" style="height:100px;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="item-right pd-15">
+                                                <div id="revenue-bar-chart" style="height: 100px;"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                                    # Panel Widget 
+                                </div> -->
+                                    <!--col-md-7 -->
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-7" id="listterminal">
+
+
+
+
+                                    </div>
+                                    <!-- .vd_content-section -->
+
+                                </div>
+                                <!-- .vd_content -->
+                            </div>
+                            <!-- .vd_container -->
+                        </div>
+                        <!-- .vd_content-wrapper -->
+
+                        <!-- Middle Content End -->
+
+                    </div>
+                    <!-- .container -->
+                </div>
+                <!-- .content -->
+
+
+
+            </div>
+    </div>
+    <%- include('admin/partial_dark/footer'); %>
+        </div>
+
+        <!-- .vd_body END  -->
+        <a id="back-top " href="# " data-action="backtop " class="vd_back-top visible "> <i class="fa fa-angle-up "> </i> </a>
+
+        <!--
+<a class="back-top " href="# " id="back-top "> <i class="icon-chevron-up icon-white "> </i> </a> -->
+
+        <!-- Javascript =============================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <!--[if lt IE 9]>
+  <script type="text/javascript" src="js/excanvas.js"></script>
+<![endif]-->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
+        <script type="text/javascript" src="plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+        <script type="text/javascript" src="js/caroufredsel.js"></script>
+        <script type="text/javascript" src="js/plugins.js"></script>
+
+        <script type="text/javascript" src="plugins/breakpoints/breakpoints.js"></script>
+        <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="plugins/prettyPhoto-plugin/js/jquery.prettyPhoto.js"></script>
+
+        <script type="text/javascript" src="plugins/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script type="text/javascript" src="plugins/tagsInput/jquery.tagsinput.min.js"></script>
+        <script type="text/javascript" src="plugins/bootstrap-switch/bootstrap-switch.min.js"></script>
+        <script type="text/javascript" src="plugins/blockUI/jquery.blockUI.js"></script>
+        <script type="text/javascript" src="plugins/pnotify/js/jquery.pnotify.min.js"></script>
+
+        <script type="text/javascript" src="js/theme.js"></script>
+        <script type="text/javascript" src="custom/custom.js"></script>
+
+        <!-- Specific Page Scripts Put Here -->
+        <!-- Flot Chart  -->
+        <script type="text/javascript" src="plugins/flot/jquery.flot.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.resize.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.pie.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.categories.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.time.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.animator.min.js"></script>
+
+        <!-- Vector Map -->
+        <script type="text/javascript" src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+        <script type="text/javascript" src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+        <!-- Calendar -->
+        <script type="text/javascript" src='plugins/moment/moment.min.js'></script>
+        <script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
+        <script type="text/javascript" src='plugins/fullcalendar/fullcalendar.min.js'></script>
+
+        <!-- Intro JS (Tour) -->
+        <script type="text/javascript" src='plugins/introjs/js/intro.min.js'></script>
+
+        <!-- Sky Icons -->
+        <script type="text/javascript" src='plugins/skycons/skycons.js'></script>
+
+
+        <script type="text/javascript">
+            $(document).ready();
+            $(window).load(function() {});
+        </script>
+        <!-- Specific Page Scripts END -->
+
+
+
+
+        <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
+
+        <script>
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-XXXXX-X']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+
+        <script>
+            account_now = 'natthawat_a';
+
+            function refreshlist() {
+                //alert('refresh');
+                $.ajax('http://localhost/api/listdevice', {
+                    type: "get",
+                    data: {
+                        accname: account_now
+                    },
+                    success: function(json) {
+                        //alert(JSON.stringify(json));
+                        data_res = JSON.parse(JSON.stringify(json));
+                        bindata(data_res);
+                    }
+                });
+            }
+
+
+            function bindata(data_sql) {
+                //alert('bind');
+                //alert(data_sql);
+                data = [];
+                for (i = 0; i < data_sql.length; i++) {
+                    data_json = {};
+                    if (data_sql[6] == 'Android' || data_sql[6] == 'Windows' || data_sql[6] == 'Linux') {
+                        data_json = {
+                            terminalid: data_sql[0],
+                            account: data_sql[1],
+                            name: data_sql[2],
+                            group: data_sql[3],
+                            hostname: data_sql[4],
+                            terminalmac: data_sql[5],
+                            terminalos: data_sql[6].toLowerCase(),
+                            updatetime: data_sql[7],
+                            matchtime: data_sql[8],
+                            limit: data_sql[9]
+                        };
+                    } else if (data_sql[6] == 'iOS') {
+                        data_json = {
+                            terminalid: data_sql[0],
+                            account: data_sql[1],
+                            name: data_sql[2],
+                            group: data_sql[3],
+                            hostname: data_sql[4],
+                            terminalmac: data_sql[5],
+                            terminalos: 'apple',
+                            updatetime: data_sql[7],
+                            matchtime: data_sql[8],
+                            limit: data_sql[9]
+                        };
+                    } else {
+                        data_json = {
+                            terminalid: data_sql[0],
+                            account: data_sql[1],
+                            name: data_sql[2],
+                            group: data_sql[3],
+                            hostname: data_sql[4],
+                            terminalmac: data_sql[5],
+                            terminalos: 'question',
+                            updatetime: data_sql[7],
+                            matchtime: data_sql[8],
+                            limit: data_sql[9]
+                        };
+                    }
+
+                    //alert(JSON.stringify(data_json));
+                    data.push(data_json);
+                    //alert(JSON.stringify(data));
+                    data_sql.splice(0, 10);
+                    i = -1;
+
+                }
+
+                //alert(JSON.stringify(data));
+                document.getElementById('listterminal').innerHTML = '';
+                for (i = 0; i < data.length + 1; i++) {
+
+                    var div = document.createElement('div');
+
+                    div.className = 'form-group m-form__group row';
+                    //div2.style = 'width:70%; height:30%;align-items: left;';
+                    //div.id =
+                    if (data[i].hostname == '') {
+                        host_name = 'ไม่ระบุ';
+                    } else {
+                        host_name = data[i].hostname;
+                    }
+                    update_time = new Date(data[i].updatetime);
+                    date_str = update_time.getHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds() + ' - ' + update_time.getDate() + "/" + update_time.getMonth() + "/" + update_time.getFullYear();
+
+                    q = "'";
+                    div.innerHTML =
+
+                        /*	'<div id="'+data[i].terminalmac+'"><img src="images/devices/'+data[i].terminalos+'.jpg"  style="width:60%; height:60%; display: block;margin: 0 auto;"><br>\
+                        	<button type="button" class="btn btn-danger" style="display: block;margin: 0 auto;" onclick="removedevice(this,'+q+data[i].terminalmac+q+')">ยกเลิกอุปกรณ์</button></div> \
+                        	<div><p>ชื่ออุปกรณ์ : '+host_name+'</p>\
+                        	<p>MAC : '+data[i].terminalmac+'</p>\
+                        	<p>OS : '+data[i].terminalos+'</p>\
+                        	<p>อัพเดทครั้งล่าสุด : '+date_str+'</p></div>\
+                        	';*/
+                        '<div class="col-md-12"> \
+                                                <div class="vd_status-widget vd_bg-green widget"> \
+                                                    <div class="vd_panel-menu"> \
+                                                        <div  data-action="refresh" data-original-title="Refresh" data-rel="tooltip" class=" menu entypo-icon smaller-font" onclick="removedevice(' + q + data[i].terminalmac + q + ')"> <i class="icon-cross" ></i> </div> \
+                                                    </div> \
+                                                    <a class="panel-body" href="#"> \
+                                                        <div class="clearfix"> \
+                                                            <span class="menu-icon"> \
+                            <i class="fa fa-' + data[i].terminalos + '"></i> \
+                        </span> \
+                                                            <span class="menu-value"> \
+                            ' + host_name + ' \
+                        </span> \
+                                                            </span> \
+                                                        </div> \
+                                                        <div class="menu-text clearfix"> \
+                                                            MAC Address: ' + data[i].terminalmac + ' \
+                                                        </div> \
+                                                        <div class="menu-text clearfix"> \
+                                                            Last update: ' + date_str + ' \
+                                                        </div> \
+                                                    </a> \
+                                                </div> \
+                                            </div> ';
+
+                    document.getElementById('listterminal').appendChild(div);
+
+
+                }
+            }
+
+            function removedevice(mac) {
+                //alert(input.parentNode.id);
+                var r = confirm("ยืนยันการลบอุปกรณ์");
+                if (r == true) {
+                    refreshmac(mac)
+                    deletedevice(mac);
+                }
+            }
+
+            function adddevice(name, mac, os) {
+                $.ajax('http://localhost/api/adddevice', {
+                    type: "get",
+                    data: {
+                        tername: name,
+                        termac: mac,
+                        teros: os,
+                        teracc: account_now
+                    },
+                    success: function(json) {
+                        addmac(mac);
+                        refreshlist();
+                    }
+                });
+
+            }
+
+            function deletedevice(ter_mac) {
+                //alert(ter_id);
+                $.ajax('http://localhost/api/deletedevice', {
+                    type: "get",
+                    data: {
+                        termac: ter_mac,
+                        teracc: account_now
+                    },
+                    success: function(json) {
+                        //alert(JSON.stringify(json));
+                        refreshlist();
+                    }
+                });
+            }
+
+            function refreshmac(mac) {
+                //alert('refresh');
+                $.ajax('http://localhost/api/listmac', {
+                    type: "get",
+                    data: {
+                        accname: account_now
+                    },
+                    success: function(json) {
+                        //alert(json);
+                        //data_res = JSON.parse(JSON.stringify(json));
+                        bindmac(JSON.stringify(json), mac);
+                        //alert(JSON.stringify(data_res));
+                    }
+                });
+            }
+
+
+            function bindmac(data_sql, mac) {
+                data_sql = data_sql.substring(2, data_sql.length);
+                //alert(data_sql);
+                mac_bind = '';
+                b = 0;
+                for (i = 1; i < data_sql.length; i++) {
+                    data_mac = data_sql.substring(0, 17);
+                    //alert(data_mac);
+                    if (data_mac == mac) {
+                        data_sql = data_sql.substring(18, data_sql.length);
+                    } else {
+                        mac_bind = mac_bind + data_mac;
+                        data_sql = data_sql.substring(18, data_sql.length);
+                        if (data_sql.length > 1 && mac_bind != 0) {
+                            mac_bind = mac_bind + ',';
+                        }
+                    }
+
+
+
+                    i = 1;
+                    //alert(mac_bind);
+
+                }
+                test = mac_bind.substring(mac_bind.length - 1, mac_bind.length);
+                if (test == ',') {
+                    mac_bind = mac_bind.substring(0, mac_bind.length - 1);
+                }
+                updatemac(mac_bind)
+            }
+
+            function addmac(mac) {
+                //alert('refresh');
+                $.ajax('http://localhost/api/listmac', {
+                    type: "get",
+                    data: {
+                        accname: account_now
+                    },
+                    success: function(json) {
+                        //alert(json);
+                        //data_res = JSON.parse(JSON.stringify(json));
+                        addbindmac(JSON.stringify(json), mac);
+                        //alert(JSON.stringify(data_res));
+                    }
+                });
+            }
+
+
+            function addbindmac(data_sql, mac) {
+
+                if (data_sql.length < 15) {
+                    data_sql = mac;
+                    updatemac(data_sql);
+                } else {
+                    data_sql_1 = data_sql.substring(2, data_sql.length - 2);;
+                    data_sql = data_sql.substring(2, data_sql.length);
+                    //alert(data_sql);
+                    //alert(data_sql_1);
+                    mac_bind = '';
+                    a = 0
+                    for (i = 1; i < data_sql.length; i++) {
+                        data_mac = data_sql.substring(0, 17);
+                        //alert(data_mac);
+                        if (data_mac == mac) {
+                            a = 1;
+                        } else {
+                            mac_bind = mac_bind + data_mac;
+                        }
+                        data_sql = data_sql.substring(18, data_sql.length);
+                        if (data_sql.length > 1 && mac_bind != 0) {
+                            mac_bind = mac_bind + ',';
+                        }
+                        i = 1;
+                        //alert(data_sql);
+
+                    }
+                    if (a == 1) {} else {
+                        data_sql_1 = data_sql_1 + ',' + mac;
+                    }
+
+                    //alert(data_sql);
+                    updatemac(data_sql_1);
+                }
+            }
+
+            function updatemac(mac) {
+                //alert('refresh');
+                $.ajax('http://localhost/api/updatemac', {
+                    type: "get",
+                    data: {
+                        accname: account_now,
+                        macbind: mac
+                    },
+                    success: function(json) {}
+                });
+            }
+
+
+            refreshlist();
+        </script>
+
+
+</body>
+
+</html>

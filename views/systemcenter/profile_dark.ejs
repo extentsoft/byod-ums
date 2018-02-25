@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<!-- Specific Page Data -->
+
+<!-- End of Data -->
+
+<head>
+    <meta charset="utf-8" />
+    <title>BYOD Excise Department</title>
+    <meta name="keywords" content="BYOD, Excise, Excise Department, Bring Your Own Device" />
+    <meta name="description" content="BYOD ICT">
+    <meta name="author" content="Extentsoft Co.,Ltd.">
+
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="img/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="img/ico/favicon.ico">
+
+
+    <!-- CSS -->
+
+    <!-- Bootstrap & FontAwesome & Entypo CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--[if IE 7]><link type="text/css" rel="stylesheet" href="css/font-awesome-ie7.min.css"><![endif]-->
+    <link href="css/font-entypo.css" rel="stylesheet" type="text/css">
+
+    <!-- Fonts CSS -->
+    <link href="css/fonts.css" rel="stylesheet" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link href="plugins/jquery-ui/jquery-ui.custom.min.css" rel="stylesheet" type="text/css">
+    <link href="plugins/prettyPhoto-plugin/css/prettyPhoto.css" rel="stylesheet" type="text/css">
+    <link href="plugins/isotope/css/isotope.css" rel="stylesheet" type="text/css">
+    <link href="plugins/pnotify/css/jquery.pnotify.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="plugins/google-code-prettify/prettify.css" rel="stylesheet" type="text/css">
+
+
+    <link href="plugins/mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
+    <link href="plugins/tagsInput/jquery.tagsinput.css" rel="stylesheet" type="text/css">
+    <link href="plugins/bootstrap-switch/bootstrap-switch.css" rel="stylesheet" type="text/css">
+    <link href="plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css">
+    <link href="plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css">
+    <link href="plugins/colorpicker/css/colorpicker.css" rel="stylesheet" type="text/css">
+
+    <!-- Specific CSS -->
+    <link href="plugins/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css">
+    <link href="plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css">
+    <link href="plugins/introjs/css/introjs.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="css/theme.min.css" rel="stylesheet" type="text/css">
+    <!--[if IE]> <link href="css/ie.css" rel="stylesheet" > <![endif]-->
+    <link href="css/chrome.css" rel="stylesheet" type="text/chrome">
+    <!-- chrome only css -->
+
+
+
+    <!-- Responsive CSS -->
+    <link href="css/theme-responsive.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+    <!-- for specific page in style css -->
+
+    <!-- for specific page responsive in style css -->
+
+
+    <!-- Custom CSS -->
+    <link href="custom/custom.css" rel="stylesheet" type="text/css">
+
+
+
+    <!-- Head SCRIPTS -->
+    <script type="text/javascript" src="js/modernizr.js"></script>
+    <script type="text/javascript" src="js/mobile-detect.min.js"></script>
+    <script type="text/javascript" src="js/mobile-detect-modernizr.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script type="text/javascript" src="js/html5shiv.js"></script>
+      <script type="text/javascript" src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">
+    <div class="vd_body">
+        <%- include('admin/partial_dark/header'); %>
+
+            <!-- Content start -->
+
+            <div class="content">
+                <div class="container">
+                    <%- include('admin/partial_dark/menu'); %>
+
+
+                </div>
+
+                <!-- Middle Content Start -->
+
+                <div class="vd_content-wrapper">
+                    <div class="vd_container">
+                        <div class="vd_content clearfix">
+
+                            <!-- vd_head-section -->
+                            <div class="vd_title-section clearfix">
+                                <div class="vd_panel-header">
+                                    <h1>ข้อมูลส่วนบุคคล</h1>
+                                    <!-- menu -->
+                                </div>
+                            </div>
+                            <!-- vd_title-section -->
+
+                            <div class="vd_content-section clearfix">
+                                <!-- start row-->
+
+                                <!-- end row -->
+
+                                <div class="row" id="form-basic">
+                                    <div class="col-md-12">
+                                        <div class="panel widget">
+                                            <div class="panel-heading vd_bg-grey">
+                                                <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-bar-chart-o"></i> </span> ประวัติส่วนบุคคล </h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <form class="form-horizontal" action="#" role="form">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 control-label">เลขที่บัตรประจำตัวประชาชน</label>
+                                                        <div class="col-sm-7 controls">
+                                                            <input type="text" disabled="" placeholder="<%= email %>" readonly>
+                                                            <span class="help-inline">เลขที่บัตรประจำตัวประชาชนไม่สามารถแก้ไขได้</span> </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 control-label">ชื่อจริง (ภาษาอังกฤษ)</label>
+                                                        <div class="col-sm-7 controls">
+                                                            <input type="text" placeholder="<%= firstname %>" class="input-border-btm">
+                                                            <span class="help-inline">ex. Natthawat</span> </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 control-label">นามสกุลจริง (ภาษาอังกฤษ)</label>
+                                                        <div class="col-sm-7 controls">
+                                                            <input type="text" placeholder="<%= lastname %>" class="input-border-btm">
+                                                            <span class="help-inline">ex. Arunwattana</span> </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 control-label">เลขตำแหน่ง/สังกัด</label>
+                                                        <div class="col-sm-7 controls">
+                                                            <input type="text" placeholder="<%= position %>" class="input-border-btm">
+                                                            <span class="help-inline">ex. 501</span> </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 control-label">ระดับข้าราชการ</label>
+                                                        <div class="col-sm-7 controls">
+                                                            <input type="text" placeholder="<%= level %>" class="input-border-btm">
+                                                            <span class="help-inline">8</span> </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 control-label">พื้นที่</label>
+                                                        <div class="col-sm-7 controls">
+                                                            <input type="text" placeholder="<%= area %>" class="input-border-btm">
+                                                            <span class="help-inline">52</span> </div>
+                                                    </div>
+                                                    <!--
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 control-label">ตำแหน่ง/สังกัด</label>
+                                                        <div class="col-sm-7 controls">
+                                                            <select>
+                                                                <option>500</option>
+                                                                <option>501</option>
+                                                                <option>400</option>
+                                                                <option>120</option>
+                                                                <option>101</option>
+                                                             </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 control-label">ระดับข้าราชการ</label>
+                                                        <div class="col-sm-7 controls">
+                                                            <select class="width-40">
+                                                      <option>ระดับ 1</option>
+                                                      <option>ระดับ 2</option>
+                                                      <option>ระดับ 3</option>
+                                                      <option>ระดับ 4</option>
+                                                      <option>ระดับ 5</option>
+                                                      <option>ระดับ 6</option>
+                                                      <option>ระดับ 7</option>
+                                                      <option>ระดับ 8</option>
+                                                      <option>ระดับ 9</option>
+                                                      <option>ระดับ 10</option>
+                                                      <option>ระดับ 11</option>
+                                                      <option>ระดับ 12</option>
+                                                      <option>ระดับ 13</option>
+                                                      
+                                                    </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 control-label">พื้นที่</label>
+                                                        <div class="col-sm-7 controls">
+                                                            <select>
+                                                                    <option>1</option>
+                                                                    <option>2</option>
+                                                                    <option>3</option>
+                                                                    <option>4</option>
+                                                                    <option>5</option>
+                                                                 </select>
+                                                        </div>
+                                                    </div>
+                                                -->
+                                                    <div class="form-group form-actions">
+                                                        <div class="col-sm-4"> </div>
+                                                        <div class="col-sm-7">
+                                                            <button class="btn vd_btn vd_bg-green vd_white" type="submit"><i class="icon-ok"></i> Save</button>
+                                                            <button class="btn vd_btn" type="button">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <!-- Panel Widget -->
+                                    </div>
+                                    <!-- col-md-12 -->
+                                </div>
+                                <!-- row -->
+
+
+                            </div>
+                            <!-- .vd_content-section -->
+
+                        </div>
+                        <!-- .vd_content -->
+                    </div>
+                    <!-- .vd_container -->
+                </div>
+                <!-- .vd_content-wrapper -->
+
+                <!-- Middle Content End -->
+
+            </div>
+            <!-- .container -->
+    </div>
+    <!-- .content -->
+
+    <%- include('admin/partial_dark/footer'); %>
+
+
+
+        </div>
+
+        <!-- .vd_body END  -->
+        <a id="back-top " href="# " data-action="backtop " class="vd_back-top visible "> <i class="fa fa-angle-up "> </i> </a>
+
+        <!--
+<a class="back-top " href="# " id="back-top "> <i class="icon-chevron-up icon-white "> </i> </a> -->
+
+        <!-- Javascript =============================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <!--[if lt IE 9]>
+  <script type="text/javascript" src="js/excanvas.js"></script>
+<![endif]-->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
+        <script type="text/javascript" src="plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+        <script type="text/javascript" src="js/caroufredsel.js"></script>
+        <script type="text/javascript" src="js/plugins.js"></script>
+
+        <script type="text/javascript" src="plugins/breakpoints/breakpoints.js"></script>
+        <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="plugins/prettyPhoto-plugin/js/jquery.prettyPhoto.js"></script>
+
+        <script type="text/javascript" src="plugins/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script type="text/javascript" src="plugins/tagsInput/jquery.tagsinput.min.js"></script>
+        <script type="text/javascript" src="plugins/bootstrap-switch/bootstrap-switch.min.js"></script>
+        <script type="text/javascript" src="plugins/blockUI/jquery.blockUI.js"></script>
+        <script type="text/javascript" src="plugins/pnotify/js/jquery.pnotify.min.js"></script>
+
+        <script type="text/javascript" src="js/theme.js"></script>
+        <script type="text/javascript" src="custom/custom.js"></script>
+
+        <!-- Specific Page Scripts Put Here -->
+        <!-- Flot Chart  -->
+        <script type="text/javascript" src="plugins/flot/jquery.flot.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.resize.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.pie.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.categories.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.time.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.animator.min.js"></script>
+
+        <!-- Vector Map -->
+        <script type="text/javascript" src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+        <script type="text/javascript" src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+        <!-- Calendar -->
+        <script type="text/javascript" src='plugins/moment/moment.min.js'></script>
+        <script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
+        <script type="text/javascript" src='plugins/fullcalendar/fullcalendar.min.js'></script>
+
+        <!-- Intro JS (Tour) -->
+        <script type="text/javascript" src='plugins/introjs/js/intro.min.js'></script>
+
+        <!-- Sky Icons -->
+        <script type="text/javascript" src='plugins/skycons/skycons.js'></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+
+        <!-- Include Date Range Picker -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+
+
+        <script type="text/javascript ">
+            $(document).ready(function() {
+
+            });
+            $(window).load(function() {});
+        </script>
+        <!-- Specific Page Scripts END -->
+
+
+
+
+        <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
+
+        <script>
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-XXXXX-X']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+
+        <script type="text/javascript ">
+            function refresh_group(sd, ed) {
+                //alert('refresh');
+                $.ajax('http://localhost/report/report672', {
+                    type: "get",
+                    data: {
+                        start: sd,
+                        end: ed
+                    },
+                    success: function(json) {
+                        //alert(JSON.stringify(json));
+                        data_res = JSON.parse(JSON.stringify(json));
+                        bindata_group(data_res);
+                    }
+                });
+            }
+
+
+            function bindata_group(data_sql) {
+                //alert('bind');
+                //alert(data_sql);
+                data = [];
+                total = 0;
+                for (i = 0; i < data_sql.length; i++) {
+                    data_json = {};
+                    if (data_sql[0] == '') {
+                        district_name = 'อื่นๆ';
+                    } else {
+                        district_name = data_sql[0];
+                    }
+
+                    data_json = {
+                        type: district_name,
+                        amount: data_sql[1]
+                    };
+                    total = total + data_sql[1];
+                    //alert(JSON.stringify(data_json));
+                    data.push(data_json);
+                    //alert(JSON.stringify(data));
+                    data_sql.splice(0, 2);
+                    i = -1;
+
+                }
+                //alert(JSON.stringify(data));
+                c1(data);
+            }
+            c1 = function(data) {
+                //var site = [{"siteName":"Central","amountOfuser":"154"},{"siteName":"Eastern","amountOfuser":"65"},{"siteName":"Southern","amountOfuser":"35"},{"siteName":"Northern","amountOfuser":"41"},{"siteName":"Northeastern","amountOfuser":"21"}];
+                var pie_data = [],
+                    //e = Math.floor(10 * Math.random()) + 1;
+                    //e = e < 5 ? 5 : e;
+                    e = data.length;
+                for (var o = 0; o < e; o++)
+                    pie_data[o] = {
+                        //label: "Series" + (o + 1),
+                        label: data[o].type,
+                        //data: Math.floor(100 * Math.random()) + 1
+                        data: data[o].amount
+                    };
+                //alert(pie_data);
+                document.getElementById('pie-chart-1').innerHTML = '';
+
+                var pie_placeholder = $("#pie-chart-1");
+
+
+                $.plot(pie_placeholder, pie_data, {
+                    series: {
+                        pie: {
+                            show: true,
+                            label: {
+                                show: true,
+                                radius: .5,
+                                formatter: labelFormatter,
+                                background: {
+                                    opacity: 0
+                                }
+                            },
+
+                        }
+                    },
+                    grid: {
+                        hoverable: true,
+                        clickable: true
+                    },
+                    colors: ["#FCB660", "#ce91db", "#56A2CF", "#52D793", "#FC8660", "#CCCCCC"]
+                });
+
+                pie_placeholder.bind("plothover", function(event, pos, obj) {
+                    if (!obj) {
+                        return;
+                    }
+                    var percent = parseFloat(obj.series.percent).toFixed(2);
+                    $("#hover").html("<span style='font-weight:bold; color:" + obj.series.color + "'>" + obj.series.label + " (" + percent + "%)</span>");
+                });
+
+                pie_placeholder.bind("plotclick", function(event, pos, obj) {
+                    if (!obj) {
+                        return;
+                    }
+                    percent = parseFloat(obj.series.percent).toFixed(2);
+                    alert("" + obj.series.label + ": " + percent + "%");
+                });
+
+                function labelFormatter(label, series) {
+                    return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
+                }
+            }
+
+            function refresh_browser(sd, ed) {
+                //alert('refresh');
+                $.ajax('http://localhost/report/report67153', {
+                    type: "get",
+                    data: {
+                        start: sd,
+                        end: ed
+                    },
+                    success: function(json) {
+                        //alert(JSON.stringify(json));
+                        data_res = JSON.parse(JSON.stringify(json));
+                        bindata_browser(data_res);
+                    }
+                });
+            }
+
+
+            function bindata_browser(data_sql) {
+                //alert('bind');
+                //alert(data_sql);
+                data = [];
+                total = 0;
+                for (i = 0; i < data_sql.length; i++) {
+                    data_json = {};
+                    data_json = {
+                        browser: data_sql[0],
+                        amount: data_sql[1]
+                    };
+                    total = total + data_sql[1];
+                    //alert(JSON.stringify(data_json));
+                    data.push(data_json);
+                    //alert(JSON.stringify(data));
+                    data_sql.splice(0, 2);
+                    i = -1;
+
+                }
+                //alert(JSON.stringify(data));
+                c2(data);
+            }
+            c2 = function(data) {
+                //var site = [{"siteName":"Central","amountOfuser":"154"},{"siteName":"Eastern","amountOfuser":"65"},{"siteName":"Southern","amountOfuser":"35"},{"siteName":"Northern","amountOfuser":"41"},{"siteName":"Northeastern","amountOfuser":"21"}];
+                var pie_data = [],
+                    //e = Math.floor(10 * Math.random()) + 1;
+                    //e = e < 5 ? 5 : e;
+                    e = data.length;
+                for (var o = 0; o < e; o++)
+                    pie_data[o] = {
+                        //label: "Series" + (o + 1),
+                        label: data[o].browser,
+                        //data: Math.floor(100 * Math.random()) + 1
+                        data: data[o].amount
+                    };
+                //alert(pie_data);
+                document.getElementById('pie-chart-2').innerHTML = '';
+
+                var pie_placeholder = $("#pie-chart-2");
+
+
+                $.plot(pie_placeholder, pie_data, {
+                    series: {
+                        pie: {
+                            show: true,
+                            label: {
+                                show: true,
+                                radius: .5,
+                                formatter: labelFormatter,
+                                background: {
+                                    opacity: 0
+                                }
+                            },
+
+                        }
+                    },
+                    grid: {
+                        hoverable: true,
+                        clickable: true
+                    },
+                    colors: ["#FCB660", "#ce91db", "#56A2CF", "#52D793", "#FC8660", "#CCCCCC"]
+                });
+
+                pie_placeholder.bind("plothover", function(event, pos, obj) {
+                    if (!obj) {
+                        return;
+                    }
+                    var percent = parseFloat(obj.series.percent).toFixed(2);
+                    $("#hover").html("<span style='font-weight:bold; color:" + obj.series.color + "'>" + obj.series.label + " (" + percent + "%)</span>");
+                });
+
+                pie_placeholder.bind("plotclick", function(event, pos, obj) {
+                    if (!obj) {
+                        return;
+                    }
+                    percent = parseFloat(obj.series.percent).toFixed(2);
+                    alert("" + obj.series.label + ": " + percent + "%");
+                });
+
+                function labelFormatter(label, series) {
+                    return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
+                }
+            }
+
+            function refresh_os(sd, ed) {
+                //alert('refresh');
+                $.ajax('http://localhost/report/report67152', {
+                    type: "get",
+                    data: {
+                        start: sd,
+                        end: ed
+                    },
+                    success: function(json) {
+                        //alert(JSON.stringify(json));
+                        data_res = JSON.parse(JSON.stringify(json));
+                        bindata_os(data_res);
+                    }
+                });
+            }
+
+            function testAPI() {
+                alert('555');
+
+
+                $.ajax('http://localhost/api/chat/attachment', {
+                    type: "get",
+
+                    success: function(json) {
+                        alert('done');
+                        //alert(JSON.stringify(json));
+                        //data_res = JSON.parse(JSON.stringify(json));
+                        //bindata_os(data_res);
+                    }
+                });
+            }
+
+
+            function bindata_os(data_sql) {
+                //alert('bind');
+                //alert(data_sql);
+                data = [];
+                total = 0;
+                for (i = 0; i < data_sql.length; i++) {
+                    data_json = {};
+                    if (data_sql[0] == '') {
+                        district_name = 'อื่นๆ';
+                    } else {
+                        district_name = data_sql[0];
+                    }
+
+                    data_json = {
+                        type: district_name,
+                        amount: data_sql[1]
+                    };
+                    total = total + data_sql[1];
+                    //alert(JSON.stringify(data_json));
+                    data.push(data_json);
+                    //alert(JSON.stringify(data));
+                    data_sql.splice(0, 2);
+                    i = -1;
+
+                }
+                //alert(JSON.stringify(data));
+            }
+
+            function datepick() {
+                function e(e, a, r) {
+                    //refresh_site(e.format("Y-M-D"),a.format("Y-M-D"));
+                    //refresh_device(e.format("Y-M-D"),a.format("Y-M-D"));
+                    refresh_os(e.format("Y-M-D"), a.format("Y-M-D"));
+                    refresh_group(e.format("Y-M-D"), a.format("Y-M-D"));
+                    refresh_browser(e.format("Y-M-D"), a.format("Y-M-D"));
+                    //alert(e.format("Y-M-D"));
+                    //alert(a.format("Y-M-D"));
+
+                    //group_chart();
+
+                    var o = "",
+                        l = "";
+                    a - e < 100 ? (o = "Today:", l = e.format("MMM D")) : "Yesterday" == r ? (o = "Yesterday:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
+                        t.find(".m-subheader__daterange-date").html(l),
+                        t.find(".m-subheader__daterange-title").html(o)
+                }
+                if (0 != $("#daterangepicker").length) {
+                    var t = $("#daterangepicker"),
+                        a = moment(),
+                        r = moment();
+                    t.daterangepicker({
+                            startDate: a,
+                            endDate: r,
+                            opens: "left",
+                            ranges: {
+                                Today: [moment(), moment()],
+                                //Yesterday: [moment().subtract(1, "days"), moment().subtract(1, "days")],
+                                "Last 7 Days": [moment().subtract(6, "days"), moment()],
+                                "Last 30 Days": [moment().subtract(29, "days"), moment()],
+                                "This Month": [moment().startOf("month"), moment().endOf("month")],
+                                "This Year": [moment().startOf("year"), moment().endOf("year")]
+                                    //"Last Month": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
+                            }
+                        }, e),
+                        e(a, r, "")
+                }
+            }
+
+            function line_chart(data) {
+                /* REVENUE LINE CHART */
+
+                var d2 = data;
+
+                var plot = $.plotAnimator($("#revenue-line-chart"), [{
+                        label: "Revenue",
+                        data: d2,
+                        lines: {
+                            fill: 0.4,
+                            lineWidth: 0,
+                        },
+                        color: ['#f2be3e']
+                    },
+
+                ], {
+                    xaxis: {
+                        tickLength: 0,
+                        tickDecimals: 0,
+                        min: 0,
+                        max: 23,
+
+                        font: {
+                            lineHeight: 13,
+                            style: "normal",
+                            weight: "bold",
+                            family: "sans-serif",
+                            variant: "small-caps",
+                            color: "#6F7B8A"
+                        }
+                    },
+                    yaxis: {
+                        ticks: 3,
+                        tickDecimals: 0,
+                        tickColor: "#f0f0f0",
+                        font: {
+                            lineHeight: 13,
+                            style: "normal",
+                            weight: "bold",
+                            family: "sans-serif",
+                            variant: "small-caps",
+                            color: "#6F7B8A"
+                        }
+                    },
+                    grid: {
+                        backgroundColor: {
+                            colors: ["#fff", "#fff"]
+                        },
+                        borderWidth: 1,
+                        borderColor: "#f0f0f0",
+                        margin: 0,
+                        minBorderMargin: 0,
+                        labelMargin: 20,
+                        hoverable: true,
+                        clickable: true,
+                        mouseActiveRadius: 6
+                    },
+                    legend: {
+                        show: false
+                    }
+                });
+
+                //$("#revenue-line-chart").UseTooltip();
+
+                $(window).on("resize", function() {
+                    plot.resize();
+                    plot.setupGrid();
+                    plot.draw();
+                });
+                //alert('a')
+            }
+
+            function refresh_traffic() {
+                //alert('refresh');
+                $.ajax('http://localhost/report/traffic', {
+                    type: "get",
+                    success: function(json) {
+                        //alert(JSON.stringify(json));
+                        data_res = JSON.parse(JSON.stringify(json));
+                        bindata_traffic(data_res);
+                    }
+                });
+            }
+
+            function bar_chart() {
+                /* REVENUE BAR CHART */
+
+                var bar_chart_data = [
+                    ["เขต1", 50],
+                    ["เขต2", 23],
+                    ["กรุงเทพ", 55],
+                    ["ภูเก็ต", 12],
+                    ["นครนายก", 17],
+                    ["เชียงใหม่", 9],
+                    ["เขต4", 10],
+                    ["เขต5", 8],
+                    ["อยุธยา", 4],
+                    ["นครสวรรค์", 13],
+                    ["ปราจีนบุรี", 17],
+                    ["เชียงราย", 9]
+                ];
+
+                var bar_chart = $.plot(
+                    $("#revenue-bar-chart"), [{
+                        data: bar_chart_data,
+                        //           color: "rgba(31,174,102, 0.8)",
+                        color: "#F85D2C",
+                        shadowSize: 0,
+                        bars: {
+                            show: true,
+                            lineWidth: 0,
+                            fill: true,
+                            fillColor: {
+                                colors: [{
+                                    opacity: 1
+                                }, {
+                                    opacity: 1
+                                }]
+                            }
+                        }
+                    }], {
+                        series: {
+                            bars: {
+                                show: true,
+                                barWidth: 0.9,
+                                align: "center"
+                            }
+                        },
+                        grid: {
+                            show: true,
+                            hoverable: true,
+                            borderWidth: 0
+                        },
+                        yaxis: {
+                            min: 0,
+                            max: 20,
+                            show: false
+                        },
+                        xaxis: {
+                            mode: "categories",
+                            tickLength: 0,
+                            color: "#FFFFFF",
+                        }
+                    });
+
+            }
+
+            function bindata_traffic(data_sql) {
+                //alert('bind');
+                //alert(data_sql);
+                data = [];
+
+                total = 0;
+                count = 0;
+                for (i = 0; i < 24; i++) {
+                    data_json = [];
+                    if (data_sql[0] == count && data_sql.length > 0) {
+                        data_json = [
+                            [data_sql[0], data_sql[1]]
+                        ];
+                        data_sql.splice(0, 2);
+                    } else {
+                        data_json = [
+                            [count, 0]
+                        ];
+                    }
+
+                    count++;
+                    total = total + data_sql[1];
+                    //alert(JSON.stringify(data_json));
+                    data = data.concat(data_json);
+                    //alert(JSON.stringify(data));
+
+                }
+                //alert(JSON.stringify(data));
+                line_chart(data);
+            }
+            bar_chart();
+            refresh_traffic();
+
+            function get_chat() {
+                $.ajax('http://localhost/api/getchat', {
+                    type: "get",
+                    success: function(json) {
+                        //alert(JSON.stringify(json));
+                        data_c = JSON.parse(JSON.stringify(json));
+                        datac = [];
+                        for (i = 0; i < data_c.length; i++) {
+                            data_json = {};
+                            data_json = {
+                                msg_id: data_c[0],
+                                name: data_c[1],
+                                msg: data_c[2],
+                                timestamp: data_c[3]
+                            };
+                            //alert(JSON.stringify(data_json));
+                            datac.push(data_json);
+                            //alert(JSON.stringify(data));
+                            data_c.splice(0, 4);
+                            i = -1;
+
+                        }
+
+                        for (i = 0; i < datac.length; i++) {
+                            //tmp = String(JSON.stringify(datac[i])).replace('\t','');
+                            //alert(JSON.stringify(datac[i]));
+                            /*data[i].channel
+                            data[i].timestamp
+                            data[i].msg*/
+                            //alert(data[i].channel);
+
+
+
+                            //var uid = $("#userid").text();
+                            if (datac[i].name == account_now) {
+                                //alert(data[i].msg);
+                                //var my_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
+                                var my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+                                $('#chatbox').append(my_msg);
+                            } else {
+                                //var other_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--in'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-username'>" + datac[i].name + " : wrote</div><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
+                                var other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+                                $('#chatbox').append(other_msg);
+                            }
+                        }
+                    }
+                });
+            }
+
+            function sendchat(msg) {
+                //alert(account_now);
+                //alert(msg);
+                $.ajax('http://localhost/api/addchat', {
+                    type: "get",
+                    data: {
+                        usr: account_now,
+                        msgchat: msg
+                    },
+                    success: function(json) {
+                        $('#chatbox').empty();
+                        document.getElementById('chat-text').value = ''
+                        get_chat();
+
+                    }
+                });
+
+            }
+
+            function get_noti() {
+                $.ajax('http://localhost/api/getnotimsg', {
+                    type: "get",
+                    data: {
+                        chanel: '0'
+                    },
+                    success: function(json) {
+                        //alert(JSON.stringify(json));
+                        //alert('message sent!');
+                        data_sql = JSON.parse(JSON.stringify(json));
+                        data = [];
+                        for (i = 0; i < data_sql.length; i++) {
+                            data_json = {};
+                            data_json = {
+                                msg_id: data_sql[0],
+                                msg: data_sql[1],
+                                chanel: data_sql[2],
+                                timestamp: data_sql[3]
+                            };
+                            //alert(JSON.stringify(data_json));
+                            data.push(data_json);
+                            //alert(JSON.stringify(data));
+                            data_sql.splice(0, 4);
+                            i = -1;
+
+                        }
+                        //alert(data.length);
+                        //var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 4 ธันวาคม 2560</span><span class='m-list-timeline__time'>20 mins</span></div>";
+                        //$('#notification_center').append(msg);
+                        for (i = 0; i < data.length; i++) {
+
+                            /*data[i].channel
+                            data[i].timestamp
+                            data[i].msg*/
+                            //alert(data[i].channel);
+                            if (data[i].chanel <= 1) {
+                                //alert(data[i].msg);
+                                //var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>" + data[i].msg + "</span><span class='m-list-timeline__time'>" + data[i].timestamp.split("T")[0] + "</span></div>";
+
+                                var msg = "<li><a href='#'><div class='menu-icon vd_green'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + data[i].msg + "<div class='menu-info'><span class='menu-date'>" + data[i].timestamp.split("T")[0] + "</span></div></div></a></li>";
+
+                                $('#notification_center').append(msg);
+                            }
+
+                        }
+                        //alert(JSON.stringify(data));
+                        //bindata(data_res);
+                    }
+                });
+
+            }
+            get_noti();
+            get_chat();
+            datepick();
+            //document.getElementById('val-iOS').innerHTML = '50';
+        </script>
+
+</body>
+
+</html>
