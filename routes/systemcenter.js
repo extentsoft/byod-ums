@@ -65,6 +65,9 @@ module.exports = function(app, passport) {
             title: 'แผงควบคุมหลัก',
             path: 'systemcenter/',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -74,6 +77,9 @@ module.exports = function(app, passport) {
             title: 'ตั้งค่าระบบ',
             //path: 'systemcenter/',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -83,6 +89,9 @@ module.exports = function(app, passport) {
         res.render('systemcenter/admin/configuration', {
             title: 'ปรับแต่ง',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -101,6 +110,9 @@ module.exports = function(app, passport) {
         res.render('systemcenter/device', {
             title: 'อุปกรณ์',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -109,6 +121,9 @@ module.exports = function(app, passport) {
         res.render('systemcenter/setting', {
             title: 'ตั้งค่า',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -125,6 +140,9 @@ module.exports = function(app, passport) {
             title: 'ข้อมูลผู้ใช้งาน',
             //path: 'systemcenter/',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -137,6 +155,9 @@ module.exports = function(app, passport) {
         res.render('systemcenter/report/device/activate', {
             title: 'Report',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -145,6 +166,9 @@ module.exports = function(app, passport) {
         res.render('systemcenter/report/device/deactivate/today', {
             title: 'Report',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -153,6 +177,9 @@ module.exports = function(app, passport) {
         res.render('systemcenter/report/device/deactivate/week', {
             title: 'Report',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -161,6 +188,9 @@ module.exports = function(app, passport) {
         res.render('systemcenter/report/device/deactivate/month', {
             title: 'Report',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -169,6 +199,9 @@ module.exports = function(app, passport) {
         res.render('systemcenter/report/device/deactivate/year', {
             title: 'Report',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -178,6 +211,9 @@ module.exports = function(app, passport) {
         res.render('systemcenter/report/usage/person/today', {
             title: 'Report',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -186,6 +222,9 @@ module.exports = function(app, passport) {
         res.render('systemcenter/report/usage/person/week', {
             title: 'Report',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -194,6 +233,9 @@ module.exports = function(app, passport) {
         res.render('systemcenter/report/usage/person/month', {
             title: 'Report',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -202,6 +244,9 @@ module.exports = function(app, passport) {
         res.render('systemcenter/report/usage/person/year', {
             title: 'Report',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -211,6 +256,9 @@ module.exports = function(app, passport) {
         res.render('systemcenter/report/usage/group/today', {
             title: 'Report',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -219,6 +267,9 @@ module.exports = function(app, passport) {
         res.render('systemcenter/report/usage/group/week', {
             title: 'Report',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -227,6 +278,9 @@ module.exports = function(app, passport) {
         res.render('systemcenter/report/usage/group/month', {
             title: 'Report',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -235,6 +289,9 @@ module.exports = function(app, passport) {
         res.render('systemcenter/report/usage/group/year', {
             title: 'Report',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
@@ -247,12 +304,18 @@ module.exports = function(app, passport) {
         res.render('systemcenter/report/policy/usage', {
             title: 'Report',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
     app.get('/systemcenter/report/policy/device', isLoggedIn, function(req, res) {
         res.render('systemcenter/report/policy/device', {
             title: 'Report',
             message: req.flash('message'),
+            email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
