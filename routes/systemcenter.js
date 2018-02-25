@@ -93,6 +93,11 @@ module.exports = function(app, passport) {
     =================================================================== */
     app.get('/systemcenter/device', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
+
+
+        console.log(req.user.email);
+        console.log(req.user.firstname);
+        console.log(req.user.lastname);
         res.render('systemcenter/device', {
             title: 'อุปกรณ์',
             message: req.flash('message'),
