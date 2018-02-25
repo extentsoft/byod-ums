@@ -40,6 +40,7 @@
     <link href="css/fonts.css" rel="stylesheet" type="text/css">
 
     <!-- Plugin CSS -->
+
     <link href="plugins/jquery-ui/jquery-ui.custom.min.css" rel="stylesheet" type="text/css">
     <link href="plugins/prettyPhoto-plugin/css/prettyPhoto.css" rel="stylesheet" type="text/css">
     <link href="plugins/isotope/css/isotope.css" rel="stylesheet" type="text/css">
@@ -52,6 +53,7 @@
     <link href="plugins/bootstrap-switch/bootstrap-switch.css" rel="stylesheet" type="text/css">
     <link href="plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css">
     <link href="plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css">
+
     <link href="plugins/colorpicker/css/colorpicker.css" rel="stylesheet" type="text/css">
 
     <!-- Specific CSS -->
@@ -87,6 +89,8 @@
     <script type="text/javascript" src="js/modernizr.js"></script>
     <script type="text/javascript" src="js/mobile-detect.min.js"></script>
     <script type="text/javascript" src="js/mobile-detect-modernizr.js"></script>
+
+    <script type="text/javascript" src='plugins/bootstrap-timepicker/bootstrap-timepicker.min.js'></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -124,6 +128,89 @@
                                 </div>
                             </div>
                             <!-- vd_panel-header -->
+                            <div class="vd_content-section clearfix">
+                                <div class="row" id="bootstrap-time">
+                                    <div class="col-md-12">
+                                        <div class="panel widget">
+                                            <div class="panel-heading vd_bg-grey">
+                                                <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-clock-o"></i> </span>ช่วงเวลาที่อนุญาติให้ใช้งานระบบ</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <form class="form-horizontal" action="#" role="form">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">ตั้งแต่</label>
+                                                        <div class="col-sm-3 controls">
+                                                            <div class="input-group bootstrap-timepicker">
+                                                                <input type="text" placeholder="Date" id="timepicker-default">
+                                                                <span class="input-group-addon" id="timepicker-default-span"><i class="fa fa-clock-o"></i></span> </div>
+                                                        </div>
+                                                        <label class="col-sm-2 control-label">จนถึง</label>
+                                                        <div class="col-sm-3 controls">
+                                                            <div class="input-group bootstrap-timepicker">
+                                                                <input type="text" placeholder="Date" id="timepicker-default-to">
+                                                                <span class="input-group-addon" id="timepicker-default-span-to"><i class="fa fa-clock-o"></i></span> </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <!-- Panel Widget -->
+                                    </div>
+                                    <!-- col-md-12 -->
+                                </div>
+
+
+                                <div class="row ">
+                                    <div class="col-md-12">
+                                        <div class="panel widget">
+                                            <div class="panel-heading vd_bg-grey">
+                                                <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-bar-chart-o"></i> </span>กำหนดเงื่อนไขการใช้งานระบบโดยรวม</h3>
+                                            </div>
+
+                                            <div class="panel-body">
+                                                <form class="form-horizontal" action="#" role="form">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-5 control-label">การเข้าใช้งานต่างสถานที่จะต้องมีการเว้นช่วงเวลาไม่น้อยกว่า</label>
+                                                        <div class="col-sm-5 controls">
+                                                            <input class="width-70" type="text" placeholder="จำนวนนาทีนับจากการเข้าใช้งานล่าสุด" data-toggle="tooltip" data-placement="top" data-original-title="ระยะเวลาที่เป็นไปได้สำหรับการเข้าใช้งานต่างพื้นที่">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-5 control-label">จำนวนครั้งที่อนุญาติให้มีการลงทะเบียนหรือเพิกถอนอุปกรณ์</label>
+                                                        <div class="col-sm-5 controls">
+                                                            <input class="width-70" type="text" placeholder="จำนวนครั้งต่อวัน" data-toggle="tooltip" data-placement="top" data-original-title="จำนวนที่เหมาะสมสำหรับการลงทะเบียนอุปกรณ์">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-5 control-label">จำนวนครั้งที่อนุญาติให้มีการปรับปรุงข้อมูลส่วนตัว</label>
+                                                        <div class="col-sm-5 controls">
+                                                            <input class="width-70" type="text" placeholder="จำนวนครั้งต่อวัน" data-toggle="tooltip" data-placement="top" data-original-title="จำนวนที่เหมาะสมสำหรับการปรับเปลี่ยนข้อมูลส่วนบุคคล">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-5 control-label">ผู้ใช้งานสามารถเข้าสู่ระบบได้ไม่เกิน</label>
+                                                        <div class="col-sm-3 controls">
+                                                            <!--<input type="text" id="datepicker-from" />-->
+                                                            <input class="width-90" type="text" placeholder="จำนวนครั้งต่อวัน" data-toggle="tooltip" data-placement="top" data-original-title="โดยทั่วไปจะกำหนดที่ 3 ครั้ง">
+                                                        </div>
+
+                                                        <label class="col-sm-2 control-label">ภายในระยะเวลา</label>
+                                                        <div class="col-sm-2 controls">
+                                                            <!--<input type="text" id="datepicker-to" />-->
+                                                            <input class="width-70" type="text" placeholder="จำนวนนาที" data-toggle="tooltip" data-placement="top" data-original-title="โดยทั่วไปจะกำหนดที่ 5 นาที">
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                         <!-- Modal -->
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -257,6 +344,7 @@
         <script type="text/javascript" src="plugins/flot/jquery.flot.pie.min.js"></script>
         <script type="text/javascript" src="plugins/flot/jquery.flot.categories.min.js"></script>
         <script type="text/javascript" src="plugins/flot/jquery.flot.time.min.js"></script>
+
         <script type="text/javascript" src="plugins/flot/jquery.flot.animator.min.js"></script>
 
         <!-- Vector Map -->
@@ -275,6 +363,7 @@
         <script type="text/javascript" src='plugins/skycons/skycons.js'></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 
+        <script type="text/javascript" src='plugins/bootstrap-timepicker/bootstrap-timepicker.min.js'></script>
 
         <!-- Include Date Range Picker -->
         <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
@@ -283,6 +372,22 @@
 
 
         <script type="text/javascript ">
+            $(window).load(function() {
+                "use strict";
+
+                $('#datepicker-datetime').daterangepicker({
+                    timePicker: true,
+                    timePickerIncrement: 30,
+                    format: 'MM/DD/YYYY h:mm A'
+                });
+
+                $('#timepicker-default').timepicker();
+                $('#timepicker-default-to').timepicker();
+
+
+            });
+
+
             $(document).ready(function() {
                 account_now = 'natthawat_a';
                 $("#chat-text").keyup(function(event) {
