@@ -126,10 +126,13 @@
                                 <div class="vd_panel-header">
                                     <h1>กำหนดนโยบายการใช้งานและอุปกรณ์รายบุคคล</h1>
                                     <!-- menu -->
+
+
                                 </div>
                             </div>
                             <!-- vd_panel-header -->
                             <div class="vd_content-section clearfix">
+
                                 <div class="row" id="bootstrap-time">
                                     <div class="col-md-12">
                                         <div class="panel widget">
@@ -182,8 +185,6 @@
                                 </div>
                                 <!-- row -->
 
-
-
                                 <div class="row ">
                                     <div class="col-md-12">
                                         <div class="panel widget">
@@ -226,6 +227,25 @@
                                                     </div>
 
 
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row ">
+                                    <div class="col-md-12">
+                                        <div class="panel widget">
+                                            <div class="panel-heading vd_bg-grey">
+                                                <h3 class="panel-title"> นำส่งแบบสำรวจความพึงพอใจงานบริการ&nbsp;&nbsp;&nbsp;<a onclick="sendCustomerSatisfaction()" class="btn vd_btn vd_round-btn vd_bg-grey mgr-10"><i class="fa  fa-headphones fa-fw "></i></a></h3>
+                                            </div>
+
+                                            <div class="panel-body">
+                                                <form class="form-horizontal" action="#" role="form">
+                                                    <div class="form-group">
+
+                                                    </div>
 
                                                 </form>
                                             </div>
@@ -399,7 +419,7 @@
         <!-- Include Date Range Picker -->
         <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
-		        <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
 
 
@@ -442,97 +462,117 @@
         <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
 
         <script>
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-XXXXX-X']);
-    _gaq.push(['_trackPageview']);
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-XXXXX-X']);
+            _gaq.push(['_trackPageview']);
 
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-</script> 
-	<script>
-				account_now = 'natthawat_a';
-	
-		function refresh_table(){
-		//alert('refresh');
-			$.ajax('http://localhost/api/allusers', {
-				type: "get",
-				//data: {start:sd,end:ed},
-				success: function(json) {
-					//alert(JSON.stringify(json));
-					data_res = JSON.parse(JSON.stringify(json));
-					bindata_table(data_res);
-				}
-			});
-		}
+            (function() {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+        <script>
+            function sendCustomerSatisfaction() {
+                alert('sendCustomerSatisfaction');
+                $.ajax('http://localhost/sendCustSat', {
+                    type: "get",
+                    success: function(json) {
+                        //alert(JSON.stringify(json));
+                        //data_res = JSON.parse(JSON.stringify(json));
+                        //bindata_group(data_res);
+                    }
+                });
+            }
+            account_now = 'natthawat_a';
+
+            function refresh_table() {
+                //alert('refresh');
+                $.ajax('http://localhost/api/allusers', {
+                    type: "get",
+                    //data: {start:sd,end:ed},
+                    success: function(json) {
+                        //alert(JSON.stringify(json));
+                        data_res = JSON.parse(JSON.stringify(json));
+                        bindata_table(data_res);
+                    }
+                });
+            }
 
 
-		function bindata_table(data_sql){
-		//alert('bind');
-			//alert(data_sql);
-			data = [];
-			total = 0;
-			var q="'";
-			for (i = 0; i < data_sql.length; i++) {
-				data_json = {};
-				//update_time = new Date(data_sql[5]);
-				//date_str = update_time.getHours() + ":" + (update_time.getMinutes()<10?'0':'') + update_time.getMinutes() + ":" + (update_time.getSeconds()<10?'0':'') + update_time.getSeconds() +' - ' + update_time.getDate() + "/" + update_time.getMonth() + "/" + update_time.getFullYear();
+            function bindata_table(data_sql) {
+                //alert('bind');
+                //alert(data_sql);
+                data = [];
+                total = 0;
+                var q = "'";
+                for (i = 0; i < data_sql.length; i++) {
+                    data_json = {};
+                    //update_time = new Date(data_sql[5]);
+                    //date_str = update_time.getHours() + ":" + (update_time.getMinutes()<10?'0':'') + update_time.getMinutes() + ":" + (update_time.getSeconds()<10?'0':'') + update_time.getSeconds() +' - ' + update_time.getDate() + "/" + update_time.getMonth() + "/" + update_time.getFullYear();
 
 
-				$('#data-tables').find('tbody').append( '<tr><td>'+data_sql[1]+'</td><td>'+data_sql[2]+'</td><td>'+data_sql[3]+'</td><td>'+data_sql[4]+'</td><td class="menu-action"><a id="'+data_sql[0]+'" data-original-title="edit" data-toggle="modal" data-target="#myModal" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow" onclick="$('+q+'#btn-limit'+q+').val('+q+data_sql[1]+q+');" > <i class="fa fa-pencil"></i> </a> </td></tr>');
-				//data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
-				//total = total+data_sql[1];
-				//alert(JSON.stringify(data_json));
-				data.push(data_json);
-				//alert(JSON.stringify(data));
-				data_sql.splice(0,5);
-				i = -1;
+                    $('#data-tables').find('tbody').append('<tr><td>' + data_sql[1] + '</td><td>' + data_sql[2] + '</td><td>' + data_sql[3] + '</td><td>' + data_sql[4] + '</td><td class="menu-action"><a id="' + data_sql[0] + '" data-original-title="edit" data-toggle="modal" data-target="#myModal" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow" onclick="$(' + q + '#btn-limit' + q + ').val(' + q + data_sql[1] + q + ');" > <i class="fa fa-pencil"></i> </a> </td></tr>');
+                    //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
+                    //total = total+data_sql[1];
+                    //alert(JSON.stringify(data_json));
+                    data.push(data_json);
+                    //alert(JSON.stringify(data));
+                    data_sql.splice(0, 5);
+                    i = -1;
 
-			}
-			//alert(JSON.stringify(data));
-			//c1(data);
-				
-			$('#data-tables').dataTable();
-			
-		}
-		
-		function datepick() {
-		
-		var today = new Date();
-		var dd = today.getDate()-7;
-		var ddd = today.getDate();
-		var mm = today.getMonth()+1; //January is 0!
+                }
+                //alert(JSON.stringify(data));
+                //c1(data);
 
-		var yyyy = today.getFullYear();
-		var yyy = today.getFullYear();
-		if(dd<10){
-			dd='0'+dd;
-		} 
-		if(mm<10){
-			mm='0'+mm;
-		} 
-		refresh_table(yyy+'-'+mm+'-'+dd,yyyy+'-'+mm+'-'+ddd);
-	}
-	function addlimit(lim,acc){
-	//alert(lim);
-	//alert(acc);
-		$.ajax('http://localhost/api/limitdevice', {
-		type: "get",
-		data: {limit:lim,accname:acc},
-        success: function(json) {
-			//alert(json);
-			//alert(JSON.stringify(json));
-			data_res = JSON.parse(JSON.stringify(json));
-        },
-		error: function(fa) {alert(JSON.stringify(fa));}
-      });
-	  //document.getElementById("tab-body").innerHTML='<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>ระบบปฏิบัติการ</th><th>IP</th><th>วันที่ใช้งาน</th></tr></thead><tbody></tbody></table>';
-	 // datepick();
-	}
-	datepick();
-	</script>
+                $('#data-tables').dataTable();
+
+            }
+
+            function datepick() {
+
+                var today = new Date();
+                var dd = today.getDate() - 7;
+                var ddd = today.getDate();
+                var mm = today.getMonth() + 1; //January is 0!
+
+                var yyyy = today.getFullYear();
+                var yyy = today.getFullYear();
+                if (dd < 10) {
+                    dd = '0' + dd;
+                }
+                if (mm < 10) {
+                    mm = '0' + mm;
+                }
+                refresh_table(yyy + '-' + mm + '-' + dd, yyyy + '-' + mm + '-' + ddd);
+            }
+
+            function addlimit(lim, acc) {
+                //alert(lim);
+                //alert(acc);
+                $.ajax('http://localhost/api/limitdevice', {
+                    type: "get",
+                    data: {
+                        limit: lim,
+                        accname: acc
+                    },
+                    success: function(json) {
+                        //alert(json);
+                        //alert(JSON.stringify(json));
+                        data_res = JSON.parse(JSON.stringify(json));
+                    },
+                    error: function(fa) {
+                        alert(JSON.stringify(fa));
+                    }
+                });
+                //document.getElementById("tab-body").innerHTML='<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>ระบบปฏิบัติการ</th><th>IP</th><th>วันที่ใช้งาน</th></tr></thead><tbody></tbody></table>';
+                // datepick();
+            }
+            datepick();
+        </script>
 
 </body>
 

@@ -14,6 +14,8 @@ var Account = function() {
         var level;
         var area;
         var authorized;
+        var pref_theme;
+        var pref_notification;
         /*
         this._id = '12021';
         this.email = 'guest1@ums.com';
