@@ -1088,14 +1088,14 @@
                                 msg_id: data_c[0],
                                 name: data_c[1],
                                 msg: data_c[2],
-                                timestamp: data_c[3]
+                                rdata: data_c[3],
+                                timestamp: data_c[4]
                             };
                             //alert(JSON.stringify(data_json));
                             datac.push(data_json);
                             //alert(JSON.stringify(data));
-                            data_c.splice(0, 4);
+                            data_c.splice(0, 5);
                             i = -1;
-
                         }
 
                         for (i = 0; i < datac.length; i++) {
@@ -1112,11 +1112,25 @@
                             if (datac[i].name == account_now) {
                                 //alert(data[i].msg);
                                 //var my_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
-                                var my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+                                var my_msg = "";
+                                if (datac[i].rdata == '') {
+                                    my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+                                } else {
+                                    my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'><a download='" + datac[i].msg + "' href='data:application/octet-stream;base64," + datac[i].rdata + "'>" + datac[i].msg + "</a><div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+                                }
+
                                 $('#chatbox').append(my_msg);
                             } else {
                                 //var other_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--in'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-username'>" + datac[i].name + " : wrote</div><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
-                                var other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+                                //var other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+
+                                var other_msg = "";
+                                if (datac[i].rdata == '') {
+                                    other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+                                } else {
+                                    other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'><a download='" + datac[i].msg + "' href='data:application/octet-stream;base64," + datac[i].rdata + "'>" + datac[i].msg + "</a><div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+                                }
+
                                 $('#chatbox').append(other_msg);
                             }
                         }
