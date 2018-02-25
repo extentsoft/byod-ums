@@ -60,6 +60,8 @@ var getnotimsg = require('./routes/getnotimsg');
 var countlogin = require('./routes/countlogin');
 var addchat = require('./routes/addchat');
 var getchat = require('./routes/getchat');
+var getconfig = require('./routes/getconfig');
+var editconfig = require('./routes/editconfig');
 
 var deviceinmon = require('./routes/monitor/deviceinmon');
 var deviceoutmon = require('./routes/monitor/deviceoutmon');
@@ -144,6 +146,8 @@ app.use('/api/deviceinmon', deviceinmon);
 app.use('/api/deviceoutmon', deviceoutmon);
 app.use('/api/adddevicemon', adddevicemon);
 app.use('/api/removedevicemon', removedevicemon);
+app.use('/api/getconfig', getconfig);
+app.use('/api/editconfig', editconfig);
 
 
 app.use('/api/chat/attachment', require('./routes/chat/attachment'));
