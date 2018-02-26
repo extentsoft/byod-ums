@@ -96,17 +96,17 @@
 
 </head>
 
-<body id="dashboard" class="full-layout  nav-right-hide nav-right-start-hide  nav-top-fixed      responsive    clearfix" data-active="dashboard " data-smooth-scrolling="1">
+<body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">
+
+
     <div class="vd_body">
-        <%- include('admin/partial/header'); %>
+        <%- include('admin/partial_dark/header'); %>
 
             <!-- Content start -->
 
             <div class="content">
                 <div class="container">
-                    <%- include('admin/partial/menu'); %>
-
-
+                    <%- include('admin/partial_dark/menu'); %>
                 </div>
 
                 <!-- Middle Content Start -->
@@ -116,121 +116,42 @@
                         <div class="vd_content clearfix">
 
                             <!-- vd_head-section -->
+
+                            <!-- vd_title-section -->
+
+
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
-                                    <h1>ข้อมูลส่วนบุคคล</h1>
+                                    <h1>ตั้งค่าการใช้งานส่วนบุคคล</h1>
                                     <!-- menu -->
                                 </div>
                             </div>
-                            <!-- vd_title-section -->
 
                             <div class="vd_content-section clearfix">
-                                <!-- start row-->
 
-                                <!-- end row -->
 
-                                <div class="row" id="form-basic">
+                                <div class="row" id="switch-input">
                                     <div class="col-md-12">
                                         <div class="panel widget">
                                             <div class="panel-heading vd_bg-grey">
-                                                <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-bar-chart-o"></i> </span> ประวัติส่วนบุคคล </h3>
+                                                <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-adjust"></i> </span>ปรับแต่ง </h3>
                                             </div>
                                             <div class="panel-body">
                                                 <form class="form-horizontal" action="#" role="form">
-                                                    <div class="form-group">
-                                                        <label class="col-sm-4 control-label">เลขที่บัตรประจำตัวประชาชน</label>
-                                                        <div class="col-sm-7 controls">
-                                                            <input id="u_ssn" type="text" disabled="" placeholder="<%= email %>" readonly>
-                                                            <span class="help-inline">เลขที่บัตรประจำตัวประชาชนไม่สามารถแก้ไขได้</span> </div>
-                                                    </div>
 
                                                     <div class="form-group">
-                                                        <label class="col-sm-4 control-label">ชื่อจริง (ภาษาอังกฤษ)</label>
-                                                        <div class="col-sm-7 controls">
-                                                            <input id="u_fn" type="text" placeholder="<%= firstname %>" class="input-border-btm">
-                                                            <span class="help-inline">ex. Natthawat</span> </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-4 control-label">นามสกุลจริง (ภาษาอังกฤษ)</label>
-                                                        <div class="col-sm-7 controls">
-                                                            <input id="u_ln" type="text" placeholder="<%= lastname %>" class="input-border-btm">
-                                                            <span class="help-inline">ex. Arunwattana</span> </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-4 control-label">เลขตำแหน่ง/สังกัด</label>
-                                                        <div class="col-sm-7 controls">
-                                                            <input id="u_pos" type="text" placeholder="<%= position %>" class="input-border-btm">
-                                                            <span class="help-inline">ex. 501</span> </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-4 control-label">ระดับข้าราชการ</label>
-                                                        <div class="col-sm-7 controls">
-                                                            <input id="u_lv" type="text" placeholder="<%= level %>" class="input-border-btm">
-                                                            <span class="help-inline">8</span> </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-4 control-label">พื้นที่</label>
-                                                        <div class="col-sm-7 controls">
-                                                            <input id="u_area" type="text" placeholder="<%= area %>" class="input-border-btm">
-                                                            <span class="help-inline">52</span> </div>
-                                                    </div>
-                                                    <!--
-                                                    <div class="form-group">
-                                                        <label class="col-sm-4 control-label">ตำแหน่ง/สังกัด</label>
-                                                        <div class="col-sm-7 controls">
-                                                            <select>
-                                                                <option>500</option>
-                                                                <option>501</option>
-                                                                <option>400</option>
-                                                                <option>120</option>
-                                                                <option>101</option>
-                                                             </select>
+                                                        <label class="col-sm-4 control-label">เลือกรูปแบบแสดงผล</label>
+                                                        <div class="col-sm-8 controls">
+                                                            <input id="pref_theme" type="checkbox" data-rel="switch" data-wrapper-class="inverse" data-on-text="มืด" data-off-text="สว่าง">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-4 control-label">ระดับข้าราชการ</label>
-                                                        <div class="col-sm-7 controls">
-                                                            <select class="width-40">
-                                                      <option>ระดับ 1</option>
-                                                      <option>ระดับ 2</option>
-                                                      <option>ระดับ 3</option>
-                                                      <option>ระดับ 4</option>
-                                                      <option>ระดับ 5</option>
-                                                      <option>ระดับ 6</option>
-                                                      <option>ระดับ 7</option>
-                                                      <option>ระดับ 8</option>
-                                                      <option>ระดับ 9</option>
-                                                      <option>ระดับ 10</option>
-                                                      <option>ระดับ 11</option>
-                                                      <option>ระดับ 12</option>
-                                                      <option>ระดับ 13</option>
-                                                      
-                                                    </select>
+                                                        <label class="col-sm-4 control-label">ความประสงค์รับข่าวสารการแจ้งเตือน</label>
+                                                        <div class="col-sm-8 controls">
+                                                            <input id="pref_notification" type="checkbox" data-rel="switch" data-wrapper-class="inverse" data-on-text="รับ" data-off-text="ไม่รับ">
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group">
-                                                        <label class="col-sm-4 control-label">พื้นที่</label>
-                                                        <div class="col-sm-7 controls">
-                                                            <select>
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                    <option>3</option>
-                                                                    <option>4</option>
-                                                                    <option>5</option>
-                                                                 </select>
-                                                        </div>
-                                                    </div>
-                                                -->
-                                                    <div class="form-group form-actions">
-                                                        <div class="col-sm-4"> </div>
-                                                        <div class="col-sm-7">
-                                                            <!--<button class="btn vd_btn vd_bg-green vd_white" type="submit"><i class="icon-ok"></i> Save</button>
-                                                            <button class="btn vd_btn" type="button">Cancel</button>-->
-                                                            <button type="button" class="btn vd_btn vd_bg-green" id="top-right-success"><!--<i class="fa fa-check-circle append-icon"></i>-->Save</button>
-
-                                                        </div>
-                                                    </div>
                                                 </form>
                                             </div>
                                         </div>
@@ -238,7 +159,8 @@
                                     </div>
                                     <!-- col-md-12 -->
                                 </div>
-                                <!-- row -->
+
+
 
 
                             </div>
@@ -258,7 +180,7 @@
     </div>
     <!-- .content -->
 
-    <%- include('admin/partial/footer'); %>
+    <%- include('admin/partial_dark/footer'); %>
 
 
 
@@ -330,30 +252,25 @@
 
         <script type="text/javascript ">
             $(document).ready(function() {
-                /*
-                res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Natthawat', ln: 'Arunweerungroj', email: 'natthawat_a@excise.go.th', position: '0', level: '0', area: '0', authorized: true });
-                */
+                alert('yes');
+                $("#pref_theme").change(function() {
+                    alert('yes2');
+                    window.location.href = "http://localhost/systemcenter/theme";
+
+                    /*if ($(this).is(':checked')) {
+                        alert('yes');
+                    } else {
+                        alert('no');
+                    }*/
+                });
 
 
-                $('#top-right-success').click(function() {
-                    $.ajax('http://localhost/eoffice/profile', {
-                        type: "put",
-                        data: {
-                            ssn: $('#u_ssn').val(),
-                            fn: $('#u_fn').val(),
-                            ln: $('#u_ln').val(),
-                            position: $('#u_pos').val(),
-                            level: $('#u_lv').val(),
-                            area: $('#u_area').val(),
-                        },
-                        success: function(json) {
-                            //alert(JSON.stringify(json));
-                            data_res = JSON.parse(JSON.stringify(json));
-                            bindata_group(data_res);
-                        }
-                    });
 
-                    notification("topright", "success", "fa fa-check-circle vd_green", "Success Notification", "Update Profile Successfully!");
+                account_now = 'natthawat_a';
+                $("#chat-text").keyup(function(event) {
+                    if (event.keyCode === 13) {
+                        sendchat($('#chat-text').val());
+                    }
                 });
 
             });

@@ -96,15 +96,15 @@
 
 </head>
 
-<body id="dashboard" class="full-layout  nav-right-hide nav-right-start-hide  nav-top-fixed      responsive    clearfix" data-active="dashboard " data-smooth-scrolling="1">
+<body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">
     <div class="vd_body">
-        <%- include('admin/partial/header'); %>
+        <%- include('admin/partial_dark/header'); %>
 
             <!-- Content start -->
 
             <div class="content">
                 <div class="container">
-                    <%- include('admin/partial/menu'); %>
+                    <%- include('admin/partial_dark/menu'); %>
 
 
                 </div>
@@ -140,38 +140,38 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">เลขที่บัตรประจำตัวประชาชน</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input id="u_ssn" type="text" disabled="" placeholder="<%= email %>" readonly>
+                                                            <input type="text" disabled="" placeholder="<%= email %>" readonly>
                                                             <span class="help-inline">เลขที่บัตรประจำตัวประชาชนไม่สามารถแก้ไขได้</span> </div>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">ชื่อจริง (ภาษาอังกฤษ)</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input id="u_fn" type="text" placeholder="<%= firstname %>" class="input-border-btm">
+                                                            <input type="text" placeholder="<%= firstname %>" class="input-border-btm">
                                                             <span class="help-inline">ex. Natthawat</span> </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">นามสกุลจริง (ภาษาอังกฤษ)</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input id="u_ln" type="text" placeholder="<%= lastname %>" class="input-border-btm">
+                                                            <input type="text" placeholder="<%= lastname %>" class="input-border-btm">
                                                             <span class="help-inline">ex. Arunwattana</span> </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">เลขตำแหน่ง/สังกัด</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input id="u_pos" type="text" placeholder="<%= position %>" class="input-border-btm">
+                                                            <input type="text" placeholder="<%= position %>" class="input-border-btm">
                                                             <span class="help-inline">ex. 501</span> </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">ระดับข้าราชการ</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input id="u_lv" type="text" placeholder="<%= level %>" class="input-border-btm">
+                                                            <input type="text" placeholder="<%= level %>" class="input-border-btm">
                                                             <span class="help-inline">8</span> </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">พื้นที่</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input id="u_area" type="text" placeholder="<%= area %>" class="input-border-btm">
+                                                            <input type="text" placeholder="<%= area %>" class="input-border-btm">
                                                             <span class="help-inline">52</span> </div>
                                                     </div>
                                                     <!--
@@ -225,10 +225,8 @@
                                                     <div class="form-group form-actions">
                                                         <div class="col-sm-4"> </div>
                                                         <div class="col-sm-7">
-                                                            <!--<button class="btn vd_btn vd_bg-green vd_white" type="submit"><i class="icon-ok"></i> Save</button>
-                                                            <button class="btn vd_btn" type="button">Cancel</button>-->
-                                                            <button type="button" class="btn vd_btn vd_bg-green" id="top-right-success"><!--<i class="fa fa-check-circle append-icon"></i>-->Save</button>
-
+                                                            <button class="btn vd_btn vd_bg-green vd_white" type="submit"><i class="icon-ok"></i> Save</button>
+                                                            <button class="btn vd_btn" type="button">Cancel</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -258,7 +256,7 @@
     </div>
     <!-- .content -->
 
-    <%- include('admin/partial/footer'); %>
+    <%- include('admin/partial_dark/footer'); %>
 
 
 
@@ -330,31 +328,6 @@
 
         <script type="text/javascript ">
             $(document).ready(function() {
-                /*
-                res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Natthawat', ln: 'Arunweerungroj', email: 'natthawat_a@excise.go.th', position: '0', level: '0', area: '0', authorized: true });
-                */
-
-
-                $('#top-right-success').click(function() {
-                    $.ajax('http://localhost/eoffice/profile', {
-                        type: "put",
-                        data: {
-                            ssn: $('#u_ssn').val(),
-                            fn: $('#u_fn').val(),
-                            ln: $('#u_ln').val(),
-                            position: $('#u_pos').val(),
-                            level: $('#u_lv').val(),
-                            area: $('#u_area').val(),
-                        },
-                        success: function(json) {
-                            //alert(JSON.stringify(json));
-                            data_res = JSON.parse(JSON.stringify(json));
-                            bindata_group(data_res);
-                        }
-                    });
-
-                    notification("topright", "success", "fa fa-check-circle vd_green", "Success Notification", "Update Profile Successfully!");
-                });
 
             });
             $(window).load(function() {});
