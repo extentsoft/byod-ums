@@ -584,6 +584,7 @@
                     },
                     success: function(json) {
                         //alert(JSON.stringify(json));
+						checkcount();
                         refreshlist();
                     }
                 });
@@ -649,8 +650,11 @@
                         //data_res = JSON.parse(JSON.stringify(json));
                         addbindmac(JSON.stringify(json), mac);
                         //alert(JSON.stringify(data_res));
+						checkcount();
                     }
                 });
+				
+				
             }
 
 
@@ -702,8 +706,30 @@
                     success: function(json) {}
                 });
             }
+			
+			function checkcount() {
+                //alert('refresh');
+                $.ajax('http://localhost/policy/checkcountdevice', {
+                    type: "get",
+                    data: {
+                        accname: account_now
+                    },
+                    success: function(json) {
+						data_res = JSON.parse(JSON.stringify(json));
+						//alert(JSON.stringify(data_res));
+						if(data_res[0]=5){
+							//alert('a');
+							$.ajax('http://localhost/api/message/email/4/'+account_now, {
+								type: "get",
+								success: function(json) {}
+							});
+						
+						}
+					}
+                });
+            }
 
-
+			checkcount();
             refreshlist();
         </script>
 

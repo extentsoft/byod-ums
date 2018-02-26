@@ -78,7 +78,12 @@ var report676 = require('./routes/reports/report676');
 var report675 = require('./routes/reports/report675');
 var report677 = require('./routes/reports/report677');
 var report67153 = require('./routes/reports/report67153');
+
+var checkcountdevice = require('./routes/policy/checkcountdevice');
+
 var app = express();
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -126,6 +131,8 @@ app.use('/reports/report675', report675);
 */
 
 
+
+
 app.use('/api/listdevice', listdevice);
 app.use('/api/listmac', listmac);
 app.use('/api/updatemac', updatemac);
@@ -164,6 +171,8 @@ app.use('/report/report676', report676);
 app.use('/report/report675', report675);
 app.use('/report/report677', report677);
 app.use('/report/report67153', report67153);
+
+app.use('/policy/checkcountdevice', checkcountdevice);
 
 
 // catch 404 and forward to error handler
