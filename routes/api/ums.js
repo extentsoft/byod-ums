@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 // GET /api/ums/preference
 router.get('/preference/:user_ref', function(req, res, next) {
     console.log('profiling for ' + req.params.user_ref);
-    res.json({ pref_theme: 0, pref_notification: 1 });
+    res.json({ pref_theme: 1, pref_notification: 1 });
 });
 
 
