@@ -1,6 +1,6 @@
 module.exports = function(app, passport) {
     var nodemailer = require("nodemailer");
-
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     app.get('/sendCustSat/', function(req, res) {
         const mailOptions = {
             from: 'byod@excise.go.th', // sender address
