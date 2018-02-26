@@ -336,10 +336,9 @@
 
 
                 $('#top-right-success').click(function() {
-                    $.ajax('http://localhost/eoffice/profile', {
+                    $.ajax('http://localhost/eoffice/profile/' + $('#u_ssn').val(), {
                         type: "put",
                         data: {
-                            ssn: $('#u_ssn').val(),
                             fn: $('#u_fn').val(),
                             ln: $('#u_ln').val(),
                             position: $('#u_pos').val(),
