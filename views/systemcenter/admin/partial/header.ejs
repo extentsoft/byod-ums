@@ -350,7 +350,7 @@
 
     function sendchat(msg, rdt) {
         //alert(account_now);
-        alert(msg);
+        //alert(msg);
         //console.log(rdt);
         $.ajax('http://localhost/api/addchat', {
             type: "post",
@@ -361,7 +361,7 @@
             },
 
             success: function(json) {
-                alert('a');
+                //alert('a');
                 $('#chatbox').empty();
                 document.getElementById('chat-text').value = ''
                 get_chat();
