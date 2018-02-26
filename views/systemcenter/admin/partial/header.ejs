@@ -1,0 +1,427 @@
+<script type="text/javascript" src="js/jquery.js"></script>
+<!-- Header Start -->
+<header class="header-1" id="header">
+    <div class="vd_top-menu-wrapper">
+        <div class="container ">
+            <div class="vd_top-nav vd_nav-width  ">
+                <div class="vd_panel-header">
+                    <div class="logo">
+                        <a href="index.html"><!--<img alt="logo" src="img/logo1.png" width="200%">-->ระบบจัดการทรัพยากร</a>
+
+                    </div>
+                    <!-- logo -->
+                    <div class="vd_panel-menu hidden-sm hidden-xs " data-intro="<strong>Minimize Left Navigation</strong><br/>Toggle navigation size to medium or small size. You can set both button or one button only. See full option at documentation." data-step=1>
+
+                        <span class="nav-medium-button menu" data-toggle="tooltip" data-placement="bottom" data-original-title="Medium Nav Toggle" data-action="nav-left-medium">
+                                <i class="fa fa-bars"></i>
+                            </span>
+                        <!--
+                            <span class="nav-small-button menu" data-toggle="tooltip" data-placement="bottom" data-original-title="Small Nav Toggle" data-action="nav-left-small">
+                                <i class="fa fa-ellipsis-v"></i>
+                            </span>
+                            -->
+                    </div>
+
+                    <div class="vd_panel-menu left-pos visible-sm visible-xs">
+                        <span class="menu" data-action="toggle-navbar-left">
+                                <i class="fa fa-ellipsis-v"></i>
+                            </span>
+                    </div>
+
+                    <div class="vd_panel-menu visible-sm visible-xs">
+                        <span class="menu visible-xs" data-action="submenu">
+                                <i class="fa fa-bars"></i>
+                             </span>
+
+                        <span class="menu visible-sm visible-xs" data-action="toggle-navbar-right">
+                                <i class="fa fa-comments"></i>
+                            </span>
+
+                    </div>
+                    <!-- vd_panel-menu -->
+                </div>
+                <!-- vd_panel-header -->
+
+            </div>
+            <div class="vd_container">
+                <div class="row">
+                    <div class="col-sm-5 col-xs-12">
+                        <input type="file" id="imgupload" style="visibility: hidden;" onchange="uploadFile()" />
+                    </div>
+                    <div class="col-sm-7 col-xs-12">
+                        <div class="vd_mega-menu-wrapper">
+                            <div class="vd_mega-menu pull-right">
+                                <ul class="mega-ul">
+                                    <li class="one-icon mega-li">
+                                        <a href="index.html" class="mega-link" data-action="click-trigger">
+                                            <span class="mega-icon"><i class="fa fa-users"></i></span>
+                                            <span class="badge vd_bg-red"></span>
+                                        </a>
+
+                                        <div class="vd_mega-menu-content width-xs-3 width-sm-4 width-md-5 width-lg-4 right-xs left-sm" data-action="click-target">
+                                            <div class="child-menu">
+                                                <div class="title">
+                                                    สนทนาออนไลน์ <i></i>
+
+                                                </div>
+                                                <div class="content-list content-image content-menu">
+                                                    <div data-rel="scroll">
+                                                        <ul class="list-wrapper pd-lr-10" id="chatbox">
+
+                                                        </ul>
+                                                    </div>
+
+
+                                                    <div class="closing chat-area">
+                                                        <div class="chat-box">
+                                                            <input type="text" placeholder="chat here.." id="chat-text" />
+                                                        </div>
+                                                        <div class="vd_panel-menu">
+
+
+                                                            <div data-rel="tooltip" data-original-title="Insert Picture" class="menu" style="margin-right: 15px; margin-top: 5px" id="attachment" onClick="getAttach()">
+                                                                <i class="fa fa-paperclip" style="color: #000;"></i>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <!-- child-menu -->
+                                        </div>
+                                        <!-- vd_mega-menu-content -->
+                                    </li>
+                                    <li id="top-menu-3" class="one-icon mega-li">
+
+                                        <a href="index.html" class="mega-link" data-action="click-trigger">
+
+                                            <span class="mega-icon"><i class="fa fa-envelope"></i></span>
+                                            <!--<span class="mega-icon"><i class="fa fa-globe"></i></span>-->
+                                            <span class="badge vd_bg-red"><!--51--></span>
+                                        </a>
+                                        <div class="vd_mega-menu-content  width-xs-3 width-sm-4  center-xs-3 left-sm" data-action="click-target">
+                                            <div class="child-menu">
+                                                <div class="title">
+                                                    Notifications
+
+                                                </div>
+                                                <div class="content-list">
+                                                    <div data-rel="scroll">
+                                                        <ul class="list-wrapper pd-lr-10" id="notification_center">
+
+                                                        </ul>
+                                                    </div>
+                                                    <div class="closing text-center" style="">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- child-menu -->
+                                        </div>
+                                        <!-- vd_mega-menu-content -->
+                                    </li>
+
+                                    <li id="top-menu-profile" class="profile mega-li">
+                                        <a href="#" class="mega-link" data-action="click-trigger">
+                                            <span class="mega-image">
+                                                    <img src="img/users/user1.jpg" alt="example image" />
+                                                </span>
+                                            <span class="mega-name">
+                                                    Caroline <i class="fa fa-caret-down fa-fw"></i>
+                                                </span>
+                                        </a>
+                                        <div class="vd_mega-menu-content  width-xs-2  left-xs left-sm" data-action="click-target">
+                                            <div class="child-menu">
+                                                <div class="content-list content-menu">
+                                                    <ul class="list-wrapper pd-lr-10">
+                                                        <li>
+                                                            <a href="#">
+                                                                <div class="menu-icon"><i class=" fa fa-user"></i></div>
+                                                                <div class="menu-text">แก้ไขประวัติ</div>
+                                                            </a>
+                                                        </li>
+
+
+                                                        <li>
+                                                            <a href="#">
+                                                                <div class="menu-icon"><i class=" fa fa-cogs"></i></div>
+                                                                <div class="menu-text">ปรับแต่ง</div>
+                                                            </a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="/systemcenter/logout">
+                                                                <div class="menu-icon"><i class=" fa fa-sign-out"></i></div>
+                                                                <div class="menu-text">ออกจากระบบ</div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="line"></li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <div class="menu-icon"><i class=" fa fa-question-circle"></i></div>
+                                                                <div class="menu-text">คู่มือการใช้งาน</div>
+                                                            </a>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </li>
+
+
+                                </ul>
+                                <!-- Head menu search form ends -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- container -->
+    </div>
+    <!-- vd_primary-menu-wrapper -->
+
+</header>
+<!-- Header Ends -->
+<script>
+    account_now = 'natthawat_a';
+    $("#chat-text").keyup(function(event) {
+        if (event.keyCode === 13) {
+            //alert($('#chat-text').val());
+            sendchat($('#chat-text').val(), '-');
+        }
+    });
+    if (jQuery) {
+        // jQuery is loaded  
+        //alert("Yeah!");
+    } else {
+        // jQuery is not loaded
+        //alert("Doesn't Work");
+    }
+
+    function getAttach() {
+        //alert('please upload file');
+        $("#imgupload").click();
+
+    }
+
+    function uploadFile(selectedFile) {
+
+        //alert($('#imgupload').val());
+
+        input = document.getElementById('imgupload');
+        file = input.files[0];
+        //fr = new FileReader();
+        //fr.onload = receivedText;
+        //fr.readAsText(file);
+        //fr.readAsDataURL(file);
+
+        getBase64($('#imgupload').val(), file);
+    }
+
+
+    function getBase64(fname, file) {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function() {
+            //alert(reader.result);
+            //alert(fname+"55555");
+
+            var startIndex = (fname.indexOf('\\') >= 0 ? fname.lastIndexOf('\\') : fname.lastIndexOf('/'));
+            var filename = fname.substring(startIndex);
+            if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+                filename = filename.substring(1);
+                sendchat(filename, reader.result);
+            }
+            //sendchat(fname, reader.result);
+
+            ///alert("666"+reader.result);
+            //testAPI();
+
+            /*
+                        $.ajax({
+                            type: "post",
+                            url: 'http://localhost/api/chat/attachment',
+                            data: {
+                                data: reader.result,
+                            },
+                            success: function(json) {
+                                alert(JSON.stringify(json));
+                                //data_res = JSON.parse(JSON.stringify(json));
+                                //bindata_group(data_res);
+                            }
+                        });*/
+
+        };
+        reader.onerror = function(error) {
+            alert('Error: ', error);
+        };
+    }
+    /*
+    if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
+      alert('The File APIs are not fully supported in this browser.');
+      return;
+    }   
+
+    input = document.getElementById('fileinput');
+    if (!input) {
+      alert("Um, couldn't find the fileinput element.");
+    }
+    else if (!input.files) {
+      alert("This browser doesn't seem to support the `files` property of file inputs.");
+    }
+    else if (!input.files[0]) {
+      alert("Please select a file before clicking 'Load'");               
+    }
+    else {
+      file = input.files[0];
+      fr = new FileReader();
+      fr.onload = receivedText;
+      //fr.readAsText(file);
+      fr.readAsDataURL(file);
+    }
+    */
+    function get_chat() {
+        $.ajax('http://localhost/api/getchat', {
+            type: "get",
+            success: function(json) {
+                //alert(JSON.stringify(json));
+                data_c = JSON.parse(JSON.stringify(json));
+                datac = [];
+                for (i = 0; i < data_c.length; i++) {
+                    data_json = {};
+                    data_json = {
+                        msg_id: data_c[0],
+                        name: data_c[1],
+                        msg: data_c[2],
+                        rdata: data_c[3],
+                        timestamp: data_c[4]
+                    };
+                    //alert(JSON.stringify(data_json));
+                    datac.push(data_json);
+                    //alert(JSON.stringify(data));
+                    data_c.splice(0, 5);
+                    i = -1;
+                }
+
+                for (i = 0; i < datac.length; i++) {
+                    //tmp = String(JSON.stringify(datac[i])).replace('\t','');
+                    //alert(JSON.stringify(datac[i]));
+                    /*data[i].channel
+                    data[i].timestamp
+                    data[i].msg*/
+                    //alert(data[i].channel);
+
+
+
+                    //var uid = $("#userid").text();
+                    if (datac[i].name == account_now) {
+                        //alert(data[i].msg);
+                        //var my_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
+                        var my_msg = "";
+                        if (datac[i].rdata == '') {
+                            my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+                        } else {
+                            my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'><a download='" + datac[i].msg + "' href='" + datac[i].rdata + "'>" + datac[i].msg + "</a><div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+                        }
+
+                        $('#chatbox').append(my_msg);
+                    } else {
+                        //var other_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--in'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-username'>" + datac[i].name + " : wrote</div><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
+                        //var other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+
+                        var other_msg = "";
+                        if (datac[i].rdata == '') {
+                            other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+                        } else {
+                            other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'><a download='" + datac[i].msg + "' href='data:application/octet-stream;base64," + datac[i].rdata + "'>" + datac[i].msg + "</a><div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+                        }
+
+                        $('#chatbox').append(other_msg);
+                    }
+                }
+            }
+        });
+    }
+
+    function sendchat(msg, rdt) {
+        //alert(account_now);
+        alert(msg);
+        //console.log(rdt);
+        $.ajax('http://localhost/api/addchat', {
+            type: "post",
+            data: {
+                usr: account_now,
+                msgchat: msg,
+                rdata: rdt
+            },
+
+            success: function(json) {
+                alert('a');
+                $('#chatbox').empty();
+                document.getElementById('chat-text').value = ''
+                get_chat();
+
+            }
+        });
+
+    }
+
+    function get_noti() {
+        $.ajax('http://localhost/api/getnotimsg', {
+            type: "get",
+            data: {
+                chanel: '0'
+            },
+            success: function(json) {
+                //alert(JSON.stringify(json));
+                //alert('message sent!');
+                data_sql = JSON.parse(JSON.stringify(json));
+                data = [];
+                for (i = 0; i < data_sql.length; i++) {
+                    data_json = {};
+                    data_json = {
+                        msg_id: data_sql[0],
+                        msg: data_sql[1],
+                        chanel: data_sql[2],
+                        timestamp: data_sql[3]
+                    };
+                    //alert(JSON.stringify(data_json));
+                    data.push(data_json);
+                    //alert(JSON.stringify(data));
+                    data_sql.splice(0, 4);
+                    i = -1;
+
+                }
+                //alert(data.length);
+                //var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>แจ้งเตือนการปิดปรับปรุงระบบในวันที่ 4 ธันวาคม 2560</span><span class='m-list-timeline__time'>20 mins</span></div>";
+                //$('#notification_center').append(msg);
+                for (i = 0; i < data.length; i++) {
+
+                    /*data[i].channel
+                    data[i].timestamp
+                    data[i].msg*/
+                    //alert(data[i].channel);
+                    if (data[i].chanel <= 1) {
+                        //alert(data[i].msg);
+                        //var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>" + data[i].msg + "</span><span class='m-list-timeline__time'>" + data[i].timestamp.split("T")[0] + "</span></div>";
+
+                        var msg = "<li><a href='#' data-toggle='modal' data-target='#myModal'><div class='menu-icon vd_green'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + data[i].msg.substring(0, 50) + "<div class='menu-info'><span class='menu-date'>" + data[i].timestamp.split("T")[0] + "</span></div></div></a></li>";
+
+                        $('#notification_center').append(msg);
+                    }
+
+                }
+                //alert(JSON.stringify(data));
+                //bindata(data_res);
+            }
+        });
+
+    }
+    get_noti();
+    get_chat();
+</script>

@@ -60,6 +60,8 @@ var getnotimsg = require('./routes/getnotimsg');
 var countlogin = require('./routes/countlogin');
 var addchat = require('./routes/addchat');
 var getchat = require('./routes/getchat');
+var getconfig = require('./routes/getconfig');
+var editconfig = require('./routes/editconfig');
 
 var deviceinmon = require('./routes/monitor/deviceinmon');
 var deviceoutmon = require('./routes/monitor/deviceoutmon');
@@ -76,7 +78,12 @@ var report676 = require('./routes/reports/report676');
 var report675 = require('./routes/reports/report675');
 var report677 = require('./routes/reports/report677');
 var report67153 = require('./routes/reports/report67153');
+
+var checkcountdevice = require('./routes/policy/checkcountdevice');
+
 var app = express();
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -85,8 +92,8 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(cookieParser());
 
 app.use(require('express-session')({
@@ -106,7 +113,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 require('./routes/profile2')(app, passport);
 require('./routes/admin2')(app, passport);
 require('./routes/frameprofile')(app);
-require('./routes/systemcenter')(app);
+require('./routes/systemcenter')(app, passport);
 
 
 /*
@@ -122,6 +129,8 @@ app.use('/reports/report67152', report67152);
 app.use('/reports/report672', report672);
 app.use('/reports/report675', report675);
 */
+
+
 
 
 app.use('/api/listdevice', listdevice);
@@ -144,6 +153,13 @@ app.use('/api/deviceinmon', deviceinmon);
 app.use('/api/deviceoutmon', deviceoutmon);
 app.use('/api/adddevicemon', adddevicemon);
 app.use('/api/removedevicemon', removedevicemon);
+app.use('/api/getconfig', getconfig);
+app.use('/api/editconfig', editconfig);
+
+
+app.use('/api/chat/attachment', require('./routes/chat/attachment'));
+app.use('/api/eoffice', require('./routes/api/eoffice'));
+app.use('/api/ums', require('./routes/api/ums'));
 
 app.use('/report/traffic', traffic);
 app.use('/report/report678', report678);
@@ -155,6 +171,8 @@ app.use('/report/report676', report676);
 app.use('/report/report675', report675);
 app.use('/report/report677', report677);
 app.use('/report/report67153', report67153);
+
+app.use('/policy/checkcountdevice', checkcountdevice);
 
 
 // catch 404 and forward to error handler
