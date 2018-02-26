@@ -717,11 +717,13 @@
                     success: function(json) {
 						data_res = JSON.parse(JSON.stringify(json));
 						//alert(JSON.stringify(data_res));
-						if(data_res[0]<=5){
+						if(data_res[0] > 5){
 							//alert('a');
 							$.ajax('http://localhost/api/message/email/4/'+account_now, {
 								type: "get",
-								success: function(json) {alert(JSON.stringify(json));}
+								success: function(json) {
+									//alert(JSON.stringify(json));
+								}
 							});
 						
 						}
