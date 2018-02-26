@@ -3,6 +3,58 @@ module.exports = function(app, passport) {
 
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
+    app.get('/api/message/email/:type/:user_ref', function(req, res) {
+        var msg = '';
+        if (req.params.type == 1) {
+            msg = 'ในขณะนี้ผู้ใช้งาน' + req.params.user_ref + 'ได้ทำการเข้า-ออกระบบมากเกินกว่าที่่ระบบกำหนดไว้';
+        } else if (req.params.type == 2) {
+            msg = 'ในขณะนี้ผู้ใช้งาน' + req.params.user_ref + 'ได้ทำการเข้าใช้งานต่างสถานที่ภายในระยะสั้นกว่าที่่ระบบกำหนดไว้';
+        } else if (req.params.type == 3) {
+            msg = 'ในขณะนี้ผู้ใช้งาน' + req.params.user_ref + 'ได้ทำการเข้า-ออกระบบนอกช่วงเวลาที่กำหนดไว้';
+        } else if (req.params.type == 4) {
+            msg = 'ในขณะนี้ผู้ใช้งาน' + req.params.user_ref + 'ได้ทำการลงทะเบียนหรือเพิกถอนอุปกรณ์บ่อยเกินกว่าที่ระบบกำหนดไว้';
+        } else if (req.params.type == 5) {
+            msg = 'ในขณะนี้ผู้ใช้งาน' + req.params.user_ref + 'ได้ทำการปรับปรุงข้อมูลส่วนบุคคลบ่อยเกินกว่าที่่ระบบกำหนดไว้';
+        } else {
+            msg = 'ในขณะนี้ผู้ใช้งาน' + req.params.user_ref + 'ได้ทำการฝ่าฝื่นกฎระเบียบที่ระบบกำหนดไว้';
+        }
+
+        const mailOptions = {
+            from: 'byod@excise.go.th', // sender address
+            to: 'byod@excise.go.th', // list of receivers
+            subject: 'การแจ้งเตือนการใช้งานที่ฝ่าฝื่นกฏ', // Subject line
+            html: msg
+        };
+
+        var transporter = nodemailer.createTransport({
+            //host: 'smtp.mailtrap.io',
+            host: '61.19.233.5',
+            //port: 2525,
+            port: 25,
+            secure: false,
+            auth: {
+                //user: '59ad65f3b7fa3b',
+                user: 'byod@excise.go.th',
+                //pass: '7e4387ba355422'
+                pass: 'byod1234'
+            }
+        });
+        transporter.sendMail(mailOptions, function(err, info) {
+            if (err) {
+                console.log(err)
+                console.log('ERROR');
+                res.send('0');
+            } else {
+                console.log(info);
+                console.log('Success');
+                res.send('1');
+            }
+            //res.redirect('/profile/login');
+        });
+
+    });
+
+
     app.get('/sendCustSat/', function(req, res) {
         const mailOptions = {
             from: 'byod@excise.go.th', // sender address
