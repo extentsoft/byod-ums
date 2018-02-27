@@ -154,6 +154,8 @@
                                                                 <input type="text" placeholder="Date" id="timepicker-default-to">
                                                                 <span class="input-group-addon" id="timepicker-default-span-to"><i class="fa fa-clock-o"></i></span> </div>
                                                         </div>
+														<button class="btn vd_btn vd_bg-green vd_white" type="submit" onclick="editconfig('<%= email %>',document.getElementById('timepicker-default').value,document.getElementById('timepicker-default-to').value,document.getElementById('diffsite-minute').value,document.getElementById('edit-device').value,document.getElementById('edit-profile').value,document.getElementById('login-time').value,document.getElementById('login-count').value)"><i class="icon-ok"></i> บันทึก</button>
+
                                                     </div>
                                                 </form>
                                             </div>
@@ -195,40 +197,40 @@
                                             <div class="panel-body">
                                                 <form class="form-horizontal" action="#" role="form">
                                                     <div class="form-group">
-                                                        <label class="col-sm-5 control-label">การเข้าใช้งานต่างสถานที่จะต้องมีการเว้นช่วงเวลาไม่น้อยกว่า</label>
+                                                        <label class="col-sm-5 control-label">การเข้าใช้งานต่างสถานที่จะต้องมีการเว้นช่วงเวลาไม่น้อยกว่า (นาที)</label>
                                                         <div class="col-sm-5 controls">
-                                                            <input class="width-70" type="text" placeholder="จำนวนนาทีนับจากการเข้าใช้งานล่าสุด" data-toggle="tooltip" data-placement="top" data-original-title="ระยะเวลาที่เป็นไปได้สำหรับการเข้าใช้งานต่างพื้นที่">
+                                                            <input class="width-70" type="text" placeholder="จำนวนนาทีนับจากการเข้าใช้งานล่าสุด" data-toggle="tooltip" data-placement="top" data-original-title="ระยะเวลาที่เป็นไปได้สำหรับการเข้าใช้งานต่างพื้นที่" id="diffsite-minute">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-5 control-label">จำนวนครั้งที่อนุญาติให้มีการลงทะเบียนหรือเพิกถอนอุปกรณ์</label>
+                                                        <label class="col-sm-5 control-label">จำนวนครั้งที่อนุญาติให้มีการลงทะเบียนหรือเพิกถอนอุปกรณ์ (ครั้ง)</label>
                                                         <div class="col-sm-5 controls">
-                                                            <input class="width-70" type="text" placeholder="จำนวนครั้งต่อวัน" data-toggle="tooltip" data-placement="top" data-original-title="จำนวนที่เหมาะสมสำหรับการลงทะเบียนอุปกรณ์">
+                                                            <input class="width-70" type="text" placeholder="จำนวนครั้งต่อวัน" data-toggle="tooltip" data-placement="top" data-original-title="จำนวนที่เหมาะสมสำหรับการลงทะเบียนอุปกรณ์" id="edit-device">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-5 control-label">จำนวนครั้งที่อนุญาติให้มีการปรับปรุงข้อมูลส่วนตัว</label>
+                                                        <label class="col-sm-5 control-label">จำนวนครั้งที่อนุญาติให้มีการปรับปรุงข้อมูลส่วนตัว (ครั้ง)</label>
                                                         <div class="col-sm-5 controls">
-                                                            <input class="width-70" type="text" placeholder="จำนวนครั้งต่อวัน" data-toggle="tooltip" data-placement="top" data-original-title="จำนวนที่เหมาะสมสำหรับการปรับเปลี่ยนข้อมูลส่วนบุคคล">
+                                                            <input class="width-70" type="text" placeholder="จำนวนครั้งต่อวัน" data-toggle="tooltip" data-placement="top" data-original-title="จำนวนที่เหมาะสมสำหรับการปรับเปลี่ยนข้อมูลส่วนบุคคล" id="edit-profile">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-5 control-label">ผู้ใช้งานสามารถเข้าสู่ระบบได้ไม่เกิน</label>
+                                                        <label class="col-sm-5 control-label">ผู้ใช้งานสามารถเข้าสู่ระบบได้ไม่เกิน (ครั้ง)</label>
                                                         <div class="col-sm-3 controls">
                                                             <!--<input type="text" id="datepicker-from" />-->
-                                                            <input class="width-90" type="text" placeholder="จำนวนครั้งต่อวัน" data-toggle="tooltip" data-placement="top" data-original-title="โดยทั่วไปจะกำหนดที่ 3 ครั้ง">
+                                                            <input class="width-90" type="text" placeholder="จำนวนครั้งต่อวัน" data-toggle="tooltip" data-placement="top" data-original-title="โดยทั่วไปจะกำหนดที่ 3 ครั้ง" id="login-count">
                                                         </div>
 
-                                                        <label class="col-sm-2 control-label">ภายในระยะเวลา</label>
+                                                        <label class="col-sm-2 control-label">ภายในระยะเวลา (นาที)</label>
                                                         <div class="col-sm-2 controls">
                                                             <!--<input type="text" id="datepicker-to" />-->
-                                                            <input class="width-70" type="text" placeholder="จำนวนนาที" data-toggle="tooltip" data-placement="top" data-original-title="โดยทั่วไปจะกำหนดที่ 5 นาที">
+                                                            <input class="width-70" type="text" placeholder="จำนวนนาที" data-toggle="tooltip" data-placement="top" data-original-title="โดยทั่วไปจะกำหนดที่ 5 นาที" id="login-time">
                                                         </div>
                                                     </div>
                                                     <div class="form-group form-actions">
                                                         <div class="col-sm-5"> </div>
                                                         <div class="col-sm-2">
-                                                            <button class="btn vd_btn vd_bg-green vd_white" type="submit"><i class="icon-ok"></i> บันทึก</button>
+                                                            <button class="btn vd_btn vd_bg-green vd_white" type="submit" onclick="editconfig('<%= email %>',document.getElementById('timepicker-default').value,document.getElementById('timepicker-default-to').value,document.getElementById('diffsite-minute').value,document.getElementById('edit-device').value,document.getElementById('edit-profile').value,document.getElementById('login-time').value,document.getElementById('login-count').value)"><i class="icon-ok"></i> บันทึก</button>
 
                                                         </div>
                                                         <div class="col-sm-5"> </div>
@@ -606,24 +608,31 @@
                     if (data_sql[0] == 'accesstimefrom') {
                         //----- เวลาเริ่มต้นที่อนุญาตให้เข้าใช้งาน----//
                         //alert(data_sql[1])
+						document.getElementById("timepicker-default").value = data_sql[1];
                     } else if (data_sql[0] == 'accesstimeto') {
                         //----- เวลาสิ้นสุดที่อนุญาตให้เข้าใช้งาน-----//
                         //alert(data_sql[1])
+						document.getElementById("timepicker-default-to").value = data_sql[1];
                     } else if (data_sql[0] == 'accessdiffsite') {
                         //----- ระยะเวลาเข้าใช่้งานต่างพื้นที่-----//
+						document.getElementById("diffsite-minute").value = data_sql[1];
                         //alert(data_sql[1])
                     } else if (data_sql[0] == 'editdevice') {
                         //----- จำนวนครั้งที่แก้ไขอุปกรณ์-----//
                         //alert(data_sql[1])
+						document.getElementById("edit-device").value = data_sql[1];
                     } else if (data_sql[0] == 'editprofile') {
                         //----- จำนวนครั้งที่แก้ไขข้อมูลส่วนตัว-----//
                         //alert(data_sql[1])
+						document.getElementById("edit-profile").value = data_sql[1];
                     } else if (data_sql[0] == 'timelogin') {
                         //----- ช่วงเวลาที่ login-----//
                         //alert(data_sql[1])
+						document.getElementById("login-time").value = data_sql[1];
                     } else if (data_sql[0] == 'countlogin') {
                         //----- จำนวนครั้งที่ login-----//
                         //alert(data_sql[1])
+						document.getElementById("login-count").value = data_sql[1];
                     }
                     //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
 
@@ -639,7 +648,7 @@
             }
 
             function editconfig(account, timefrom, timeto, timediff, editdevice, editprofile, timelog, countlog) {
-                //alert(lim);
+                //alert('a');
                 $.ajax('http://localhost/api/editconfig', {
                     type: "get",
                     data: {
@@ -661,7 +670,7 @@
                     }
                 });
             }
-            datepick();
+            //datepick();
             getconfig();
         </script>
 
