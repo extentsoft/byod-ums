@@ -124,11 +124,15 @@
 
                                     <li id="top-menu-profile" class="profile mega-li">
                                         <a href="#" class="mega-link" data-action="click-trigger">
-                                            <span class="mega-image">
-                                                    <img src="img/users/user1.jpg" alt="example image" />
+                                            <span id="email" class="mega-image" style="visibility: hidden">
+                                                   <!-- <img src="img/users/user1.jpg" alt="example image" />-->
+                                                    <%= email %>
                                                 </span>
+                                            <!--<div id="email" style="visibility: hidden">
+                                                <%= email %>
+                                            </div>-->
                                             <span class="mega-name">
-                                                    <%= email %> <i class="fa fa-caret-down fa-fw"></i>
+                                                    <%= firstname %>&nbsp;<%= lastname %> <i class="fa fa-caret-down fa-fw"></i>
                                                 </span>
                                         </a>
                                         <div class="vd_mega-menu-content  width-xs-2  left-xs left-sm" data-action="click-target">

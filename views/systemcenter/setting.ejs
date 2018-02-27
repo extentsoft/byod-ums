@@ -250,17 +250,30 @@
 
         <script type="text/javascript ">
             $(document).ready(function() {
+                //alert($.fn.jquery);
 
-                $("#pref_theme").change(function() {
+                $.ajax('http://localhost/api/getuserpref', {
+                    type: "get",
+                    cache: false,
+                    data: {
+                        accname: $('#email').text().trim(),
+                    },
+                    success: function(json) {
+                        alert(json);
+                        if (json[0] == 0) {
+                            $('#pref_theme').attr('checked', false);
+                        } else {
+                            $('#pref_theme').attr('checked', true);
+                        }
 
-                    window.location.href = "http://localhost/systemcenter/theme";
-
-                    /*if ($(this).is(':checked')) {
-                        alert('yes');
-                    } else {
-                        alert('no');
-                    }*/
+                        if (json[1] == 0) {
+                            $('#pref_notification').attr('checked', false);
+                        } else {
+                            $('#pref_notification').attr('checked', true);
+                        }
+                    }
                 });
+
 
 
 
@@ -271,8 +284,11 @@
                     }
                 });
 
+
             });
-            $(window).load(function() {});
+            $(window).load(function() {
+
+            });
         </script>
         <!-- Specific Page Scripts END -->
 
@@ -297,6 +313,42 @@
         </script>
 
         <script type="text/javascript ">
+            $("#pref_theme").change(function() {
+                //console.log($('this').attr('checked'));
+                console.log($('#pref_theme').is(':checked'));
+                console.log('AA - changed');
+            });
+
+            $("#pref_notification").change(function() {
+
+                console.log('BB');
+                console.log($('#pref_theme').is(':checked') ? 1 : 0);
+                console.log($('#pref_notification').is(':checked') ? 0 : 1);
+
+                /*
+                                    $.ajax('http://localhost/api/edituserpref', {
+                                        type: "get",
+                                        cache: false,
+                                        data: {
+                                            accname: $('#email').text().trim(),
+                                            theme: $('#pref_theme').is(':checked') ? 0 : 1,
+                                            noti: $('#pref_notification').is(':checked') ? 1 : 0
+                                        },
+                                        success: function(json) {
+                                            location.reload();
+                                        },
+                                        error: function() {
+                                            //location.reload();
+                                            if ($('#pref_notification').is(':checked')) {
+                                                $('#pref_notification').attr('checked', false);
+                                            } else {
+                                                $('#pref_notification').attr('checked', true);
+                                            }
+                                        }
+                                    });*/
+
+            });
+
             function refresh_group(sd, ed) {
                 //alert('refresh');
                 $.ajax('http://localhost/report/report672', {
