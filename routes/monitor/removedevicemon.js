@@ -17,7 +17,7 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 
-    var request = new Request("DELETE FROM [AgileControllerDB].[dbo].[UMS_DeviceMon] WHERE mac in ("+req.param('maclist')+")", function(err, rowCount){
+    var request = new Request("DELETE FROM [AgileControllerDB].[dbo].[UMS_DeviceMon] WHERE mac = ('"+req.param('mac')+"')", function(err, rowCount){
 
       if(err){
         console.error(err);

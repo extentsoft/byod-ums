@@ -13,7 +13,7 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 
-    var request = new Request("SELECT [id],[account],[userName],[host_name],[mac],[os_name],[update_time],[match_time] FROM [AgileControllerDB].[dbo].[TSM_E_Account] a  join [AgileControllerDB].[dbo].[TSM_E_Endpoint] on [account] = [login_account]  join [AgileControllerDB].[dbo].[TSM_E_Organization] b on a.[orgID] = b.[orgID] where [login_account] !=''", function(err, rowCount){
+    var request = new Request("SELECT [id],[account],[userName],[host_name],[mac],[os_name],[update_time],[match_time] FROM [AgileControllerDB].[dbo].[TSM_E_Account] a  join [AgileControllerDB].[dbo].[TSM_E_Endpoint] on [account] = [login_account]  join [AgileControllerDB].[dbo].[TSM_E_Organization] b on a.[orgID] = b.[orgID]", function(err, rowCount){
 
       if(err){
         console.error(err);

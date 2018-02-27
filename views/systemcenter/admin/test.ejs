@@ -124,7 +124,7 @@
 
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
-                                    <h1>กำหนดนโยบายการใช้งานและอุปกรณ์รายบุคคล</h1>
+                                    <h1>อุปกรณ์ที่ถูกกำหนดให้ตรวจสอบการเข้าใช้งาน</h1>
                                     <!-- menu -->
 
 
@@ -146,17 +146,18 @@
                                 <div class="col-md-12">
                                     <div class="panel widget">
                                         <div class="panel-heading vd_bg-grey">
-                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายชื่อผู้ใช้งาน</h3>
+                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายชื่ออุปกรณ์ที่ถูกกำหนดให้ตรวจสอบการเข้าใช้งาน</h3>
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
                                             <table class="table table-striped" id="data-tables">
                                                 <thead>
                                                     <tr>
-                                                        <th>ชื่อผู้ใช้งาน</th>
-                                                        <th>ชื่อ-นามสกุลจริง</th>
                                                         <th>ชื่ออุปกรณ์</th>
+														<th>ชื่อผู้ใช้งาน</th>
 														<th>MAC</th>
                                                         <th>ระบบปฏิบัติการ</th>
+														<th>วันที่เข้าใช้งานล่าสุด</th>
+														<th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -178,6 +179,26 @@
 
                         </div>
                         <!-- .vd_content -->
+						<!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header vd_bg-blue vd_white">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                                        <h4 class="modal-title" id="myModalLabel">ยกเลิกการตรวจสอบการเข้าใช้งานของอุปกรณ์</h4>
+                                    </div>
+
+                                    <div class="modal-footer background-login">
+                                        <button type="button" class="btn vd_btn vd_bg-green" style="width:47%" data-dismiss="modal" id="btn-limit" value="" onclick="del_monitor($(this).attr('value'))">ตกลง</button>
+                                        <button type="button" class="btn vd_btn vd_bg-grey" style="width:47%" data-dismiss="modal">ยกเลิก</button>
+
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
                     </div>
                     <!-- .vd_container -->
                 </div>
@@ -268,22 +289,7 @@
 
         <script type="text/javascript ">
             $(window).load(function() {
-                "use strict";
-
-                $('#datepicker-datetime').daterangepicker({
-                    timePicker: true,
-                    timePickerIncrement: 30,
-                    format: 'MM/DD/YYYY h:mm A'
-                });
-
-                $('#timepicker-default').timepicker();
-                $('#timepicker-default-to').timepicker();
-
-                //CKEDITOR.replace( $('[data-rel^="ckeditor"]') );
-                $('[data-rel^="ckeditor"]').ckeditor();
-
-            });
-
+                
 
             $(document).ready(function() {
                 account_now = 'natthawat_a';
@@ -318,11 +324,12 @@
             })();
         </script>
         <script>
-            account_now = 'natthawat_a';
+            account_now = '<%= email %>';
+			//alert(account_now);
 
             function refresh_table() {
                 //alert('refresh');
-                $.ajax('http://localhost/api/alldevices', {
+                $.ajax('http://localhost/api/deviceinmon', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -341,8 +348,18 @@
                 var q = "'";
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
-
-                    $('#data-tables').find('tbody').append('<tr><td>' + data_sql[1] + '</td><td>' + data_sql[2] + '</td><td>' + data_sql[3] + '</td><td>' + data_sql[4] + '</td><td>' + data_sql[5] + '</td><td class="menu-action"><a id="' + data_sql[0] + '" data-original-title="edit" data-toggle="modal" data-target="#myModal" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow" onclick="$(' + q + '#btn-limit' + q + ').val(' + q + data_sql[1] + q + ');" > <i class="fa fa-pencil"></i> </a> </td></tr>');
+					update_time = new Date(data_sql[7]);
+					//alert(update_time);
+                    if(update_time.getFullYear()=='1900' && update_time.getMinutes()=='0' && update_time.getSeconds()=='0'){
+						date_str = "ยังไม่มีการเข้าใช้งาน";
+						//alert('a');
+					}
+					else{
+						//alert('b');
+						
+						date_str = update_time.getHours() + ":" + (update_time.getMinutes()<10?'0':'') + update_time.getMinutes() + ":" + (update_time.getSeconds()<10?'0':'') + update_time.getSeconds() +' - ' + update_time.getDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();
+					}
+                    $('#data-tables').find('tbody').append('<tr><td>' + data_sql[3] + '</td><td>' + data_sql[1] + '</td><td>' + data_sql[4] + '</td><td>' + data_sql[5] + '</td><td>' + date_str + '</td><td class="menu-action"><a id="' + data_sql[0] + '" data-original-title="edit" data-toggle="modal" data-target="#myModal" data-placement="top" class="btn menu-icon vd_bd-red vd_red" onclick="$(' + q + '#btn-limit' + q + ').val(' + q + data_sql[4] + q + ');" > <i class="fa fa-times"></i> </a> </td></tr>');
                     data.push(data_json);
                     //alert(JSON.stringify(data));
                     data_sql.splice(0, 8);
@@ -355,27 +372,17 @@
                 $('#data-tables').dataTable();
 
             }
-
-            function addlimit(lim, acc) {
-                //alert(lim);
-                //alert(acc);
-                $.ajax('http://localhost/api/limitdevice', {
-                    type: "get",
-                    data: {
-                        limit: lim,
-                        accname: acc
-                    },
-                    success: function(json) {
-                        //alert(json);
-                        //alert(JSON.stringify(json));
-                        data_res = JSON.parse(JSON.stringify(json));
-						location.reload();
-                    },
-                    error: function(fa) {
-                        alert(JSON.stringify(fa));
-                    }
-                });
-            }
+			
+			function del_monitor(mac){
+				$.ajax('http://localhost/api/removedevicemon', {
+					type: "get",
+					data: {mac:mac},
+					success: function(json) {
+						location.reload(true);
+						
+					}
+				});
+			}
 			
 			refresh_table();
 

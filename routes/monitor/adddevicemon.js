@@ -17,7 +17,7 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 
-    var request = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_DeviceMon] ([status],[mac],[created_at]) SELECT 0,[mac],CURRENT_TIMESTAMP FROM [AgileControllerDB].[dbo].[TSM_E_Account] a  join [AgileControllerDB].[dbo].[TSM_E_Endpoint] on [account] = [login_account]  join [AgileControllerDB].[dbo].[TSM_E_Organization] b on a.[orgID] = b.[orgID] where [login_account] !='' and mac not in (select mac from [AgileControllerDB].[dbo].[UMS_DeviceMon]) and mac in ("+req.param('maclist')+")", function(err, rowCount){
+    var request = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_DeviceMon] ([status],[mac],[created_at]) values (0,'"+req.param('mac')+"',CURRENT_TIMESTAMP)", function(err, rowCount){
 
       if(err){
         console.error(err);

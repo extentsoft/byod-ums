@@ -17,7 +17,7 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 
-    var request = new Request("SELECT a.[mac],[os_name],[host_name],[login_account] FROM [AgileControllerDB].[dbo].[TSM_E_Endpoint] a join [AgileControllerDB].[dbo].[UMS_DeviceMon] b on a.mac = b.mac", function(err, rowCount){
+    var request = new Request("SELECT e.[id],[account],[userName],[host_name],u.[mac],[os_name],[created_at],case when u.[last_login] is null then 0 else u.[last_login] end as last_login FROM [AgileControllerDB].[dbo].[TSM_E_Account] a  join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on [account] = [login_account]  join [AgileControllerDB].[dbo].[TSM_E_Organization] b on a.[orgID] = b.[orgID] join [AgileControllerDB].[dbo].[UMS_DeviceMon] u on e.[mac] = u.[mac] where e.mac in (select mac from [AgileControllerDB].[dbo].[UMS_DeviceMon])", function(err, rowCount){
 
       if(err){
         console.error(err);
