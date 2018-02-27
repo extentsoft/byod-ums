@@ -62,6 +62,8 @@ var addchat = require('./routes/addchat');
 var getchat = require('./routes/getchat');
 var getconfig = require('./routes/getconfig');
 var editconfig = require('./routes/editconfig');
+var getuserpref = require('./routes/getuserpref');
+var edituserpref = require('./routes/edituserpref');
 
 var deviceinmon = require('./routes/monitor/deviceinmon');
 var deviceoutmon = require('./routes/monitor/deviceoutmon');
@@ -78,6 +80,7 @@ var report676 = require('./routes/reports/report676');
 var report675 = require('./routes/reports/report675');
 var report677 = require('./routes/reports/report677');
 var report67153 = require('./routes/reports/report67153');
+var report67154 = require('./routes/reports/report67154');
 
 var checkcountdevice = require('./routes/policy/checkcountdevice');
 
@@ -155,6 +158,8 @@ app.use('/api/adddevicemon', adddevicemon);
 app.use('/api/removedevicemon', removedevicemon);
 app.use('/api/getconfig', getconfig);
 app.use('/api/editconfig', editconfig);
+app.use('/api/getuserpref', getuserpref);
+app.use('/api/edituserpref', edituserpref);
 
 
 app.use('/api/chat/attachment', require('./routes/chat/attachment'));
@@ -171,6 +176,7 @@ app.use('/report/report676', report676);
 app.use('/report/report675', report675);
 app.use('/report/report677', report677);
 app.use('/report/report67153', report67153);
+app.use('/report/report67154', report67154);
 
 app.use('/policy/checkcountdevice', checkcountdevice);
 
