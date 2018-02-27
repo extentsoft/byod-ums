@@ -259,19 +259,19 @@
                     },
                     success: function(json) {
                         //alert(json);
-						$('#pref_theme').attr('checked', true);
+                        $('#pref_theme').attr('checked', true);
                         if (json[0] == 0) {
                             $('#pref_theme').attr('checked', false);
                         } else {
                             $('#pref_theme').attr('checked', true);
-							//alert(json[0]);
+                            //alert(json[0]);
                         }
 
                         if (json[1] == 0) {
                             $('#pref_notification').attr('checked', false);
                         } else {
                             $('#pref_notification').attr('checked', true);
-							//alert(json[1]);
+                            //alert(json[1]);
                         }
                     }
                 });
@@ -290,6 +290,12 @@
             });
             $(window).load(function() {
 
+                var priv = $("#priv").html().trim().split(",");
+                if (priv[1] < 1) {
+                    $('#top-menu-3').hide();
+                } else {
+                    $('#top-menu-3').show();
+                }
             });
         </script>
         <!-- Specific Page Scripts END -->
@@ -315,41 +321,43 @@
         </script>
 
         <script type="text/javascript ">
-		
+            function change_userpref() {
+                //alert('a');
+                //console.log('BB');
+                //console.log($('#pref_theme').is(':checked') ? 1 : 0);
+                //console.log($('#pref_notification').is(':checked') ? 1 : 0);
+                var theme_val = $('#pref_theme').is(':checked') ? 1 : 0;
+                var noti_val = $('#pref_notification').is(':checked') ? 1 : 0;
 
-			function change_userpref(){
-				//alert('a');
-				//console.log('BB');
-				//console.log($('#pref_theme').is(':checked') ? 1 : 0);
-				//console.log($('#pref_notification').is(':checked') ? 1 : 0);
-				var theme_val = $('#pref_theme').is(':checked') ? 1 : 0;
-				var noti_val = $('#pref_notification').is(':checked') ? 1 : 0;
-				
-				$.ajax('http://localhost/api/edituserpref', {
-					type: "get",
-					data: {
-						accname: $('#email').text().trim(),
-						theme: theme_val,
-						noti: noti_val
-					},
-					success: function(json) {
-						//alert(theme_val);
-						//alert(noti_val);
-						location.reload();
-					},
-					error: function() {
-						//location.reload();
-						if ($('#pref_notification').is(':checked')) {
-							$('#pref_notification').attr('checked', false);
-						} else {
-							$('#pref_notification').attr('checked', true);
-						}
-					}
-				});
+                $.ajax('http://localhost/api/edituserpref', {
+                    type: "get",
+                    data: {
+                        accname: $('#email').text().trim(),
+                        theme: theme_val,
+                        noti: noti_val
+                    },
+                    success: function(json) {
+                        //alert('update setting');
+                        //alert(noti_val);
+                        //location.reload();
+                        if (noti_val >= 1) {
+                            $('#top-menu-3').show();
+                        } else {
+                            $('#top-menu-3').hide();
+                        }
+                        window.location.href = "http://localhost/systemcenter/setting";
+                    },
+                    error: function() {
+                        //location.reload();
+                        if ($('#pref_notification').is(':checked')) {
+                            $('#pref_notification').attr('checked', false);
+                        } else {
+                            $('#pref_notification').attr('checked', true);
+                        }
+                    }
+                });
 
-			}
-
-            
+            }
         </script>
 
 </body>

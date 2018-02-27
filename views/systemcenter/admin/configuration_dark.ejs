@@ -440,6 +440,12 @@
                 //CKEDITOR.replace( $('[data-rel^="ckeditor"]') );
                 $('[data-rel^="ckeditor"]').ckeditor();
 
+                var priv = $("#priv").html().trim().split(",");
+                if (priv[1] < 1) {
+                    $('#top-menu-3').hide();
+                } else {
+                    $('#top-menu-3').show();
+                }
             });
 
 
@@ -452,7 +458,6 @@
                 });
 
             });
-            $(window).load(function() {});
         </script>
         <!-- Specific Page Scripts END -->
 

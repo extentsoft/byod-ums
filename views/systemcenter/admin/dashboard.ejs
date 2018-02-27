@@ -572,7 +572,14 @@
 
 
             });
-            $(window).load(function() {});
+            $(window).load(function() {
+                var priv = $("#priv").html().trim().split(",");
+                if (priv[1] < 1) {
+                    $('#top-menu-3').hide();
+                } else {
+                    $('#top-menu-3').show();
+                }
+            });
         </script>
         <!-- Specific Page Scripts END -->
 
@@ -696,7 +703,7 @@
                         return;
                     }
                     percent = parseFloat(obj.series.percent).toFixed(2);
-                    alert("" + obj.series.label + ": " + percent + "%");
+                    //alert("" + obj.series.label + ": " + percent + "%");
                 });
 
                 function labelFormatter(label, series) {
@@ -998,6 +1005,8 @@
                     plot.resize();
                     plot.setupGrid();
                     plot.draw();
+
+
                 });
                 //alert('a')
             }
@@ -1138,7 +1147,6 @@
             refresh_traffic();
 
             datepick();
-			
         </script>
 
 </body>
