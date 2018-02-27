@@ -17,7 +17,7 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 
-    var request = new Request("select count(*) from [AgileControllerDB].[dbo].[UMS_AccessLog] where created_at < CURRENT_TIMESTAMP and created_at > DateADD(mi, -5, Current_TimeStamp) and userId = '"+req.param('accname')+"';", function(err, rowCount){
+    var request = new Request("if (select c_value from [AgileControllerDB].[dbo].[UMS_Config] where c_name = 'countlogin') = (select count(*) from [AgileControllerDB].[dbo].[UMS_AccessLog] where created_at < CURRENT_TIMESTAMP and created_at > DateADD(mi, cast('-'+(select c_value from [AgileControllerDB].[dbo].[UMS_Config] where c_name = 'timelogin') as int), Current_TimeStamp) and userId = '"+req.param('accname')+"') select 1 else select 0", function(err, rowCount){
 
 	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 
