@@ -46,4 +46,9 @@ router.get('/profile/:email', function(req, res, next) {
     }
 });
 
+router.put('/profile/:ssn', function(req, res, next) {
+    res.json({ status: 'success' });
+});
+
+
 module.exports = router;
