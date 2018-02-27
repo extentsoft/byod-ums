@@ -1138,6 +1138,40 @@
             refresh_traffic();
 
             datepick();
+			
+			function get_userpref() {
+                $.ajax('http://localhost/api/getuserpref', {
+                    type: "get",
+                    data: {
+                        accname: 'natthawat_a'
+                    },
+                    success: function(json) {
+						alert(json);
+						alert(JSON.stringify(json));
+                    }
+                });
+			};
+			
+
+            
+			get_userpref();
+			
+			function get_userconfig() {
+                $.ajax('http://localhost/api/getconfig', {
+                    type: "get",
+                    data: {
+                        accname: 'natthawat_a'
+                    },
+                    success: function(json) {
+						alert(json);
+						alert(JSON.stringify(json));
+                    }
+                });
+			};
+			
+
+            
+			get_userconfig();
             //document.getElementById('val-iOS').innerHTML = '50';
         </script>
 
