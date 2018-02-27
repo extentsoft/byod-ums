@@ -46,7 +46,7 @@ module.exports = function(app, passport) {
     app.get('/systemcenter/test', function(req, res) {
         res.render("systemcenter/admin/test", {
             title: 'Test',
-			email: req.user.email,
+            email: req.user.email,
             firstname: req.user.firstname,
             lastname: req.user.lastname
         });
@@ -59,35 +59,21 @@ module.exports = function(app, passport) {
     });
 
 
-    app.get('/systemcenter/theme', isLoggedIn, function(req, res) {
-        //res.send("/systemcenter/report/device/activate");
-        if (req.user.theme == 0) req.user.theme = 1;
-        else req.user.theme = 0;
-
-
-        res.render('systemcenter/admin/dashboard', {
-            title: 'อุปกรณ์',
-            message: req.flash('message'),
-            email: req.user.email,
-            firstname: req.user.firstname,
-            lastname: req.user.lastname
-        });
-    });
-
     /* ================================================================
                               Admin Section
     =================================================================== */
     app.get('/systemcenter/dashboard', isLoggedIn, function(req, res) {
         //res.send("Hello System Center");
 
-        if (req.user.pref_theme == 1) {
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/admin/dashboard', {
                 title: 'แผงควบคุมหลัก',
                 path: 'systemcenter/',
                 message: req.flash('message'),
                 email: req.user.email,
                 firstname: req.user.firstname,
-                lastname: req.user.lastname
+                lastname: req.user.lastname,
+                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
             res.render('systemcenter/admin/dashboard_dark', {
@@ -96,42 +82,19 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.user.email,
                 firstname: req.user.firstname,
-                lastname: req.user.lastname
+                lastname: req.user.lastname,
+                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
 
 
     });
 
-
-    app.get('/systemcenter/setting', isLoggedIn, function(req, res) {
-        if (req.user.pref_theme == 1) {
-            res.render('systemcenter/setting', {
-                title: 'ตั้งค่าระบบ',
-                //path: 'systemcenter/',
-                message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname
-            });
-        } else {
-            res.render('systemcenter/setting_dark', {
-                title: 'ตั้งค่าระบบ',
-                //path: 'systemcenter/',
-                message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname
-            });
-
-        }
-
-    });
 
 
     app.get('/systemcenter/configuration', isLoggedIn, function(req, res) {
-        //res.send("/systemcenter/setting");
-        if (req.user.pref_theme == 1) {
+
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/admin/configuration', {
                 title: 'ปรับแต่ง',
                 message: req.flash('message'),
@@ -161,7 +124,7 @@ module.exports = function(app, passport) {
     app.get('/systemcenter/device', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
 
-        if (req.user.pref_theme == 1) {
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/device', {
                 title: 'อุปกรณ์',
                 message: req.flash('message'),
@@ -183,13 +146,16 @@ module.exports = function(app, passport) {
 
     app.get('/systemcenter/setting', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/setting");
-        if (req.user.pref_theme == 1) {
+        console.log('theme - ' + req.user.pref_theme);
+
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/setting', {
                 title: 'ตั้งค่า',
                 message: req.flash('message'),
                 email: req.user.email,
                 firstname: req.user.firstname,
-                lastname: req.user.lastname
+                lastname: req.user.lastname,
+                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
             res.render('systemcenter/setting_dark', {
@@ -197,7 +163,8 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.user.email,
                 firstname: req.user.firstname,
-                lastname: req.user.lastname
+                lastname: req.user.lastname,
+                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
 
@@ -212,7 +179,7 @@ module.exports = function(app, passport) {
 
     app.get('/systemcenter/profile', isLoggedIn, function(req, res) {
         //res.send("Hello System Center");
-        if (req.user.pref_theme == 1) {
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/profile', {
                 title: 'ข้อมูลผู้ใช้งาน',
                 //path: 'systemcenter/',
@@ -224,7 +191,8 @@ module.exports = function(app, passport) {
                 email: req.user.ssn,
                 position: req.user.position,
                 level: req.user.level,
-                area: req.user.area
+                area: req.user.area,
+                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
             res.render('systemcenter/profile_dark', {
@@ -237,7 +205,8 @@ module.exports = function(app, passport) {
                 email: req.user.ssn,
                 position: req.user.position,
                 level: req.user.level,
-                area: req.user.area
+                area: req.user.area,
+                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
 
@@ -249,7 +218,7 @@ module.exports = function(app, passport) {
     =================================================================== */
     app.get('/systemcenter/report/device/activate', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
-        if (req.user.pref_theme == 1) {
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/report/device/activate', {
                 title: 'Report',
                 message: req.flash('message'),
@@ -270,7 +239,7 @@ module.exports = function(app, passport) {
 
     app.get('/systemcenter/report/device/deactivate/today', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
-        if (req.user.pref_theme == 1) {
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/report/device/deactivate/today', {
                 title: 'Report',
                 message: req.flash('message'),
@@ -291,7 +260,7 @@ module.exports = function(app, passport) {
 
     app.get('/systemcenter/report/device/deactivate/week', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
-        if (req.user.pref_theme == 1) {
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/report/device/deactivate/week', {
                 title: 'Report',
                 message: req.flash('message'),
@@ -312,7 +281,7 @@ module.exports = function(app, passport) {
 
     app.get('/systemcenter/report/device/deactivate/month', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
-        if (req.user.pref_theme == 1) {
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/report/device/deactivate/month', {
                 title: 'Report',
                 message: req.flash('message'),
@@ -333,7 +302,7 @@ module.exports = function(app, passport) {
 
     app.get('/systemcenter/report/device/deactivate/year', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
-        if (req.user.pref_theme == 1) {
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/report/device/deactivate/year', {
                 title: 'Report',
                 message: req.flash('message'),
@@ -355,7 +324,7 @@ module.exports = function(app, passport) {
 
     app.get('/systemcenter/report/usage/person/today', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
-        if (req.user.pref_theme == 1) {
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/person/today', {
                 title: 'Report',
                 message: req.flash('message'),
@@ -376,7 +345,7 @@ module.exports = function(app, passport) {
 
     app.get('/systemcenter/report/usage/person/week', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
-        if (req.user.pref_theme == 1) {
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/person/week', {
                 title: 'Report',
                 message: req.flash('message'),
@@ -397,7 +366,7 @@ module.exports = function(app, passport) {
 
     app.get('/systemcenter/report/usage/person/month', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
-        if (req.user.pref_theme == 1) {
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/person/month', {
                 title: 'Report',
                 message: req.flash('message'),
@@ -418,7 +387,7 @@ module.exports = function(app, passport) {
 
     app.get('/systemcenter/report/usage/person/year', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
-        if (req.user.pref_theme == 1) {
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/person/year', {
                 title: 'Report',
                 message: req.flash('message'),
@@ -440,7 +409,7 @@ module.exports = function(app, passport) {
 
     app.get('/systemcenter/report/usage/group/today', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
-        if (req.user.pref_theme == 1) {
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/group/today', {
                 title: 'Report',
                 message: req.flash('message'),
@@ -461,7 +430,7 @@ module.exports = function(app, passport) {
 
     app.get('/systemcenter/report/usage/group/week', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
-        if (req.user.pref_theme == 1) {
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/group/week', {
                 title: 'Report',
                 message: req.flash('message'),
@@ -483,7 +452,7 @@ module.exports = function(app, passport) {
 
     app.get('/systemcenter/report/usage/group/month', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
-        if (req.user.pref_theme == 1) {
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/group/month', {
                 title: 'Report',
                 message: req.flash('message'),
@@ -504,7 +473,7 @@ module.exports = function(app, passport) {
 
     app.get('/systemcenter/report/usage/group/year', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
-        if (req.user.pref_theme == 1) {
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/group/year', {
                 title: 'Report',
                 message: req.flash('message'),
@@ -529,7 +498,7 @@ module.exports = function(app, passport) {
 
 
     app.get('/systemcenter/report/policy/usage', isLoggedIn, function(req, res) {
-        if (req.user.pref_theme == 1) {
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/report/policy/usage', {
                 title: 'Report',
                 message: req.flash('message'),
@@ -548,7 +517,7 @@ module.exports = function(app, passport) {
         }
     });
     app.get('/systemcenter/report/policy/device', isLoggedIn, function(req, res) {
-        if (req.user.pref_theme == 1) {
+        if (req.user.pref_theme == 0) {
             res.render('systemcenter/report/policy/device', {
                 title: 'Report',
                 message: req.flash('message'),

@@ -330,7 +330,14 @@
             $(document).ready(function() {
 
             });
-            $(window).load(function() {});
+            $(window).load(function() {
+                var priv = $("#priv").html().trim().split(",");
+                if (priv[1] < 1) {
+                    $('#top-menu-3').hide();
+                } else {
+                    $('#top-menu-3').show();
+                }
+            });
         </script>
         <!-- Specific Page Scripts END -->
 

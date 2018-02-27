@@ -154,7 +154,7 @@
                                                                 <input type="text" placeholder="Date" id="timepicker-default-to">
                                                                 <span class="input-group-addon" id="timepicker-default-span-to"><i class="fa fa-clock-o"></i></span> </div>
                                                         </div>
-														<button class="btn vd_btn vd_bg-green vd_white" type="submit" onclick="editconfig('<%= email %>',document.getElementById('timepicker-default').value,document.getElementById('timepicker-default-to').value,document.getElementById('diffsite-minute').value,document.getElementById('edit-device').value,document.getElementById('edit-profile').value,document.getElementById('login-time').value,document.getElementById('login-count').value)"><i class="icon-ok"></i> บันทึก</button>
+                                                        <button class="btn vd_btn vd_bg-green vd_white" type="submit" onclick="editconfig('<%= email %>',document.getElementById('timepicker-default').value,document.getElementById('timepicker-default-to').value,document.getElementById('diffsite-minute').value,document.getElementById('edit-device').value,document.getElementById('edit-profile').value,document.getElementById('login-time').value,document.getElementById('login-count').value)"><i class="icon-ok"></i> บันทึก</button>
 
                                                     </div>
                                                 </form>
@@ -176,12 +176,12 @@
                                                     <div class="form-group">
                                                         <div class="col-sm-12 controls">
                                                             <textarea name="editor1" data-rel="ckeditor" rows="3" id="noti-text"></textarea>
-															<div class="col-sm-2">
-                                                            <button class="btn vd_btn vd_bg-green vd_white" type="submit" onclick="add_noti();"><i class="icon-ok"></i> บันทึก</button>
+                                                            <div class="col-sm-2">
+                                                                <button class="btn vd_btn vd_bg-green vd_white" type="submit" onclick="add_noti();"><i class="icon-ok"></i> บันทึก</button>
 
+                                                            </div>
                                                         </div>
-                                                        </div>
-														
+
                                                     </div>
                                                 </form>
                                             </div>
@@ -455,6 +455,12 @@
                 //CKEDITOR.replace( $('[data-rel^="ckeditor"]') );
                 $('[data-rel^="ckeditor"]').ckeditor();
 
+                var priv = $("#priv").html().trim().split(",");
+                if (priv[1] < 1) {
+                    $('#top-menu-3').hide();
+                } else {
+                    $('#top-menu-3').show();
+                }
             });
 
 
@@ -467,7 +473,6 @@
                 });
 
             });
-            $(window).load(function() {});
         </script>
         <!-- Specific Page Scripts END -->
 
@@ -547,7 +552,7 @@
 
             }
 
-           
+
             function addlimit(lim, acc) {
                 //alert(lim);
                 //alert(acc);
@@ -561,7 +566,7 @@
                         //alert(json);
                         //alert(JSON.stringify(json));
                         data_res = JSON.parse(JSON.stringify(json));
-						location.reload();
+                        location.reload();
                     },
                     error: function(fa) {
                         alert(JSON.stringify(fa));
@@ -597,31 +602,31 @@
                     if (data_sql[0] == 'accesstimefrom') {
                         //----- เวลาเริ่มต้นที่อนุญาตให้เข้าใช้งาน----//
                         //alert(data_sql[1])
-						document.getElementById("timepicker-default").value = data_sql[1];
+                        document.getElementById("timepicker-default").value = data_sql[1];
                     } else if (data_sql[0] == 'accesstimeto') {
                         //----- เวลาสิ้นสุดที่อนุญาตให้เข้าใช้งาน-----//
                         //alert(data_sql[1])
-						document.getElementById("timepicker-default-to").value = data_sql[1];
+                        document.getElementById("timepicker-default-to").value = data_sql[1];
                     } else if (data_sql[0] == 'accessdiffsite') {
                         //----- ระยะเวลาเข้าใช่้งานต่างพื้นที่-----//
-						document.getElementById("diffsite-minute").value = data_sql[1];
+                        document.getElementById("diffsite-minute").value = data_sql[1];
                         //alert(data_sql[1])
                     } else if (data_sql[0] == 'editdevice') {
                         //----- จำนวนครั้งที่แก้ไขอุปกรณ์-----//
                         //alert(data_sql[1])
-						document.getElementById("edit-device").value = data_sql[1];
+                        document.getElementById("edit-device").value = data_sql[1];
                     } else if (data_sql[0] == 'editprofile') {
                         //----- จำนวนครั้งที่แก้ไขข้อมูลส่วนตัว-----//
                         //alert(data_sql[1])
-						document.getElementById("edit-profile").value = data_sql[1];
+                        document.getElementById("edit-profile").value = data_sql[1];
                     } else if (data_sql[0] == 'timelogin') {
                         //----- ช่วงเวลาที่ login-----//
                         //alert(data_sql[1])
-						document.getElementById("login-time").value = data_sql[1];
+                        document.getElementById("login-time").value = data_sql[1];
                     } else if (data_sql[0] == 'countlogin') {
                         //----- จำนวนครั้งที่ login-----//
                         //alert(data_sql[1])
-						document.getElementById("login-count").value = data_sql[1];
+                        document.getElementById("login-count").value = data_sql[1];
                     }
                     //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
 
@@ -659,20 +664,23 @@
                     }
                 });
             }
-			
-			function add_noti(){
-			  //alert($('#noti-text').val());
-			  //alert($('#notifychannel').val());
 
-			  $.ajax('http://localhost/api/addnotimsg', {
-				type: "get",
-				data: {chanel:0,msg: $('#noti-text').val()},
-				success: function(json) {
-				  //alert(JSON.stringify(json));
-				  //alert('message sent!');
-				}
-			  });
-		  }
+            function add_noti() {
+                //alert($('#noti-text').val());
+                //alert($('#notifychannel').val());
+
+                $.ajax('http://localhost/api/addnotimsg', {
+                    type: "get",
+                    data: {
+                        chanel: 0,
+                        msg: $('#noti-text').val()
+                    },
+                    success: function(json) {
+                        //alert(JSON.stringify(json));
+                        //alert('message sent!');
+                    }
+                });
+            }
             refresh_table();
             getconfig();
         </script>

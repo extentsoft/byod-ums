@@ -572,7 +572,14 @@
 
 
             });
-            $(window).load(function() {});
+            $(window).load(function() {
+                var priv = $("#priv").html().trim().split(",");
+                if (priv[1] < 1) {
+                    $('#top-menu-3').hide();
+                } else {
+                    $('#top-menu-3').show();
+                }
+            });
         </script>
         <!-- Specific Page Scripts END -->
 
@@ -696,7 +703,7 @@
                         return;
                     }
                     percent = parseFloat(obj.series.percent).toFixed(2);
-                    alert("" + obj.series.label + ": " + percent + "%");
+                    //alert("" + obj.series.label + ": " + percent + "%");
                 });
 
                 function labelFormatter(label, series) {
@@ -998,6 +1005,8 @@
                     plot.resize();
                     plot.setupGrid();
                     plot.draw();
+
+
                 });
                 //alert('a')
             }
@@ -1138,40 +1147,40 @@
             refresh_traffic();
 
             datepick();
-			
-			function get_userpref() {
+
+            function get_userpref() {
                 $.ajax('http://localhost/api/getuserpref', {
                     type: "get",
                     data: {
                         accname: 'natthawat_a'
                     },
                     success: function(json) {
-						alert(json);
-						alert(JSON.stringify(json));
+                        alert(json);
+                        alert(JSON.stringify(json));
                     }
                 });
-			};
-			
+            };
 
-            
-			get_userpref();
-			
-			function get_userconfig() {
+
+
+            get_userpref();
+
+            function get_userconfig() {
                 $.ajax('http://localhost/api/getconfig', {
                     type: "get",
                     data: {
                         accname: 'natthawat_a'
                     },
                     success: function(json) {
-						alert(json);
-						alert(JSON.stringify(json));
+                        alert(json);
+                        alert(JSON.stringify(json));
                     }
                 });
-			};
-			
+            };
 
-            
-			get_userconfig();
+
+
+            get_userconfig();
             //document.getElementById('val-iOS').innerHTML = '50';
         </script>
 

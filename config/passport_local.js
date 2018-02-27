@@ -77,14 +77,15 @@ module.exports = function(passport) {
                                 Account.area = parsed_body.area;
                                 Account.authorized = parsed_body.authorized;
 
-                                request('http://localhost/api/ums/preference/' + Account.email, function(error, response, body) {
+                                request('http://localhost/api/getuserpref?accname=' + Account.email, function(error, response, body) {
                                     if (!error && response.statusCode == 200) {
                                         if (body != null) {
-                                            console.log("profiling --> " + JSON.parse(body));
                                             var parsed_body = JSON.parse(body);
+                                            console.log("profiling --> " + parsed_body[0]);
+                                            console.log("profiling --> " + parsed_body[1]);
 
-                                            Account.pref_theme = parsed_body.pref_theme;
-                                            Account.pref_notification = parsed_body.pref_notification;
+                                            Account.pref_theme = parsed_body[0];
+                                            Account.pref_notification = parsed_body[1];
 
                                             return done(null, Account);
                                         } else {
@@ -95,7 +96,30 @@ module.exports = function(passport) {
                                         console.log("3");
                                         return done(null, false, req.flash('loginMessage', 'Profiling Failure'));
                                     }
+
                                 });
+
+                                /*
+
+                                                                request('http://localhost/api/ums/preference/' + Account.email, function(error, response, body) {
+                                                                    if (!error && response.statusCode == 200) {
+                                                                        if (body != null) {
+                                                                            console.log("profiling --> " + JSON.parse(body));
+                                                                            var parsed_body = JSON.parse(body);
+
+                                                                            Account.pref_theme = parsed_body.pref_theme;
+                                                                            Account.pref_notification = parsed_body.pref_notification;
+
+                                                                            return done(null, Account);
+                                                                        } else {
+                                                                            console.log("2");
+                                                                            return done(null, false, req.flash('loginMessage', 'Profiling Failure'));
+                                                                        }
+                                                                    } else {
+                                                                        console.log("3");
+                                                                        return done(null, false, req.flash('loginMessage', 'Profiling Failure'));
+                                                                    }
+                                                                });*/
 
                                 // If only authentication & authorization are enough, comment out below line
                                 //return done(null, Account);
