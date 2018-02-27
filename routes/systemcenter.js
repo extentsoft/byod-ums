@@ -214,6 +214,7 @@ module.exports = function(app, passport) {
                 title: 'ข้อมูลผู้ใช้งาน',
                 //path: 'systemcenter/',
                 message: req.flash('message'),
+                ssn: req.user.ssn,
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
