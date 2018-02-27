@@ -254,22 +254,24 @@
 
                 $.ajax('http://localhost/api/getuserpref', {
                     type: "get",
-                    cache: false,
                     data: {
                         accname: $('#email').text().trim(),
                     },
                     success: function(json) {
                         //alert(json);
+						$('#pref_theme').attr('checked', true);
                         if (json[0] == 0) {
                             $('#pref_theme').attr('checked', false);
                         } else {
                             $('#pref_theme').attr('checked', true);
+							//alert(json[0]);
                         }
 
                         if (json[1] == 0) {
                             $('#pref_notification').attr('checked', false);
                         } else {
                             $('#pref_notification').attr('checked', true);
+							//alert(json[1]);
                         }
                     }
                 });

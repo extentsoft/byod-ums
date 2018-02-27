@@ -175,8 +175,13 @@
                                                 <form class="form-horizontal" action="#" role="form">
                                                     <div class="form-group">
                                                         <div class="col-sm-12 controls">
-                                                            <textarea name="editor1" data-rel="ckeditor" rows="3"></textarea>
+                                                            <textarea name="editor1" data-rel="ckeditor" rows="3" id="noti-text"></textarea>
+															<div class="col-sm-2">
+                                                            <button class="btn vd_btn vd_bg-green vd_white" type="submit" onclick="add_noti();"><i class="icon-ok"></i> บันทึก</button>
+
                                                         </div>
+                                                        </div>
+														
                                                     </div>
                                                 </form>
                                             </div>
@@ -573,6 +578,7 @@
                         //alert(json);
                         //alert(JSON.stringify(json));
                         data_res = JSON.parse(JSON.stringify(json));
+						location.reload();
                     },
                     error: function(fa) {
                         alert(JSON.stringify(fa));
@@ -670,6 +676,20 @@
                     }
                 });
             }
+			
+			function add_noti(){
+			  //alert($('#noti-text').val());
+			  //alert($('#notifychannel').val());
+
+			  $.ajax('http://localhost/api/addnotimsg', {
+				type: "get",
+				data: {chanel:0,msg: $('#noti-text').val()},
+				success: function(json) {
+				  //alert(JSON.stringify(json));
+				  //alert('message sent!');
+				}
+			  });
+		  }
             datepick();
             getconfig();
         </script>

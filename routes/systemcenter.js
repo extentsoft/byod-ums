@@ -45,7 +45,10 @@ module.exports = function(app, passport) {
 
     app.get('/systemcenter/test', function(req, res) {
         res.render("systemcenter/admin/test", {
-            title: 'Test'
+            title: 'Test',
+			email: req.user.email,
+            firstname: req.user.firstname,
+            lastname: req.user.lastname
         });
     });
 
