@@ -140,39 +140,39 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">เลขที่บัตรประจำตัวประชาชน</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input id="u_ssn" type="text" disabled="" placeholder="<%= email %>" readonly>
+                                                            <input id="u_ssn" type="text" disabled="" placeholder="<%= ssn %>" readonly class="input-border-btm">
                                                             <span class="help-inline">เลขที่บัตรประจำตัวประชาชนไม่สามารถแก้ไขได้</span> </div>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">ชื่อจริง (ภาษาอังกฤษ)</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input id="u_fn" type="text" placeholder="<%= firstname %>" class="input-border-btm">
-                                                            <span class="help-inline">ex. Natthawat</span> </div>
+                                                            <input id="u_fn" type="text" placeholder="ชื่อจริง" value="<%= firstname %>" class="input-border-btm">
+                                                            <span class="help-inline">เช่น Natthawat</span> </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">นามสกุลจริง (ภาษาอังกฤษ)</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input id="u_ln" type="text" placeholder="<%= lastname %>" class="input-border-btm">
-                                                            <span class="help-inline">ex. Arunwattana</span> </div>
+                                                            <input id="u_ln" type="text" placeholder="นามสกุลจริง" value="<%= lastname %>" class="input-border-btm">
+                                                            <span class="help-inline">เช่น Arunwattana</span> </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">เลขตำแหน่ง/สังกัด</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input id="u_pos" type="text" placeholder="<%= position %>" class="input-border-btm">
-                                                            <span class="help-inline">ex. 501</span> </div>
+                                                            <input id="u_pos" type="text" placeholder="เลขตำแหน่งหรือสังกัด" value="<%= position %>" class="input-border-btm">
+                                                            <span class="help-inline">เช่น 501</span> </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-4 control-label">ระดับข้าราชการ</label>
+                                                        <label class="col-sm-4 control-label">ระดับพนักงานหรือข้าราชการ</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input id="u_lv" type="text" placeholder="<%= level %>" class="input-border-btm">
-                                                            <span class="help-inline">8</span> </div>
+                                                            <input id="u_lv" type="text" placeholder="ระดับ" value="<%= level %>" class="input-border-btm">
+                                                            <span class="help-inline">เช่น 8</span> </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">พื้นที่</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input id="u_area" type="text" placeholder="<%= area %>" class="input-border-btm">
-                                                            <span class="help-inline">52</span> </div>
+                                                            <input id="u_area" type="text" placeholder="สังกัดพื้นที่" value="<%= area %>" class="input-border-btm">
+                                                            <span class="help-inline">เช่น 52</span> </div>
                                                     </div>
                                                     <!--
                                                     <div class="form-group">
@@ -330,13 +330,11 @@
 
         <script type="text/javascript ">
             $(document).ready(function() {
-                /*
-                res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Natthawat', ln: 'Arunweerungroj', email: 'natthawat_a@excise.go.th', position: '0', level: '0', area: '0', authorized: true });
-                */
-
+                alert($('#u_ssn').attr("placeholder"));
 
                 $('#top-right-success').click(function() {
-                    $.ajax('http://localhost/eoffice/profile/' + $('#u_ssn').val(), {
+
+                    $.ajax('http://localhost/api/eoffice/profile/' + $('#u_ssn').attr("placeholder"), {
                         type: "put",
                         data: {
                             fn: $('#u_fn').val(),
@@ -346,7 +344,7 @@
                             area: $('#u_area').val(),
                         },
                         success: function(json) {
-                            //alert(JSON.stringify(json));
+                            alert(JSON.stringify(json));
                             data_res = JSON.parse(JSON.stringify(json));
                             bindata_group(data_res);
                         }
