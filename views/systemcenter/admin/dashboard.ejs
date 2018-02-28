@@ -1291,7 +1291,7 @@
             }
 			
 			function addviolation() {
-				alert('refresh');
+				//alert('refresh');
 				$.ajax('http://localhost/api/addviolation', {
 					type: "get",
 					data: {
@@ -1299,11 +1299,7 @@
 						accname: account_now
 					},
 					success: function(json) {
-						alert(json)
-						if (json == 1) {
-							
-						}
-            
+						//alert(json);
 					}
 				});
 			}

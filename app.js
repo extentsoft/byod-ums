@@ -83,6 +83,7 @@ var report677 = require('./routes/reports/report677');
 var report67153 = require('./routes/reports/report67153');
 var report67154 = require('./routes/reports/report67154');
 var violation_report = require('./routes/reports/violation_report');
+var alllimit = require('./routes/reports/alllimit');
 
 var checkcountdevice = require('./routes/policy/checkcountdevice');
 
@@ -181,6 +182,7 @@ app.use('/report/report677', report677);
 app.use('/report/report67153', report67153);
 app.use('/report/report67154', report67154);
 app.use('/report/violation_report', violation_report);
+app.use('/report/alllimit', alllimit);
 
 app.use('/policy/checkcountdevice', checkcountdevice);
 
