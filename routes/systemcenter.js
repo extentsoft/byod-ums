@@ -64,7 +64,7 @@ module.exports = function(app, passport) {
     =================================================================== */
     app.get('/systemcenter/dashboard', isLoggedIn, function(req, res) {
         //res.send("Hello System Center");
-
+        console.log(' is admin ' + req.user.authorized);
         if (req.user.pref_theme == 0) {
 
             res.render('systemcenter/admin/dashboard', {
@@ -74,6 +74,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -84,6 +85,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -102,6 +104,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -111,6 +114,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -134,6 +138,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -143,6 +148,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -160,6 +166,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -169,6 +176,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -197,6 +205,7 @@ module.exports = function(app, passport) {
                 position: req.user.position,
                 level: req.user.level,
                 area: req.user.area,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -211,6 +220,7 @@ module.exports = function(app, passport) {
                 position: req.user.position,
                 level: req.user.level,
                 area: req.user.area,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -230,6 +240,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -239,6 +250,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -253,6 +265,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -262,6 +275,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -276,6 +290,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -285,6 +300,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -299,6 +315,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -308,6 +325,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -322,6 +340,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -331,6 +350,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -346,6 +366,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -355,6 +376,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -369,6 +391,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -378,6 +401,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -392,6 +416,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -401,6 +426,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -415,6 +441,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -424,6 +451,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -439,6 +467,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -448,6 +477,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -462,6 +492,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -471,6 +502,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -486,6 +518,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -495,6 +528,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -509,6 +543,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -518,6 +553,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -532,6 +568,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -541,6 +578,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -555,6 +593,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -564,6 +603,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -578,6 +618,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -587,6 +628,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -605,6 +647,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -614,6 +657,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -626,6 +670,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -635,6 +680,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -649,6 +695,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -658,6 +705,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -672,6 +720,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -681,6 +730,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
@@ -695,6 +745,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
@@ -704,6 +755,7 @@ module.exports = function(app, passport) {
                 email: req.user.email,
                 firstname: req.user.firstname,
                 lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
                 privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
