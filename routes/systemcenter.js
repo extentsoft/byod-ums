@@ -685,6 +685,30 @@ module.exports = function(app, passport) {
             });
         }
     });
+	
+	app.get('/systemcenter/report/policy/violation', isLoggedIn, function(req, res) {
+        if (req.user.pref_theme == 0) {
+            res.render('systemcenter/report/policy/violation', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.user.email,
+                firstname: req.user.firstname,
+                lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
+                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+            });
+        } else {
+            res.render('systemcenter/report/policy/violation_dark', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.user.email,
+                firstname: req.user.firstname,
+                lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
+                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+            });
+        }
+    });
 
 
 

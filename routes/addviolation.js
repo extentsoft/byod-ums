@@ -5,10 +5,6 @@ var router = express.Router();
 
 var deviceList = function(req,res,next){
 
-  console.log('deviceList middleware');
-
-  req.test1 = "test test test";
-
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
@@ -16,10 +12,9 @@ var deviceList = function(req,res,next){
       return;
     }
     console.log('Connection successful');
-
-    var request = new Request("if (select c_value from [AgileControllerDB].[dbo].[UMS_Config] where c_name = 'countlogin') <= (select count(*) from [AgileControllerDB].[dbo].[UMS_AccessLog] where created_at < CURRENT_TIMESTAMP and created_at > DateADD(mi, cast('-'+(select c_value from [AgileControllerDB].[dbo].[UMS_Config] where c_name = 'timelogin') as int), Current_TimeStamp) and userId = '"+req.param('accname')+"') select 1 else select 0", function(err, rowCount){
-
-	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
+	q = '"';
+    //var request = new Request('select * from [test].[dbo].t1', function(err, rowCount){
+    var request = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_ViolationLog] ([detail],[userId],[created_at]) VALUES ('"+req.param('violation')+"','"+req.param('accname')+"',CURRENT_TIMESTAMP)", function(err, rowCount){
 
       if(err){
         console.error(err);
@@ -55,7 +50,8 @@ router.get('/', deviceList, function(req, res, next) {
   //console.log('middleware 1 ' + req.test2);
   //console.log('middleware 2 ' + JSON.stringify(req.test2));
   res.send(req.test2);
-  //res.send('respond with a resource');
 });
 
 module.exports = router;
+
+

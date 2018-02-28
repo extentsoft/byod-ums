@@ -95,15 +95,15 @@
 
 </head>
 
-<body id="dashboard" class="full-layout  nav-right-hide nav-right-start-hide  nav-top-fixed      responsive    clearfix" data-active="dashboard " data-smooth-scrolling="1">
+<body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">
     <div class="vd_body">
-        <%- include('../../admin/partial/header'); %>
+        <%- include('../../admin/partial_dark/header'); %>
 
             <!-- Content start -->
 
             <div class="content">
                 <div class="container">
-                    <%- include('../../admin/partial/menu'); %>
+                    <%- include('../../admin/partial_dark/menu'); %>
 
                 </div>
 
@@ -157,9 +157,11 @@
                                             <table class="table table-striped" id="data-tables">
                                                 <thead>
                                                     <tr>
-                                                        <th>ประเภทกฎที่ผู้ใช้งานละเมิด</th>
-                                                        <th>ชื่อผู้ใช้งาน</th>
-                                                        <th>วันที่ที่ผู้ใช้งานละเมิดกฎ</th>
+                                                        <th>เจ้าของอุปกรณ์</th>
+                                                        <th>MAC</th>
+                                                        <th>ระบบปฏิบัติการ</th>
+                                                        <th>วันที่ทำผิดกฏ</th>
+                                                        <th>รายละเอียด</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -192,8 +194,8 @@
             <!-- .container -->
     </div>
     <!-- .content -->
+    <%- include('../../admin/partial_dark/footer'); %>
 
-    <%- include('../../admin/partial/footer'); %>
 
 
 
@@ -268,7 +270,7 @@
 
             function refresh_table(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://localhost/report/violation_report', {
+                $.ajax('http://localhost/report/report671', {
                     type: "get",
                     data: {
                         start: sd,
@@ -290,21 +292,17 @@
                 total = 0;
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
-					var vio = '';
-					
-					if(data_sql[1]=='overlogin'){
-						vio = 'เข้าสู่ระบบเกินจำนวนครั้งที่กำหนดในช่วงเวลาที่ระบุไว้';
-					}
-                    update_time = new Date(data_sql[3]);
+                    update_time = new Date(data_sql[5]);
                     date_str = update_time.getHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();
 
+
                     //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
-                    $('#data-tables').find('tbody').append("<tr><td>" + vio + "</td><td>" + data_sql[2] + "</td><td>" + date_str + "</td></tr>");
+                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[1] + "</td><td>" + data_sql[3] + "</td><td>" + data_sql[4] + "</td><td>" + date_str + "</td><td>" + data_sql[6] + "</td></tr>");
                     total = total + data_sql[1];
                     //alert(JSON.stringify(data_json));
                     data.push(data_json);
                     //alert(JSON.stringify(data));
-                    data_sql.splice(0, 4);
+                    data_sql.splice(0, 7);
                     i = -1;
 
                 }
@@ -320,7 +318,7 @@
                 var today = new Date();
                 var dd = today.getDate() - 7;
                 var ddd = today.getDate();
-                var mm = today.getMonth()+1; //January is 0!
+                var mm = today.getMonth() + 1; //January is 0!
 
                 var yyyy = today.getFullYear();
                 var yyy = today.getFullYear();
@@ -332,7 +330,7 @@
                 }
                 refresh_table(yyy + '-' + mm + '-' + dd, yyyy + '-' + mm + '-' + ddd);
             }
-            datepick();
+            //datepick();
         </script>
 
 

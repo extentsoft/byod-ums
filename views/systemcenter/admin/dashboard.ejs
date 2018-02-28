@@ -1279,14 +1279,34 @@
                         accname: account_now
                     },
                     success: function(json) {
-                        //alert(json)
+                        //alert(json);
                         if (json == 1) {
-                            alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
+							addviolation();
+                            //alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
+							
                         }
 
                     }
                 });
             }
+			
+			function addviolation() {
+				alert('refresh');
+				$.ajax('http://localhost/api/addviolation', {
+					type: "get",
+					data: {
+						violation: 'overlogin',
+						accname: account_now
+					},
+					success: function(json) {
+						alert(json)
+						if (json == 1) {
+							
+						}
+            
+					}
+				});
+			}
             acclogin();
             refresh_traffic();
 
