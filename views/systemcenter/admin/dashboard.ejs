@@ -514,6 +514,7 @@
         <!--[if lt IE 9]>
   <script type="text/javascript" src="js/excanvas.js"></script>
 <![endif]-->
+
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
         <script type="text/javascript" src="plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
@@ -568,8 +569,10 @@
 
         <script type="text/javascript ">
             $(document).ready(function() {
-                account_now = 'natthawat_a';
-
+                //alert($('#email').text().trim());
+                //account_now = 'natthawat_a';
+                account_now = $('#email').text().trim();
+                alert(account_now);
 
             });
             $(window).load(function() {
@@ -1144,78 +1147,96 @@
                 //alert(JSON.stringify(data));
                 bar_chart(data);
             }
-			
-			
-				function get_browser() {
-				var ua=navigator.userAgent,tem,M=ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-				if(/trident/i.test(M[1])){
-					tem=/\brv[ :]+(\d+)/g.exec(ua) || [];
-					return {name:'IE',version:(tem[1]||'')};
-					}
-				if(M[1]==='Chrome'){
-					tem=ua.match(/\bOPR|Edge\/(\d+)/)
-					if(tem!=null)   {return {name:'Opera', version:tem[1]};}
-					}
-				M=M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
-				if((tem=ua.match(/version\/(\d+)/i))!=null) {M.splice(1,1,tem[1]);}
-				return {
-				  name: M[0],
-				  version: M[1]
-				};
-				
-				};
 
-			//var browser=get_browser();
-			
-			//browser.name = 'Chrome'
-			//browser.version = '40'
-			function acclogin(){
-				$.ajax('https://freegeoip.net/json/', {
-				type: "get",
-				success: function(data) {
-					//alert('a');
-					var browser=get_browser();
-					//alert(browser.name+browser.version);
-					login_log(browser.name,data.ip);
-				},
-				error: function(fa) {
-					//alert(JSON.stringify(fa));
-					//alert('b');
-					}
-			  });
-			}
-			
-			function login_log(b,i){
-				$.ajax('http://localhost/api/accesslog', {
-				type: "get",
-				data: {browser:b,ip:i,status:'Login',accname:'natthawat_a'},
-				success: function(json) {
-					//alert(b+i)	;
-					countlog();
-				},
-				error: function(fa) {
-					//alert(JSON.stringify(fa));
-					//alert('a');
-					}
-			 });
-			}
-			
-			function countlog(){
-			//alert('refresh');
-				$.ajax('http://localhost/api/countlogin', {
-					type: "get",
-					data: {accname:account_now},
-					success: function(json) {
-						//alert(json)
-						if(json==1)
-						{
-							alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
-						}
-						
-					}
-				});
-			}
-			acclogin();
+
+            function get_browser() {
+                var ua = navigator.userAgent,
+                    tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+                if (/trident/i.test(M[1])) {
+                    tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+                    return {
+                        name: 'IE',
+                        version: (tem[1] || '')
+                    };
+                }
+                if (M[1] === 'Chrome') {
+                    tem = ua.match(/\bOPR|Edge\/(\d+)/)
+                    if (tem != null) {
+                        return {
+                            name: 'Opera',
+                            version: tem[1]
+                        };
+                    }
+                }
+                M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+                if ((tem = ua.match(/version\/(\d+)/i)) != null) {
+                    M.splice(1, 1, tem[1]);
+                }
+                return {
+                    name: M[0],
+                    version: M[1]
+                };
+
+            };
+
+            //var browser=get_browser();
+
+            //browser.name = 'Chrome'
+            //browser.version = '40'
+            function acclogin() {
+                $.ajax('https://freegeoip.net/json/', {
+                    type: "get",
+                    success: function(data) {
+                        //alert('a');
+                        var browser = get_browser();
+                        //alert(browser.name+browser.version);
+                        login_log(browser.name, data.ip);
+
+                    },
+                    error: function(fa) {
+                        //alert(JSON.stringify(fa));
+                        //alert('b');
+                    }
+                });
+            }
+
+            function login_log(b, i) {
+                $.ajax('http://localhost/api/accesslog', {
+                    type: "get",
+                    data: {
+                        browser: b,
+                        ip: i,
+                        status: 'Login',
+                        accname: 'natthawat_a'
+                    },
+                    success: function(json) {
+                        //alert(b+i)	;
+                        countlog();
+                    },
+                    error: function(fa) {
+                        //alert(JSON.stringify(fa));
+                        //alert('a');
+                    }
+                });
+            }
+
+            function countlog() {
+                //alert('refresh');
+                $.ajax('http://localhost/api/countlogin', {
+                    type: "get",
+                    data: {
+                        accname: account_now
+                    },
+                    success: function(json) {
+                        //alert(json)
+                        if (json == 1) {
+                            alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
+                        }
+
+                    }
+                });
+            }
+            acclogin();
             refresh_traffic();
 
             datepick();

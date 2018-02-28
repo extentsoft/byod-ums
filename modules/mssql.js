@@ -22,7 +22,14 @@ var test = {
     server: '192.168.226.110'
 };
 
-var config = test;
+
+var test2 = {
+    userName: 'sa',
+    password: 'P@ssw0rd',
+    server: '192.168.1.37'
+};
+
+var config = test2;
 
 var pool = new ConnectionPool(poolConfig, config);
 //var connection = new Connection(config);
