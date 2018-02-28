@@ -134,7 +134,7 @@
                                     <h1>รายชื่ออุปกรณ์</h1>
                                     <small class="subtitle"></small>
                                     <div class="vd_panel-menu  hidden-xs">
-                                        <div class="menu no-bg vd_green" data-original-title="Start Layout Tour Guide" data-toggle="modal" data-target="#myModal" data-placement="bottom" onClick=""> <span class="menu-icon font-md"><i class="fa fa-plus"></i></span> </div>
+                                        <div class="menu no-bg vd_green" data-original-title="Start Layout Tour Guide" data-toggle="modal" data-target="#myModal" data-placement="bottom" onClick="document.getElementById('myModalLabel1').innerHTML='ลงทะเบียนอุปกรณ์ใหม่';document.getElementById('term_mac').disabled = false;"> <span class="menu-icon font-md"><i class="fa fa-plus"></i></span> </div>
                                         <!-- menu -->
                                         <!--
                                         <div class="menu">
@@ -172,13 +172,13 @@
                                     <div class="modal-content">
                                         <div class="modal-header vd_bg-blue vd_white">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
-                                            <h4 class="modal-title" id="myModalLabel">ลงทะเบียนอุปกรณ์ใหม่</h4>
+                                            <h4 class="modal-title" id="myModalLabel1">ลงทะเบียนอุปกรณ์ใหม่</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form class="form-horizontal" action="#" role="form">
                                                 <div class="form-group">
                                                     <label class="col-sm-4 control-label">ชื่ออุปกรณ์</label>
-                                                    <div class="col-sm-7 controls">
+                                                    <div class="col-sm-7 controls" >
                                                         <input id="term_name" type="text" placeholder="Android_1" class="input-border-btm">
                                                         <span class="help-inline">ช่วยในการจำแนกอุปกรณ์แทน MAC Address</span>
                                                     </div>
@@ -206,24 +206,7 @@
                                             </form>
                                             <!--
 
-                                            <form class="form-horizontal">
-                                                <div class="form-group">
-                                                    
-                                                    <div class="text-center" style="margin-left:5%;width:90%">
-                                                        <input type="text" class="form-control text-center" id="term_name" placeholder="ชื่ออุปกรณ์" />
-                                                        <input type="text" class="form-control text-center" id="term_mac" placeholder="MAC Address" />
-                                                        <select class="form-control" style="text-align-last:center;" id="term_os">
-									<option value="iOS">iOS</option>
-									<option value="Android">Android</option>
-									<option value="Windows">Windows</option>
-									<option value="Linux">Linux</option>
-								</select>
-                                                    </div>
-                                                </div>
-
-
-
-                                            </form>
+                                           
                                         -->
                                         </div>
                                         <div class="modal-footer background-login">
@@ -238,88 +221,18 @@
                             </div>
                             <!-- /.modal -->
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" style="width:30%">
-                                    <div class="modal-content">
-                                        <div class="modal-header vd_bg-blue vd_white">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
-                                            <h4 class="modal-title" id="myModalLabel">ลงทะเบียนอุปกรณ์ใหม่</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form class="form-horizontal" action="#" role="form">
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label">ชื่ออุปกรณ์</label>
-                                                    <div class="col-sm-7 controls">
-                                                        <input id="term_name" type="text" placeholder="Android_1" class="input-border-btm">
-                                                        <span class="help-inline">ช่วยในการจำแนกอุปกรณ์แทน MAC Address</span>
-                                                    </div>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label">MAC Address</label>
-                                                    <div class="col-sm-7 controls">
-                                                        <input id="term_mac" type="text" placeholder="AA-22-FF-FF-11-FC" class="input-border-btm">
-                                                        <span class="help-inline">ค่าที่ใช้อ้างอิงที่อยู่กายภาพของการ์ดแลนด์ไร้สาย </span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label">ระบบปฏิบัติการ</label>
-                                                    <div class="col-sm-7 controls">
-                                                        <select id="term_os">
-                                                                    <option>iOS</option>
-                                                                    <option>Android</option>
-                                                                    <option>Windows</option>
-                                                                    <option>Linux</option>
-                                                                    
-                                                                 </select>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                            <!--
-    
-                                                <form class="form-horizontal">
-                                                    <div class="form-group">
-                                                        
-                                                        <div class="text-center" style="margin-left:5%;width:90%">
-                                                            <input type="text" class="form-control text-center" id="term_name" placeholder="ชื่ออุปกรณ์" />
-                                                            <input type="text" class="form-control text-center" id="term_mac" placeholder="MAC Address" />
-                                                            <select class="form-control" style="text-align-last:center;" id="term_os">
-                                        <option value="iOS">iOS</option>
-                                        <option value="Android">Android</option>
-                                        <option value="Windows">Windows</option>
-                                        <option value="Linux">Linux</option>
-                                    </select>
-                                                        </div>
-                                                    </div>
-    
-    
-    
-                                                </form>
-                                            -->
-                                        </div>
-                                        <div class="modal-footer background-login">
-                                            <button type="button" class="btn vd_btn vd_bg-green" style="width:47%" data-dismiss="modal" onclick="adddevice(document.getElementById('term_name').value,document.getElementById('term_mac').value,document.getElementById('term_os').value)">บันทึก</button>
-                                            <button type="button" class="btn vd_btn vd_bg-grey" style="width:47%" data-dismiss="modal">ยกเลิก</button>
-
-                                        </div>
-                                    </div>
-                                    <!-- /.modal-content -->
-                                </div>
-                                <!-- /.modal-dialog -->
-                            </div>
-                            <!-- /.modal -->
                             <!-- Modal -->
                             <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" style="width:30%">
                                     <div class="modal-content">
                                         <div class="modal-header vd_bg-blue vd_white">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
-                                            <h4 class="modal-title" id="myModalLabel">ยืนยันการถอดถอนอุปกรณ์</h4>
+                                            <h4 class="modal-title"> ยืนยันการถอดถอนอุปกรณ์</h4>
                                         </div>
 
                                         <div class="modal-footer background-login">
-                                            <button type="button" class="btn vd_btn vd_bg-green" style="width:47%" data-dismiss="modal" onclick="alert(fewfwe)">ยืนยัน</button>
+                                            <button type="button" class="btn vd_btn vd_bg-green" style="width:47%" data-dismiss="modal" id="modal-del" onclick="removedevice($(this).attr('value'))">ยืนยัน</button>
 
                                             <button type="button" class="btn vd_btn vd_bg-grey" style="width:47%" data-dismiss="modal">ยกเลิก</button>
 
@@ -330,52 +243,7 @@
                                 </div>
                                 <!-- /.modal-dialog -->
                             </div>
-                            <!-- /.modal -->
 
-                            <!--begin::Modal-->
-                            <div class="modal fade" id="m_modal_5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header vd_bg-blue vd_white">
-                                            <h5 class="modal-title" id="exampleModalLabel">
-                                                ลงทะเบียนอุปกรณ์ใหม่
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">
-												&times;
-											</span>
-										</button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form>
-                                                <div class="form-group">
-                                                    <!--<label class="col-sm-2 control-label" for="inputMACAddr">MAC Address</label>-->
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="term_name" placeholder="ชื่ออุปกรณ์" />
-                                                        <input type="text" class="form-control" id="term_mac" placeholder="MAC Address" />
-                                                        <select class="form-control" id="term_os">
-												<option value="iOS">iOS</option>
-												<option value="Android">Android</option>
-												<option value="Windows">Windows</option>
-												<option value="Linux">Linux</option>
-											</select>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" style="width:50%" data-dismiss="modal" onclick="adddevice(document.getElementById('term_name').value,document.getElementById('term_mac').value,document.getElementById('term_os').value)">
-											บันทึก
-										</button>
-                                            <button type="button" class="btn btn-secondary" style="width:50%" data-dismiss="modal">
-											ยกเลิก
-										</button>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end::Modal-->
                             <!-- vd_title-section -->
 
                             <div class="vd_content-section clearfix">
@@ -543,7 +411,8 @@
         </script>
 
         <script>
-            account_now = 'natthawat_a';
+            //account_now = 'natthawat_a';
+			account_now = $('#email').text().trim();
 
             function refreshlist() {
                 //alert('refresh');
@@ -634,6 +503,19 @@
                     date_str = update_time.getHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds() + ' - ' + update_time.getDate() + "/" + (update_time.getMonth() + 1) + "/" + update_time.getFullYear();
 
                     q = "'";
+					var os_edit='';
+					if (data[i].terminalos =='apple'){
+						os_edit = 'iOS';
+					} else if (data[i].terminalos =='android')
+					{
+						os_edit='Android';
+					} else if (data[i].terminalos =='windows')
+					{
+						os_edit='Windows';
+					} else if (data[i].terminalos =='linux')
+					{
+						os_edit='Linux';
+					}
                     div.innerHTML =
 
                         /*	'<div id="'+data[i].terminalmac+'"><img src="images/devices/'+data[i].terminalos+'.jpg"  style="width:60%; height:60%; display: block;margin: 0 auto;"><br>\
@@ -646,9 +528,8 @@
                         '<div class="col-md-12"> \
                                                 <div class="vd_status-widget vd_bg-green widget"> \
                                                     <div class="vd_panel-menu"> \
-                                                        <div  data-action="refresh" data-original-title="Edit" data-rel="tooltip" class=" menu entypo-icon smaller-font"  data-toggle="modal" data-target="#myModal2" data-placement="bottom" > <i class="icon-cycle" ></i> </div> \
-                                                        <div  data-action="refresh" data-original-title="Edit" data-rel="tooltip" class=" menu entypo-icon smaller-font"  data-toggle="modal" data-target="#myModal3" data-placement="bottom" onclick="document.getElementById("beingRemovedDevice").innerHTML = ' + q + data[i].terminalmac + q + '"> <i class="fa fa-gear" ></i> </div> \
-                                                        <div  data-action="refresh" data-original-title="Deactivate" data-rel="tooltip" class=" menu entypo-icon smaller-font" onclick="removedevice(' + q + data[i].terminalmac + q + ')"> <i class="icon-cross" ></i> </div> \
+                                                        <div  data-action="refresh" data-original-title="Edit" data-rel="tooltip" class=" menu entypo-icon smaller-font"  data-toggle="modal" data-target="#myModal" data-placement="bottom" onclick="document.getElementById('+q+'myModalLabel1'+q+').innerHTML = '+q+'แก้ไขอุปกรณ์'+q+';document.getElementById('+q+'term_mac'+q+').disabled = true;document.getElementById('+q+'term_name'+q+').value='+q+host_name+q+';document.getElementById('+q+'term_mac'+q+').value='+q+data[i].terminalmac+q+';document.getElementById('+q+'term_os'+q+').value='+q+os_edit+q+';"> <i class="fa fa-gear" ></i> </div> \
+                                                        <div  data-action="refresh" data-original-title="Deactivate" data-rel="tooltip" class=" menu entypo-icon smaller-font" data-toggle="modal" data-target="#myModal3" onclick="$(' + q + '#modal-del' + q + ').val(' + q + data[i].terminalmac + q + ')"> <i class="icon-cross" ></i> </div> \
                                                     </div> \
                                                     <a class="panel-body" href="#"> \
                                                         <div class="clearfix"> \
@@ -677,12 +558,15 @@
             }
 
             function removedevice(mac) {
+				//alert(mac);
+				refreshmac(mac)
+                deletedevice(mac);
                 //alert(input.parentNode.id);
-                var r = confirm("ยืนยันการลบอุปกรณ์");
+                /*var r = confirm("ยืนยันการลบอุปกรณ์");
                 if (r == true) {
                     refreshmac(mac)
                     deletedevice(mac);
-                }
+                }*/
             }
 
             function adddevice(name, mac, os) {
