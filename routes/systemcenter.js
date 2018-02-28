@@ -192,6 +192,7 @@ module.exports = function(app, passport) {
 
     app.get('/systemcenter/profile', isLoggedIn, function(req, res) {
         //res.send("Hello System Center");
+        console.log(' --> ' + req.user.firstname);
         if (req.user.pref_theme == 0) {
             res.render('systemcenter/profile', {
                 title: 'ข้อมูลผู้ใช้งาน',

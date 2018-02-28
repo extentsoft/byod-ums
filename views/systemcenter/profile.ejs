@@ -333,6 +333,7 @@
                 //alert($('#u_ssn').attr("placeholder"));
 
                 $('#top-right-success').click(function() {
+                    alert('http://localhost/api/eoffice/profile/' + $('#u_ssn').attr("placeholder"));
 
                     $.ajax('http://localhost/api/eoffice/profile/' + $('#u_ssn').attr("placeholder"), {
                         type: "put",
@@ -344,9 +345,7 @@
                             area: $('#u_area').val(),
                         },
                         success: function(json) {
-                            //alert(JSON.stringify(json));
-                            data_res = JSON.parse(JSON.stringify(json));
-                            bindata_group(data_res);
+                            alert(JSON.stringify(json));
 
                         }
                     });
