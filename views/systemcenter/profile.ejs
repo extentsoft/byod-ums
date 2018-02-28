@@ -330,7 +330,7 @@
 
         <script type="text/javascript ">
             $(document).ready(function() {
-                alert($('#u_ssn').attr("placeholder"));
+                //alert($('#u_ssn').attr("placeholder"));
 
                 $('#top-right-success').click(function() {
 
@@ -344,9 +344,10 @@
                             area: $('#u_area').val(),
                         },
                         success: function(json) {
-                            alert(JSON.stringify(json));
+                            //alert(JSON.stringify(json));
                             data_res = JSON.parse(JSON.stringify(json));
                             bindata_group(data_res);
+
                         }
                     });
 

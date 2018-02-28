@@ -30,9 +30,9 @@ router.get('/profile/:email', function(req, res, next) {
     if (req.params.email === 'natthawat_a') {
         res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Natthawat', ln: 'Arunweerungroj', email: 'natthawat_a@excise.go.th', position: '0', level: '0', area: '0', authorized: true });
     } else if (req.params.email == 'byod1') {
-        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'byod1', ln: 'sky', email: 'byod1@excise.go.th', position: '0', level: '0', area: '0', authorized: true });
+        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'byod1', ln: 'sky', email: 'byod1@excise.go.th', position: '0', level: '0', area: '0', authorized: false });
     } else if (req.params.email == 'byod2') {
-        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'byod2', ln: 'sky', email: 'byod2@excise.go.th', position: '0', level: '0', area: '0', authorized: true });
+        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'byod2', ln: 'sky', email: 'byod2@excise.go.th', position: '0', level: '0', area: '0', authorized: false });
     } else if (req.params.email == 'byod3') {
         res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'byod3', ln: 'sky', email: 'byod3@excise.go.th', position: '0', level: '0', area: '0', authorized: true });
     } else if (req.params.email == 'byod4') {

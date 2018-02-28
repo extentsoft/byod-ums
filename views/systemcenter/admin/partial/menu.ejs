@@ -10,166 +10,169 @@
 
         <div class="vd_menu">
             <ul>
-                <li>
-                    <a href="/systemcenter/dashboard">
-                        <span class="menu-icon"><i class="fa fa-dashboard"></i></span>
-                        <span class="menu-text">แผงควบคุมหลัก</span>
+                <% if(isauthorized){ %>
+                    <li>
+                        <a href="/systemcenter/dashboard">
+                            <span class="menu-icon"><i class="fa fa-dashboard"></i></span>
+                            <span class="menu-text">แผงควบคุมหลัก</span>
 
 
-                        </span>
-                        <!--<span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>-->
-                    </a>
+                            </span>
+                            <!--<span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>-->
+                        </a>
 
-                </li>
-                <li>
-                    <a href="/systemcenter/profile">
-                        <span class="menu-icon"><i class="fa fa-user"></i></span>
-                        <span class="menu-text">ข้อมูลส่วนบุคคล</span>
-                        <!--<span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>-->
-                    </a>
+                    </li>
+                    <%}%>
+                        <li>
+                            <a href="/systemcenter/profile">
+                                <span class="menu-icon"><i class="fa fa-user"></i></span>
+                                <span class="menu-text">ข้อมูลส่วนบุคคล</span>
+                                <!--<span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>-->
+                            </a>
 
-                </li>
-                <li>
-                    <a href="/systemcenter/device">
-                        <span class="menu-icon"><i class="fa fa-tablet"></i></span>
-                        <span class="menu-text">ลงทะเบียนอุปกรณ์</span>
-                        <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
-                    </a>
-                </li>
-                <li>
-                    <a href="/systemcenter/setting">
-                        <span class="menu-icon"><i class="fa fa-gear"></i></span>
-                        <span class="menu-text">ปรับแต่งการใช้งาน</span>
-                        <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
-                    </a>
-                </li>
-                <li>
-                    <a href="/systemcenter/configuration">
-                        <span class="menu-icon"><i class="icon-tools"> </i></span>
-                        <span class="menu-text">ตั้งค่าระบบ</span>
-                        <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" data-action="click-trigger">
-                        <span class="menu-icon entypo-icon"><i class="icon-newspaper"> </i></span>
-                        <span class="menu-text">รายงาน</span>
-                        <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                    </a>
-                    <div class="child-menu" data-action="click-target">
-                        <ul>
+                        </li>
+                        <li>
+                            <a href="/systemcenter/device">
+                                <span class="menu-icon"><i class="fa fa-tablet"></i></span>
+                                <span class="menu-text">ลงทะเบียนอุปกรณ์</span>
+                                <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/systemcenter/setting">
+                                <span class="menu-icon"><i class="fa fa-gear"></i></span>
+                                <span class="menu-text">ปรับแต่งการใช้งาน</span>
+                                <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
+                            </a>
+                        </li>
+                        <% if(isauthorized){ %>
                             <li>
-                                <a href="/systemcenter/report/device/activate">
-                                    <span class="menu-text">รายงานการลงทะเบียนอุปกรณ์</span>
+                                <a href="/systemcenter/configuration">
+                                    <span class="menu-icon"><i class="icon-tools"> </i></span>
+                                    <span class="menu-text">ตั้งค่าระบบ</span>
+                                    <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
                                 </a>
                             </li>
                             <li>
-                                <a href="/systemcenter/report/device/deactivate/today" data-action="click-trigger">
-                                    <span class="menu-text">รายงานการยกเลิกอุปกรณ์</span>
+                                <a href="javascript:void(0);" data-action="click-trigger">
+                                    <span class="menu-icon entypo-icon"><i class="icon-newspaper"> </i></span>
+                                    <span class="menu-text">รายงาน</span>
                                     <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
                                 </a>
                                 <div class="child-menu" data-action="click-target">
                                     <ul>
                                         <li>
-                                            <a href="/systemcenter/report/device/deactivate/today">
-                                                <span class="menu-text">รายงานการยกเลิกอุปกรณ์ในวันนี้</span>
+                                            <a href="/systemcenter/report/device/activate">
+                                                <span class="menu-text">รายงานการลงทะเบียนอุปกรณ์</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/systemcenter/report/device/deactivate/week">
-                                                <span class="menu-text">รายงานการยกเลิกอุปกรณ์ในช่วง 7 วันล่าสุด</span>
+                                            <a href="/systemcenter/report/device/deactivate/today" data-action="click-trigger">
+                                                <span class="menu-text">รายงานการยกเลิกอุปกรณ์</span>
+                                                <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
+                                            </a>
+                                            <div class="child-menu" data-action="click-target">
+                                                <ul>
+                                                    <li>
+                                                        <a href="/systemcenter/report/device/deactivate/today">
+                                                            <span class="menu-text">รายงานการยกเลิกอุปกรณ์ในวันนี้</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/systemcenter/report/device/deactivate/week">
+                                                            <span class="menu-text">รายงานการยกเลิกอุปกรณ์ในช่วง 7 วันล่าสุด</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/systemcenter/report/device/deactivate/month">
+                                                            <span class="menu-text">รายงานการยกเลิกอุปกรณ์ในเดือนนี้</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/systemcenter/report/device/deactivate/year">
+                                                            <span class="menu-text">รายงานการยกเลิกอุปกรณ์ในปีนี้</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="/systemcenter/report/usage/group/today" data-action="click-trigger">
+                                                <span class="menu-text">รายงานการใช้งานจำแนกตามกลุ่ม</span>
+                                                <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
+                                            </a>
+                                            <div class="child-menu" data-action="click-target">
+                                                <ul>
+                                                    <li>
+                                                        <a href="/systemcenter/report/usage/group/today">
+                                                            <span class="menu-text">รายงานการใช้งานในวันนี้</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/systemcenter/report/usage/group/week">
+                                                            <span class="menu-text">รายงานการใช้งานในช่วง 7 วันล่าสุด</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/systemcenter/report/usage/group/month">
+                                                            <span class="menu-text">รายงานการใช้งานในเดือนนี้</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/systemcenter/report/usage/group/year">
+                                                            <span class="menu-text">รายงานการใช้งานในปีนี้</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="/systemcenter/report/usage/person/today" data-action="click-trigger">
+                                                <span class="menu-text">รายงานการใช้งานระบุบุคคล</span>
+                                                <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
+                                            </a>
+                                            <div class="child-menu" data-action="click-target">
+                                                <ul>
+                                                    <li>
+                                                        <a href="/systemcenter/report/usage/person/today">
+                                                            <span class="menu-text">รายงานการใช้งานในวันนี้</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/systemcenter/report/usage/person/week">
+                                                            <span class="menu-text">รายงานการใช้งานในช่วง 7 วันล่าสุด</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/systemcenter/report/usage/person/month">
+                                                            <span class="menu-text">รายงานการใช้งานในเดือนนี้</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/systemcenter/report/usage/person/year">
+                                                            <span class="menu-text">รายงานการใช้งานในปีนี้</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="/systemcenter/report/policy/usage">
+                                                <span class="menu-text">รายงานการใช้งานที่ไม่เป็นไปตามกฏ</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/systemcenter/report/device/deactivate/month">
-                                                <span class="menu-text">รายงานการยกเลิกอุปกรณ์ในเดือนนี้</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/systemcenter/report/device/deactivate/year">
-                                                <span class="menu-text">รายงานการยกเลิกอุปกรณ์ในปีนี้</span>
+                                            <a href="/systemcenter/report/policy/device">
+                                                <span class="menu-text">รายงานบุคคลที่มีอุปกรณ์ครบตามกำหนด</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
-                            <li>
-                                <a href="/systemcenter/report/usage/group/today" data-action="click-trigger">
-                                    <span class="menu-text">รายงานการใช้งานจำแนกตามกลุ่ม</span>
-                                    <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                </a>
-                                <div class="child-menu" data-action="click-target">
-                                    <ul>
-                                        <li>
-                                            <a href="/systemcenter/report/usage/group/today">
-                                                <span class="menu-text">รายงานการใช้งานในวันนี้</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/systemcenter/report/usage/group/week">
-                                                <span class="menu-text">รายงานการใช้งานในช่วง 7 วันล่าสุด</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/systemcenter/report/usage/group/month">
-                                                <span class="menu-text">รายงานการใช้งานในเดือนนี้</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/systemcenter/report/usage/group/year">
-                                                <span class="menu-text">รายงานการใช้งานในปีนี้</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="/systemcenter/report/usage/person/today" data-action="click-trigger">
-                                    <span class="menu-text">รายงานการใช้งานระบุบุคคล</span>
-                                    <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                </a>
-                                <div class="child-menu" data-action="click-target">
-                                    <ul>
-                                        <li>
-                                            <a href="/systemcenter/report/usage/person/today">
-                                                <span class="menu-text">รายงานการใช้งานในวันนี้</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/systemcenter/report/usage/person/week">
-                                                <span class="menu-text">รายงานการใช้งานในช่วง 7 วันล่าสุด</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/systemcenter/report/usage/person/month">
-                                                <span class="menu-text">รายงานการใช้งานในเดือนนี้</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/systemcenter/report/usage/person/year">
-                                                <span class="menu-text">รายงานการใช้งานในปีนี้</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="/systemcenter/report/policy/usage">
-                                    <span class="menu-text">รายงานการใช้งานที่ไม่เป็นไปตามกฏ</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/systemcenter/report/policy/device">
-                                    <span class="menu-text">รายงานบุคคลที่มีอุปกรณ์ครบตามกำหนด</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
+                            <%}%>
             </ul>
             <!-- Head menu search form ends -->
-			<div class="navbar-spacing clearfix">
+            <div class="navbar-spacing clearfix">
             </div>
         </div>
     </div>

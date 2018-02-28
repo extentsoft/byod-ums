@@ -134,6 +134,7 @@
                                             <span class="mega-name">
                                                     <%= firstname %>&nbsp;<%= lastname %> <i class="fa fa-caret-down fa-fw"></i>
                                                 </span>
+
                                         </a>
                                         <div class="vd_mega-menu-content  width-xs-2  left-xs left-sm" data-action="click-target">
                                             <div class="child-menu">
@@ -195,7 +196,11 @@
 </header>
 <!-- Header Ends -->
 <script>
-    account_now = 'natthawat_a';
+    //account_now = 'natthawat_a';
+    account_now = $('#email').text().trim();
+
+    //alert(' account_now - ' + account_now);
+    //alert(' account_now privilege - ' + $("#priv").html().trim().split(","));
     $("#chat-text").keyup(function(event) {
         if (event.keyCode === 13) {
             //alert($('#chat-text').val());
