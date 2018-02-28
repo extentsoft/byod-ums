@@ -100,7 +100,8 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.user.email,
                 firstname: req.user.firstname,
-                lastname: req.user.lastname
+                lastname: req.user.lastname,
+                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
             res.render('systemcenter/admin/configuration_dark', {
@@ -108,7 +109,8 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.user.email,
                 firstname: req.user.firstname,
-                lastname: req.user.lastname
+                lastname: req.user.lastname,
+                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
 
@@ -598,6 +600,71 @@ module.exports = function(app, passport) {
             });
         }
     });
+	
+		app.get('/systemcenter/report/monitor/device/addmonitor', isLoggedIn, function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+        if (req.user.pref_theme == 1) {
+            res.render('systemcenter/report/monitor/device/addmonitor', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.user.email,
+                firstname: req.user.firstname,
+                lastname: req.user.lastname
+            });
+        } else {
+            res.render('systemcenter/report/monitor/device/addmonitor_dark', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.user.email,
+                firstname: req.user.firstname,
+                lastname: req.user.lastname
+            });
+        }
+    });
+	
+	app.get('/systemcenter/report/monitor/device/listmonitor', isLoggedIn, function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+        if (req.user.pref_theme == 1) {
+            res.render('systemcenter/report/monitor/device/listmonitor', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.user.email,
+                firstname: req.user.firstname,
+                lastname: req.user.lastname
+            });
+        } else {
+            res.render('systemcenter/report/monitor/device/listmonitor_dark', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.user.email,
+                firstname: req.user.firstname,
+                lastname: req.user.lastname
+            });
+        }
+    });
+	
+	app.get('/systemcenter/report/monitor/device/reportmonitor', isLoggedIn, function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+        if (req.user.pref_theme == 1) {
+            res.render('systemcenter/report/monitor/device/reportmonitor', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.user.email,
+                firstname: req.user.firstname,
+                lastname: req.user.lastname
+            });
+        } else {
+            res.render('systemcenter/report/monitor/device/reportmonitor_dark', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.user.email,
+                firstname: req.user.firstname,
+                lastname: req.user.lastname
+            });
+        }
+    });
+
+
 
 
 
