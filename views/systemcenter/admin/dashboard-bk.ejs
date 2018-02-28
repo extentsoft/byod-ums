@@ -839,16 +839,11 @@
                 total = 0;
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
-					
                     if (data_sql[0] == '') {
                         os_name = 'other';
-                    } else if(data_sql[0].substr(0,7)=='Windows'){
-						os_name = 'Windows';
-					}
-					else {
+                    } else {
                         os_name = data_sql[0];
                     }
-					//alert('val-' + os_name);
                     document.getElementById('val-' + os_name).innerHTML = data_sql[1];
                     //data_json = {type:os_name,amount:data_sql[1]};
                     total = total + data_sql[1];
@@ -944,74 +939,28 @@
                         e(a, r, "")
                 }
             }
-			
-			$.fn.UseTooltip = function () {
-			var previousPoint = null;
-			 
-			$(this).bind("plothover", function (event, pos, item) {        
-					if (item) {
-						if (previousPoint != item.dataIndex) {
-		
-							previousPoint = item.dataIndex;
-		
-							$("#tooltip").remove();
-							var x = item.datapoint[0].toFixed(2),
-							y = item.datapoint[1].toFixed(2);
-
-		
-							showTooltip(item.pageX, item.pageY,
-								"<p class='vd_bg-green'><strong class='mgr-10 mgl-10'>" + Math.round(x-1)  + ":00 - " + Math.round(x)  + ":00 </strong></p>" +
-								"<div style='padding: 0 10px 10px;'>" +
-								"<div>มีจำนวนการใช้งาน : "+ Math.round(y)  +"</div>" +
-								"</div>"
-							);
-						}
-					} else {
-						$("#tooltip").remove();
-						previousPoint = null;            
-					}
-			});
-		};
-		
-		function showTooltip(x, y, contents) {
-			$('<div id="tooltip">' + contents + '</div>').css({
-				position: 'absolute',
-				display: 'none',
-				top: y + 5,
-				left: x + 20,    
-				size: '10',  
-//				'border-top' : '3px solid #1FAE66',
-				'background-color': '#111111',
-				color: "#FFFFFF",
-				opacity: 0.85
-			}).appendTo("body").fadeIn(200);
-		}
 
             function line_chart(data) {
                 /* REVENUE LINE CHART */
 
                 var d2 = data;
-				var d = new Date();
-				d.getHours();
-				//alert(d.getHours()+2);
 
-                var plot = $.plotAnimator($("#revenue-line-chart"), [{ 
-				data: d2, 
-				label: " x = ช่วงเวลา, y = จำนวน",
-				animator: {steps: 60, duration: 1000, start:0}, 		
-				lines: {lineWidth:2},	
-				shadowSize:0,
-				color: '#F85D2C'
-			}
-			
+                var plot = $.plotAnimator($("#revenue-line-chart"), [{
+                        label: "Revenue",
+                        data: d2,
+                        lines: {
+                            fill: 0.4,
+                            lineWidth: 0,
+                        },
+                        color: ['#f2be3e']
+                    },
 
                 ], {
                     xaxis: {
                         tickLength: 0,
                         tickDecimals: 0,
-                        min: 1,
-						max: d.getHours()+1,
-     
+                        min: 0,
+                        max: 23,
 
                         font: {
                             lineHeight: 13,
@@ -1049,11 +998,11 @@
                         mouseActiveRadius: 6
                     },
                     legend: {
-                        show: true
+                        show: false
                     }
                 });
 
-                $("#revenue-line-chart").UseTooltip();
+                //$("#revenue-line-chart").UseTooltip();
 
                 $(window).on("resize", function() {
                     plot.resize();
