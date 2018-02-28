@@ -328,7 +328,8 @@
                                                         <th>ชื่อผู้ใช้งาน</th>
                                                         <th>ชื่อ-นามสกุลจริง</th>
                                                         <th>กลุ่มผู้ใช้งาน</th>
-                                                        <th>จำนวนอุปกรณ์สูงสุด</th>
+														<th>จำนวนอุปกรณ์ที่ลงทะเบียนแล้ว</th>
+                                                        <th>จำนวนอุปกรณ์สูงสุดที่ลงทะเบียนได้</th>
                                                         <th></th>
                                                     </tr>
                                                 </thead>
@@ -535,13 +536,13 @@
                     //date_str = update_time.getHours() + ":" + (update_time.getMinutes()<10?'0':'') + update_time.getMinutes() + ":" + (update_time.getSeconds()<10?'0':'') + update_time.getSeconds() +' - ' + update_time.getDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();
 
 
-                    $('#data-tables').find('tbody').append('<tr><td>' + data_sql[1] + '</td><td>' + data_sql[2] + '</td><td>' + data_sql[3] + '</td><td>' + data_sql[4] + '</td><td class="menu-action"><a id="' + data_sql[0] + '" data-original-title="edit" data-toggle="modal" data-target="#myModal" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow" onclick="$(' + q + '#btn-limit' + q + ').val(' + q + data_sql[1] + q + ');" > <i class="fa fa-pencil"></i> </a> </td></tr>');
+                    $('#data-tables').find('tbody').append('<tr><td>' + data_sql[1] + '</td><td>' + data_sql[2] + '</td><td>' + data_sql[3] + '</td><td>' + data_sql[4] + '</td><td>' + data_sql[5] + '</td><td class="menu-action"><a id="' + data_sql[0] + '" data-original-title="edit" data-toggle="modal" data-target="#myModal" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow" onclick="$(' + q + '#btn-limit' + q + ').val(' + q + data_sql[1] + q + ');" > <i class="fa fa-pencil"></i> </a> </td></tr>');
                     //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
                     //total = total+data_sql[1];
                     //alert(JSON.stringify(data_json));
                     data.push(data_json);
                     //alert(JSON.stringify(data));
-                    data_sql.splice(0, 5);
+                    data_sql.splice(0, 6);
                     i = -1;
 
                 }
