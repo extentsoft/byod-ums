@@ -140,7 +140,7 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">เลขที่บัตรประจำตัวประชาชน</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input type="text" disabled="" placeholder="<%= email %>" readonly>
+                                                            <input type="text" disabled="" placeholder="<%= ssn %>" readonly>
                                                             <span class="help-inline">เลขที่บัตรประจำตัวประชาชนไม่สามารถแก้ไขได้</span> </div>
                                                     </div>
 
@@ -225,8 +225,9 @@
                                                     <div class="form-group form-actions">
                                                         <div class="col-sm-4"> </div>
                                                         <div class="col-sm-7">
-                                                            <button class="btn vd_btn vd_bg-green vd_white" type="submit"><i class="icon-ok"></i> Save</button>
-                                                            <button class="btn vd_btn" type="button">Cancel</button>
+                                                            <!--<button class="btn vd_btn vd_bg-green vd_white" type="submit"><i class="icon-ok"></i> Save</button>
+                                                            <button class="btn vd_btn" type="button">Cancel</button>-->
+                                                            <button type="button" class="btn vd_btn vd_bg-green" id="top-right-success"><!--<i class="fa fa-check-circle append-icon"></i>-->Save</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -328,7 +329,41 @@
 
         <script type="text/javascript ">
             $(document).ready(function() {
+                $('#top-right-success').click(function() {
 
+                    $.ajax('http://localhost/api/eoffice/profile/' + $('#u_ssn').attr("placeholder") + '/ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6STFOaUo5LmV5SnBjM01pT2lKRmVIUmxiblJ6YjJaMElFTnZiWEJoYm5rZ1RHbHRhWFJsWkNJc0ltbGhkQ0k2TVRVeE9UWTVOVFk1T0N3aVpYaHdJam94TlRVeE1qTXhOams0TENKaGRXUWlPaUppZVc5a0xtVjRZMmx6WlM1bmJ5NTBhQ0lzSW5OMVlpSTZJbUo1YjJSQVpYaGphWE5sTG1kdkxuUm9JaXdpVUhKdmFtVmpkQ0k2SWtKWlQwUWlMQ0pGYldGcGJDSTZJbUp2ZVdSQVpYaGphWE5sTG1kdkxuUm9JaXdpVUdGeWRHNWxjaUk2SWxOMWJXMXBkQ0JEYjIxd2RYUmxjaUJEYjIxd1lXNTVJRXhwYldsMFpXUWlMQ0pTWlhGMVpYTjBaWElnSWpvaVUydDVJRWxEVkNCUWRXSnNhV01nUTI5dGNHRnVlU0JNYVcxcGRHVmtJbjAudWJ4UGdNNDkxWU9oTWNrYzA5R3lEODBsdG9uU2xMQ29SNENnZGNBdExzZw==', {
+                        type: "put",
+                        data: {
+                            fn: $('#u_fn').val(),
+                            ln: $('#u_ln').val(),
+                            position: $('#u_pos').val(),
+                            level: $('#u_lv').val(),
+                            area: $('#u_area').val(),
+                        },
+                        statusCode: {
+                            401: function() {
+                                notification("topright", "success", "fa fa-check-circle vd_green", "ไม่สามารถปรับเปลี่ยนข้อมูลส่วนบุคคลได้", 'Status 401: ไม่มีสิทธิเข้าใช้งานระบบ e-Office ');
+                            },
+                            403: function() {
+                                notification("topright", "success", "fa fa-check-circle vd_green", "ไม่สามารถปรับเปลี่ยนข้อมูลส่วนบุคคลได้", 'Status 403: สิทธิเข้าใช้งานระบบ e-Office ไม่รองรับ');
+                            }
+                        },
+                        success: function(data, textStatus, jqXHR) {
+                            console.log(JSON.stringify(data));
+                            notification("topright", "success", "fa fa-check-circle vd_green", "เปลี่ยนข้อมูลส่วนบุคคลสำเร็จ", "ข้อมูลถูกนำส่งให้ระบบ e-Office สำเร็จ");
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            /*console.log(jqXHR.status);
+                            console.log(jqXHR.statusText);
+                            console.log(textStatus);
+                            console.log(errorThrown);
+                            */
+                            //notification("topright", "success", "fa fa-check-circle vd_green", "ไม่สามารถปรับเปลี่ยนข้อมูลส่วนบุคคลได้", 'พบเหตุขัดข้องกรุณาลองใหม่อีกครั้ง');
+                        }
+                    });
+
+
+                });
             });
             $(window).load(function() {
                 var priv = $("#priv").html().trim().split(",");

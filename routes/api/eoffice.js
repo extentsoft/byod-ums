@@ -52,23 +52,10 @@ router.get('/profile/:email', function(req, res, next) {
     }
 });
 
-router.put('/profile/:ssn', function(req, res, next) {
-    console.log('-- rewrite header --');
-    console.log(req.body.fn + ' -- ' + req.body.ln);
-
-    req.session.passport.user.firstname = req.body.fn;
-    /*req.session.passport.user.lastname = req.body.ln;
-    req.session.passport.user.position = req.body.position;
-    req.session.passport.user.level = req.body.level;
-    req.session.passport.user.area = req.body.area;
-*/
-    req.session.save(function(err) {
-        console.log(err);
-        res.json({ status: 'success' });
-    });
-
-
-
+router.put('/profile/:ssn/:token', function(req, res, next) {
+    console.log(req.body);
+    //res.status(200).json({ message: 'Update Successfully' });
+    res.status(403).json({ message: 'Unauthorized request' });
 });
 
 

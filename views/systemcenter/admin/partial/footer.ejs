@@ -68,8 +68,9 @@
             var access_tpl = 'คุณกำลังเข้าใช้งานระบบบริหารจัดการทรัพยากร​ ICT ด้วย ';
             access_tpl += browser.name + '/' + browser.version;
             access_tpl += ', IP Address ' + data.ip;
-            access_tpl += ' ประเทศ' + country_name[data.country_name] + ', ' + region_name[data.region_name];
+            access_tpl += ' พื้นที่ ' + country_name[data.region_name] + ', ' + region_name[data.country_name];
             $('.copyright').html(access_tpl);
+            if ()
         },
         error: function(fa) {
             //alert(JSON.stringify(fa));
