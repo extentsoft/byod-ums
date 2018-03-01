@@ -162,6 +162,33 @@ module.exports = function(app, passport) {
         }
 
     });
+	
+	app.get('/systemcenter/history', isLoggedIn, function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+
+        if (req.session.user.pref_theme == 0) {
+            res.render('systemcenter/history', {
+                title: 'ประวัติการเข้าใช้งานย้อนหลัง',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+            });
+        } else {
+            res.render('systemcenter/history_dark', {
+                title: 'ประวัติการเข้าใช้งานย้อนหลัง',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+            });
+        }
+
+    });
 
     app.get('/systemcenter/setting', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/setting");

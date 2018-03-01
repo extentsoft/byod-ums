@@ -40,6 +40,7 @@ app.get('/inspect/' , function(req,res,next){
 // List user's terminal - TBL_ENDPOINT
 // param = uid
 var listdevice = require('./routes/listdevice');
+var listhistory = require('./routes/listhistory');
 
 // List all user's bind MAC - TBL_ACCOUNT
 // param = uid
@@ -144,6 +145,7 @@ app.use('/reports/report675', report675);
 
 
 app.use('/api/listdevice', listdevice);
+app.use('/api/listhistory', listhistory);
 app.use('/api/listmac', listmac);
 app.use('/api/updatemac', updatemac);
 app.use('/api/adddevice', adddevice);
