@@ -13,7 +13,7 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 
-    var request = new Request("SELECT d.[name],count(*) FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[UMS_Site] b on [radiusServerIp] = [ipaddr] join [AgileControllerDB].[dbo].[UMS_AreaMgmt] c on b.[id] = c.[id] join [AgileControllerDB].[dbo].[UMS_DistrictMgmt] d on c.[id] = d.[id] where CONVERT (date, a.timestamp) between '"+req.param('start')+"' and '"+req.param('end')+"' group by d.[name]", function(err, rowCount){
+    var request = new Request("SELECT b.[name] Area,a.accountName Account,a.terminalMac MAC,os_name,timestamp 'Date' FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[UMS_Site] b on [radiusServerIp] = [ipaddr] join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on a.terminalMac = e.mac where CONVERT (date, a.timestamp) between '"+req.param('start')+"' and '"+req.param('end')+"'", function(err, rowCount){
 
       if(err){
         console.error(err);
