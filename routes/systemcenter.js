@@ -67,8 +67,6 @@ module.exports = function(app, passport) {
     app.get('/systemcenter/dashboard', isLoggedIn, function(req, res) {
         console.log('1 - ' + JSON.stringify(req.session.user));
 
-
-
         console.log(' is admin ' + req.session.authorized);
         if (req.session.user.pref_theme == 0) {
 
@@ -106,21 +104,21 @@ module.exports = function(app, passport) {
             res.render('systemcenter/admin/configuration', {
                 title: 'ปรับแต่ง',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/admin/configuration_dark', {
                 title: 'ปรับแต่ง',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
 
@@ -140,21 +138,21 @@ module.exports = function(app, passport) {
             res.render('systemcenter/device', {
                 title: 'อุปกรณ์',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/device_dark', {
                 title: 'อุปกรณ์',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
 
@@ -168,21 +166,21 @@ module.exports = function(app, passport) {
             res.render('systemcenter/setting', {
                 title: 'ตั้งค่า',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/setting_dark', {
                 title: 'ตั้งค่า',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
 
@@ -203,31 +201,30 @@ module.exports = function(app, passport) {
                 title: 'ข้อมูลผู้ใช้งาน',
                 //path: 'systemcenter/',
                 message: req.flash('message'),
-                ssn: req.user.ssn,
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                email: req.user.ssn,
-                position: req.user.position,
-                level: req.user.level,
-                area: req.user.area,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/profile_dark', {
                 title: 'ข้อมูลผู้ใช้งาน',
                 //path: 'systemcenter/',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                email: req.user.ssn,
-                position: req.user.position,
-                level: req.user.level,
-                area: req.user.area,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
 
@@ -243,21 +240,29 @@ module.exports = function(app, passport) {
             res.render('systemcenter/report/device/activate', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/report/device/activate_dark', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -268,21 +273,29 @@ module.exports = function(app, passport) {
             res.render('systemcenter/report/device/deactivate/today', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/report/device/deactivate/today_dark', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -293,21 +306,29 @@ module.exports = function(app, passport) {
             res.render('systemcenter/report/device/deactivate/week', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/report/device/deactivate/week_dark', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -318,21 +339,29 @@ module.exports = function(app, passport) {
             res.render('systemcenter/report/device/deactivate/month', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/report/device/deactivate/month_dark', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -343,21 +372,29 @@ module.exports = function(app, passport) {
             res.render('systemcenter/report/device/deactivate/year', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/report/device/deactivate/year_dark', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -369,21 +406,29 @@ module.exports = function(app, passport) {
             res.render('systemcenter/report/usage/person/today', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/report/usage/person/today_dark', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -394,21 +439,29 @@ module.exports = function(app, passport) {
             res.render('systemcenter/report/usage/person/week', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/report/usage/person/week_dark', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -419,21 +472,29 @@ module.exports = function(app, passport) {
             res.render('systemcenter/report/usage/person/month', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/report/usage/person/month_dark', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -444,21 +505,29 @@ module.exports = function(app, passport) {
             res.render('systemcenter/report/usage/person/year', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/report/usage/person/year_dark', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -470,21 +539,29 @@ module.exports = function(app, passport) {
             res.render('systemcenter/report/usage/group/today', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/report/usage/group/today_dark', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -495,21 +572,29 @@ module.exports = function(app, passport) {
             res.render('systemcenter/report/usage/group/week', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/report/usage/group/week_dark', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
 
@@ -521,21 +606,29 @@ module.exports = function(app, passport) {
             res.render('systemcenter/report/usage/group/month', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/report/usage/group/month_dark', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -546,21 +639,29 @@ module.exports = function(app, passport) {
             res.render('systemcenter/report/usage/group/year', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/report/usage/group/year_dark', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -571,21 +672,29 @@ module.exports = function(app, passport) {
             res.render('systemcenter/report/monitor/device/addmonitor', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/report/monitor/device/addmonitor_dark', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -596,21 +705,29 @@ module.exports = function(app, passport) {
             res.render('systemcenter/report/monitor/device/listmonitor', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/report/monitor/device/listmonitor_dark', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -621,21 +738,29 @@ module.exports = function(app, passport) {
             res.render('systemcenter/report/monitor/device/reportmonitor', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/report/monitor/device/reportmonitor_dark', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -650,21 +775,29 @@ module.exports = function(app, passport) {
             res.render('systemcenter/report/policy/usage', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/report/policy/usage_dark', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -673,21 +806,29 @@ module.exports = function(app, passport) {
             res.render('systemcenter/report/policy/device', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
             res.render('systemcenter/report/policy/device_dark', {
                 title: 'Report',
                 message: req.flash('message'),
-                email: req.user.email,
-                firstname: req.user.firstname,
-                lastname: req.user.lastname,
-                isauthorized: req.user.authorized,
-                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
