@@ -12,17 +12,18 @@ module.exports = function(app, passport) {
 		
         //var args = { LengthValue: 5, fromLengthUnit: 'Nanometers', toLengthUnit: 'Millimeters' };
         var args = {
-            in0: req.param('accname'),
+            in0: 'info',
+			//in0: req.param('accname'),
             in1: {
-                //account: 'natthawat_a',
-				account: req.param('accname'),
+                account: 'info',
+				//account: req.param('accname'),
                 accountType: 1,
                 orgName: '\\LDAP Users Temp',
-                //bindMac: 'E0-AA-96-94-AE-22,AA-BB-CC-DD-EE-FF,7C-67-A2-FE-53-77',
-				bindMac: req.param('macbind'),
-                loginType: 7,
-                //userName: 'Natthawat Arunweerungroj'
-				userName: req.param('uname')
+                bindMac: 'AA-BB-CC-DD-EE-FF',
+				//bindMac: req.param('macbind'),
+                loginType: 3,
+                userName: 'Information Center'
+				//userName: req.param('uname')
             }
         };
 
@@ -652,6 +653,56 @@ module.exports = function(app, passport) {
             });
         } else {
             res.render('systemcenter/report/usage/type_dark', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.user.email,
+                firstname: req.user.firstname,
+                lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
+                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+            });
+        }
+    });
+	
+	app.get('/systemcenter/report/usage/browser', isLoggedIn, function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+        if (req.user.pref_theme == 0) {
+            res.render('systemcenter/report/usage/browser', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.user.email,
+                firstname: req.user.firstname,
+                lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
+                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+            });
+        } else {
+            res.render('systemcenter/report/usage/browser_dark', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.user.email,
+                firstname: req.user.firstname,
+                lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
+                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+            });
+        }
+    });
+	
+	app.get('/systemcenter/report/usage/os', isLoggedIn, function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+        if (req.user.pref_theme == 0) {
+            res.render('systemcenter/report/usage/os', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.user.email,
+                firstname: req.user.firstname,
+                lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
+                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
+            });
+        } else {
+            res.render('systemcenter/report/usage/os_dark', {
                 title: 'Report',
                 message: req.flash('message'),
                 email: req.user.email,
