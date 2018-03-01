@@ -555,6 +555,33 @@
                 refresh_table(yyy + '-' + mm + '-' + dd, yyyy + '-' + mm + '-' + ddd);
             }
 
+            function editconfig(account, timefrom, timeto, timediff, editdevice, editprofile, timelog, countlog, verie, verchrome, verff) {
+
+                $.ajax('http://localhost/api/editconfig', {
+                    type: "get",
+                    data: {
+                        accname: account,
+                        starttime: timefrom,
+                        endtime: timeto,
+                        timediffsite: timediff,
+                        counteditdevice: editdevice,
+                        counteditprofile: editprofile,
+                        timelogin: timelog,
+                        countlogin: countlog,
+                        ie: verie,
+                        chrome: verchrome,
+                        firefox: verff
+                    },
+                    success: function(json) {
+                        //alert(JSON.stringify(json));
+                        //data_res = JSON.parse(JSON.stringify(json));
+                    },
+                    error: function(fa) {
+                        //alert(JSON.stringify(fa));
+                    }
+                });
+            }
+
             function addlimit(lim, acc) {
                 //alert(lim);
                 //alert(acc);
