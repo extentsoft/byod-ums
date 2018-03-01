@@ -65,33 +65,30 @@ module.exports = function(app, passport) {
                               Admin Section
     =================================================================== */
     app.get('/systemcenter/dashboard', isLoggedIn, function(req, res) {
-        console.log('1 - ' + JSON.stringify(req.session.user));
-
-
-
-        console.log(' is admin ' + req.session.authorized);
-        if (req.session.user.pref_theme == 0) {
+        //res.send("Hello System Center");
+        console.log(' is admin ' + req.user.authorized);
+        if (req.user.pref_theme == 0) {
 
             res.render('systemcenter/admin/dashboard', {
                 title: 'แผงควบคุมหลัก',
                 path: 'systemcenter/',
                 message: req.flash('message'),
-                email: req.session.user.email,
-                firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
-                isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                email: req.user.email,
+                firstname: req.user.firstname,
+                lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
+                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         } else {
             res.render('systemcenter/admin/dashboard_dark', {
                 title: 'แผงควบคุมหลัก',
                 path: 'systemcenter/',
                 message: req.flash('message'),
-                email: req.session.user.email,
-                firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
-                isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                email: req.user.email,
+                firstname: req.user.firstname,
+                lastname: req.user.lastname,
+                isauthorized: req.user.authorized,
+                privilege: req.user.pref_theme + ',' + req.user.pref_notification + ',' + req.user.authorized
             });
         }
 
@@ -709,20 +706,51 @@ module.exports = function(app, passport) {
 
     // Authentication
     app.get('/systemcenter/login', function(req, res) {
-        console.log('logging in');
         res.render('systemcenter/login', { user: req.user, error: req.flash('error') });
 
         //res.render('profile/login.ejs', { message: req.flash('loginMessage') });
     });
 
     // process the login form
-    /*app.post('/systemcenter/login', passport.authenticate('local-login', {
+    app.post('/systemcenter/login', passport.authenticate('local-login', {
         successRedirect: '/systemcenter', // redirect to the secure profile section
         failureRedirect: '/systemcenter/login', // redirect back to the signup page if there is an error
         failureFlash: true // allow flash messages
     }));
-*/
-    app.post('/systemcenter/login', function(req, res) {
+    app.get('/systemcenter/logout', function(req, res) {
+        req.logout();
+        res.redirect('/systemcenter/login');
+    });
+
+    /* =================== */
+    // Fix: Authentication
+    /* =================== */
+    app.get('/systemcenter/fixauthen/', isLoggedInFixed, function(req, res) {
+        console.log('1 - ' + req.session.user.email);
+        console.log(req.session.authenticated);
+        console.log(req.session.authorized);
+
+
+        res.render('systemcenter/fixauthen/index', {
+            title: 'Fix Authentication'
+        });
+    });
+
+    app.get('/systemcenter/fixauthen/2', isLoggedInFixed, function(req, res) {
+        console.log('2 - ' + req.session.user.email);
+        console.log(req.session.authenticated);
+        console.log(req.session.authorized);
+
+        res.render('systemcenter/fixauthen/index2', {
+            title: 'Fix Authentication'
+        });
+    });
+    app.get('/systemcenter/fixauthen/login', function(req, res) {
+        res.render('systemcenter/fixauthen/login', { user: req.user, error: req.flash('error') });
+
+        //res.render('profile/login.ejs', { message: req.flash('loginMessage') });
+    });
+    app.post('/systemcenter/fixauthen/login', function(req, res) {
         console.log(req.body.username + " -- " + req.body.password);
         /*
                 if (req.body.username == "byod1" && req.body.password == 'password') {
@@ -768,73 +796,60 @@ module.exports = function(app, passport) {
                 //req.session.user._id = user._id;
                 req.session.user.email = user.email;
                 req.session.user.password = user.password;
+                res.redirect('/systemcenter/fixauthen/');
 
+                /*
+                                console.log('Identity is being authorizing against e-Office');
+                                request('http://localhost/api/eoffice/profile/' + Account.email, function(error, response, body) {
 
+                                    if (!error && response.statusCode == 200) {
+                                        if (body != null) {
+                                            //Authorization Done
+                                            parsed_body = JSON.parse(body);
+                                            Account.firstname = parsed_body.fn;
+                                            Account.lastname = parsed_body.ln;
+                                            Account.ssn = parsed_body.ssn;
+                                            Account.position = parsed_body.position;
+                                            Account.level = parsed_body.level;
+                                            Account.area = parsed_body.area;
+                                            Account.authorized = parsed_body.authorized;
 
+                                            request('http://localhost/api/getuserpref?accname=' + Account.email, function(error, response, body) {
+                                                if (!error && response.statusCode == 200) {
+                                                    if (body != null) {
+                                                        var parsed_body = JSON.parse(body);
+                                                        console.log("profiling --> " + parsed_body[0]);
+                                                        console.log("profiling --> " + parsed_body[1]);
 
-                console.log('Identity is being authorizing against e-Office');
-                request('http://localhost/api/eoffice/profile/' + user.email, function(error, response, body) {
+                                                        Account.pref_theme = parsed_body[0];
+                                                        Account.pref_notification = parsed_body[1];
 
-                    if (!error && response.statusCode == 200) {
-                        if (body != null) {
-                            //Authorization Done
-                            console.log('parsing body');
-                            parsed_body = JSON.parse(body);
-                            console.log(JSON.stringify(body));
-                            console.log(JSON.parse(body));
-                            console.log(body);
+                                                        return done(null, Account);
+                                                    } else {
+                                                        console.log("2");
+                                                        return done(null, false, req.flash('loginMessage', 'Profiling Failure'));
+                                                    }
+                                                } else {
+                                                    console.log("3");
+                                                    return done(null, false, req.flash('loginMessage', 'Profiling Failure'));
+                                                }
 
-                            req.session.user.firstname = parsed_body.fn;
-                            req.session.user.lastname = parsed_body.ln;
-                            req.session.user.ssn = parsed_body.ssn;
-                            req.session.user.position = parsed_body.position;
-                            req.session.user.level = parsed_body.level;
-                            req.session.user.area = parsed_body.area;
-                            req.session.user.authorized = parsed_body.authorized;
+                                            });
 
-                            request('http://localhost/api/getuserpref?accname=' + user.email, function(error, response, body) {
-                                if (!error && response.statusCode == 200) {
-                                    if (body != null) {
-                                        var parsed_body = JSON.parse(body);
-                                        console.log("profiling --> " + parsed_body[0]);
-                                        console.log("profiling --> " + parsed_body[1]);
+                                            // If only authentication & authorization are enough, comment out below line
+                                            //return done(null, Account);
 
-                                        req.session.user.pref_theme = parsed_body[0];
-                                        req.session.user.pref_notification = parsed_body[1];
+                                        } else {
+                                            //No authorization
+                                            return done(null, false, req.flash('loginMessage', 'Authorizing Failure'));
+                                        }
 
-                                        res.redirect('/systemcenter/dashboard');
                                     } else {
-                                        console.log('Profiling Failure');
-                                        req.session.authenticated = false;
-                                        req.session.authorized = false;
-                                        res.redirect('/systemcenter/login');
+                                        //if ERRROR happens once authorizing 
+                                        return done(null, false, req.flash('loginMessage', 'Authorizing Failure'));
                                     }
-                                } else {
-
-                                    console.log('Profiling Failure');
-                                    req.session.authenticated = false;
-                                    req.session.authorized = false;
-                                    res.redirect('/systemcenter/login');
-                                }
-
-                            });
-                        } else {
-                            //if ERRROR happens once authorizing 
-                            console.log('Authorizing Failure');
-                            req.session.authenticated = false;
-                            req.session.authorized = false;
-                            res.redirect('/systemcenter/login');
-                        }
-
-                    } else {
-                        //if ERRROR happens once authorizing 
-                        console.log('Authorizing Failure');
-                        req.session.authenticated = false;
-                        req.session.authorized = false;
-                        res.redirect('/systemcenter/login');
-                    }
-                })
-
+                                })
+                */
 
             }
         });
@@ -843,27 +858,29 @@ module.exports = function(app, passport) {
 
     });
 
-
-
-    app.get('/systemcenter/logout', function(req, res) {
+    app.get('/systemcenter/fixauthen/logout', function(req, res) {
         delete req.session.authenticated;
         delete req.session.authorized;
-        delete req.session.user;
 
-        res.redirect('/systemcenter/login');
+        res.redirect('/systemcenter/fixauthen/login');
     });
-
 };
 
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
+    console.log('Authenticating');
+    if (req.isAuthenticated())
+        return next();
+
+    res.redirect('/systemcenter/login');
+}
+
+function isLoggedInFixed(req, res, next) {
     console.log('Check Session');
     console.log(req.session.authenticated);
     console.log(req.session.authorized);
-
     if (req.session.authenticated && req.session.authorized > 0) next();
-    else res.redirect('/systemcenter/login');
-
+    else res.redirect('/systemcenter/fixauthen/login');
 }
 
 function makeid() {

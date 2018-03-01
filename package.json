@@ -20,6 +20,7 @@
     "morgan": "~1.8.1",
     "nodemailer": "^4.4.1",
     "passport": "^0.4.0",
+    "passport-custom": "^1.0.5",
     "passport-ldapauth": "^2.0.0",
     "passport-local": "^1.0.0",
     "serve-favicon": "~2.4.2",

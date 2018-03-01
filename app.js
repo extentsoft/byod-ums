@@ -105,7 +105,7 @@ app.use(require('express-session')({
     saveUninitialized: true
 }));
 app.use(passport.initialize());
-app.use(passport.session({ secret: 'byodatexcise' }));
+app.use(passport.session());
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 

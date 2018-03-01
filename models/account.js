@@ -76,4 +76,25 @@ Account.prototype.test = function(opts, done) {
     });
 };
 
+Account.prototype.authenticate = function(opts) {
+    openldap.test(opts, function(entry) {
+        if (entry instanceof Error) {
+            console.log('Error');
+            return new Error('Error');
+        } else {
+            console.log('not error');
+            console.log(this.email);
+
+            //this._id = entry.uid;
+            this.email = entry.uid;
+            this.password = entry.userPassword;
+
+            console.log('rewriting value');
+            console.log(this.email);
+
+            return this;
+        }
+    });
+};
+
 module.exports = new Account();
