@@ -5,24 +5,31 @@ module.exports = function(app, passport) {
 
     app.get('/api/message/email/:type/:user_ref', function(req, res) {
         var msg = '';
+        var tpl_subject = '';
         if (req.params.type == 1) {
-            msg = 'ในขณะนี้ผู้ใช้งาน ' + req.params.user_ref + ' ได้ทำการเข้า-ออกระบบมากเกินกว่าที่่ระบบกำหนดไว้';
+            tpl_subject = 'การเข้าออกระบบภายในระยะเวลาที่กำหนดมีจำนวนมากครั้งเกินไป';
+            msg = 'ในขณะนี้ผู้ใช้งาน ' + req.params.user_ref + ' ได้ทำการเข้าออกระบบภายในระยะเวลาที่กำหนดมีจำนวนมากครั้งเกินไป';
         } else if (req.params.type == 2) {
-            msg = 'ในขณะนี้ผู้ใช้งาน ' + req.params.user_ref + ' ได้ทำการเข้าใช้งานต่างสถานที่ภายในระยะสั้นกว่าที่่ระบบกำหนดไว้';
+            tpl_subject = 'มีการเข้าใช้งานสู่ระบบในระยะเวลาใกล้เคียงกันแต่อยู่ห่างกันคนละสถานที่';
+            msg = 'ในขณะนี้ผู้ใช้งาน ' + req.params.user_ref + ' มีการเข้าใช้งานสู่ระบบในระยะเวลาใกล้เคียงกันแต่อยู่ห่างกันคนละสถานที่';
         } else if (req.params.type == 3) {
+            tpl_subject = 'ทำการเข้า-ออกระบบนอกช่วงเวลาที่กำหนดไว้';
             msg = 'ในขณะนี้ผู้ใช้งาน ' + req.params.user_ref + ' ได้ทำการเข้า-ออกระบบนอกช่วงเวลาที่กำหนดไว้';
         } else if (req.params.type == 4) {
-            msg = 'ในขณะนี้ผู้ใช้งาน ' + req.params.user_ref + ' ได้ทำการลงทะเบียนหรือเพิกถอนอุปกรณ์บ่อยเกินกว่าที่ระบบกำหนดไว้';
+            tpl_subject = 'การเพิ่มหรือนำออกอุปกรณ์ออกจากระบบการลงทะเบียนบ่อยมากเกินไปต่อวัน';
+            msg = 'ในขณะนี้ผู้ใช้งาน ' + req.params.user_ref + ' การเพิ่มหรือนำออกอุปกรณ์ออกจากระบบการลงทะเบียนบ่อยมากเกินไปต่อวัน';
         } else if (req.params.type == 5) {
+            tpl_subject = 'มีการปรับปรุงข้อมูลส่วนตัวต่อวันจำนวนครั้งมากเกินไป';
             msg = 'ในขณะนี้ผู้ใช้งาน ' + req.params.user_ref + ' ได้ทำการปรับปรุงข้อมูลส่วนบุคคลบ่อยเกินกว่าที่่ระบบกำหนดไว้';
-        } else {
+        } else if (req.params.type == 6) {
+            tpl_subject = 'ทำการเข้า-ออกระบบโดยกำหนดอุปกรณ์';
             msg = 'ในขณะนี้ผู้ใช้งาน ' + req.params.user_ref + ' ได้ทำการฝ่าฝื่นกฎระเบียบที่ระบบกำหนดไว้';
         }
 
         const mailOptions = {
             from: 'byod@excise.go.th', // sender address
             to: 'byod@excise.go.th', // list of receivers
-            subject: 'การแจ้งเตือนการใช้งานที่ฝ่าฝื่นกฏ', // Subject line
+            subject: tpl_subject, // Subject line
             html: msg
         };
 
