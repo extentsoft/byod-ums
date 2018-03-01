@@ -413,6 +413,8 @@
         <script>
             //account_now = 'natthawat_a';
 			account_now = $('#email').text().trim();
+			username = $('#uname').text().trim();
+			//alert(username);
 
             function refreshlist() {
                 //alert('refresh');
@@ -562,11 +564,7 @@
 				refreshmac(mac)
                 deletedevice(mac);
                 //alert(input.parentNode.id);
-                /*var r = confirm("ยืนยันการลบอุปกรณ์");
-                if (r == true) {
-                    refreshmac(mac)
-                    deletedevice(mac);
-                }*/
+               
             }
 
             function adddevice(name, mac, os) {
@@ -647,6 +645,7 @@
                 if (test == ',') {
                     mac_bind = mac_bind.substring(0, mac_bind.length - 1);
                 }
+				//alert(mac_bind);
                 updatemac(mac_bind)
             }
 
@@ -716,6 +715,16 @@
                         macbind: mac
                     },
                     success: function(json) {}
+                });
+				
+				$.ajax('http://localhost/systemcenter/api', {
+                    type: "get",
+                    data: {
+                        accname: account_now,
+                        macbind: mac,
+						uname: username
+                    },
+                    success: function(json) {alert('b');}
                 });
             }
 

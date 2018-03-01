@@ -64,6 +64,7 @@ var getconfig = require('./routes/getconfig');
 var editconfig = require('./routes/editconfig');
 var getuserpref = require('./routes/getuserpref');
 var edituserpref = require('./routes/edituserpref');
+var addviolation = require('./routes/addviolation');
 
 var deviceinmon = require('./routes/monitor/deviceinmon');
 var deviceoutmon = require('./routes/monitor/deviceoutmon');
@@ -73,14 +74,20 @@ var removedevicemon = require('./routes/monitor/removedevicemon');
 var traffic = require('./routes/reports/traffic');
 var report671 = require('./routes/reports/report671');
 var report678 = require('./routes/reports/report678');
+var report6782 = require('./routes/reports/report6782');
 var report67152 = require('./routes/reports/report67152');
+var report671522 = require('./routes/reports/report671522');
 var report672 = require('./routes/reports/report672');
 var report673 = require('./routes/reports/report673');
 var report676 = require('./routes/reports/report676');
 var report675 = require('./routes/reports/report675');
+var report6752 = require('./routes/reports/report6752');
 var report677 = require('./routes/reports/report677');
 var report67153 = require('./routes/reports/report67153');
+var report671532 = require('./routes/reports/report671532');
 var report67154 = require('./routes/reports/report67154');
+var violation_report = require('./routes/reports/violation_report');
+var alllimit = require('./routes/reports/alllimit');
 
 var checkcountdevice = require('./routes/policy/checkcountdevice');
 
@@ -160,6 +167,7 @@ app.use('/api/getconfig', getconfig);
 app.use('/api/editconfig', editconfig);
 app.use('/api/getuserpref', getuserpref);
 app.use('/api/edituserpref', edituserpref);
+app.use('/api/addviolation', addviolation);
 
 
 app.use('/api/chat/attachment', require('./routes/chat/attachment'));
@@ -168,15 +176,21 @@ app.use('/api/ums', require('./routes/api/ums'));
 
 app.use('/report/traffic', traffic);
 app.use('/report/report678', report678);
+app.use('/report/report6782', report6782);
 app.use('/report/report67152', report67152);
+app.use('/report/report671522', report671522);
 app.use('/report/report671', report671);
 app.use('/report/report672', report672);
 app.use('/report/report673', report673);
 app.use('/report/report676', report676);
 app.use('/report/report675', report675);
+app.use('/report/report6752', report6752);
 app.use('/report/report677', report677);
 app.use('/report/report67153', report67153);
+app.use('/report/report671532', report671532);
 app.use('/report/report67154', report67154);
+app.use('/report/violation_report', violation_report);
+app.use('/report/alllimit', alllimit);
 
 app.use('/policy/checkcountdevice', checkcountdevice);
 

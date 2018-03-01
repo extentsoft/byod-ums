@@ -270,6 +270,8 @@
 
             function refresh_table(sd, ed) {
                 //alert('refresh');
+				//alert(sd);
+				//alert(ed);
                 $.ajax('http://localhost/report/report671', {
                     type: "get",
                     data: {
@@ -315,9 +317,14 @@
             function datepick() {
 
                 var today = new Date();
-                var dd = today.getDate() - 7;
+                
                 var ddd = today.getDate();
-                var mm = today.getMonth()+1; //January is 0!
+				
+				var last = new Date(today.getTime() - (7 * 24 * 60 * 60 * 1000));
+				var dd = last.getDate();
+				var mm = last.getMonth()+1;
+				
+                var mmm = today.getMonth()+1; //January is 0!
 
                 var yyyy = today.getFullYear();
                 var yyy = today.getFullYear();
@@ -327,7 +334,7 @@
                 if (mm < 10) {
                     mm = '0' + mm;
                 }
-                refresh_table(yyy + '-' + mm + '-' + dd, yyyy + '-' + mm + '-' + ddd);
+                refresh_table(yyy + '-' + mm + '-' + dd, yyyy + '-' + mmm + '-' + ddd);
             }
             datepick();
         </script>
