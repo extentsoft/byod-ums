@@ -17,7 +17,7 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 
-    var request = new Request("select top(5) * from [AgileControllerDB].[dbo].[UMS_Message] where receive_group = '"+req.param('chanel')+"' order by created_at desc;", function(err, rowCount){
+    var request = new Request("select top(5) * from [AgileControllerDB].[dbo].[UMS_Message] where receive_group = '"+req.param('chanel')+"'  and CONVERT(date, created_at) between CONVERT(date, CURRENT_TIMESTAMP-30) and CONVERT(date, CURRENT_TIMESTAMP) order by created_at desc;", function(err, rowCount){
 
 	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 
