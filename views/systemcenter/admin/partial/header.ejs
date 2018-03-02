@@ -362,9 +362,9 @@
 
     function sendchat(msg, rdt) {
         //alert(account_now);
-        //alert(msg);
+
         //console.log(rdt);
-		if($("#priv").html().trim().split(",")[2]){
+		if($("#priv").html().trim().split(",")[2]&&rdt=='-'){
 			msg = '<p style="color:red">'+msg+'</p>';
 		}
 		else{
@@ -377,8 +377,9 @@
                 msgchat: msg,
                 rdata: rdt
             },
+
             success: function(json) {
-                alert('a');
+                //alert('a');
                 $('#chatbox').empty();
                 document.getElementById('chat-text').value = ''
                 get_chat();
