@@ -334,7 +334,7 @@
                 //alert(data);
                 document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>ระบบปฏิบัติการ</th><th>IP</th><th>วันที่ใช้งาน</th></tr></thead><tbody></tbody></table>';
 
-                $.ajax('http://192.168.163.29/report/report677', {
+                $.ajax('http://localhost/report/report677', {
                     type: "get",
                     data: {
                         start: sd,
