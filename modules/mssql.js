@@ -29,11 +29,7 @@ var test2 = {
     server: '192.168.1.37'
 };
 
-<<<<<<< HEAD
 var config = test2;
-=======
-var config = test;
->>>>>>> feb3f0ffe59348c79ad45608a89529db33f092c4
 
 var pool = new ConnectionPool(poolConfig, config);
 //var connection = new Connection(config);

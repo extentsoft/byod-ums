@@ -421,7 +421,7 @@
     function toggle_noti(index) {
         //alert('called -> ' + index);
         //alert($('#notification_center li:nth-child(' + (index + 1) + ')').text());
-        //alert($('#fullnoti li:nth-child(' + (index + 1) + ')').text());
+        alert($('#fullnoti li:nth-child(' + (index + 1) + ')').text());
 
         $('#notificationModal div.modal-dialog div.modal-content div.modal-body').html($('#fullnoti li:nth-child(' + (index + 1) + ')').text());
         //$('#notificationModal div.modal-dialog div.modal-content div.modal-body').html('<b>hello</b> Cheer');
@@ -470,6 +470,7 @@
                         //var msg = "<li><a href='#' data-toggle='modal' data-target='#notificationModal' onclick='toggle_noti(" + i + ")'><div class='menu-text'><b>Hello</b>Cheer<div class='menu-info'><span class='menu-date'>" + data[i].timestamp.split("T")[0] + "</span></div></div></a></li>";
 
                         $('#fullnoti').append('<li>' + data[i].msg + '</li>');
+                        alert('<li>' + data[i].msg + '</li>');
                         //$('#fullnoti').append('<li><b>Hello</b>Cheer</li>');
 
                         $('#notification_center').append(msg);
