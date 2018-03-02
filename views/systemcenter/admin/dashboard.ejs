@@ -1288,7 +1288,13 @@
                     success: function(json) {
                         //alert(json);
                         if (json == 1) {
-							addviolation();
+							addviolation('overlogin');
+							$.ajax('http://localhost/api/message/email/1/' + account_now, {
+                                type: "get",
+                                success: function(json) {
+                                    //alert(JSON.stringify(json));
+                                }
+                            });
                             //alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
 							
                         }
@@ -1297,12 +1303,12 @@
                 });
             }
 			
-			function addviolation() {
+			function addviolation(detail) {
 				//alert('refresh');
 				$.ajax('http://localhost/api/addviolation', {
 					type: "get",
 					data: {
-						violation: 'overlogin',
+						violation: detail,
 						accname: account_now
 					},
 					success: function(json) {
@@ -1310,6 +1316,52 @@
 					}
 				});
 			}
+			
+			function check_access() {
+                //alert('refresh');
+                $.ajax('http://localhost/api/checkaccesstime', {
+                    type: "get",
+                    success: function(json) {
+                        //alert(json);
+                        if (json == 1) {
+							addviolation('outoftime');
+							$.ajax('http://localhost/api/message/email/3/' + account_now, {
+                                type: "get",
+                                success: function(json) {
+                                    //alert(JSON.stringify(json));
+                                }
+                            });
+                            //alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
+							
+                        }
+
+                    }
+                });
+            }
+			
+			function check_devicemon() {
+                //alert('refresh');
+                $.ajax('http://localhost/api/checkdevicemon', {
+                    type: "get",
+                    success: function(json) {
+                        //alert(json);
+                        if (json == 1) {
+							addviolation('devicemon');
+							$.ajax('http://localhost/api/message/email/6/' + account_now, {
+                                type: "get",
+                                success: function(json) {
+                                    //alert(JSON.stringify(json));
+                                }
+                            });
+                            //alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
+							
+                        }
+
+                    }
+                });
+            }
+			check_access();
+			check_devicemon();
             acclogin();
             refresh_traffic();
 

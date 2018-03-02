@@ -361,7 +361,16 @@
 					
 					if(data_sql[1]=='overlogin'){
 						vio = 'เข้าสู่ระบบเกินจำนวนครั้งที่กำหนดในช่วงเวลาที่ระบุไว้';
+					} else if(data_sql[1]=='outoftime'){
+						vio = 'เข้าสู่ระบบนอกช่วงเวลาที่ได้รับอนุญาต';
 					}
+					else if(data_sql[1]=='devicemon'){
+						vio = 'มีการเข้าใช้งานระบบด้วยอุปกรณ์ที่ถูกกำหนดให้ตรวจสอบ';
+					}
+					else if(data_sql[1]=='editdeivceoverlimit'){
+						vio = 'มีการลงทะเบียน-เพิกถอนอุปกรณ์มากเกินกว่าที่กำหนดไว้ในหนึ่งวัน';
+					}
+					else {vio=data_sql[1];}
                     update_time = new Date(data_sql[3]);
                     date_str = update_time.getHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();
 

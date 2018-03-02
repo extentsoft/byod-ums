@@ -758,6 +758,7 @@
                         //alert(JSON.stringify(data_res));
                         if (data_res[0] > 5) {
                             //alert('a');
+							addviolation('editdeivceoverlimit');
                             $.ajax('http://localhost/api/message/email/4/' + account_now, {
                                 type: "get",
                                 success: function(json) {
@@ -769,12 +770,26 @@
                     }
                 });
             }
+			
+			function addviolation(detail) {
+				//alert('refresh');
+				$.ajax('http://localhost/api/addviolation', {
+					type: "get",
+					data: {
+						violation: detail,
+						accname: account_now
+					},
+					success: function(json) {
+						//alert(json);
+					}
+				});
+			}
 
             checkcount();
             refreshlist();
 
             function change_name(hostname) {
-                alert('fewf');
+                //alert('fewf');
                 //alert(hostname + " , " + hostmac + " , " + hostos);
 
             }
