@@ -23,7 +23,7 @@ module.exports = function(app, passport) {
             msg = 'ในขณะนี้ผู้ใช้งาน ' + req.params.user_ref + ' ได้ทำการปรับปรุงข้อมูลส่วนบุคคลบ่อยเกินกว่าที่่ระบบกำหนดไว้';
         } else if (req.params.type == 6) {
             tpl_subject = 'ทำการเข้า-ออกระบบโดยกำหนดอุปกรณ์';
-            msg = 'ในขณะนี้ผู้ใช้งาน ' + req.params.user_ref + ' ได้ทำการฝ่าฝื่นกฎระเบียบที่ระบบกำหนดไว้';
+            msg = 'ในขณะนี้ผู้ใช้งาน ' + req.params.user_ref + ' ทำการเข้า-ออกระบบโดยกำหนดอุปกรณ์';
         }
 
         const mailOptions = {
@@ -42,7 +42,7 @@ module.exports = function(app, passport) {
             auth: {
                 //user: '59ad65f3b7fa3b',
                 user: 'byod@excise.go.th',
-                //pass: '7e4387ba355422'
+                //pass: '7e4387ba355422',
                 pass: 'byod1234'
             }
         });

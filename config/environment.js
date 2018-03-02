@@ -1,5 +1,5 @@
 module.exports = {
-    environment: 'production',
+    environment: 'test2',
     bypass: true,
     log_level: 'warn'
 }
