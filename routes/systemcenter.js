@@ -1207,7 +1207,7 @@ function isLoggedIn(req, res, next) {
     console.log(req.session.authenticated);
     console.log(req.session.authorized);
 
-    if (req.session.authenticated && req.session.authorized > 0) next();
+    if (req.session.authenticated) next();
     else res.redirect('/systemcenter/login');
 
 }
