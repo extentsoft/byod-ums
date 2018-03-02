@@ -189,23 +189,8 @@
         <!-- container -->
     </div>
     <!-- vd_primary-menu-wrapper -->
-    <div id="priv" style="visibility: hidden">
+    <div id="priv">
         <%=privilege%>
-    </div>
-    <ul id="fullnoti" style="visibility:hidden"></ul>
-    <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!--<div class="modal-header vd_bg-blue vd_white">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
-                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                    </div>-->
-                <div class="modal-body">
-
-
-                </div>
-            </div>
-        </div>
     </div>
 
 </header>
@@ -335,8 +320,6 @@
                     i = -1;
                 }
 
-
-
                 for (i = 0; i < datac.length; i++) {
                     //tmp = String(JSON.stringify(datac[i])).replace('\t','');
                     //alert(JSON.stringify(datac[i]));
@@ -347,18 +330,15 @@
 
 
 
-
                     //var uid = $("#userid").text();
                     if (datac[i].name == account_now) {
                         //alert(data[i].msg);
                         //var my_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
                         var my_msg = "";
                         if (datac[i].rdata == '') {
-                            //my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text' style='color:red;'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date' style='color:red;'>" + datac[i].name + "</span></div></div></a></li>";
-                            my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div>" + datac[i].msg + "<div class='menu-info'><span class='menu-date' >" + datac[i].name + "</span></div></div></a></li>";
-
+                            my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
                         } else {
-                            my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'><a download='" + datac[i].msg + "' href='" + datac[i].rdata + "'>" + datac[i].msg + "</a><div class='menu-info'><span class='menu-date' >" + datac[i].name + "</span></div></div></a></li>";
+                            my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'><a download='" + datac[i].msg + "' href='" + datac[i].rdata + "'>" + datac[i].msg + "</a><div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
                         }
 
                         $('#chatbox').append(my_msg);
@@ -368,15 +348,9 @@
 
                         var other_msg = "";
                         if (datac[i].rdata == '') {
-
-                            other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div>" + datac[i].msg + "<div class='menu-info'><span class='menu-date' style='color:red;'>" + datac[i].name + "</span></div></div></a></li>";
-
-
+                            other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
                         } else {
-
                             other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'><a download='" + datac[i].msg + "' href='data:application/octet-stream;base64," + datac[i].rdata + "'>" + datac[i].msg + "</a><div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
-
-
                         }
 
                         $('#chatbox').append(other_msg);
@@ -387,28 +361,24 @@
     }
 
     function sendchat(msg, rdt) {
-        alert(msg);
         //alert(account_now);
-        //alert(msg);
+
         //console.log(rdt);
-
-        tpl_msg = "";
-        if ($("#priv").html().trim().split(",")[2] == true) {
-            tpl_msg = "<div style='color:red;'>" + msg;
+        if ($("#priv").html().trim().split(",")[2] && rdt == '-') {
+            msg = '<p style="color:red">' + msg + '</p>';
         } else {
-            tpl_msg = "<div style='color:black;'>" + msg;
-        }
-        alert(tpl_msg);
 
+        }
         $.ajax('http://localhost/api/addchat', {
             type: "post",
             data: {
                 usr: account_now,
-                msgchat: tpl_msg,
+                msgchat: msg,
                 rdata: rdt
             },
+
             success: function(json) {
-                alert('a');
+                //alert('a');
                 $('#chatbox').empty();
                 document.getElementById('chat-text').value = ''
                 get_chat();
@@ -477,7 +447,6 @@
                     }
 
                 }
-
                 //alert(JSON.stringify(data));
                 //bindata(data_res);
             }

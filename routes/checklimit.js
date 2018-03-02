@@ -5,10 +5,6 @@ var router = express.Router();
 
 var deviceList = function(req,res,next){
 
-  console.log('deviceList middleware');
-
-  req.test1 = "test test test";
-
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
@@ -16,10 +12,8 @@ var deviceList = function(req,res,next){
       return;
     }
     console.log('Connection successful');
-
-    //var request = new Request('select * from [test].[dbo].t1', function(err, rowCount){
-	var q = '"';
-    var request = new Request("SELECT * FROM [AgileControllerDB].[dbo].[UMS_AccessLog] where  [browser]!='undefined' and userId = '"+req.param('accname')+"' order by [created_at] desc", function(err, rowCount){
+	q = '"';
+    var request = new Request("if '"+req.param('accname')+"' in (SELECT [account] FROM [AgileControllerDB].[dbo].[TSM_E_Account] t1 join [AgileControllerDB].[dbo].[TSM_E_Organization] t2 on t1.[orgID] = t2.[orgID] where orgName != 'Guest' and (select count(*) from [AgileControllerDB].[dbo].[TSM_E_Endpoint] where login_account = t1.account) = CASE when t1.[accountID] in (select [user_id] from [AgileControllerDB].[dbo].[UMS_Limitdevice]) then (SELECT [limitdevice] FROM [AgileControllerDB].[dbo].[UMS_Limitdevice] where [user_id] = t1.[accountID]) else (SELECT [limitdevice] FROM [AgileControllerDB].[dbo].[UMS_Limitdevice] where [user_id] = '999999' ) END ) select 1 else select 0", function(err, rowCount){
 
       if(err){
         console.error(err);

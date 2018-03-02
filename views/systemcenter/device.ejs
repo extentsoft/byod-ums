@@ -134,7 +134,7 @@
                                     <h1>รายชื่ออุปกรณ์</h1>
                                     <small class="subtitle"></small>
                                     <div class="vd_panel-menu  hidden-xs">
-                                        <div class="menu no-bg vd_green" data-original-title="Start Layout Tour Guide" data-toggle="modal" data-target="#myModal" data-placement="bottom" onClick="document.getElementById('myModalLabel1').innerHTML='ลงทะเบียนอุปกรณ์ใหม่';document.getElementById('term_mac').disabled = false;"> <span class="menu-icon font-md"><i class="fa fa-plus"></i></span> </div>
+                                        <div class="menu no-bg vd_green" data-original-title="Start Layout Tour Guide" data-toggle="modal" data-target="#myModal" data-placement="bottom" onClick="document.getElementById('myModalLabel1').innerHTML='ลงทะเบียนอุปกรณ์ใหม่';document.getElementById('term_mac').disabled = false;" id="add-btn"> <span class="menu-icon font-md"><i class="fa fa-plus"></i></span> </div>
                                         <!-- menu -->
                                         <!--
                                         <div class="menu">
@@ -172,7 +172,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header vd_bg-blue vd_white">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
-                                            <h4 class="modal-title" id="myModalLabel1">ลงทะเบียนอุปกรณ์ใหม่</h4>
+                                            <h4 class="modal-title" id="myModalLabel1">ลงทะเบียนอุปกรณ์ใหม่</h4>											
                                         </div>
                                         <div class="modal-body">
                                             <form class="form-horizontal" action="#" role="form">
@@ -433,6 +433,22 @@
 
 
             function bindata(data_sql) {
+				//alert('cc');
+				$.ajax('http://localhost/api/checklimit', {
+                    type: "get",
+                    data: {
+                        accname: account_now
+                    },
+                    success: function(json) {
+						var x = document.getElementById("add-btn");
+						if (json==1) {
+							x.style.display = "none";
+						} else {
+							x.style.display = "block";
+						}
+                        //alert(json);
+                    }
+                });
                 //alert('bind');
                 //alert(data_sql);
                 data = [];
@@ -557,6 +573,8 @@
 
 
                 }
+				
+				
             }
 
             function removedevice(mac) {
