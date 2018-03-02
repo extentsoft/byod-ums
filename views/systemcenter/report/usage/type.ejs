@@ -58,7 +58,7 @@
     <link href="plugins/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css">
     <link href="plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css">
     <link href="plugins/introjs/css/introjs.min.css" rel="stylesheet" type="text/css">
-	
+
     <link href="plugins/dataTables/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
     <link href="plugins/dataTables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 
@@ -146,44 +146,44 @@
                             <!-- vd_title-section -->
 
                             <div class="vd_content-section clearfix">
-                            <!-- start row-->
+                                <!-- start row-->
 
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="panel widget">
-                                        <div class="panel-heading vd_bg-grey">
-                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายงานการใช้จำแนกตามพื้นที่</h3>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="panel widget">
+                                            <div class="panel-heading vd_bg-grey">
+                                                <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายงานการใช้จำแนกตามประเภทอุปกรณ์</h3>
+                                            </div>
+                                            <div class="panel-body table-responsive" id="tab-body">
+                                                <table class="table table-striped" id="data-tables">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>ประเภทอุปกรณ์</th>
+                                                            <th>เจ้าของอุปกรณ์</th>
+                                                            <th>กลุ่มผู้ใช้งาน</th>
+                                                            <th>MAC</th>
+                                                            <th>วันที่เข้าใช้งาน</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                            <!-- Panel Widget -->
                                         </div>
-                                        <div class="panel-body table-responsive" id="tab-body">
-                                            <table class="table table-striped" id="data-tables">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ประเภทอุปกรณ์</th>													
-														<th>เจ้าของอุปกรณ์</th>
-														<th>กลุ่มผู้ใช้งาน</th>
-                                                        <th>MAC</th>
-                                                        <th>วันที่เข้าใช้งาน</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-
-
-                                                </tbody>
-                                            </table>
-
-                                        </div>
-                                        <!-- Panel Widget -->
+                                        <!-- col-md-12 -->
                                     </div>
-                                    <!-- col-md-12 -->
-                                </div>
-                                <!-- row -->
+                                    <!-- row -->
 
+
+                                </div>
+                                <!-- .vd_content-section -->
 
                             </div>
-                            <!-- .vd_content-section -->
-
-                        </div>
                             <!-- .vd_content-section -->
 
                         </div>
@@ -286,7 +286,7 @@
         <!-- Include Date Range Picker -->
         <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
-		
+
         <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
 
@@ -324,7 +324,7 @@
 
         <script type="text/javascript ">
             account_now = '<%= email %>';
-			//alert(account_now);
+            //alert(account_now);
 
             function refresh_table(sd, ed) {
                 //alert('refresh');
@@ -353,8 +353,8 @@
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
                     update_time = new Date(data_sql[3]);
-                    date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();
-					
+                    date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getMonth() + 1) + "/" + update_time.getFullYear();
+
 
 
                     //data_json = {name:data_sql[0],mac:data_sql[2],os:data_sql[3],date:date_str};
@@ -409,9 +409,8 @@
                 }
             }
 
-           
+
             datepick();
-			
         </script>
 
 </body>
