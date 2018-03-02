@@ -197,8 +197,6 @@
 <!-- Header Ends -->
 <script>
     //account_now = 'natthawat_a';
-    account_now = $('#email').text().trim();
-
     //alert(' account_now - ' + account_now);
     //alert(' account_now privilege - ' + $("#priv").html().trim().split(","));
     $("#chat-text").keyup(function(event) {
@@ -364,7 +362,8 @@
         //alert(account_now);
 
         //console.log(rdt);
-		if($("#priv").html().trim().split(",")[2]&&rdt=='-'){
+		//alert($("#priv").html().trim().split(",")[2]);
+		if($("#priv").html().trim().split(",")[2]=='true'&&rdt=='-'){
 			msg = '<p style="color:red">'+msg+'</p>';
 		}
 		else{
