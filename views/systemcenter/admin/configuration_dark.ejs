@@ -483,7 +483,7 @@
         <script>
             function sendCustomerSatisfaction() {
                 alert('sendCustomerSatisfaction');
-                $.ajax('http://localhost/sendCustSat', {
+                $.ajax('http://192.168.163.29/sendCustSat', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -496,7 +496,7 @@
 
             function refresh_table() {
                 //alert('refresh');
-                $.ajax('http://localhost/api/allusers', {
+                $.ajax('http://192.168.163.29/api/allusers', {
                     type: "get",
                     //data: {start:sd,end:ed},
                     success: function(json) {
@@ -557,7 +557,7 @@
 
             function editconfig(account, timefrom, timeto, timediff, editdevice, editprofile, timelog, countlog, verie, verchrome, verff) {
 
-                $.ajax('http://localhost/api/editconfig', {
+                $.ajax('http://192.168.163.29/api/editconfig', {
                     type: "get",
                     data: {
                         accname: account,
@@ -585,7 +585,7 @@
             function addlimit(lim, acc) {
                 //alert(lim);
                 //alert(acc);
-                $.ajax('http://localhost/api/limitdevice', {
+                $.ajax('http://192.168.163.29/api/limitdevice', {
                     type: "get",
                     data: {
                         limit: lim,

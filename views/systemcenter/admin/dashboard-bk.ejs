@@ -609,7 +609,7 @@
         <script type="text/javascript ">
             function refresh_group(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://localhost/report/report672', {
+                $.ajax('http://192.168.163.29/report/report672', {
                     type: "get",
                     data: {
                         start: sd,
@@ -716,7 +716,7 @@
 
             function refresh_browser(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://localhost/report/report67153', {
+                $.ajax('http://192.168.163.29/report/report67153', {
                     type: "get",
                     data: {
                         start: sd,
@@ -817,7 +817,7 @@
 
             function refresh_os(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://localhost/report/report67152', {
+                $.ajax('http://192.168.163.29/report/report67152', {
                     type: "get",
                     data: {
                         start: sd,
@@ -860,7 +860,7 @@
 
             function refresh_device(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://localhost/report/report678', {
+                $.ajax('http://192.168.163.29/report/report678', {
                     type: "get",
                     data: {
                         start: sd,
@@ -1016,7 +1016,7 @@
 
             function refresh_traffic() {
                 //alert('refresh');
-                $.ajax('http://localhost/report/traffic', {
+                $.ajax('http://192.168.163.29/report/traffic', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -1109,7 +1109,7 @@
 
             function refresh_area(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://localhost/report/report67154', {
+                $.ajax('http://192.168.163.29/report/report67154', {
                     type: "get",
                     data: {
                         start: sd,
@@ -1201,7 +1201,7 @@
             }
 
             function login_log(b, i) {
-                $.ajax('http://localhost/api/accesslog', {
+                $.ajax('http://192.168.163.29/api/accesslog', {
                     type: "get",
                     data: {
                         browser: b,
@@ -1222,7 +1222,7 @@
 
             function countlog() {
                 //alert('refresh');
-                $.ajax('http://localhost/api/countlogin', {
+                $.ajax('http://192.168.163.29/api/countlogin', {
                     type: "get",
                     data: {
                         accname: account_now
