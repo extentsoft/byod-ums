@@ -252,7 +252,7 @@
             /*
                         $.ajax({
                             type: "post",
-                            url: 'http://localhost/api/chat/attachment',
+                            url: 'http://192.168.163.29/api/chat/attachment',
                             data: {
                                 data: reader.result,
                             },
@@ -293,7 +293,7 @@
     }
     */
     function get_chat() {
-        $.ajax('http://localhost/api/getchat', {
+        $.ajax('http://192.168.163.29/api/getchat', {
             type: "get",
             success: function(json) {
                 //alert(JSON.stringify(json));
@@ -359,7 +359,7 @@
         //alert(account_now);
         alert(msg);
         //console.log(rdt);
-        $.ajax('http://localhost/api/addchat', {
+        $.ajax('http://192.168.163.29/api/addchat', {
             type: "post",
             data: {
                 usr: account_now,
@@ -379,7 +379,7 @@
     }
 
     function get_noti() {
-        $.ajax('http://localhost/api/getnotimsg', {
+        $.ajax('http://192.168.163.29/api/getnotimsg', {
             type: "get",
             data: {
                 chanel: '0'

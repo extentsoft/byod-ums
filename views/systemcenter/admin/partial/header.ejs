@@ -197,8 +197,6 @@
 <!-- Header Ends -->
 <script>
     //account_now = 'natthawat_a';
-    account_now = $('#email').text().trim();
-
     //alert(' account_now - ' + account_now);
     //alert(' account_now privilege - ' + $("#priv").html().trim().split(","));
     $("#chat-text").keyup(function(event) {
@@ -257,7 +255,7 @@
             /*
                         $.ajax({
                             type: "post",
-                            url: 'http://localhost/api/chat/attachment',
+                            url: 'http://192.168.163.29/api/chat/attachment',
                             data: {
                                 data: reader.result,
                             },
@@ -298,7 +296,7 @@
     }
     */
     function get_chat() {
-        $.ajax('http://localhost/api/getchat', {
+        $.ajax('http://192.168.163.29/api/getchat', {
             type: "get",
             success: function(json) {
                 //alert(JSON.stringify(json));
@@ -364,7 +362,8 @@
         //alert(account_now);
 
         //console.log(rdt);
-        if ($("#priv").html().trim().split(",")[2] && rdt == '-') {
+        //alert($("#priv").html().trim().split(",")[2]);
+        if ($("#priv").html().trim().split(",")[2] == 'true' && rdt == '-') {
             msg = '<p style="color:red">' + msg + '</p>';
         } else {
 
@@ -398,7 +397,7 @@
     }
 
     function get_noti() {
-        $.ajax('http://localhost/api/getnotimsg', {
+        $.ajax('http://192.168.163.29/api/getnotimsg', {
             type: "get",
             data: {
                 chanel: '0'
