@@ -433,6 +433,22 @@
 
 
             function bindata(data_sql) {
+				//alert('cc');
+				$.ajax('http://localhost/api/checklimit', {
+                    type: "get",
+                    data: {
+                        accname: account_now
+                    },
+                    success: function(json) {
+						var x = document.getElementById("add-btn");
+						if (json==1) {
+							x.style.display = "none";
+						} else {
+							x.style.display = "block";
+						}
+                        //alert(json);
+                    }
+                });
                 //alert('bind');
                 //alert(data_sql);
                 data = [];
@@ -558,16 +574,7 @@
 
                 }
 				
-				$.ajax('http://localhost/api/adddevice', {
-                    type: "get",
-                    data: {
-                        accname: account_now
-                    },
-                    success: function(json) {
-                        addmac(mac);
-                        refreshlist();
-                    }
-                });
+				
             }
 
             function removedevice(mac) {

@@ -41,6 +41,7 @@ app.get('/inspect/' , function(req,res,next){
 // param = uid
 var listdevice = require('./routes/listdevice');
 var listhistory = require('./routes/listhistory');
+var checklimit = require('./routes/checklimit');
 
 // List all user's bind MAC - TBL_ACCOUNT
 // param = uid
@@ -146,6 +147,7 @@ app.use('/reports/report675', report675);
 
 app.use('/api/listdevice', listdevice);
 app.use('/api/listhistory', listhistory);
+app.use('/api/checklimit', checklimit);
 app.use('/api/listmac', listmac);
 app.use('/api/updatemac', updatemac);
 app.use('/api/adddevice', adddevice);
