@@ -1,5 +1,9 @@
 module.exports = {
+<<<<<<< HEAD
     environment: 'test2',
+=======
+    environment: 'test',
+>>>>>>> feb3f0ffe59348c79ad45608a89529db33f092c4
     bypass: true,
     log_level: 'warn'
 }
