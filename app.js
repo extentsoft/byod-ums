@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var envConfig = require('./config/environment');
+var schedule = require('node-schedule');
 
 const winston = require('winston');
 winston.level = envConfig.log_level;
@@ -216,6 +217,10 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+
+var j = schedule.scheduleJob('\5 * * * * *', function() {
+    console.log('schedule trigger');
+})
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 module.exports = app;
