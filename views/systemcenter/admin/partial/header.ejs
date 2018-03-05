@@ -71,7 +71,7 @@
 
                                                 </div>
                                                 <div class="content-list content-image content-menu">
-                                                    <div data-rel="scroll" id="chatbox_bar">
+                                                    <div data-rel="scroll">
                                                         <ul class="list-wrapper pd-lr-10" id="chatbox">
                                                         </ul>
                                                     </div>
@@ -366,6 +366,18 @@
                         $('#chatbox').append(other_msg);
                     }
                 }
+
+                //alert($('#chatbox li:last-child div.menu-text').clone().children().remove().end().text());
+                //$('#chatbox li:last-child div.menu-text').focus();
+
+                /*$('#chatbox_bar').animate({
+                    scrollTop: $('#chatbox').prop("scrollHeight")
+                }, 500);*/
+                alert('getchat');
+
+                var style = css($("#chatbox").parent());
+                alert(JSON.stringify(style));
+
             }
         });
 
@@ -378,7 +390,8 @@
         //alert($('#chatbox_bar').scrollHeight);
         //alert($('#chatbox').scrollHeight);
 
-        alert($('#chatbox li:last-child div.menu-text').text());
+
+
 
         //console.log(rdt);
         //alert($("#priv").html().trim().split(",")[2]);
@@ -400,6 +413,7 @@
                 //$('#chatbox').empty();
                 document.getElementById('chat-text').value = ''
                 get_chat();
+
 
             }
         });
@@ -460,4 +474,37 @@
     }
     get_noti();
     get_chat();
+
+    function css(a) {
+        var sheets = document.styleSheets,
+            o = {};
+        for (var i in sheets) {
+            var rules = sheets[i].rules || sheets[i].cssRules;
+            for (var r in rules) {
+                if (a.is(rules[r].selectorText)) {
+                    o = $.extend(o, css2json(rules[r].style), css2json(a.attr('style')));
+                }
+            }
+        }
+        return o;
+    }
+
+    function css2json(css) {
+        var s = {};
+        if (!css) return s;
+        if (css instanceof CSSStyleDeclaration) {
+            for (var i in css) {
+                if ((css[i]).toLowerCase) {
+                    s[(css[i]).toLowerCase()] = (css[css[i]]);
+                }
+            }
+        } else if (typeof css == "string") {
+            css = css.split("; ");
+            for (var i in css) {
+                var l = css[i].split(": ");
+                s[l[0].toLowerCase()] = (l[1]);
+            }
+        }
+        return s;
+    }
 </script>
