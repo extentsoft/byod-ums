@@ -1,5 +1,5 @@
 var express = require('express');
-var pool = require('../../modules/mssql').pool;
+var pool = require('../modules/mssql').pool;
 var Request = require('tedious').Request;
 var router = express.Router();
 
@@ -17,7 +17,7 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 
-    var request = new Request("SELECT count(*) FROM [AgileControllerDB].[dbo].[UMS_ActivityLog] where userId = '"+req.param('accname')+"' and CONVERT (date, created_at) = CONVERT (date, CURRENT_TIMESTAMP-3)", function(err, rowCount){
+    var request = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_ActivityLog] ([detail],[userId],[devicemac],[created_at]) VALUES ('Editprofile','"+req.param('accname')+"','',CURRENT_TIMESTAMP);", function(err, rowCount){
 
 	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 

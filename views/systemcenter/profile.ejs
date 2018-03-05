@@ -225,9 +225,9 @@
                                                     <div class="form-group form-actions">
                                                         <div class="col-sm-4"> </div>
                                                         <div class="col-sm-7">
-                                                            <!--<button class="btn vd_btn vd_bg-green vd_white" type="submit"><i class="icon-ok"></i> Save</button>
+                                                            <!--<button class="btn vd_btn vd_bg-green vd_white" type="submit" ><i class="icon-ok"></i> Save</button>
                                                             <button class="btn vd_btn" type="button">Cancel</button>-->
-                                                            <button type="button" class="btn vd_btn vd_bg-green" id="top-right-success"><!--<i class="fa fa-check-circle append-icon"></i>-->Save</button>
+                                                            <button type="button" class="btn vd_btn vd_bg-green" id="top-right-success" onclick="editprofile()"><!--<i class="fa fa-check-circle append-icon"></i>-->Save</button>
 
                                                         </div>
                                                     </div>
@@ -329,6 +329,7 @@
 
 
         <script type="text/javascript ">
+			account_now = $('#email').text().trim();
             $(document).ready(function() {
                 //alert($('#u_ssn').attr("placeholder"));
 
@@ -401,7 +402,51 @@
         </script>
 
         <script type="text/javascript ">
-            
+            function editprofile(){
+				$.ajax('http://localhost/api/addprofilelog', {
+					type: "get",
+					data: {
+						accname: account_now
+					},
+					success: function(json) {
+						$.ajax('http://localhost/api/checkprofilelimit', {
+							type: "get",
+							data: {
+								accname: account_now
+							},
+							success: function(json) {
+								//alert(json);
+								if (json == 1) {
+									addviolation('overeditprofile');
+									$.ajax('http://localhost/api/message/email/5/' + account_now, {
+										type: "get",
+										success: function(json) {
+											//alert(JSON.stringify(json));
+										}
+									});
+									//alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
+
+									
+								}
+							}
+						});
+					}
+				});
+			}
+			
+			function addviolation(detail) {
+				//alert('refresh');
+				$.ajax('http://localhost/api/addviolation', {
+					type: "get",
+					data: {
+						violation: detail,
+						accname: account_now
+					},
+					success: function(json) {
+						//alert(json);
+					}
+				});
+			}
         </script>
 
 </body>
