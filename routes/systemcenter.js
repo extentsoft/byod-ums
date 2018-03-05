@@ -11,21 +11,21 @@ module.exports = function(app, passport) {
     app.get('/systemcenter/api', function(req, res) {
         //var url = 'http://www.webservicex.net/length.asmx?wsdl';
         var url = 'http://192.168.163.25:8088/secoWS/service/NewAccountManagerServices?wsdl';
-		
+
         //var args = { LengthValue: 5, fromLengthUnit: 'Nanometers', toLengthUnit: 'Millimeters' };
         var args = {
             in0: 'info',
-			//in0: req.param('accname'),
+            //in0: req.param('accname'),
             in1: {
                 account: 'info',
-				//account: req.param('accname'),
+                //account: req.param('accname'),
                 accountType: 1,
                 orgName: '\\LDAP Users Temp',
                 bindMac: 'AA-BB-CC-DD-EE-FF',
-				//bindMac: req.param('macbind'),
+                //bindMac: req.param('macbind'),
                 loginType: 3,
                 userName: 'Information Center'
-				//userName: req.param('uname')
+                    //userName: req.param('uname')
             }
         };
 
@@ -34,28 +34,19 @@ module.exports = function(app, passport) {
                 console.log(err);
             });
         });*/
-		console.log(args);
+        console.log(args);
         soap.createClient(url, function(err, client) {
-			var options = {
-		mustUnderstand: true,
-		hasTimeStamp: false,
+            var options = {
+                mustUnderstand: true,
+                hasTimeStamp: false,
 
-		passwordType: 'PasswordText'
-		  };
-	var wsSecurity = new soap.WSSecurity('admin', 'P@ssw0rd123', options);
-	client.setSecurity(wsSecurity);
+                passwordType: 'PasswordText'
+            };
+            var wsSecurity = new soap.WSSecurity('admin', 'P@ssw0rd123', options);
+            client.setSecurity(wsSecurity);
             client.modifyAccount(args, function(err, result) {
                 console.log(result);
             });
-        });
-    });
-
-    app.get('/systemcenter/test', function(req, res) {
-        res.render("systemcenter/admin/test", {
-            title: 'Test',
-            email: req.session.user.email,
-            firstname: req.session.user.firstname,
-            lastname: req.session.user.lastname
         });
     });
 
@@ -162,8 +153,8 @@ module.exports = function(app, passport) {
         }
 
     });
-	
-	app.get('/systemcenter/history', isLoggedIn, function(req, res) {
+
+    app.get('/systemcenter/history', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
 
         if (req.session.user.pref_theme == 0) {
@@ -696,8 +687,8 @@ module.exports = function(app, passport) {
             });
         }
     });
-	
-	app.get('/systemcenter/report/usage/site/today', isLoggedIn, function(req, res) {
+
+    app.get('/systemcenter/report/usage/site/today', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/site/today', {
@@ -721,8 +712,8 @@ module.exports = function(app, passport) {
             });
         }
     });
-	
-	app.get('/systemcenter/report/usage/site/amount', isLoggedIn, function(req, res) {
+
+    app.get('/systemcenter/report/usage/site/amount', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/site/amount', {
@@ -746,8 +737,8 @@ module.exports = function(app, passport) {
             });
         }
     });
-	
-	app.get('/systemcenter/report/usage/site/area', isLoggedIn, function(req, res) {
+
+    app.get('/systemcenter/report/usage/site/area', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/site/area', {
@@ -771,8 +762,8 @@ module.exports = function(app, passport) {
             });
         }
     });
-	
-	app.get('/systemcenter/report/usage/type', isLoggedIn, function(req, res) {
+
+    app.get('/systemcenter/report/usage/type', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/type', {
@@ -796,8 +787,8 @@ module.exports = function(app, passport) {
             });
         }
     });
-	
-	app.get('/systemcenter/report/usage/browser', isLoggedIn, function(req, res) {
+
+    app.get('/systemcenter/report/usage/browser', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/browser', {
@@ -821,8 +812,8 @@ module.exports = function(app, passport) {
             });
         }
     });
-	
-	app.get('/systemcenter/report/usage/os', isLoggedIn, function(req, res) {
+
+    app.get('/systemcenter/report/usage/os', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/os', {
@@ -1013,8 +1004,8 @@ module.exports = function(app, passport) {
             });
         }
     });
-	
-	app.get('/systemcenter/report/policy/violation', isLoggedIn, function(req, res) {
+
+    app.get('/systemcenter/report/policy/violation', isLoggedIn, function(req, res) {
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/policy/violation', {
                 title: 'Report',
@@ -1136,7 +1127,7 @@ module.exports = function(app, passport) {
                             req.session.user.position = parsed_body.position;
                             req.session.user.level = parsed_body.level;
                             req.session.user.area = parsed_body.area;
-                            req.session.user.authorized = parsed_body.authorized;
+                            req.session.authorized = parsed_body.authorized;
 
                             request('http://localhost/api/getuserpref?accname=' + user.email, function(error, response, body) {
                                 if (!error && response.statusCode == 200) {
@@ -1207,7 +1198,7 @@ function isLoggedIn(req, res, next) {
     console.log(req.session.authenticated);
     console.log(req.session.authorized);
 
-    if (req.session.authenticated && req.session.authorized > 0) next();
+    if (req.session.authenticated) next();
     else res.redirect('/systemcenter/login');
 
 }
