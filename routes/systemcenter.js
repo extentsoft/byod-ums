@@ -50,34 +50,8 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/systemcenter/', isLoggedIn, function(req, res) {
-        console.log('1 - ' + JSON.stringify(req.session.user));
-
-        console.log(' is admin ' + req.session.authorized);
-        if (req.session.user.pref_theme == 0) {
-
-            res.render('systemcenter/admin/dashboard', {
-                title: 'แผงควบคุมหลัก',
-                path: 'systemcenter/',
-                message: req.flash('message'),
-                email: req.session.user.email,
-                firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
-                isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
-            });
-        } else {
-            res.render('systemcenter/admin/dashboard_dark', {
-                title: 'แผงควบคุมหลัก',
-                path: 'systemcenter/',
-                message: req.flash('message'),
-                email: req.session.user.email,
-                firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
-                isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
-            });
-        }
+    app.get('/systemcenter/', function(req, res) {
+        res.redirect('/systemcenter/dashboard');
     });
 
 
@@ -86,6 +60,8 @@ module.exports = function(app, passport) {
     =================================================================== */
     app.get('/systemcenter/dashboard', isLoggedIn, function(req, res) {
         console.log('1 - ' + JSON.stringify(req.session.user));
+
+        if (!req.session.authorized) res.redirect('/systemcenter/profile');
 
         console.log(' is admin ' + req.session.authorized);
         if (req.session.user.pref_theme == 0) {
@@ -1072,7 +1048,7 @@ module.exports = function(app, passport) {
     app.get('/systemcenter/login', function(req, res) {
         console.log('logging in');
         res.render('systemcenter/login', { user: req.session.user, error: req.flash('error') });
-		console.log('tong');
+        console.log('tong');
         //res.render('profile/login.ejs', { message: req.flash('loginMessage') });
     });
 
@@ -1084,7 +1060,7 @@ module.exports = function(app, passport) {
     }));
 */
     app.post('/systemcenter/login', function(req, res) {
-		console.log('cz');
+        console.log('cz');
         console.log(req.body.username + " -- " + req.body.password);
         /*
                 if (req.body.username == "byod1" && req.body.password == 'password') {
