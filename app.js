@@ -56,6 +56,9 @@ var allusers = require('./routes/allusers');
 var accesslog = require('./routes/accesslog');
 var limitdevice = require('./routes/limitdevice');
 
+var addprofilelog = require('./routes/addprofilelog');
+var checkprofilelimit = require('./routes/checkprofilelimit');
+
 var addnotimsg = require('./routes/addnotimsg');
 var getnotimsg = require('./routes/getnotimsg');
 
@@ -67,6 +70,8 @@ var editconfig = require('./routes/editconfig');
 var getuserpref = require('./routes/getuserpref');
 var edituserpref = require('./routes/edituserpref');
 var addviolation = require('./routes/addviolation');
+
+
 
 var deviceinmon = require('./routes/monitor/deviceinmon');
 var deviceoutmon = require('./routes/monitor/deviceoutmon');
@@ -157,6 +162,9 @@ app.use('/api/alldevices', alldevices);
 app.use('/api/allusers', allusers);
 app.use('/api/accesslog', accesslog);
 app.use('/api/limitdevice', limitdevice);
+
+app.use('/api/addprofilelog', addprofilelog);
+app.use('/api/checkprofilelimit', checkprofilelimit);
 
 app.use('/api/addnotimsg', addnotimsg);
 app.use('/api/getnotimsg', getnotimsg);

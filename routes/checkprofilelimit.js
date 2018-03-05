@@ -1,5 +1,5 @@
 var express = require('express');
-var pool = require('../../modules/mssql').pool;
+var pool = require('../modules/mssql').pool;
 var Request = require('tedious').Request;
 var router = express.Router();
 
@@ -17,7 +17,7 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 
-    var request = new Request("SELECT count(*) FROM [AgileControllerDB].[dbo].[UMS_ActivityLog] where userId = '"+req.param('accname')+"' and CONVERT (date, created_at) = CONVERT (date, CURRENT_TIMESTAMP-3)", function(err, rowCount){
+    var request = new Request("if (select c_value from [AgileControllerDB].[dbo].[UMS_Config] where c_name = 'editprofile') <= (select count(*) from [AgileControllerDB].[dbo].[UMS_ActivityLog] where CONVERT (date, created_at) = CONVERT (date, CURRENT_TIMESTAMP) and userId = '"+req.param('accname')+"' and detail = 'Editprofile') select 1 else select 0", function(err, rowCount){
 
 	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 
@@ -27,7 +27,7 @@ var deviceList = function(req,res,next){
       }
       console.log('rowCount: ' + rowCount);
       //console.log(JSON.stringify(result));
-      req.test2 = result; 
+      req.test2 = result;
       connection.release();
       next();
     });
@@ -59,5 +59,3 @@ router.get('/', deviceList, function(req, res, next) {
 });
 
 module.exports = router;
-
-
