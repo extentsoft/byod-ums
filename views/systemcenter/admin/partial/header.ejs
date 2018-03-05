@@ -203,6 +203,7 @@
     //account_now = 'natthawat_a';
     //alert(' account_now - ' + account_now);
     //alert(' account_now privilege - ' + $("#priv").html().trim().split(","));
+	var chat_val = 1;
 	account_now = $('#email').text().trim();
     $("#chat-text").keyup(function(event) {
         if (event.keyCode === 13) {
@@ -295,12 +296,19 @@
     }
     */
     function get_chat() {
+	//alert(chat_val);
         $.ajax('http://localhost/api/getchat', {
             type: "get",
             success: function(json) {
                 //alert(JSON.stringify(json));
                 data_c = JSON.parse(JSON.stringify(json));
                 datac = [];
+				var chat_val_tmp = data_c.length;
+				if((chat_val < data_c.length) && (chat_val!= 1)){
+					data_c.splice(0, chat_val);
+					chat_val = data_c.length;					
+				}
+				//alert(data_c.length);
                 for (i = 0; i < data_c.length; i++) {
                     data_json = {};
                     data_json = {
@@ -316,6 +324,10 @@
                     data_c.splice(0, 5);
                     i = -1;
                 }
+				
+				chat_val = chat_val_tmp;
+				
+				//alert(chat_val);
 
                 for (i = 0; i < datac.length; i++) {
                     //tmp = String(JSON.stringify(datac[i])).replace('\t','');
@@ -355,6 +367,9 @@
                 }
             }
         });
+		
+
+		
     }
 
     function sendchat(msg, rdt) {
@@ -378,7 +393,7 @@
 
             success: function(json) {
                 //alert('a');
-                $('#chatbox').empty();
+                //$('#chatbox').empty();
                 document.getElementById('chat-text').value = ''
                 get_chat();
 
@@ -434,6 +449,7 @@
                 }
                 //alert(JSON.stringify(data));
                 //bindata(data_res);
+				
             }
         });
 
