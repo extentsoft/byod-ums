@@ -1100,7 +1100,7 @@ module.exports = function(app, passport) {
             if (err instanceof Error) {
                 console.log('Authentication Failure');
                 req.session.authenticated = false;
-                req.session.authorized = 0;
+                req.session.authorized = false;
                 res.redirect('/systemcenter/fixauthen/');
             } else {
                 console.log('Authentication Success');
@@ -1109,7 +1109,7 @@ module.exports = function(app, passport) {
                 //var AC = require('../app/models/account');
 
                 req.session.authenticated = true;
-                req.session.authorized = 1;
+                req.session.authorized = true;
                 req.session.user = {};
                 //req.session.user._id = user._id;
                 req.session.user.email = user.email;

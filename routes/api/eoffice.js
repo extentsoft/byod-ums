@@ -51,6 +51,10 @@ router.get('/profile/:email', function(req, res, next) {
         res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Supornchai', ln: 'Klinfoung', email: 'supornchai@excise.go.th', position: '500', level: '10', area: '1', authorized: false });
     } else if (req.params.email == 'maytee') {
         res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Maytee', ln: 'Thangsripong', email: 'maytee@excise.go.th', position: '500', level: '10', area: '1', authorized: false });
+    } else if (req.params.email == 'ann_chanatya') {
+        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Chanatya', ln: '...', email: 'ann_chanatya@excise.go.th', position: '500', level: '10', area: '1', authorized: false });
+    } else if (req.params.email == 'thaweesak') {
+        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Thaweesak', ln: '...', email: 'thaweesak@excise.go.th', position: '500', level: '10', area: '1', authorized: false });
     } else {
         res.json(null);
     }
