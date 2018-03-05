@@ -6,6 +6,7 @@
 
 var app = require('../app');
 var debug = require('debug')('byod-ums:server');
+var request = require('request');
 var http = require('http');
 
 /**
@@ -14,6 +15,33 @@ var http = require('http');
 
 var port = normalizePort(process.env.PORT || '80');
 app.set('port', port);
+
+/**
+ * Set scheduling jobs
+ */
+var schedule = require('node-schedule');
+
+var j = schedule.scheduleJob('*/5 * * * * *', function() {
+    //console.log('The answer to life, the universe, and everything!');
+
+
+    request('http://localhost/api/message/email/1/natthawat_a', function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+            if (body != null) {
+                console.log("Warning Email to Administrator for natthawat_a violation");
+
+            } else {
+                console.log('natthawat_a has just violated');
+            }
+        } else {
+            console.log('natthawat_a has just violated');
+        }
+
+    });
+
+});
+
+
 
 /**
  * Create HTTP server.

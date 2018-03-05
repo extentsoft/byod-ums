@@ -9,7 +9,7 @@
         <h3 class="menu-title hide-nav-medium hide-nav-small">เมนูการใช้งาน</h3>
 
         <div class="vd_menu">
-            <ul ="uu1">
+            <ul="uu1">
                 <% if(isauthorized){ %>
                     <li id="aa1">
                         <a href="/systemcenter/dashboard">
@@ -38,7 +38,7 @@
                                 <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
                             </a>
                         </li>
-						<li>
+                        <li>
                             <a href="/systemcenter/history">
                                 <span class="menu-icon"><i class="fa fa-history"></i></span>
                                 <span class="menu-text">ประวัติการเข้าใช้งานย้อนหลัง</span>
@@ -73,7 +73,7 @@
                                                 <span class="menu-text">รายงานการลงทะเบียนอุปกรณ์</span>
                                             </a>
                                         </li>
-										<li>
+                                        <li>
                                             <a href="/systemcenter/report/usage/site/today" data-action="click-trigger">
                                                 <span class="menu-text">รายงานการใช้ทรัพยากรของระบบ</span>
                                                 <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
@@ -93,7 +93,7 @@
                                                 </ul>
                                             </div>
                                         </li>
-										<li>
+                                        <li>
                                             <a href="/systemcenter/report/monitor/device/addmonitor" data-action="click-trigger">
                                                 <span class="menu-text">กำหนดอุปกรณ์เพื่อตรวจสอบการเข้าใช้งาน</span>
                                                 <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
@@ -113,7 +113,7 @@
                                                 </ul>
                                             </div>
                                         </li>
-										<li>
+                                        <li>
                                             <a href="/systemcenter/report/usage/site/area">
                                                 <span class="menu-text">รายงานการใช้งานจำแนกตาม สถานที่</span>
                                             </a>
@@ -208,17 +208,17 @@
                                                 </ul>
                                             </div>
                                         </li>
-										<li>
+                                        <li>
                                             <a href="/systemcenter/report/usage/type">
                                                 <span class="menu-text">รายงานการใช้จำแนกตามประเภทอุปกรณ์</span>
                                             </a>
                                         </li>
-										<li>
+                                        <li>
                                             <a href="/systemcenter/report/usage/os">
                                                 <span class="menu-text">รายงานการใช้งานจำแนกตาม ระบบปฎิบัติการ</span>
                                             </a>
                                         </li>
-										<li>
+                                        <li>
                                             <a href="/systemcenter/report/usage/browser">
                                                 <span class="menu-text">รายงานการใช้งานจำแนกตาม  Browser</span>
                                             </a>
@@ -237,22 +237,21 @@
                                 </div>
                             </li>
                             <%}%>
-            </ul>
-            <!-- Head menu search form ends -->
-            <div class="navbar-spacing clearfix">
-            </div>
+                                </ul>
+                                <!-- Head menu search form ends -->
+                                <div class="navbar-spacing clearfix">
+                                </div>
         </div>
     </div>
-	<script>
-		//alert($("#priv").html().trim().split(",")[2]);
-		if($("#priv").html().trim().split(",")[2]=='false'){
-			//alert('a');
-			//document.getElementById("uu1").children[0].style.display = "none";
-			document.getElementById("aa1").style.display = "none";
-			document.getElementById("aa2").style.display = "none";
-			document.getElementById("aa3").style.display = "none";
-		}
-		else{
-		//alert('b');
-		}
-	</script>
+    <script>
+        //alert($("#priv").html().trim().split(",")[2]);
+        if ($("#priv").html().trim().split(",")[2] == 'false') {
+            //alert('a');
+            //document.getElementById("uu1").children[0].style.display = "none";
+            document.getElementById("aa1").style.display = "none";
+            document.getElementById("aa2").style.display = "none";
+            document.getElementById("aa3").style.display = "none";
+        } else {
+            //alert('b');
+        }
+    </script>
