@@ -21,8 +21,8 @@ app.set('port', port);
  */
 var schedule = require('node-schedule');
 
-var j = schedule.scheduleJob('*/5 * * * * *', function() {
-    //console.log('The answer to life, the universe, and everything!');
+//var j = schedule.scheduleJob('*/5 * * * * *', function() {
+/*  console.log('The answer to life, the universe, and everything!');
 
 
     request('http://localhost/api/message/email/1/natthawat_a', function(error, response, body) {
@@ -41,7 +41,7 @@ var j = schedule.scheduleJob('*/5 * * * * *', function() {
 
 });
 
-
+*/
 
 /**
  * Create HTTP server.
