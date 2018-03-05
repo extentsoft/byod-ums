@@ -293,7 +293,7 @@
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
                     update_time = new Date(data_sql[5]);
-                    date_str = update_time.getHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();
+                    date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();
 
 
                     data_json = {
@@ -321,7 +321,7 @@
             function datepick() {
 
                 var today = new Date();
-                var dd = today.getDate();
+                var dd = today.getUTCDate();
                 var mm = today.getMonth() + 1; //January is 0!
 
                 var yyyy = today.getFullYear();

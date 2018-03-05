@@ -67,7 +67,7 @@ module.exports = function(app, passport) {
             from: 'byod@excise.go.th', // sender address
             to: 'byod@excise.go.th', // list of receivers
             subject: 'Customer Satisfaction Survey', // Subject line
-            html: 'To valued staffs,<br><br>Please complete survey link to improve our service in the future <br> <a href="http://192.168.163.29/custsat">Link</a><br><br>Thank you.<br><br>Administrator' // plain text body
+            html: 'To valued staffs,<br><br>Please complete survey link to improve our service in the future <br> <a href="http://localhost/custsat">Link</a><br><br>Thank you.<br><br>Administrator' // plain text body
         };
 
         var transporter = nodemailer.createTransport({

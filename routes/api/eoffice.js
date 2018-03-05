@@ -34,9 +34,9 @@ router.get('/profile/:email', function(req, res, next) {
     } else if (req.params.email == 'byod2') {
         res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'byod2', ln: 'sky', email: 'byod2@excise.go.th', position: '0', level: '0', area: '0', authorized: false });
     } else if (req.params.email == 'byod3') {
-        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'byod3', ln: 'sky', email: 'byod3@excise.go.th', position: '0', level: '0', area: '0', authorized: true });
+        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'byod3', ln: 'sky', email: 'byod3@excise.go.th', position: '0', level: '0', area: '0', authorized: false });
     } else if (req.params.email == 'byod4') {
-        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'byod4', ln: 'sky', email: 'byod4@excise.go.th', position: '0', level: '0', area: '0', authorized: true });
+        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'byod4', ln: 'sky', email: 'byod4@excise.go.th', position: '0', level: '0', area: '0', authorized: false });
     } else if (req.params.email == 'pinij') {
         res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Pinij', ln: 'Vitoonsaridsilp', email: 'pinij@excise.go.th', position: '500', level: '10', area: '1', authorized: false });
     } else if (req.params.email == 'phanit') {
@@ -47,8 +47,13 @@ router.get('/profile/:email', function(req, res, next) {
         res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Supornchai', ln: 'Klinfoung', email: 'supornchai@excise.go.th', position: '500', level: '10', area: '1', authorized: false });
     } else if (req.params.email == 'maytee') {
         res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Maytee', ln: 'Thangsripong', email: 'maytee@excise.go.th', position: '500', level: '10', area: '1', authorized: false });
+    } else if (req.params.email == 'ann_chanatya') {
+        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Chanatya', ln: '...', email: 'ann_chanatya@excise.go.th', position: '500', level: '10', area: '1', authorized: false });
+    } else if (req.params.email == 'thaweesak') {
+        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Thaweesak', ln: '...', email: 'thaweesak@excise.go.th', position: '500', level: '10', area: '1', authorized: false });
     } else {
-        res.json(null);
+        //res.json(null);
+		res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Natthawat', ln: 'Arunweerungroj', email: 'natthawat_a@excise.go.th', position: '0', level: '0', area: '0', authorized: true });
     }
 });
 
