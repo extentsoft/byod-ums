@@ -12,7 +12,7 @@ module.exports = {
         baseDN: "ou=People,dc=excise,dc=go,dc=th"
     },
     test2: {
-        url: 'ldap://192.168.1.37:389',
+        url: 'ldap://192.168.1.39:389',
         rootDN: "cn=manager,dc=excise,dc=go,dc=th",
         rootPassword: "P@ssw0rd",
         baseDN: "ou=People,dc=excise,dc=go,dc=th"
