@@ -370,6 +370,12 @@
 					else if(data_sql[1]=='editdeivceoverlimit'){
 						vio = 'มีการลงทะเบียน-เพิกถอนอุปกรณ์มากเกินกว่าที่กำหนดไว้ในหนึ่งวัน';
 					}
+					else if(data_sql[1]=='accessdiffsite'){
+						vio = 'มีการเข้าใช้งานต่างสถานที่ในระยะเวลาที่สั้นเกินกว่าที่กำหนดไว้ในระบบ';
+					}
+					else if(data_sql[1]=='overeditprofile'){
+						vio = 'มีการแก้ไขข้อมูลส่วนตัวเกินจำนวนครั้งที่ระบุไว้ในระบบ';
+					}
 					else {vio=data_sql[1];}
                     update_time = new Date(data_sql[3]);
                     date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();

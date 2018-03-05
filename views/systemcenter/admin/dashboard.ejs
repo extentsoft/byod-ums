@@ -1209,7 +1209,7 @@
                     success: function(json) {
                         //alert(json);
                         if (json == 1) {
-							addviolation('overlogin');
+							addviolation('overlogin',account_now);
 							$.ajax('http://localhost/api/message/email/1/' + account_now, {
                                 type: "get",
                                 success: function(json) {
@@ -1228,13 +1228,13 @@
                 });
             }
 			
-			function addviolation(detail) {
+			function addviolation(detail,usr) {
 				//alert('refresh');
 				$.ajax('http://localhost/api/addviolation', {
 					type: "get",
 					data: {
 						violation: detail,
-						accname: account_now
+						accname: usr
 					},
 					success: function(json) {
 						//alert(json);
@@ -1249,7 +1249,7 @@
                     success: function(json) {
                         //alert(json);
                         if (json == 1) {
-							addviolation('outoftime');
+							addviolation('outoftime',account_now);
 							$.ajax('http://localhost/api/message/email/3/' + account_now, {
                                 type: "get",
                                 success: function(json) {
@@ -1271,7 +1271,7 @@
                     success: function(json) {
                         //alert(json);
                         if (json == 1) {
-							addviolation('devicemon');
+							addviolation('devicemon',account_now);
 							$.ajax('http://localhost/api/message/email/6/' + account_now, {
                                 type: "get",
                                 success: function(json) {
@@ -1285,8 +1285,32 @@
                     }
                 });
             }
+			
+			function check_diffsite() {
+                $.ajax('http://localhost/api/checkdiffsite', {
+                    type: "get",
+                    success: function(json) {
+						data_res = JSON.parse(JSON.stringify(json));
+                        if(data_res.length>0)
+							for(i=0;i<data_res.length;i++){
+								//alert(data_res[0]);
+								addviolation('accessdiffsite',data_res[0]);
+								$.ajax('http://localhost/api/message/email/2/' + data_res[0], {
+									type: "get",
+									success: function(json) {
+										//alert(JSON.stringify(json));
+									}
+								});
+							}
+                        }
+
+                    
+                });
+            }
+			
 			check_access();
 			check_devicemon();
+			check_diffsite();
             acclogin();
             refresh_traffic();
 

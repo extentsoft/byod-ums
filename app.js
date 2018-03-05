@@ -98,6 +98,7 @@ var alllimit = require('./routes/reports/alllimit');
 var checkaccesstime = require('./routes/policy/checkaccesstime');
 var checkdevicemon = require('./routes/policy/checkdevicemon');
 var checkcountdevice = require('./routes/policy/checkcountdevice');
+var checkdiffsite = require('./routes/policy/checkdiffsite');
 
 var app = express();
 
@@ -208,6 +209,7 @@ app.use('/report/alllimit', alllimit);
 app.use('/api/checkcountdevice', checkcountdevice);
 app.use('/api/checkdevicemon', checkdevicemon);
 app.use('/api/checkaccesstime', checkaccesstime);
+app.use('/api/checkdiffsite', checkdiffsite);
 
 
 // catch 404 and forward to error handler
