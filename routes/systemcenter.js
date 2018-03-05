@@ -60,9 +60,33 @@ module.exports = function(app, passport) {
     });
 
     app.get('/systemcenter/', isLoggedIn, function(req, res) {
-        console.log("Now you are logged in");
-        console.log(req.session.user.email);
-        res.redirect('/systemcenter/dashboard');
+        console.log('1 - ' + JSON.stringify(req.session.user));
+
+        console.log(' is admin ' + req.session.authorized);
+        if (req.session.user.pref_theme == 0) {
+
+            res.render('systemcenter/admin/dashboard', {
+                title: 'แผงควบคุมหลัก',
+                path: 'systemcenter/',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+            });
+        } else {
+            res.render('systemcenter/admin/dashboard', {
+                title: 'แผงควบคุมหลัก',
+                path: 'systemcenter/',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+            });
+        }
     });
 
 
@@ -83,10 +107,10 @@ module.exports = function(app, passport) {
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/admin/dashboard_dark', {
+            res.render('systemcenter/admin/dashboard', {
                 title: 'แผงควบคุมหลัก',
                 path: 'systemcenter/',
                 message: req.flash('message'),
@@ -94,7 +118,7 @@ module.exports = function(app, passport) {
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
 
@@ -113,17 +137,17 @@ module.exports = function(app, passport) {
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/admin/configuration_dark', {
+            res.render('systemcenter/admin/configuration', {
                 title: 'ปรับแต่ง',
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
 
@@ -147,17 +171,17 @@ module.exports = function(app, passport) {
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/device_dark', {
+            res.render('systemcenter/device', {
                 title: 'อุปกรณ์',
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
 
@@ -174,17 +198,17 @@ module.exports = function(app, passport) {
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/history_dark', {
+            res.render('systemcenter/history', {
                 title: 'ประวัติการเข้าใช้งานย้อนหลัง',
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
 
@@ -202,17 +226,17 @@ module.exports = function(app, passport) {
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/setting_dark', {
+            res.render('systemcenter/setting', {
                 title: 'ตั้งค่า',
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
 
@@ -240,10 +264,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/profile_dark', {
+            res.render('systemcenter/profile', {
                 title: 'ข้อมูลผู้ใช้งาน',
                 //path: 'systemcenter/',
                 message: req.flash('message'),
@@ -255,7 +279,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
 
@@ -279,10 +303,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/device/activate_dark', {
+            res.render('systemcenter/report/device/activate', {
                 title: 'Report',
                 message: req.flash('message'),
                 ssn: req.session.user.ssn,
@@ -293,7 +317,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -312,10 +336,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/device/deactivate/today_dark', {
+            res.render('systemcenter/report/device/deactivate/today', {
                 title: 'Report',
                 message: req.flash('message'),
                 ssn: req.session.user.ssn,
@@ -326,7 +350,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -345,10 +369,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/device/deactivate/week_dark', {
+            res.render('systemcenter/report/device/deactivate/week', {
                 title: 'Report',
                 message: req.flash('message'),
                 ssn: req.session.user.ssn,
@@ -359,7 +383,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -378,10 +402,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/device/deactivate/month_dark', {
+            res.render('systemcenter/report/device/deactivate/month', {
                 title: 'Report',
                 message: req.flash('message'),
                 ssn: req.session.user.ssn,
@@ -392,7 +416,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -411,10 +435,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/device/deactivate/year_dark', {
+            res.render('systemcenter/report/device/deactivate/year', {
                 title: 'Report',
                 message: req.flash('message'),
                 ssn: req.session.user.ssn,
@@ -425,7 +449,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -445,10 +469,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/usage/person/today_dark', {
+            res.render('systemcenter/report/usage/person/today', {
                 title: 'Report',
                 message: req.flash('message'),
                 ssn: req.session.user.ssn,
@@ -459,7 +483,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -478,10 +502,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/usage/person/week_dark', {
+            res.render('systemcenter/report/usage/person/week', {
                 title: 'Report',
                 message: req.flash('message'),
                 ssn: req.session.user.ssn,
@@ -492,7 +516,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -511,10 +535,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/usage/person/month_dark', {
+            res.render('systemcenter/report/usage/person/month', {
                 title: 'Report',
                 message: req.flash('message'),
                 ssn: req.session.user.ssn,
@@ -525,7 +549,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -544,10 +568,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/usage/person/year_dark', {
+            res.render('systemcenter/report/usage/person/year', {
                 title: 'Report',
                 message: req.flash('message'),
                 ssn: req.session.user.ssn,
@@ -558,7 +582,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -578,10 +602,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/usage/group/today_dark', {
+            res.render('systemcenter/report/usage/group/today', {
                 title: 'Report',
                 message: req.flash('message'),
                 ssn: req.session.user.ssn,
@@ -592,7 +616,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -611,10 +635,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/usage/group/week_dark', {
+            res.render('systemcenter/report/usage/group/week', {
                 title: 'Report',
                 message: req.flash('message'),
                 ssn: req.session.user.ssn,
@@ -625,7 +649,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
 
@@ -645,10 +669,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/usage/group/month_dark', {
+            res.render('systemcenter/report/usage/group/month', {
                 title: 'Report',
                 message: req.flash('message'),
                 ssn: req.session.user.ssn,
@@ -659,7 +683,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -678,10 +702,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/usage/group/year_dark', {
+            res.render('systemcenter/report/usage/group/year', {
                 title: 'Report',
                 message: req.flash('message'),
                 ssn: req.session.user.ssn,
@@ -692,7 +716,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -706,18 +730,18 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                isauthorized: req.session.user.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/usage/site/today_dark', {
+            res.render('systemcenter/report/usage/site/today', {
                 title: 'Report',
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                isauthorized: req.session.user.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -731,18 +755,18 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                isauthorized: req.session.user.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/usage/site/amount_dark', {
+            res.render('systemcenter/report/usage/site/amount', {
                 title: 'Report',
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                isauthorized: req.session.user.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -756,18 +780,18 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                isauthorized: req.session.user.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/usage/site/area_dark', {
+            res.render('systemcenter/report/usage/site/area', {
                 title: 'Report',
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                isauthorized: req.session.user.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -781,18 +805,18 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                isauthorized: req.session.user.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/usage/type_dark', {
+            res.render('systemcenter/report/usage/type', {
                 title: 'Report',
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                isauthorized: req.session.user.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -806,18 +830,18 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                isauthorized: req.session.user.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/usage/browser_dark', {
+            res.render('systemcenter/report/usage/browser', {
                 title: 'Report',
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                isauthorized: req.session.user.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -831,18 +855,18 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                isauthorized: req.session.user.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/usage/os_dark', {
+            res.render('systemcenter/report/usage/os', {
                 title: 'Report',
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                isauthorized: req.session.user.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -861,10 +885,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/monitor/device/addmonitor_dark', {
+            res.render('systemcenter/report/monitor/device/addmonitor', {
                 title: 'Report',
                 message: req.flash('message'),
                 ssn: req.session.user.ssn,
@@ -875,7 +899,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -894,10 +918,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/monitor/device/listmonitor_dark', {
+            res.render('systemcenter/report/monitor/device/listmonitor', {
                 title: 'Report',
                 message: req.flash('message'),
                 ssn: req.session.user.ssn,
@@ -908,7 +932,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -927,10 +951,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/monitor/device/reportmonitor_dark', {
+            res.render('systemcenter/report/monitor/device/reportmonitor', {
                 title: 'Report',
                 message: req.flash('message'),
                 ssn: req.session.user.ssn,
@@ -941,7 +965,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -964,10 +988,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/policy/usage_dark', {
+            res.render('systemcenter/report/policy/usage', {
                 title: 'Report',
                 message: req.flash('message'),
                 ssn: req.session.user.ssn,
@@ -978,7 +1002,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -995,10 +1019,10 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/policy/device_dark', {
+            res.render('systemcenter/report/policy/device', {
                 title: 'Report',
                 message: req.flash('message'),
                 ssn: req.session.user.ssn,
@@ -1009,7 +1033,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -1022,18 +1046,18 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                isauthorized: req.session.user.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         } else {
-            res.render('systemcenter/report/policy/violation_dark', {
+            res.render('systemcenter/report/policy/violation', {
                 title: 'Report',
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+                isauthorized: req.session.user.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
             });
         }
     });
@@ -1057,7 +1081,7 @@ module.exports = function(app, passport) {
     app.get('/systemcenter/login', function(req, res) {
         console.log('logging in');
         res.render('systemcenter/login', { user: req.session.user, error: req.flash('error') });
-
+        console.log('tong');
         //res.render('profile/login.ejs', { message: req.flash('loginMessage') });
     });
 
@@ -1069,6 +1093,7 @@ module.exports = function(app, passport) {
     }));
 */
     app.post('/systemcenter/login', function(req, res) {
+        console.log('cz');
         console.log(req.body.username + " -- " + req.body.password);
         /*
                 if (req.body.username == "byod1" && req.body.password == 'password') {
@@ -1101,7 +1126,7 @@ module.exports = function(app, passport) {
                 console.log('Authentication Failure');
                 req.session.authenticated = false;
                 req.session.authorized = false;
-                res.redirect('/systemcenter/fixauthen/');
+                res.redirect('/systemcenter/login');
             } else {
                 console.log('Authentication Success');
                 console.log(user.email);
@@ -1136,7 +1161,7 @@ module.exports = function(app, passport) {
                             req.session.user.position = parsed_body.position;
                             req.session.user.level = parsed_body.level;
                             req.session.user.area = parsed_body.area;
-                            req.session.authorized = parsed_body.authorized;
+                            req.session.user.authorized = parsed_body.authorized;
 
                             request('http://localhost/api/getuserpref?accname=' + user.email, function(error, response, body) {
                                 if (!error && response.statusCode == 200) {

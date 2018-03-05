@@ -17,7 +17,7 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 
-    var request = new Request("if (select count(*) from [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] where CONVERT (date,timestamp) = CONVERT (date,CURRENT_TIMESTAMP ) and (CONVERT (time,timestamp) < (select CONVERT (time,c_value ) from UMS_Config where c_name = 'accesstimefrom') or CONVERT (time,timestamp) > (select CONVERT (time,c_value ) from UMS_Config where c_name = 'accesstimeto'))) = 0 select 0 else select 1", function(err, rowCount){
+    var request = new Request("if (select count(*) from [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] where CONVERT (date,timestamp) = CONVERT (date,CURRENT_TIMESTAMP ) and (CONVERT (time,timestamp) < (select CONVERT (time,c_value ) from [AgileControllerDB].[dbo].[UMS_Config] where c_name = 'accesstimefrom') or CONVERT (time,timestamp) > (select CONVERT (time,c_value ) from [AgileControllerDB].[dbo].[UMS_Config] where c_name = 'accesstimeto'))) = 0 select 0 else select 1", function(err, rowCount){
 
 	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 

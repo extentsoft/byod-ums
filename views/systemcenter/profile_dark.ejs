@@ -331,7 +331,7 @@
             $(document).ready(function() {
                 $('#top-right-success').click(function() {
 
-                    $.ajax('http://192.168.163.29/api/eoffice/profile/' + $('#u_ssn').attr("placeholder") + '/ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6STFOaUo5LmV5SnBjM01pT2lKRmVIUmxiblJ6YjJaMElFTnZiWEJoYm5rZ1RHbHRhWFJsWkNJc0ltbGhkQ0k2TVRVeE9UWTVOVFk1T0N3aVpYaHdJam94TlRVeE1qTXhOams0TENKaGRXUWlPaUppZVc5a0xtVjRZMmx6WlM1bmJ5NTBhQ0lzSW5OMVlpSTZJbUo1YjJSQVpYaGphWE5sTG1kdkxuUm9JaXdpVUhKdmFtVmpkQ0k2SWtKWlQwUWlMQ0pGYldGcGJDSTZJbUp2ZVdSQVpYaGphWE5sTG1kdkxuUm9JaXdpVUdGeWRHNWxjaUk2SWxOMWJXMXBkQ0JEYjIxd2RYUmxjaUJEYjIxd1lXNTVJRXhwYldsMFpXUWlMQ0pTWlhGMVpYTjBaWElnSWpvaVUydDVJRWxEVkNCUWRXSnNhV01nUTI5dGNHRnVlU0JNYVcxcGRHVmtJbjAudWJ4UGdNNDkxWU9oTWNrYzA5R3lEODBsdG9uU2xMQ29SNENnZGNBdExzZw==', {
+                    $.ajax('http://localhost/api/eoffice/profile/' + $('#u_ssn').attr("placeholder") + '/ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6STFOaUo5LmV5SnBjM01pT2lKRmVIUmxiblJ6YjJaMElFTnZiWEJoYm5rZ1RHbHRhWFJsWkNJc0ltbGhkQ0k2TVRVeE9UWTVOVFk1T0N3aVpYaHdJam94TlRVeE1qTXhOams0TENKaGRXUWlPaUppZVc5a0xtVjRZMmx6WlM1bmJ5NTBhQ0lzSW5OMVlpSTZJbUo1YjJSQVpYaGphWE5sTG1kdkxuUm9JaXdpVUhKdmFtVmpkQ0k2SWtKWlQwUWlMQ0pGYldGcGJDSTZJbUp2ZVdSQVpYaGphWE5sTG1kdkxuUm9JaXdpVUdGeWRHNWxjaUk2SWxOMWJXMXBkQ0JEYjIxd2RYUmxjaUJEYjIxd1lXNTVJRXhwYldsMFpXUWlMQ0pTWlhGMVpYTjBaWElnSWpvaVUydDVJRWxEVkNCUWRXSnNhV01nUTI5dGNHRnVlU0JNYVcxcGRHVmtJbjAudWJ4UGdNNDkxWU9oTWNrYzA5R3lEODBsdG9uU2xMQ29SNENnZGNBdExzZw==', {
                         type: "put",
                         data: {
                             fn: $('#u_fn').val(),
@@ -399,7 +399,7 @@
         <script type="text/javascript ">
             function refresh_group(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://192.168.163.29/report/report672', {
+                $.ajax('http://localhost/report/report672', {
                     type: "get",
                     data: {
                         start: sd,
@@ -506,7 +506,7 @@
 
             function refresh_browser(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://192.168.163.29/report/report67153', {
+                $.ajax('http://localhost/report/report67153', {
                     type: "get",
                     data: {
                         start: sd,
@@ -607,7 +607,7 @@
 
             function refresh_os(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://192.168.163.29/report/report67152', {
+                $.ajax('http://localhost/report/report67152', {
                     type: "get",
                     data: {
                         start: sd,
@@ -625,7 +625,7 @@
                 alert('555');
 
 
-                $.ajax('http://192.168.163.29/api/chat/attachment', {
+                $.ajax('http://localhost/api/chat/attachment', {
                     type: "get",
 
                     success: function(json) {
@@ -780,7 +780,7 @@
 
             function refresh_traffic() {
                 //alert('refresh');
-                $.ajax('http://192.168.163.29/report/traffic', {
+                $.ajax('http://localhost/report/traffic', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -887,7 +887,7 @@
             refresh_traffic();
 
             function get_chat() {
-                $.ajax('http://192.168.163.29/api/getchat', {
+                $.ajax('http://localhost/api/getchat', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -938,7 +938,7 @@
             function sendchat(msg) {
                 //alert(account_now);
                 //alert(msg);
-                $.ajax('http://192.168.163.29/api/addchat', {
+                $.ajax('http://localhost/api/addchat', {
                     type: "get",
                     data: {
                         usr: account_now,
@@ -955,7 +955,7 @@
             }
 
             function get_noti() {
-                $.ajax('http://192.168.163.29/api/getnotimsg', {
+                $.ajax('http://localhost/api/getnotimsg', {
                     type: "get",
                     data: {
                         chanel: '0'

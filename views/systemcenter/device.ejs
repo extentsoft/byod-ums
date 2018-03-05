@@ -385,8 +385,7 @@
 
 
         <script type="text/javascript">
-            $(document).ready();
-            $(window).load(function() {});
+
         </script>
         <!-- Specific Page Scripts END -->
 
@@ -411,14 +410,23 @@
         </script>
 
         <script>
+			$(window).load(function() {
+
+                var priv = $("#priv").html().trim().split(",");
+                if (priv[1] < 1) {
+                    $('#top-menu-3').hide();
+                } else {
+                    $('#top-menu-3').show();
+                }
+            });
             //account_now = 'natthawat_a';
 			account_now = $('#email').text().trim();
-			username = $('#uname').text().trim();
+			//username = $('#uname').text().trim();
 			//alert(username);
 
             function refreshlist() {
                 //alert('refresh');
-                $.ajax('http://192.168.163.29/api/listdevice', {
+                $.ajax('http://localhost/api/listdevice', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -434,7 +442,7 @@
 
             function bindata(data_sql) {
 				//alert('cc');
-				$.ajax('http://192.168.163.29/api/checklimit', {
+				$.ajax('http://localhost/api/checklimit', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -518,7 +526,7 @@
                         host_name = data[i].hostname;
                     }
                     update_time = new Date(data[i].updatetime);
-                    date_str = update_time.getHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds() + ' - ' + update_time.getDate() + "/" + (update_time.getMonth() + 1) + "/" + update_time.getFullYear();
+                    date_str = update_time.getUTCHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getMonth() + 1) + "/" + update_time.getFullYear();
 
                     q = "'";
 					var os_edit='';
@@ -586,7 +594,7 @@
             }
 
             function adddevice(name, mac, os) {
-                $.ajax('http://192.168.163.29/api/adddevice', {
+                $.ajax('http://localhost/api/adddevice', {
                     type: "get",
                     data: {
                         tername: name,
@@ -604,7 +612,7 @@
 
             function deletedevice(ter_mac) {
                 //alert(ter_id);
-                $.ajax('http://192.168.163.29/api/deletedevice', {
+                $.ajax('http://localhost/api/deletedevice', {
                     type: "get",
                     data: {
                         termac: ter_mac,
@@ -620,7 +628,7 @@
 
             function refreshmac(mac) {
                 //alert('refresh');
-                $.ajax('http://192.168.163.29/api/listmac', {
+                $.ajax('http://localhost/api/listmac', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -669,7 +677,7 @@
 
             function addmac(mac) {
                 //alert('refresh');
-                $.ajax('http://192.168.163.29/api/listmac', {
+                $.ajax('http://localhost/api/listmac', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -726,7 +734,7 @@
 
             function updatemac(mac) {
                 //alert('refresh');
-                $.ajax('http://192.168.163.29/api/updatemac', {
+                $.ajax('http://localhost/api/updatemac', {
                     type: "get",
                     data: {
                         accname: account_now,
@@ -735,7 +743,7 @@
                     success: function(json) {}
                 });
 				
-				$.ajax('http://192.168.163.29/systemcenter/api', {
+				/*$.ajax('http://localhost/systemcenter/api', {
                     type: "get",
                     data: {
                         accname: account_now,
@@ -743,12 +751,12 @@
 						uname: username
                     },
                     success: function(json) {alert('b');}
-                });
+                }); */
             }
 
             function checkcount() {
                 //alert('refresh');
-                $.ajax('http://192.168.163.29/policy/checkcountdevice', {
+                $.ajax('http://localhost/policy/checkcountdevice', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -756,10 +764,10 @@
                     success: function(json) {
                         data_res = JSON.parse(JSON.stringify(json));
                         //alert(JSON.stringify(data_res));
-                        if (data_res[0] > 5) {
+                        if (data_res[0] > 2) {
                             //alert('a');
 							addviolation('editdeivceoverlimit');
-                            $.ajax('http://192.168.163.29/api/message/email/4/' + account_now, {
+                            $.ajax('http://localhost/api/message/email/4/' + account_now, {
                                 type: "get",
                                 success: function(json) {
                                     //alert(JSON.stringify(json));
@@ -773,7 +781,7 @@
 			
 			function addviolation(detail) {
 				//alert('refresh');
-				$.ajax('http://192.168.163.29/api/addviolation', {
+				$.ajax('http://localhost/api/addviolation', {
 					type: "get",
 					data: {
 						violation: detail,
@@ -788,17 +796,6 @@
             checkcount();
             refreshlist();
 
-            function change_name(hostname) {
-                //alert('fewf');
-                //alert(hostname + " , " + hostmac + " , " + hostos);
-
-            }
-
-            function change_name2(hostname, hostmac, hostos) {
-                alert('fewf');
-                //alert(hostname + " , " + hostmac + " , " + hostos);
-
-            }
         </script>
 
 

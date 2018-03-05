@@ -272,7 +272,7 @@
                 //alert('refresh');
 				//alert(sd);
 				//alert(ed);
-                $.ajax('http://192.168.163.29/report/report671', {
+                $.ajax('http://localhost/report/report671', {
                     type: "get",
                     data: {
                         start: sd,
@@ -295,7 +295,7 @@
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
                     update_time = new Date(data_sql[5]);
-                    date_str = update_time.getHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();
+                    date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();
 
                     //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
                     $('#data-tables').find('tbody').append("<tr><td>" + data_sql[1] + "</td><td>" + data_sql[3] + "</td><td>" + data_sql[4] + "</td><td>" + date_str + "</td><td>" + data_sql[6] + "</td></tr>");
@@ -318,10 +318,10 @@
 
                 var today = new Date();
                 
-                var ddd = today.getDate();
+                var ddd = today.getUTCDate();
 				
 				var last = new Date(today.getTime() - (7 * 24 * 60 * 60 * 1000));
-				var dd = last.getDate();
+				var dd = last.getUTCDate();
 				var mm = last.getMonth()+1;
 				
                 var mmm = today.getMonth()+1; //January is 0!

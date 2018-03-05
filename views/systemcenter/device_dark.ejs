@@ -421,7 +421,7 @@
 
             function refreshlist() {
                 //alert('refresh');
-                $.ajax('http://192.168.163.29/api/listdevice', {
+                $.ajax('http://localhost/api/listdevice', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -505,7 +505,7 @@
                         host_name = data[i].hostname;
                     }
                     update_time = new Date(data[i].updatetime);
-                    date_str = update_time.getHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds() + ' - ' + update_time.getDate() + "/" + update_time.getMonth() + "/" + update_time.getFullYear();
+                    date_str = update_time.getUTCHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + update_time.getMonth() + "/" + update_time.getFullYear();
 
                     q = "'";
                     div.innerHTML =
@@ -558,7 +558,7 @@
             }
 
             function adddevice(name, mac, os) {
-                $.ajax('http://192.168.163.29/api/adddevice', {
+                $.ajax('http://localhost/api/adddevice', {
                     type: "get",
                     data: {
                         tername: name,
@@ -576,7 +576,7 @@
 
             function deletedevice(ter_mac) {
                 //alert(ter_id);
-                $.ajax('http://192.168.163.29/api/deletedevice', {
+                $.ajax('http://localhost/api/deletedevice', {
                     type: "get",
                     data: {
                         termac: ter_mac,
@@ -591,7 +591,7 @@
 
             function refreshmac(mac) {
                 //alert('refresh');
-                $.ajax('http://192.168.163.29/api/listmac', {
+                $.ajax('http://localhost/api/listmac', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -639,7 +639,7 @@
 
             function addmac(mac) {
                 //alert('refresh');
-                $.ajax('http://192.168.163.29/api/listmac', {
+                $.ajax('http://localhost/api/listmac', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -693,7 +693,7 @@
 
             function updatemac(mac) {
                 //alert('refresh');
-                $.ajax('http://192.168.163.29/api/updatemac', {
+                $.ajax('http://localhost/api/updatemac', {
                     type: "get",
                     data: {
                         accname: account_now,

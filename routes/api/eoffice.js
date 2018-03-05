@@ -37,10 +37,6 @@ router.get('/profile/:email', function(req, res, next) {
         res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'byod3', ln: 'sky', email: 'byod3@excise.go.th', position: '0', level: '0', area: '0', authorized: false });
     } else if (req.params.email == 'byod4') {
         res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'byod4', ln: 'sky', email: 'byod4@excise.go.th', position: '0', level: '0', area: '0', authorized: false });
-    } else if (req.params.email == 'byod5') {
-        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'byod5', ln: 'sky', email: 'byod5@excise.go.th', position: '0', level: '0', area: '0', authorized: false });
-    } else if (req.params.email == 'byod6') {
-        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'byod6', ln: 'sky', email: 'byod6@excise.go.th', position: '0', level: '0', area: '0', authorized: false });
     } else if (req.params.email == 'pinij') {
         res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Pinij', ln: 'Vitoonsaridsilp', email: 'pinij@excise.go.th', position: '500', level: '10', area: '1', authorized: false });
     } else if (req.params.email == 'phanit') {
@@ -56,7 +52,8 @@ router.get('/profile/:email', function(req, res, next) {
     } else if (req.params.email == 'thaweesak') {
         res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Thaweesak', ln: '...', email: 'thaweesak@excise.go.th', position: '500', level: '10', area: '1', authorized: false });
     } else {
-        res.json(null);
+        //res.json(null);
+		res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Natthawat', ln: 'Arunweerungroj', email: 'natthawat_a@excise.go.th', position: '0', level: '0', area: '0', authorized: true });
     }
 });
 

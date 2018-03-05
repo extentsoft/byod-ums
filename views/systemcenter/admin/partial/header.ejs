@@ -48,20 +48,16 @@
             <div class="vd_container">
                 <div class="row">
                     <div class="col-sm-5 col-xs-12">
-
                         <div class="title" style="color: white;" align="center"><br>
                             <font size="3">ระบบบริหารจัดการทรัพยากร ICT</font>
 
                         </div>
+                        <input type="file" id="imgupload" style="visibility: hidden;" onchange="uploadFile()" />
                     </div>
                     <div class="col-sm-7 col-xs-12">
                         <div class="vd_mega-menu-wrapper">
                             <div class="vd_mega-menu pull-right">
                                 <ul class="mega-ul">
-
-
-
-
                                     <li class="one-icon mega-li">
                                         <a href="index.html" class="mega-link" data-action="click-trigger">
                                             <span class="mega-icon"><i class="fa fa-users"></i></span>
@@ -75,9 +71,8 @@
 
                                                 </div>
                                                 <div class="content-list content-image content-menu">
-                                                    <div data-rel="scroll">
+                                                    <div data-rel="scroll" id="chatbox_bar">
                                                         <ul class="list-wrapper pd-lr-10" id="chatbox">
-
                                                         </ul>
                                                     </div>
 
@@ -151,7 +146,7 @@
                                                 <div class="content-list content-menu">
                                                     <ul class="list-wrapper pd-lr-10">
                                                         <li>
-                                                            <a href="/systemcenter/profile">
+                                                            <a href="#">
                                                                 <div class="menu-icon"><i class=" fa fa-user"></i></div>
                                                                 <div class="menu-text">แก้ไขประวัติ</div>
                                                             </a>
@@ -159,7 +154,7 @@
 
 
                                                         <li>
-                                                            <a href="/systemcenter/setting">
+                                                            <a href="#">
                                                                 <div class="menu-icon"><i class=" fa fa-cogs"></i></div>
                                                                 <div class="menu-text">ปรับแต่ง</div>
                                                             </a>
@@ -209,19 +204,15 @@
     //account_now = 'natthawat_a';
     //alert(' account_now - ' + account_now);
     //alert(' account_now privilege - ' + $("#priv").html().trim().split(","));
+    var chat_val = 1;
+    account_now = $('#email').text().trim();
     $("#chat-text").keyup(function(event) {
         if (event.keyCode === 13) {
             //alert($('#chat-text').val());
             sendchat($('#chat-text').val(), '-');
         }
     });
-    if (jQuery) {
-        // jQuery is loaded  
-        //alert("Yeah!");
-    } else {
-        // jQuery is not loaded
-        //alert("Doesn't Work");
-    }
+
 
     function getAttach() {
         //alert('please upload file');
@@ -265,7 +256,7 @@
             /*
                         $.ajax({
                             type: "post",
-                            url: 'http://192.168.163.29/api/chat/attachment',
+                            url: 'http://localhost/api/chat/attachment',
                             data: {
                                 data: reader.result,
                             },
@@ -306,12 +297,19 @@
     }
     */
     function get_chat() {
-        $.ajax('http://192.168.163.29/api/getchat', {
+        //alert(chat_val);
+        $.ajax('http://localhost/api/getchat', {
             type: "get",
             success: function(json) {
                 //alert(JSON.stringify(json));
                 data_c = JSON.parse(JSON.stringify(json));
                 datac = [];
+                var chat_val_tmp = data_c.length;
+                if ((chat_val < data_c.length) && (chat_val != 1)) {
+                    data_c.splice(0, chat_val);
+                    chat_val = data_c.length;
+                }
+                //alert(data_c.length);
                 for (i = 0; i < data_c.length; i++) {
                     data_json = {};
                     data_json = {
@@ -328,6 +326,10 @@
                     i = -1;
                 }
 
+                chat_val = chat_val_tmp;
+
+                //alert(chat_val);
+
                 for (i = 0; i < datac.length; i++) {
                     //tmp = String(JSON.stringify(datac[i])).replace('\t','');
                     //alert(JSON.stringify(datac[i]));
@@ -336,15 +338,13 @@
                     data[i].msg*/
                     //alert(data[i].channel);
 
-
-
                     //var uid = $("#userid").text();
                     if (datac[i].name == account_now) {
                         //alert(data[i].msg);
                         //var my_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
                         var my_msg = "";
-                        if (datac[i].rdata == '') {
-                            my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+                        if (datac[i].rdata == "-") {
+                            my_msg = "<li class='align-right'><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></li>";
                         } else {
                             my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'><a download='" + datac[i].msg + "' href='" + datac[i].rdata + "'>" + datac[i].msg + "</a><div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
                         }
@@ -355,10 +355,11 @@
                         //var other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
 
                         var other_msg = "";
-                        if (datac[i].rdata == '') {
-                            other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+
+                        if (datac[i].rdata == "-") {
+                            other_msg = "<li><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></li>";
                         } else {
-                            other_msg = "<li><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'><a download='" + datac[i].msg + "' href='data:application/octet-stream;base64," + datac[i].rdata + "'>" + datac[i].msg + "</a><div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+                            other_msg = "<li><a href='#'><div class='menu-text'><a download='" + datac[i].msg + "' href='data:application/octet-stream;base64," + datac[i].rdata + "'>" + datac[i].msg + "</a><div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
                         }
 
                         $('#chatbox').append(other_msg);
@@ -366,10 +367,17 @@
                 }
             }
         });
+
+
+
     }
 
     function sendchat(msg, rdt) {
         //alert(account_now);
+        //alert($('#chatbox_bar').scrollHeight);
+        //alert($('#chatbox').scrollHeight);
+
+        alert($('#chatbox li:last-child div.menu-text').text());
 
         //console.log(rdt);
         //alert($("#priv").html().trim().split(",")[2]);
@@ -388,7 +396,7 @@
 
             success: function(json) {
                 //alert('a');
-                $('#chatbox').empty();
+                //$('#chatbox').empty();
                 document.getElementById('chat-text').value = ''
                 get_chat();
 
@@ -397,17 +405,8 @@
 
     }
 
-    function toggle_noti(index) {
-        //alert('called -> ' + index);
-        //alert($('#notification_center li:nth-child(' + (index + 1) + ')').text());
-        //alert($('#fullnoti li:nth-child(' + (index + 1) + ')').text());
-
-        $('#notificationModal div.modal-dialog div.modal-content div.modal-body').html($('#fullnoti li:nth-child(' + (index + 1) + ')').text());
-        //$('#notificationModal div.modal-dialog div.modal-content div.modal-body').html('<b>hello</b> Cheer');
-    }
-
     function get_noti() {
-        $.ajax('http://192.168.163.29/api/getnotimsg', {
+        $.ajax('http://localhost/api/getnotimsg', {
             type: "get",
             data: {
                 chanel: '0'
@@ -445,12 +444,7 @@
                         //alert(data[i].msg);
                         //var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>" + data[i].msg + "</span><span class='m-list-timeline__time'>" + data[i].timestamp.split("T")[0] + "</span></div>";
 
-                        var msg = "<li><a href='#' data-toggle='modal' data-target='#notificationModal' onclick='toggle_noti(" + i + ")'><div class='menu-text'>" + data[i].msg.substring(0, 50) + "<div class='menu-info'><span class='menu-date'>" + data[i].timestamp.split("T")[0] + "</span></div></div></a></li>";
-                        //var msg = "<li><a href='#' data-toggle='modal' data-target='#notificationModal' onclick='toggle_noti(" + i + ")'><div class='menu-text'><b>Hello</b>Cheer<div class='menu-info'><span class='menu-date'>" + data[i].timestamp.split("T")[0] + "</span></div></div></a></li>";
-
-                        $('#fullnoti').append('<li>' + data[i].msg + '</li>');
-                        //alert('<li>' + data[i].msg + '</li>');
-                        //$('#fullnoti').append('<li><b>Hello</b>Cheer</li>');
+                        var msg = "<li><a href='#' data-toggle='modal' data-target='#myModal'><div class='menu-icon vd_green'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + data[i].msg.substring(0, 50) + "<div class='menu-info'><span class='menu-date'>" + data[i].timestamp.split("T")[0] + "</span></div></div></a></li>";
 
                         $('#notification_center').append(msg);
                     }
@@ -458,6 +452,7 @@
                 }
                 //alert(JSON.stringify(data));
                 //bindata(data_res);
+
             }
         });
 

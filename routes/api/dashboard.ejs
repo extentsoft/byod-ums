@@ -96,15 +96,15 @@
 
 </head>
 
-<body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">
+<body id="dashboard" class="full-layout  nav-right-hide nav-right-start-hide  nav-top-fixed      responsive    clearfix" data-active="dashboard " data-smooth-scrolling="1">
     <div class="vd_body">
-        <%- include('partial_dark/header'); %>
+        <%- include('partial/header'); %>
 
             <!-- Content start -->
 
             <div class="content">
                 <div class="container">
-                    <%- include('partial_dark/menu'); %>
+                    <%- include('partial/menu'); %>
 
 
                 </div>
@@ -405,27 +405,27 @@
                                         </div>
                                     </div>
                                     <!--col-md-5-->
-
-                                    <div class="col-md-6 ">
+									
+									<div class="col-md-6 ">
                                         <div class="panel widget panel-bd-top vd_todo-widget light-widget ">
                                             <div class="panel-heading no-title ">
 
-
                                             </div>
                                             <div class="panel-body ">
-                                                <h4 class="mgbt-xs-20 "> <span class="append-icon "> <i class="fa fa-check-circle-o vd_green "></i> </span>การใช้งานแบ่งตามพื้นที่</h4>
-                                                <div class="item-right pd-15">
-                                                    <div id="revenue-bar-chart" style="height: 318px;">
-                                                    </div>
+                                                <h4 class="mgbt-xs-20 "> <span class="append-icon "> <i class="fa fa-check-circle-o vd_green "></i> </span>การใช้งาน Browser</h4>
+                                                <div class="panel-body-list pd-15">
+                                                    <div id="pie-chart-2" class="pie-chart" style="height:318px;"></div>
                                                 </div>
                                             </div>
                                         </div>
 
                                     </div>
+
+                                    
                                     <!-- col-md-3 -->
                                 </div>
                                 <div class="row ">
-                                    <div class="col-md-6 ">
+                                    <div class="col-md-6 " style="display: none;">
                                         <div class="panel widget panel-bd-top vd_todo-widget light-widget ">
                                             <div class="panel-heading no-title ">
 
@@ -441,22 +441,25 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--col-md-5-->
-
-                                    <div class="col-md-6 ">
+									<div class="col-md-6 " style="display: none;">
                                         <div class="panel widget panel-bd-top vd_todo-widget light-widget ">
                                             <div class="panel-heading no-title ">
 
+
                                             </div>
                                             <div class="panel-body ">
-                                                <h4 class="mgbt-xs-20 "> <span class="append-icon "> <i class="fa fa-check-circle-o vd_green "></i> </span>การใช้งานแบ่งตามกลุ่ม</h4>
-                                                <div class="panel-body-list pd-15">
-                                                    <div id="pie-chart-2" class="pie-chart" style="height:318px;"></div>
+                                                <h4 class="mgbt-xs-20 "> <span class="append-icon "> <i class="fa fa-check-circle-o vd_green "></i> </span>การใช้งานแบ่งตามพื้นที่</h4>
+                                                <div class="item-right pd-15">
+                                                    <div id="revenue-bar-chart" style="height: 318px;">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
 
                                     </div>
+                                    <!--col-md-5-->
+
+                                    
                                     <!-- col-md-3 -->
                                 </div>
 
@@ -478,7 +481,7 @@
     </div>
     <!-- .content -->
 
-    <%- include('partial_dark/footer'); %>
+    <%- include('partial/footer'); %>
 
 
 
@@ -514,6 +517,7 @@
         <!--[if lt IE 9]>
   <script type="text/javascript" src="js/excanvas.js"></script>
 <![endif]-->
+
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
         <script type="text/javascript" src="plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
@@ -568,11 +572,15 @@
 
         <script type="text/javascript ">
             $(document).ready(function() {
-                account_now = 'natthawat_a';
+                //alert($('#email').text().trim());
+                //account_now = 'natthawat_a';
+                account_now = $('#email').text().trim();
+				alert(account_now);
 
 
             });
             $(window).load(function() {
+				
                 var priv = $("#priv").html().trim().split(",");
                 if (priv[1] < 1) {
                     $('#top-menu-3').hide();
@@ -836,11 +844,16 @@
                 total = 0;
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
+					
                     if (data_sql[0] == '') {
                         os_name = 'other';
-                    } else {
+                    } else if(data_sql[0].substr(0,7)=='Windows'){
+						os_name = 'Windows';
+					}
+					else {
                         os_name = data_sql[0];
                     }
+					//alert('val-' + os_name);
                     document.getElementById('val-' + os_name).innerHTML = data_sql[1];
                     //data_json = {type:os_name,amount:data_sql[1]};
                     total = total + data_sql[1];
@@ -899,7 +912,7 @@
 
             function datepick() {
                 function e(e, a, r) {
-                    refresh_area(e.format("Y-M-D"), a.format("Y-M-D"));
+                    //refresh_area(e.format("Y-M-D"), a.format("Y-M-D"));
                     refresh_device(e.format("Y-M-D"), a.format("Y-M-D"));
                     refresh_os(e.format("Y-M-D"), a.format("Y-M-D"));
                     refresh_group(e.format("Y-M-D"), a.format("Y-M-D"));
@@ -936,28 +949,78 @@
                         e(a, r, "")
                 }
             }
+			
+			$.fn.UseTooltip = function () {
+			var previousPoint = null;
+			 
+			$(this).bind("plothover", function (event, pos, item) {        
+					if (item) {
+						if (previousPoint != item.dataIndex) {
+		
+							previousPoint = item.dataIndex;
+		
+							$("#tooltip").remove();
+							var x = item.datapoint[0].toFixed(2),
+							y = item.datapoint[1].toFixed(2);
+							var xx = item.datapoint[0];
+							xx++;
+							xx = xx.toFixed(2)
+							//alert(xx);
+
+		
+							showTooltip(item.pageX, item.pageY,
+								"<p class='vd_bg-green'><strong class='mgr-10 mgl-10'>" + Math.round(x)  + ":00 - " + Math.round(xx)  + ":00 </strong></p>" +
+								"<div style='padding: 0 10px 10px;'>" +
+								"<div>มีจำนวนการใช้งาน : "+ Math.round(y)  +"</div>" +
+								"</div>"
+							);
+						}
+					} else {
+						$("#tooltip").remove();
+						previousPoint = null;            
+					}
+			});
+		};
+		
+		function showTooltip(x, y, contents) {
+			$('<div id="tooltip">' + contents + '</div>').css({
+				position: 'absolute',
+				display: 'none',
+				top: y + 5,
+				left: x + 20,    
+				size: '10',  
+//				'border-top' : '3px solid #1FAE66',
+				'background-color': '#111111',
+				color: "#FFFFFF",
+				opacity: 0.85
+			}).appendTo("body").fadeIn(200);
+		}
 
             function line_chart(data) {
                 /* REVENUE LINE CHART */
 
                 var d2 = data;
+				var d = new Date();
+				d.getHours();
+				//alert(d.getHours()+2);
 
-                var plot = $.plotAnimator($("#revenue-line-chart"), [{
-                        label: "Revenue",
-                        data: d2,
-                        lines: {
-                            fill: 0.4,
-                            lineWidth: 0,
-                        },
-                        color: ['#f2be3e']
-                    },
+                var plot = $.plotAnimator($("#revenue-line-chart"), [{ 
+				data: d2, 
+				label: " x = ช่วงเวลา, y = จำนวน",
+				animator: {steps: 60, duration: 1000, start:0}, 		
+				lines: {lineWidth:2},	
+				shadowSize:0,
+				color: '#F85D2C'
+			}
+			
 
                 ], {
                     xaxis: {
                         tickLength: 0,
                         tickDecimals: 0,
                         min: 0,
-                        max: 23,
+						max: d.getHours()+1,
+     
 
                         font: {
                             lineHeight: 13,
@@ -999,12 +1062,14 @@
                     }
                 });
 
-                //$("#revenue-line-chart").UseTooltip();
+                $("#revenue-line-chart").UseTooltip();
 
                 $(window).on("resize", function() {
                     plot.resize();
                     plot.setupGrid();
                     plot.draw();
+
+
                 });
                 //alert('a')
             }
@@ -1142,10 +1207,170 @@
                 //alert(JSON.stringify(data));
                 bar_chart(data);
             }
+
+
+            function get_browser() {
+                var ua = navigator.userAgent,
+                    tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+                if (/trident/i.test(M[1])) {
+                    tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+                    return {
+                        name: 'IE',
+                        version: (tem[1] || '')
+                    };
+                }
+                if (M[1] === 'Chrome') {
+                    tem = ua.match(/\bOPR|Edge\/(\d+)/)
+                    if (tem != null) {
+                        return {
+                            name: 'Opera',
+                            version: tem[1]
+                        };
+                    }
+                }
+                M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+                if ((tem = ua.match(/version\/(\d+)/i)) != null) {
+                    M.splice(1, 1, tem[1]);
+                }
+                return {
+                    name: M[0],
+                    version: M[1]
+                };
+
+            };
+
+            //var browser=get_browser();
+
+            //browser.name = 'Chrome'
+            //browser.version = '40'
+            function acclogin() {
+                $.ajax('https://freegeoip.net/json/', {
+                    type: "get",
+                    success: function(data) {
+                        //alert('a');
+                        var browser = get_browser();
+                        //alert(browser.name+browser.version);
+                        login_log(browser.name, data.ip);
+
+                    },
+                    error: function(fa) {
+                        //alert(JSON.stringify(fa));
+                        //alert('b');
+                    }
+                });
+            }
+
+            function login_log(b, i) {
+                $.ajax('http://localhost/api/accesslog', {
+                    type: "get",
+                    data: {
+                        browser: b,
+                        ip: i,
+                        status: 'Login',
+                        accname: 'natthawat_a'
+                    },
+                    success: function(json) {
+                        //alert(b+i)	;
+                        countlog();
+                    },
+                    error: function(fa) {
+                        //alert(JSON.stringify(fa));
+                        //alert('a');
+                    }
+                });
+            }
+
+            function countlog() {
+                //alert('refresh');
+                $.ajax('http://localhost/api/countlogin', {
+                    type: "get",
+                    data: {
+                        accname: account_now
+                    },
+                    success: function(json) {
+                        //alert(json);
+                        if (json == 1) {
+							addviolation('overlogin');
+							$.ajax('http://localhost/api/message/email/1/' + account_now, {
+                                type: "get",
+                                success: function(json) {
+                                    //alert(JSON.stringify(json));
+                                }
+                            });
+                            //alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
+							if($("#priv").html().trim().split(",")[2]=='false'){
+								window.location = "/systemcenter/profile";
+							}
+							
+                        }
+
+                    }
+                });
+            }
+			
+			function addviolation(detail) {
+				//alert('refresh');
+				$.ajax('http://localhost/api/addviolation', {
+					type: "get",
+					data: {
+						violation: detail,
+						accname: account_now
+					},
+					success: function(json) {
+						//alert(json);
+					}
+				});
+			}
+			
+			function check_access() {
+                //alert('refresh');
+                $.ajax('http://localhost/api/checkaccesstime', {
+                    type: "get",
+                    success: function(json) {
+                        //alert(json);
+                        if (json == 1) {
+							addviolation('outoftime');
+							$.ajax('http://localhost/api/message/email/3/' + account_now, {
+                                type: "get",
+                                success: function(json) {
+                                    //alert(JSON.stringify(json));
+                                }
+                            });
+                            //alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
+							
+                        }
+
+                    }
+                });
+            }
+			
+			function check_devicemon() {
+                //alert('refresh');
+                $.ajax('http://localhost/api/checkdevicemon', {
+                    type: "get",
+                    success: function(json) {
+                        //alert(json);
+                        if (json == 1) {
+							addviolation('devicemon');
+							$.ajax('http://localhost/api/message/email/6/' + account_now, {
+                                type: "get",
+                                success: function(json) {
+                                    //alert(JSON.stringify(json));
+                                }
+                            });
+                            //alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
+							
+                        }
+
+                    }
+                });
+            }
+			check_access();
+			check_devicemon();
+            acclogin();
             refresh_traffic();
 
             datepick();
-            //document.getElementById('val-iOS').innerHTML = '50';
         </script>
 
 </body>
