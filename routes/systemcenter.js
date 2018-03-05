@@ -60,9 +60,33 @@ module.exports = function(app, passport) {
     });
 
     app.get('/systemcenter/', isLoggedIn, function(req, res) {
-        console.log("Now you are logged in");
-        console.log(req.session.user.email);
-        res.redirect('/systemcenter/dashboard');
+        console.log('1 - ' + JSON.stringify(req.session.user));
+
+        console.log(' is admin ' + req.session.authorized);
+        if (req.session.user.pref_theme == 0) {
+
+            res.render('systemcenter/admin/dashboard', {
+                title: 'แผงควบคุมหลัก',
+                path: 'systemcenter/',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+            });
+        } else {
+            res.render('systemcenter/admin/dashboard_dark', {
+                title: 'แผงควบคุมหลัก',
+                path: 'systemcenter/',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+            });
+        }
     });
 
 
@@ -1057,7 +1081,7 @@ module.exports = function(app, passport) {
     app.get('/systemcenter/login', function(req, res) {
         console.log('logging in');
         res.render('systemcenter/login', { user: req.session.user, error: req.flash('error') });
-
+		console.log('tong');
         //res.render('profile/login.ejs', { message: req.flash('loginMessage') });
     });
 
@@ -1069,6 +1093,7 @@ module.exports = function(app, passport) {
     }));
 */
     app.post('/systemcenter/login', function(req, res) {
+		console.log('cz');
         console.log(req.body.username + " -- " + req.body.password);
         /*
                 if (req.body.username == "byod1" && req.body.password == 'password') {
@@ -1100,7 +1125,7 @@ module.exports = function(app, passport) {
             if (err instanceof Error) {
                 console.log('Authentication Failure');
                 req.session.authenticated = false;
-                req.session.authorized = 0;
+                req.session.authorized = false;
                 res.redirect('/systemcenter/login');
             } else {
                 console.log('Authentication Success');
@@ -1109,7 +1134,7 @@ module.exports = function(app, passport) {
                 //var AC = require('../app/models/account');
 
                 req.session.authenticated = true;
-                req.session.authorized = 1;
+                req.session.authorized = true;
                 req.session.user = {};
                 //req.session.user._id = user._id;
                 req.session.user.email = user.email;
@@ -1207,7 +1232,7 @@ function isLoggedIn(req, res, next) {
     console.log(req.session.authenticated);
     console.log(req.session.authorized);
 
-    if (req.session.authenticated && req.session.authorized > 0) next();
+    if (req.session.authenticated) next();
     else res.redirect('/systemcenter/login');
 
 }
