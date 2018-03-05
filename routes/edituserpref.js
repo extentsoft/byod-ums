@@ -15,17 +15,13 @@ var deviceList = function(req, res, next) {
         q = '"';
         //var request = new Request('select * from [test].[dbo].t1', function(err, rowCount){
         console.log('rewrite header');
-        console.log(req.user.pref_theme);
-        req.user.pref_theme = req.param('theme');
-        console.log(req.user.pref_theme);
+        console.log(req.session.user.pref_theme);
+        req.session.user.pref_theme = req.param('theme');
+        console.log(req.session.user.pref_theme);
 
-        req.user.pref_notification = req.param('noti');
+        req.session.user.pref_notification = req.param('noti');
 
-        req.session.passport.user.pref_theme = req.param('theme');
-        req.session.passport.user.pref_notification = req.param('noti');
-        req.session.save(function(err) {
-            console.log(err);
-        });
+        
 
 
 

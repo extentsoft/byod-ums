@@ -1101,7 +1101,7 @@ module.exports = function(app, passport) {
                 console.log('Authentication Failure');
                 req.session.authenticated = false;
                 req.session.authorized = 0;
-                res.redirect('/systemcenter/fixauthen/');
+                res.redirect('/systemcenter/login');
             } else {
                 console.log('Authentication Success');
                 console.log(user.email);

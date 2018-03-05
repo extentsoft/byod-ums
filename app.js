@@ -90,7 +90,8 @@ var report671532 = require('./routes/reports/report671532');
 var report67154 = require('./routes/reports/report67154');
 var violation_report = require('./routes/reports/violation_report');
 var alllimit = require('./routes/reports/alllimit');
-
+var checkaccesstime = require('./routes/policy/checkaccesstime');
+var checkdevicemon = require('./routes/policy/checkdevicemon');
 var checkcountdevice = require('./routes/policy/checkcountdevice');
 
 var app = express();
@@ -196,7 +197,9 @@ app.use('/report/report67154', report67154);
 app.use('/report/violation_report', violation_report);
 app.use('/report/alllimit', alllimit);
 
-app.use('/policy/checkcountdevice', checkcountdevice);
+app.use('/api/checkcountdevice', checkcountdevice);
+app.use('/api/checkdevicemon', checkdevicemon);
+app.use('/api/checkaccesstime', checkaccesstime);
 
 
 // catch 404 and forward to error handler

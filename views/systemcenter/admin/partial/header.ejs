@@ -6,7 +6,7 @@
             <div class="vd_top-nav vd_nav-width  ">
                 <div class="vd_panel-header">
                     <div class="logo">
-                        <a href="index.html"><!--<img alt="logo" src="img/logo1.png" width="200%">-->ระบบจัดการทรัพยากร</a>
+                        <a href="index.html"><img alt="logo" src="img/logo1.png" width="200%"></a>
 
                     </div>
                     <!-- logo -->
@@ -46,7 +46,11 @@
             <div class="vd_container">
                 <div class="row">
                     <div class="col-sm-5 col-xs-12">
-                        <input type="file" id="imgupload" style="visibility: hidden;" onchange="uploadFile()" />
+                        <div class="title" style="color: white;" align="center"><br>
+                            <font size="3">ระบบบริหารจัดการทรัพยากร ICT</font>
+
+                        </div>
+						<input type="file" id="imgupload" style="visibility: hidden;" onchange="uploadFile()" />
                     </div>
                     <div class="col-sm-7 col-xs-12">
                         <div class="vd_mega-menu-wrapper">
@@ -199,19 +203,14 @@
     //account_now = 'natthawat_a';
     //alert(' account_now - ' + account_now);
     //alert(' account_now privilege - ' + $("#priv").html().trim().split(","));
+	account_now = $('#email').text().trim();
     $("#chat-text").keyup(function(event) {
         if (event.keyCode === 13) {
             //alert($('#chat-text').val());
             sendchat($('#chat-text').val(), '-');
         }
     });
-    if (jQuery) {
-        // jQuery is loaded  
-        //alert("Yeah!");
-    } else {
-        // jQuery is not loaded
-        //alert("Doesn't Work");
-    }
+   
 
     function getAttach() {
         //alert('please upload file');
@@ -255,7 +254,7 @@
             /*
                         $.ajax({
                             type: "post",
-                            url: 'http://localhost/api/chat/attachment',
+                            url: 'http://192.168.163.29/api/chat/attachment',
                             data: {
                                 data: reader.result,
                             },
@@ -296,7 +295,7 @@
     }
     */
     function get_chat() {
-        $.ajax('http://localhost/api/getchat', {
+        $.ajax('http://192.168.163.29/api/getchat', {
             type: "get",
             success: function(json) {
                 //alert(JSON.stringify(json));
@@ -369,7 +368,7 @@
 		else{
 			
 		}
-        $.ajax('http://localhost/api/addchat', {
+        $.ajax('http://192.168.163.29/api/addchat', {
             type: "post",
             data: {
                 usr: account_now,
@@ -389,7 +388,7 @@
     }
 
     function get_noti() {
-        $.ajax('http://localhost/api/getnotimsg', {
+        $.ajax('http://192.168.163.29/api/getnotimsg', {
             type: "get",
             data: {
                 chanel: '0'

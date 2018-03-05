@@ -9,9 +9,9 @@
         <h3 class="menu-title hide-nav-medium hide-nav-small">เมนูการใช้งาน</h3>
 
         <div class="vd_menu">
-            <ul>
+            <ul ="uu1">
                 <% if(isauthorized){ %>
-                    <li>
+                    <li id="aa1">
                         <a href="/systemcenter/dashboard">
                             <span class="menu-icon"><i class="fa fa-dashboard"></i></span>
                             <span class="menu-text">แผงควบคุมหลัก</span>
@@ -53,14 +53,14 @@
                             </a>
                         </li>
                         <% if(isauthorized){ %>
-                            <li>
+                            <li id="aa2">
                                 <a href="/systemcenter/configuration">
                                     <span class="menu-icon"><i class="icon-tools"> </i></span>
                                     <span class="menu-text">ตั้งค่าระบบ</span>
                                     <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
                                 </a>
                             </li>
-                            <li>
+                            <li id="aa3">
                                 <a href="javascript:void(0);" data-action="click-trigger">
                                     <span class="menu-icon entypo-icon"><i class="icon-newspaper"> </i></span>
                                     <span class="menu-text">รายงาน</span>
@@ -88,6 +88,26 @@
                                                     <li>
                                                         <a href="/systemcenter/report/usage/site/amount">
                                                             <span class="menu-text">จำนวนผู้ใช้งาน</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+										<li>
+                                            <a href="/systemcenter/report/monitor/device/addmonitor" data-action="click-trigger">
+                                                <span class="menu-text">กำหนดอุปกรณ์เพื่อตรวจสอบการเข้าใช้งาน</span>
+                                                <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
+                                            </a>
+                                            <div class="child-menu" data-action="click-target">
+                                                <ul>
+                                                    <li>
+                                                        <a href="/systemcenter/report/monitor/device/addmonitor">
+                                                            <span class="menu-text">กำหนดอุปกรณ์เพื่อตรวจสอบการเข้าใช้งาน</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/systemcenter/report/monitor/device/listmonitor">
+                                                            <span class="menu-text">รายชื่ออุปกรณ์ที่ถูกตรวจสอบการเข้าใช้งาน</span>
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -223,3 +243,15 @@
             </div>
         </div>
     </div>
+	<script>
+		//alert($("#priv").html().trim().split(",")[2]);
+		if($("#priv").html().trim().split(",")[2]=='false'){
+			//alert('a');
+			//document.getElementById("uu1").children[0].style.display = "none"
+			document.getElementById("aa1").style.display = "none";
+			document.getElementById("aa2").style.display = "none";
+			document.getElementById("aa3").style.display = "none";
+			
+		}
+		else{alert('b');}
+	</script>
