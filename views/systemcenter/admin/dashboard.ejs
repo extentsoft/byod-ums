@@ -614,7 +614,7 @@
         <script type="text/javascript ">
             function refresh_group(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://localhost/report/report672', {
+                $.ajax('http://192.168.163.29/report/report672', {
                     type: "get",
                     data: {
                         start: sd,
@@ -721,7 +721,7 @@
 
             function refresh_browser(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://localhost/report/report67153', {
+                $.ajax('http://192.168.163.29/report/report67153', {
                     type: "get",
                     data: {
                         start: sd,
@@ -822,7 +822,7 @@
 
             function refresh_os(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://localhost/report/report67152', {
+                $.ajax('http://192.168.163.29/report/report67152', {
                     type: "get",
                     data: {
                         start: sd,
@@ -875,7 +875,7 @@
 
             function refresh_device(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://localhost/report/report678', {
+                $.ajax('http://192.168.163.29/report/report678', {
                     type: "get",
                     data: {
                         start: sd,
@@ -1087,7 +1087,7 @@
 
             function refresh_traffic() {
                 //alert('refresh');
-                $.ajax('http://localhost/report/traffic', {
+                $.ajax('http://192.168.163.29/report/traffic', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -1185,7 +1185,7 @@
             }
 
             function login_log(b, i) {
-                $.ajax('http://localhost/api/accesslog', {
+                $.ajax('http://192.168.163.29/api/accesslog', {
                     type: "get",
                     data: {
                         browser: b,
@@ -1206,7 +1206,7 @@
 
             function countlog() {
                 //alert('refresh');
-                $.ajax('http://localhost/api/countlogin', {
+                $.ajax('http://192.168.163.29/api/countlogin', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -1215,7 +1215,7 @@
                         //alert(json);
                         if (json == 1) {
                             addviolation('overlogin', account_now);
-                            $.ajax('http://localhost/api/message/email/1/' + account_now, {
+                            $.ajax('http://192.168.163.29/api/message/email/1/' + account_now, {
                                 type: "get",
                                 success: function(json) {
                                     //alert(JSON.stringify(json));
@@ -1235,7 +1235,7 @@
 
             function addviolation(detail, usr) {
                 //alert('refresh');
-                $.ajax('http://localhost/api/addviolation', {
+                $.ajax('http://192.168.163.29/api/addviolation', {
                     type: "get",
                     data: {
                         violation: detail,
@@ -1249,13 +1249,13 @@
 
             function check_access() {
                 //alert('refresh');
-                $.ajax('http://localhost/api/checkaccesstime', {
+                $.ajax('http://192.168.163.29/api/checkaccesstime', {
                     type: "get",
                     success: function(json) {
                         //alert(json);
                         if (json == 1) {
                             addviolation('outoftime', account_now);
-                            $.ajax('http://localhost/api/message/email/3/' + account_now, {
+                            $.ajax('http://192.168.163.29/api/message/email/3/' + account_now, {
                                 type: "get",
                                 success: function(json) {
                                     //alert(JSON.stringify(json));
@@ -1271,13 +1271,13 @@
 
             function check_devicemon() {
                 //alert('refresh');
-                $.ajax('http://localhost/api/checkdevicemon', {
+                $.ajax('http://192.168.163.29/api/checkdevicemon', {
                     type: "get",
                     success: function(json) {
                         //alert(json);
                         if (json == 1) {
                             addviolation('devicemon', account_now);
-                            $.ajax('http://localhost/api/message/email/6/' + account_now, {
+                            $.ajax('http://192.168.163.29/api/message/email/6/' + account_now, {
                                 type: "get",
                                 success: function(json) {
                                     //alert(JSON.stringify(json));
@@ -1292,7 +1292,7 @@
             }
 
             function check_diffsite() {
-                $.ajax('http://localhost/api/checkdiffsite', {
+                $.ajax('http://192.168.163.29/api/checkdiffsite', {
                     type: "get",
                     success: function(json) {
                         data_res = JSON.parse(JSON.stringify(json));
@@ -1300,7 +1300,7 @@
                             for (i = 0; i < data_res.length; i++) {
                                 //alert(data_res[0]);
                                 addviolation('accessdiffsite', data_res[0]);
-                                $.ajax('http://localhost/api/message/email/2/' + data_res[0], {
+                                $.ajax('http://192.168.163.29/api/message/email/2/' + data_res[0], {
                                     type: "get",
                                     success: function(json) {
                                         //alert(JSON.stringify(json));
