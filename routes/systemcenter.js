@@ -74,7 +74,7 @@ module.exports = function(app, passport) {
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/admin/dashboard_dark', {
@@ -85,7 +85,7 @@ module.exports = function(app, passport) {
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
 
@@ -104,7 +104,7 @@ module.exports = function(app, passport) {
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/admin/configuration_dark', {
@@ -114,7 +114,7 @@ module.exports = function(app, passport) {
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
 
@@ -138,7 +138,7 @@ module.exports = function(app, passport) {
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/device_dark', {
@@ -148,7 +148,7 @@ module.exports = function(app, passport) {
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
 
@@ -165,7 +165,7 @@ module.exports = function(app, passport) {
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/history_dark', {
@@ -175,7 +175,7 @@ module.exports = function(app, passport) {
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
 
@@ -193,7 +193,7 @@ module.exports = function(app, passport) {
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/setting_dark', {
@@ -203,7 +203,7 @@ module.exports = function(app, passport) {
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
 
@@ -231,7 +231,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/profile_dark', {
@@ -246,7 +246,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
 
@@ -270,7 +270,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/device/activate_dark', {
@@ -284,7 +284,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -303,7 +303,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/device/deactivate/today_dark', {
@@ -317,7 +317,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -336,7 +336,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/device/deactivate/week_dark', {
@@ -350,7 +350,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -369,7 +369,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/device/deactivate/month_dark', {
@@ -383,7 +383,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -402,7 +402,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/device/deactivate/year_dark', {
@@ -416,7 +416,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -436,7 +436,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/usage/person/today_dark', {
@@ -450,7 +450,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -469,7 +469,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/usage/person/week_dark', {
@@ -483,7 +483,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -502,7 +502,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/usage/person/month_dark', {
@@ -516,7 +516,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -535,7 +535,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/usage/person/year_dark', {
@@ -549,7 +549,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -569,7 +569,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/usage/group/today_dark', {
@@ -583,7 +583,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -602,7 +602,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/usage/group/week_dark', {
@@ -616,7 +616,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
 
@@ -636,7 +636,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/usage/group/month_dark', {
@@ -650,7 +650,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -669,7 +669,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/usage/group/year_dark', {
@@ -683,7 +683,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -697,8 +697,8 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.user.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/usage/site/today_dark', {
@@ -707,8 +707,8 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.user.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -722,8 +722,8 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.user.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/usage/site/amount_dark', {
@@ -732,8 +732,8 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.user.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -747,8 +747,8 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.user.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/usage/site/area_dark', {
@@ -757,8 +757,8 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.user.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -772,8 +772,8 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.user.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/usage/type_dark', {
@@ -782,8 +782,8 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.user.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -797,8 +797,8 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.user.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/usage/browser_dark', {
@@ -807,8 +807,8 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.user.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -822,8 +822,8 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.user.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/usage/os_dark', {
@@ -832,8 +832,8 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.user.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -852,7 +852,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/monitor/device/addmonitor_dark', {
@@ -866,7 +866,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -885,7 +885,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/monitor/device/listmonitor_dark', {
@@ -899,7 +899,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -918,7 +918,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/monitor/device/reportmonitor_dark', {
@@ -932,7 +932,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -955,7 +955,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/policy/usage_dark', {
@@ -969,7 +969,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -986,7 +986,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/policy/device_dark', {
@@ -1000,7 +1000,7 @@ module.exports = function(app, passport) {
                 level: req.session.user.level,
                 area: req.session.user.area,
                 isauthorized: req.session.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
@@ -1013,8 +1013,8 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.user.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         } else {
             res.render('systemcenter/report/policy/violation_dark', {
@@ -1023,8 +1023,8 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
-                isauthorized: req.session.user.authorized,
-                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.user.authorized
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
         }
     });
