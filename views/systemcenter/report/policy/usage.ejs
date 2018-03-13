@@ -59,7 +59,7 @@
     <link href="plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css">
     <link href="plugins/introjs/css/introjs.min.css" rel="stylesheet" type="text/css">
 	
-    <link href="plugins/dataTables/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+    <link href="plugins/dataTables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
     <link href="plugins/dataTables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 
     <!-- Theme CSS -->
@@ -122,9 +122,11 @@
 
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
-                                    <h1>รายงาน</h1>
+                                    <h1>รายงานการใช้งานที่ไม่เป็นไปตามกฎ</h1>
+									
 
                                     <div class="vd_panel-menu  hidden-xs">
+									
                                         <div class="menu">
 
                                             <span class="fa fa-calendar" id="daterangepicker">
@@ -137,17 +139,23 @@
                                             </span>
 
                                             </span>
+											
+											
                                         </div>
+										
                                         <!-- menu -->
+										
+	
+                                            
+								
                                     </div>
+									
+									
                                 </div>
                                 <!-- vd_panel-header -->
                             </div>
                             <!-- vd_title-section -->
-
-                            <div class="vd_content-section clearfix">
-                            <!-- start row-->
-
+							
 
                             <div class="vd_content-section clearfix">
                             <!-- start row-->
@@ -157,14 +165,18 @@
                                 <div class="col-md-12">
                                     <div class="panel widget">
                                         <div class="panel-heading vd_bg-grey">
-                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายงานการใช้งานที่ไม่เป็นไปตามกฎ</h3>
+
+                                            <select id="listvio" onchange="selectvio(this.value)" style="width:30%" >
+												<option value="blank" disabled selected>กรุณาเลือกประเภทของกฎ</option>                       
+											</select>
+              
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
                                             <table class="table table-striped" id="data-tables">
                                                 <thead>
                                                     <tr>
-                                                        <th>ประเภทกฎที่ผู้ใช้งานละเมิด</th>
-                                                        <th>ชื่อผู้ใช้งาน</th>
+														<th>ชื่อผู้ใช้งาน</th>
+                                                        <th>ประเภทกฎที่ผู้ใช้งานละเมิด</th>                                                        
                                                         <th>วันที่ที่ผู้ใช้งานละเมิดกฎ</th>
                                                     </tr>
                                                 </thead>
@@ -183,9 +195,6 @@
 
 
                             </div>
-                            <!-- .vd_content-section -->
-
-                        </div>
                             <!-- .vd_content-section -->
 
                         </div>
@@ -295,16 +304,6 @@
         <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
 
-
-
-        <script type="text/javascript ">
-            $(document).ready(function() {
-                account_now = 'natthawat_a';
-
-
-            });
-            $(window).load(function() {});
-        </script>
         <!-- Specific Page Scripts END -->
 
 
@@ -312,34 +311,27 @@
 
         <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
 
-        <script>
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-XXXXX-X']);
-            _gaq.push(['_trackPageview']);
 
-            (function() {
-                var ga = document.createElement('script');
-                ga.type = 'text/javascript';
-                ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
 
         <script type="text/javascript ">
             account_now = '<%= email %>';
+			var start_ ='';
+			var end_ ='';
+			var data_ = '';
+			var violation_ = '';
 			//alert(account_now);
 
-            function refresh_table(sd, ed) {
+            function refresh_table(sd, ed , vio) {
                 //alert('refresh');
-                document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>ประเภทกฎที่ผู้ใช้งานละเมิด</th><th>ชื่อผู้ใช้งาน</th><th>วันที่ที่ผู้ใช้งานละเมิดกฎ</th></tr></thead><tbody></tbody></table>';
-
+				//alert(sd);
+				//alert(ed);
+				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>ชื่อผู้ใช้งาน</th><th>ประเภทกฎที่ผู้ใช้งานละเมิด</th><th>วันที่ที่ผู้ใช้งานละเมิดกฎ</th></tr></thead><tbody></tbody></table>';
                 $.ajax('http://localhost/report/violation_report', {
                     type: "get",
                     data: {
                         start: sd,
-                        end: ed
+                        end: ed,
+						violation: vio
                     },
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -381,7 +373,7 @@
                     date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();
 
                     //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
-                    $('#data-tables').find('tbody').append("<tr><td>" + vio + "</td><td>" + data_sql[2] + "</td><td>" + date_str + "</td></tr>");
+                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[2] + "</td><td>" + vio + "</td><td>" + date_str + "</td></tr>");
                     total = total + data_sql[1];
                     //alert(JSON.stringify(data_json));
                     data.push(data_json);
@@ -396,11 +388,21 @@
                 $('#data-tables').dataTable();
 
             }
+
             function datepick() {
                 function e(e, a, r) {
-                    refresh_table(e.format("Y-M-D"), a.format("Y-M-D"));
+                    
                     //alert(e.format("Y-M-D"));
                     //alert(a.format("Y-M-D"));
+					
+					if (violation_ == '') {
+						$('#data-tables').dataTable();
+					} else {
+						refresh_table(e.format("Y-M-D"), a.format("Y-M-D"),violation_);
+					}
+                    
+					start_ = e.format("Y-M-D");
+					end_ = a.format("Y-M-D");
 
 
                     var o = "",
@@ -430,8 +432,55 @@
                         e(a, r, "")
                 }
             }
+			
+			function list_violation(){
+				$.ajax('http://localhost/api/getviolation', {
+                    type: "get",
+                    success: function(json) {
+                        //alert(JSON.stringify(json));
+						var select = document.getElementById("listgroup");
+						data_res = JSON.parse(JSON.stringify(json));
+						for (i = 0; i < data_res.length; i++) {
+							var option = document.createElement("option");
+														
+							if(data_res[i]=='overlogin'){
+								option.text = 'เข้าสู่ระบบเกินจำนวนครั้งที่กำหนดในช่วงเวลาที่ระบุไว้';
+							} else if(data_res[i]=='outoftime'){
+								option.text = 'เข้าสู่ระบบนอกช่วงเวลาที่ได้รับอนุญาต';
+							}
+							else if(data_res[i]=='devicemon'){
+								option.text = 'มีการเข้าใช้งานระบบด้วยอุปกรณ์ที่ถูกกำหนดให้ตรวจสอบ';
+							}
+							else if(data_res[i]=='editdeivceoverlimit'){
+								option.text = 'มีการลงทะเบียน-เพิกถอนอุปกรณ์มากเกินกว่าที่กำหนดไว้ในหนึ่งวัน';
+							}
+							else if(data_res[i]=='accessdiffsite'){
+								option.text = 'มีการเข้าใช้งานต่างสถานที่ในระยะเวลาที่สั้นเกินกว่าที่กำหนดไว้ในระบบ';
+							}
+							else if(data_res[i]=='overeditprofile'){
+								option.text = 'มีการแก้ไขข้อมูลส่วนตัวเกินจำนวนครั้งที่ระบุไว้ในระบบ';
+							}
+							else {option.text=data_res[i];}
+							
+							option.value = data_res[i];
+							var select = document.getElementById("listvio");
+							select.appendChild(option);
+							data_res.splice(0, 1);
+							i = -1;
 
-           
+						}
+                    }
+                });
+			}
+			
+			function selectvio(violation_name){
+				$("#listvio option[value='blank']").remove();
+				violation_ = violation_name;
+				refresh_table(start_,end_,violation_);
+				
+			}
+
+			list_violation();
             datepick();
 			
         </script>

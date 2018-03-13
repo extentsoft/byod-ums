@@ -34,16 +34,16 @@ module.exports = function(app, passport) {
         };
 
         var transporter = nodemailer.createTransport({
-            host: 'smtp.mailtrap.io',
-            //host: '61.19.233.5',
-            port: 2525,
-            //port: 25,
+            //host: 'smtp.mailtrap.io',
+            host: '61.19.233.5',
+            //port: 2525,
+            port: 25,
             secure: false,
             auth: {
-                user: '59ad65f3b7fa3b',
-                //user: 'byod@excise.go.th',
-                pass: '7e4387ba355422',
-                //pass: 'byod1234'
+                //user: '59ad65f3b7fa3b',
+                user: 'byod@excise.go.th',
+                //pass: '7e4387ba355422',
+                pass: 'byod1234'
             }
         });
         transporter.sendMail(mailOptions, function(err, info) {

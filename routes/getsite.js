@@ -1,9 +1,13 @@
 var express = require('express');
-var pool = require('../../modules/mssql').pool;
+var pool = require('../modules/mssql').pool;
 var Request = require('tedious').Request;
 var router = express.Router();
 
 var deviceList = function(req,res,next){
+
+  console.log('deviceList middleware');
+
+  req.test1 = "test test test";
 
   var result = [];
   pool.acquire(function(err, connection){
@@ -13,8 +17,9 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 
-    //var request = new Request('select * from [test].[dbo].t1', function(err, rowCount){
-    var request = new Request("SELECT [os_name] OS,accountName Account, terminalMac MAC, timestamp 'Date' FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where CONVERT (date, timestamp) between '"+req.param('start')+"' and '"+req.param('end')+"' and [os_name] = '"+req.param('os')+"'", function(err, rowCount){
+    var request = new Request("SELECT [name] FROM [AgileControllerDB].[dbo].[UMS_site]", function(err, rowCount){
+
+	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 
       if(err){
         console.error(err);
@@ -22,7 +27,7 @@ var deviceList = function(req,res,next){
       }
       console.log('rowCount: ' + rowCount);
       //console.log(JSON.stringify(result));
-      req.test2 = result;
+      req.test2 = result; 
       connection.release();
       next();
     });
@@ -50,6 +55,7 @@ router.get('/', deviceList, function(req, res, next) {
   //console.log('middleware 1 ' + req.test2);
   //console.log('middleware 2 ' + JSON.stringify(req.test2));
   res.send(req.test2);
+  //res.send('respond with a resource');
 });
 
 module.exports = router;
