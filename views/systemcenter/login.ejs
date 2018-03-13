@@ -11,7 +11,11 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Login Pages HTML Template - Responsive Multipurpose Admin Templates | Vendroid</title>
+    <title>
+        <%= ipaddr %>&nbsp;
+            <%= browser_family %>&nbsp;
+                <%= browser_version %>
+    </title>
     <meta name="keywords" content="HTML5 Template, CSS3, All Purpose Admin Template, Vendroid" />
     <meta name="description" content="Login Pages - Responsive Admin HTML Template">
     <meta name="author" content="Venmond">
@@ -143,6 +147,13 @@
                                                 <div class="form-group">
                                                     <div class="col-md-12 text-center mgbt-xs-5">
                                                         <button class="btn vd_bg-green vd_white width-100" type="submit" id="login-submit">Login</button>
+
+                                                        <div class="browser_information">
+                                                            <br>คุณกำลังเข้าใช้งานระบบบริหารจัดการทรัพยากร​ ICT ด้วย<br> IP Address
+                                                            <%= ipaddr %>&nbsp;(พื้นที่) ผ่าน
+                                                                <%= browser_family %>&nbsp;เวอร์ชั่น
+                                                                    <%= browser_version %>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </form>
@@ -152,14 +163,17 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header vd_bg-blue vd_white">
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
-                                                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                                            <h4 class="modal-title" id="myModalLabel">แจ้งเตือนการเข้าใช้งาน</h4>
                                                         </div>
 
                                                         <div class="modal-body">
 
                                                             <form class="form-horizontal">
                                                                 <div class="form-group" align="center">
-                                                                    Browser ที่ใช้งานในขณะนี้เก่าเกินไป กรุณาอัพเดทเพื่อเข้าใช้งานได้อย่างมีประสิทธิภาพ
+                                                                    Browser ที่ใช้งานในขณะนี้เก่าเกินไป กรุณาอัพเดทเพื่อเข้าใช้งานได้อย่างมีประสิทธิภาพ <br> กรุณาใช้ Internet Explorer เวอร์ชั่นมากกว่า
+                                                                    <%= system_ie_version %><br> หรือ กรุณาใช้ Chrome เวอร์ชั่นมากกว่า
+                                                                        <%= system_chrome_version %><br> หรือ กรุณาใช้ Firefox เวอร์ชั่นมากกว่า
+                                                                            <%= system_firefox_version %><br>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -227,45 +241,44 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
-            $.ajax('https://freegeoip.net/json/', {
-                type: "get",
-                success: function(data) {
-                    //alert(JSON.stringify(data));
-                    //data.ip, data.country_code, data.country_name, data.region_name, 
-                    //alert('a');
-                    var browser = get_browser2();
-                    //alert(browser.name+browser.version);
-                    var access_tpl = 'คุณกำลังเข้าใช้งานระบบบริหารจัดการทรัพยากร​ ICT ด้วย ';
-                    access_tpl += browser.name + '/' + browser.version;
-                    access_tpl += ', IP Address ' + data.ip;
-                    access_tpl += ' พื้นที่ ' + country_name[data.region_name] + ', ' + region_name[data.country_name];
-                    $('.copyright').html(access_tpl);
+            if (!<%= browser_support %>) $('#warning_modal').click();
 
-                    $.ajax('http://localhost/api/getconfig', {
-                        type: "get",
-                        success: function(data) {
+            /*
+                        $.ajax('https://freegeoip.net/json/', {
+                            type: "get",
+                            success: function(data) {
+                                var browser = get_browser2();
+                                var access_tpl = 'คุณกำลังเข้าใช้งานระบบบริหารจัดการทรัพยากร​ ICT ด้วย ';
+                                access_tpl += browser.name + '/' + browser.version;
+                                access_tpl += ', IP Address ' + data.ip;
+                                access_tpl += ' พื้นที่ ' + country_name[data.region_name] + ', ' + region_name[data.country_name];
+                                $('.browser_information').html(access_tpl);
+
+                                $.ajax('http://localhost/api/getconfig', {
+                                    type: "get",
+                                    success: function(data) {
 
 
-                            if (browser.name == "Internet Explorer" && (browser.version < parseInt(data[15]))) {
-                                $('#warning_modal').click();
-                            } else if (browser.name == "Chrome" && (browser.version < parseInt(data[17]))) {
-                                $('#warning_modal').click();
-                            } else if (browser.name == "Firefox" && (browser.version < parseInt(data[19]))) {
-                                $('#warning_modal').click();
+                                        if (browser.name == "Internet Explorer" && (browser.version < parseInt(data[15]))) {
+                                            $('#warning_modal').click();
+                                        } else if (browser.name == "Chrome" && (browser.version < parseInt(data[17]))) {
+                                            $('#warning_modal').click();
+                                        } else if (browser.name == "Firefox" && (browser.version < parseInt(data[19]))) {
+                                            $('#warning_modal').click();
+                                        }
+
+                                    },
+                                    error: function(fa) {
+                                        //alert(JSON.stringify(fa));
+                                        //alert('b');
+                                    }
+                                });
+                            },
+                            error: function(fa) {
+                                //alert(JSON.stringify(fa));
+                                //alert('b');
                             }
-
-                        },
-                        error: function(fa) {
-                            //alert(JSON.stringify(fa));
-                            //alert('b');
-                        }
-                    });
-                },
-                error: function(fa) {
-                    //alert(JSON.stringify(fa));
-                    //alert('b');
-                }
-            });
+                        });*/
         });
 
         var country_name = {

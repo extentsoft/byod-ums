@@ -3,7 +3,7 @@ var Crypt = require('../modules/crypt_sha');
 var soap = require('soap');
 var request = require('request');
 var Account = require('../models/account');
-
+var os = require('os');
 var useragent = require('useragent');
 useragent(true);
 var envConfig = require('../config/environment');
@@ -107,7 +107,7 @@ module.exports = function(app, passport) {
 
 
 
-    app.get('/systemcenter/configuration', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/configuration', isLoggedIn, isSupported, function(req, res) {
 
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/admin/configuration', {
@@ -140,7 +140,7 @@ module.exports = function(app, passport) {
     /* ================================================================
                               User Section
     =================================================================== */
-    app.get('/systemcenter/device', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/device', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
 
         if (req.session.user.pref_theme == 0) {
@@ -167,7 +167,7 @@ module.exports = function(app, passport) {
 
     });
 
-    app.get('/systemcenter/history', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/history', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
 
         if (req.session.user.pref_theme == 0) {
@@ -194,7 +194,7 @@ module.exports = function(app, passport) {
 
     });
 
-    app.get('/systemcenter/setting', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/setting', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/setting");
         console.log('theme - ' + req.session.user.pref_theme);
 
@@ -229,7 +229,7 @@ module.exports = function(app, passport) {
 
     //////////////////// TZ /////////////////////////////////////
 
-    app.get('/systemcenter/profile', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/profile', isLoggedIn, isSupported, function(req, res) {
 
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/profile', {
@@ -269,7 +269,7 @@ module.exports = function(app, passport) {
     /* ================================================================
                             Report Section
     =================================================================== */
-    app.get('/systemcenter/report/device/activate', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/device/activate', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/device/activate', {
@@ -302,7 +302,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/device/deactivate/today', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/device/deactivate/today', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/device/deactivate/today', {
@@ -335,7 +335,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/device/deactivate/week', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/device/deactivate/week', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/device/deactivate/week', {
@@ -368,7 +368,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/device/deactivate/month', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/device/deactivate/month', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/device/deactivate/month', {
@@ -401,7 +401,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/device/deactivate/year', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/device/deactivate/year', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/device/deactivate/year', {
@@ -435,7 +435,7 @@ module.exports = function(app, passport) {
     });
 
 
-    app.get('/systemcenter/report/usage/person/today', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/usage/person/today', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/person/today', {
@@ -468,7 +468,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/person/week', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/usage/person/week', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/person/week', {
@@ -501,7 +501,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/person/month', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/usage/person/month', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/person/month', {
@@ -534,7 +534,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/person/year', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/usage/person/year', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/person/year', {
@@ -568,7 +568,7 @@ module.exports = function(app, passport) {
     });
 
 
-    app.get('/systemcenter/report/usage/group/today', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/usage/group/today', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/group/today', {
@@ -601,7 +601,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/group/week', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/usage/group/week', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/group/week', {
@@ -635,7 +635,7 @@ module.exports = function(app, passport) {
 
     });
 
-    app.get('/systemcenter/report/usage/group/month', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/usage/group/month', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/group/month', {
@@ -668,7 +668,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/group/year', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/usage/group/year', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/group/year', {
@@ -701,7 +701,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/site/today', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/usage/site/today', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/site/today', {
@@ -726,7 +726,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/site/amount', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/usage/site/amount', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/site/amount', {
@@ -751,7 +751,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/site/area', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/usage/site/area', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/site/area', {
@@ -776,7 +776,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/type', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/usage/type', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/type', {
@@ -801,7 +801,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/browser', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/usage/browser', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/browser', {
@@ -825,8 +825,8 @@ module.exports = function(app, passport) {
             });
         }
     });
-	
-	app.get('/systemcenter/report/usage/activity', isLoggedIn, function(req, res) {
+
+    app.get('/systemcenter/report/usage/activity', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/activity', {
@@ -851,7 +851,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/os', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/usage/os', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/os', {
@@ -875,8 +875,8 @@ module.exports = function(app, passport) {
             });
         }
     });
-	
-	app.get('/systemcenter/report/usage/time', isLoggedIn, function(req, res) {
+
+    app.get('/systemcenter/report/usage/time', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/time', {
@@ -901,7 +901,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/monitor/device/addmonitor', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/monitor/device/addmonitor', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/monitor/device/addmonitor', {
@@ -934,7 +934,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/monitor/device/listmonitor', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/monitor/device/listmonitor', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/monitor/device/listmonitor', {
@@ -967,7 +967,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/monitor/device/reportmonitor', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/monitor/device/reportmonitor', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/monitor/device/reportmonitor', {
@@ -1005,7 +1005,7 @@ module.exports = function(app, passport) {
     //////////////////// TZ /////////////////////////////////////
 
 
-    app.get('/systemcenter/report/policy/usage', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/policy/usage', isLoggedIn, isSupported, function(req, res) {
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/policy/usage', {
                 title: 'Report',
@@ -1036,7 +1036,7 @@ module.exports = function(app, passport) {
             });
         }
     });
-    app.get('/systemcenter/report/policy/device', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/policy/device', isLoggedIn, isSupported, function(req, res) {
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/policy/device', {
                 title: 'Report',
@@ -1068,7 +1068,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/policy/violation', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/report/policy/violation', isLoggedIn, isSupported, function(req, res) {
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/policy/violation', {
                 title: 'Report',
@@ -1108,25 +1108,25 @@ module.exports = function(app, passport) {
 
 
     // Authentication
-    app.get('/systemcenter/login', function(req, res) {
-
-
-
+    app.get('/systemcenter/login', checkSupported, function(req, res) {
         console.log('logging in');
-        res.render('systemcenter/login', { user: req.session.user, error: req.flash('error') });
-        console.log('tong');
-        //res.render('profile/login.ejs', { message: req.flash('loginMessage') });
+        console.log();
+        console.log(req.session.user);
+
+        res.render('systemcenter/login', {
+            ipaddr: getLocalIPAddr(),
+            browser_family: req.session.user.browser,
+            browser_version: req.session.user.bversion,
+            browser_support: req.session.user.bsupport,
+            system_ie_version: req.session.system.ie,
+            system_chrome_version: req.session.system.chrome,
+            system_firefox_version: req.session.system.firefox,
+            error: req.flash('error')
+        });
     });
 
-    // process the login form
-    /*app.post('/systemcenter/login', passport.authenticate('local-login', {
-        successRedirect: '/systemcenter', // redirect to the secure profile section
-        failureRedirect: '/systemcenter/login', // redirect back to the signup page if there is an error
-        failureFlash: true // allow flash messages
-    }));
-*/
+
     app.post('/systemcenter/login', function(req, res) {
-        console.log('cz');
         console.log(req.body.username + " -- " + req.body.password);
         /*
                 if (req.body.username == "byod1" && req.body.password == 'password') {
@@ -1274,13 +1274,30 @@ function isLoggedIn(req, res, next) {
 
 }
 
-function isSupported(req, res, next) {
+function checkSupported(req, res, next) {
     console.log('Check Browser Compatibility');
+
+    var agent = useragent.parse(req.headers['user-agent']);
+
+    if (!req.session.user) req.session.user = {};
+    //if (!req.session.user.warning_message) req.session.user.warning_message = 'ุณกำลังเข้าใช้งานระบบบริหารจัดการทรัพยากร​ ICT ด้วย ';
+    if (!req.session.user.browser) req.session.user.browser = agent.family;
+    if (!req.session.user.bversion) req.session.user.bversion = agent.major;
+
+    if (!req.session.system) req.session.system = {};
+    if (!req.session.system.ie) req.session.system.ie = '';
+    if (!req.session.system.chrome) req.session.system.chrome = '';
+    if (!req.session.system.firefox) req.session.system.firefox = '';
+
 
     request('http://' + envConfig.service_address + '/api/getconfig', function(error, response, body) {
         if (!error && response.statusCode == 200) {
             if (body != null) {
                 var data = JSON.parse(body);
+                req.session.system.ie = data[15];
+                req.session.system.chrome = data[17];
+                req.session.system.firefox = data[19];
+
 
                 if (req.session.user.browser.toLowerCase() == data[14].toLowerCase()) {
                     if (data[15] > req.session.user.bversion) {
@@ -1315,6 +1332,64 @@ function isSupported(req, res, next) {
         }
         next();
     });
+}
+
+function isSupported(req, res, next) {
+    console.log('Check Browser Compatibility');
+
+    var agent = useragent.parse(req.headers['user-agent']);
+
+    if (!req.session.user) req.session.user = {};
+    if (!req.session.user.browser) req.session.user.browser = agent.family;
+    if (!req.session.user.bversion) req.session.user.bversion = agent.major;
+
+
+    request('http://' + envConfig.service_address + '/api/getconfig', function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+            if (body != null) {
+                var data = JSON.parse(body);
+
+                if (req.session.user.browser.toLowerCase() == data[14].toLowerCase()) {
+                    if (data[15] > req.session.user.bversion) {
+                        req.session.user.bsupport = false;
+                    } else {
+                        req.session.user.bsupport = true;
+                    }
+                } else if (req.session.user.browser.toLowerCase() == data[16].toLowerCase()) {
+                    if (data[17] > req.session.user.bversion) {
+                        req.session.user.bsupport = false;
+                    } else {
+                        req.session.user.bsupport = true;
+                    }
+                } else if (req.session.user.browser.toLowerCase() == data[18].toLowerCase()) {
+                    if (data[19] > req.session.user.bversion) {
+                        req.session.user.bsupport = false;
+                    } else {
+                        req.session.user.bsupport = true;
+                    }
+                } else {
+                    req.session.user.bsupport = false;
+                }
+
+                console.log(' Your browsing with ', req.session.user.browser, req.session.user.bversion, 'which is ', req.session.user.bsupport);
+
+                if (!req.session.user.bsupport) {
+                    delete req.session.authenticated;
+                    delete req.session.authorized;
+                    delete req.session.user;
+
+                    res.redirect('/systemcenter/login');
+                }
+
+
+            } else {
+                console.log('Something wrong');
+            }
+        } else {
+            console.log('Something wrong');
+        }
+        next();
+    });
 
 }
 
@@ -1327,4 +1402,27 @@ function makeid() {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
 
     return text;
+}
+
+
+function getLocalIPAddr() {
+    var ipaddr = '';
+    var ifaces = os.networkInterfaces();
+    Object.keys(ifaces).forEach(function(iframe) {
+        var alias = 0;
+        ifaces[iframe].forEach(function(iface) {
+            if ('IPv4' !== iface.family || iface.internal !== false) {
+                return;
+            }
+
+            if (alias >= 1) {
+                console.log(iframe + ":" + alias, iface.address);
+            } else {
+                console.log(iframe, iface.address);
+                ipaddr = iface.address;
+            }
+            ++alias;
+        });
+    });
+    return ipaddr;
 }
