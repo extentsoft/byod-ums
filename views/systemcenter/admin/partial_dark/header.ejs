@@ -472,7 +472,7 @@
                         //alert(data[i].msg);
                         //var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>" + data[i].msg + "</span><span class='m-list-timeline__time'>" + data[i].timestamp.split("T")[0] + "</span></div>";
 
-                        var msg = "<li><a href='#' data-toggle='modal' data-target='#myModal'><div class='menu-icon vd_green'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + data[i].msg.substring(0, 50) + "<div class='menu-info'><span class='menu-date'>" + data[i].timestamp.split("T")[0] + "</span></div></div></a></li>";
+                        var msg = "<li><a href='#' data-toggle='modal' data-target='#modal_notification'><div class='menu-icon vd_green'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + data[i].msg.substring(0, 50) + "<div class='menu-info'><span class='menu-date'>" + data[i].timestamp.split("T")[0] + "</span></div></div></a></li>";
 
                         $('#notification_center').append(msg);
                     }
@@ -486,6 +486,10 @@
     }
     get_noti();
     get_chat();
+
+    function setModalNotification(msg) {
+        //alert('print message ' + msg);
+    }
 
     function css(a) {
         var sheets = document.styleSheets,
