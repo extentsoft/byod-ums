@@ -55,6 +55,7 @@ var alldevices = require('./routes/alldevices');
 var allusers = require('./routes/allusers');
 var accesslog = require('./routes/accesslog');
 var limitdevice = require('./routes/limitdevice');
+var limitdevice_user = require('./routes/limitdevice_user');
 
 var addprofilelog = require('./routes/addprofilelog');
 var checkprofilelimit = require('./routes/checkprofilelimit');
@@ -188,6 +189,7 @@ app.use('/api/alldevices', alldevices);
 app.use('/api/allusers', allusers);
 app.use('/api/accesslog', accesslog);
 app.use('/api/limitdevice', limitdevice);
+app.use('/api/limitdevice_user', limitdevice_user);
 
 app.use('/api/addprofilelog', addprofilelog);
 app.use('/api/checkprofilelimit', checkprofilelimit);

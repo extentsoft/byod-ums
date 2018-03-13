@@ -336,8 +336,7 @@
                                 <div class="col-md-12">
                                     <div class="panel widget">
                                         <div class="panel-heading vd_bg-grey">
-                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> กำหนดจำนวนอุปกรณ์</h3>
-											<input type="text" id="myInput" placeholder="โปรดระบุชื่อบุคคล" title="Type in a name" style="width:30%">
+                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายชื่อผู้ใช้งาน</h3>
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
                                             <table class="table table-striped" id="data-tables">
@@ -481,17 +480,17 @@
                     $('#top-menu-3').show();
                 }
             });
-			
-			$(document).ready(function() {
-                $("#myInput").keyup(function(event) {
+
+
+            $(document).ready(function() {
+                //account_now = 'natthawat_a';
+                $("#chat-text").keyup(function(event) {
                     if (event.keyCode === 13) {
-                        myFunction();
+                        sendchat($('#chat-text').val());
                     }
                 });
 
             });
-
-
         </script>
         <!-- Specific Page Scripts END -->
 
@@ -516,7 +515,6 @@
         </script>
         <script>
 		account_now = '<%= email %>';
-		var filter_ = '';
             function sendCustomerSatisfaction() {
                 alert('sendCustomerSatisfaction');
                 $.ajax('http://localhost/sendCustSat', {
@@ -529,13 +527,11 @@
                 });
             }
 
-            function refresh_table(usr) {
+            function refresh_table() {
                 //alert('refresh');
-                $.ajax('http://localhost/api/limitdevice_user', {
+                $.ajax('http://localhost/api/allusers', {
                     type: "get",
-                    data: {
-						usrname:usr
-						},
+                    //data: {start:sd,end:ed},
                     success: function(json) {
                         //alert(JSON.stringify(json));
                         data_res = JSON.parse(JSON.stringify(json));
@@ -715,26 +711,7 @@
                     }
                 });
             }
-			
-			function myFunction() {
-                var input, filter, ul, li, a, i;
-                input = document.getElementById("myInput");
-                //document.getElementById("tab-body").innerHTML="";
-                document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>ชื่อผู้ใช้งาน</th><th>ชื่อ-นามสกุลจริง</th><th>กลุ่มผู้ใช้งาน</th><th>จำนวนอุปกรณ์ที่ลงทะเบียนแล้ว</th><th>จำนวนอุปกรณ์สูงสุดที่ลงทะเบียนได้</th><th></th></tr></thead><tbody></tbody></table>';
-                //$('#data-tables').find('tbody').empty();
-
-                filter = input.value.toUpperCase();
-				data_ = filter;
-				filter_ = filter;
-                //alert(filter);
-                if (filter == '') {
-                    $('#data-tables').dataTable();
-                } else {
-                    refresh_table(filter);
-                }
-
-            }
-            //refresh_table();
+            refresh_table();
             getconfig();
         </script>
 
