@@ -825,8 +825,8 @@ module.exports = function(app, passport) {
             });
         }
     });
-	
-	app.get('/systemcenter/report/usage/activity', isLoggedIn, function(req, res) {
+
+    app.get('/systemcenter/report/usage/activity', isLoggedIn, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/activity', {
