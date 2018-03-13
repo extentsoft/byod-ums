@@ -115,7 +115,9 @@ var report6811 = require('./routes/reports/report6811');
 var report6812 = require('./routes/reports/report6812');
 var report6813 = require('./routes/reports/report6813');
 var report6814 = require('./routes/reports/report6814');
-var report6815 = require('./routes/reports/report6815');
+var report6815 = require('./routes/reports/report6815');report679
+var report679 = require('./routes/reports/report679');
+
 var violation_report = require('./routes/reports/violation_report');
 var alllimit = require('./routes/reports/alllimit');
 var checkaccesstime = require('./routes/policy/checkaccesstime');
@@ -254,6 +256,7 @@ app.use('/report/report6812', report6812);
 app.use('/report/report6813', report6813);
 app.use('/report/report6814', report6814);
 app.use('/report/report6815', report6815);
+app.use('/report/report679', report679);
 
 app.use('/api/checkcountdevice', checkcountdevice);
 app.use('/api/checkdevicemon', checkdevicemon);
