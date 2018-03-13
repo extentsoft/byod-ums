@@ -4,6 +4,11 @@ var soap = require('soap');
 var request = require('request');
 var Account = require('../models/account');
 
+var useragent = require('useragent');
+useragent(true);
+var envConfig = require('../config/environment');
+
+
 var crypt = new Crypt();
 module.exports = function(app, passport) {
 
@@ -35,6 +40,7 @@ module.exports = function(app, passport) {
             });
         });*/
         console.log(args);
+
         soap.createClient(url, function(err, client) {
             var options = {
                 mustUnderstand: true,
@@ -44,9 +50,14 @@ module.exports = function(app, passport) {
             };
             var wsSecurity = new soap.WSSecurity('admin', 'P@ssw0rd123', options);
             client.setSecurity(wsSecurity);
+
             client.modifyAccount(args, function(err, result) {
                 console.log(result);
             });
+
+
+            //new SoapUIClient('admin', 'P@ssw0rd123', {mustUnderstand: true,hasTimeStamp: false,passwordType: 'PasswordText'}).modifyAccount({in0: 'info',in1: {account: 'info',accountType: 1,orgName: '\\LDAP Users Temp',bindMac: 'AA-BB-CC-DD-EE-FF',loginType: 3,userName: 'Information Center'}});
+
         });
     });
 
@@ -58,12 +69,14 @@ module.exports = function(app, passport) {
     /* ================================================================
                               Admin Section
     =================================================================== */
-    app.get('/systemcenter/dashboard', isLoggedIn, function(req, res) {
+    app.get('/systemcenter/dashboard', isLoggedIn, isSupported, function(req, res) {
         console.log('1 - ' + JSON.stringify(req.session.user));
 
         if (!req.session.authorized) res.redirect('/systemcenter/profile');
 
+        console.log(' Your browsing with ', req.session.user.browser, req.session.user.bversion);
         console.log(' is admin ' + req.session.authorized);
+
         if (req.session.user.pref_theme == 0) {
 
             res.render('systemcenter/admin/dashboard', {
@@ -1096,6 +1109,9 @@ module.exports = function(app, passport) {
 
     // Authentication
     app.get('/systemcenter/login', function(req, res) {
+
+
+
         console.log('logging in');
         res.render('systemcenter/login', { user: req.session.user, error: req.flash('error') });
         console.log('tong');
@@ -1171,6 +1187,10 @@ module.exports = function(app, passport) {
                             console.log(JSON.stringify(body));
                             console.log(JSON.parse(body));
                             console.log(body);
+
+                            var agent = useragent.parse(req.headers['user-agent']);
+                            req.session.user.browser = agent.family;
+                            req.session.user.bversion = agent.major;
 
                             req.session.user.firstname = parsed_body.fn;
                             req.session.user.lastname = parsed_body.ln;
@@ -1253,6 +1273,51 @@ function isLoggedIn(req, res, next) {
     else res.redirect('/systemcenter/login');
 
 }
+
+function isSupported(req, res, next) {
+    console.log('Check Browser Compatibility');
+
+    request('http://' + envConfig.service_address + '/api/getconfig', function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+            if (body != null) {
+                var data = JSON.parse(body);
+
+                if (req.session.user.browser.toLowerCase() == data[14].toLowerCase()) {
+                    if (data[15] > req.session.user.bversion) {
+                        req.session.user.bsupport = false;
+                    } else {
+                        req.session.user.bsupport = true;
+                    }
+                } else if (req.session.user.browser.toLowerCase() == data[16].toLowerCase()) {
+                    if (data[17] > req.session.user.bversion) {
+                        req.session.user.bsupport = false;
+                    } else {
+                        req.session.user.bsupport = true;
+                    }
+                } else if (req.session.user.browser.toLowerCase() == data[18].toLowerCase()) {
+                    if (data[19] > req.session.user.bversion) {
+                        req.session.user.bsupport = false;
+                    } else {
+                        req.session.user.bsupport = true;
+                    }
+                } else {
+                    req.session.user.bsupport = false;
+                }
+
+                console.log(' Your browsing with ', req.session.user.browser, req.session.user.bversion, 'which is ', req.session.user.bsupport);
+
+
+            } else {
+                console.log('natthawat_a has just violated');
+            }
+        } else {
+            console.log('natthawat_a has just violated');
+        }
+        next();
+    });
+
+}
+
 
 function makeid() {
     var text = "";

@@ -5,7 +5,7 @@ var router = express.Router();
 
 var deviceList = function(req, res, next) {
 
-    var result = [];
+    var result = {};
     pool.acquire(function(err, connection) {
         if (err) {
             console.error(err);
@@ -27,18 +27,23 @@ var deviceList = function(req, res, next) {
         });
 
         request.on('row', function(columns) {
+
             //result.push(columns);
-
+            var item = {}; //new
+            //console.log(columns);
             columns.forEach(function(column) {
-
-                if (column.value === null) {
+                //console.log(column);
+                item[column.metadata.colName] = column.value; //new
+                /*if (column.value === null) {
                     console.log('NULL');
                 } else {
                     result.push(column.value);
                     //console.log(column.value);
                 }
+                */
             });
-            //result.push(item);
+            result.push(item);
+            //result = item;
         });
         connection.execSql(request);
     });
