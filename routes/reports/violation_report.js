@@ -14,7 +14,7 @@ var deviceList = function(req,res,next){
     console.log('Connection successful');
 
     //var request = new Request('select * from [test].[dbo].t1', function(err, rowCount){
-    var request = new Request("SELECT * FROM [AgileControllerDB].[dbo].[UMS_violationlog] a where CONVERT (date, created_at) between '"+req.param('start')+"' and '"+req.param('end')+"'", function(err, rowCount){
+    var request = new Request("SELECT * FROM [AgileControllerDB].[dbo].[UMS_violationlog] a where CONVERT (date, created_at) between '"+req.param('start')+"' and '"+req.param('end')+"' and [detail] = '"+req.param('violation')+"'", function(err, rowCount){
 
       if(err){
         console.error(err);

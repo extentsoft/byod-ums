@@ -70,7 +70,13 @@ var editconfig = require('./routes/editconfig');
 var getuserpref = require('./routes/getuserpref');
 var edituserpref = require('./routes/edituserpref');
 var addviolation = require('./routes/addviolation');
-
+var getgroupname = require('./routes/getgroupname');
+var getgroupname_dms = require('./routes/getgroupname_dms');
+var getviolation = require('./routes/getviolation');
+var getsite = require('./routes/getsite');
+var gettype = require('./routes/gettype');
+var getos = require('./routes/getos');
+var getbrowser = require('./routes/getbrowser');
 
 
 var deviceinmon = require('./routes/monitor/deviceinmon');
@@ -93,6 +99,22 @@ var report677 = require('./routes/reports/report677');
 var report67153 = require('./routes/reports/report67153');
 var report671532 = require('./routes/reports/report671532');
 var report67154 = require('./routes/reports/report67154');
+var report714 = require('./routes/reports/report714');
+var report681 = require('./routes/reports/report681');
+var report682 = require('./routes/reports/report682');
+var report683 = require('./routes/reports/report683');
+var report684 = require('./routes/reports/report684');
+var report685 = require('./routes/reports/report685');
+var report686 = require('./routes/reports/report686');
+var report687 = require('./routes/reports/report687');
+var report688 = require('./routes/reports/report688');
+var report689 = require('./routes/reports/report689');
+var report6810 = require('./routes/reports/report6810');
+var report6811 = require('./routes/reports/report6811');
+var report6812 = require('./routes/reports/report6812');
+var report6813 = require('./routes/reports/report6813');
+var report6814 = require('./routes/reports/report6814');
+var report6815 = require('./routes/reports/report6815');
 var violation_report = require('./routes/reports/violation_report');
 var alllimit = require('./routes/reports/alllimit');
 var checkaccesstime = require('./routes/policy/checkaccesstime');
@@ -182,7 +204,13 @@ app.use('/api/editconfig', editconfig);
 app.use('/api/getuserpref', getuserpref);
 app.use('/api/edituserpref', edituserpref);
 app.use('/api/addviolation', addviolation);
-
+app.use('/api/getgroupname', getgroupname);
+app.use('/api/getgroupname_dms', getgroupname_dms);
+app.use('/api/getviolation', getviolation);
+app.use('/api/getsite', getsite);
+app.use('/api/gettype', gettype);
+app.use('/api/getos', getos);
+app.use('/api/getbrowser', getbrowser);
 
 app.use('/api/chat/attachment', require('./routes/chat/attachment'));
 app.use('/api/eoffice', require('./routes/api/eoffice'));
@@ -205,6 +233,23 @@ app.use('/report/report671532', report671532);
 app.use('/report/report67154', report67154);
 app.use('/report/violation_report', violation_report);
 app.use('/report/alllimit', alllimit);
+app.use('/report/report714', report714);
+
+app.use('/report/report681', report681);
+app.use('/report/report682', report682);
+app.use('/report/report683', report683);
+app.use('/report/report684', report684);
+app.use('/report/report685', report685);
+app.use('/report/report686', report686);
+app.use('/report/report687', report687);
+app.use('/report/report688', report688);
+app.use('/report/report689', report689);
+app.use('/report/report6810', report6810);
+app.use('/report/report6811', report6811);
+app.use('/report/report6812', report6812);
+app.use('/report/report6813', report6813);
+app.use('/report/report6814', report6814);
+app.use('/report/report6815', report6815);
 
 app.use('/api/checkcountdevice', checkcountdevice);
 app.use('/api/checkdevicemon', checkdevicemon);

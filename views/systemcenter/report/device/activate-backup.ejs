@@ -97,14 +97,13 @@
 
 <body id="dashboard" class="full-layout  nav-right-hide nav-right-start-hide  nav-top-fixed      responsive    clearfix" data-active="dashboard " data-smooth-scrolling="1">
     <div class="vd_body">
-        <%- include('../../../admin/partial/header'); %>
+        <%- include('../../admin/partial/header'); %>
 
             <!-- Content start -->
 
             <div class="content">
                 <div class="container">
-                    <%- include('../../../admin/partial/menu'); %>
-
+                    <%- include('../../admin/partial/menu'); %>
 
                 </div>
 
@@ -152,7 +151,7 @@
                                 <div class="col-md-12">
                                     <div class="panel widget">
                                         <div class="panel-heading vd_bg-grey">
-                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายงานการยกเลิกอุปกรณ์ </h3>
+                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายงานการลงทะเบียนอุปกรณ์</h3>
                                         </div>
                                         <div class="panel-body table-responsive">
                                             <table class="table table-striped" id="data-tables">
@@ -161,7 +160,8 @@
                                                         <th>เจ้าของอุปกรณ์</th>
                                                         <th>MAC</th>
                                                         <th>ระบบปฏิบัติการ</th>
-                                                        <th>วันที่ยกเลิกอุปกรณ์</th>
+                                                        <th>วันที่ลงทะเบียนอุปกรณ์</th>
+                                                        <th>กลุ่มผู้ใช้งาน</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -194,8 +194,8 @@
             <!-- .container -->
     </div>
     <!-- .content -->
-    <%- include('../../../admin/partial/footer'); %>
 
+    <%- include('../../admin/partial/footer'); %>
 
 
 
@@ -266,11 +266,13 @@
             })();
         </script>
         <script>
-            account_now = 'natthawat_a';
+            account_now = '<%= email %>';
 
             function refresh_table(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://192.168.163.29/report/report673', {
+				//alert(sd);
+				//alert(ed);
+                $.ajax('http://localhost/report/report671', {
                     type: "get",
                     data: {
                         start: sd,
@@ -295,19 +297,13 @@
                     update_time = new Date(data_sql[5]);
                     date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();
 
-
-                    data_json = {
-                        name: data_sql[0],
-                        mac: data_sql[2],
-                        os: data_sql[3],
-                        date: date_str
-                    };
-                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[0] + "</td><td>" + data_sql[2] + "</td><td>" + data_sql[3] + "</td><td>" + date_str + "</td></tr>");
+                    //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
+                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[1] + "</td><td>" + data_sql[3] + "</td><td>" + data_sql[4] + "</td><td>" + date_str + "</td><td>" + data_sql[6] + "</td></tr>");
                     total = total + data_sql[1];
                     //alert(JSON.stringify(data_json));
                     data.push(data_json);
                     //alert(JSON.stringify(data));
-                    data_sql.splice(0, 6);
+                    data_sql.splice(0, 7);
                     i = -1;
 
                 }
@@ -321,8 +317,14 @@
             function datepick() {
 
                 var today = new Date();
-                var dd = today.getUTCDate();
-                var mm = today.getMonth() + 1; //January is 0!
+                
+                var ddd = today.getUTCDate();
+				
+				var last = new Date(today.getTime() - (7 * 24 * 60 * 60 * 1000));
+				var dd = last.getUTCDate();
+				var mm = last.getMonth()+1;
+				
+                var mmm = today.getMonth()+1; //January is 0!
 
                 var yyyy = today.getFullYear();
                 var yyy = today.getFullYear();
@@ -332,7 +334,7 @@
                 if (mm < 10) {
                     mm = '0' + mm;
                 }
-                refresh_table(yyy + '-' + mm + '-' + dd, yyyy + '-' + mm + '-' + dd);
+                refresh_table(yyy + '-' + mm + '-' + dd, yyyy + '-' + mmm + '-' + ddd);
             }
             datepick();
         </script>

@@ -34,16 +34,16 @@ module.exports = function(app, passport) {
         };
 
         var transporter = nodemailer.createTransport({
-            host: 'smtp.mailtrap.io',
-            //host: '61.19.233.5',
-            port: 2525,
-            //port: 25,
+            //host: 'smtp.mailtrap.io',
+            host: '61.19.233.5',
+            //port: 2525,
+            port: 25,
             secure: false,
             auth: {
-                user: '59ad65f3b7fa3b',
-                //user: 'byod@excise.go.th',
-                pass: '7e4387ba355422',
-                //pass: 'byod1234'
+                //user: '59ad65f3b7fa3b',
+                user: 'byod@excise.go.th',
+                //pass: '7e4387ba355422',
+                pass: 'byod1234'
             }
         });
         transporter.sendMail(mailOptions, function(err, info) {
@@ -67,7 +67,7 @@ module.exports = function(app, passport) {
             from: 'byod@excise.go.th', // sender address
             to: 'byod@excise.go.th', // list of receivers
             subject: 'Customer Satisfaction Survey', // Subject line
-            html: 'To valued staffs,<br><br>Please complete survey link to improve our service in the future <br> <a href="http://192.168.163.29/custsat">Link</a><br><br>Thank you.<br><br>Administrator' // plain text body
+            html: 'To valued staffs,<br><br>Please complete survey link to improve our service in the future <br> <a href="http://localhost/custsat">Link</a><br><br>Thank you.<br><br>Administrator' // plain text body
         };
 
         var transporter = nodemailer.createTransport({

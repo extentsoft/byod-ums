@@ -329,7 +329,7 @@
 
             function refresh_table() {
                 //alert('refresh');
-                $.ajax('http://192.168.163.29/api/deviceinmon', {
+                $.ajax('http://localhost/api/deviceinmon', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -374,7 +374,7 @@
             }
 			
 			function del_monitor(mac){
-				$.ajax('http://192.168.163.29/api/removedevicemon', {
+				$.ajax('http://localhost/api/removedevicemon', {
 					type: "get",
 					data: {mac:mac},
 					success: function(json) {

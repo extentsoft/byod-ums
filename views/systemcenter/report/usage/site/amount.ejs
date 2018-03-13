@@ -59,7 +59,7 @@
     <link href="plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css">
     <link href="plugins/introjs/css/introjs.min.css" rel="stylesheet" type="text/css">
 	
-    <link href="plugins/dataTables/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+    <link href="plugins/dataTables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
     <link href="plugins/dataTables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 
     <!-- Theme CSS -->
@@ -122,9 +122,11 @@
 
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
-                                    <h1>รายงาน</h1>
+                                    <h1>รายงานการใช้งานทรัพยากรระบบ - แสดงจำนวนผู้ใช้งาน</h1>
+									
 
                                     <div class="vd_panel-menu  hidden-xs">
+									
                                         <div class="menu">
 
                                             <span class="fa fa-calendar" id="daterangepicker">
@@ -137,13 +139,23 @@
                                             </span>
 
                                             </span>
+											
+											
                                         </div>
+										
                                         <!-- menu -->
+										
+	
+                                            
+								
                                     </div>
+									
+									
                                 </div>
                                 <!-- vd_panel-header -->
                             </div>
                             <!-- vd_title-section -->
+							
 
                             <div class="vd_content-section clearfix">
                             <!-- start row-->
@@ -153,13 +165,17 @@
                                 <div class="col-md-12">
                                     <div class="panel widget">
                                         <div class="panel-heading vd_bg-grey">
-                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายงานการใช้จำแนกตามพื้นที่ - จำนวนผู้ใช้งาน</h3>
+
+                                            <select id="listsite" onchange="selectsite(this.value)" style="width:30%" >
+												<option value="blank" disabled selected>กรุณาเลือกพื้นที่การใช้งาน</option>                       
+											</select>
+              
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
                                             <table class="table table-striped" id="data-tables">
                                                 <thead>
-                                                    <tr>
-                                                        <th>พื้นที่</th>
+                                                    <tr>											
+														<th>พื้นที่</th>
 														<th>รายละเอียดพื้นที่</th>
                                                         <th>จำนวนการเข้าใช้งาน</th>
                                                     </tr>
@@ -288,16 +304,6 @@
         <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
 
-
-
-        <script type="text/javascript ">
-            $(document).ready(function() {
-                account_now = 'natthawat_a';
-
-
-            });
-            $(window).load(function() {});
-        </script>
         <!-- Specific Page Scripts END -->
 
 
@@ -305,34 +311,28 @@
 
         <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
 
-        <script>
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-XXXXX-X']);
-            _gaq.push(['_trackPageview']);
 
-            (function() {
-                var ga = document.createElement('script');
-                ga.type = 'text/javascript';
-                ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
 
         <script type="text/javascript ">
             account_now = '<%= email %>';
+			var start_ ='';
+			var end_ ='';
+			var data_ = '';
+			var site_ = '';
 			//alert(account_now);
 
-            function refresh_table(sd, ed) {
+            function refresh_table(sd, ed , sitename) {
                 //alert('refresh');
-                document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>พื้นที่</th><th>รายละเอียดพื้นที่</th>													<th>จำนวนการเข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
+				//alert(sd);
+				//alert(ed);
+				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>พื้นที่</th><th>รายละเอียดพื้นที่</th>													<th>จำนวนการเข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
 
-                $.ajax('http://192.168.163.29/report/report675', {
+                $.ajax('http://localhost/report/report675', {
                     type: "get",
                     data: {
                         start: sd,
-                        end: ed
+                        end: ed,
+						site: sitename
                     },
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -374,9 +374,18 @@
 
             function datepick() {
                 function e(e, a, r) {
-                    refresh_table(e.format("Y-M-D"), a.format("Y-M-D"));
+                    
                     //alert(e.format("Y-M-D"));
                     //alert(a.format("Y-M-D"));
+					
+					if (site_ == '') {
+						$('#data-tables').dataTable();
+					} else {
+						refresh_table(e.format("Y-M-D"), a.format("Y-M-D"),site_);
+					}
+                    
+					start_ = e.format("Y-M-D");
+					end_ = a.format("Y-M-D");
 
 
                     var o = "",
@@ -406,8 +415,36 @@
                         e(a, r, "")
                 }
             }
+			
+			function list_site(){
+				$.ajax('http://localhost/api/getsite', {
+                    type: "get",
+                    success: function(json) {
+                        //alert(JSON.stringify(json));
+						var select = document.getElementById("listsite");
+						data_res = JSON.parse(JSON.stringify(json));
+						for (i = 0; i < data_res.length; i++) {
+							var option = document.createElement("option");
+							option.text = data_res[i];
+							option.value = data_res[i];
+							var select = document.getElementById("listsite");
+							select.appendChild(option);
+							data_res.splice(0, 1);
+							i = -1;
 
-           
+						}
+                    }
+                });
+			}
+			
+			function selectsite(site_name){
+				$("#listsite option[value='blank']").remove();
+				site_ = site_name;
+				refresh_table(start_,end_,site_);
+				
+			}
+
+			list_site();
             datepick();
 			
         </script>

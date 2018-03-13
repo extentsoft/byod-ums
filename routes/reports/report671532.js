@@ -14,7 +14,7 @@ var deviceList = function(req,res,next){
     console.log('Connection successful');
 
     //var request = new Request('select * from [test].[dbo].t1', function(err, rowCount){
-    var request = new Request("SELECT [browser],[userId] 'User',created_at 'Date' FROM [AgileControllerDB].[dbo].[UMS_AccessLog] where  [browser]!='undefined' and CONVERT (date, created_at) between '"+req.param('start')+"' and '"+req.param('end')+"'", function(err, rowCount){
+    var request = new Request("SELECT [browser],[userId] 'User',created_at 'Date' FROM [AgileControllerDB].[dbo].[UMS_AccessLog] where  [browser]!='undefined' and CONVERT (date, created_at) between '"+req.param('start')+"' and '"+req.param('end')+"' and [browser] = '"+req.param('browser')+"'", function(err, rowCount){
 
       if(err){
         console.error(err);

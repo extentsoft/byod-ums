@@ -122,7 +122,7 @@
 
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
-                                    <h1>รายงาน</h1>
+                                    <h1>รายงานการใช้งานระบุบุคคล</h1>
 
                                     <div class="vd_panel-menu  hidden-xs">
                                         <div class="menu">
@@ -153,8 +153,7 @@
                                 <div class="col-md-12">
                                     <div class="panel widget">
                                         <div class="panel-heading vd_bg-grey">
-                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายงานการใช้งานระบุบุคคล </h3>
-                                            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="โปรดระบุชื่อบุคคล" title="Type in a name">
+                                            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="โปรดระบุชื่อบุคคล" title="Type in a name" style="width:30%">
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
                                             <table class="table table-striped" id="data-tables">
@@ -334,7 +333,7 @@
                 //alert(data);
                 document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>ระบบปฏิบัติการ</th><th>IP</th><th>วันที่ใช้งาน</th></tr></thead><tbody></tbody></table>';
 
-                $.ajax('http://192.168.163.29/report/report677', {
+                $.ajax('http://localhost/report/report677', {
                     type: "get",
                     data: {
                         start: sd,

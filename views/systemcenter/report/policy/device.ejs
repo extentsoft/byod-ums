@@ -133,7 +133,7 @@
 
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
-                                    <h1>รายงาน</h1>
+                                    <h1>รายงานการใช้งานของบุคคลากรที่ครบตามจำนวนอุปกรณ์ที่อนุญาต</h1>
 
 
                                     <!-- menu -->
@@ -151,7 +151,7 @@
                                 <div class="col-md-12">
                                     <div class="panel widget">
                                         <div class="panel-heading vd_bg-grey">
-                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายงานการใช้งานของบุคคลากรที่ครบตามจำนวนอุปกรณ์ที่อนุญาต</h3>
+                                            
                                         </div>
                                         <div class="panel-body table-responsive">
                                             <table class="table table-striped" id="data-tables">
@@ -270,7 +270,7 @@
 
             function refresh_table() {
                 //alert('refresh');
-                $.ajax('http://192.168.163.29/report/alllimit', {
+                $.ajax('http://localhost/report/alllimit', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));

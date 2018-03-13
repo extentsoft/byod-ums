@@ -55,7 +55,11 @@
     <link href="plugins/colorpicker/css/colorpicker.css" rel="stylesheet" type="text/css">
 
     <!-- Specific CSS -->
-    <link href="plugins/dataTables/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+    <link href="plugins/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css">
+    <link href="plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css">
+    <link href="plugins/introjs/css/introjs.min.css" rel="stylesheet" type="text/css">
+	
+    <link href="plugins/dataTables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
     <link href="plugins/dataTables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 
     <!-- Theme CSS -->
@@ -105,6 +109,7 @@
                 <div class="container">
                     <%- include('../../admin/partial/menu'); %>
 
+
                 </div>
 
                 <!-- Middle Content Start -->
@@ -112,38 +117,47 @@
                 <div class="vd_content-wrapper">
                     <div class="vd_container">
                         <div class="vd_content clearfix">
-                            <!--
-                            <div class="vd_head-section clearfix">
-                                <div class="vd_panel-header">
-                                    <ul class="breadcrumb">
-                                        <li><a href="index.html">Home</a> </li>
-                                        <li class="active">Dashboard</li>
-                                    </ul>
-                                    <div class="vd_panel-menu hidden-sm hidden-xs" data-intro="<strong>Expand Control</strong><br/>To expand content page horizontally, vertically, or Both. If you just need one button just simply remove the other button code." data-step=5 data-position="left">
-                                        <div data-action="remove-navbar" data-original-title="Remove Navigation Bar Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-navbar-button menu"> <i class="fa fa-arrows-h"></i> </div>
-                                        <div data-action="remove-header" data-original-title="Remove Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-header-button menu"> <i class="fa fa-arrows-v"></i> </div>
-                                        <div data-action="fullscreen" data-original-title="Remove Navigation Bar and Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="fullscreen-button menu"> <i class="glyphicon glyphicon-fullscreen"></i> </div>
 
-                                    </div>
-
-                                </div>
-                            </div>
-                        -->
                             <!-- vd_head-section -->
 
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
-                                    <h1>รายงาน</h1>
+                                    <h1>รายงานการลงทะเบียนอุปกรณ์จำแนกตามกลุ่มผู้ใช้งาน</h1>
+									
 
+                                    <div class="vd_panel-menu  hidden-xs">
+									
+                                        <div class="menu">
 
-                                    <!-- menu -->
+                                            <span class="fa fa-calendar" id="daterangepicker">
+											<span class="m-subheader__daterange-label">
+												<span class="m-subheader__daterange-title"></span>
+                                            <span class="m-subheader__daterange-date m--font-brand"></span>
+                                            <a href="#" class="btn btn-sm btn-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill">
+                                                <i class="la la-angle-down"></i>
+                                            </a>
+                                            </span>
+
+                                            </span>
+											
+											
+                                        </div>
+										
+                                        <!-- menu -->
+										
+	
+                                            
+								
+                                    </div>
+									
+									
                                 </div>
+                                <!-- vd_panel-header -->
                             </div>
-                            <!-- vd_panel-header -->
-                        </div>
-                        <!-- vd_title-section -->
+                            <!-- vd_title-section -->
+							
 
-                        <div class="vd_content-section clearfix">
+                            <div class="vd_content-section clearfix">
                             <!-- start row-->
 
 
@@ -151,9 +165,13 @@
                                 <div class="col-md-12">
                                     <div class="panel widget">
                                         <div class="panel-heading vd_bg-grey">
-                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายงานการลงทะเบียนอุปกรณ์</h3>
+
+                                            <select id="listgroup" onchange="selectgroup(this.value)" style="width:30%" >
+												<option value="blank" disabled selected>กรุณาเลือกกลุ่มผู้ใช้งาน</option>                       
+											</select>
+              
                                         </div>
-                                        <div class="panel-body table-responsive">
+                                        <div class="panel-body table-responsive" id="tab-body">
                                             <table class="table table-striped" id="data-tables">
                                                 <thead>
                                                     <tr>
@@ -182,6 +200,9 @@
                             <!-- .vd_content-section -->
 
                         </div>
+                            <!-- .vd_content-section -->
+
+                        </div>
                         <!-- .vd_content -->
                     </div>
                     <!-- .vd_container -->
@@ -189,6 +210,7 @@
                 <!-- .vd_content-wrapper -->
 
                 <!-- Middle Content End -->
+
 
             </div>
             <!-- .container -->
@@ -203,7 +225,25 @@
 
         <!-- .vd_body END  -->
         <a id="back-top " href="# " data-action="backtop " class="vd_back-top visible "> <i class="fa fa-angle-up "> </i> </a>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!--<div class="modal-header vd_bg-blue vd_white">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>-->
+                    <div class="modal-body">
+                        Header
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                Content
 
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--
 <a class="back-top " href="# " id="back-top "> <i class="icon-chevron-up icon-white "> </i> </a> -->
 
@@ -211,7 +251,7 @@
         <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/javascript" src="js/jquery.js"></script>
         <!--[if lt IE 9]>
-  <script type="text/javascript" src="js/excanvas.js"></script>      
+  <script type="text/javascript" src="js/excanvas.js"></script>
 <![endif]-->
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
@@ -234,15 +274,37 @@
         <script type="text/javascript" src="custom/custom.js"></script>
 
         <!-- Specific Page Scripts Put Here -->
+        <!-- Flot Chart  -->
+        <script type="text/javascript" src="plugins/flot/jquery.flot.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.resize.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.pie.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.categories.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.time.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.animator.min.js"></script>
 
+        <!-- Vector Map -->
+        <script type="text/javascript" src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+        <script type="text/javascript" src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+        <!-- Calendar -->
+        <script type="text/javascript" src='plugins/moment/moment.min.js'></script>
+        <script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
+        <script type="text/javascript" src='plugins/fullcalendar/fullcalendar.min.js'></script>
+
+        <!-- Intro JS (Tour) -->
+        <script type="text/javascript" src='plugins/introjs/js/intro.min.js'></script>
+
+        <!-- Sky Icons -->
+        <script type="text/javascript" src='plugins/skycons/skycons.js'></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+
+        <!-- Include Date Range Picker -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+		
         <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
-
-        <script type="text/javascript">
-            $(document).ready(function() {
-
-            });
-        </script>
 
         <!-- Specific Page Scripts END -->
 
@@ -251,32 +313,28 @@
 
         <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
 
-        <script>
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-XXXXX-X']);
-            _gaq.push(['_trackPageview']);
 
-            (function() {
-                var ga = document.createElement('script');
-                ga.type = 'text/javascript';
-                ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
-        <script>
-            account_now = 'natthawat_a';
 
-            function refresh_table(sd, ed) {
+        <script type="text/javascript ">
+            account_now = '<%= email %>';
+			var start_ ='';
+			var end_ ='';
+			var data_ = '';
+			var group_ = '';
+			//alert(account_now);
+
+            function refresh_table(sd, ed , grp) {
                 //alert('refresh');
 				//alert(sd);
 				//alert(ed);
-                $.ajax('http://192.168.163.29/report/report671', {
+				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>MAC</th><th>ระบบปฏิบัติการ</th><th>วันที่ลงทะเบียนอุปกรณ์</th><th>กลุ่มผู้ใช้งาน</th></tr></thead><tbody></tbody></table>';
+                $.ajax('http://localhost/report/report671', {
                     type: "get",
                     data: {
+						group: grp,
                         start: sd,
-                        end: ed
+                        end: ed 
+						
                     },
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -294,11 +352,18 @@
                 total = 0;
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
+					grp_ ='';
+					if(data_sql[6]=='People'){
+						grp_ = 'Officer';
+					}
+					else{
+						grp_ = data_sql[6];
+					}
                     update_time = new Date(data_sql[5]);
                     date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();
 
                     //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
-                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[1] + "</td><td>" + data_sql[3] + "</td><td>" + data_sql[4] + "</td><td>" + date_str + "</td><td>" + data_sql[6] + "</td></tr>");
+                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[1] + "</td><td>" + data_sql[3] + "</td><td>" + data_sql[4] + "</td><td>" + date_str + "</td><td>" + grp_ + "</td></tr>");
                     total = total + data_sql[1];
                     //alert(JSON.stringify(data_json));
                     data.push(data_json);
@@ -315,30 +380,87 @@
             }
 
             function datepick() {
+                function e(e, a, r) {
+                    
+                    //alert(e.format("Y-M-D"));
+                    //alert(a.format("Y-M-D"));
+					
+					if (group_ == '') {
+						$('#data-tables').dataTable();
+					} else {
+						refresh_table(e.format("Y-M-D"), a.format("Y-M-D"),group_);
+					}
+                    
+					start_ = e.format("Y-M-D");
+					end_ = a.format("Y-M-D");
 
-                var today = new Date();
-                
-                var ddd = today.getUTCDate();
-				
-				var last = new Date(today.getTime() - (7 * 24 * 60 * 60 * 1000));
-				var dd = last.getUTCDate();
-				var mm = last.getMonth()+1;
-				
-                var mmm = today.getMonth()+1; //January is 0!
 
-                var yyyy = today.getFullYear();
-                var yyy = today.getFullYear();
-                if (dd < 10) {
-                    dd = '0' + dd;
+                    var o = "",
+                        l = "";
+                    a - e < 100 ? (o = "Today:", l = e.format("MMM D")) : "Yesterday" == r ? (o = "Yesterday:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
+                        t.find(".m-subheader__daterange-date").html(l),
+                        t.find(".m-subheader__daterange-title").html(o)
                 }
-                if (mm < 10) {
-                    mm = '0' + mm;
+                if (0 != $("#daterangepicker").length) {
+                    var t = $("#daterangepicker"),
+                        a = moment(),
+                        r = moment();
+                    t.daterangepicker({
+                            startDate: a,
+                            endDate: r,
+                            opens: "left",
+                            ranges: {
+                                Today: [moment(), moment()],
+                                //Yesterday: [moment().subtract(1, "days"), moment().subtract(1, "days")],
+                                "Last 7 Days": [moment().subtract(6, "days"), moment()],
+                                "Last 30 Days": [moment().subtract(29, "days"), moment()],
+                                "This Month": [moment().startOf("month"), moment().endOf("month")],
+                                "This Year": [moment().startOf("year"), moment().endOf("year")]
+                                    //"Last Month": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
+                            }
+                        }, e),
+                        e(a, r, "")
                 }
-                refresh_table(yyy + '-' + mm + '-' + dd, yyyy + '-' + mmm + '-' + ddd);
             }
-            datepick();
-        </script>
+			
+			function list_group(){
+				$.ajax('http://localhost/api/getgroupname_dms', {
+                    type: "get",
+                    success: function(json) {
+                        //alert(JSON.stringify(json));
+						var select = document.getElementById("listgroup");
+						data_res = JSON.parse(JSON.stringify(json));
+						for (i = 0; i < data_res.length; i++) {
+							var option = document.createElement("option");
+							if(data_res[i]=='People'){
+								option.text = 'Officer';
+							}
+							else{
+								option.text = data_res[i];
+							}
+							
+							option.value = data_res[i];
+							var select = document.getElementById("listgroup");
+							select.appendChild(option);
+							data_res.splice(0, 1);
+							i = -1;
 
+						}
+                    }
+                });
+			}
+			
+			function selectgroup(group_name){
+				$("#listgroup option[value='blank']").remove();
+				group_ = group_name;
+				refresh_table(start_,end_,group_);
+				
+			}
+
+			list_group();
+            datepick();
+			
+        </script>
 
 </body>
 
