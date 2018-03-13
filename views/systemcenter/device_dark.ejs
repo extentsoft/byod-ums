@@ -134,7 +134,8 @@
                                     <h1>รายชื่ออุปกรณ์</h1>
                                     <small class="subtitle"></small>
                                     <div class="vd_panel-menu  hidden-xs">
-                                        <div class="menu no-bg vd_green" data-original-title="Start Layout Tour Guide" data-toggle="modal" data-target="#myModal" data-placement="bottom" onClick=""> <span class="menu-icon font-md"><i class="fa fa-plus"></i></span> </div>
+                                        <div class="menu no-bg vd_green" data-original-title="Start Layout Tour Guide" data-toggle="modal" data-target="#myModal" data-placement="bottom" onClick="document.getElementById('myModalLabel1').innerHTML='ลงทะเบียนอุปกรณ์ใหม่';document.getElementById('term_mac').disabled = false;"
+                                            id="add-btn"> <span class="menu-icon font-md"><i class="fa fa-plus"></i></span> </div>
                                         <!-- menu -->
                                         <!--
                                         <div class="menu">
@@ -172,24 +173,36 @@
                                     <div class="modal-content">
                                         <div class="modal-header vd_bg-blue vd_white">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
-                                            <h4 class="modal-title" id="myModalLabel">ลงทะเบียนอุปกรณ์ใหม่</h4>
+                                            <h4 class="modal-title" id="myModalLabel1">ลงทะเบียนอุปกรณ์ใหม่</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form class="form-horizontal">
+                                            <form class="form-horizontal" action="#" role="form">
                                                 <div class="form-group">
-                                                    <!--<label class="col-sm-2 control-label" for="inputMACAddr">MAC Address</label>-->
-                                                    <div class="text-center" style="margin-left:5%;width:90%">
-                                                        <input type="text" class="form-control text-center" id="term_name" placeholder="ชื่ออุปกรณ์" />
-                                                        <input type="text" class="form-control text-center" id="term_mac" placeholder="MAC Address" />
-                                                        <select class="form-control" style="text-align-last:center;" id="term_os">
-									<option value="iOS">iOS</option>
-									<option value="Android">Android</option>
-									<option value="Windows">Windows</option>
-									<option value="Linux">Linux</option>
-								</select>
+                                                    <label class="col-sm-4 control-label">ชื่ออุปกรณ์</label>
+                                                    <div class="col-sm-7 controls">
+                                                        <input id="term_name" type="text" placeholder="Android_1" class="input-border-btm">
+                                                        <span class="help-inline">ช่วยในการจำแนกอุปกรณ์แทน MAC Address</span>
                                                     </div>
                                                 </div>
-
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">MAC Address</label>
+                                                    <div class="col-sm-7 controls">
+                                                        <input id="term_mac" type="text" placeholder="AA-22-FF-FF-11-FC" class="input-border-btm">
+                                                        <span class="help-inline">ค่าที่ใช้อ้างอิงที่อยู่กายภาพของการ์ดแลนด์ไร้สาย </span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">ระบบปฏิบัติการ</label>
+                                                    <div class="col-sm-7 controls">
+                                                        <select id="term_os">
+                                                                    <option>iOS</option>
+                                                                    <option>Android</option>
+                                                                    <option>Windows</option>
+                                                                    <option>Linux</option>
+                                                                    
+                                                                 </select>
+                                                    </div>
+                                                </div>
 
 
                                             </form>
@@ -207,54 +220,31 @@
                             </div>
                             <!-- /.modal -->
                             <!--begin::Modal-->
-                            <div class="modal fade" id="m_modal_5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
+                            <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" style="width:30%">
                                     <div class="modal-content">
                                         <div class="modal-header vd_bg-blue vd_white">
-                                            <h5 class="modal-title" id="exampleModalLabel">
-                                                ลงทะเบียนอุปกรณ์ใหม่
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">
-												&times;
-											</span>
-										</button>
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                                            <h4 class="modal-title"> ยืนยันการถอดถอนอุปกรณ์</h4>
                                         </div>
-                                        <div class="modal-body">
-                                            <form>
-                                                <div class="form-group">
-                                                    <!--<label class="col-sm-2 control-label" for="inputMACAddr">MAC Address</label>-->
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="term_name" placeholder="ชื่ออุปกรณ์" />
-                                                        <input type="text" class="form-control" id="term_mac" placeholder="MAC Address" />
-                                                        <select class="form-control" id="term_os">
-												<option value="iOS">iOS</option>
-												<option value="Android">Android</option>
-												<option value="Windows">Windows</option>
-												<option value="Linux">Linux</option>
-											</select>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" style="width:50%" data-dismiss="modal" onclick="adddevice(document.getElementById('term_name').value,document.getElementById('term_mac').value,document.getElementById('term_os').value)">
-											บันทึก
-										</button>
-                                            <button type="button" class="btn btn-secondary" style="width:50%" data-dismiss="modal">
-											ยกเลิก
-										</button>
+                                        <div class="modal-footer background-login">
+                                            <button type="button" class="btn vd_btn vd_bg-green" style="width:47%" data-dismiss="modal" id="modal-del" onclick="removedevice($(this).attr('value'))">ยืนยัน</button>
+
+                                            <button type="button" class="btn vd_btn vd_bg-grey" style="width:47%" data-dismiss="modal">ยกเลิก</button>
 
                                         </div>
+                                        <div id='beingRemovedDevice' stlye="visibility:hidden;"></div>
+
                                     </div>
                                 </div>
                             </div>
-                            <!--end::Modal-->
-                            <!-- vd_title-section -->
+                        </div>
+                        <!--end::Modal-->
+                        <!-- vd_title-section -->
 
-                            <div class="vd_content-section clearfix">
-                                <div class="row">
-                                    <!--
+                        <div class="vd_content-section clearfix">
+                            <div class="row">
+                                <!--
                                     <div class="col-md-7 mgbt-md-20 mgbt-lg-0">
                                         <div class="panel vd_interactive-widget light-widget widget">
                                             <div class="panel-body-list">
@@ -302,33 +292,33 @@
                             </div> 
                                     # Panel Widget 
                                 </div> -->
-                                    <!--col-md-7 -->
-                                    <div class="col-md-3"></div>
-                                    <div class="col-md-7" id="listterminal">
+                                <!--col-md-7 -->
+                                <div class="col-md-3"></div>
+                                <div class="col-md-7" id="listterminal">
 
 
 
-
-                                    </div>
-                                    <!-- .vd_content-section -->
 
                                 </div>
-                                <!-- .vd_content -->
+                                <!-- .vd_content-section -->
+
                             </div>
-                            <!-- .vd_container -->
+                            <!-- .vd_content -->
                         </div>
-                        <!-- .vd_content-wrapper -->
-
-                        <!-- Middle Content End -->
-
+                        <!-- .vd_container -->
                     </div>
-                    <!-- .container -->
+                    <!-- .vd_content-wrapper -->
+
+                    <!-- Middle Content End -->
+
                 </div>
-                <!-- .content -->
-
-
-
+                <!-- .container -->
             </div>
+            <!-- .content -->
+
+
+
+    </div>
     </div>
     <%- include('admin/partial_dark/footer'); %>
         </div>
@@ -391,8 +381,6 @@
 
 
         <script type="text/javascript">
-            $(document).ready();
-            $(window).load(function() {});
         </script>
         <!-- Specific Page Scripts END -->
 
@@ -417,7 +405,19 @@
         </script>
 
         <script>
-            account_now = 'natthawat_a';
+            $(window).load(function() {
+
+                var priv = $("#priv").html().trim().split(",");
+                if (priv[1] < 1) {
+                    $('#top-menu-3').hide();
+                } else {
+                    $('#top-menu-3').show();
+                }
+            });
+            //account_now = 'natthawat_a';
+            account_now = $('#email').text().trim();
+            //username = $('#uname').text().trim();
+            //alert(username);
 
             function refreshlist() {
                 //alert('refresh');
@@ -436,6 +436,21 @@
 
 
             function bindata(data_sql) {
+                $.ajax('http://localhost/api/checklimit', {
+                    type: "get",
+                    data: {
+                        accname: account_now
+                    },
+                    success: function(json) {
+                        var x = document.getElementById("add-btn");
+                        if (json == 1) {
+                            x.style.display = "none";
+                        } else {
+                            x.style.display = "block";
+                        }
+                        //alert(json);
+                    }
+                });
                 //alert('bind');
                 //alert(data_sql);
                 data = [];
@@ -505,9 +520,19 @@
                         host_name = data[i].hostname;
                     }
                     update_time = new Date(data[i].updatetime);
-                    date_str = update_time.getUTCHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + update_time.getMonth() + "/" + update_time.getFullYear();
+                    date_str = update_time.getUTCHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getMonth() + 1) + "/" + update_time.getFullYear();
 
                     q = "'";
+                    var os_edit = '';
+                    if (data[i].terminalos == 'apple') {
+                        os_edit = 'iOS';
+                    } else if (data[i].terminalos == 'android') {
+                        os_edit = 'Android';
+                    } else if (data[i].terminalos == 'windows') {
+                        os_edit = 'Windows';
+                    } else if (data[i].terminalos == 'linux') {
+                        os_edit = 'Linux';
+                    }
                     div.innerHTML =
 
                         /*	'<div id="'+data[i].terminalmac+'"><img src="images/devices/'+data[i].terminalos+'.jpg"  style="width:60%; height:60%; display: block;margin: 0 auto;"><br>\
@@ -520,7 +545,8 @@
                         '<div class="col-md-12"> \
                                                 <div class="vd_status-widget vd_bg-green widget"> \
                                                     <div class="vd_panel-menu"> \
-                                                        <div  data-action="refresh" data-original-title="Refresh" data-rel="tooltip" class=" menu entypo-icon smaller-font" onclick="removedevice(' + q + data[i].terminalmac + q + ')"> <i class="icon-cross" ></i> </div> \
+                                                            <div  data-action="refresh" data-original-title="Edit" data-rel="tooltip" class=" menu entypo-icon smaller-font"  data-toggle="modal" data-target="#myModal" data-placement="bottom" onclick="document.getElementById(' + q + 'myModalLabel1' + q + ').innerHTML = ' + q + 'แก้ไขอุปกรณ์' + q + ';document.getElementById(' + q + 'term_mac' + q + ').disabled = true;document.getElementById(' + q + 'term_name' + q + ').value=' + q + host_name + q + ';document.getElementById(' + q + 'term_mac' + q + ').value=' + q + data[i].terminalmac + q + ';document.getElementById(' + q + 'term_os' + q + ').value=' + q + os_edit + q + ';"> <i class="fa fa-gear" ></i> </div> \
+                                                        <div  data-action="refresh" data-original-title="Deactivate" data-rel="tooltip" class=" menu entypo-icon smaller-font" data-toggle="modal" data-target="#myModal3" onclick="$(' + q + '#modal-del' + q + ').val(' + q + data[i].terminalmac + q + ')"> <i class="icon-cross" ></i> </div> \
                                                     </div> \
                                                     <a class="panel-body" href="#"> \
                                                         <div class="clearfix"> \
@@ -536,7 +562,7 @@
                                                             MAC Address: ' + data[i].terminalmac + ' \
                                                         </div> \
                                                         <div class="menu-text clearfix"> \
-                                                            Last update: ' + date_str + ' \
+                                                                แก้ไขล่าสุด: ' + date_str + ' \
                                                         </div> \
                                                     </a> \
                                                 </div> \
@@ -549,12 +575,8 @@
             }
 
             function removedevice(mac) {
-                //alert(input.parentNode.id);
-                var r = confirm("ยืนยันการลบอุปกรณ์");
-                if (r == true) {
-                    refreshmac(mac)
-                    deletedevice(mac);
-                }
+                refreshmac(mac)
+                deletedevice(mac);
             }
 
             function adddevice(name, mac, os) {
@@ -584,6 +606,7 @@
                     },
                     success: function(json) {
                         //alert(JSON.stringify(json));
+                        checkcount();
                         refreshlist();
                     }
                 });
@@ -649,6 +672,7 @@
                         //data_res = JSON.parse(JSON.stringify(json));
                         addbindmac(JSON.stringify(json), mac);
                         //alert(JSON.stringify(data_res));
+                        checkcount();
                     }
                 });
             }
@@ -703,7 +727,45 @@
                 });
             }
 
+            function checkcount() {
+                //alert('refresh');
+                $.ajax('http://localhost/api/checkcountdevice', {
+                    type: "get",
+                    data: {
+                        accname: account_now
+                    },
+                    success: function(json) {
+                        data_res = JSON.parse(JSON.stringify(json));
+                        //alert(JSON.stringify(data_res));
+                        if (data_res[0] > 2) {
+                            //alert('a');
+                            addviolation('editdeivceoverlimit');
+                            $.ajax('http://localhost/api/message/email/4/' + account_now, {
+                                type: "get",
+                                success: function(json) {
+                                    //alert(JSON.stringify(json));
+                                }
+                            });
 
+                        }
+                    }
+                });
+            }
+
+            function addviolation(detail) {
+                //alert('refresh');
+                $.ajax('http://localhost/api/addviolation', {
+                    type: "get",
+                    data: {
+                        violation: detail,
+                        accname: account_now
+                    },
+                    success: function(json) {
+                        //alert(json);
+                    }
+                });
+            }
+            checkcount();
             refreshlist();
         </script>
 
