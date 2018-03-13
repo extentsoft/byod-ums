@@ -489,6 +489,7 @@
 
         <!-- .vd_body END  -->
         <a id="back-top " href="# " data-action="backtop " class="vd_back-top visible "> <i class="fa fa-angle-up "> </i> </a>
+        <button style="visibility:hidden;" id="warning_modal" data-toggle="modal" data-target="#myModal"></button>
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -502,6 +503,25 @@
                             <div class="form-group">
                                 Content
 
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header vd_bg-blue vd_white">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <form class="form-horizontal">
+                            <div class="form-group" align="center">
+                                Browser ที่ใช้งานในขณะนี้เก่าเกินไป กรุณาอัพเดทเพื่อเข้าใช้งานได้อย่างมีประสิทธิภาพ
                             </div>
                         </form>
                     </div>
@@ -576,7 +596,25 @@
                 //account_now = 'natthawat_a';
                 account_now = $('#email').text().trim();
                 //alert(account_now);
+                $.ajax('http://localhost/api/getconfig', {
+                    type: "get",
+                    success: function(data) {
 
+
+                        if (browser.name == "Internet Explorer" && (browser.version < parseInt(data[15]))) {
+                            $('#warning_modal').click();
+                        } else if (browser.name == "Chrome" && (browser.version < parseInt(data[17]))) {
+                            $('#warning_modal').click();
+                        } else if (browser.name == "Firefox" && (browser.version < parseInt(data[19]))) {
+                            $('#warning_modal').click();
+                        }
+
+                    },
+                    error: function(fa) {
+                        //alert(JSON.stringify(fa));
+                        //alert('b');
+                    }
+                });
 
             });
             $(window).load(function() {
