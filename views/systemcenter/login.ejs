@@ -254,7 +254,7 @@
                                 access_tpl += ' พื้นที่ ' + country_name[data.region_name] + ', ' + region_name[data.country_name];
                                 $('.browser_information').html(access_tpl);
 
-                                $.ajax('http://localhost/api/getconfig', {
+                                $.ajax('http://192.168.163.29/api/getconfig', {
                                     type: "get",
                                     success: function(data) {
 
