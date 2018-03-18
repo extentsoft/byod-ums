@@ -602,6 +602,39 @@ module.exports = function(app, passport) {
             });
         }
     });
+	
+	app.get('/systemcenter/report/usage/group/group', isLoggedIn, isSupported, function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+        if (req.session.user.pref_theme == 0) {
+            res.render('systemcenter/report/usage/group/group', {
+                title: 'Report',
+                message: req.flash('message'),
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        } else {
+            res.render('systemcenter/report/usage/group/group_dark', {
+                title: 'Report',
+                message: req.flash('message'),
+                ssn: req.session.user.ssn,
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                position: req.session.user.position,
+                level: req.session.user.level,
+                area: req.session.user.area,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        }
+    });
 
     app.get('/systemcenter/report/usage/group/week', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
@@ -717,6 +750,31 @@ module.exports = function(app, passport) {
             });
         } else {
             res.render('systemcenter/report/usage/site/today_dark', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        }
+    });
+	
+	app.get('/systemcenter/report/usage/site/traffic', isLoggedIn, isSupported, function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+        if (req.session.user.pref_theme == 0) {
+            res.render('systemcenter/report/usage/site/traffic', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        } else {
+            res.render('systemcenter/report/usage/site/traffic_dark', {
                 title: 'Report',
                 message: req.flash('message'),
                 email: req.session.user.email,
@@ -852,6 +910,31 @@ module.exports = function(app, passport) {
             });
         }
     });
+	
+	app.get('/systemcenter/report/usage/site', isLoggedIn, isSupported, function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+        if (req.session.user.pref_theme == 0) {
+            res.render('systemcenter/report/usage/site', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        } else {
+            res.render('systemcenter/report/usage/site_dark', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        }
+    });
 
     app.get('/systemcenter/report/usage/activity', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
@@ -892,6 +975,31 @@ module.exports = function(app, passport) {
             });
         } else {
             res.render('systemcenter/report/usage/os_dark', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        }
+    });
+	
+	app.get('/systemcenter/report/usage/device', isLoggedIn, isSupported, function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+        if (req.session.user.pref_theme == 0) {
+            res.render('systemcenter/report/usage/device', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        } else {
+            res.render('systemcenter/report/usage/device_dark', {
                 title: 'Report',
                 message: req.flash('message'),
                 email: req.session.user.email,

@@ -167,7 +167,7 @@
                                         <div class="panel-heading vd_bg-grey">
 
                                             <select id="listsite" onchange="selectsite(this.value)" style="width:30%" >
-												<option value="blank" disabled selected>กรุณาเลือกพื้นที่การใช้งาน</option>                       
+												<option value="blank" disabled selected>กรุณาเลือก Controller</option>                       
 											</select>
               
                                         </div>
@@ -175,7 +175,7 @@
                                             <table class="table table-striped" id="data-tables">
                                                 <thead>
                                                     <tr>											
-														<th>พื้นที่</th>
+														<th>Controller</th>
                                                         <th>จำนวนการเข้าใช้งาน</th>
                                                     </tr>
                                                 </thead>
@@ -324,7 +324,7 @@
                 //alert('refresh');
 				//alert(sd);
 				//alert(ed);
-				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>พื้นที่</th>													<th>จำนวนการเข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
+				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>Controller</th>													<th>จำนวนการเข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
 
                 $.ajax('http://localhost/report/report67143', {
                     type: "get",
@@ -416,7 +416,7 @@
             }
 			
 			function list_site(){
-				$.ajax('http://localhost/api/getsite', {
+				$.ajax('http://localhost/api/getcontroller', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
