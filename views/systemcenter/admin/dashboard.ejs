@@ -1295,14 +1295,35 @@
                     type: "get",
                     success: function(json) {
                         //alert(json);
-                        if (json == 1) {
-                            addviolation('devicemon', account_now);
-                            $.ajax('http://localhost/api/message/email/6/' + account_now, {
-                                type: "get",
-                                success: function(json) {
-                                    //alert(JSON.stringify(json));
-                                }
-                            });
+                        if (json.length >0) {
+							for (i = 0; i < json.length; i++) {
+								addviolation('devicemon', json[0]);
+								$.ajax('http://localhost/api/message/email/6/' + json[0], {
+									type: "get",
+									success: function(json) {
+										//alert(JSON.stringify(json));
+									}
+								});
+								
+								$.ajax('http://localhost/api/devicemonlog', {
+									type: "get",
+									data: {
+										user: json[0],
+										termac: json[1],
+										terip: json[2],
+										clientip: json[3],
+										serverip: json[4],
+										time: json[5]
+									},
+									success: function(json) {
+										//alert(JSON.stringify(json));
+									}
+								});
+								
+								json.splice(0, 6);
+								i = -1;
+							}
+                            
                             //alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
 
                         }

@@ -54,6 +54,7 @@ var deletedevice = require('./routes/deletedevice');
 var alldevices = require('./routes/alldevices');
 var allusers = require('./routes/allusers');
 var accesslog = require('./routes/accesslog');
+var devicemonlog = require('./routes/devicemonlog');
 var limitdevice = require('./routes/limitdevice');
 var limitdevice_user = require('./routes/limitdevice_user');
 
@@ -191,6 +192,7 @@ app.use('/api/deletedevice', deletedevice);
 app.use('/api/alldevices', alldevices);
 app.use('/api/allusers', allusers);
 app.use('/api/accesslog', accesslog);
+app.use('/api/devicemonlog', devicemonlog);
 app.use('/api/limitdevice', limitdevice);
 app.use('/api/limitdevice_user', limitdevice_user);
 
