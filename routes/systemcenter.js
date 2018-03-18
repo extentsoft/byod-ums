@@ -1060,6 +1060,31 @@ module.exports = function(app, passport) {
             });
         }
     });
+	
+	app.get('/systemcenter/report/usage/other/mac', isLoggedIn, isSupported, function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+        if (req.session.user.pref_theme == 0) {
+            res.render('systemcenter/report/usage/other/mac', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        } else {
+            res.render('systemcenter/report/usage/other/mac_dark', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        }
+    });
 
     app.get('/systemcenter/report/monitor/device/addmonitor', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");

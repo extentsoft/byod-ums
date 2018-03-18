@@ -122,7 +122,7 @@
 
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
-                                    <h1>รายงานสถิติผู้ใช้งาน แบ่งตาม ชื่อผู้ใช้งาน</h1>
+                                    <h1>รายงานสถิติผู้ใช้งาน แบ่งตาม MAC Address</h1>
 
                                     <div class="vd_panel-menu  hidden-xs">
                                         <div class="menu">
@@ -153,13 +153,13 @@
                                 <div class="col-md-12">
                                     <div class="panel widget">
                                         <div class="panel-heading vd_bg-grey">
-                                            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="โปรดระบุชื่อบุคคล" title="Type in a name" style="width:30%">
+                                            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="โปรดระบุ MAC Address" title="Type in a name" style="width:30%">
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
                                             <table class="table table-striped" id="data-tables">
                                                 <thead>
                                                     <tr>
-                                                        <th>ชื่อผู้ใช้งาน</th>
+                                                        <th>MAC Address</th>
                                                         <th>จำนวนครั้งที่เข้าใช้งาน</th>
                                                     </tr>
                                                 </thead>
@@ -329,14 +329,14 @@
             function refresh_table(sd, ed, data) {
                 //alert('refresh');
                 //alert(data);
-                document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>ชื่อผู้ใช้งาน</th><th>จำนวนครั้งที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
+                document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>MAC Address</th><th>จำนวนครั้งที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
 
-                $.ajax('http://localhost/report/report681', {
+                $.ajax('http://localhost/report/report682', {
                     type: "get",
                     data: {
                         start: sd,
                         end: ed,
-                        usrname: data
+                        termac: data
                     },
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -375,7 +375,7 @@
                 function e(e, a, r) {
 					var input, filter, ul, li, a, i;
 					input = document.getElementById("myInput");
-					document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>ชื่อผู้ใช้งาน</th><th>จำนวนครั้งที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
+					document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>MAC Address</th><th>จำนวนครั้งที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
 
 					filter = input.value.toUpperCase();
 					data_ = filter;
@@ -423,7 +423,7 @@
                 var input, filter, ul, li, a, i;
                 input = document.getElementById("myInput");
                 //document.getElementById("tab-body").innerHTML="";
-                document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>ชื่อผู้ใช้งาน</th><th>จำนวนครั้งที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
+                document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>MAC Address</th><th>จำนวนครั้งที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
                 //$('#data-tables').find('tbody').empty();
 
                 filter = input.value.toUpperCase();
