@@ -328,7 +328,7 @@
                 //alert('refresh');
                 document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>พื้นที่</th><th>รายละเอียดพื้นที่</th>													<th>จำนวนการเข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
 
-                $.ajax('http://192.168.163.29/report/report675', {
+                $.ajax('http://localhost/report/report675', {
                     type: "get",
                     data: {
                         start: sd,
@@ -351,7 +351,7 @@
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
                     //update_time = new Date(data_sql[4]);
-                    //date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();
+                    //date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getUTCMonth()+1) + "/" + update_time.getFullYear();
 					
 
 

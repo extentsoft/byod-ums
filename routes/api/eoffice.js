@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/test', function(req, res) {
 
-    request('http://192.168.163.29/api/eoffice/profile/thanakdorn_p', function(error, response, body) {
+    request('http://localhost/api/eoffice/profile/thanakdorn_p', function(error, response, body) {
         console.log(error);
         console.log(body);
         if (!error && response.statusCode == 200) {

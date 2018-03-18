@@ -326,7 +326,7 @@
 				//alert(sd);
 				//alert(ed);
 				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>ชื่อผู้ใช้งาน</th><th>ประเภทกฎที่ผู้ใช้งานละเมิด</th><th>วันที่ที่ผู้ใช้งานละเมิดกฎ</th></tr></thead><tbody></tbody></table>';
-                $.ajax('http://192.168.163.29/report/violation_report', {
+                $.ajax('http://localhost/report/violation_report', {
                     type: "get",
                     data: {
                         start: sd,
@@ -370,7 +370,7 @@
 					}
 					else {vio=data_sql[1];}
                     update_time = new Date(data_sql[3]);
-                    date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();
+                    date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getUTCMonth()+1) + "/" + update_time.getFullYear();
 
                     //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
                     $('#data-tables').find('tbody').append("<tr><td>" + data_sql[2] + "</td><td>" + vio + "</td><td>" + date_str + "</td></tr>");
@@ -434,7 +434,7 @@
             }
 			
 			function list_violation(){
-				$.ajax('http://192.168.163.29/api/getviolation', {
+				$.ajax('http://localhost/api/getviolation', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
