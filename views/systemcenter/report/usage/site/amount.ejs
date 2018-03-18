@@ -176,7 +176,6 @@
                                                 <thead>
                                                     <tr>											
 														<th>พื้นที่</th>
-														<th>รายละเอียดพื้นที่</th>
                                                         <th>จำนวนการเข้าใช้งาน</th>
                                                     </tr>
                                                 </thead>
@@ -325,9 +324,9 @@
                 //alert('refresh');
 				//alert(sd);
 				//alert(ed);
-				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>พื้นที่</th><th>รายละเอียดพื้นที่</th>													<th>จำนวนการเข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
+				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>พื้นที่</th>													<th>จำนวนการเข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
 
-                $.ajax('http://localhost/report/report675', {
+                $.ajax('http://localhost/report/report67143', {
                     type: "get",
                     data: {
                         start: sd,
@@ -351,17 +350,17 @@
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
                     //update_time = new Date(data_sql[4]);
-                    //date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();
+                    //date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getUTCMonth()+1) + "/" + update_time.getFullYear();
 					
 
 
                     //data_json = {name:data_sql[0],mac:data_sql[2],os:data_sql[3],date:date_str};
-                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[0] + "</td><td>" + data_sql[1] + "</td><td>" + data_sql[2] + "</td></tr>");
+                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[0] + "</td><td>" + data_sql[1] + "</td></tr>");
                     //total = total + data_sql[1];
                     //alert(JSON.stringify(data_json));
                     //data.push(data_json);
                     //alert(JSON.stringify(data));
-                    data_sql.splice(0, 3);
+                    data_sql.splice(0, 2);
                     i = -1;
 
                 }

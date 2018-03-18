@@ -526,7 +526,7 @@
                         host_name = data[i].hostname;
                     }
                     update_time = new Date(data[i].updatetime);
-                    date_str = update_time.getUTCHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getMonth() + 1) + "/" + update_time.getFullYear();
+                    date_str = update_time.getUTCHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getUTCMonth() + 1) + "/" + update_time.getFullYear();
 
                     q = "'";
 					var os_edit='';

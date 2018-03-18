@@ -293,7 +293,7 @@
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
                     update_time = new Date(data_sql[5]);
-                    date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();
+                    date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getUTCMonth()+1) + "/" + update_time.getFullYear();
 
 
                     data_json = {
@@ -323,7 +323,7 @@
                 var today = new Date();
                 var dd = today.getUTCDate() - 7;
                 var ddd = today.getUTCDate();
-                var mm = today.getMonth() + 1; //January is 0!
+                var mm = today.getUTCMonth() + 1; //January is 0!
 
                 var yyyy = today.getFullYear();
                 var yyy = today.getFullYear();

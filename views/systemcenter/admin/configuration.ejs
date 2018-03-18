@@ -336,7 +336,8 @@
                                 <div class="col-md-12">
                                     <div class="panel widget">
                                         <div class="panel-heading vd_bg-grey">
-                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายชื่อผู้ใช้งาน</h3>
+                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> กำหนดจำนวนอุปกรณ์</h3>
+											<input type="text" id="myInput" placeholder="โปรดระบุชื่อบุคคล" title="Type in a name" style="width:30%">
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
                                             <table class="table table-striped" id="data-tables">
@@ -480,17 +481,17 @@
                     $('#top-menu-3').show();
                 }
             });
-
-
-            $(document).ready(function() {
-                //account_now = 'natthawat_a';
-                $("#chat-text").keyup(function(event) {
+			
+			$(document).ready(function() {
+                $("#myInput").keyup(function(event) {
                     if (event.keyCode === 13) {
-                        sendchat($('#chat-text').val());
+                        myFunction();
                     }
                 });
 
             });
+
+
         </script>
         <!-- Specific Page Scripts END -->
 
@@ -515,6 +516,7 @@
         </script>
         <script>
 		account_now = '<%= email %>';
+		var filter_ = '';
             function sendCustomerSatisfaction() {
                 alert('sendCustomerSatisfaction');
                 $.ajax('http://localhost/sendCustSat', {
@@ -527,11 +529,13 @@
                 });
             }
 
-            function refresh_table() {
+            function refresh_table(usr) {
                 //alert('refresh');
-                $.ajax('http://localhost/api/allusers', {
+                $.ajax('http://localhost/api/limitdevice_user', {
                     type: "get",
-                    //data: {start:sd,end:ed},
+                    data: {
+						usrname:usr
+						},
                     success: function(json) {
                         //alert(JSON.stringify(json));
                         data_res = JSON.parse(JSON.stringify(json));
@@ -550,7 +554,7 @@
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
                     //update_time = new Date(data_sql[5]);
-                    //date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes()<10?'0':'') + update_time.getMinutes() + ":" + (update_time.getSeconds()<10?'0':'') + update_time.getSeconds() +' - ' + update_time.getUTCDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();
+                    //date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes()<10?'0':'') + update_time.getMinutes() + ":" + (update_time.getSeconds()<10?'0':'') + update_time.getSeconds() +' - ' + update_time.getUTCDate() + "/" + (update_time.getUTCMonth()+1) + "/" + update_time.getFullYear();
 
 
                     $('#data-tables').find('tbody').append('<tr><td>' + data_sql[1] + '</td><td>' + data_sql[2] + '</td><td>' + data_sql[3] + '</td><td>' + data_sql[4] + '</td><td>' + data_sql[5] + '</td><td class="menu-action"><a id="' + data_sql[0] + '" data-original-title="edit" data-toggle="modal" data-target="#myModal" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow" onclick="$(' + q + '#btn-limit' + q + ').val(' + q + data_sql[1] + q + ');" > <i class="fa fa-pencil"></i> </a> </td></tr>');
@@ -711,7 +715,26 @@
                     }
                 });
             }
-            refresh_table();
+			
+			function myFunction() {
+                var input, filter, ul, li, a, i;
+                input = document.getElementById("myInput");
+                //document.getElementById("tab-body").innerHTML="";
+                document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>ชื่อผู้ใช้งาน</th><th>ชื่อ-นามสกุลจริง</th><th>กลุ่มผู้ใช้งาน</th><th>จำนวนอุปกรณ์ที่ลงทะเบียนแล้ว</th><th>จำนวนอุปกรณ์สูงสุดที่ลงทะเบียนได้</th><th></th></tr></thead><tbody></tbody></table>';
+                //$('#data-tables').find('tbody').empty();
+
+                filter = input.value.toUpperCase();
+				data_ = filter;
+				filter_ = filter;
+                //alert(filter);
+                if (filter == '') {
+                    $('#data-tables').dataTable();
+                } else {
+                    refresh_table(filter);
+                }
+
+            }
+            //refresh_table();
             getconfig();
         </script>
 

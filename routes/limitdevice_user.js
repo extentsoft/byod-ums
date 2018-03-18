@@ -1,5 +1,5 @@
 var express = require('express');
-var pool = require('../../modules/mssql').pool;
+var pool = require('../modules/mssql').pool;
 var Request = require('tedious').Request;
 var router = express.Router();
 
@@ -12,9 +12,9 @@ var deviceList = function(req,res,next){
       return;
     }
     console.log('Connection successful');
-
+	q = '"';
     //var request = new Request('select * from [test].[dbo].t1', function(err, rowCount){
-    var request = new Request("SELECT [userName],[os_name],[host_name],[terminalIp],[timestamp] FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where terminalIp!= '' and CONVERT (date, timestamp) between '"+req.param('start')+"' and '"+req.param('end')+"' and userName like '%"+req.param('usrname')+"%'", function(err, rowCount){
+    var request = new Request("SELECT [accountID],[account],[userName],[orgName],(select count(*) from [AgileControllerDB].[dbo].[TSM_E_Endpoint] where login_account = t1.account),CASE when t1.[accountID] in (select [user_id] from [AgileControllerDB].[dbo].[UMS_Limitdevice]) then (SELECT [limitdevice] FROM [AgileControllerDB].[dbo].[UMS_Limitdevice] where [user_id] = t1.[accountID]) else (SELECT [limitdevice] FROM [AgileControllerDB].[dbo].[UMS_Limitdevice] where [user_id] = '999999' )END as limit FROM [AgileControllerDB].[dbo].[TSM_E_Account] t1 join [AgileControllerDB].[dbo].[TSM_E_Organization] t2 on t1.[orgID] = t2.[orgID] where orgName != 'Guest' and userName like '%"+req.param('usrname')+"%'", function(err, rowCount){
 
       if(err){
         console.error(err);

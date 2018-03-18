@@ -151,7 +151,7 @@
                                 <div class="col-md-12">
                                     <div class="panel widget">
                                         <div class="panel-heading vd_bg-grey">
-                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายงานการลงทะเบียนอุปกรณ์</h3>
+                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> ประวัติการเข้าใช้งาน</h3>
                                         </div>
                                         <div class="panel-body table-responsive">
                                             <table class="table table-striped" id="data-tables">
@@ -303,7 +303,7 @@
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
                     update_time = new Date(data_sql[5]);
-                    date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getMonth()+1) + "/" + update_time.getFullYear();
+                    date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getUTCMonth()+1) + "/" + update_time.getFullYear();
 
                     //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
                     $('#data-tables').find('tbody').append("<tr><td>" + data_sql[1] + "</td><td>" + data_sql[2] + "</td><td>" + data_sql[4] + "</td><td>" + date_str + "</td></tr>");
@@ -330,9 +330,9 @@
 				
 				var last = new Date(today.getTime() - (7 * 24 * 60 * 60 * 1000));
 				var dd = last.getUTCDate();
-				var mm = last.getMonth()+1;
+				var mm = last.getUTCMonth()+1;
 				
-                var mmm = today.getMonth()+1; //January is 0!
+                var mmm = today.getUTCMonth()+1; //January is 0!
 
                 var yyyy = today.getFullYear();
                 var yyy = today.getFullYear();
