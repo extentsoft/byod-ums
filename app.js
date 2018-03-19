@@ -50,6 +50,7 @@ var listmac = require('./routes/listmac');
 // - TBL_ENDPOINT, TBL_ACCOUNT
 var updatemac = require('./routes/updatemac');
 var adddevice = require('./routes/adddevice');
+var logdevice = require('./routes/logdevice');
 var deletedevice = require('./routes/deletedevice');
 var alldevices = require('./routes/alldevices');
 var allusers = require('./routes/allusers');
@@ -188,6 +189,7 @@ app.use('/api/checklimit', checklimit);
 app.use('/api/listmac', listmac);
 app.use('/api/updatemac', updatemac);
 app.use('/api/adddevice', adddevice);
+app.use('/api/logdevice', logdevice);
 app.use('/api/deletedevice', deletedevice);
 app.use('/api/alldevices', alldevices);
 app.use('/api/allusers', allusers);

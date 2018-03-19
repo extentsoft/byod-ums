@@ -134,7 +134,7 @@
                                     <h1>รายชื่ออุปกรณ์</h1>
                                     <small class="subtitle"></small>
                                     <div class="vd_panel-menu  hidden-xs">
-                                        <div class="menu no-bg vd_green" data-original-title="Start Layout Tour Guide" data-toggle="modal" data-target="#myModal" data-placement="bottom" onClick="document.getElementById('myModalLabel1').innerHTML='ลงทะเบียนอุปกรณ์ใหม่';document.getElementById('term_mac').disabled = false;" id="add-btn"> <span class="menu-icon font-md"><i class="fa fa-plus"></i></span> </div>
+                                        <div class="menu no-bg vd_green" data-original-title="Start Layout Tour Guide" data-toggle="modal" data-target="#myModal" data-placement="bottom" onClick="changevent('add');document.getElementById('myModalLabel1').innerHTML='ลงทะเบียนอุปกรณ์ใหม่';document.getElementById('term_mac').disabled = false;" id="add-btn"> <span class="menu-icon font-md"><i class="fa fa-plus"></i></span> </div>
                                         <!-- menu -->
                                         <!--
                                         <div class="menu">
@@ -421,7 +421,8 @@
             });
             //account_now = 'natthawat_a';
 			account_now = $('#email').text().trim();
-			//username = $('#uname').text().trim();
+			username = $('#uname').text().trim();
+			event_ = '';
 			//alert(username);
 
             function refreshlist() {
@@ -542,19 +543,13 @@
 					{
 						os_edit='Linux';
 					}
+					var q = "'";
                     div.innerHTML =
 
-                        /*	'<div id="'+data[i].terminalmac+'"><img src="images/devices/'+data[i].terminalos+'.jpg"  style="width:60%; height:60%; display: block;margin: 0 auto;"><br>\
-                        	<button type="button" class="btn btn-danger" style="display: block;margin: 0 auto;" onclick="removedevice(this,'+q+data[i].terminalmac+q+')">ยกเลิกอุปกรณ์</button></div> \
-                        	<div><p>ชื่ออุปกรณ์ : '+host_name+'</p>\
-                        	<p>MAC : '+data[i].terminalmac+'</p>\
-                        	<p>OS : '+data[i].terminalos+'</p>\
-                        	<p>อัพเดทครั้งล่าสุด : '+date_str+'</p></div>\
-                        	';*/
                         '<div class="col-md-12"> \
                                                 <div class="vd_status-widget vd_bg-green widget"> \
                                                     <div class="vd_panel-menu"> \
-                                                        <div  data-action="refresh" data-original-title="Edit" data-rel="tooltip" class=" menu entypo-icon smaller-font"  data-toggle="modal" data-target="#myModal" data-placement="bottom" onclick="document.getElementById('+q+'myModalLabel1'+q+').innerHTML = '+q+'แก้ไขอุปกรณ์'+q+';document.getElementById('+q+'term_mac'+q+').disabled = true;document.getElementById('+q+'term_name'+q+').value='+q+host_name+q+';document.getElementById('+q+'term_mac'+q+').value='+q+data[i].terminalmac+q+';document.getElementById('+q+'term_os'+q+').value='+q+os_edit+q+';"> <i class="fa fa-gear" ></i> </div> \
+                                                        <div  data-action="refresh" data-original-title="Edit" data-rel="tooltip" class=" menu entypo-icon smaller-font"  data-toggle="modal" data-target="#myModal" data-placement="bottom" onclick="changevent('+q+'edit'+q+');document.getElementById('+q+'myModalLabel1'+q+').innerHTML = '+q+'แก้ไขอุปกรณ์'+q+';document.getElementById('+q+'term_mac'+q+').disabled = true;document.getElementById('+q+'term_name'+q+').value='+q+host_name+q+';document.getElementById('+q+'term_mac'+q+').value='+q+data[i].terminalmac+q+';document.getElementById('+q+'term_os'+q+').value='+q+os_edit+q+';"> <i class="fa fa-gear" ></i> </div> \
                                                         <div  data-action="refresh" data-original-title="Deactivate" data-rel="tooltip" class=" menu entypo-icon smaller-font" data-toggle="modal" data-target="#myModal3" onclick="$(' + q + '#modal-del' + q + ').val(' + q + data[i].terminalmac + q + ')"> <i class="icon-cross" ></i> </div> \
                                                     </div> \
                                                     <a class="panel-body" href="#"> \
@@ -603,6 +598,32 @@
                         teracc: account_now
                     },
                     success: function(json) {
+						alert(event_);
+						if(event_== 'add'){
+							$.ajax('http://localhost/api/logdevice', {
+								type: "get",
+								data: {
+									termac: mac,
+									teracc: account_now,
+									event: 'AddDevice'
+								},
+								success: function(json) {
+									alert(event_);
+								}
+							});
+						} else if(event_ == 'edit'){
+							$.ajax('http://localhost/api/logdevice', {
+								type: "get",
+								data: {
+									termac: mac,
+									teracc: account_now,
+									event: 'EditDevice'
+								},
+								success: function(json) {
+									alert(event_);
+								}
+							});
+						}						
                         addmac(mac);
                         refreshlist();
                     }
@@ -750,7 +771,9 @@
                         macbind: mac,
 						uname: username
                     },
-                    success: function(json) {alert('b');}
+                    success: function(json) {
+						//alert(json);
+					}
                 }); */
             }
 
@@ -791,6 +814,10 @@
 						//alert(json);
 					}
 				});
+			}
+			
+			function changevent(status){
+				event_ = status;
 			}
 
             checkcount();

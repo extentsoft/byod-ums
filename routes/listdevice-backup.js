@@ -17,9 +17,9 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 
-    var request = new Request(" if ('"+req.param('termac')+"') in (select mac  FROM [AgileControllerDB].[dbo].[TSM_E_Endpoint]) BEGIN UPDATE [AgileControllerDB].[dbo].[TSM_E_Endpoint] SET [host_name] = '"+req.param('tername')+"',[os_name] = '"+req.param('teros')+"',[login_account] = '"+req.param('teracc')+"' WHERE mac = '"+req.param('termac')+"'; end else begin INSERT INTO [AgileControllerDB].[dbo].[TSM_E_Endpoint] ([ID],[mac],[os_name],[host_name],[device_type],[update_time],[match_time],[isIdentify],[isPermitUpdateGroup],[isRegister],[isLose],[isAssignPolicy],[isAssignGroup],[login_account])VALUES((select max(id) from [AgileControllerDB].[dbo].[TSM_E_Endpoint])+1,'"+req.param('termac')+"','"+req.param('teros')+"','"+req.param('tername')+"',2,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,1,1,0,0,0,0,'"+req.param('teracc')+"'); INSERT INTO [AgileControllerDB].[dbo].[TSM_R_EndpointGroupRelation]([endpoint_id],[group_id]) VALUES ((select max(id) from [AgileControllerDB].[dbo].[TSM_E_Endpoint]),2); end;", function(err, rowCount){
-
-	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
+    //var request = new Request('select * from [test].[dbo].t1', function(err, rowCount){
+	var q = '"';
+    var request = new Request("SELECT [id],[account] ,[userName],[orgName],[host_name],[mac],[os_name],[update_time],[match_time],CASE when t1.[accountID] in (select [itemID] from [AgileControllerDB].[dbo].[TSM_R_TParameterAssign]) then (SELECT CASE WHEN SUBSTRING([content],307,1) = '"+q+"' THEN SUBSTRING([content],306,1) ELSE SUBSTRING([content],306,2)END FROM [AgileControllerDB].[dbo].[TSM_E_Account] a join [AgileControllerDB].[dbo].[TSM_E_Organization] b on a.[orgID] = b.[orgID] join [AgileControllerDB].[dbo].[TSM_R_TParameterAssign] c on a.[accountID] = c.[itemID] join [AgileControllerDB].[dbo].[TSM_E_TerminalParameter] d on c.[parameterID] = d.[parameterID]where accountID = t1.[accountID]) else '3' END as limit FROM [AgileControllerDB].[dbo].[TSM_E_Account] t1  join [AgileControllerDB].[dbo].[TSM_E_Endpoint] on [account] = [login_account]  join [AgileControllerDB].[dbo].[TSM_E_Organization] t2 on t1.[orgID] = t2.[orgID] where [login_account] = '"+req.param('accname')+"'", function(err, rowCount){
 
       if(err){
         console.error(err);
@@ -27,7 +27,7 @@ var deviceList = function(req,res,next){
       }
       console.log('rowCount: ' + rowCount);
       //console.log(JSON.stringify(result));
-      req.test2 = result; 
+      req.test2 = result;
       connection.release();
       next();
     });
@@ -55,7 +55,6 @@ router.get('/', deviceList, function(req, res, next) {
   //console.log('middleware 1 ' + req.test2);
   //console.log('middleware 2 ' + JSON.stringify(req.test2));
   res.send(req.test2);
-  //res.send('respond with a resource');
 });
 
 module.exports = router;

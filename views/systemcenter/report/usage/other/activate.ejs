@@ -101,13 +101,13 @@
 
 <body id="dashboard" class="full-layout  nav-right-hide nav-right-start-hide  nav-top-fixed      responsive    clearfix" data-active="dashboard " data-smooth-scrolling="1">
     <div class="vd_body">
-        <%- include('../../admin/partial/header'); %>
+        <%- include('../../../admin/partial/header'); %>
 
             <!-- Content start -->
 
             <div class="content">
                 <div class="container">
-                    <%- include('../../admin/partial/menu'); %>
+                    <%- include('../../../admin/partial/menu'); %>
 
 
                 </div>
@@ -122,7 +122,7 @@
 
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
-                                    <h1>รายงานการลงทะเบียนอุปกรณ์จำแนกตามกลุ่มผู้ใช้งาน</h1>
+                                    <h1>รายงานสถิติการลงทะเบียนอุปกรณ์ แบ่งตาม กลุ่มผู้ใช้งาน</h1>
 									
 
                                     <div class="vd_panel-menu  hidden-xs">
@@ -174,12 +174,9 @@
                                         <div class="panel-body table-responsive" id="tab-body">
                                             <table class="table table-striped" id="data-tables">
                                                 <thead>
-                                                    <tr>
-                                                        <th>เจ้าของอุปกรณ์</th>
-                                                        <th>MAC</th>
-                                                        <th>ระบบปฏิบัติการ</th>
-                                                        <th>วันที่ลงทะเบียนอุปกรณ์</th>
-                                                        <th>กลุ่มผู้ใช้งาน</th>
+                                                    <tr>													
+														<th>กลุ่มผู้ใช้งาน</th>
+                                                        <th>จำนวนครั้งที่ลงทะเบียนอุปกรณ์</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -217,7 +214,7 @@
     </div>
     <!-- .content -->
 
-    <%- include('../../admin/partial/footer'); %>
+    <%- include('../../../admin/partial/footer'); %>
 
 
 
@@ -327,14 +324,13 @@
                 //alert('refresh');
 				//alert(sd);
 				//alert(ed);
-				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>MAC</th><th>ระบบปฏิบัติการ</th><th>วันที่ลงทะเบียนอุปกรณ์</th><th>กลุ่มผู้ใช้งาน</th></tr></thead><tbody></tbody></table>';
-                $.ajax('http://localhost/report/report671', {
+				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>MAC</th><th>กลุ่มผู้ใช้งาน</th><th>วันที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
+                $.ajax('http://localhost/report/report672', {
                     type: "get",
                     data: {
-						group: grp,
                         start: sd,
-                        end: ed 
-						
+                        end: ed,
+						group: grp
                     },
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -353,22 +349,22 @@
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
 					grp_ ='';
-					if(data_sql[6]=='People'){
+					if(data_sql[2]=='People'){
 						grp_ = 'Officer';
 					}
 					else{
-						grp_ = data_sql[6];
+						grp_ = data_sql[2];
 					}
-                    update_time = new Date(data_sql[5]);
+                    update_time = new Date(data_sql[3]);
                     date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getUTCMonth()+1) + "/" + update_time.getFullYear();
 
                     //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
-                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[1] + "</td><td>" + data_sql[3] + "</td><td>" + data_sql[4] + "</td><td>" + date_str + "</td><td>" + grp_ + "</td></tr>");
+                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[0] + "</td><td>" + data_sql[1] + "</td><td>" + grp_ + "</td><td>" + date_str + "</td></tr>");
                     total = total + data_sql[1];
                     //alert(JSON.stringify(data_json));
                     data.push(data_json);
                     //alert(JSON.stringify(data));
-                    data_sql.splice(0, 7);
+                    data_sql.splice(0, 4);
                     i = -1;
 
                 }
@@ -388,7 +384,7 @@
 					if (group_ == '') {
 						$('#data-tables').dataTable();
 					} else {
-						refresh_table(e.format("Y-M-D"), a.format("Y-M-D"),group_);
+						//refresh_table(e.format("Y-M-D"), a.format("Y-M-D"),group_);
 					}
                     
 					start_ = e.format("Y-M-D");
@@ -424,27 +420,20 @@
             }
 			
 			function list_group(){
-				$.ajax('http://localhost/api/getgroupname_dms', {
+				$.ajax('http://localhost/api/getgroupname', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
-						var guest = 0;
 						var select = document.getElementById("listgroup");
 						data_res = JSON.parse(JSON.stringify(json));
 						for (i = 0; i < data_res.length; i++) {
 							var option = document.createElement("option");
-							
-							if(data_res[i]=='Guest'){
-								guest=1;
-							}
-							
 							if(data_res[i]=='People'){
 								option.text = 'Officer';
 							}
 							else{
 								option.text = data_res[i];
 							}
-							
 							
 							option.value = data_res[i];
 							var select = document.getElementById("listgroup");
@@ -453,14 +442,6 @@
 							i = -1;
 
 						}
-						
-						if(guest==0){
-							var option = document.createElement("option");
-							option.text = 'Guest';
-							option.value = 'Guest';
-							var select = document.getElementById("listgroup");
-							select.appendChild(option);
-						}
                     }
                 });
 			}
@@ -468,7 +449,7 @@
 			function selectgroup(group_name){
 				$("#listgroup option[value='blank']").remove();
 				group_ = group_name;
-				refresh_table(start_,end_,group_);
+				//refresh_table(start_,end_,group_);
 				
 			}
 
