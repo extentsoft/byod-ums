@@ -167,7 +167,7 @@
 
 
                                                 <div class="row mgbt-xs-0">
-                                                    <div class="col-sm-6 mgbt-xs-15 mgbt-sm-0">
+                                                    <div class="col-sm-6 mgbt-xs-15 mgbt-sm-0" onclick = "goto('statios')">
                                                         <div class="item-left pd-5">
                                                             <!-- start 1 -->
                                                             <div class="panel-body">
@@ -193,7 +193,7 @@
                                                             <!-- end 1 -->
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-6"  onclick = "goto('statandroid')">
                                                         <div class="item-right pd-5">
                                                             <!-- start 1 -->
                                                             <div class="panel-body">
@@ -221,7 +221,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mgbt-xs-0">
-                                                    <div class="col-sm-6 mgbt-xs-15 mgbt-sm-0">
+                                                    <div class="col-sm-6 mgbt-xs-15 mgbt-sm-0" onclick = "goto('statlinux')">
                                                         <div class="item-left pd-5">
                                                             <!-- start 1 -->
                                                             <div class="panel-body">
@@ -247,7 +247,7 @@
                                                             <!-- end 1 -->
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-6" onclick = "goto('statwindows')">
                                                         <div class="item-right pd-5">
                                                             <!-- start 1 -->
                                                             <div class="panel-body">
@@ -275,7 +275,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mgbt-xs-0">
-                                                    <div class="col-sm-6 mgbt-xs-15 mgbt-sm-0">
+                                                    <div class="col-sm-6 mgbt-xs-15 mgbt-sm-0" onclick = "goto('statunknownos')">
                                                         <div class="item-left pd-5">
                                                             <!-- start 1 -->
                                                             <div class="panel-body">
@@ -332,7 +332,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4 ">
-                                        <div class="row ">
+                                        <div class="row " onclick = "goto('statmobile')">
                                             <div class="col-md-12 ">
                                                 <div class="vd_status-widget vd_bg-green widget ">
 
@@ -349,7 +349,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row ">
+                                        <div class="row " onclick = "goto('statcomputer')">
                                             <div class="col-md-12 ">
                                                 <div class="vd_status-widget vd_bg-green widget ">
 
@@ -366,7 +366,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row ">
+                                        <div class="row " onclick = "goto('statunknowntype')">
                                             <div class="col-md-12 ">
                                                 <div class="vd_status-widget vd_bg-green widget ">
                                                     <!--<div class="vd_panel-menu ">
@@ -1353,6 +1353,11 @@
 
                 });
             }
+			
+			function goto(dest){
+				window.location = '/systemcenter/report/usage/other/'+dest;
+			
+			}
 
             check_access();
             check_devicemon();
