@@ -278,7 +278,7 @@
 
         <!-- Sky Icons -->
         <script type="text/javascript" src='plugins/skycons/skycons.js'></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        
 
 
         <!-- Include Date Range Picker -->
@@ -322,13 +322,16 @@
 
         <script type="text/javascript ">
             account_now = '<%= email %>';
+			var url = new URL(window.location.href);
+			var sd_ = url.searchParams.get("start");
+			var ed_ = url.searchParams.get("end");
 			//alert(account_now);
 
             function refresh_table(sd, ed) {
                 //alert('refresh');
                 document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>ประเภทอุปกรณ์</th><th>พื้นที่</th><th>จำนวนครั้งที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
 
-                $.ajax('http://localhost/report/report683', {
+                $.ajax('http://localhost/report/report6815', {
                     type: "get",
                     data: {
                         start: sd,
@@ -348,15 +351,28 @@
                 //alert(data_sql);
                 data = [];
                 total = 0;
+				site_ = '';
+				type_ = '';
+				
                 for (i = 0; i < data_sql.length; i++) {
+					if(data_sql[1]==''){
+						type_ = 'ไม่สามารถระบุได้';
+					}
+					else{
+						type_ = data_sql[1];
+					}
+					
+					if(data_sql[2]==''){
+						site_ = 'ไม่สามารถระบุได้';
+					}
+					else{
+						site_ = data_sql[2];
+					}
                     data_json = {};
-                    update_time = new Date(data_sql[6]);
-                    date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getUTCMonth()+1) + "/" + update_time.getFullYear();
 
+                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[0] + "</td><td>" + type_ + "</td><td>" + site_ + "</td><td>" + data_sql[3] + "</td></tr>");
 
-                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[1] + "</td><td>" + data_sql[2] + "</td><td>" + date_str + "</td></tr>");
-
-                    data_sql.splice(0, 7);
+                    data_sql.splice(0, 4);
                     i = -1;
 
                 }
@@ -368,15 +384,16 @@
             }
 
             function datepick() {
+				moment.locale('th');
                 function e(e, a, r) {
-                    //refresh_table(e.format("Y-M-D"), a.format("Y-M-D"));
+					
+                    refresh_table(e.format("Y-M-D"), a.format("Y-M-D"));
                     //alert(e.format("Y-M-D"));
                     //alert(a.format("Y-M-D"));
-
-
+					
                     var o = "",
                         l = "";
-                    a - e < 100 ? (o = "Today:", l = e.format("MMM D")) : "Yesterday" == r ? (o = "Yesterday:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
+                    a - e < 100 ? (o = "วันนี้:", l = e.format("MMM D")) : "เมื่อวาน" == r ? (o = "เมื่อวาน:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
                         t.find(".m-subheader__daterange-date").html(l),
                         t.find(".m-subheader__daterange-title").html(o)
                 }
@@ -388,22 +405,61 @@
                             startDate: a,
                             endDate: r,
                             opens: "left",
+							showCustomRangeLabel: false,
+							alwaysShowCalendars: true,
                             ranges: {
-                                Today: [moment(), moment()],
+                                "รายงานของวันนี้": [moment(), moment()],
                                 //Yesterday: [moment().subtract(1, "days"), moment().subtract(1, "days")],
-                                "Last 7 Days": [moment().subtract(6, "days"), moment()],
-                                "Last 30 Days": [moment().subtract(29, "days"), moment()],
-                                "This Month": [moment().startOf("month"), moment().endOf("month")],
-                                "This Year": [moment().startOf("year"), moment().endOf("year")]
+                                "รายงาน 7 วันล่าสุด": [moment().subtract(6, "days"), moment()],
+                                "รายงาน 30 วันล่าสุด": [moment().subtract(29, "days"), moment()],
+                                "รายงานของเดือนนี้": [moment().startOf("month"), moment().endOf("month")],
+                                "รายงานของปีนี้": [moment().startOf("year"), moment().endOf("year")]
                                     //"Last Month": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
                             }
                         }, e),
                         e(a, r, "")
                 }
             }
+			
+			function init_stat(){
+				moment.locale('th');
+				if(sd_ == null || ed_ == null){
+					window.location = '/systemcenter/';
+				}
+				function f(e, a, r) {
+					refresh_table(e.format("Y-M-D"), a.format("Y-M-D"));
+                    var o = "",
+                        l = "";
+                    a - e < 100 ? (o = "วันนี้:", l = e.format("MMM D")) : "เมื่อวาน" == r ? (o = "เมื่อวาน:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
+                        t.find(".m-subheader__daterange-date").html(l),
+                        t.find(".m-subheader__daterange-title").html(o)
+                }
+                if (0 != $("#daterangepicker").length) {
+                    var t = $("#daterangepicker"),
+                        a = moment(sd_),
+                        r = moment(ed_)
+                    t.daterangepicker({
+                            startDate: a,
+                            endDate: r,
+                            opens: "left",
+							showCustomRangeLabel: false,
+							alwaysShowCalendars: true,
+                            ranges: {
+                                "รายงานของวันนี้": [moment(), moment()],
+                                //Yesterday: [moment().subtract(1, "days"), moment().subtract(1, "days")],
+                                "รายงาน 7 วันล่าสุด": [moment().subtract(6, "days"), moment()],
+                                "รายงาน 30 วันล่าสุด": [moment().subtract(29, "days"), moment()],
+                                "รายงานของเดือนนี้": [moment().startOf("month"), moment().endOf("month")],
+                                "รายงานของปีนี้": [moment().startOf("year"), moment().endOf("year")]
+                                    //"Last Month": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
+                            }
+                        }, f),
+                        f(a, r, "")
+                }
+			}
 
-           
-            datepick();
+			init_stat();
+            //datepick();
 			
         </script>
 

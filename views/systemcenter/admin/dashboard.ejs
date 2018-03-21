@@ -150,7 +150,7 @@
                                     <div class="col-md-4 mgbt-md-20 mgbt-lg-0">
                                         <div class="panel widget panel-bd-top vd_todo-widget light-widget ">
                                             <div class="panel-heading no-title " align="center">
-                                                ปริมาณการใช้งาน
+                                                ปริมาณการใช้งานระบบของวันนี้
                                             </div>
                                             <div class="panel-body ">
                                                 <div id="revenue-line-chart" style="height:255px; "></div>
@@ -563,7 +563,7 @@
 
         <!-- Sky Icons -->
         <script type="text/javascript" src='plugins/skycons/skycons.js'></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        
 
 
         <!-- Include Date Range Picker -->
@@ -575,7 +575,6 @@
         <script type="text/javascript ">
             $(document).ready(function() {
                 //alert($('#email').text().trim());
-                //account_now = 'natthawat_a';
                 account_now = $('#email').text().trim();
                 //alert(account_now);
                 $.ajax('http://localhost/api/getconfig', {
@@ -632,6 +631,8 @@
         </script>
 
         <script type="text/javascript ">
+			var sd_ = '';
+			var ed_ = '';
             function refresh_group(sd, ed) {
                 //alert('refresh');
                 $.ajax('http://localhost/report/report672', {
@@ -937,7 +938,8 @@
 
             function datepick() {
                 function e(e, a, r) {
-
+					sd_ = e.format("Y-M-D");
+					ed_ = a.format("Y-M-D");
                     refresh_device(e.format("Y-M-D"), a.format("Y-M-D"));
                     refresh_os(e.format("Y-M-D"), a.format("Y-M-D"));
                     refresh_group(e.format("Y-M-D"), a.format("Y-M-D"));
@@ -1355,8 +1357,7 @@
             }
 			
 			function goto(dest){
-				window.location = '/systemcenter/report/usage/other/'+dest;
-			
+				window.location = '/systemcenter/report/usage/other/'+dest+'?start='+sd_+'&&end='+ed_;			
 			}
 
             check_access();
