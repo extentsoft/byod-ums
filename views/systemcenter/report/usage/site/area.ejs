@@ -328,7 +328,7 @@
 				//alert(sd);
 				//alert(ed);
 				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>MAC</th><th>ระบบปฏิบัติการ</th><th>พื้นที่</th><th>วันที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
-                $.ajax('http://192.168.163.29/report/report675', {
+                $.ajax('http://localhost/report/report675', {
                     type: "get",
                     data: {
                         start: sd,
@@ -416,7 +416,7 @@
             }
 			
 			function list_site(){
-				$.ajax('http://192.168.163.29/api/getsite', {
+				$.ajax('http://localhost/api/getsite', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));

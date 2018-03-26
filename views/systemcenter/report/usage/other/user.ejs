@@ -331,7 +331,7 @@
                 //alert(data);
                 document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>ชื่อผู้ใช้งาน</th><th>จำนวนครั้งที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
 
-                $.ajax('http://192.168.163.29/report/report681', {
+                $.ajax('http://localhost/report/report681', {
                     type: "get",
                     data: {
                         start: sd,

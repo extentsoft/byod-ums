@@ -369,7 +369,7 @@
 				//alert(sd);
 				//alert(ed);
 				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>MAC</th><th>ระบบปฏิบัติการ</th><th>วันที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
-                $.ajax('http://192.168.163.29/report/report679', {
+                $.ajax('http://localhost/report/report679', {
                     type: "get",
                     data: {
                         start: sd,
