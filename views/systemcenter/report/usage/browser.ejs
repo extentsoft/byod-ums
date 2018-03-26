@@ -326,7 +326,7 @@
 				//alert(sd);
 				//alert(ed);
 				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>ชื่อผู้ใช้งาน</th><th>ขื่อ Browser</th><th>วันที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
-                $.ajax('http://localhost/report/report671532', {
+                $.ajax('http://192.168.163.29/report/report671532', {
                     type: "get",
                     data: {
                         start: sd,
@@ -416,7 +416,7 @@
             }
 			
 			function list_browser(){
-				$.ajax('http://localhost/api/getbrowser', {
+				$.ajax('http://192.168.163.29/api/getbrowser', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));

@@ -328,7 +328,7 @@
 				//alert(sd);
 				//alert(ed);
 				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>MAC</th><th>ระบบปฏิบัติการ</th><th>วันที่ลงทะเบียนอุปกรณ์</th><th>กลุ่มผู้ใช้งาน</th></tr></thead><tbody></tbody></table>';
-                $.ajax('http://localhost/report/report671', {
+                $.ajax('http://192.168.163.29/report/report671', {
                     type: "get",
                     data: {
 						group: grp,
@@ -424,7 +424,7 @@
             }
 			
 			function list_group(){
-				$.ajax('http://localhost/api/getgroupname_dms', {
+				$.ajax('http://192.168.163.29/api/getgroupname_dms', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));

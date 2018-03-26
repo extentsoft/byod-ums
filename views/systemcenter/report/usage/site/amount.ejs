@@ -326,7 +326,7 @@
 				//alert(ed);
 				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>Controller</th>													<th>จำนวนการเข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
 
-                $.ajax('http://localhost/report/report67143', {
+                $.ajax('http://192.168.163.29/report/report67143', {
                     type: "get",
                     data: {
                         start: sd,
@@ -416,7 +416,7 @@
             }
 			
 			function list_site(){
-				$.ajax('http://localhost/api/getcontroller', {
+				$.ajax('http://192.168.163.29/api/getcontroller', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
