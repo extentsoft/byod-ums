@@ -1,5 +1,5 @@
 module.exports = {
-    environment: 'test',
+    environment: 'test2',
     bypass: true,
     log_level: 'warn',
     service_address: 'localhost:80'

@@ -26,10 +26,10 @@ var test = {
 var test2 = {
     userName: 'sa',
     password: 'P@ssw0rd',
-    server: '172.20.10.2'
+    server: '10.40.145.192'
 };
 
-var config = test;
+var config = test2;
 
 var pool = new ConnectionPool(poolConfig, config);
 //var connection = new Connection(config);
