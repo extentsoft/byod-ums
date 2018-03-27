@@ -348,6 +348,7 @@
             function bindata_table(data_sql) {
                 //alert('bind');
                 //alert(data_sql);
+				printpdf();
                 data = [];
                 total = 0;
                 for (i = 0; i < data_sql.length; i++) {
@@ -470,6 +471,19 @@
 				group_ = group_name;
 				refresh_table(start_,end_,group_);
 				
+			}
+			
+			function printpdf(){
+				var wh = "";
+				wh = "detail = 'AddDevice'  and CONVERT (date, created_at) between '"+start_+"' and '"+end_+"' and [orgName] = '"+group_+"'";
+				//alert(wh);
+				$.ajax('http://localhost/api/v1/pdf/pdf/2671/'+wh, {
+                    type: "get",
+                    success: function(json) {
+						alert('a');
+                        //alert(JSON.stringify(json));                        
+                    }
+                });
 			}
 
 			list_group();
