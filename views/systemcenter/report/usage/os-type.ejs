@@ -156,6 +156,7 @@
                                             <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายงานการใช้งานจำแนกตาม ระบบปฎิบัติการ</h3>
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
+											<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div>
                                             <table class="table table-striped" id="data-tables">
                                                 <thead>
                                                     <tr>
@@ -327,7 +328,7 @@
 
             function refresh_table(sd, ed) {
                 //alert('refresh');
-                document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>ประเภทระบบปฎิบัติการ</th>												<th>เจ้าของอุปกรณ์</th><th>MAC</th><th>วันที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
+                document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>ประเภทระบบปฎิบัติการ</th>												<th>เจ้าของอุปกรณ์</th><th>MAC</th><th>วันที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
 
                 $.ajax('http://localhost/report/report671522', {
                     type: "get",

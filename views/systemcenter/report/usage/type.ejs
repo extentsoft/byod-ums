@@ -172,6 +172,7 @@
               
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
+											<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div>
                                             <table class="table table-striped" id="data-tables">
                                                 <thead>
                                                     <tr>
@@ -327,7 +328,7 @@
                 //alert('refresh');
 				//alert(sd);
 				//alert(ed);
-				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>ประเภทอุปกรณ์</th><th>กลุ่มผู้ใช้งาน</th><th>MAC</th><th>วันที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
+				document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>ประเภทอุปกรณ์</th><th>กลุ่มผู้ใช้งาน</th><th>MAC</th><th>วันที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
                 $.ajax('http://localhost/report/report6782', {
                     type: "get",
                     data: {

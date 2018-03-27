@@ -126,9 +126,8 @@
 									
 
                                     <div class="vd_panel-menu  hidden-xs">
-									
-                                        <div class="menu">
-
+										
+                                        <div class="menu">											
                                             <span class="fa fa-calendar" id="daterangepicker">
 											<span class="m-subheader__daterange-label">
 												<span class="m-subheader__daterange-title"></span>
@@ -164,14 +163,17 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="panel widget">
+										
                                         <div class="panel-heading vd_bg-grey">
-
+											
                                             <select id="listgroup" onchange="selectgroup(this.value)" style="width:30%" >
 												<option value="blank" disabled selected>กรุณาเลือกกลุ่มผู้ใช้งาน</option>                       
 											</select>
+											
               
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
+											<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div>
                                             <table class="table table-striped" id="data-tables">
                                                 <thead>
                                                     <tr>
@@ -327,7 +329,7 @@
                 //alert('refresh');
 				//alert(sd);
 				//alert(ed);
-				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>MAC</th><th>ระบบปฏิบัติการ</th><th>วันที่ลงทะเบียนอุปกรณ์</th><th>กลุ่มผู้ใช้งาน</th></tr></thead><tbody></tbody></table>';
+				document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>MAC</th><th>ระบบปฏิบัติการ</th><th>วันที่ลงทะเบียนอุปกรณ์</th><th>กลุ่มผู้ใช้งาน</th></tr></thead><tbody></tbody></table>';
                 $.ajax('http://localhost/report/report671', {
                     type: "get",
                     data: {
@@ -348,7 +350,7 @@
             function bindata_table(data_sql) {
                 //alert('bind');
                 //alert(data_sql);
-				printpdf();
+				//printpdf();
                 data = [];
                 total = 0;
                 for (i = 0; i < data_sql.length; i++) {
