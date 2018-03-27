@@ -9,7 +9,7 @@ var request = require('request');
 var doc = new PDFDocument();
 //var stream = doc.pipe(blobStream())
 const reportDictionary = {
-    "2671": "SELECT a.[id] ,[userName] 'User' ,[detail] 'Event',[devicemac] MAC,[os_name] 'OS',[created_at] 'Date',[orgName] 'group' FROM [AgileControllerDB].[dbo].[UMS_ActivityLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] c on a.[devicemac] = c.[mac] join [AgileControllerDB].[dbo].[TSM_E_Account] b on a.userId = b.account join [AgileControllerDB].[dbo].[TSM_E_Organization] d on b.orgID = d.orgID where ?1",
+    "2671": "SELECT a.[id] ,[userName] 'User' ,[detail] 'Event',[devicemac] MAC,[os_name] 'OS',[created_at] 'Date',[orgName] 'group' FROM [AgileControllerDB].[dbo].[UMS_ActivityLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] c on a.[devicemac] = c.[mac] join [AgileControllerDB].[dbo].[TSM_E_Account] b on a.userId = b.account join [AgileControllerDB].[dbo].[TSM_E_Organization] d on b.orgID = d.orgID where detail = 'AddDevice'  and CONVERT (date, created_at) between '"+req.param('start')+"' and '"+req.param('end')+"' and [orgName] = '"+req.param('group')+"'",
     "268": "select * from aaaa where ooo = ?1 and ppp = ?2",
 };
 
