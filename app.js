@@ -65,6 +65,7 @@ var checkprofilelimit = require('./routes/checkprofilelimit');
 var addnotimsg = require('./routes/addnotimsg');
 var getnotimsg = require('./routes/getnotimsg');
 var api_notification = require('./routes/api/notification');
+var api_pdf = require('./routes/api/pdf');
 
 var countlogin = require('./routes/countlogin');
 var addchat = require('./routes/addchat');
@@ -207,6 +208,8 @@ app.use('/api/addnotimsg', addnotimsg);
 app.use('/api/getnotimsg', getnotimsg);
 
 app.use('/api/v2/notification', api_notification);
+app.use('/api/v1/pdf', api_pdf);
+
 
 app.use('/api/addchat', addchat);
 app.use('/api/getchat', getchat);
