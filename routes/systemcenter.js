@@ -1622,6 +1622,7 @@ module.exports = function(app, passport) {
         console.log();
         console.log(req.session.user);
 
+
         res.render('systemcenter/login', {
             ipaddr: getLocalIPAddr(),
             browser_family: req.session.user.browser,
