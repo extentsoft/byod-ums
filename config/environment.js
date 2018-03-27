@@ -1,5 +1,9 @@
 module.exports = {
+<<<<<<< HEAD
     environment: 'test2',
+=======
+    environment: 'production',
+>>>>>>> 0a7474787afe5a2b2b2cffcd8f948233b53e782a
     bypass: true,
     log_level: 'warn',
     service_address: 'localhost:80'

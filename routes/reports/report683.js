@@ -14,7 +14,7 @@ var deviceList = function(req,res,next){
     console.log('Connection successful');
 
     //var request = new Request('select * from [test].[dbo].t1', function(err, rowCount){
-    var request = new Request("select userName,count(*) from [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] where userName!='' and CONVERT (date, timestamp) between '"+req.param('start')+"' and '"+req.param('end')+"' group by userName", function(err, rowCount){
+    var request = new Request("SELECT * FROM [AgileControllerDB].[dbo].[UMS_DeviceMonLog] where CONVERT (date, timestamp) between '"+req.param('start')+"' and '"+req.param('end')+"'", function(err, rowCount){
 
       if(err){
         console.error(err);

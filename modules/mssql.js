@@ -29,7 +29,11 @@ var test2 = {
     server: '172.20.10.2'
 };
 
+<<<<<<< HEAD
 var config = test2;
+=======
+var config = prod;
+>>>>>>> 0a7474787afe5a2b2b2cffcd8f948233b53e782a
 
 var pool = new ConnectionPool(poolConfig, config);
 //var connection = new Connection(config);

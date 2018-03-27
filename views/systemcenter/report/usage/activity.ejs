@@ -168,9 +168,9 @@
 
                                             <select id="listactivity" onchange="selectactivity(this.value)" style="width:30%" >
 												<option value="blank" disabled selected>กรุณาเลือกประเภทการเปลี่ยนแปลง</option>     
-												<option value="AddDevice">การเปลี่ยนแปลงอุปกรณ์ - เพิ่มอุปกรณ์</option>
-												<option value="DeleteDevice">การเปลี่ยนแปลงอุปกรณ์ - ลดอุปกรณ์</option>
-												<option value="EditDevice">การเปลี่ยนแปลงอุปกรณ์ - แก้ไขข้อมูล</option>
+												<option value="AddDevice">การเปลี่ยนแปลงอุปกรณ์ - ลงทะเบียนอุปกรณ์</option>
+												<option value="DeleteDevice">การเปลี่ยนแปลงอุปกรณ์ - เพิกถอนอุปกรณ์</option>
+												<option value="EditDevice">การเปลี่ยนแปลงอุปกรณ์ - แก้ไขข้อมูลอุปกรณ์</option>
 											</select>
               
                                         </div>
@@ -355,10 +355,10 @@
                     data_json = {};
 					act_ = '';
 					if(data_sql[1]=='AddDevice'){
-						act_ = 'เพิ่มอุปกรณ์';
+						act_ = 'ลงทะเบียนอุปกรณ์';
 					}
 					else if (data_sql[1]=='DeleteDevice'){
-						act_ = 'ลดอุปกรณ์';
+						act_ = 'เพิกถอนอุปกรณ์';
 					}
 					else if (data_sql[1]=='EditDevice'){
 						act_ = 'แก้ไขข้อมูลอุปกรณ์';
