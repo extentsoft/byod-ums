@@ -328,7 +328,7 @@
 				//alert(sd);
 				//alert(ed);
 				document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>MAC Address</th><th>กลุ่มผู้ใช้งาน</th><th>จำนวนที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
-                $.ajax('http://byod.excise.go.th/report/report676', {
+                $.ajax('http://byod.home/report/report676', {
                     type: "get",
                     data: {
                         start: sd,
@@ -422,7 +422,7 @@
             }
 			
 			function list_group(){
-				$.ajax('http://byod.excise.go.th/api/getgroupname', {
+				$.ajax('http://byod.home/api/getgroupname', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -456,7 +456,7 @@
 			}
 			
 			function printpdf(){
-				location.href = 'http://byod.excise.go.th/api/v1/pdf/2676/'+start_+'/'+end_+'/'+group_+'/'+'0'+'/'+'0';
+				location.href = 'http://byod.home/api/v1/pdf/2676/'+start_+'/'+end_+'/'+group_+'/'+'0'+'/'+'0';
 				
 			}
 

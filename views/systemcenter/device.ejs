@@ -427,7 +427,7 @@
 
             function refreshlist() {
                 //alert('refresh');
-                $.ajax('http://byod.excise.go.th/api/listdevice', {
+                $.ajax('http://byod.home/api/listdevice', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -443,7 +443,7 @@
 
             function bindata(data_sql) {
 				//alert('cc');
-				$.ajax('http://byod.excise.go.th/api/checklimit', {
+				$.ajax('http://byod.home/api/checklimit', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -589,7 +589,7 @@
             }
 
             function adddevice(name, mac, os) {
-                $.ajax('http://byod.excise.go.th/api/adddevice', {
+                $.ajax('http://byod.home/api/adddevice', {
                     type: "get",
                     data: {
                         tername: name,
@@ -600,7 +600,7 @@
                     success: function(json) {
 						//alert(event_);
 						if(event_== 'add'){
-							$.ajax('http://byod.excise.go.th/api/logdevice', {
+							$.ajax('http://byod.home/api/logdevice', {
 								type: "get",
 								data: {
 									termac: mac,
@@ -614,7 +614,7 @@
 								}
 							});
 						} else if(event_ == 'edit'){
-							$.ajax('http://byod.excise.go.th/api/logdevice', {
+							$.ajax('http://byod.home/api/logdevice', {
 								type: "get",
 								data: {
 									termac: mac,
@@ -636,7 +636,7 @@
 
             function deletedevice(ter_mac) {
                 //alert(ter_id);
-                $.ajax('http://byod.excise.go.th/api/deletedevice', {
+                $.ajax('http://byod.home/api/deletedevice', {
                     type: "get",
                     data: {
                         termac: ter_mac,
@@ -652,7 +652,7 @@
 
             function refreshmac(mac) {
                 //alert('refresh');
-                $.ajax('http://byod.excise.go.th/api/listmac', {
+                $.ajax('http://byod.home/api/listmac', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -701,7 +701,7 @@
 
             function addmac(mac) {
                 //alert('refresh');
-                $.ajax('http://byod.excise.go.th/api/listmac', {
+                $.ajax('http://byod.home/api/listmac', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -758,7 +758,7 @@
 
             function updatemac(mac) {
                 //alert('refresh');
-                $.ajax('http://byod.excise.go.th/api/updatemac', {
+                $.ajax('http://byod.home/api/updatemac', {
                     type: "get",
                     data: {
                         accname: account_now,
@@ -767,7 +767,7 @@
                     success: function(json) {refreshlist();}
                 });
 				
-				$.ajax('http://byod.excise.go.th/systemcenter/api', {
+				$.ajax('http://byod.home/systemcenter/api', {
                     type: "get",
                     data: {
                         accname: account_now,
@@ -783,7 +783,7 @@
 
             function checkcount() {
                 //alert('refresh');
-                $.ajax('http://byod.excise.go.th/api/checkcountdevice', {
+                $.ajax('http://byod.home/api/checkcountdevice', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -794,7 +794,7 @@
                         if (data_res[0] > 2) {
                             //alert('a');
 							addviolation('editdeivceoverlimit');
-                            $.ajax('http://byod.excise.go.th/api/message/email/4/' + account_now, {
+                            $.ajax('http://byod.home/api/message/email/4/' + account_now, {
                                 type: "get",
                                 success: function(json) {
                                     //alert(JSON.stringify(json));
@@ -808,7 +808,7 @@
 			
 			function addviolation(detail) {
 				//alert('refresh');
-				$.ajax('http://byod.excise.go.th/api/addviolation', {
+				$.ajax('http://byod.home/api/addviolation', {
 					type: "get",
 					data: {
 						violation: detail,

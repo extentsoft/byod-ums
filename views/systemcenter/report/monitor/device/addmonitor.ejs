@@ -328,7 +328,7 @@
 
             function refresh_table() {
                 //alert('refresh');
-                $.ajax('http://byod.excise.go.th/api/deviceoutmon', {
+                $.ajax('http://byod.home/api/deviceoutmon', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -363,7 +363,7 @@
             }
 			
 			function add_monitor(mac){
-				$.ajax('http://byod.excise.go.th/api/adddevicemon', {
+				$.ajax('http://byod.home/api/adddevicemon', {
 					type: "get",
 					data: {mac:mac},
 					success: function(json) {

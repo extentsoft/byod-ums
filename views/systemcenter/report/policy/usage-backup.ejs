@@ -335,7 +335,7 @@
                 //alert('refresh');
                 document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>ประเภทกฎที่ผู้ใช้งานละเมิด</th><th>ชื่อผู้ใช้งาน</th><th>วันที่ที่ผู้ใช้งานละเมิดกฎ</th></tr></thead><tbody></tbody></table>';
 
-                $.ajax('http://byod.excise.go.th/report/violation_report', {
+                $.ajax('http://byod.home/report/violation_report', {
                     type: "get",
                     data: {
                         start: sd,

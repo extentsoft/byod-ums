@@ -329,7 +329,7 @@
                 //alert('refresh');
                 document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>กลุ่มผู้ใช้งาน</th><th>เจ้าของอุปกรณ์</th><th>MAC</th><th>วันที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
 
-                $.ajax('http://byod.excise.go.th/report/report676', {
+                $.ajax('http://byod.home/report/report676', {
                     type: "get",
                     data: {
                         start: sd,
