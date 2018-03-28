@@ -598,7 +598,7 @@
                         teracc: account_now
                     },
                     success: function(json) {
-						alert(event_);
+						//alert(event_);
 						if(event_== 'add'){
 							$.ajax('http://byod.excise.go.th/api/logdevice', {
 								type: "get",
@@ -608,7 +608,7 @@
 									event: 'AddDevice'
 								},
 								success: function(json) {
-									alert(event_);
+									//alert(event_);
 								}
 							});
 						} else if(event_ == 'edit'){
