@@ -424,10 +424,10 @@
 						for (i = 0; i < data_res.length; i++) {
 							var option = document.createElement("option");
 							option.text = data_res[i];
-							option.value = data_res[i];
+							option.value = data_res[i+1];
 							var select = document.getElementById("listsite");
 							select.appendChild(option);
-							data_res.splice(0, 1);
+							data_res.splice(0, 2);
 							i = -1;
 
 						}
