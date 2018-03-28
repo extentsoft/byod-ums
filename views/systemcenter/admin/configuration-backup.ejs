@@ -517,7 +517,7 @@
 		account_now = '<%= email %>';
             function sendCustomerSatisfaction() {
                 alert('sendCustomerSatisfaction');
-                $.ajax('http://byod.excise.go.th/sendCustSat', {
+                $.ajax('http://localhost/sendCustSat', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -529,7 +529,7 @@
 
             function refresh_table() {
                 //alert('refresh');
-                $.ajax('http://byod.excise.go.th/api/allusers', {
+                $.ajax('http://localhost/api/allusers', {
                     type: "get",
                     //data: {start:sd,end:ed},
                     success: function(json) {
@@ -574,7 +574,7 @@
             function addlimit(lim, acc) {
                 //alert(lim);
                 //alert(acc);
-                $.ajax('http://byod.excise.go.th/api/limitdevice', {
+                $.ajax('http://localhost/api/limitdevice', {
                     type: "get",
                     data: {
                         limit: lim,
@@ -595,7 +595,7 @@
             }
 
             function getconfig() {
-                $.ajax('http://byod.excise.go.th/api/getconfig', {
+                $.ajax('http://localhost/api/getconfig', {
                     type: "get",
                     success: function(json) {
                         //alert(json);
@@ -670,7 +670,7 @@
 
             function editconfig(account, timefrom, timeto, timediff, editdevice, editprofile, timelog, countlog, verie, verchrome, verff) {
 
-                $.ajax('http://byod.excise.go.th/api/editconfig', {
+                $.ajax('http://localhost/api/editconfig', {
                     type: "get",
                     data: {
                         accname: account,
@@ -699,7 +699,7 @@
                 //alert($('#noti-text').val());
                 //alert($('#notifychannel').val());
 
-                $.ajax('http://byod.excise.go.th/api/addnotimsg', {
+                $.ajax('http://localhost/api/addnotimsg', {
                     type: "get",
                     data: {
                         chanel: 0,

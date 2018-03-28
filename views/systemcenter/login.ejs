@@ -150,7 +150,8 @@
 
                                                         <div class="browser_information">
                                                             <br>คุณกำลังเข้าใช้งานระบบบริหารจัดการทรัพยากร​ ICT ด้วย<br> IP Address
-                                                            <%= ipaddr %>&nbsp;(พื้นที่) ผ่าน
+                                                            <%= ipaddr %>&nbsp;(พื้นที่)
+                                                                <%= remoteaddr %>ผ่าน
                                                                 <%= browser_family %>&nbsp;เวอร์ชั่น
                                                                     <%= browser_version %>
                                                         </div>
@@ -254,7 +255,7 @@
                                 access_tpl += ' พื้นที่ ' + country_name[data.region_name] + ', ' + region_name[data.country_name];
                                 $('.browser_information').html(access_tpl);
 
-                                $.ajax('http://byod.excise.go.th/api/getconfig', {
+                                $.ajax('http://localhost/api/getconfig', {
                                     type: "get",
                                     success: function(data) {
 

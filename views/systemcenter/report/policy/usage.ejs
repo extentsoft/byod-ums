@@ -327,7 +327,7 @@
 				//alert(sd);
 				//alert(ed);
 				document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>ชื่อผู้ใช้งาน</th><th>ประเภทกฎที่ผู้ใช้งานละเมิด</th><th>วันที่ที่ผู้ใช้งานละเมิดกฎ</th></tr></thead><tbody></tbody></table>';
-                $.ajax('http://byod.excise.go.th/report/violation_report', {
+                $.ajax('http://localhost/report/violation_report', {
                     type: "get",
                     data: {
                         start: sd,
@@ -435,7 +435,7 @@
             }
 			
 			function list_violation(){
-				$.ajax('http://byod.excise.go.th/api/getviolation', {
+				$.ajax('http://localhost/api/getviolation', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -482,7 +482,7 @@
 			}
 			
 			function printpdf(){
-				location.href = 'http://byod.excise.go.th/api/v1/pdf/2674/'+start_+'/'+end_+'/'+violation_+'/'+'0'+'/'+'0';
+				location.href = 'http://localhost/api/v1/pdf/2674/'+start_+'/'+end_+'/'+violation_+'/'+'0'+'/'+'0';
 			}
 
 			list_violation();

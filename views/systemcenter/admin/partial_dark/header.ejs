@@ -270,7 +270,7 @@
             /*
                         $.ajax({
                             type: "post",
-                            url: 'http://byod.excise.go.th/api/chat/attachment',
+                            url: 'http://localhost/api/chat/attachment',
                             data: {
                                 data: reader.result,
                             },
@@ -312,7 +312,7 @@
     */
     function get_chat() {
         //alert(chat_val);
-        $.ajax('http://byod.excise.go.th/api/getchat', {
+        $.ajax('http://localhost/api/getchat', {
             type: "get",
             success: function(json) {
                 //alert(JSON.stringify(json));
@@ -413,7 +413,7 @@
         } else {
 
         }
-        $.ajax('http://byod.excise.go.th/api/addchat', {
+        $.ajax('http://localhost/api/addchat', {
             type: "post",
             data: {
                 usr: account_now,
@@ -434,7 +434,7 @@
     }
 
     function get_noti() {
-        $.ajax('http://byod.excise.go.th/api/getnotimsg', {
+        $.ajax('http://localhost/api/getnotimsg', {
             type: "get",
             data: {
                 chanel: '0'

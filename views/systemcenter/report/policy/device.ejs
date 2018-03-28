@@ -271,7 +271,7 @@
 
             function refresh_table() {
                 //alert('refresh');
-                $.ajax('http://byod.excise.go.th/report/alllimit', {
+                $.ajax('http://localhost/report/alllimit', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -307,7 +307,7 @@
             }
 			
 			function printpdf(){
-				location.href = 'http://byod.excise.go.th/api/v1/pdf/26710/'+'0'+'/'+'0'+'/'+'0'+'/'+'0'+'/'+'0';
+				location.href = 'http://localhost/api/v1/pdf/26710/'+'0'+'/'+'0'+'/'+'0'+'/'+'0'+'/'+'0';
 			}
             refresh_table();
         </script>

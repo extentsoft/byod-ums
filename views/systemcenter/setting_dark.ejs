@@ -253,7 +253,7 @@
         <script type="text/javascript ">
             $(document).ready(function() {
 
-                $.ajax('http://byod.excise.go.th/api/getuserpref', {
+                $.ajax('http://localhost/api/getuserpref', {
                     type: "get",
                     data: {
                         accname: $('#email').text().trim(),
@@ -327,7 +327,7 @@
                 var theme_val = $('#pref_theme').is(':checked') ? 1 : 0;
                 var noti_val = $('#pref_notification').is(':checked') ? 1 : 0;
 
-                $.ajax('http://byod.excise.go.th/api/edituserpref', {
+                $.ajax('http://localhost/api/edituserpref', {
                     type: "get",
                     data: {
                         accname: $('#email').text().trim(),
@@ -343,7 +343,7 @@
                         } else {
                             $('#top-menu-3').hide();
                         }
-                        window.location.href = "http://byod.excise.go.th/systemcenter/setting";
+                        window.location.href = "http://localhost/systemcenter/setting";
                     },
                     error: function() {
                         //location.reload();

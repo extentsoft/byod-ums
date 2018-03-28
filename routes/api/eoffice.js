@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/test', function(req, res) {
 
-    request('http://byod.excise.go.th/api/eoffice/profile/thanakdorn_p', function(error, response, body) {
+    request('http://localhost/api/eoffice/profile/thanakdorn_p', function(error, response, body) {
         console.log(error);
         console.log(body);
         if (!error && response.statusCode == 200) {

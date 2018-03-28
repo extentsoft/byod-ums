@@ -1,6 +1,7 @@
 var nodemailer = require('nodemailer');
 var Crypt = require('../modules/crypt_sha');
 var soap = require('soap');
+var ipaddr = require('ipaddr.js');
 var request = require('request');
 var Account = require('../models/account');
 var os = require('os');
@@ -1621,10 +1622,34 @@ module.exports = function(app, passport) {
         console.log('logging in');
         console.log();
         console.log(req.session.user);
+        var clientInfo = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+        var clientAddr = clientInfo.substring(":");
 
-
+		
+		console.log('logging in');
+        console.log();
+        console.log(req.session.user);
+        var clientInfo = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+		var ipString = req.connection.remoteAddress;
+		if (ipaddr.IPv4.isValid(ipString)) {
+  // ipString is IPv4
+		} else if (ipaddr.IPv6.isValid(ipString)) {
+		  var ip = ipaddr.IPv6.parse(ipString);
+		  if (ip.isIPv4MappedAddress()) {
+			// ip.toIPv4Address().toString() is IPv4
+			console.log(ip.toIPv4Address().toString());
+		  } else {
+			//console.log('6');
+			// ipString is IPv6
+		  }
+		} else {
+		  // ipString is invalid
+		}
+		//console.log(ipaddr.IPv4.parse(ipString));
+        
         res.render('systemcenter/login', {
             ipaddr: getLocalIPAddr(),
+            remoteaddr: ip.toIPv4Address().toString(),
             browser_family: req.session.user.browser,
             browser_version: req.session.user.bversion,
             browser_support: req.session.user.bsupport,
@@ -1687,7 +1712,7 @@ module.exports = function(app, passport) {
 
 
                 console.log('Identity is being authorizing against e-Office');
-                request('http://byod.excise.go.th/api/eoffice/profile/' + user.email, function(error, response, body) {
+                request('http://localhost/api/eoffice/profile/' + user.email, function(error, response, body) {
 
                     if (!error && response.statusCode == 200) {
                         if (body != null) {
@@ -1710,7 +1735,7 @@ module.exports = function(app, passport) {
                             req.session.user.area = parsed_body.area;
                             req.session.authorized = parsed_body.authorized;
 
-                            request('http://byod.excise.go.th/api/getuserpref?accname=' + user.email, function(error, response, body) {
+                            request('http://localhost/api/getuserpref?accname=' + user.email, function(error, response, body) {
                                 if (!error && response.statusCode == 200) {
                                     if (body != null) {
                                         var parsed_body = JSON.parse(body);
@@ -1883,13 +1908,13 @@ function isSupported(req, res, next) {
 
                 console.log(' Your browsing with ', req.session.user.browser, req.session.user.bversion, 'which is ', req.session.user.bsupport);
 
-                if (!req.session.user.bsupport) {
+                /*if (!req.session.user.bsupport) {
                     delete req.session.authenticated;
                     delete req.session.authorized;
                     delete req.session.user;
 
                     res.redirect('/systemcenter/login');
-                }
+                }*/
 
 
             } else {
