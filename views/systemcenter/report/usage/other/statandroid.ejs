@@ -324,9 +324,15 @@
 
         <script>
             account_now = '<%= email %>';
-			var url = new URL(window.location.href);
-			var sd_ = url.searchParams.get("start");
-			var ed_ = url.searchParams.get("end");
+			var str1 = location.href;
+			var str2 = location.href;
+			var m = str1.indexOf("start");
+			var n = str1.indexOf("end");
+			sd_ = str1.substr(m+6,n-m-8);
+			ed_ = str2.substr(n+4,str2.length-n);
+			//var url = new URL(location);
+			//var sd_ = url.searchParams.get("start");
+			//var ed_ = url.searchParams.get("end");
 			//alert(account_now);
 
             function refresh_table(sd, ed) {
@@ -419,7 +425,7 @@
 			function init_stat(){
 				moment.locale('th');
 				if(sd_ == null || ed_ == null){
-					window.location = '/systemcenter/';
+					//window.location = '/systemcenter/';
 				}
 				function f(e, a, r) {
 					refresh_table(e.format("Y-M-D"), a.format("Y-M-D"));
@@ -431,8 +437,8 @@
                 }
                 if (0 != $("#daterangepicker").length) {
                     var t = $("#daterangepicker"),
-                        a = moment(sd_),
-                        r = moment(ed_)
+                        a = moment(sd_,"YYYY-MM-DD"),
+                        r = moment(ed_,"YYYY-MM-DD")
                     t.daterangepicker({
                             startDate: a,
                             endDate: r,
