@@ -254,7 +254,7 @@
                                 access_tpl += ' พื้นที่ ' + country_name[data.region_name] + ', ' + region_name[data.country_name];
                                 $('.browser_information').html(access_tpl);
 
-                                $.ajax('http://byod.home/api/getconfig', {
+                                $.ajax('http://byod.excise.go.th/api/getconfig', {
                                     type: "get",
                                     success: function(data) {
 
@@ -334,7 +334,7 @@
 		//alert(m);
         function getsite() {
                 //alert('refresh');
-                $.ajax('http://byod.home/api/checkip', {
+                $.ajax('http://byod.excise.go.th/api/checkip', {
                     type: "get",
                     data: {
                         ipadr: m

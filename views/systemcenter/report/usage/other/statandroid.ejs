@@ -333,7 +333,7 @@
                 //alert('refresh');
                 document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>MAC Address</th><th>ระบบปฏิบัติการ</th><th>พื้นที่</th><th>จำนวนครั้งที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
 
-                $.ajax('http://byod.home/report/report689', {
+                $.ajax('http://byod.excise.go.th/report/report689', {
                     type: "get",
                     data: {
                         start: sd,
@@ -454,7 +454,7 @@
 			}
 			
 			function printpdf(){
-				location.href = 'http://byod.home/api/v1/pdf/2689/'+sd_+'/'+ed_+'/'+'0'+'/'+'0'+'/'+'0';
+				location.href = 'http://byod.excise.go.th/api/v1/pdf/2689/'+sd_+'/'+ed_+'/'+'0'+'/'+'0'+'/'+'0';
 				
 			}
 
