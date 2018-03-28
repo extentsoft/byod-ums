@@ -333,7 +333,7 @@
             $(document).ready(function() {
                 $('#top-right-success').click(function() {
 
-                    $.ajax('http://192.168.163.29/api/eoffice/profile/' + $('#u_ssn').attr("placeholder") + '/ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6STFOaUo5LmV5SnBjM01pT2lKRmVIUmxiblJ6YjJaMElFTnZiWEJoYm5rZ1RHbHRhWFJsWkNJc0ltbGhkQ0k2TVRVeE9UWTVOVFk1T0N3aVpYaHdJam94TlRVeE1qTXhOams0TENKaGRXUWlPaUppZVc5a0xtVjRZMmx6WlM1bmJ5NTBhQ0lzSW5OMVlpSTZJbUo1YjJSQVpYaGphWE5sTG1kdkxuUm9JaXdpVUhKdmFtVmpkQ0k2SWtKWlQwUWlMQ0pGYldGcGJDSTZJbUp2ZVdSQVpYaGphWE5sTG1kdkxuUm9JaXdpVUdGeWRHNWxjaUk2SWxOMWJXMXBkQ0JEYjIxd2RYUmxjaUJEYjIxd1lXNTVJRXhwYldsMFpXUWlMQ0pTWlhGMVpYTjBaWElnSWpvaVUydDVJRWxEVkNCUWRXSnNhV01nUTI5dGNHRnVlU0JNYVcxcGRHVmtJbjAudWJ4UGdNNDkxWU9oTWNrYzA5R3lEODBsdG9uU2xMQ29SNENnZGNBdExzZw==', {
+                    $.ajax('http://byod.excise.go.th/api/eoffice/profile/' + $('#u_ssn').attr("placeholder") + '/ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6STFOaUo5LmV5SnBjM01pT2lKRmVIUmxiblJ6YjJaMElFTnZiWEJoYm5rZ1RHbHRhWFJsWkNJc0ltbGhkQ0k2TVRVeE9UWTVOVFk1T0N3aVpYaHdJam94TlRVeE1qTXhOams0TENKaGRXUWlPaUppZVc5a0xtVjRZMmx6WlM1bmJ5NTBhQ0lzSW5OMVlpSTZJbUo1YjJSQVpYaGphWE5sTG1kdkxuUm9JaXdpVUhKdmFtVmpkQ0k2SWtKWlQwUWlMQ0pGYldGcGJDSTZJbUp2ZVdSQVpYaGphWE5sTG1kdkxuUm9JaXdpVUdGeWRHNWxjaUk2SWxOMWJXMXBkQ0JEYjIxd2RYUmxjaUJEYjIxd1lXNTVJRXhwYldsMFpXUWlMQ0pTWlhGMVpYTjBaWElnSWpvaVUydDVJRWxEVkNCUWRXSnNhV01nUTI5dGNHRnVlU0JNYVcxcGRHVmtJbjAudWJ4UGdNNDkxWU9oTWNrYzA5R3lEODBsdG9uU2xMQ29SNENnZGNBdExzZw==', {
                         type: "put",
                         data: {
                             fn: $('#u_fn').val(),
@@ -400,13 +400,13 @@
 
         <script type="text/javascript ">
             function editprofile() {
-                $.ajax('http://192.168.163.29/api/addprofilelog', {
+                $.ajax('http://byod.excise.go.th/api/addprofilelog', {
                     type: "get",
                     data: {
                         accname: account_now
                     },
                     success: function(json) {
-                        $.ajax('http://192.168.163.29/api/checkprofilelimit', {
+                        $.ajax('http://byod.excise.go.th/api/checkprofilelimit', {
                             type: "get",
                             data: {
                                 accname: account_now
@@ -415,7 +415,7 @@
                                 //alert(json);
                                 if (json == 1) {
                                     addviolation('overeditprofile');
-                                    $.ajax('http://192.168.163.29/api/message/email/5/' + account_now, {
+                                    $.ajax('http://byod.excise.go.th/api/message/email/5/' + account_now, {
                                         type: "get",
                                         success: function(json) {
                                             //alert(JSON.stringify(json));
@@ -433,7 +433,7 @@
 
             function addviolation(detail) {
                 //alert('refresh');
-                $.ajax('http://192.168.163.29/api/addviolation', {
+                $.ajax('http://byod.excise.go.th/api/addviolation', {
                     type: "get",
                     data: {
                         violation: detail,

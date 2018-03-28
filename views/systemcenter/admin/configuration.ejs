@@ -519,7 +519,7 @@
 		var filter_ = '';
             function sendCustomerSatisfaction() {
                 alert('sendCustomerSatisfaction');
-                $.ajax('http://192.168.163.29/sendCustSat', {
+                $.ajax('http://byod.excise.go.th/sendCustSat', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -531,7 +531,7 @@
 
             function refresh_table(usr) {
                 //alert('refresh');
-                $.ajax('http://192.168.163.29/api/limitdevice_user', {
+                $.ajax('http://byod.excise.go.th/api/limitdevice_user', {
                     type: "get",
                     data: {
 						usrname:usr
@@ -578,7 +578,7 @@
             function addlimit(lim, acc) {
                 //alert(lim);
                 //alert(acc);
-                $.ajax('http://192.168.163.29/api/limitdevice', {
+                $.ajax('http://byod.excise.go.th/api/limitdevice', {
                     type: "get",
                     data: {
                         limit: lim,
@@ -599,7 +599,7 @@
             }
 
             function getconfig() {
-                $.ajax('http://192.168.163.29/api/getconfig', {
+                $.ajax('http://byod.excise.go.th/api/getconfig', {
                     type: "get",
                     success: function(json) {
                         //alert(json);
@@ -674,7 +674,7 @@
 
             function editconfig(account, timefrom, timeto, timediff, editdevice, editprofile, timelog, countlog, verie, verchrome, verff) {
 
-                $.ajax('http://192.168.163.29/api/editconfig', {
+                $.ajax('http://byod.excise.go.th/api/editconfig', {
                     type: "get",
                     data: {
                         accname: account,
@@ -703,7 +703,7 @@
                 //alert($('#noti-text').val());
                 //alert($('#notifychannel').val());
 
-                $.ajax('http://192.168.163.29/api/addnotimsg', {
+                $.ajax('http://byod.excise.go.th/api/addnotimsg', {
                     type: "get",
                     data: {
                         chanel: 0,
