@@ -800,7 +800,7 @@ module.exports = function(app, passport) {
 
                 /*
                                 console.log('Identity is being authorizing against e-Office');
-                                request('http://localhost/api/eoffice/profile/' + Account.email, function(error, response, body) {
+                                request('http://byod.home/api/eoffice/profile/' + Account.email, function(error, response, body) {
 
                                     if (!error && response.statusCode == 200) {
                                         if (body != null) {
@@ -814,7 +814,7 @@ module.exports = function(app, passport) {
                                             Account.area = parsed_body.area;
                                             Account.authorized = parsed_body.authorized;
 
-                                            request('http://localhost/api/getuserpref?accname=' + Account.email, function(error, response, body) {
+                                            request('http://byod.home/api/getuserpref?accname=' + Account.email, function(error, response, body) {
                                                 if (!error && response.statusCode == 200) {
                                                     if (body != null) {
                                                         var parsed_body = JSON.parse(body);

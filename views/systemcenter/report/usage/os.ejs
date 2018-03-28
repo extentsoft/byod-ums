@@ -328,7 +328,7 @@
 				//alert(sd);
 				//alert(ed);
 				document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>MAC Address</th><th>ประเภทระบบปฎิบัติการ</th>	<th>วันที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
-                $.ajax('http://localhost/report/report671522', {
+                $.ajax('http://byod.home/report/report671522', {
                     type: "get",
                     data: {
                         start: sd,
@@ -424,7 +424,7 @@
             }
 			
 			function list_os(){
-				$.ajax('http://localhost/api/getos', {
+				$.ajax('http://byod.home/api/getos', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -458,7 +458,7 @@
 			}
 			
 			function printpdf(){
-				location.href = 'http://localhost/api/v1/pdf/267152/'+start_+'/'+end_+'/'+os_+'/'+'0'+'/'+'0';
+				location.href = 'http://byod.home/api/v1/pdf/267152/'+start_+'/'+end_+'/'+os_+'/'+'0'+'/'+'0';
 			}
 
 			list_os();

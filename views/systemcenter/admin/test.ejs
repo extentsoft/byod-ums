@@ -329,7 +329,7 @@
 
             function refresh_table() {
                 //alert('refresh');
-                $.ajax('http://localhost/api/deviceinmon', {
+                $.ajax('http://byod.home/api/deviceinmon', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -374,7 +374,7 @@
             }
 			
 			function del_monitor(mac){
-				$.ajax('http://localhost/api/removedevicemon', {
+				$.ajax('http://byod.home/api/removedevicemon', {
 					type: "get",
 					data: {mac:mac},
 					success: function(json) {

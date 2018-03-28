@@ -332,7 +332,7 @@
                 //alert(data);
                 document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>MAC Address</th><th>จำนวนครั้งที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
 
-                $.ajax('http://localhost/report/report682', {
+                $.ajax('http://byod.home/report/report682', {
                     type: "get",
                     data: {
                         start: sd,
@@ -436,7 +436,7 @@
             }
 			
 			function printpdf(){
-				location.href = 'http://localhost/api/v1/pdf/2682/'+start_+'/'+end_+'/'+data_+'/'+'0'+'/'+'0';
+				location.href = 'http://byod.home/api/v1/pdf/2682/'+start_+'/'+end_+'/'+data_+'/'+'0'+'/'+'0';
 				
 			}
 

@@ -150,9 +150,7 @@
 
                                                         <div class="browser_information">
                                                             <br>คุณกำลังเข้าใช้งานระบบบริหารจัดการทรัพยากร​ ICT ด้วย<br> IP Address
-                                                            <%= ipaddr %>&nbsp;
-																<p id="siteaddr"></p>
-                                                                <%= remoteaddr %>ผ่าน
+                                                            <%= remoteaddr %>&nbsp; <p id="siteaddr"></p>ผ่าน
                                                                 <%= browser_family %>&nbsp;เวอร์ชั่น
                                                                     <%= browser_version %>
                                                         </div>
@@ -256,7 +254,7 @@
                                 access_tpl += ' พื้นที่ ' + country_name[data.region_name] + ', ' + region_name[data.country_name];
                                 $('.browser_information').html(access_tpl);
 
-                                $.ajax('http://localhost/api/getconfig', {
+                                $.ajax('http://byod.home/api/getconfig', {
                                     type: "get",
                                     success: function(data) {
 
@@ -333,6 +331,7 @@
 		//alert(private_ip);
 		var n = private_ip.lastIndexOf(".");
 		var m = private_ip.substr(0,n+1);
+		//alert(m);
         function getsite() {
                 //alert('refresh');
                 $.ajax('http://byod.home/api/checkip', {

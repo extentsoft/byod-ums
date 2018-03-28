@@ -519,7 +519,7 @@
 		var filter_ = '';
             function sendCustomerSatisfaction() {
                 alert('sendCustomerSatisfaction');
-                $.ajax('http://localhost/sendCustSat', {
+                $.ajax('http://byod.home/sendCustSat', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -531,7 +531,7 @@
 
             function refresh_table(usr) {
                 //alert('refresh');
-                $.ajax('http://localhost/api/limitdevice_user', {
+                $.ajax('http://byod.home/api/limitdevice_user', {
                     type: "get",
                     data: {
 						usrname:usr
@@ -578,7 +578,7 @@
             function addlimit(lim, acc) {
                 //alert(lim);
                 //alert(acc);
-                $.ajax('http://localhost/api/limitdevice', {
+                $.ajax('http://byod.home/api/limitdevice', {
                     type: "get",
                     data: {
                         limit: lim,
@@ -599,7 +599,7 @@
             }
 
             function getconfig() {
-                $.ajax('http://localhost/api/getconfig', {
+                $.ajax('http://byod.home/api/getconfig', {
                     type: "get",
                     success: function(json) {
                         //alert(json);
@@ -674,7 +674,7 @@
 
             function editconfig(account, timefrom, timeto, timediff, editdevice, editprofile, timelog, countlog, verie, verchrome, verff) {
 
-                $.ajax('http://localhost/api/editconfig', {
+                $.ajax('http://byod.home/api/editconfig', {
                     type: "get",
                     data: {
                         accname: account,
@@ -703,7 +703,7 @@
                 //alert($('#noti-text').val());
                 //alert($('#notifychannel').val());
 
-                $.ajax('http://localhost/api/addnotimsg', {
+                $.ajax('http://byod.home/api/addnotimsg', {
                     type: "get",
                     data: {
                         chanel: 0,
