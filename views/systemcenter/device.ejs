@@ -758,14 +758,14 @@
 
             function updatemac(mac) {
                 //alert('refresh');
-                /*$.ajax('http://byod.excise.go.th/api/updatemac', {
+                $.ajax('http://byod.excise.go.th/api/updatemac', {
                     type: "get",
                     data: {
                         accname: account_now,
                         macbind: mac
                     },
                     success: function(json) {refreshlist();}
-                });*/
+                });
 				
 				$.ajax('http://byod.excise.go.th/systemcenter/api', {
                     type: "get",
