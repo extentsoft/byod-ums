@@ -328,7 +328,7 @@
 				//alert(ed);
 				document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>พื้นที่</th><th>รายละเอียดพื้นที่</th>													<th>จำนวนการเข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
 
-                $.ajax('http://localhost/report/report67154', {
+                $.ajax('http://192.168.163.29/report/report67154', {
                     type: "get",
                     data: {
                         start: sd,
@@ -418,7 +418,7 @@
             }
 			
 			function list_site(){
-				$.ajax('http://localhost/api/getsite', {
+				$.ajax('http://192.168.163.29/api/getsite', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -442,6 +442,11 @@
 				$("#listsite option[value='blank']").remove();
 				site_ = site_name;
 				refresh_table(start_,end_,site_);
+				
+			}
+			
+			function printpdf(){
+				location.href = 'http://192.168.163.29/api/v1/pdf/267154/'+start_+'/'+end_+'/'+site_+'/'+'0'+'/'+'0';
 				
 			}
 

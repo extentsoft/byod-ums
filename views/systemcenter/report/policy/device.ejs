@@ -271,7 +271,7 @@
 
             function refresh_table() {
                 //alert('refresh');
-                $.ajax('http://localhost/report/alllimit', {
+                $.ajax('http://192.168.163.29/report/alllimit', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -305,7 +305,10 @@
                 $('#data-tables').dataTable();
 
             }
-
+			
+			function printpdf(){
+				location.href = 'http://192.168.163.29/api/v1/pdf/26710/'+'0'+'/'+'0'+'/'+'0'+'/'+'0'+'/'+'0';
+			}
             refresh_table();
         </script>
 

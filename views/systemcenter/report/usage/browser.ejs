@@ -327,7 +327,7 @@
 				//alert(sd);
 				//alert(ed);
 				document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>ชื่อผู้ใช้งาน</th><th>ขื่อ Browser</th><th>วันที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
-                $.ajax('http://localhost/report/report671532', {
+                $.ajax('http://192.168.163.29/report/report671532', {
                     type: "get",
                     data: {
                         start: sd,
@@ -417,7 +417,7 @@
             }
 			
 			function list_browser(){
-				$.ajax('http://localhost/api/getbrowser', {
+				$.ajax('http://192.168.163.29/api/getbrowser', {
                     type: "get",
                     success: function(json) {
                         //alert(JSON.stringify(json));
@@ -441,6 +441,10 @@
 				$("#listbrowser option[value='blank']").remove();
 				browser_ = browser_name;
 				refresh_table(start_,end_,browser_);
+			}
+			
+			function printpdf(){
+				location.href = 'http://192.168.163.29/api/v1/pdf/267153/'+start_+'/'+end_+'/'+browser_+'/'+'0'+'/'+'0';
 			}
 
 			list_browser();

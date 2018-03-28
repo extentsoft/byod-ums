@@ -332,7 +332,7 @@
                 //alert('refresh');
                 document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>ประเภทอุปกรณ์</th><th>พื้นที่</th><th>จำนวนครั้งที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
 
-                $.ajax('http://localhost/report/report6813', {
+                $.ajax('http://192.168.163.29/report/report6813', {
                     type: "get",
                     data: {
                         start: sd,
@@ -449,6 +449,11 @@
                         }, f),
                         f(a, r, "")
                 }
+			}
+			
+			function printpdf(){
+				location.href = 'http://192.168.163.29/api/v1/pdf/26813/'+sd_+'/'+ed_+'/'+'0'+'/'+'0'+'/'+'0';
+				
 			}
 
 			init_stat();

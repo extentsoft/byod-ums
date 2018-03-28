@@ -427,7 +427,7 @@
 
             function refreshlist() {
                 //alert('refresh');
-                $.ajax('http://localhost/api/listdevice', {
+                $.ajax('http://192.168.163.29/api/listdevice', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -443,7 +443,7 @@
 
             function bindata(data_sql) {
 				//alert('cc');
-				$.ajax('http://localhost/api/checklimit', {
+				$.ajax('http://192.168.163.29/api/checklimit', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -589,7 +589,7 @@
             }
 
             function adddevice(name, mac, os) {
-                $.ajax('http://localhost/api/adddevice', {
+                $.ajax('http://192.168.163.29/api/adddevice', {
                     type: "get",
                     data: {
                         tername: name,
@@ -600,7 +600,7 @@
                     success: function(json) {
 						alert(event_);
 						if(event_== 'add'){
-							$.ajax('http://localhost/api/logdevice', {
+							$.ajax('http://192.168.163.29/api/logdevice', {
 								type: "get",
 								data: {
 									termac: mac,
@@ -612,7 +612,7 @@
 								}
 							});
 						} else if(event_ == 'edit'){
-							$.ajax('http://localhost/api/logdevice', {
+							$.ajax('http://192.168.163.29/api/logdevice', {
 								type: "get",
 								data: {
 									termac: mac,
@@ -633,7 +633,7 @@
 
             function deletedevice(ter_mac) {
                 //alert(ter_id);
-                $.ajax('http://localhost/api/deletedevice', {
+                $.ajax('http://192.168.163.29/api/deletedevice', {
                     type: "get",
                     data: {
                         termac: ter_mac,
@@ -649,7 +649,7 @@
 
             function refreshmac(mac) {
                 //alert('refresh');
-                $.ajax('http://localhost/api/listmac', {
+                $.ajax('http://192.168.163.29/api/listmac', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -698,7 +698,7 @@
 
             function addmac(mac) {
                 //alert('refresh');
-                $.ajax('http://localhost/api/listmac', {
+                $.ajax('http://192.168.163.29/api/listmac', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -755,16 +755,16 @@
 
             function updatemac(mac) {
                 //alert('refresh');
-                $.ajax('http://localhost/api/updatemac', {
+                /*$.ajax('http://192.168.163.29/api/updatemac', {
                     type: "get",
                     data: {
                         accname: account_now,
                         macbind: mac
                     },
                     success: function(json) {}
-                });
+                });*/
 				
-				/*$.ajax('http://localhost/systemcenter/api', {
+				$.ajax('http://192.168.163.29/systemcenter/api', {
                     type: "get",
                     data: {
                         accname: account_now,
@@ -774,12 +774,12 @@
                     success: function(json) {
 						//alert(json);
 					}
-                }); */
+                }); 
             }
 
             function checkcount() {
                 //alert('refresh');
-                $.ajax('http://localhost/api/checkcountdevice', {
+                $.ajax('http://192.168.163.29/api/checkcountdevice', {
                     type: "get",
                     data: {
                         accname: account_now
@@ -790,7 +790,7 @@
                         if (data_res[0] > 2) {
                             //alert('a');
 							addviolation('editdeivceoverlimit');
-                            $.ajax('http://localhost/api/message/email/4/' + account_now, {
+                            $.ajax('http://192.168.163.29/api/message/email/4/' + account_now, {
                                 type: "get",
                                 success: function(json) {
                                     //alert(JSON.stringify(json));
@@ -804,7 +804,7 @@
 			
 			function addviolation(detail) {
 				//alert('refresh');
-				$.ajax('http://localhost/api/addviolation', {
+				$.ajax('http://192.168.163.29/api/addviolation', {
 					type: "get",
 					data: {
 						violation: detail,
