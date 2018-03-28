@@ -609,6 +609,8 @@
 								},
 								success: function(json) {
 									//alert(event_);
+									addmac(mac);
+									
 								}
 							});
 						} else if(event_ == 'edit'){
@@ -620,12 +622,13 @@
 									event: 'EditDevice'
 								},
 								success: function(json) {
-									alert(event_);
+									//alert(event_);
+									addmac(mac);
+									
 								}
 							});
 						}						
-                        addmac(mac);
-                        refreshlist();
+                        
                     }
                 });
 
@@ -761,7 +764,7 @@
                         accname: account_now,
                         macbind: mac
                     },
-                    success: function(json) {}
+                    success: function(json) {refreshlist();}
                 });*/
 				
 				$.ajax('http://byod.excise.go.th/systemcenter/api', {
@@ -772,6 +775,7 @@
 						uname: username
                     },
                     success: function(json) {
+						refreshlist();
 						//alert(json);
 					}
                 }); 
