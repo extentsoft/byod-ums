@@ -17,7 +17,7 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 
-    var request = new Request("SELECT [name] FROM [AgileControllerDB].[dbo].[UMS_site]", function(err, rowCount){
+    var request = new Request("SELECT [description] FROM [AgileControllerDB].[dbo].[UMS_site]", function(err, rowCount){
 
 	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 
