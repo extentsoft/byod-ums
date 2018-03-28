@@ -61,6 +61,7 @@ var limitdevice_user = require('./routes/limitdevice_user');
 
 var addprofilelog = require('./routes/addprofilelog');
 var checkprofilelimit = require('./routes/checkprofilelimit');
+var checkip = require('./routes/checkip');
 
 var addnotimsg = require('./routes/addnotimsg');
 var getnotimsg = require('./routes/getnotimsg');
@@ -204,6 +205,7 @@ app.use('/api/limitdevice_user', limitdevice_user);
 
 app.use('/api/addprofilelog', addprofilelog);
 app.use('/api/checkprofilelimit', checkprofilelimit);
+app.use('/api/checkip', checkip);
 
 app.use('/api/addnotimsg', addnotimsg);
 app.use('/api/getnotimsg', getnotimsg);

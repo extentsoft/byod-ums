@@ -42,6 +42,7 @@ module.exports = function(app, passport) {
             });
         });*/
         console.log(args);
+		console.log(args);
 
         soap.createClient(url, function(err, client) {
             var options = {
