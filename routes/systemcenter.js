@@ -1631,6 +1631,7 @@ module.exports = function(app, passport) {
         console.log();
         console.log(req.session.user);
         var clientInfo = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+		
 		var ipString = req.connection.remoteAddress;
 		if (ipaddr.IPv4.isValid(ipString)) {
   // ipString is IPv4
