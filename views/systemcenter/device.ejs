@@ -187,8 +187,8 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-4 control-label">MAC Address</label>
                                                     <div class="col-sm-7 controls">
-                                                        <input id="term_mac" type="text" placeholder="AA-22-FF-FF-11-FC" class="input-border-btm">
-                                                        <span class="help-inline">ค่าที่ใช้อ้างอิงที่อยู่กายภาพของการ์ดแลนด์ไร้สาย </span>
+                                                        <input id="term_mac" type="text" placeholder="AA-22-FF-FF-11-FC" class="input-border-btm" onkeyup="mac_validate();">
+                                                        <span class="help-inline">ค่าที่ใช้อ้างอิงที่อยู่กายภาพของการ์ดแลนด์ไร้สาย เช่น    AA-22-FF-FF-11-FC </span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -210,7 +210,7 @@
                                         -->
                                         </div>
                                         <div class="modal-footer background-login">
-                                            <button type="button" class="btn vd_btn vd_bg-green" style="width:47%" data-dismiss="modal" onclick="adddevice(document.getElementById('term_name').value,document.getElementById('term_mac').value,document.getElementById('term_os').value)">บันทึก</button>
+                                            <button type="button" id="sbm-btn" disabled class="btn vd_btn vd_bg-green" style="width:47%;" data-dismiss="modal" onclick="adddevice(document.getElementById('term_name').value,document.getElementById('term_mac').value,document.getElementById('term_os').value)">บันทึก</button>
                                             <button type="button" class="btn vd_btn vd_bg-grey" style="width:47%" data-dismiss="modal">ยกเลิก</button>
 
                                         </div>
@@ -549,7 +549,7 @@
                         '<div class="col-md-12"> \
                                                 <div class="vd_status-widget vd_bg-green widget"> \
                                                     <div class="vd_panel-menu"> \
-                                                        <div  data-action="refresh" data-original-title="Edit" data-rel="tooltip" class=" menu entypo-icon smaller-font"  data-toggle="modal" data-target="#myModal" data-placement="bottom" onclick="changevent('+q+'edit'+q+');document.getElementById('+q+'myModalLabel1'+q+').innerHTML = '+q+'แก้ไขอุปกรณ์'+q+';document.getElementById('+q+'term_mac'+q+').disabled = true;document.getElementById('+q+'term_name'+q+').value='+q+host_name+q+';document.getElementById('+q+'term_mac'+q+').value='+q+data[i].terminalmac+q+';document.getElementById('+q+'term_os'+q+').value='+q+os_edit+q+';"> <i class="fa fa-gear" ></i> </div> \
+                                                        <div  data-action="refresh" data-original-title="Edit" data-rel="tooltip" class=" menu entypo-icon smaller-font"  data-toggle="modal" data-target="#myModal" data-placement="bottom" onclick="changevent('+q+'edit'+q+');document.getElementById('+q+'myModalLabel1'+q+').innerHTML = '+q+'แก้ไขอุปกรณ์'+q+';document.getElementById('+q+'term_mac'+q+').disabled = true;document.getElementById('+q+'sbm-btn'+q+').disabled = false;document.getElementById('+q+'term_name'+q+').value='+q+host_name+q+';document.getElementById('+q+'term_mac'+q+').value='+q+data[i].terminalmac+q+';document.getElementById('+q+'term_os'+q+').value='+q+os_edit+q+';"> <i class="fa fa-gear" ></i> </div> \
                                                         <div  data-action="refresh" data-original-title="Deactivate" data-rel="tooltip" class=" menu entypo-icon smaller-font" data-toggle="modal" data-target="#myModal3" onclick="$(' + q + '#modal-del' + q + ').val(' + q + data[i].terminalmac + q + ')"> <i class="icon-cross" ></i> </div> \
                                                     </div> \
                                                     <a class="panel-body" href="#"> \
@@ -766,7 +766,7 @@
                     },
                     success: function(json) {refreshlist();}
                 });
-				
+				/*
 				$.ajax('http://byod.excise.go.th/systemcenter/api', {
                     type: "get",
                     data: {
@@ -778,7 +778,7 @@
 						refreshlist();
 						//alert(json);
 					}
-                }); 
+                });*/ 
             }
 
             function checkcount() {
@@ -818,6 +818,31 @@
 						//alert(json);
 					}
 				});
+			}
+			
+			function mac_validate(){
+				/*var mac_ = document.getElementById('term_mac').value;
+				var tmp = mac_.replace(/-/g,"");
+				var last_str = mac_.substr(mac_.length-1,mac_.length);
+				alert(last_str);
+				if( tmp.length % 2 == 0 && mac_.length < 17){
+				 document.getElementById('term_mac').value = document.getElementById('term_mac').value + "-";
+				}
+				
+				if(mac_.length>17){
+					document.getElementById('term_mac').value = mac_.substr(0,17);
+				}*/
+				var mac_ = document.getElementById('term_mac').value;
+				var reg = /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/;
+				if(reg.test(mac_)){
+					document.getElementById('sbm-btn').disabled = false;
+				}
+				else{
+					document.getElementById('sbm-btn').disabled = true;
+				}
+				
+
+				//alert('a');
 			}
 			
 			function changevent(status){
