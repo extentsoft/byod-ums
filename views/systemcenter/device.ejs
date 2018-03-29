@@ -590,7 +590,7 @@
 
             function adddevice(name, mac, os) {
 				//alert(mac.toUpperCase());
-				mac = mac.toUpperCase()
+				mac = mac.toUpperCase();
                 $.ajax('http://byod.excise.go.th/api/adddevice', {
                     type: "get",
                     data: {
@@ -605,7 +605,7 @@
 							$.ajax('http://byod.excise.go.th/api/logdevice', {
 								type: "get",
 								data: {
-									termac: mac.toUpperCase(),
+									termac: mac,
 									teracc: account_now,
 									event: 'AddDevice'
 								},
@@ -619,7 +619,7 @@
 							$.ajax('http://byod.excise.go.th/api/logdevice', {
 								type: "get",
 								data: {
-									termac: mac.toUpperCase(),
+									termac: mac,
 									teracc: account_now,
 									event: 'EditDevice'
 								},
@@ -638,10 +638,11 @@
 
             function deletedevice(ter_mac) {
                 //alert(ter_id);
+				ter_mac = ter_mac.toUpperCase();
                 $.ajax('http://byod.excise.go.th/api/deletedevice', {
                     type: "get",
                     data: {
-                        termac: ter_mac.toUpperCase(),
+                        termac: ter_mac,
                         teracc: account_now
                     },
                     success: function(json) {
