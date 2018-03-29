@@ -589,12 +589,13 @@
             }
 
             function adddevice(name, mac, os) {
-				alert(mac.toUpperCase());
+				//alert(mac.toUpperCase());
+				mac = mac.toUpperCase()
                 $.ajax('http://byod.excise.go.th/api/adddevice', {
                     type: "get",
                     data: {
                         tername: name,
-                        termac: mac.toUpperCase(),
+                        termac: mac,
                         teros: os,
                         teracc: account_now
                     },
