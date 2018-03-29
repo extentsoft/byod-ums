@@ -1,7 +1,7 @@
 <div class="vd_navbar vd_nav-width vd_navbar-tabs-menu vd_navbar-left  ">
 
     <div class="navbar-menu clearfix">
-        <div class="vd_panel-menu hidden-xs">
+        <div class="vd_panel-menu ">
             <span data-original-title="Expand All" data-toggle="tooltip" data-placement="bottom" data-action="expand-all" class="menu" data-intro="<strong>Expand Button</strong><br/>To expand all menu on left navigation menu." data-step=4>
                 <i class="fa fa-sort-amount-asc"></i>
             </span>
@@ -9,9 +9,10 @@
         <h3 class="menu-title hide-nav-medium hide-nav-small">เมนูการใช้งาน</h3>
 
         <div class="vd_menu">
+		
             <ul>
                 <% if(isauthorized){ %>
-                    <li id="aa1">
+                    <li>
                         <a href="/systemcenter/dashboard">
                             <span class="menu-icon"><i class="fa fa-dashboard"></i></span>
                             <span class="menu-text">แผงควบคุมหลัก</span>
@@ -53,14 +54,14 @@
                             </a>
                         </li>
                         <% if(isauthorized){ %>
-                            <li id="aa2">
+                            <li>
                                 <a href="/systemcenter/configuration">
                                     <span class="menu-icon"><i class="icon-tools"> </i></span>
                                     <span class="menu-text">ตั้งค่าระบบ</span>
                                     <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
                                 </a>
                             </li>
-                            <li id="aa3">
+                            <li>
                                 <a href="javascript:void(0);" data-action="click-trigger">
                                     <span class="menu-icon entypo-icon"><i class="icon-newspaper"> </i></span>
                                     <span class="menu-text">รายงาน</span>
@@ -325,7 +326,7 @@
     </div>
     <script>
         //alert($("#priv").html().trim().split(",")[2]);
-        if ($("#priv").html().trim().split(",")[2] == 'false') {
+        /*if ($("#priv").html().trim().split(",")[2] == 'false') {
             //alert('a');
             //document.getElementById("uu1").children[0].style.display = "none";
             document.getElementById("aa1").style.display = "none";
@@ -333,5 +334,5 @@
             document.getElementById("aa3").style.display = "none";
         } else {
             //alert('b');
-        }
+        }*/
     </script>
