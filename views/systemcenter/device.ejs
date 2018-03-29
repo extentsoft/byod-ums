@@ -589,6 +589,7 @@
             }
 
             function adddevice(name, mac, os) {
+				alert(mac.toUpperCase());
                 $.ajax('http://byod.excise.go.th/api/adddevice', {
                     type: "get",
                     data: {
