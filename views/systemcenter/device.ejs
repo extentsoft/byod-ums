@@ -593,7 +593,7 @@
                     type: "get",
                     data: {
                         tername: name,
-                        termac: mac,
+                        termac: mac.toUpperCase(),
                         teros: os,
                         teracc: account_now
                     },
@@ -603,7 +603,7 @@
 							$.ajax('http://byod.excise.go.th/api/logdevice', {
 								type: "get",
 								data: {
-									termac: mac,
+									termac: mac.toUpperCase(),
 									teracc: account_now,
 									event: 'AddDevice'
 								},
@@ -617,7 +617,7 @@
 							$.ajax('http://byod.excise.go.th/api/logdevice', {
 								type: "get",
 								data: {
-									termac: mac,
+									termac: mac.toUpperCase(),
 									teracc: account_now,
 									event: 'EditDevice'
 								},
@@ -639,7 +639,7 @@
                 $.ajax('http://byod.excise.go.th/api/deletedevice', {
                     type: "get",
                     data: {
-                        termac: ter_mac,
+                        termac: ter_mac.toUpperCase(),
                         teracc: account_now
                     },
                     success: function(json) {
