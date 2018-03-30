@@ -40,6 +40,7 @@
     <link href="css/fonts.css" rel="stylesheet" type="text/css">
 
     <!-- Plugin CSS -->
+
     <link href="plugins/jquery-ui/jquery-ui.custom.min.css" rel="stylesheet" type="text/css">
     <link href="plugins/prettyPhoto-plugin/css/prettyPhoto.css" rel="stylesheet" type="text/css">
     <link href="plugins/isotope/css/isotope.css" rel="stylesheet" type="text/css">
@@ -52,15 +53,13 @@
     <link href="plugins/bootstrap-switch/bootstrap-switch.css" rel="stylesheet" type="text/css">
     <link href="plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css">
     <link href="plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css">
+
     <link href="plugins/colorpicker/css/colorpicker.css" rel="stylesheet" type="text/css">
 
     <!-- Specific CSS -->
     <link href="plugins/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css">
     <link href="plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css">
     <link href="plugins/introjs/css/introjs.min.css" rel="stylesheet" type="text/css">
-	
-    <link href="plugins/dataTables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
-    <link href="plugins/dataTables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 
     <!-- Theme CSS -->
     <link href="css/theme.min.css" rel="stylesheet" type="text/css">
@@ -68,6 +67,7 @@
     <link href="css/chrome.css" rel="stylesheet" type="text/chrome">
     <!-- chrome only css -->
 
+    <link href="plugins/dataTables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 
 
     <!-- Responsive CSS -->
@@ -91,6 +91,8 @@
     <script type="text/javascript" src="js/mobile-detect.min.js"></script>
     <script type="text/javascript" src="js/mobile-detect-modernizr.js"></script>
 
+    <script type="text/javascript" src='plugins/bootstrap-timepicker/bootstrap-timepicker.min.js'></script>
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script type="text/javascript" src="js/html5shiv.js"></script>
@@ -100,13 +102,13 @@
 </head>
 
 <body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">    <div class="vd_body">
-        <%- include('../../admin/partial_dark/header'); %>
+        <%- include('partial_dark/header'); %>
 
             <!-- Content start -->
 
             <div class="content">
                 <div class="container">
-                    <%- include('../../admin/partial_dark/menu'); %>
+                    <%- include('partial_dark/menu'); %>
 
 
                 </div>
@@ -121,66 +123,39 @@
 
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
-                                    <h1>รายงานการลงทะเบียนอุปกรณ์จำแนกตามกลุ่มผู้ใช้งาน</h1>
-									
+                                    <h1>กำหนดอุปกรณ์ที่ต้องการตรวจสอบการเข้าใช้งาน</h1>
+                                    <!-- menu -->
 
-                                    <div class="vd_panel-menu  ">
-										
-                                        <div class="menu">											
-                                            <span class="fa fa-calendar" id="daterangepicker">
-											<span class="m-subheader__daterange-label">
-												<span class="m-subheader__daterange-title"></span>
-                                            <span class="m-subheader__daterange-date m--font-brand"></span>
-                                            <a href="#" class="btn btn-sm btn-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill">
-                                                <i class="la la-angle-down"></i>
-                                            </a>
-                                            </span>
 
-                                            </span>
-											
-											
-                                        </div>
-										
-                                        <!-- menu -->
-										
-	
-                                            
-								
-                                    </div>
-									
-									
                                 </div>
-                                <!-- vd_panel-header -->
                             </div>
-                            <!-- vd_title-section -->
-							
-
+                            <!-- vd_panel-header -->
                             <div class="vd_content-section clearfix">
+
+                                
+                                
+                        <!-- /.modal -->
+                        <!-- vd_title-section -->
+
+                        <div class="vd_content-section clearfix">
                             <!-- start row-->
 
 
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="panel widget">
-										
                                         <div class="panel-heading vd_bg-grey">
-											
-                                            <select id="listgroup" onchange="selectgroup(this.value)" style="width:30%" >
-												<option value="blank" disabled selected>กรุณาเลือกกลุ่มผู้ใช้งาน</option>                       
-											</select>
-											
-              
+                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายชื่อผู้ใช้งานและอุปกรณ์</h3>
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
-											<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div>
                                             <table class="table table-striped" id="data-tables">
                                                 <thead>
                                                     <tr>
-                                                        <th>เจ้าของอุปกรณ์</th>
-                                                        <th>MAC Address</th>
+                                                        <th>ชื่ออุปกรณ์</th>
+														<th>ชื่อผู้ใช้งาน</th>
+														<th>MAC</th>
                                                         <th>ระบบปฏิบัติการ</th>
-                                                        <th>วันที่ลงทะเบียนอุปกรณ์</th>
-                                                        <th>กลุ่มผู้ใช้งาน</th>
+														<th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -201,10 +176,27 @@
                             <!-- .vd_content-section -->
 
                         </div>
-                            <!-- .vd_content-section -->
-
-                        </div>
                         <!-- .vd_content -->
+						<!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header vd_bg-blue vd_white">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                                        <h4 class="modal-title" id="myModalLabel">ยืนยันการกำหนดอุปกรณ์</h4>
+                                    </div>
+
+                                    <div class="modal-footer background-login">
+                                        <button type="button" class="btn vd_btn vd_bg-green" style="width:47%" data-dismiss="modal" id="btn-limit" value="" onclick="add_monitor($(this).attr('value'))">บันทึก</button>
+                                        <button type="button" class="btn vd_btn vd_bg-grey" style="width:47%" data-dismiss="modal">ยกเลิก</button>
+
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
                     </div>
                     <!-- .vd_container -->
                 </div>
@@ -212,13 +204,12 @@
 
                 <!-- Middle Content End -->
 
-
             </div>
             <!-- .container -->
     </div>
     <!-- .content -->
 
-    <%- include('../../admin/partial_dark/footer'); %>
+    <%- include('partial_dark/footer'); %>
 
 
 
@@ -226,25 +217,7 @@
 
         <!-- .vd_body END  -->
         <a id="back-top " href="# " data-action="backtop " class="vd_back-top visible "> <i class="fa fa-angle-up "> </i> </a>
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!--<div class="modal-header vd_bg-blue vd_white">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
-                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                    </div>-->
-                    <div class="modal-body">
-                        Header
-                        <form class="form-horizontal">
-                            <div class="form-group">
-                                Content
 
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!--
 <a class="back-top " href="# " id="back-top "> <i class="icon-chevron-up icon-white "> </i> </a> -->
 
@@ -281,6 +254,7 @@
         <script type="text/javascript" src="plugins/flot/jquery.flot.pie.min.js"></script>
         <script type="text/javascript" src="plugins/flot/jquery.flot.categories.min.js"></script>
         <script type="text/javascript" src="plugins/flot/jquery.flot.time.min.js"></script>
+
         <script type="text/javascript" src="plugins/flot/jquery.flot.animator.min.js"></script>
 
         <!-- Vector Map -->
@@ -299,14 +273,33 @@
         <script type="text/javascript" src='plugins/skycons/skycons.js'></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 
+        <script type="text/javascript" src='plugins/bootstrap-timepicker/bootstrap-timepicker.min.js'></script>
+        <script type="text/javascript" src='plugins/ckeditor/ckeditor.js'></script>
+        <script type="text/javascript" src='plugins/ckeditor/adapters/jquery.js'></script>
 
         <!-- Include Date Range Picker -->
         <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
-		
         <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
 
+
+
+        <script>
+            $(window).load(function() {
+                
+
+            $(document).ready(function() {
+                account_now = 'natthawat_a';
+                $("#chat-text").keyup(function(event) {
+                    if (event.keyCode === 13) {
+                        sendchat($('#chat-text').val());
+                    }
+                });
+
+            });
+            $(window).load(function() {});
+        </script>
         <!-- Specific Page Scripts END -->
 
 
@@ -314,29 +307,28 @@
 
         <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
 
+        <script>
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-XXXXX-X']);
+            _gaq.push(['_trackPageview']);
 
-
+            (function() {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
         <script>
             account_now = '<%= email %>';
-			var start_ ='';
-			var end_ ='';
-			var data_ = '';
-			var group_ = '';
 			//alert(account_now);
 
-            function refresh_table(sd, ed , grp) {
+            function refresh_table() {
                 //alert('refresh');
-				//alert(sd);
-				//alert(ed);
-				document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>MAC Address</th><th>ระบบปฏิบัติการ</th><th>วันที่ลงทะเบียนอุปกรณ์</th><th>กลุ่มผู้ใช้งาน</th></tr></thead><tbody></tbody></table>';
-                $.ajax('http://byod.excise.go.th/report/report671', {
+                $.ajax('http://byod.excise.go.th/api/deviceoutmon', {
                     type: "get",
-                    data: {
-						group: grp,
-                        start: sd,
-                        end: ed 
-						
-                    },
                     success: function(json) {
                         //alert(JSON.stringify(json));
                         data_res = JSON.parse(JSON.stringify(json));
@@ -349,28 +341,16 @@
             function bindata_table(data_sql) {
                 //alert('bind');
                 //alert(data_sql);
-				//printpdf();
                 data = [];
                 total = 0;
+                var q = "'";
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
-					grp_ ='';
-					if(data_sql[6]=='People'){
-						grp_ = 'Officer';
-					}
-					else{
-						grp_ = data_sql[6];
-					}
-                    update_time = new Date(data_sql[5]);
-                    date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getUTCMonth()+1) + "/" + update_time.getFullYear();
 
-                    //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
-                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[1] + "</td><td>" + data_sql[3] + "</td><td>" + data_sql[4] + "</td><td>" + date_str + "</td><td>" + grp_ + "</td></tr>");
-                    total = total + data_sql[1];
-                    //alert(JSON.stringify(data_json));
+                    $('#data-tables').find('tbody').append('<tr><td>' + data_sql[3] + '</td><td>' + data_sql[1] + '</td><td>' + data_sql[4] + '</td><td>' + data_sql[5] + '</td><td class="menu-action"><a id="' + data_sql[0] + '" data-original-title="edit" data-toggle="modal" data-target="#myModal" data-placement="top" class="btn menu-icon vd_bd-green vd_green" onclick="$(' + q + '#btn-limit' + q + ').val(' + q + data_sql[4] + q + ');" > <i class="fa fa-eye"></i> </a> </td></tr>');
                     data.push(data_json);
                     //alert(JSON.stringify(data));
-                    data_sql.splice(0, 7);
+                    data_sql.splice(0, 8);
                     i = -1;
 
                 }
@@ -380,108 +360,20 @@
                 $('#data-tables').dataTable();
 
             }
-
-            function datepick() {
-                function e(e, a, r) {
-                    
-                    //alert(e.format("Y-M-D"));
-                    //alert(a.format("Y-M-D"));
-					
-					if (group_ == '') {
-						$('#data-tables').dataTable();
-					} else {
-						refresh_table(e.format("Y-M-D"), a.format("Y-M-D"),group_);
-					}
-                    
-					start_ = e.format("Y-M-D");
-					end_ = a.format("Y-M-D");
-
-
-                    var o = "",
-                        l = "";
-                    a - e < 100 ? (o = "Today:", l = e.format("MMM D")) : "Yesterday" == r ? (o = "Yesterday:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
-                        t.find(".m-subheader__daterange-date").html(l),
-                        t.find(".m-subheader__daterange-title").html(o)
-                }
-                if (0 != $("#daterangepicker").length) {
-                    var t = $("#daterangepicker"),
-                        a = moment(),
-                        r = moment();
-                    t.daterangepicker({
-                            startDate: a,
-                            endDate: r,
-                            opens: "left",
-                            ranges: {
-                                Today: [moment(), moment()],
-                                //Yesterday: [moment().subtract(1, "days"), moment().subtract(1, "days")],
-                                "Last 7 Days": [moment().subtract(6, "days"), moment()],
-                                "Last 30 Days": [moment().subtract(29, "days"), moment()],
-                                "This Month": [moment().startOf("month"), moment().endOf("month")],
-                                "This Year": [moment().startOf("year"), moment().endOf("year")]
-                                    //"Last Month": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
-                            }
-                        }, e),
-                        e(a, r, "")
-                }
-            }
 			
-			function list_group(){
-				$.ajax('http://byod.excise.go.th/api/getgroupname_dms', {
-                    type: "get",
-                    success: function(json) {
-                        //alert(JSON.stringify(json));
-						var guest = 0;
-						var select = document.getElementById("listgroup");
-						data_res = JSON.parse(JSON.stringify(json));
-						for (i = 0; i < data_res.length; i++) {
-							var option = document.createElement("option");
-							
-							if(data_res[i]=='Guest'){
-								guest=1;
-							}
-							
-							if(data_res[i]=='People'){
-								option.text = 'Officer';
-							}
-							else{
-								option.text = data_res[i];
-							}
-							
-							
-							option.value = data_res[i];
-							var select = document.getElementById("listgroup");
-							select.appendChild(option);
-							data_res.splice(0, 1);
-							i = -1;
-
-						}
+			function add_monitor(mac){
+				$.ajax('http://byod.excise.go.th/api/adddevicemon', {
+					type: "get",
+					data: {mac:mac},
+					success: function(json) {
+						location.reload(true);
 						
-						if(guest==0){
-							var option = document.createElement("option");
-							option.text = 'Guest';
-							option.value = 'Guest';
-							var select = document.getElementById("listgroup");
-							select.appendChild(option);
-						}
-                    }
-                });
+					}
+				});
 			}
 			
-			function selectgroup(group_name){
-				$("#listgroup option[value='blank']").remove();
-				group_ = group_name;
-				refresh_table(start_,end_,group_);
-				
-			}
-			
-			function printpdf(){
-				location.href = 'http://byod.excise.go.th/api/v1/pdf/2671/'+start_+'/'+end_+'/'+group_+'/'+'0'+'/'+'0';
-				
-			}
+			refresh_table();
 
-			list_group();
-            datepick();
-			
         </script>
 
 </body>

@@ -411,15 +411,7 @@
         </script>
 
         <script>
-			$(window).load(function() {
-
-                var priv = $("#priv").html().trim().split(",");
-                if (priv[1] < 1) {
-                    $('#top-menu-3').hide();
-                } else {
-                    $('#top-menu-3').show();
-                }
-            });
+			
             //account_now = 'natthawat_a';
 			account_now = $('#email').text().trim();
 			username = $('#uname').text().trim();
@@ -515,7 +507,7 @@
 
                 //alert(JSON.stringify(data));
                 document.getElementById('listterminal').innerHTML = '';
-                for (i = 0; i < data.length + 1; i++) {
+                for (i = 0; i < data.length; i++) {
 
                     var div = document.createElement('div');
 

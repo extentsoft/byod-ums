@@ -55,9 +55,8 @@
     <link href="plugins/colorpicker/css/colorpicker.css" rel="stylesheet" type="text/css">
 
     <!-- Specific CSS -->
-    <link href="plugins/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css">
-    <link href="plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css">
-    <link href="plugins/introjs/css/introjs.min.css" rel="stylesheet" type="text/css">
+    <link href="plugins/dataTables/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+    <link href="plugins/dataTables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 
     <!-- Theme CSS -->
     <link href="css/theme.min.css" rel="stylesheet" type="text/css">
@@ -96,8 +95,7 @@
 
 </head>
 
-<body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">
-    <div class="vd_body">
+<body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">    <div class="vd_body">
         <%- include('admin/partial_dark/header'); %>
 
             <!-- Content start -->
@@ -105,6 +103,7 @@
             <div class="content">
                 <div class="container">
                     <%- include('admin/partial_dark/menu'); %>
+
                 </div>
 
                 <!-- Middle Content Start -->
@@ -112,53 +111,69 @@
                 <div class="vd_content-wrapper">
                     <div class="vd_container">
                         <div class="vd_content clearfix">
+                            <!--
+                            <div class="vd_head-section clearfix">
+                                <div class="vd_panel-header">
+                                    <ul class="breadcrumb">
+                                        <li><a href="index.html">Home</a> </li>
+                                        <li class="active">Dashboard</li>
+                                    </ul>
+                                    <div class="vd_panel-menu  " data-intro="<strong>Expand Control</strong><br/>To expand content page horizontally, vertically, or Both. If you just need one button just simply remove the other button code." data-step=5 data-position="left">
+                                        <div data-action="remove-navbar" data-original-title="Remove Navigation Bar Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-navbar-button menu"> <i class="fa fa-arrows-h"></i> </div>
+                                        <div data-action="remove-header" data-original-title="Remove Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-header-button menu"> <i class="fa fa-arrows-v"></i> </div>
+                                        <div data-action="fullscreen" data-original-title="Remove Navigation Bar and Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="fullscreen-button menu"> <i class="glyphicon glyphicon-fullscreen"></i> </div>
 
+                                    </div>
+
+                                </div>
+                            </div>
+                        -->
                             <!-- vd_head-section -->
-
-                            <!-- vd_title-section -->
-
 
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
-                                    <h1>ตั้งค่าการใช้งานส่วนบุคคล</h1>
+                                    <h1>รายงาน</h1>
+
+
                                     <!-- menu -->
                                 </div>
                             </div>
+                            <!-- vd_panel-header -->
+                        </div>
+                        <!-- vd_title-section -->
 
-                            <div class="vd_content-section clearfix">
+                        <div class="vd_content-section clearfix">
+                            <!-- start row-->
 
 
-                                <div class="row" id="switch-input">
-                                    <div class="col-md-12">
-                                        <div class="panel widget">
-                                            <div class="panel-heading vd_bg-grey">
-                                                <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-adjust"></i> </span>ปรับแต่ง </h3>
-                                            </div>
-                                            <div class="panel-body">
-                                                <form class="form-horizontal" action="#" role="form">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel widget">
+                                        <div class="panel-heading vd_bg-grey">
+                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> ประวัติการเข้าใช้งาน</h3>
+                                        </div>
+                                        <div class="panel-body table-responsive">
+                                            <table class="table table-striped" id="data-tables">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ประเภท Browser</th>
+                                                        <th>IP</th>
+                                                        <th>ชื่อผู้ใช้งาน</th>
+                                                        <th>วันที่เข้าใช้งาน</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
 
-                                                    <div class="form-group">
-                                                        <label class="col-sm-4 control-label">เลือกรูปแบบแสดงผล</label>
-                                                        <div class="col-sm-8 controls">
-                                                            <input id="pref_theme" type="checkbox" data-rel="switch" data-wrapper-class="inverse" data-on-text="มืด" data-off-text="สว่าง" onchange="change_userpref();">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-4 control-label">ความประสงค์รับข่าวสารการแจ้งเตือน</label>
-                                                        <div class="col-sm-8 controls">
-                                                            <input id="pref_notification" type="checkbox" data-rel="switch" data-wrapper-class="inverse" data-on-text="รับ" data-off-text="ไม่รับ" onchange="change_userpref();">
-                                                        </div>
-                                                    </div>
 
-                                                </form>
-                                            </div>
+                                                </tbody>
+                                            </table>
+
                                         </div>
                                         <!-- Panel Widget -->
                                     </div>
                                     <!-- col-md-12 -->
                                 </div>
-
-
+                                <!-- row -->
 
 
                             </div>
@@ -194,7 +209,7 @@
         <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/javascript" src="js/jquery.js"></script>
         <!--[if lt IE 9]>
-  <script type="text/javascript" src="js/excanvas.js"></script>
+  <script type="text/javascript" src="js/excanvas.js"></script>      
 <![endif]-->
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
@@ -217,78 +232,15 @@
         <script type="text/javascript" src="custom/custom.js"></script>
 
         <!-- Specific Page Scripts Put Here -->
-        <!-- Flot Chart  -->
-        <script type="text/javascript" src="plugins/flot/jquery.flot.min.js"></script>
-        <script type="text/javascript" src="plugins/flot/jquery.flot.resize.min.js"></script>
-        <script type="text/javascript" src="plugins/flot/jquery.flot.pie.min.js"></script>
-        <script type="text/javascript" src="plugins/flot/jquery.flot.categories.min.js"></script>
-        <script type="text/javascript" src="plugins/flot/jquery.flot.time.min.js"></script>
-        <script type="text/javascript" src="plugins/flot/jquery.flot.animator.min.js"></script>
 
-        <!-- Vector Map -->
-        <script type="text/javascript" src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-        <script type="text/javascript" src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+        <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
 
-        <!-- Calendar -->
-        <script type="text/javascript" src='plugins/moment/moment.min.js'></script>
-        <script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
-        <script type="text/javascript" src='plugins/fullcalendar/fullcalendar.min.js'></script>
-
-        <!-- Intro JS (Tour) -->
-        <script type="text/javascript" src='plugins/introjs/js/intro.min.js'></script>
-
-        <!-- Sky Icons -->
-        <script type="text/javascript" src='plugins/skycons/skycons.js'></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-
-
-        <!-- Include Date Range Picker -->
-        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
-
-
-
-        <script>
+        <script type="text/javascript">
             $(document).ready(function() {
-                //alert($.fn.jquery);
-
-                $.ajax('http://byod.excise.go.th/api/getuserpref', {
-                    type: "get",
-                    data: {
-                        accname: $('#email').text().trim(),
-                    },
-                    success: function(json) {
-                        //alert(json);
-                        $('#pref_theme').attr('checked', true);
-                        if (json[0] == 0) {
-                            $('#pref_theme').attr('checked', false);
-                        } else {
-                            $('#pref_theme').attr('checked', true);
-                            //alert(json[0]);
-                        }
-
-                        if (json[1] == 0) {
-                            $('#pref_notification').attr('checked', false);
-                        } else {
-                            $('#pref_notification').attr('checked', true);
-                            //alert(json[1]);
-                        }
-                    }
-                });
-
-
-
-
-                account_now = 'natthawat_a';
-                $("#chat-text").keyup(function(event) {
-                    if (event.keyCode === 13) {
-                        sendchat($('#chat-text').val());
-                    }
-                });
-
 
             });
-            $(window).load(function() {
+			$(window).load(function() {
 
                 var priv = $("#priv").html().trim().split(",");
                 if (priv[1] < 1) {
@@ -298,6 +250,7 @@
                 }
             });
         </script>
+
         <!-- Specific Page Scripts END -->
 
 
@@ -319,46 +272,80 @@
                 s.parentNode.insertBefore(ga, s);
             })();
         </script>
-
         <script>
-            function change_userpref() {
-                //alert('a');
-                //console.log('BB');
-                //console.log($('#pref_theme').is(':checked') ? 1 : 0);
-                //console.log($('#pref_notification').is(':checked') ? 1 : 0);
-                var theme_val = $('#pref_theme').is(':checked') ? 1 : 0;
-                var noti_val = $('#pref_notification').is(':checked') ? 1 : 0;
+            //account_now = 'natthawat_a';
+			account_now = '<%= email %>';
 
-                $.ajax('http://byod.excise.go.th/api/edituserpref', {
+            function refresh_table(sd, ed) {
+                //alert('refresh');
+				//alert(sd);
+				//alert(ed);
+                $.ajax('http://byod.excise.go.th/api/listhistory', {
                     type: "get",
                     data: {
-                        accname: $('#email').text().trim(),
-                        theme: theme_val,
-                        noti: noti_val
+                        accname: account_now
                     },
                     success: function(json) {
-                        //alert('update setting');
-                        //alert(noti_val);
-                        //location.reload();
-                        if (noti_val >= 1) {
-                            $('#top-menu-3').show();
-                        } else {
-                            $('#top-menu-3').hide();
-                        }
-                        window.location.href = "http://byod.excise.go.th/systemcenter/setting";
-                    },
-                    error: function() {
-                        //location.reload();
-                        if ($('#pref_notification').is(':checked')) {
-                            $('#pref_notification').attr('checked', false);
-                        } else {
-                            $('#pref_notification').attr('checked', true);
-                        }
+                        //alert(JSON.stringify(json));
+                        data_res = JSON.parse(JSON.stringify(json));
+                        bindata_table(data_res);
                     }
                 });
+            }
+
+
+            function bindata_table(data_sql) {
+                //alert('bind');
+                //alert(data_sql);
+                data = [];
+                total = 0;
+                for (i = 0; i < data_sql.length; i++) {
+                    data_json = {};
+                    update_time = new Date(data_sql[5]);
+                    date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getUTCMonth()+1) + "/" + update_time.getFullYear();
+
+                    //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
+                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[1] + "</td><td>" + data_sql[2] + "</td><td>" + data_sql[4] + "</td><td>" + date_str + "</td></tr>");
+                    total = total + data_sql[1];
+                    //alert(JSON.stringify(data_json));
+                    data.push(data_json);
+                    //alert(JSON.stringify(data));
+                    data_sql.splice(0, 6);
+                    i = -1;
+
+                }
+                //alert(JSON.stringify(data));
+                //c1(data);
+
+                $('#data-tables').dataTable();
 
             }
+
+            function datepick() {
+
+                var today = new Date();
+                
+                var ddd = today.getUTCDate();
+				
+				var last = new Date(today.getTime() - (7 * 24 * 60 * 60 * 1000));
+				var dd = last.getUTCDate();
+				var mm = last.getUTCMonth()+1;
+				
+                var mmm = today.getUTCMonth()+1; //January is 0!
+
+                var yyyy = today.getFullYear();
+                var yyy = today.getFullYear();
+                if (dd < 10) {
+                    dd = '0' + dd;
+                }
+                if (mm < 10) {
+                    mm = '0' + mm;
+                }
+                refresh_table(yyy + '-' + mm + '-' + dd, yyyy + '-' + mmm + '-' + ddd);
+            }
+            datepick();
         </script>
+
 
 </body>
 

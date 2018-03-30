@@ -2,7 +2,7 @@
 <!-- Header Start -->
 <header class="header-1" id="header">
     <div class="vd_top-menu-wrapper">
-        <div class="container vd_bg-dark-blue  menu-search-style-2">
+         <div class="container vd_bg-dark-blue  menu-search-style-2">
 
             <div class="vd_top-nav vd_nav-width  ">
                 <div class="vd_panel-header">
@@ -10,6 +10,7 @@
                         <a href="index.html"><img alt="logo" src="img/logo1.png" width="200%"></a>
 
                     </div>
+
                     <!-- logo -->
                     <div class="vd_panel-menu   " data-intro="<strong>Minimize Left Navigation</strong><br/>Toggle navigation size to medium or small size. You can set both button or one button only. See full option at documentation." data-step=1>
 
@@ -21,6 +22,7 @@
                                 <i class="fa fa-ellipsis-v"></i>
                             </span>
                             -->
+
                     </div>
 
                     <div class="vd_panel-menu left-pos visible-sm visible-xs">
@@ -52,7 +54,6 @@
 
                         </div>
                         <input type="file" id="imgupload" style="visibility: hidden;" onchange="uploadFile()" />
-
                     </div>
                     <div class="col-sm-7 col-xs-12">
                         <div class="vd_mega-menu-wrapper">
@@ -139,6 +140,7 @@
                                             <span id="uname" class="mega-name">
                                                     <%= firstname %>&nbsp;<%= lastname %> <i class="fa fa-caret-down fa-fw"></i>
                                                 </span>
+
                                         </a>
                                         <div class="vd_mega-menu-content  width-xs-2  left-xs left-sm" data-action="click-target">
                                             <div class="child-menu">
@@ -194,7 +196,7 @@
     </div>
     <!-- vd_primary-menu-wrapper -->
     <div id="priv">
-        <%=privilege%>
+     <!--   <%=privilege%> -->
     </div>
     <div class="modal fade" id="modal_notification" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -218,6 +220,9 @@
 </header>
 <!-- Header Ends -->
 <script>
+    //account_now = 'natthawat_a';
+    //alert(' account_now - ' + account_now);
+    //alert(' account_now privilege - ' + $("#priv").html().trim().split(","));
     var chat_val = 1;
     account_now = $('#email').text().trim();
     $("#chat-text").keyup(function(event) {
@@ -472,7 +477,7 @@
                         //alert(data[i].msg);
                         //var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>" + data[i].msg + "</span><span class='m-list-timeline__time'>" + data[i].timestamp.split("T")[0] + "</span></div>";
 
-                        var msg = "<li><a href='#' data-toggle='modal' data-target='#modal_notification'><div class='menu-icon vd_green'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + data[i].msg.substring(0, 50) + "<div class='menu-info'><span class='menu-date'>" + data[i].timestamp.split("T")[0] + "</span></div></div></a></li>";
+                        var msg = "<li><a href='#' data-toggle='modal' data-target='#modal_notification' onclick='setModalNotification(" + i + ")'><div class='menu-icon vd_green'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + data[i].msg.substring(0, 50) + "<div class='menu-info'><span class='menu-date'>" + data[i].timestamp.split("T")[0] + "</span></div></div></a></li>";
 
                         $('#notification_center').append(msg);
                     }
@@ -480,6 +485,7 @@
                 }
                 //alert(JSON.stringify(data));
                 //bindata(data_res);
+
             }
         });
 

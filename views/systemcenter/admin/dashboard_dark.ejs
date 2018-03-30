@@ -96,8 +96,7 @@
 
 </head>
 
-<body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">
-    <div class="vd_body">
+<body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">    <div class="vd_body">
         <%- include('partial_dark/header'); %>
 
             <!-- Content start -->
@@ -148,9 +147,9 @@
 
                                 <div class="row">
                                     <div class="col-md-4 mgbt-md-20 mgbt-lg-0">
-                                        <div class="panel widget panel-bd-top vd_todo-widget light-widget ">
+                                        <div class="panel widget light-widget ">
                                             <div class="panel-heading no-title " align="center">
-                                                ปริมาณการใช้งาน
+                                                ปริมาณการใช้งานระบบของวันนี้
                                             </div>
                                             <div class="panel-body ">
                                                 <div id="revenue-line-chart" style="height:255px; "></div>
@@ -167,7 +166,7 @@
 
 
                                                 <div class="row mgbt-xs-0">
-                                                    <div class="col-sm-6 mgbt-xs-15 mgbt-sm-0">
+                                                    <div class="col-sm-6 mgbt-xs-15 mgbt-sm-0" onclick = "goto('statios')">
                                                         <div class="item-left pd-5">
                                                             <!-- start 1 -->
                                                             <div class="panel-body">
@@ -193,7 +192,7 @@
                                                             <!-- end 1 -->
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-6"  onclick = "goto('statandroid')">
                                                         <div class="item-right pd-5">
                                                             <!-- start 1 -->
                                                             <div class="panel-body">
@@ -221,7 +220,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mgbt-xs-0">
-                                                    <div class="col-sm-6 mgbt-xs-15 mgbt-sm-0">
+                                                    <div class="col-sm-6 mgbt-xs-15 mgbt-sm-0" onclick = "goto('statlinux')">
                                                         <div class="item-left pd-5">
                                                             <!-- start 1 -->
                                                             <div class="panel-body">
@@ -247,7 +246,7 @@
                                                             <!-- end 1 -->
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-6" onclick = "goto('statwindows')">
                                                         <div class="item-right pd-5">
                                                             <!-- start 1 -->
                                                             <div class="panel-body">
@@ -275,7 +274,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mgbt-xs-0">
-                                                    <div class="col-sm-6 mgbt-xs-15 mgbt-sm-0">
+                                                    <div class="col-sm-6 mgbt-xs-15 mgbt-sm-0" onclick = "goto('statunknownos')">
                                                         <div class="item-left pd-5">
                                                             <!-- start 1 -->
                                                             <div class="panel-body">
@@ -332,9 +331,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4 ">
-                                        <div class="row ">
+                                        <div class="row " onclick = "goto('statmobile')">
                                             <div class="col-md-12 ">
-                                                <div class="vd_status-widget vd_bg-green widget ">
+                                                <div class="vd_status-widget vd_bg-green widget background-1 ">
 
                                                     <a class="panel-body " href="# ">
                                                         <div class="row ">
@@ -349,9 +348,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row ">
+                                        <div class="row " onclick = "goto('statcomputer')">
                                             <div class="col-md-12 ">
-                                                <div class="vd_status-widget vd_bg-green widget ">
+                                                <div class="vd_status-widget vd_bg-green widget background-1 ">
 
                                                     <a class="panel-body " href="# ">
                                                         <div class="row ">
@@ -366,9 +365,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row ">
+                                        <div class="row " onclick = "goto('statunknowntype')">
                                             <div class="col-md-12 ">
-                                                <div class="vd_status-widget vd_bg-green widget ">
+                                                <div class="vd_status-widget vd_bg-green widget background-1">
                                                     <!--<div class="vd_panel-menu ">
                                                         <div data-action="refresh " data-original-title="Refresh " data-rel="tooltip " class=" menu entypo-icon smaller-font "> <i class="icon-cycle "></i> </div>
                                                     </div>-->
@@ -391,13 +390,13 @@
                                 <!-- end row -->
                                 <div class="row ">
                                     <div class="col-md-6 ">
-                                        <div class="panel widget panel-bd-top vd_todo-widget light-widget ">
+                                        <div class="panel widget light-widget ">
                                             <div class="panel-heading no-title ">
 
 
                                             </div>
                                             <div class="panel-body ">
-                                                <h4 class="mgbt-xs-20 "> <span class="append-icon "> <i class="fa fa-check-circle-o vd_green "></i> </span>การใช้งานแบ่งตามกลุ่ม</h4>
+                                                <h4 class="mgbt-xs-20 "> การใช้งานระบบ WiFi จำแนกตามกลุ่ม</h4>
                                                 <div class="panel-body-list pd-15">
                                                     <div id="pie-chart-1" class="pie-chart" style="height:318px;"></div>
                                                 </div>
@@ -407,13 +406,12 @@
                                     <!--col-md-5-->
 
                                     <div class="col-md-6 ">
-                                        <div class="panel widget panel-bd-top vd_todo-widget light-widget ">
+                                        <div class="panel widget light-widget ">
                                             <div class="panel-heading no-title ">
-
 
                                             </div>
                                             <div class="panel-body ">
-                                                <h4 class="mgbt-xs-20 "> <span class="append-icon "> <i class="fa fa-check-circle-o vd_green "></i> </span>การใช้งาน Browser</h4>
+                                                <h4 class="mgbt-xs-20 "> การใช้งานระบบ BYOD จำแนกตาม Browser</h4>
                                                 <div class="panel-body-list pd-15">
                                                     <div id="pie-chart-2" class="pie-chart" style="height:318px;"></div>
                                                 </div>
@@ -421,6 +419,8 @@
                                         </div>
 
                                     </div>
+
+
                                     <!-- col-md-3 -->
                                 </div>
                                 <div class="row ">
@@ -440,11 +440,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--col-md-5-->
-
                                     <div class="col-md-6 " style="display: none;">
                                         <div class="panel widget panel-bd-top vd_todo-widget light-widget ">
                                             <div class="panel-heading no-title ">
+
 
                                             </div>
                                             <div class="panel-body ">
@@ -457,6 +456,9 @@
                                         </div>
 
                                     </div>
+                                    <!--col-md-5-->
+
+
                                     <!-- col-md-3 -->
                                 </div>
 
@@ -486,6 +488,7 @@
 
         <!-- .vd_body END  -->
         <a id="back-top " href="# " data-action="backtop " class="vd_back-top visible "> <i class="fa fa-angle-up "> </i> </a>
+
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -505,6 +508,7 @@
                 </div>
             </div>
         </div>
+
         <!--
 <a class="back-top " href="# " id="back-top "> <i class="icon-chevron-up icon-white "> </i> </a> -->
 
@@ -514,6 +518,7 @@
         <!--[if lt IE 9]>
   <script type="text/javascript" src="js/excanvas.js"></script>
 <![endif]-->
+
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
         <script type="text/javascript" src="plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
@@ -557,7 +562,7 @@
 
         <!-- Sky Icons -->
         <script type="text/javascript" src='plugins/skycons/skycons.js'></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        
 
 
         <!-- Include Date Range Picker -->
@@ -567,15 +572,34 @@
 
 
         <script>
+
             $(document).ready(function() {
                 //alert($('#email').text().trim());
-                //account_now = 'natthawat_a';
                 account_now = $('#email').text().trim();
                 //alert(account_now);
+                $.ajax('http://byod.excise.go.th/api/getconfig', {
+                    type: "get",
+                    success: function(data) {
 
+
+                        if (browser.name == "Internet Explorer" && (browser.version < parseInt(data[15]))) {
+                            $('#warning_modal').click();
+                        } else if (browser.name == "Chrome" && (browser.version < parseInt(data[17]))) {
+                            $('#warning_modal').click();
+                        } else if (browser.name == "Firefox" && (browser.version < parseInt(data[19]))) {
+                            $('#warning_modal').click();
+                        }
+
+                    },
+                    error: function(fa) {
+                        //alert(JSON.stringify(fa));
+                        //alert('b');
+                    }
+                });
 
             });
             $(window).load(function() {
+
                 var priv = $("#priv").html().trim().split(",");
                 if (priv[1] < 1) {
                     $('#top-menu-3').hide();
@@ -607,9 +631,11 @@
         </script>
 
         <script>
+			var sd_ = '';
+			var ed_ = '';
             function refresh_group(sd, ed) {
                 //alert('refresh');
-                $.ajax('http://byod.excise.go.th/report/report672', {
+                $.ajax('http://byod.excise.go.th/report/report6722', {
                     type: "get",
                     data: {
                         start: sd,
@@ -807,7 +833,7 @@
                         return;
                     }
                     percent = parseFloat(obj.series.percent).toFixed(2);
-                    alert("" + obj.series.label + ": " + percent + "%");
+                    //alert("" + obj.series.label + ": " + percent + "%");
                 });
 
                 function labelFormatter(label, series) {
@@ -912,7 +938,8 @@
 
             function datepick() {
                 function e(e, a, r) {
-
+					sd_ = e.format("Y-M-D");
+					ed_ = a.format("Y-M-D");
                     refresh_device(e.format("Y-M-D"), a.format("Y-M-D"));
                     refresh_os(e.format("Y-M-D"), a.format("Y-M-D"));
                     refresh_group(e.format("Y-M-D"), a.format("Y-M-D"));
@@ -949,6 +976,7 @@
                         e(a, r, "")
                 }
             }
+
             $.fn.UseTooltip = function() {
                 var previousPoint = null;
 
@@ -994,7 +1022,6 @@
                     opacity: 0.85
                 }).appendTo("body").fadeIn(200);
             }
-
 
             function line_chart(data) {
                 /* REVENUE LINE CHART */
@@ -1092,67 +1119,7 @@
                 });
             }
 
-            function refresh_traffic() {
-                //alert('refresh');
-                $.ajax('http://byod.excise.go.th/report/traffic', {
-                    type: "get",
-                    success: function(json) {
-                        //alert(JSON.stringify(json));
-                        data_res = JSON.parse(JSON.stringify(json));
-                        bindata_traffic(data_res);
-                    }
-                });
-            }
 
-            function bar_chart(data) {
-                /* REVENUE BAR CHART */
-
-                var bar_chart_data = data;
-
-                var bar_chart = $.plot(
-                    $("#revenue-bar-chart"), [{
-                        data: bar_chart_data,
-                        //           color: "rgba(31,174,102, 0.8)",
-                        color: "#F85D2C",
-                        shadowSize: 0,
-                        bars: {
-                            show: true,
-                            lineWidth: 0,
-                            fill: true,
-                            fillColor: {
-                                colors: [{
-                                    opacity: 1
-                                }, {
-                                    opacity: 1
-                                }]
-                            }
-                        }
-                    }], {
-                        series: {
-                            bars: {
-                                show: true,
-                                barWidth: 0.9,
-                                align: "center"
-                            }
-                        },
-                        grid: {
-                            show: true,
-                            hoverable: true,
-                            borderWidth: 0
-                        },
-                        yaxis: {
-                            min: 0,
-                            max: 20,
-                            show: false
-                        },
-                        xaxis: {
-                            mode: "categories",
-                            tickLength: 0,
-                            color: "#FFFFFF",
-                        }
-                    });
-
-            }
 
             function bindata_traffic(data_sql) {
                 //alert('bind');
@@ -1184,6 +1151,9 @@
                 //alert(JSON.stringify(data));
                 line_chart(data);
             }
+
+
+
 
             function get_browser() {
                 var ua = navigator.userAgent,
@@ -1327,14 +1297,35 @@
                     type: "get",
                     success: function(json) {
                         //alert(json);
-                        if (json == 1) {
-                            addviolation('devicemon', account_now);
-                            $.ajax('http://byod.excise.go.th/api/message/email/6/' + account_now, {
-                                type: "get",
-                                success: function(json) {
-                                    //alert(JSON.stringify(json));
-                                }
-                            });
+                        if (json.length >0) {
+							for (i = 0; i < json.length; i++) {
+								addviolation('devicemon', json[0]);
+								$.ajax('http://byod.excise.go.th/api/message/email/6/' + json[0], {
+									type: "get",
+									success: function(json) {
+										//alert(JSON.stringify(json));
+									}
+								});
+								
+								$.ajax('http://byod.excise.go.th/api/devicemonlog', {
+									type: "get",
+									data: {
+										user: json[0],
+										termac: json[1],
+										terip: json[2],
+										clientip: json[3],
+										serverip: json[4],
+										time: json[5]
+									},
+									success: function(json) {
+										//alert(JSON.stringify(json));
+									}
+								});
+								
+								json.splice(0, 6);
+								i = -1;
+							}
+                            
                             //alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
 
                         }
@@ -1364,56 +1355,18 @@
 
                 });
             }
+			
+			function goto(dest){
+				window.location = '/systemcenter/report/usage/other/'+dest+'?start='+sd_+'&&end='+ed_;			
+			}
+
             check_access();
             check_devicemon();
             check_diffsite();
             acclogin();
-
-            function refresh_area(sd, ed) {
-                //alert('refresh');
-                $.ajax('http://byod.excise.go.th/report/report67154', {
-                    type: "get",
-                    data: {
-                        start: sd,
-                        end: ed
-                    },
-                    success: function(json) {
-                        //alert(JSON.stringify(json));
-                        data_res = JSON.parse(JSON.stringify(json));
-                        bindata_area(data_res);
-                    }
-                });
-            }
-
-            function bindata_area(data_sql) {
-                //alert('bind');
-                //alert(data_sql);
-                data = [];
-
-                total = 0;
-                //count = 0;
-                for (i = 0; i < data_sql.length; i++) {
-                    data_json = [];
-                    data_json = [
-                        [data_sql[0], data_sql[1]]
-                    ];
-                    data_sql.splice(0, 2);
-
-                    total = total + data_sql[1];
-                    //alert(JSON.stringify(data_json));
-                    data = data.concat(data_json);
-                    //alert(JSON.stringify(data));
-                    i = -1;
-
-                }
-                //alert(JSON.stringify(data));
-                bar_chart(data);
-            }
-
             refresh_traffic();
 
             datepick();
-            //document.getElementById('val-iOS').innerHTML = '50';
         </script>
 
 </body>

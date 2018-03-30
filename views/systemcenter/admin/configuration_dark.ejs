@@ -101,8 +101,7 @@
 
 </head>
 
-<body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">
-    <div class="vd_body">
+<body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">    <div class="vd_body">
         <%- include('partial_dark/header'); %>
 
             <!-- Content start -->
@@ -155,6 +154,7 @@
                                                                 <span class="input-group-addon" id="timepicker-default-span-to"><i class="fa fa-clock-o"></i></span> </div>
                                                         </div>
                                                         <button class="btn vd_btn vd_bg-green vd_white" type="submit" onclick="editconfig('<%= email %>',document.getElementById('timepicker-default').value,document.getElementById('timepicker-default-to').value,document.getElementById('diffsite-minute').value,document.getElementById('edit-device').value,document.getElementById('edit-profile').value,document.getElementById('login-time').value,document.getElementById('login-count').value,document.getElementById('browser_ie_version').value,document.getElementById('browser_chrome_version').value,document.getElementById('browser_ff_version').value)"><i class="icon-ok"></i> บันทึก</button>
+
                                                     </div>
                                                 </form>
                                             </div>
@@ -180,6 +180,7 @@
 
                                                             </div>
                                                         </div>
+
                                                     </div>
                                                 </form>
                                             </div>
@@ -255,7 +256,6 @@
                                                         </div>
                                                         <div class="col-sm-5"> </div>
                                                     </div>
-
 
 
 
@@ -335,7 +335,8 @@
                                 <div class="col-md-12">
                                     <div class="panel widget">
                                         <div class="panel-heading vd_bg-grey">
-                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายชื่อผู้ใช้งาน</h3>
+                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> กำหนดจำนวนอุปกรณ์</h3>
+											<input type="text" id="myInput" placeholder="โปรดระบุชื่อบุคคล" title="Type in a name" style="width:30%">
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
                                             <table class="table table-striped" id="data-tables">
@@ -344,7 +345,6 @@
                                                         <th>ชื่อผู้ใช้งาน</th>
                                                         <th>ชื่อ-นามสกุลจริง</th>
                                                         <th>กลุ่มผู้ใช้งาน</th>
-                                                        <th>จำนวนอุปกรณ์สูงสุด</th>
                                                         <th>จำนวนอุปกรณ์ที่ลงทะเบียนแล้ว</th>
                                                         <th>จำนวนอุปกรณ์สูงสุดที่ลงทะเบียนได้</th>
                                                         <th></th>
@@ -480,17 +480,17 @@
                     $('#top-menu-3').show();
                 }
             });
-
-
-            $(document).ready(function() {
-                account_now = 'natthawat_a';
-                $("#chat-text").keyup(function(event) {
+			
+			$(document).ready(function() {
+                $("#myInput").keyup(function(event) {
                     if (event.keyCode === 13) {
-                        sendchat($('#chat-text').val());
+                        myFunction();
                     }
                 });
 
             });
+
+
         </script>
         <!-- Specific Page Scripts END -->
 
@@ -514,6 +514,8 @@
             })();
         </script>
         <script>
+		account_now = '<%= email %>';
+		var filter_ = '';
             function sendCustomerSatisfaction() {
                 alert('sendCustomerSatisfaction');
                 $.ajax('http://byod.excise.go.th/sendCustSat', {
@@ -525,13 +527,14 @@
                     }
                 });
             }
-            account_now = 'natthawat_a';
 
-            function refresh_table() {
+            function refresh_table(usr) {
                 //alert('refresh');
-                $.ajax('http://byod.excise.go.th/api/allusers', {
+                $.ajax('http://byod.excise.go.th/api/limitdevice_user', {
                     type: "get",
-                    //data: {start:sd,end:ed},
+                    data: {
+						usrname:usr
+						},
                     success: function(json) {
                         //alert(JSON.stringify(json));
                         data_res = JSON.parse(JSON.stringify(json));
@@ -550,7 +553,7 @@
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
                     //update_time = new Date(data_sql[5]);
-                    //date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes()<10?'0':'') + update_time.getMinutes() + ":" + (update_time.getSeconds()<10?'0':'') + update_time.getSeconds() +' - ' + update_time.getUTCDate() + "/" + update_time.getUTCMonth() + "/" + update_time.getFullYear();
+                    //date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes()<10?'0':'') + update_time.getMinutes() + ":" + (update_time.getSeconds()<10?'0':'') + update_time.getSeconds() +' - ' + update_time.getUTCDate() + "/" + (update_time.getUTCMonth()+1) + "/" + update_time.getFullYear();
 
 
                     $('#data-tables').find('tbody').append('<tr><td>' + data_sql[1] + '</td><td>' + data_sql[2] + '</td><td>' + data_sql[3] + '</td><td>' + data_sql[4] + '</td><td>' + data_sql[5] + '</td><td class="menu-action"><a id="' + data_sql[0] + '" data-original-title="edit" data-toggle="modal" data-target="#myModal" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow" onclick="$(' + q + '#btn-limit' + q + ').val(' + q + data_sql[1] + q + ');" > <i class="fa fa-pencil"></i> </a> </td></tr>');
@@ -569,6 +572,7 @@
                 $('#data-tables').dataTable();
 
             }
+
 
             function addlimit(lim, acc) {
                 //alert(lim);
@@ -603,7 +607,7 @@
                         bindconfig(data_res);
                     },
                     error: function(fa) {
-                        alert(JSON.stringify(fa));
+                        //alert(JSON.stringify(fa));
                     }
                 });
             }
@@ -645,6 +649,15 @@
                         //alert(data_sql[1])
                         document.getElementById("login-count").value = data_sql[1];
                     }
+					else if (data_sql[0] == 'ie') {
+                        document.getElementById("browser_ie_version").value = data_sql[1];
+                    }
+					else if (data_sql[0] == 'Chrome') {
+                        document.getElementById("browser_chrome_version").value = data_sql[1];
+                    }
+					else if (data_sql[0] == 'Firefox') {
+                        document.getElementById("browser_ff_version").value = data_sql[1];
+                    }
                     //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
 
                     //alert(JSON.stringify(data_json));
@@ -656,24 +669,6 @@
                 }
                 //alert(JSON.stringify(data));
 
-            }
-
-            function datepick() {
-
-                var today = new Date();
-                var dd = today.getUTCDate() - 7;
-                var ddd = today.getUTCDate();
-                var mm = today.getUTCMonth() + 1; //January is 0!
-
-                var yyyy = today.getFullYear();
-                var yyy = today.getFullYear();
-                if (dd < 10) {
-                    dd = '0' + dd;
-                }
-                if (mm < 10) {
-                    mm = '0' + mm;
-                }
-                refresh_table(yyy + '-' + mm + '-' + dd, yyyy + '-' + mm + '-' + ddd);
             }
 
             function editconfig(account, timefrom, timeto, timediff, editdevice, editprofile, timelog, countlog, verie, verchrome, verff) {
@@ -719,8 +714,26 @@
                     }
                 });
             }
+			
+			function myFunction() {
+                var input, filter, ul, li, a, i;
+                input = document.getElementById("myInput");
+                //document.getElementById("tab-body").innerHTML="";
+                document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>ชื่อผู้ใช้งาน</th><th>ชื่อ-นามสกุลจริง</th><th>กลุ่มผู้ใช้งาน</th><th>จำนวนอุปกรณ์ที่ลงทะเบียนแล้ว</th><th>จำนวนอุปกรณ์สูงสุดที่ลงทะเบียนได้</th><th></th></tr></thead><tbody></tbody></table>';
+                //$('#data-tables').find('tbody').empty();
 
-            refresh_table();
+                filter = input.value.toUpperCase();
+				data_ = filter;
+				filter_ = filter;
+                //alert(filter);
+                if (filter == '') {
+                    $('#data-tables').dataTable();
+                } else {
+                    refresh_table(filter);
+                }
+
+            }
+            //refresh_table();
             getconfig();
         </script>
 
