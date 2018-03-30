@@ -89,6 +89,8 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
+				ipaddr: req.session.user.ipaddr,
+				browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -100,6 +102,8 @@ module.exports = function(app, passport) {
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
+				ipaddr: req.session.user.ipaddr,
+				browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1650,7 +1654,7 @@ module.exports = function(app, passport) {
 		//console.log(ipaddr.IPv4.parse(ipString));
         
         res.render('systemcenter/login', {
-            ipaddr: getLocalIPAddr(),
+            //ipaddr: getLocalIPAddr(),
             remoteaddr: ip.toIPv4Address().toString(),
             browser_family: req.session.user.browser,
             browser_version: req.session.user.bversion,
@@ -1679,6 +1683,31 @@ module.exports = function(app, passport) {
                     req.session.authorized = false;
                 }
         */
+		
+		var clientInfo = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+        var clientAddr = clientInfo.substring(":");
+
+		
+		console.log('logging in');
+        console.log();
+        console.log(req.session.user);
+        var clientInfo = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+		
+		var ipString = req.connection.remoteAddress;
+		if (ipaddr.IPv4.isValid(ipString)) {
+  // ipString is IPv4
+		} else if (ipaddr.IPv6.isValid(ipString)) {
+		  var ip = ipaddr.IPv6.parse(ipString);
+		  if (ip.isIPv4MappedAddress()) {
+			// ip.toIPv4Address().toString() is IPv4
+			console.log(ip.toIPv4Address().toString());
+		  } else {
+			//console.log('6');
+			// ipString is IPv6
+		  }
+		} else {
+		  // ipString is invalid
+		}
 
         // LDAP Taking Place
         var opts = {
@@ -1709,8 +1738,7 @@ module.exports = function(app, passport) {
                 //req.session.user._id = user._id;
                 req.session.user.email = user.email;
                 req.session.user.password = user.password;
-
-
+				req.session.user.ipaddr = ip.toIPv4Address().toString();
 
 
                 console.log('Identity is being authorizing against e-Office');

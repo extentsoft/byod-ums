@@ -570,68 +570,12 @@
         <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 
-
-
-        <script>
-
-            $(document).ready(function() {
-                //alert($('#email').text().trim());
-                account_now = $('#email').text().trim();
-                //alert(account_now);
-                $.ajax('http://byod.excise.go.th/api/getconfig', {
-                    type: "get",
-                    success: function(data) {
-
-
-                        if (browser.name == "Internet Explorer" && (browser.version < parseInt(data[15]))) {
-                            $('#warning_modal').click();
-                        } else if (browser.name == "Chrome" && (browser.version < parseInt(data[17]))) {
-                            $('#warning_modal').click();
-                        } else if (browser.name == "Firefox" && (browser.version < parseInt(data[19]))) {
-                            $('#warning_modal').click();
-                        }
-
-                    },
-                    error: function(fa) {
-                        //alert(JSON.stringify(fa));
-                        //alert('b');
-                    }
-                });
-
-            });
-            $(window).load(function() {
-
-                var priv = $("#priv").html().trim().split(",");
-                if (priv[1] < 1) {
-                    $('#top-menu-3').hide();
-                } else {
-                    $('#top-menu-3').show();
-                }
-            });
-        </script>
         <!-- Specific Page Scripts END -->
-
-
-
-
-        <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
-
+        
         <script>
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-XXXXX-X']);
-            _gaq.push(['_trackPageview']);
-
-            (function() {
-                var ga = document.createElement('script');
-                ga.type = 'text/javascript';
-                ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
-
-        <script>
+			account_now = $('#email').text().trim();
+			ip_ = '<%= ipaddr %>';
+			browser_ = '<%= browser_family %>';
 			var sd_ = '';
 			var ed_ = '';
             function refresh_group(sd, ed) {
@@ -938,6 +882,7 @@
             }
 
             function datepick() {
+				moment.locale('th');
                 function e(e, a, r) {
 					sd_ = e.format("Y-M-D");
 					ed_ = a.format("Y-M-D");
@@ -952,7 +897,7 @@
 
                     var o = "",
                         l = "";
-                    a - e < 100 ? (o = "Today:", l = e.format("MMM D")) : "Yesterday" == r ? (o = "Yesterday:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
+                    a - e < 100 ? (o = "วันนี้:", l = e.format("MMM D")) : "เมื่อวาน" == r ? (o = "เมื่อวาน:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
                         t.find(".m-subheader__daterange-date").html(l),
                         t.find(".m-subheader__daterange-title").html(o)
                 }
@@ -964,13 +909,15 @@
                             startDate: a,
                             endDate: r,
                             opens: "left",
+							showCustomRangeLabel: false,
+							alwaysShowCalendars: true,
                             ranges: {
-                                Today: [moment(), moment()],
+                                "รายงานของวันนี้": [moment(), moment()],
                                 //Yesterday: [moment().subtract(1, "days"), moment().subtract(1, "days")],
-                                "Last 7 Days": [moment().subtract(6, "days"), moment()],
-                                "Last 30 Days": [moment().subtract(29, "days"), moment()],
-                                "This Month": [moment().startOf("month"), moment().endOf("month")],
-                                "This Year": [moment().startOf("year"), moment().endOf("year")]
+                                "รายงาน 7 วันล่าสุด": [moment().subtract(6, "days"), moment()],
+                                "รายงาน 30 วันล่าสุด": [moment().subtract(29, "days"), moment()],
+                                "รายงานของเดือนนี้": [moment().startOf("month"), moment().endOf("month")],
+                                "รายงานของปีนี้": [moment().startOf("year"), moment().endOf("year")]
                                     //"Last Month": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
                             }
                         }, e),
@@ -1153,60 +1100,6 @@
                 line_chart(data);
             }
 
-
-
-
-            function get_browser() {
-                var ua = navigator.userAgent,
-                    tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-                if (/trident/i.test(M[1])) {
-                    tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
-                    return {
-                        name: 'IE',
-                        version: (tem[1] || '')
-                    };
-                }
-                if (M[1] === 'Chrome') {
-                    tem = ua.match(/\bOPR|Edge\/(\d+)/)
-                    if (tem != null) {
-                        return {
-                            name: 'Opera',
-                            version: tem[1]
-                        };
-                    }
-                }
-                M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
-                if ((tem = ua.match(/version\/(\d+)/i)) != null) {
-                    M.splice(1, 1, tem[1]);
-                }
-                return {
-                    name: M[0],
-                    version: M[1]
-                };
-
-            };
-
-            //var browser=get_browser();
-
-            //browser.name = 'Chrome'
-            //browser.version = '40'
-            function acclogin() {
-                $.ajax('https://freegeoip.net/json/', {
-                    type: "get",
-                    success: function(data) {
-                        //alert('a');
-                        var browser = get_browser();
-                        //alert(browser.name+browser.version);
-                        login_log(browser.name, data.ip);
-
-                    },
-                    error: function(fa) {
-                        //alert(JSON.stringify(fa));
-                        //alert('b');
-                    }
-                });
-            }
-
             function login_log(b, i) {
                 $.ajax('http://byod.excise.go.th/api/accesslog', {
                     type: "get",
@@ -1364,7 +1257,7 @@
             check_access();
             check_devicemon();
             check_diffsite();
-            acclogin();
+            login_log(browser_,ip_);
             refresh_traffic();
 
             datepick();

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<!-- Specific Page Data -->
+
+<!-- End of Data -->
+
+<head>
+    <meta charset="utf-8" />
+    <title>BYOD Excise Department</title>
+    <meta name="keywords" content="BYOD, Excise, Excise Department, Bring Your Own Device" />
+    <meta name="description" content="BYOD ICT">
+    <meta name="author" content="Extentsoft Co.,Ltd.">
+
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="img/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="img/ico/favicon.ico">
+
+
+    <!-- CSS -->
+
+    <!-- Bootstrap & FontAwesome & Entypo CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--[if IE 7]><link type="text/css" rel="stylesheet" href="css/font-awesome-ie7.min.css"><![endif]-->
+    <link href="css/font-entypo.css" rel="stylesheet" type="text/css">
+
+    <!-- Fonts CSS -->
+    <link href="css/fonts.css" rel="stylesheet" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link href="plugins/jquery-ui/jquery-ui.custom.min.css" rel="stylesheet" type="text/css">
+    <link href="plugins/prettyPhoto-plugin/css/prettyPhoto.css" rel="stylesheet" type="text/css">
+    <link href="plugins/isotope/css/isotope.css" rel="stylesheet" type="text/css">
+    <link href="plugins/pnotify/css/jquery.pnotify.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="plugins/google-code-prettify/prettify.css" rel="stylesheet" type="text/css">
+
+
+    <link href="plugins/mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
+    <link href="plugins/tagsInput/jquery.tagsinput.css" rel="stylesheet" type="text/css">
+    <link href="plugins/bootstrap-switch/bootstrap-switch.css" rel="stylesheet" type="text/css">
+    <link href="plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css">
+    <link href="plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css">
+    <link href="plugins/colorpicker/css/colorpicker.css" rel="stylesheet" type="text/css">
+
+    <!-- Specific CSS -->
+    <link href="plugins/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css">
+    <link href="plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css">
+    <link href="plugins/introjs/css/introjs.min.css" rel="stylesheet" type="text/css">
+	
+    <link href="plugins/dataTables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="plugins/dataTables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="css/theme.min.css" rel="stylesheet" type="text/css">
+    <!--[if IE]> <link href="css/ie.css" rel="stylesheet" > <![endif]-->
+    <link href="css/chrome.css" rel="stylesheet" type="text/chrome">
+    <!-- chrome only css -->
+
+
+
+    <!-- Responsive CSS -->
+    <link href="css/theme-responsive.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+    <!-- for specific page in style css -->
+
+    <!-- for specific page responsive in style css -->
+
+
+    <!-- Custom CSS -->
+    <link href="custom/custom.css" rel="stylesheet" type="text/css">
+
+
+
+    <!-- Head SCRIPTS -->
+    <script type="text/javascript" src="js/modernizr.js"></script>
+    <script type="text/javascript" src="js/mobile-detect.min.js"></script>
+    <script type="text/javascript" src="js/mobile-detect-modernizr.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script type="text/javascript" src="js/html5shiv.js"></script>
+      <script type="text/javascript" src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">    <div class="vd_body">    <div class="vd_body">
+        <%- include('../../admin/partial_dark/header'); %>
+
+            <!-- Content start -->
+
+            <div class="content">
+                <div class="container">
+                    <%- include('../../admin/partial_dark/menu'); %>
+
+
+                </div>
+
+                <!-- Middle Content Start -->
+
+                <div class="vd_content-wrapper">
+                    <div class="vd_container">
+                        <div class="vd_content clearfix">
+
+                            <!-- vd_head-section -->
+
+                            <div class="vd_title-section clearfix">
+                                <div class="vd_panel-header">
+                                    <h1>รายงานการใช้งานจำแนกตามอุปกรณ์ผู้ใช้งาน</h1>
+									
+
+                                    <div class="vd_panel-menu  ">
+									
+                                        <div class="menu">
+
+                                            <span class="fa fa-calendar" id="daterangepicker">
+											<span class="m-subheader__daterange-label">
+												<span class="m-subheader__daterange-title"></span>
+                                            <span class="m-subheader__daterange-date m--font-brand"></span>
+                                            <a href="#" class="btn btn-sm btn-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill">
+                                                <i class="la la-angle-down"></i>
+                                            </a>
+                                            </span>
+
+                                            </span>
+											
+											
+                                        </div>
+										
+                                        <!-- menu -->
+										
+	
+                                            
+								
+                                    </div>
+									
+									
+                                </div>
+                                <!-- vd_panel-header -->
+                            </div>
+                            <!-- vd_title-section -->
+							
+
+                            <div class="vd_content-section clearfix">
+                            <!-- start row-->
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel widget">
+                                        <div class="panel-heading vd_bg-grey">
+
+                                            <select id="listgroup" onchange="selectgroup(this.value)" style="width:30%" >
+												<option value="blank" disabled selected>กรุณาเลือกกลุ่มผู้ใช้งาน</option>                       
+											</select>
+              
+                                        </div>
+                                        <div class="panel-body table-responsive" id="tab-body">
+											<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div>
+                                            <table class="table table-striped" id="data-tables">
+                                                <thead>
+                                                    <tr>													
+														<th>เจ้าของอุปกรณ์</th>
+                                                        <th>MAC Address</th>
+                                                        <th>จำนวนที่เข้าใช้งาน</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        <!-- Panel Widget -->
+                                    </div>
+                                    <!-- col-md-12 -->
+                                </div>
+                                <!-- row -->
+
+
+                            </div>
+                            <!-- .vd_content-section -->
+
+                        </div>
+                            <!-- .vd_content-section -->
+
+                        </div>
+                        <!-- .vd_content -->
+                    </div>
+                    <!-- .vd_container -->
+                </div>
+                <!-- .vd_content-wrapper -->
+
+                <!-- Middle Content End -->
+
+
+            </div>
+            <!-- .container -->
+    </div>
+    <!-- .content -->
+
+    <%- include('../../admin/partial_dark/footer'); %>
+
+
+
+        </div>
+
+        <!-- .vd_body END  -->
+        <a id="back-top " href="# " data-action="backtop " class="vd_back-top visible "> <i class="fa fa-angle-up "> </i> </a>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!--<div class="modal-header vd_bg-blue vd_white">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>-->
+                    <div class="modal-body">
+                        Header
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                Content
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+<a class="back-top " href="# " id="back-top "> <i class="icon-chevron-up icon-white "> </i> </a> -->
+
+        <!-- Javascript =============================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <!--[if lt IE 9]>
+  <script type="text/javascript" src="js/excanvas.js"></script>
+<![endif]-->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
+        <script type="text/javascript" src="plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+        <script type="text/javascript" src="js/caroufredsel.js"></script>
+        <script type="text/javascript" src="js/plugins.js"></script>
+
+        <script type="text/javascript" src="plugins/breakpoints/breakpoints.js"></script>
+        <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="plugins/prettyPhoto-plugin/js/jquery.prettyPhoto.js"></script>
+
+        <script type="text/javascript" src="plugins/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script type="text/javascript" src="plugins/tagsInput/jquery.tagsinput.min.js"></script>
+        <script type="text/javascript" src="plugins/bootstrap-switch/bootstrap-switch.min.js"></script>
+        <script type="text/javascript" src="plugins/blockUI/jquery.blockUI.js"></script>
+        <script type="text/javascript" src="plugins/pnotify/js/jquery.pnotify.min.js"></script>
+
+        <script type="text/javascript" src="js/theme.js"></script>
+        <script type="text/javascript" src="custom/custom.js"></script>
+
+        <!-- Specific Page Scripts Put Here -->
+        <!-- Flot Chart  -->
+        <script type="text/javascript" src="plugins/flot/jquery.flot.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.resize.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.pie.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.categories.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.time.min.js"></script>
+        <script type="text/javascript" src="plugins/flot/jquery.flot.animator.min.js"></script>
+
+        <!-- Vector Map -->
+        <script type="text/javascript" src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+        <script type="text/javascript" src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+        <!-- Calendar -->
+        <script type="text/javascript" src='plugins/moment/moment.min.js'></script>
+        <script type="text/javascript" src='plugins/jquery-ui/jquery-ui.custom.min.js'></script>
+        <script type="text/javascript" src='plugins/fullcalendar/fullcalendar.min.js'></script>
+
+        <!-- Intro JS (Tour) -->
+        <script type="text/javascript" src='plugins/introjs/js/intro.min.js'></script>
+
+        <!-- Sky Icons -->
+        <script type="text/javascript" src='plugins/skycons/skycons.js'></script>
+        
+
+
+        <!-- Include Date Range Picker -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+		
+        <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
+
+        <!-- Specific Page Scripts END -->
+
+
+
+
+        <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
+
+
+
+        <script>
+            account_now = '<%= email %>';
+			var start_ ='';
+			var end_ ='';
+			var data_ = '';
+			var group_ = '';
+			//alert(account_now);
+
+            function refresh_table(sd, ed , grp) {
+                //alert('refresh');
+				//alert(sd);
+				//alert(ed);
+				document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>MAC Address</th><th>จำนวนที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
+                $.ajax('http://byod.excise.go.th/report/report67151', {
+                    type: "get",
+                    data: {
+                        start: sd,
+                        end: ed,
+						group: grp
+                    },
+                    success: function(json) {
+                        //alert(JSON.stringify(json));
+                        data_res = JSON.parse(JSON.stringify(json));
+                        bindata_table(data_res);
+                    }
+                });
+            }
+
+
+            function bindata_table(data_sql) {
+                //alert('bind');
+                //alert(data_sql);
+                data = [];
+                total = 0;
+                for (i = 0; i < data_sql.length; i++) {
+                    data_json = {};
+					
+                   
+
+                    //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
+                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[0] + "</td><td>" + data_sql[1] + "</td><td>" + data_sql[2] + "</td></tr>");
+                    total = total + data_sql[1];
+                    //alert(JSON.stringify(data_json));
+                    data.push(data_json);
+                    //alert(JSON.stringify(data));
+                    data_sql.splice(0, 3);
+                    i = -1;
+
+                }
+                //alert(JSON.stringify(data));
+                //c1(data);
+
+                $('#data-tables').dataTable();
+
+            }
+
+            function datepick() {
+				moment.locale('th');
+                function e(e, a, r) {
+                    
+                    //alert(e.format("Y-M-D"));
+                    //alert(a.format("Y-M-D"));
+					
+					if (group_ == '') {
+						$('#data-tables').dataTable();
+					} else {
+						refresh_table(e.format("Y-M-D"), a.format("Y-M-D"),group_);
+					}
+                    
+					start_ = e.format("Y-M-D");
+					end_ = a.format("Y-M-D");
+
+
+                    var o = "",
+                        l = "";
+                    a - e < 100 ? (o = "วันนี้:", l = e.format("MMM D")) : "เมื่อวาน" == r ? (o = "เมื่อวาน:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
+                        t.find(".m-subheader__daterange-date").html(l),
+                        t.find(".m-subheader__daterange-title").html(o)
+                }
+                if (0 != $("#daterangepicker").length) {
+                    var t = $("#daterangepicker"),
+                        a = moment(),
+                        r = moment();
+                    t.daterangepicker({
+                            startDate: a,
+                            endDate: r,
+                            opens: "left",
+							showCustomRangeLabel: false,
+							alwaysShowCalendars: true,
+                            ranges: {
+                                "รายงานของวันนี้": [moment(), moment()],
+                                //Yesterday: [moment().subtract(1, "days"), moment().subtract(1, "days")],
+                                "รายงาน 7 วันล่าสุด": [moment().subtract(6, "days"), moment()],
+                                "รายงาน 30 วันล่าสุด": [moment().subtract(29, "days"), moment()],
+                                "รายงานของเดือนนี้": [moment().startOf("month"), moment().endOf("month")],
+                                "รายงานของปีนี้": [moment().startOf("year"), moment().endOf("year")]
+                                    //"Last Month": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
+                            }
+                        }, e),
+                        e(a, r, "")
+                }
+            }
+			
+			function list_group(){
+				$.ajax('http://byod.excise.go.th/api/getgroupname', {
+                    type: "get",
+                    success: function(json) {
+                        //alert(JSON.stringify(json));
+						var select = document.getElementById("listgroup");
+						data_res = JSON.parse(JSON.stringify(json));
+						for (i = 0; i < data_res.length; i++) {
+							var option = document.createElement("option");
+							if(data_res[i]=='People'){
+								option.text = 'Officer';
+							}
+							else{
+								option.text = data_res[i];
+							}
+							
+							option.value = data_res[i];
+							var select = document.getElementById("listgroup");
+							select.appendChild(option);
+							data_res.splice(0, 1);
+							i = -1;
+
+						}
+                    }
+                });
+			}
+			
+			function selectgroup(group_name){
+				$("#listgroup option[value='blank']").remove();
+				group_ = group_name;
+				refresh_table(start_,end_,group_);
+				
+			}
+			
+			function printpdf(){
+				location.href = 'http://byod.excise.go.th/api/v1/pdf/267151/'+start_+'/'+end_+'/'+group_+'/'+'0'+'/'+'0';
+			}
+
+			list_group();
+            datepick();
+			
+        </script>
+
+</body>
+
+</html>

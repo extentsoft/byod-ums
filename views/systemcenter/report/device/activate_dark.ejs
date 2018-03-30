@@ -99,7 +99,7 @@
 
 </head>
 
-<body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">    <div class="vd_body">
+<body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">    <div class="vd_body">    <div class="vd_body">
         <%- include('../../admin/partial_dark/header'); %>
 
             <!-- Content start -->
@@ -297,7 +297,7 @@
 
         <!-- Sky Icons -->
         <script type="text/javascript" src='plugins/skycons/skycons.js'></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        
 
 
         <!-- Include Date Range Picker -->
@@ -382,6 +382,7 @@
             }
 
             function datepick() {
+				moment.locale('th');
                 function e(e, a, r) {
                     
                     //alert(e.format("Y-M-D"));
@@ -399,7 +400,7 @@
 
                     var o = "",
                         l = "";
-                    a - e < 100 ? (o = "Today:", l = e.format("MMM D")) : "Yesterday" == r ? (o = "Yesterday:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
+                    a - e < 100 ? (o = "วันนี้:", l = e.format("MMM D")) : "เมื่อวาน" == r ? (o = "เมื่อวาน:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
                         t.find(".m-subheader__daterange-date").html(l),
                         t.find(".m-subheader__daterange-title").html(o)
                 }
@@ -411,13 +412,15 @@
                             startDate: a,
                             endDate: r,
                             opens: "left",
+							showCustomRangeLabel: false,
+							alwaysShowCalendars: true,
                             ranges: {
-                                Today: [moment(), moment()],
+                                "รายงานของวันนี้": [moment(), moment()],
                                 //Yesterday: [moment().subtract(1, "days"), moment().subtract(1, "days")],
-                                "Last 7 Days": [moment().subtract(6, "days"), moment()],
-                                "Last 30 Days": [moment().subtract(29, "days"), moment()],
-                                "This Month": [moment().startOf("month"), moment().endOf("month")],
-                                "This Year": [moment().startOf("year"), moment().endOf("year")]
+                                "รายงาน 7 วันล่าสุด": [moment().subtract(6, "days"), moment()],
+                                "รายงาน 30 วันล่าสุด": [moment().subtract(29, "days"), moment()],
+                                "รายงานของเดือนนี้": [moment().startOf("month"), moment().endOf("month")],
+                                "รายงานของปีนี้": [moment().startOf("year"), moment().endOf("year")]
                                     //"Last Month": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
                             }
                         }, e),
