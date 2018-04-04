@@ -321,6 +321,8 @@
 
         <script>
             account_now = '<%= email %>';
+			var start_ ='';
+			var end_ ='';
 			//alert(account_now);
 
             function refresh_table(sd, ed) {
@@ -373,7 +375,8 @@
                     //alert(e.format("Y-M-D"));
                     //alert(a.format("Y-M-D"));
 
-
+					start_ = e.format("Y-M-D");
+					end_ = a.format("Y-M-D");
                     var o = "",
                         l = "";
                     a - e < 100 ? (o = "วันนี้:", l = e.format("MMM D")) : "เมื่อวาน" == r ? (o = "เมื่อวาน:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),

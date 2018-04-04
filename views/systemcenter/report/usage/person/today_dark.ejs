@@ -325,7 +325,7 @@
             account_now = '<%= email %>';
 			var start_ ='';
 			var end_ ='';
-			var data_ = '';
+			var data_ = '0';
 			//alert(account_now);
 
             function refresh_table(sd, ed, data) {
@@ -389,6 +389,7 @@
 					//alert(data_);
 					
 					if (data_ == '') {
+						data_ = '0';
 						$('#data-tables').dataTable();
 					} else {
 						refresh_table(e.format("Y-M-D"), a.format("Y-M-D"),data_);
@@ -442,6 +443,7 @@
 				data_ = filter;
                 //alert(filter);
                 if (filter == '') {
+					data_ = '0';
                     $('#data-tables').dataTable();
                 } else {
                     refresh_table(start_,end_,filter);

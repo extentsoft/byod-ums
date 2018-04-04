@@ -324,7 +324,7 @@
             account_now = '<%= email %>';
 			var start_ ='';
 			var end_ ='';
-			var data_ = '';
+			var data_ = '0';
 			//alert(account_now);
 
             function refresh_table(sd, ed, data) {
@@ -383,7 +383,12 @@
 					data_ = filter;
 					//alert(data_);
 					
-					refresh_table(e.format("Y-M-D"), a.format("Y-M-D"),data_);
+					if (data_ == '') {
+						data_ = '0';
+						$('#data-tables').dataTable();
+					} else {
+						refresh_table(e.format("Y-M-D"), a.format("Y-M-D"),data_);
+					}
 					
                     
 					start_ = e.format("Y-M-D");
@@ -433,7 +438,12 @@
                 filter = input.value.toUpperCase();
 				data_ = filter;
                 //alert(filter);
-                refresh_table(start_,end_,filter);
+                if (filter == '') {
+					data_ = '0';
+                    $('#data-tables').dataTable();
+                } else {
+                    refresh_table(start_,end_,filter);
+                }
                 
 
             }
