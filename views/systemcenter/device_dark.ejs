@@ -189,7 +189,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-4 control-label">MAC Address</label>
                                                     <div class="col-sm-7 controls">
-                                                        <input id="term_mac" type="text" placeholder="AA-22-FF-FF-11-FC" class="input-border-btm" onkeyup="mac_validate();">
+                                                        <input id="term_mac" type="text" placeholder="AA-22-FF-FF-11-FC" class="input-border-btm" onpaste="pasted_validate();" onkeyup="mac_validate();" onfocusout="mac_validate();">
                                                         <span class="help-inline">ค่าที่ใช้อ้างอิงที่อยู่กายภาพของการ์ดแลนด์ไร้สาย เช่น    AA-22-FF-FF-11-FC </span>
                                                     </div>
                                                 </div>
@@ -862,6 +862,20 @@
 				
 
 				//alert('a');
+			}
+			
+			function pasted_validate() {
+				setTimeout(function(){
+					var mac_ = document.getElementById('term_mac').value;
+					//alert(mac_);
+					var reg = /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/;
+					if(reg.test(mac_)){
+						document.getElementById('sbm-btn').disabled = false;
+					}
+					else{
+						document.getElementById('sbm-btn').disabled = true;
+					}
+				}, 100); //or 4
 			}
 			
 			function changevent(status){
