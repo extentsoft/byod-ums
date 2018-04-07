@@ -142,6 +142,18 @@ const reportDictionary = {
         title: "รายงานสถิติการเพิกถอนอุปกรณ์ แบ่งตาม กลุ่มผู้ใช้งาน",
         filename: "report"
     },
+	"2686": {
+        stmt: "SELECT [userName] 'User' ,count(*) FROM [AgileControllerDB].[dbo].[UMS_ActivityLog] a  join [AgileControllerDB].[dbo].[TSM_E_Account] b on a.userId = b.account join [AgileControllerDB].[dbo].[TSM_E_Organization] d on b.orgID = d.orgID where detail = 'EditProfile' and CONVERT (date, created_at) between '?1' and '?2' and [userName] like '%?3%' group by [userName],[detail]",
+        header: "ชื่อผู้ใช้งาน,จำนวนครั้งที่ปรับปรุงข้อมูลส่วนตัว",
+        title: "รายงานสถิติการปรับปรุงข้อมูล แบ่งตาม ชื่อผู้ใช้งาน",
+        filename: "report"
+    },
+	"2687": {
+        stmt: "SELECT [orgName] 'group',count(*) FROM [AgileControllerDB].[dbo].[UMS_ActivityLog] a  join [AgileControllerDB].[dbo].[TSM_E_Account] b on a.userId = b.account join [AgileControllerDB].[dbo].[TSM_E_Organization] d on b.orgID = d.orgID where detail = 'EditProfile' and CONVERT (date, created_at) between '?1' and '?2' and [orgName] = '?3' group by [orgName],[detail]",
+        header: "กลุ่มผู้ใช้งาน,จำนวนครั้งที่ปรับปรุงข้อมูลส่วนตัว",
+        title: "รายงานสถิติการปรับปรุงข้อมูล แบ่งตาม กลุ่มผู้ใช้งาน",
+        filename: "report"
+    },
 	"2688": {
         stmt: "SELECT userName 'User', terminalMac MAC,[os_name] OS,case when (select name from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusServerIp) is not null then (select name from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusServerIp)  else  '' end, count(*) FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where sessionID != '' and CONVERT (date, timestamp) between '?1' and '?2' and [os_name] = 'iOS' group by [os_name],userName, terminalMac,radiusServerIp",
         header: "เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,พื้นที่,จำนวนครั้งที่เข้าใช้งาน",
@@ -292,11 +304,19 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5', function(req, res, nex
         } else if (req.params.report == "2683") {
             stmt = stmt.replace("?1", req.params.cond1);
             stmt = stmt.replace("?2", req.params.cond2);
-        }else if (req.params.report == "2684") {
+        } else if (req.params.report == "2684") {
             stmt = stmt.replace("?1", req.params.cond1);
             stmt = stmt.replace("?2", req.params.cond2);
 			stmt = stmt.replace("?3", req.params.cond3);
-        }else if (req.params.report == "2685") {
+        } else if (req.params.report == "2685") {
+            stmt = stmt.replace("?1", req.params.cond1);
+            stmt = stmt.replace("?2", req.params.cond2);
+			stmt = stmt.replace("?3", req.params.cond3);
+        } else if (req.params.report == "2686") {
+            stmt = stmt.replace("?1", req.params.cond1);
+            stmt = stmt.replace("?2", req.params.cond2);
+			stmt = stmt.replace("?3", req.params.cond3);
+        } else if (req.params.report == "2687") {
             stmt = stmt.replace("?1", req.params.cond1);
             stmt = stmt.replace("?2", req.params.cond2);
 			stmt = stmt.replace("?3", req.params.cond3);

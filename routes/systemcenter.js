@@ -940,6 +940,31 @@ module.exports = function(app, passport) {
             });
         }
     });
+	
+	app.get('/systemcenter/report/usage/level', isLoggedIn, isSupported, function(req, res) {
+        //res.send("/systemcenter/report/device/activate");
+        if (req.session.user.pref_theme == 0) {
+            res.render('systemcenter/report/usage/level', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        } else {
+            res.render('systemcenter/report/usage/level_dark', {
+                title: 'Report',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        }
+    });
 
     app.get('/systemcenter/report/usage/activity', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");

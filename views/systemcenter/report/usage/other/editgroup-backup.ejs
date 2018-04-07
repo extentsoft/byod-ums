@@ -99,14 +99,15 @@
 
 </head>
 
-<body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">    <div class="vd_body">
-        <%- include('../../../admin/partial_dark/header'); %>
+<body id="dashboard" class="full-layout  nav-right-hide nav-right-start-hide  nav-top-fixed      responsive    clearfix" data-active="dashboard " data-smooth-scrolling="1">
+    <div class="vd_body">
+        <%- include('../../../admin/partial/header'); %>
 
             <!-- Content start -->
 
             <div class="content">
                 <div class="container">
-                    <%- include('../../../admin/partial_dark/menu'); %>
+                    <%- include('../../../admin/partial/menu'); %>
 
 
                 </div>
@@ -121,7 +122,7 @@
 
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
-                                    <h1>รายงานสถิติการลงทะเบียนอุปกรณ์ แบ่งตาม กลุ่มผู้ใช้งาน</h1>
+                                    <h1>รายงานสถิติการปรับปรุงข้อมูล แบ่งตาม กลุ่มผู้ใช้งาน</h1>
 									
 
                                     <div class="vd_panel-menu  ">
@@ -175,9 +176,8 @@
                                             <table class="table table-striped" id="data-tables">
                                                 <thead>
                                                     <tr>													
-														<th>เจ้าของอุปกรณ์</th>
 														<th>กลุ่มผู้ใช้งาน</th>
-                                                        <th>จำนวนครั้งที่ลงทะเบียน</th>
+                                                        <th>จำนวนครั้งที่ปรับปรุงข้อมูลส่วนตัว</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -215,7 +215,7 @@
     </div>
     <!-- .content -->
 
-    <%- include('../../../admin/partial_dark/footer'); %>
+    <%- include('../../../admin/partial/footer'); %>
 
 
 
@@ -318,15 +318,15 @@
 			var start_ ='';
 			var end_ ='';
 			var data_ = '';
-			var group_ = '0';
+			var group_ = '';
 			//alert(account_now);
 
             function refresh_table(sd, ed , grp) {
                 //alert('refresh');
 				//alert(sd);
 				//alert(ed);
-				document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>กลุ่มผู้ใช้งาน</th><th>จำนวนครั้งที่ลงทะเบียน</th></tr></thead><tbody></tbody></table>';
-                $.ajax('http://byod.excise.go.th/report/report684', {
+				document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>MAC</th><th>กลุ่มผู้ใช้งาน</th><th>วันที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
+                $.ajax('http://byod.excise.go.th/report/report672', {
                     type: "get",
                     data: {
                         start: sd,
@@ -356,10 +356,11 @@
 					else{
 						grp_ = data_sql[2];
 					}
-                   
+                    update_time = new Date(data_sql[3]);
+                    date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getUTCMonth()+1) + "/" + update_time.getFullYear();
 
                     //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
-                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[0] + "</td><td>" + grp_ + "</td><td>" + data_sql[3] + "</td></tr>");
+                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[0] + "</td><td>" + data_sql[1] + "</td><td>" + grp_ + "</td><td>" + date_str + "</td></tr>");
                     total = total + data_sql[1];
                     //alert(JSON.stringify(data_json));
                     data.push(data_json);
@@ -376,7 +377,6 @@
             }
 
             function datepick() {
-				moment.locale('th');
                 function e(e, a, r) {
                     
                     //alert(e.format("Y-M-D"));
@@ -385,7 +385,7 @@
 					if (group_ == '') {
 						$('#data-tables').dataTable();
 					} else {
-						refresh_table(e.format("Y-M-D"), a.format("Y-M-D"),group_);
+						//refresh_table(e.format("Y-M-D"), a.format("Y-M-D"),group_);
 					}
                     
 					start_ = e.format("Y-M-D");
@@ -394,7 +394,7 @@
 
                     var o = "",
                         l = "";
-                    a - e < 100 ? (o = "วันนี้:", l = e.format("MMM D")) : "เมื่อวาน" == r ? (o = "เมื่อวาน:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
+                    a - e < 100 ? (o = "Today:", l = e.format("MMM D")) : "Yesterday" == r ? (o = "Yesterday:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
                         t.find(".m-subheader__daterange-date").html(l),
                         t.find(".m-subheader__daterange-title").html(o)
                 }
@@ -406,15 +406,13 @@
                             startDate: a,
                             endDate: r,
                             opens: "left",
-							showCustomRangeLabel: false,
-							alwaysShowCalendars: true,
                             ranges: {
-                                "รายงานของวันนี้": [moment(), moment()],
+                                Today: [moment(), moment()],
                                 //Yesterday: [moment().subtract(1, "days"), moment().subtract(1, "days")],
-                                "รายงาน 7 วันล่าสุด": [moment().subtract(6, "days"), moment()],
-                                "รายงาน 30 วันล่าสุด": [moment().subtract(29, "days"), moment()],
-                                "รายงานของเดือนนี้": [moment().startOf("month"), moment().endOf("month")],
-                                "รายงานของปีนี้": [moment().startOf("year"), moment().endOf("year")]
+                                "Last 7 Days": [moment().subtract(6, "days"), moment()],
+                                "Last 30 Days": [moment().subtract(29, "days"), moment()],
+                                "This Month": [moment().startOf("month"), moment().endOf("month")],
+                                "This Year": [moment().startOf("year"), moment().endOf("year")]
                                     //"Last Month": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
                             }
                         }, e),
@@ -452,12 +450,7 @@
 			function selectgroup(group_name){
 				$("#listgroup option[value='blank']").remove();
 				group_ = group_name;
-				refresh_table(start_,end_,group_);
-				
-			}
-			
-			function printpdf(){
-				location.href = 'http://byod.excise.go.th/api/v1/pdf/2684/'+start_+'/'+end_+'/'+group_+'/'+'0'+'/'+'0';
+				//refresh_table(start_,end_,group_);
 				
 			}
 
