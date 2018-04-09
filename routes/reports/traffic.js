@@ -14,7 +14,7 @@ var deviceList = function(req,res,next){
     console.log('Connection successful');
 
     //var request = new Request('select * from [test].[dbo].t1', function(err, rowCount){
-    var request = new Request("SELECT DATEPART(hh,timestamp) h,count(*) n FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a where CONVERT (date, timestamp) = CONVERT (date, current_timestamp) group by DATEPART(hh,timestamp)", function(err, rowCount){
+    var request = new Request("SELECT DATEPART(hh,timestamp) h,count(*) n FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a where CONVERT (date, timestamp) = CONVERT (date, current_timestamp) and [sessionID]!= '' group by DATEPART(hh,timestamp)", function(err, rowCount){
 
       if(err){
         console.error(err);
