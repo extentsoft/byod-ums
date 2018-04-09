@@ -14,7 +14,7 @@ var crypt = new Crypt();
 module.exports = function(app, passport) {
 
 
-    app.get('/systemcenter/api', function(req, res) {
+    app.get('/api', function(req, res) {
         //var url = 'http://www.webservicex.net/length.asmx?wsdl';
         var url = 'http://192.168.163.25:8088/secoWS/service/NewAccountManagerServices?wsdl';
 
@@ -64,18 +64,18 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/systemcenter/', function(req, res) {
-        res.redirect('/systemcenter/dashboard');
+    app.get('/', function(req, res) {
+        res.redirect('/dashboard');
     });
 
 
     /* ================================================================
                               Admin Section
     =================================================================== */
-    app.get('/systemcenter/dashboard', isLoggedIn, isSupported, function(req, res) {
+    app.get('/dashboard', isLoggedIn, isSupported, function(req, res) {
         console.log('1 - ' + JSON.stringify(req.session.user));
 
-        if (!req.session.authorized) res.redirect('/systemcenter/profile');
+        if (!req.session.authorized) res.redirect('/profile');
 
         console.log(' Your browsing with ', req.session.user.browser, req.session.user.bversion);
         console.log(' is admin ' + req.session.authorized);
@@ -84,7 +84,6 @@ module.exports = function(app, passport) {
 
             res.render('systemcenter/admin/dashboard', {
                 title: 'แผงควบคุมหลัก',
-                path: 'systemcenter/',
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
@@ -97,7 +96,6 @@ module.exports = function(app, passport) {
         } else {
             res.render('systemcenter/admin/dashboard_dark', {
                 title: 'แผงควบคุมหลัก',
-                path: 'systemcenter/',
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
@@ -114,7 +112,7 @@ module.exports = function(app, passport) {
 
 
 
-    app.get('/systemcenter/configuration', isLoggedIn, isSupported, function(req, res) {
+    app.get('/configuration', isLoggedIn, isSupported, function(req, res) {
 
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/admin/configuration', {
@@ -147,7 +145,7 @@ module.exports = function(app, passport) {
     /* ================================================================
                               User Section
     =================================================================== */
-    app.get('/systemcenter/device', isLoggedIn, isSupported, function(req, res) {
+    app.get('/device', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
 
         if (req.session.user.pref_theme == 0) {
@@ -174,7 +172,7 @@ module.exports = function(app, passport) {
 
     });
 
-    app.get('/systemcenter/history', isLoggedIn, isSupported, function(req, res) {
+    app.get('/history', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
 
         if (req.session.user.pref_theme == 0) {
@@ -201,7 +199,7 @@ module.exports = function(app, passport) {
 
     });
 
-    app.get('/systemcenter/setting', isLoggedIn, isSupported, function(req, res) {
+    app.get('/setting', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/setting");
         console.log('theme - ' + req.session.user.pref_theme);
 
@@ -236,7 +234,7 @@ module.exports = function(app, passport) {
 
     //////////////////// TZ /////////////////////////////////////
 
-    app.get('/systemcenter/profile', isLoggedIn, isSupported, function(req, res) {
+    app.get('/profile', isLoggedIn, isSupported, function(req, res) {
 
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/profile', {
@@ -276,7 +274,7 @@ module.exports = function(app, passport) {
     /* ================================================================
                             Report Section
     =================================================================== */
-    app.get('/systemcenter/report/device/activate', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/device/activate', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/device/activate', {
@@ -309,7 +307,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/device/deactivate/today', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/device/deactivate/today', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/device/deactivate/today', {
@@ -342,7 +340,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/device/deactivate/week', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/device/deactivate/week', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/device/deactivate/week', {
@@ -375,7 +373,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/device/deactivate/month', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/device/deactivate/month', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/device/deactivate/month', {
@@ -408,7 +406,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/device/deactivate/year', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/device/deactivate/year', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/device/deactivate/year', {
@@ -442,7 +440,7 @@ module.exports = function(app, passport) {
     });
 
 
-    app.get('/systemcenter/report/usage/person/today', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/usage/person/today', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/person/today', {
@@ -475,7 +473,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/person/week', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/usage/person/week', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/person/week', {
@@ -508,7 +506,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/person/month', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/usage/person/month', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/person/month', {
@@ -541,7 +539,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/person/year', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/usage/person/year', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/person/year', {
@@ -575,7 +573,7 @@ module.exports = function(app, passport) {
     });
 
 
-    app.get('/systemcenter/report/usage/group/today', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/usage/group/today', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/group/today', {
@@ -608,7 +606,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/group/group', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/group/group', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/group/group', {
@@ -641,7 +639,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/group/week', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/usage/group/week', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/group/week', {
@@ -675,7 +673,7 @@ module.exports = function(app, passport) {
 
     });
 
-    app.get('/systemcenter/report/usage/group/month', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/usage/group/month', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/group/month', {
@@ -708,7 +706,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/group/year', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/usage/group/year', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/group/year', {
@@ -741,7 +739,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/site/today', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/usage/site/today', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/site/today', {
@@ -766,7 +764,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/site/traffic', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/site/traffic', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/site/traffic', {
@@ -791,7 +789,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/site/amount', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/usage/site/amount', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/site/amount', {
@@ -816,7 +814,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/site/site', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/site/site', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/site/site', {
@@ -841,7 +839,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/site/area', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/usage/site/area', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/site/area', {
@@ -866,7 +864,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/type', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/usage/type', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/type', {
@@ -891,7 +889,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/browser', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/usage/browser', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/browser', {
@@ -916,7 +914,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/site', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/site', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/site', {
@@ -941,7 +939,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/level', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/level', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/level', {
@@ -966,7 +964,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/activity', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/usage/activity', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/activity', {
@@ -991,7 +989,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/os', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/usage/os', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/os', {
@@ -1016,7 +1014,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/device', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/device', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/device', {
@@ -1041,7 +1039,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/usage/time', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/usage/time', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/time', {
@@ -1066,7 +1064,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/other/user', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/other/user', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/other/user', {
@@ -1091,7 +1089,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/other/mac', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/other/mac', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/other/mac', {
@@ -1116,7 +1114,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/other/devicemon', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/other/devicemon', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/other/devicemon', {
@@ -1141,7 +1139,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/other/activate', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/other/activate', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/other/activate', {
@@ -1166,7 +1164,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/other/deactivate', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/other/deactivate', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/other/deactivate', {
@@ -1191,7 +1189,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/other/edituser', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/other/edituser', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/other/edituser', {
@@ -1216,7 +1214,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/other/editgroup', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/other/editgroup', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/other/editgroup', {
@@ -1241,7 +1239,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/other/statios', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/other/statios', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/other/statios', {
@@ -1266,7 +1264,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/other/statandroid', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/other/statandroid', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/other/statandroid', {
@@ -1291,7 +1289,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/other/statlinux', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/other/statlinux', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/other/statlinux', {
@@ -1316,7 +1314,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/other/statwindows', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/other/statwindows', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/other/statwindows', {
@@ -1341,7 +1339,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/other/statunknownos', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/other/statunknownos', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/other/statunknownos', {
@@ -1366,7 +1364,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/other/statunknowntype', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/other/statunknowntype', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/other/statunknowntype', {
@@ -1391,7 +1389,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/other/statmobile', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/other/statmobile', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/other/statmobile', {
@@ -1416,7 +1414,7 @@ module.exports = function(app, passport) {
         }
     });
 	
-	app.get('/systemcenter/report/usage/other/statcomputer', isLoggedIn, isSupported, function(req, res) {
+	app.get('/report/usage/other/statcomputer', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/usage/other/statcomputer', {
@@ -1441,7 +1439,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/monitor/device/addmonitor', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/monitor/device/addmonitor', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/monitor/device/addmonitor', {
@@ -1474,7 +1472,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/monitor/device/listmonitor', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/monitor/device/listmonitor', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/monitor/device/listmonitor', {
@@ -1507,7 +1505,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/monitor/device/reportmonitor', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/monitor/device/reportmonitor', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/report/device/activate");
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/monitor/device/reportmonitor', {
@@ -1545,7 +1543,7 @@ module.exports = function(app, passport) {
     //////////////////// TZ /////////////////////////////////////
 
 
-    app.get('/systemcenter/report/policy/usage', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/policy/usage', isLoggedIn, isSupported, function(req, res) {
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/policy/usage', {
                 title: 'Report',
@@ -1576,7 +1574,7 @@ module.exports = function(app, passport) {
             });
         }
     });
-    app.get('/systemcenter/report/policy/device', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/policy/device', isLoggedIn, isSupported, function(req, res) {
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/policy/device', {
                 title: 'Report',
@@ -1608,7 +1606,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    app.get('/systemcenter/report/policy/violation', isLoggedIn, isSupported, function(req, res) {
+    app.get('/report/policy/violation', isLoggedIn, isSupported, function(req, res) {
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/report/policy/violation', {
                 title: 'Report',
@@ -1648,7 +1646,7 @@ module.exports = function(app, passport) {
 
 
     // Authentication
-    app.get('/systemcenter/login', checkSupported, function(req, res) {
+    app.get('/login', checkSupported, function(req, res) {
         console.log('logging in');
         console.log();
         console.log(req.session.user);
@@ -1750,7 +1748,7 @@ module.exports = function(app, passport) {
                 console.log('Authentication Failure');
                 req.session.authenticated = false;
                 req.session.authorized = false;
-                res.redirect('/systemcenter/login');
+                res.redirect('/login');
             } else {
                 console.log('Authentication Success');
                 console.log(user.email);
@@ -1800,19 +1798,19 @@ module.exports = function(app, passport) {
                                         req.session.user.pref_theme = parsed_body[0];
                                         req.session.user.pref_notification = parsed_body[1];
 
-                                        res.redirect('/systemcenter/dashboard');
+                                        res.redirect('/dashboard');
                                     } else {
                                         console.log('Profiling Failure');
                                         req.session.authenticated = false;
                                         req.session.authorized = false;
-                                        res.redirect('/systemcenter/login');
+                                        res.redirect('/login');
                                     }
                                 } else {
 
                                     console.log('Profiling Failure');
                                     req.session.authenticated = false;
                                     req.session.authorized = false;
-                                    res.redirect('/systemcenter/login');
+                                    res.redirect('/login');
                                 }
 
                             });
@@ -1821,7 +1819,7 @@ module.exports = function(app, passport) {
                             console.log('Authorizing Failure');
                             req.session.authenticated = false;
                             req.session.authorized = false;
-                            res.redirect('/systemcenter/login');
+                            res.redirect('/login');
                         }
 
                     } else {
@@ -1829,7 +1827,7 @@ module.exports = function(app, passport) {
                         console.log('Authorizing Failure');
                         req.session.authenticated = false;
                         req.session.authorized = false;
-                        res.redirect('/systemcenter/login');
+                        res.redirect('/login');
                     }
                 })
 
@@ -1843,12 +1841,12 @@ module.exports = function(app, passport) {
 
 
 
-    app.get('/systemcenter/logout', function(req, res) {
+    app.get('/logout', function(req, res) {
         delete req.session.authenticated;
         delete req.session.authorized;
         delete req.session.user;
 
-        res.redirect('/systemcenter/login');
+        res.redirect('/login');
     });
 
 };
@@ -1860,7 +1858,7 @@ function isLoggedIn(req, res, next) {
     console.log(req.session.authorized);
 
     if (req.session.authenticated) next();
-    else res.redirect('/systemcenter/login');
+    else res.redirect('/login');
 
 }
 
@@ -1968,7 +1966,7 @@ function isSupported(req, res, next) {
                     delete req.session.authorized;
                     delete req.session.user;
 
-                    res.redirect('/systemcenter/login');
+                    res.redirect('/login');
                 }*/
 
 

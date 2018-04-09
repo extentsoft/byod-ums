@@ -13,7 +13,7 @@
             <ul>
                 <% if(isauthorized){ %>
                     <li>
-                        <a href="/systemcenter/dashboard">
+                        <a href="/dashboard">
                             <span class="menu-icon"><i class="fa fa-dashboard"></i></span>
                             <span class="menu-text">แผงควบคุมหลัก</span>
 
@@ -25,7 +25,7 @@
                     </li>
                     <%}%>
                         <li>
-                            <a href="/systemcenter/profile">
+                            <a href="/profile">
                                 <span class="menu-icon"><i class="fa fa-user"></i></span>
                                 <span class="menu-text">ข้อมูลส่วนบุคคล</span>
                                 <!--<span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>-->
@@ -33,21 +33,21 @@
 
                         </li>
                         <li>
-                            <a href="/systemcenter/device">
+                            <a href="/device">
                                 <span class="menu-icon"><i class="fa fa-tablet"></i></span>
                                 <span class="menu-text">ลงทะเบียนอุปกรณ์</span>
                                 <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
                             </a>
                         </li>
                         <li>
-                            <a href="/systemcenter/history">
+                            <a href="/history">
                                 <span class="menu-icon"><i class="fa fa-history"></i></span>
                                 <span class="menu-text">ประวัติการเข้าใช้งาน</span>
                                 <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
                             </a>
                         </li>
                         <li>
-                            <a href="/systemcenter/setting">
+                            <a href="/setting">
                                 <span class="menu-icon"><i class="fa fa-gear"></i></span>
                                 <span class="menu-text">ปรับแต่งการใช้งาน</span>
                                 <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
@@ -55,7 +55,7 @@
                         </li>
                         <% if(isauthorized){ %>
                             <li>
-                                <a href="/systemcenter/configuration">
+                                <a href="/configuration">
                                     <span class="menu-icon"><i class="icon-tools"> </i></span>
                                     <span class="menu-text">ตั้งค่าระบบ</span>
                                     <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
@@ -70,74 +70,74 @@
                                 <div class="child-menu" data-action="click-target">
                                     <ul>
                                         <li>
-                                            <a href="/systemcenter/report/device/activate">
+                                            <a href="/report/device/activate">
                                                 <span class="menu-text">รายงานการลงทะเบียนอุปกรณ์</span>
                                             </a>
                                         </li>
 										<li>
-                                            <a href="/systemcenter/report/usage/site/today" data-action="click-trigger">
+                                            <a href="/report/usage/site/today" data-action="click-trigger">
                                                 <span class="menu-text">รายงานการใช้งาน</span>
                                                 <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
                                             </a>
                                             <div class="child-menu" data-action="click-target">
                                                 <ul>
 													<li>
-														<a href="/systemcenter/report/usage/group/today">
+														<a href="/report/usage/group/today">
 															<span class="menu-text">รายงานการใช้งานของแต่ละกลุ่ม</span>
 														</a>                                            
 													</li>
 													<li>
-														<a href="/systemcenter/report/device/deactivate/today">
+														<a href="/report/device/deactivate/today">
 															<span class="menu-text">รายงานการยกเลิกอุปกรณ์</span>                                                
 														</a>                                            
 													</li>
 													<li>
-														<a href="/systemcenter/report/policy/usage">
+														<a href="/report/policy/usage">
 															<span class="menu-text">รายงานการใช้งานที่ไม่เป็นไปตามกฏ</span>
 														</a>
 													</li>
 													<li>
-														<a href="/systemcenter/report/usage/site/area">
+														<a href="/report/usage/site/area">
 															<span class="menu-text">รายงานการใช้งานจำแนกตามพื้นที่</span>
 														</a>
 													</li>
 													<li>
-														<a href="/systemcenter/report/usage/group/group">
+														<a href="/report/usage/group/group">
 															<span class="menu-text">รายงานการใช้งานจําแนกตามกลุ่ม</span>
 														</a>
 													</li>
 													<li>
-														<a href="/systemcenter/report/usage/person/today">
+														<a href="/report/usage/person/today">
 															<span class="menu-text">รายงานการใช้งานระบุบุคคล</span>
 														</a>                                            
 													</li>
 													<li>
-														<a href="/systemcenter/report/usage/type">
+														<a href="/report/usage/type">
 															<span class="menu-text">รายงานการใช้จำแนกตามประเภทอุปกรณ์</span>
 														</a>
 													</li>
 													<li>
-														<a href="/systemcenter/report/usage/time">
+														<a href="/report/usage/time">
 															<span class="menu-text">รายงานการใช้จำแนกตามเวลา</span>
 														</a>
 													</li>
 													<li>
-														<a href="/systemcenter/report/usage/device">
+														<a href="/report/usage/device">
 															<span class="menu-text">รายงานการใช้งานจำแนกตามอุปกรณ์ผู้ใช้งาน</span>
 														</a>
 													</li>
 													<li>
-														<a href="/systemcenter/report/usage/os">
+														<a href="/report/usage/os">
 															<span class="menu-text">รายงานการใช้งานจำแนกตาม ระบบปฎิบัติการ</span>
 														</a>
 													</li>
 													<li>
-														<a href="/systemcenter/report/usage/site">
+														<a href="/report/usage/site">
 															<span class="menu-text">รายงานการใช้งานจำแนกตามสถานที่การใช้งาน</span>
 														</a>
 													</li>
 													<li>
-														<a href="/systemcenter/report/usage/level">
+														<a href="/report/usage/level">
 															<span class="menu-text">รายงานการใช้งานจำแนกตามระดับผู้ใช้งาน</span>
 														</a>
 													</li>
@@ -146,29 +146,29 @@
                                         </li>
 										
 										<li>
-                                            <a href="/systemcenter/report/policy/device">
+                                            <a href="/report/policy/device">
                                                 <span class="menu-text">รายงานบุคคลากรที่ลงทะเบียนครบตามจำนวนอุปกรณ์ที่อนุญาต</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/systemcenter/report/usage/site/today" data-action="click-trigger">
+                                            <a href="/report/usage/site/today" data-action="click-trigger">
                                                 <span class="menu-text">รายงานการใช้ทรัพยากรของระบบ</span>
                                                 <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
                                             </a>
                                             <div class="child-menu" data-action="click-target">
                                                 <ul>
                                                     <li>
-                                                        <a href="/systemcenter/report/usage/site/today">
+                                                        <a href="/report/usage/site/today">
                                                             <span class="menu-text">พื้นที่การใช้งาน</span>
                                                         </a>
                                                     </li>
 													<li>
-                                                        <a href="/systemcenter/report/usage/site/traffic">
+                                                        <a href="/report/usage/site/traffic">
                                                             <span class="menu-text">ปริมาณจราจรเครือข่ายของวันนี้</span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="/systemcenter/report/usage/site/amount">
+                                                        <a href="/report/usage/site/amount">
                                                             <span class="menu-text">จำนวนผู้ใช้งาน</span>
                                                         </a>
                                                     </li>
@@ -176,55 +176,55 @@
                                             </div>
                                         </li>                         
                                         <li>
-                                            <a href="/systemcenter/report/usage/browser">
+                                            <a href="/report/usage/browser">
                                                 <span class="menu-text">รายงานการใช้งาน Dashboard จำแนกตาม  Browser</span>
                                             </a>
                                         </li>
 										<li>
-                                            <a href="/systemcenter/report/usage/activity">
+                                            <a href="/report/usage/activity">
                                                 <span class="menu-text">รายงานการเปลี่ยนแปลงอุปกรณ์</span>
                                             </a>
                                         </li>
 										
 										<li>
-                                            <a href="/systemcenter/report/usage/other" data-action="click-trigger">
+                                            <a href="/report/usage/other" data-action="click-trigger">
                                                 <span class="menu-text">รายงานอื่นๆ</span>
                                                 <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
                                             </a>
                                             <div class="child-menu" data-action="click-target">
                                                 <ul>
                                                     <li>
-                                                        <a href="/systemcenter/report/usage/other/user">
+                                                        <a href="/report/usage/other/user">
                                                             <span class="menu-text">รายงานสถิติผู้ใช้งาน แบ่งตาม ชื่อผู้ใช้งาน</span>
                                                         </a>
                                                     </li>
 													<li>
-                                                        <a href="/systemcenter/report/usage/other/mac">
+                                                        <a href="/report/usage/other/mac">
                                                             <span class="menu-text">รายงานสถิติผู้ใช้งาน แบ่งตาม MAC Address</span>
                                                         </a>
                                                     </li>
 													<li>
-                                                        <a href="/systemcenter/report/usage/other/devicemon">
+                                                        <a href="/report/usage/other/devicemon">
                                                             <span class="menu-text">รายงานการเข้าใช้งานของอุปกรณ์ที่ถูกระบุไว้</span>
                                                         </a>
                                                     </li>
 													<li>
-                                                        <a href="/systemcenter/report/usage/other/activate">
+                                                        <a href="/report/usage/other/activate">
                                                             <span class="menu-text">รายงานสถิติการลงทะเบียนอุปกรณ์ แบ่งตาม กลุ่มผู้ใช้งาน</span>
                                                         </a>
                                                     </li>
 													<li>
-                                                        <a href="/systemcenter/report/usage/other/deactivate">
+                                                        <a href="/report/usage/other/deactivate">
                                                             <span class="menu-text">รายงานสถิติการเพิกถอนอุปกรณ์ แบ่งตาม กลุ่มผู้ใช้งาน</span>
                                                         </a>
                                                     </li>
 													<li>
-                                                        <a href="/systemcenter/report/usage/other/edituser">
+                                                        <a href="/report/usage/other/edituser">
                                                             <span class="menu-text">รายงานสถิติการปรับปรุงข้อมูล แบ่งตาม ชื่อผู้ใช้งาน</span>
                                                         </a>
                                                     </li>
 													<li>
-                                                        <a href="/systemcenter/report/usage/other/editgroup">
+                                                        <a href="/report/usage/other/editgroup">
                                                             <span class="menu-text">รายงานสถิติการปรับปรุงข้อมูล แบ่งตาม กลุ่มผู้ใช้งาน</span>
                                                         </a>
                                                     </li>
@@ -233,19 +233,19 @@
                                         </li>
 										
 										<li>
-                                            <a href="/systemcenter/report/monitor/device/addmonitor" data-action="click-trigger">
+                                            <a href="/report/monitor/device/addmonitor" data-action="click-trigger">
                                                 <span class="menu-text">กำหนดอุปกรณ์เพื่อตรวจสอบการเข้าใช้งาน</span>
                                                 <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
                                             </a>
                                             <div class="child-menu" data-action="click-target">
                                                 <ul>
                                                     <li>
-                                                        <a href="/systemcenter/report/monitor/device/addmonitor">
+                                                        <a href="/report/monitor/device/addmonitor">
                                                             <span class="menu-text">กำหนดอุปกรณ์เพื่อตรวจสอบการเข้าใช้งาน</span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="/systemcenter/report/monitor/device/listmonitor">
+                                                        <a href="/report/monitor/device/listmonitor">
                                                             <span class="menu-text">รายชื่ออุปกรณ์ที่ถูกตรวจสอบการเข้าใช้งาน</span>
                                                         </a>
                                                     </li>

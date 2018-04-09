@@ -279,7 +279,7 @@
 
 
 
-                account_now = 'natthawat_a';
+                account_now = $('#email').text().trim();
                 $("#chat-text").keyup(function(event) {
                     if (event.keyCode === 13) {
                         sendchat($('#chat-text').val());
@@ -345,7 +345,7 @@
                         } else {
                             $('#top-menu-3').hide();
                         }
-                        window.location.href = "http://byod.excise.go.th/systemcenter/setting";
+                        window.location.href = "http://byod.excise.go.th/setting";
                     },
                     error: function() {
                         //location.reload();

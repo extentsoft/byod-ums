@@ -11,14 +11,14 @@ var isAuthenticated = function(req,res,next){
   console.log(req);
   if( req.isAuthenticated())
     return next();
-  res.redirect('/profile/login');
+  res.redirect('/login');
 }
 ///////////////////////////////////////////////////////////////////////////
 router.get('/', isAuthenticated, function(req,res,next){
   res.render('profile/index', {title: 'Personal Profile'});
 });
 router.get('/login', (req, res) => {
-  res.render('profile/login', { user : req.user, error : req.flash('error')});
+  res.render('systemcenter/login', { user : req.user, error : req.flash('error')});
 });
 /*
 router.post('/login', passport.authenticate('login', {

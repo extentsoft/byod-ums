@@ -81,7 +81,7 @@ module.exports = function(app, passport){
   // LOGOUT ==============================
   app.get('/profile/logout', function(req, res){
     req.logout();
-    res.redirect('/profile/login');
+    res.redirect('/login');
   });
 
 
