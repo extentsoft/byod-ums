@@ -432,19 +432,23 @@
 						var select = document.getElementById("listgroup");
 						data_res = JSON.parse(JSON.stringify(json));
 						for (i = 0; i < data_res.length; i++) {
-							var option = document.createElement("option");
-							if(data_res[i]=='People'){
-								option.text = 'Officer';
+							if(data_res[i]=='Guest'){
 							}
 							else{
-								option.text = data_res[i];
+								var option = document.createElement("option");
+								if(data_res[i]=='People'){
+									option.text = 'Officer';
+								}
+								else{
+									option.text = data_res[i];
+								}
+								
+								option.value = data_res[i];
+								var select = document.getElementById("listgroup");
+								select.appendChild(option);
+								data_res.splice(0, 1);
+								i = -1;
 							}
-							
-							option.value = data_res[i];
-							var select = document.getElementById("listgroup");
-							select.appendChild(option);
-							data_res.splice(0, 1);
-							i = -1;
 
 						}
                     }

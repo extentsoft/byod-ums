@@ -186,6 +186,46 @@
                                             </a>
                                             <div class="child-menu" data-action="click-target">
                                                 <ul>
+													<li>
+                                                        <a href="#" onclick = "goto('statios')">
+                                                            <span class="menu-text">รายงานสถิติการใช้งานระบบปฏิบัติการ iOS</span>
+                                                        </a>
+                                                    </li>
+													<li>
+                                                        <a href="#" onclick = "goto('statandroid')">
+                                                            <span class="menu-text">รายงานสถิติการใช้งานระบบปฏิบัติการ Android</span>
+                                                        </a>
+                                                    </li>
+													<li>
+                                                        <a href="#" onclick = "goto('statlinux')">
+                                                            <span class="menu-text">รายงานสถิติการใช้งานระบบปฏิบัติการ Unix/Linux</span>
+                                                        </a>
+                                                    </li>
+													<li>
+                                                        <a href="#" onclick = "goto('statwindows')">
+                                                            <span class="menu-text">รายงานสถิติการใช้งานระบบปฏิบัติการ Windows</span>
+                                                        </a>
+                                                    </li>
+													<li>
+                                                        <a href="#" onclick = "goto('statunknownos')">
+                                                            <span class="menu-text">รายงานสถิติการใช้งานระบบปฏิบัติการที่ไม่สามารถระบุได้</span>
+                                                        </a>
+                                                    </li>
+													<li>
+                                                        <a href="#" onclick = "goto('statmobile')">
+                                                            <span class="menu-text">รายงานสถิติการใช้งานของอุปกรณ์ประเภท Mobile</span>
+                                                        </a>
+                                                    </li>
+													<li>
+                                                        <a href="#" onclick = "goto('statcomputer')">
+                                                            <span class="menu-text">รายงานสถิติการใช้งานของอุปกรณ์ประเภท Computer</span>
+                                                        </a>
+                                                    </li>
+													<li>
+                                                        <a href="#" onclick = "goto('statunknowntype')">
+                                                            <span class="menu-text">รายงานสถิติการใช้งานของอุปกรณ์ที่ไม่สามารถระบุประเภทได้</span>
+                                                        </a>
+                                                    </li>
                                                     <li>
                                                         <a href="/report/usage/other/user">
                                                             <span class="menu-text">รายงานสถิติผู้ใช้งาน แบ่งตาม ชื่อผู้ใช้งาน</span>
@@ -220,7 +260,7 @@
                                                         <a href="/report/usage/other/editgroup">
                                                             <span class="menu-text">รายงานสถิติการปรับปรุงข้อมูล แบ่งตาม กลุ่มผู้ใช้งาน</span>
                                                         </a>
-                                                    </li>
+                                                    </li>													
                                                 </ul>
                                             </div>
                                         </li>
@@ -255,6 +295,7 @@
             </div>
         </div>
     </div>
+	<script type="text/javascript" src='plugins/moment/moment.min.js'></script>
     <script>
         //alert($("#priv").html().trim().split(",")[2]);
         /*if ($("#priv").html().trim().split(",")[2] == 'false') {
@@ -266,4 +307,19 @@
         } else {
             //alert('b');
         }*/
+		
+		var sd_ = '';
+		var ed_ = '';
+		moment.locale('th');
+		e = moment(),
+		a = moment();
+		sd_ = e.format("Y-M-D");
+		ed_ = a.format("Y-M-D");
+		
+		//alert(sd_);
+		//alert(ed_);
+		
+		function goto(dest){
+			window.location = '/report/usage/other/'+dest+'?start='+sd_+'&&end='+ed_;			
+		}
     </script>

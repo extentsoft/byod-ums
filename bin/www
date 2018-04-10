@@ -37,7 +37,7 @@ app.set('port', port);
       console.error(err);
       return;
     }
-    console.log('Connection successful');
+    //console.log('Connection successful');
 
     var request = new Request("select accountName from (select count(*) count_,accountName from (select radiusClientIp,accountName from [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] where [sessionID] != '' and timestamp < CURRENT_TIMESTAMP and timestamp > DateADD(mi, cast('-'+(select c_value from [AgileControllerDB].[dbo].[UMS_Config] where c_name = 'accessdiffsite') as int), CURRENT_TIMESTAMP) and accountName not in (SELECT userId FROM [AgileControllerDB].[dbo].[UMS_ViolationLog] where created_at < CURRENT_TIMESTAMP and detail = 'accessdiffsite' and created_at > DateADD(mi, cast('-'+(select c_value from [AgileControllerDB].[dbo].[UMS_Config] where c_name = 'accessdiffsite') as int), CURRENT_TIMESTAMP) ) group by radiusClientIp,accountName) a group by accountName) b where count_ > 1", function(err, rowCount){
 
@@ -103,11 +103,11 @@ app.set('port', port);
 				if (err) {
 					console.log(err)
 					console.log('ERROR');
-					res.send('0');
+					//res.send('0');
 				} else {
 					console.log(info);
 					console.log('Success');
-					res.send('1');
+					//res.send('1');
 				}
 			});
         }
