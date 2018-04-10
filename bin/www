@@ -9,6 +9,13 @@ var debug = require('debug')('byod-ums:server');
 var request = require('request');
 var http = require('http');
 
+var express = require('express');
+var pool = require('../modules/mssql').pool;
+var pool2 = require('../modules/mssql').pool;
+var Request = require('tedious').Request;
+var router = express.Router();
+
+var nodemailer = require("nodemailer");
 /**
  * Get port from environment and store in Express.
  */
@@ -21,26 +28,114 @@ app.set('port', port);
  */
 
 
-// var schedule = require('node-schedule');
+ var schedule = require('node-schedule');
 
-// var j = schedule.scheduleJob('*/5 * * * * *', function() {
-//     console.log('The answer to life, the universe, and everything!');
+ var j = schedule.scheduleJob('*/60 * * * * *', function() {
+	var result = [];
+	pool.acquire(function(err, connection){
+    if(err){
+      console.error(err);
+      return;
+    }
+    console.log('Connection successful');
 
-//     request('http://localhost/api/message/email/1/natthawat_a', function(error, response, body) {
-//         if (!error && response.statusCode == 200) {
-//             if (body != null) {
-//                 console.log("Warning Email to Administrator for natthawat_a violation");
+    var request = new Request("select accountName from (select count(*) count_,accountName from (select radiusClientIp,accountName from [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] where [sessionID] != '' and timestamp < CURRENT_TIMESTAMP and timestamp > DateADD(mi, cast('-'+(select c_value from [AgileControllerDB].[dbo].[UMS_Config] where c_name = 'accessdiffsite') as int), CURRENT_TIMESTAMP) and accountName not in (SELECT userId FROM [AgileControllerDB].[dbo].[UMS_ViolationLog] where created_at < CURRENT_TIMESTAMP and detail = 'accessdiffsite' and created_at > DateADD(mi, cast('-'+(select c_value from [AgileControllerDB].[dbo].[UMS_Config] where c_name = 'accessdiffsite') as int), CURRENT_TIMESTAMP) ) group by radiusClientIp,accountName) a group by accountName) b where count_ > 1", function(err, rowCount){
 
-//             } else {
-//                 console.log('natthawat_a has just violated');
-//             }
-//         } else {
-//             console.log('natthawat_a has just violated');
-//         }
+	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 
-//     });
+      if(err){
+        console.error(err);
+        return;
+      }
+      //console.log('rowCount: ' + rowCount);
+      //console.log(JSON.stringify(result));
+      connection.release();
+    });
 
-// });
+    request.on('row', function(columns){
+      //result.push(columns);
+      columns.forEach(function(column){
+        if(column.value === null) {
+          console.log('NULL');
+        }
+        else{			
+			console.log(column.value);
+			pool2.acquire(function(err, connection2){
+				if(err){
+				  console.error(err);
+				  return;
+				}
+				
+				var request2 = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_ViolationLog] ([detail],[userId],[created_at]) VALUES ('accessdiffsite','"+column.value+"',CURRENT_TIMESTAMP)", function(err, rowCount2){		
+					if(err){
+						console.error(err);
+						return;
+					}
+				});
+				connection2.execSql(request2);
+			});
+			var msg = '';
+			var tpl_subject = '';
+			tpl_subject = 'มีการเข้าใช้งานสู่ระบบในระยะเวลาใกล้เคียงกันแต่อยู่ห่างกันคนละสถานที่';
+			msg = 'ในขณะนี้ผู้ใช้งาน ' + column.value + ' มีการเข้าใช้งานสู่ระบบในระยะเวลาใกล้เคียงกันแต่อยู่ห่างกันคนละสถานที่';
+
+			const mailOptions = {
+				from: 'byod@excise.go.th', // sender address
+				to: 'byod@excise.go.th', // list of receivers
+				subject: tpl_subject, // Subject line
+				html: msg
+			};
+
+			var transporter = nodemailer.createTransport({
+				//host: 'smtp.mailtrap.io',
+				host: '61.19.233.5',
+				//port: 2525,
+				port: 25,
+				secure: false,
+				auth: {
+					//user: '59ad65f3b7fa3b',
+					user: 'byod@excise.go.th',
+					//pass: '7e4387ba355422',
+					pass: 'byod1234'
+				}
+			});
+			transporter.sendMail(mailOptions, function(err, info) {
+				if (err) {
+					console.log(err)
+					console.log('ERROR');
+					res.send('0');
+				} else {
+					console.log(info);
+					console.log('Success');
+					res.send('1');
+				}
+			});
+        }
+      });
+    });
+    connection.execSql(request);
+  });
+	/*$.ajax('http://byod.excise.go.th/api/checkdiffsite', {
+        type: "get",
+        success: function(json) {
+			console.log('test');
+            data_res = JSON.parse(JSON.stringify(json));
+            if (data_res.length > 0)
+                for (i = 0; i < data_res.length; i++) {
+                    console.log(data_res[0]);
+                    addviolation('accessdiffsite', data_res[0]);
+                    $.ajax('http://byod.excise.go.th/api/message/email/2/' + data_res[0], {
+                        type: "get",
+                        success: function(json) {
+                            //alert(JSON.stringify(json));
+                        }
+                    });
+                }
+        }
+
+
+    });*/
+ });
 
 
 /**

@@ -9,15 +9,15 @@ var deviceList = function(req,res,next){
 
   req.test1 = "test test test";
 
-	var result = [];
-	pool.acquire(function(err, connection){
+  var result = [];
+  pool.acquire(function(err, connection){
     if(err){
       console.error(err);
       return;
     }
     console.log('Connection successful');
 
-    var request = new Request("select accountName from (select count(*) count_,accountName from (select radiusClientIp,accountName from [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] where [sessionID] != '' and timestamp < CURRENT_TIMESTAMP and timestamp > DateADD(mi, cast('-'+(select c_value from [AgileControllerDB].[dbo].[UMS_Config] where c_name = 'accessdiffsite') as int), CURRENT_TIMESTAMP) and accountName not in (SELECT userId FROM [AgileControllerDB].[dbo].[UMS_ViolationLog] where created_at < CURRENT_TIMESTAMP and detail = 'accessdiffsite' and created_at > DateADD(mi, cast('-'+(select c_value from [AgileControllerDB].[dbo].[UMS_Config] where c_name = 'accessdiffsite') as int), CURRENT_TIMESTAMP) ) group by radiusClientIp,accountName) a group by accountName) b where count_ > 1", function(err, rowCount){
+    var request = new Request("select accountName from (select count(*) count_,accountName from (select radiusClientIp,accountName from [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] where timestamp < CURRENT_TIMESTAMP and timestamp > DateADD(mi, cast('-'+(select c_value from [AgileControllerDB].[dbo].[UMS_Config] where c_name = 'accessdiffsite') as int), Current_TimeStamp) group by radiusClientIp,accountName) a group by accountName) b where count_ > 1", function(err, rowCount){
 
 	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 
