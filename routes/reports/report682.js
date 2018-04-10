@@ -14,7 +14,7 @@ var deviceList = function(req,res,next){
     console.log('Connection successful');
 
     //var request = new Request('select * from [test].[dbo].t1', function(err, rowCount){
-    var request = new Request("SELECT [terminalMac],count(*) FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] where terminalIp!= '' and CONVERT (date, timestamp) between '"+req.param('start')+"' and '"+req.param('end')+"' and [terminalMac] like '%"+req.param('termac')+"%' group by [terminalMac]", function(err, rowCount){
+    var request = new Request("SELECT [terminalMac],count(*) FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] where [sessionID] != '' and terminalIp!= '' and CONVERT (date, timestamp) between '"+req.param('start')+"' and '"+req.param('end')+"' and [terminalMac] like '%"+req.param('termac')+"%' group by [terminalMac]", function(err, rowCount){
 
       if(err){
         console.error(err);
