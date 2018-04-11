@@ -14,7 +14,7 @@ var deviceList = function(req,res,next){
     console.log('Connection successful');
 
     //var request = new Request('select * from [test].[dbo].t1', function(err, rowCount){
-    var request = new Request("SELECT userName account,terminalMac MAC, [os_name] 'OS',timestamp FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on a.terminalMac = e.mac where CONVERT (date, timestamp) between '"+req.param('start')+"' and '"+req.param('end')+"' and CONVERT (time,timestamp) < CONVERT (time,'"+req.param('end_time')+"' ) and CONVERT (time,timestamp) > CONVERT (time,'"+req.param('start_time')+"')", function(err, rowCount){
+    var request = new Request("SELECT userName account,terminalMac MAC, [os_name] 'OS',timestamp FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on a.terminalMac = e.mac where sessionID != '' and CONVERT (date, timestamp) between '"+req.param('start')+"' and '"+req.param('end')+"' and CONVERT (time,timestamp) < CONVERT (time,'"+req.param('end_time')+"' ) and CONVERT (time,timestamp) > CONVERT (time,'"+req.param('start_time')+"')", function(err, rowCount){
 
       if(err){
         console.error(err);

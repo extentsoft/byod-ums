@@ -14,7 +14,7 @@ var deviceList = function(req,res,next){
     console.log('Connection successful');
 
     //var request = new Request('select * from [test].[dbo].t1', function(err, rowCount){
-    var request = new Request("SELECT userName 'User', terminalMac MAC,[os_name] OS,case when (select name from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusServerIp) is not null then (select name from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusServerIp)  else  '' end, count(*) FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where sessionID != '' and CONVERT (date, timestamp) between '"+req.param('start')+"' and '"+req.param('end')+"' and [os_name] = '' group by [os_name],userName, terminalMac,radiusServerIp", function(err, rowCount){
+    var request = new Request("SELECT userName 'User', terminalMac MAC,[os_name] OS,case when (select name from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select name from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end, count(*) FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where sessionID != '' and CONVERT (date, timestamp) between '"+req.param('start')+"' and '"+req.param('end')+"' and [os_name] = '' group by [os_name],userName, terminalMac,radiusClientIp", function(err, rowCount){
 
       if(err){
         console.error(err);

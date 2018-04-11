@@ -3,26 +3,28 @@
 <header class="header-1" id="header">
     <div class="vd_top-menu-wrapper">
         <div class="container ">
-            <div class="vd_top-nav vd_nav-width  ">
+            <div class="vd_top-nav vd_nav-width ">
                 <div class="vd_panel-header">
-                    <div class="logo">
-                        <a href="/"><img alt="logo" src="img/logo1.png" width="200%"></a>
-
+                    <div class="hidden-xs">
+                        <a href="/"><img alt="logo" src="img/logo1.png"></a>
                     </div>
-
+					<div class="logo visible-xs">
+                        <a href="/"><img alt="logo" src="img/logo1.png"></a>
+                    </div>
                     <!-- logo -->
+					<!--
                     <div class="vd_panel-menu   " data-intro="<strong>Minimize Left Navigation</strong><br/>Toggle navigation size to medium or small size. You can set both button or one button only. See full option at documentation." data-step=1>
-
+						
                         <span class="nav-medium-button menu" data-toggle="tooltip" data-placement="bottom" data-original-title="Medium Nav Toggle" data-action="nav-left-medium">
                                 <i class="fa fa-bars"></i>
                             </span>
-                        <!--
+                        
                             <span class="nav-small-button menu" data-toggle="tooltip" data-placement="bottom" data-original-title="Small Nav Toggle" data-action="nav-left-small">
                                 <i class="fa fa-ellipsis-v"></i>
                             </span>
-                            -->
+                            
 
-                    </div>
+                    </div>-->
 
                     <div class="vd_panel-menu left-pos visible-sm visible-xs">
                         <span class="menu" data-action="toggle-navbar-left">
@@ -35,10 +37,6 @@
                                 <i class="fa fa-bars"></i>
                              </span>
 
-                        <span class="menu visible-sm visible-xs" data-action="toggle-navbar-right">
-                                <i class="fa fa-comments"></i>
-                            </span>
-
                     </div>
                     <!-- vd_panel-menu -->
                 </div>
@@ -48,7 +46,7 @@
             <div class="vd_container">
                 <div class="row">
                     <div class="col-sm-5 col-xs-12">
-                        <div class="title" style="color: white;" align="center"><br>
+                        <div class="title hidden-sm" style="color: white;" align="center"><br>
                             <font size="3">ระบบบริหารจัดการทรัพยากร ICT</font>
 
                         </div>
@@ -59,7 +57,7 @@
                             <div class="vd_mega-menu pull-right">
                                 <ul class="mega-ul">
                                     <li class="one-icon mega-li">
-                                        <a href="index.html" class="mega-link" data-action="click-trigger">
+                                        <a href="#" class="mega-link" data-action="click-trigger">
                                             <span class="mega-icon"><i class="fa fa-users"></i></span>
                                             <span class="badge vd_bg-red"></span>
                                         </a>
@@ -99,13 +97,13 @@
                                     </li>
                                     <li id="top-menu-3" class="one-icon mega-li">
 
-                                        <a href="index.html" class="mega-link" data-action="click-trigger">
+                                        <a href="#" class="mega-link" data-action="click-trigger">
 
                                             <span class="mega-icon"><i class="fa fa-envelope"></i></span>
                                             <!--<span class="mega-icon"><i class="fa fa-globe"></i></span>-->
                                             <span class="badge vd_bg-red"><!--51--></span>
                                         </a>
-                                        <div class="vd_mega-menu-content  width-xs-3 width-sm-4  center-xs-3 left-sm" data-action="click-target">
+                                        <div class="vd_mega-menu-content width-xs-3 width-sm-4 width-md-5 width-lg-4 right-xs left-sm" data-action="click-target">
                                             <div class="child-menu">
                                                 <div class="title">
                                                     Notifications
@@ -146,7 +144,7 @@
                                                 <div class="content-list content-menu">
                                                     <ul class="list-wrapper pd-lr-10">
                                                         <li>
-                                                            <a href="#">
+                                                            <a href="/profile">
                                                                 <div class="menu-icon"><i class=" fa fa-user"></i></div>
                                                                 <div class="menu-text">แก้ไขประวัติ</div>
                                                             </a>
@@ -154,7 +152,7 @@
 
 
                                                         <li>
-                                                            <a href="#">
+                                                            <a href="/setting">
                                                                 <div class="menu-icon"><i class=" fa fa-cogs"></i></div>
                                                                 <div class="menu-text">ปรับแต่ง</div>
                                                             </a>
@@ -230,6 +228,13 @@
             sendchat($('#chat-text').val(), '-');
         }
     });
+	
+	var priv = $("#priv").html().trim().split(",");
+    if (priv[1] < 1) {
+        $('#top-menu-3').hide();
+    } else {
+        $('#top-menu-3').show();
+    }
 
 
     function getAttach() {

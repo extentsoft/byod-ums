@@ -783,7 +783,9 @@
                         accname: account_now,
                         macbind: mac
                     },
-                    success: function(json) {refreshlist();}
+                    success: function(json) {
+						refreshlist();
+					}
                 });
 				
 				$.ajax('http://byod.excise.go.th/systemcenter/api', {
@@ -794,10 +796,12 @@
 						uname: username
                     },
                     success: function(json) {
-						refreshlist();
+						//refreshlist();
 						//alert(json);
+						window.location = "/device";
 					}
                 });
+				
             }
 
             function checkcount() {
