@@ -87,9 +87,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
-				ipaddr: req.session.user.ipaddr,
-				browser_family: req.session.user.browser,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -99,9 +97,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
-				ipaddr: req.session.user.ipaddr,
-				browser_family: req.session.user.browser,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -120,7 +116,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -130,7 +126,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -154,7 +150,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -164,7 +160,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -181,7 +177,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -191,7 +187,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -209,7 +205,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -219,7 +215,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -244,7 +240,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -259,7 +255,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -283,7 +279,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -297,7 +293,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -316,7 +312,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -330,7 +326,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -349,7 +345,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -363,7 +359,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -382,7 +378,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -396,7 +392,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -415,7 +411,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -429,7 +425,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -449,7 +445,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -463,7 +459,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -482,7 +478,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -496,7 +492,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -515,7 +511,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -529,7 +525,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -548,7 +544,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -562,7 +558,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -582,7 +578,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -596,7 +592,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -615,7 +611,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -629,7 +625,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -648,7 +644,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -662,7 +658,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -682,7 +678,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -696,7 +692,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -715,7 +711,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -729,7 +725,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -747,7 +743,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -757,7 +753,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -772,7 +768,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -782,7 +778,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -797,7 +793,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -807,7 +803,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -822,7 +818,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -832,7 +828,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -847,7 +843,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -857,7 +853,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -872,7 +868,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -882,7 +878,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -897,7 +893,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -907,7 +903,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -922,7 +918,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -932,7 +928,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -947,7 +943,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -957,7 +953,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -972,7 +968,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -982,7 +978,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -997,7 +993,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1007,7 +1003,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1022,7 +1018,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1032,7 +1028,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1047,7 +1043,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1057,7 +1053,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1072,7 +1068,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1082,7 +1078,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1097,7 +1093,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1107,7 +1103,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1122,7 +1118,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1132,7 +1128,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1147,7 +1143,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1157,7 +1153,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1172,7 +1168,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1182,7 +1178,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1197,7 +1193,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1207,7 +1203,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1222,7 +1218,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1232,7 +1228,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1247,7 +1243,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1257,7 +1253,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1272,7 +1268,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1282,7 +1278,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1297,7 +1293,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1307,7 +1303,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1322,7 +1318,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1332,7 +1328,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1347,7 +1343,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1357,7 +1353,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1372,7 +1368,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1382,7 +1378,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1397,7 +1393,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1407,7 +1403,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1422,7 +1418,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1432,7 +1428,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1448,7 +1444,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -1462,7 +1458,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -1481,7 +1477,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -1495,7 +1491,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -1514,7 +1510,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -1528,7 +1524,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -1551,7 +1547,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -1565,7 +1561,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -1582,7 +1578,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -1596,7 +1592,7 @@ module.exports = function(app, passport) {
                 ssn: req.session.user.ssn,
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 position: req.session.user.position,
                 level: req.session.user.level,
                 area: req.session.user.area,
@@ -1613,7 +1609,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1623,7 +1619,7 @@ module.exports = function(app, passport) {
                 message: req.flash('message'),
                 email: req.session.user.email,
                 firstname: req.session.user.firstname,
-                lastname: req.session.user.lastname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
                 isauthorized: req.session.authorized,
                 privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
             });
@@ -1763,7 +1759,7 @@ module.exports = function(app, passport) {
                 req.session.user.password = user.password;
 				req.session.user.ipaddr = ip.toIPv4Address().toString();
 
-
+				
                 console.log('Identity is being authorizing against e-Office');
                 request('http://byod.excise.go.th/api/eoffice/profile/' + user.email, function(error, response, body) {
 
@@ -1797,7 +1793,38 @@ module.exports = function(app, passport) {
 
                                         req.session.user.pref_theme = parsed_body[0];
                                         req.session.user.pref_notification = parsed_body[1];
-
+										request('http://byod.excise.go.th/api/accesslog?browser='+ req.session.user.browser + '&ip=' + req.session.user.ipaddr + '&status=Login' + '&accname=' + user.email, function(error, response, body) {
+											if (!error && response.statusCode == 200) {
+												console.log('Login Logged');
+											}
+										});
+										
+										request('http://byod.excise.go.th/api/countlogin?accname='+ user.email, function(error, response, body) {
+											if (!error && response.statusCode == 200) {
+												if (body != null) {
+													var parsed_res = JSON.parse(body);
+													//console.log('here');
+													console.log(parsed_res);
+													if(parsed_res[0] == 0){
+														//console.log('notcall');
+													}
+													else {
+														//console.log('call');
+														request('http://byod.excise.go.th/api/message/email/1/'+ user.email, function(error, response, body) {
+															if (!error && response.statusCode == 200) {
+																//console.log('sc');
+															}
+															else{
+																var parsed_err = JSON.parse(error);
+																//console.log('fa');
+																console.log(parsed_err);							
+															}
+														});
+													}
+													
+												}                                        
+											}
+										});
                                         res.redirect('/dashboard');
                                     } else {
                                         console.log('Profiling Failure');

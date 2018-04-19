@@ -409,30 +409,6 @@
         <script type="text/javascript" src='plugins/skycons/skycons.js'></script>
 
 
-        <script type="text/javascript">
-        </script>
-        <!-- Specific Page Scripts END -->
-
-
-
-
-        <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
-
-        <script>
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-XXXXX-X']);
-            _gaq.push(['_trackPageview']);
-
-            (function() {
-                var ga = document.createElement('script');
-                ga.type = 'text/javascript';
-                ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
-
         <script>
 			
             //account_now = 'natthawat_a';
@@ -777,7 +753,7 @@
 
             function updatemac(mac) {
                 //alert('refresh');
-                $.ajax('http://byod.excise.go.th/api/updatemac', {
+                /*$.ajax('http://byod.excise.go.th/api/updatemac', {
                     type: "get",
                     data: {
                         accname: account_now,
@@ -786,7 +762,7 @@
                     success: function(json) {
 						refreshlist();
 					}
-                });
+                });*/
 				
 				$.ajax('http://byod.excise.go.th/systemcenter/api', {
                     type: "get",
@@ -799,7 +775,11 @@
 						//refreshlist();
 						//alert(json);
 						window.location = "/device";
-					}
+					},
+                    error: function(err) {
+                        //alert(JSON.stringify(fa));
+                        alert(err);
+                    }
                 });
 				
             }
@@ -856,6 +836,7 @@
 					document.getElementById('term_mac').value = mac_.substr(0,17);
 				}*/
 				var mac_ = document.getElementById('term_mac').value;
+				//alert(mac_);
 				var reg = /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/;
 				if(reg.test(mac_)){
 					document.getElementById('sbm-btn').disabled = false;

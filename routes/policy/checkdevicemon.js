@@ -17,7 +17,7 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 
-    var request = new Request("select userName,terminalMac,terminalIp,radiusClientIp,radiusServerIp,timestamp from [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] join [AgileControllerDB].[dbo].[UMS_DeviceMon] on terminalMac = mac where  CONVERT (datetime, timestamp) > CONVERT (datetime, case when last_login is null then created_at else last_login end) ", function(err, rowCount){
+    var request = new Request("select userName,terminalMac,terminalIp,radiusClientIp,radiusServerIp,timestamp from [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] join [AgileControllerDB].[dbo].[UMS_DeviceMon] on terminalMac = mac where [sessionID] != '' and  CONVERT (datetime, timestamp) > CONVERT (datetime, case when last_login is null then created_at else last_login end) ", function(err, rowCount){
 
 	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 

@@ -26,7 +26,7 @@ var test = {
 var test2 = {
     userName: 'sa',
     password: 'P@ssw0rd',
-    server: '10.40.145.192'
+    server: '192.168.191.132'
 };
 
 var config = prod;

@@ -30,10 +30,7 @@ app.set('port', port);
 
  var schedule = require('node-schedule');
 
- /**************** check different site ****************/
- 
- var diffsite = schedule.scheduleJob('*/60 * * * * *', function() {
-	//console.error('t');
+ var j = schedule.scheduleJob('*/60 * * * * *', function() {
 	var result = [];
 	pool.acquire(function(err, connection){
     if(err){
@@ -118,112 +115,26 @@ app.set('port', port);
     });
     connection.execSql(request);
   });
- });
- 
- 
- 
-/**************** check device monitoring ****************/
- 
- var devicemon = schedule.scheduleJob('*/60 * * * * *', function() {
-	//console.error('d');
-	var result = [];
-	pool.acquire(function(err, connection){
-    if(err){
-      console.error(err);
-      return;
-    }
-    //console.log('Connection successful');
-
-    var request = new Request("select userName,terminalMac,terminalIp,radiusClientIp,radiusServerIp,timestamp from [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] join [AgileControllerDB].[dbo].[UMS_DeviceMon] on terminalMac = mac where [sessionID] != '' and  CONVERT (datetime2(0), timestamp) > CONVERT (datetime2(0), case when last_login is null then created_at else last_login end)", function(err, rowCount){
-
-	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
-
-      if(err){
-        console.error(err);
-        return;
-      }
-      //console.log('rowCount: ' + rowCount);
-      //console.log(JSON.stringify(result));
-      connection.release();
-    });
-
-    request.on('row', function(columns){
-      result.push(columns);
-	  var data_ = [];
-	  var count_ = 0;
-      columns.forEach(function(column){
-        if(column.value === null) {
-          console.log('NULL');
+	/*$.ajax('http://byod.excise.go.th/api/checkdiffsite', {
+        type: "get",
+        success: function(json) {
+			console.log('test');
+            data_res = JSON.parse(JSON.stringify(json));
+            if (data_res.length > 0)
+                for (i = 0; i < data_res.length; i++) {
+                    console.log(data_res[0]);
+                    addviolation('accessdiffsite', data_res[0]);
+                    $.ajax('http://byod.excise.go.th/api/message/email/2/' + data_res[0], {
+                        type: "get",
+                        success: function(json) {
+                            //alert(JSON.stringify(json));
+                        }
+                    });
+                }
         }
-        else{
-			//console.log(count_);			
-			//console.log(column.value);			
-			data_.push(column.value);
-			if(count_ < 5){
-				count_++;
-			}
-			else{
-				update_time = new Date(data_[5]);
-                date_str =  update_time.getUTCFullYear() + "-" + (update_time.getUTCMonth() + 1) + "-" + update_time.getUTCDate() +' ' + update_time.getUTCHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds();
-				console.log('t');
-				//console.log(UTCDate);
-			
-				pool2.acquire(function(err, connection2){
-					if(err){
-					  console.error(err);
-					  return;
-					}
-					
-					var request2 = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_DeviceMonLog] ([userName],[terminalMac],[terminalIp],[radiusClientIp],[radiusServerIp],[timestamp]) VALUES ('"+data_[0]+"','"+data_[1]+"','"+data_[2]+"','"+data_[3]+"','"+data_[4]+"',CONVERT (datetime2(0),'"+date_str+"')); update [AgileControllerDB].[dbo].[UMS_DeviceMon] set last_login = CONVERT (datetime2(0),'"+date_str+"') where mac = '"+data_[1]+"'", function(err, rowCount2){		
-						if(err){
-							console.error(err);
-							return;
-						}
-					});
-					connection2.execSql(request2);
-				});
-			}
-			var msg = '';
-			var tpl_subject = '';
-			tpl_subject = 'มีการเข้าใช้งานสู่ระบบด้วยอุปกรณ์ที่ถูกกำหนดไว้';
-			msg = 'ในขณะนี้ผู้ใช้งาน ' + data_[0] + ' มีการเข้าใช้งานสู่ระบบด้วยอุปกรณ์ที่ถูกกำหนดไว้';
 
-			const mailOptions = {
-				from: 'byod@excise.go.th', // sender address
-				to: 'byod@excise.go.th', // list of receivers
-				subject: tpl_subject, // Subject line
-				html: msg
-			};
 
-			var transporter = nodemailer.createTransport({
-				//host: 'smtp.mailtrap.io',
-				host: '61.19.233.5',
-				//port: 2525,
-				port: 25,
-				secure: false,
-				auth: {
-					//user: '59ad65f3b7fa3b',
-					user: 'byod@excise.go.th',
-					//pass: '7e4387ba355422',
-					pass: 'byod1234'
-				}
-			});
-			transporter.sendMail(mailOptions, function(err, info) {
-				if (err) {
-					console.log(err)
-					console.log('ERROR');
-					//res.send('0');
-				} else {
-					console.log(info);
-					console.log('Success');
-					//res.send('1');
-				}
-			});
-        }
-      });
-    });
-    connection.execSql(request);
-  });
+    });*/
  });
 
 

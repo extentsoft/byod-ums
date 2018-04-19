@@ -728,7 +728,7 @@
 
             function updatemac(mac) {
                 //alert('refresh');
-                $.ajax('http://byod.excise.go.th/api/updatemac', {
+                /*$.ajax('http://byod.excise.go.th/api/updatemac', {
                     type: "get",
                     data: {
                         accname: account_now,
@@ -737,7 +737,7 @@
                     success: function(json) {
 						refreshlist();
 					}
-                });
+                });*/
 				
 				$.ajax('http://byod.excise.go.th/systemcenter/api', {
                     type: "get",
@@ -750,7 +750,11 @@
 						//refreshlist();
 						//alert(json);
 						window.location = "/device";
-					}
+					},
+                    error: function(err) {
+                        //alert(JSON.stringify(fa));
+                        alert(err);
+                    }
                 });
 				
             }

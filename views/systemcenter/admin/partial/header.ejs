@@ -159,7 +159,7 @@
                                                         </li>
 
                                                         <li>
-                                                            <a href="/logout">
+                                                            <a href="#" onClick="logout_log('<%= browser_family %>','<%= ipaddr %>')">
                                                                 <div class="menu-icon"><i class=" fa fa-sign-out"></i></div>
                                                                 <div class="menu-text">ออกจากระบบ</div>
                                                             </a>
@@ -493,6 +493,66 @@
             }
         });
 
+    }
+	
+	function logout_log(b, i) {
+        $.ajax('http://byod.excise.go.th/api/accesslog', {
+            type: "get",
+            data: {
+                browser: b,
+                ip: i,
+                status: 'Logout',
+                accname: account_now
+            },
+            success: function(json) {
+                //alert(b+i)	;
+                countlog();
+            },
+            error: function(fa) {
+                //alert(JSON.stringify(fa));
+                //alert('a');
+            }
+        });
+		window.location = '/logout';
+    }
+	
+	function countlog() {
+        //alert('refresh');
+        $.ajax('http://byod.excise.go.th/api/countlogin', {
+            type: "get",
+            data: {
+                accname: account_now
+            },
+            success: function(json) {
+                //alert(json);
+                if (json == 1) {
+                    addviolation('overlogin', account_now);
+                    $.ajax('http://byod.excise.go.th/api/message/email/1/' + account_now, {
+                        type: "get",
+                        success: function(json) {
+                            //alert(JSON.stringify(json));
+                        }
+                    });
+                    //alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
+
+
+                }
+            }
+        });
+    }
+	
+	function addviolation(detail, usr) {
+        //alert('refresh');
+        $.ajax('http://byod.excise.go.th/api/addviolation', {
+            type: "get",
+            data: {
+                violation: detail,
+                accname: usr
+            },
+            success: function(json) {
+                //alert(json);
+            }
+        });
     }
     get_noti();
     get_chat();

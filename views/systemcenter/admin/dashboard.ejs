@@ -1107,56 +1107,7 @@
                 }
                 //alert(JSON.stringify(data));
                 line_chart(data);
-            }
-
-            function login_log(b, i) {
-                $.ajax('http://byod.excise.go.th/api/accesslog', {
-                    type: "get",
-                    data: {
-                        browser: b,
-                        ip: i,
-                        status: 'Login',
-                        accname: account_now
-                    },
-                    success: function(json) {
-                        //alert(b+i)	;
-                        countlog();
-                    },
-                    error: function(fa) {
-                        //alert(JSON.stringify(fa));
-                        //alert('a');
-                    }
-                });
-            }
-
-            function countlog() {
-                //alert('refresh');
-                $.ajax('http://byod.excise.go.th/api/countlogin', {
-                    type: "get",
-                    data: {
-                        accname: account_now
-                    },
-                    success: function(json) {
-                        //alert(json);
-                        if (json == 1) {
-                            addviolation('overlogin', account_now);
-                            $.ajax('http://byod.excise.go.th/api/message/email/1/' + account_now, {
-                                type: "get",
-                                success: function(json) {
-                                    //alert(JSON.stringify(json));
-                                }
-                            });
-                            //alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
-
-
-                        }
-                        if ($("#priv").html().trim().split(",")[2] == 'false') {
-                            //window.location = "/systemcenter/profile";
-                        }
-
-                    }
-                });
-            }
+            }            
 
             function addviolation(detail, usr) {
                 //alert('refresh');
@@ -1194,79 +1145,11 @@
                 });
             }
 
-            function check_devicemon() {
-                //alert('refresh');
-                $.ajax('http://byod.excise.go.th/api/checkdevicemon', {
-                    type: "get",
-                    success: function(json) {
-                        //alert(json);
-                        if (json.length >0) {
-							for (i = 0; i < json.length; i++) {
-								addviolation('devicemon', json[0]);
-								$.ajax('http://byod.excise.go.th/api/message/email/6/' + json[0], {
-									type: "get",
-									success: function(json) {
-										//alert(JSON.stringify(json));
-									}
-								});
-								
-								$.ajax('http://byod.excise.go.th/api/devicemonlog', {
-									type: "get",
-									data: {
-										user: json[0],
-										termac: json[1],
-										terip: json[2],
-										clientip: json[3],
-										serverip: json[4],
-										time: json[5]
-									},
-									success: function(json) {
-										//alert(JSON.stringify(json));
-									}
-								});
-								
-								json.splice(0, 6);
-								i = -1;
-							}
-                            
-                            //alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
-
-                        }
-
-                    }
-                });
-            }
-
-            function check_diffsite() {
-                $.ajax('http://byod.excise.go.th/api/checkdiffsite', {
-                    type: "get",
-                    success: function(json) {
-                        data_res = JSON.parse(JSON.stringify(json));
-                        if (data_res.length > 0)
-                            for (i = 0; i < data_res.length; i++) {
-                                //alert(data_res[0]);
-                                addviolation('accessdiffsite', data_res[0]);
-                                $.ajax('http://byod.excise.go.th/api/message/email/2/' + data_res[0], {
-                                    type: "get",
-                                    success: function(json) {
-                                        //alert(JSON.stringify(json));
-                                    }
-                                });
-                            }
-                    }
-
-
-                });
-            }
 			
 			function goto(dest){
 				window.location = '/report/usage/other/'+dest+'?start='+sd_+'&&end='+ed_;			
 			}
 
-            check_access();
-            check_devicemon();
-            //check_diffsite();
-            login_log(browser_,ip_);
             refresh_traffic();
 
             datepick();
