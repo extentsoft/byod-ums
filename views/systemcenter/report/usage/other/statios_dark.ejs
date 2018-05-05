@@ -289,38 +289,6 @@
         <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
 
-
-
-        <script>
-            $(document).ready(function() {
-                account_now = 'natthawat_a';
-
-
-            });
-            $(window).load(function() {});
-        </script>
-        <!-- Specific Page Scripts END -->
-
-
-
-
-        <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
-
-        <script>
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-XXXXX-X']);
-            _gaq.push(['_trackPageview']);
-
-            (function() {
-                var ga = document.createElement('script');
-                ga.type = 'text/javascript';
-                ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
-
         <script>
             account_now = '<%= email %>';
 			var str1 = location.href;
@@ -329,6 +297,7 @@
 			var n = str1.indexOf("end");
 			sd_ = str1.substr(m+6,n-m-8);
 			ed_ = str2.substr(n+4,str2.length-n);
+			
 			//var url = new URL(location);
 			//var sd_ = url.searchParams.get("start");
 			//var ed_ = url.searchParams.get("end");
@@ -388,7 +357,7 @@
 					
                     refresh_table(e.format("Y-M-D"), a.format("Y-M-D"));
                     //alert(e.format("Y-M-D"));
-                    //alert(a.format("Y-M-D"));
+                    //alert(a.format("Y-M-D"));					
 					
                     var o = "",
                         l = "";
@@ -426,7 +395,17 @@
 					//window.location = '/';
 				}
 				function f(e, a, r) {
+					sdt_ = sd_;
+					edt_ = ed_;
 					refresh_table(e.format("Y-M-D"), a.format("Y-M-D"));
+					sd_ = e.format("Y-M-D");
+					ed_ = a.format("Y-M-D");
+					if(sd_ == sdt_ && ed_ == edt_){
+					}
+					else{
+						window.location = '/report/usage/other/statios?start='+sd_+'&&end='+ed_;
+					}
+					
                     var o = "",
                         l = "";
                     a - e < 100 ? (o = "วันนี้:", l = e.format("MMM D")) : "เมื่อวาน" == r ? (o = "เมื่อวาน:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),

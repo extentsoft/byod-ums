@@ -159,7 +159,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>เจ้าของอุปกรณ์</th>
-														<th>ประเภทอุปกรณ์</th>
+														<th>ระบบปฏิบัติการ</th>
                                                         <th>พื้นที่</th>
 														<th>จำนวนครั้งที่เข้าใช้งาน</th>
                                                     </tr>
@@ -311,7 +311,7 @@
 			//alert(account_now);
             function refresh_table(sd, ed) {
                 //alert('refresh');
-                document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>ประเภทอุปกรณ์</th><th>พื้นที่</th><th>จำนวนครั้งที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
+                document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>ระบบปฏิบัติการ</th><th>พื้นที่</th><th>จำนวนครั้งที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
 
                 $.ajax('http://byod.excise.go.th/report/report6814', {
                     type: "get",
@@ -401,8 +401,17 @@
 					//window.location = '/';
 				}
 				function f(e, a, r) {
+					sdt_ = sd_;
+					edt_ = ed_;
 					refresh_table(e.format("Y-M-D"), a.format("Y-M-D"));
-                    var o = "",
+					sd_ = e.format("Y-M-D");
+					ed_ = a.format("Y-M-D");
+					if(sd_ == sdt_ && ed_ == edt_){
+					}
+					else{
+						window.location = '/report/usage/other/statmobile?start='+sd_+'&&end='+ed_;
+					}
+		                    var o = "",
                         l = "";
                     a - e < 100 ? (o = "วันนี้:", l = e.format("MMM D")) : "เมื่อวาน" == r ? (o = "เมื่อวาน:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
                         t.find(".m-subheader__daterange-date").html(l),

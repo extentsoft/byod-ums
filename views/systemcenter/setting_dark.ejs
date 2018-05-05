@@ -140,7 +140,7 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">เลือกรูปแบบแสดงผล</label>
                                                         <div class="col-sm-8 controls">
-                                                            <input id="pref_theme" type="checkbox" data-rel="switch" data-wrapper-class="inverse" data-on-text="มืด" data-off-text="สว่าง" onchange="change_userpref();">
+                                                            <input id="pref_theme" type="checkbox" data-rel="switch" checked="true" data-wrapper-class="inverse" data-on-text="มืด" data-off-text="สว่าง" onchange="change_userpref();">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -251,6 +251,8 @@
         <script>
             $(document).ready(function() {
                 //alert($.fn.jquery);
+				//$('#pref_theme').attr('checked', false);
+				//document.getElementById("pref_theme").checked = true;
 
                 $.ajax('http://byod.excise.go.th/api/getuserpref', {
                     type: "get",
@@ -259,20 +261,18 @@
                     },
                     success: function(json) {
                         //alert(json);
+						document.getElementById("pref_theme").checked = true;
                         $('#pref_theme').attr('checked', true);
                         if (json[0] == 0) {
+							//alert('white');
                             $('#pref_theme').attr('checked', false);
                         } else {
-                            $('#pref_theme').attr('checked', true);
+							//alert('dark');
+							document.getElementById("pref_theme").checked = true;
+                            //$('#pref_theme').attr('checked', true);
                             //alert(json[0]);
                         }
 
-                        if (json[1] == 0) {
-                            $('#pref_notification').attr('checked', false);
-                        } else {
-                            $('#pref_notification').attr('checked', true);
-                            //alert(json[1]);
-                        }
                     }
                 });
 
@@ -289,12 +289,14 @@
 
             });
             $(window).load(function() {
-
+				
                 var priv = $("#priv").html().trim().split(",");
                 if (priv[1] < 1) {
                     $('#top-menu-3').hide();
+					$('#pref_notification').attr('checked', false);
                 } else {
                     $('#top-menu-3').show();
+					$('#pref_notification').attr('checked', true);
                 }
             });
         </script>
@@ -303,22 +305,6 @@
 
 
 
-        <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
-
-        <script>
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-XXXXX-X']);
-            _gaq.push(['_trackPageview']);
-
-            (function() {
-                var ga = document.createElement('script');
-                ga.type = 'text/javascript';
-                ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
 
         <script>
             function change_userpref() {
@@ -328,6 +314,8 @@
                 //console.log($('#pref_notification').is(':checked') ? 1 : 0);
                 var theme_val = $('#pref_theme').is(':checked') ? 1 : 0;
                 var noti_val = $('#pref_notification').is(':checked') ? 1 : 0;
+				//alert(theme_val);
+				//alert(noti_val);
 
                 $.ajax('http://byod.excise.go.th/api/edituserpref', {
                     type: "get",
@@ -345,7 +333,7 @@
                         } else {
                             $('#top-menu-3').hide();
                         }
-                        window.location.href = "http://byod.excise.go.th/setting";
+                        window.location = "/setting";
                     },
                     error: function() {
                         //location.reload();

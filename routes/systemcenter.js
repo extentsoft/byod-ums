@@ -26,7 +26,7 @@ module.exports = function(app, passport) {
                 //account: 'natthawat_a',
                 account: req.param('accname'),
                 accountType: 4,
-                orgName: '\\LDAP Users Temp\\People',
+                orgName: '\\Excise LDAP\\People',
                 //bindMac: '38-71-DE-5A-EE-43',
                 bindMac: req.param('macbind'),
                 loginType: 3,
@@ -42,7 +42,6 @@ module.exports = function(app, passport) {
             });
         });*/
         console.log(args);
-		console.log(args);
 
         soap.createClient(url, function(err, client) {
             var options = {
@@ -1757,6 +1756,8 @@ module.exports = function(app, passport) {
                 //req.session.user._id = user._id;
                 req.session.user.email = user.email;
                 req.session.user.password = user.password;
+				req.session.user.firstname = user.firstname;
+				req.session.user.lastname = user.lastname;
 				req.session.user.ipaddr = ip.toIPv4Address().toString();
 
 				

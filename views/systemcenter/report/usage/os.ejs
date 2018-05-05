@@ -166,7 +166,7 @@
                                     <div class="panel widget">
                                         <div class="panel-heading vd_bg-grey">
 
-                                            <select id="listos" onchange="selectos(this.value)" style="width:30%" >
+                                            <select id="listos" onchange="selectos($('#listos').val())" style="width:30%" >
 												<option value="blank" disabled selected>กรุณาเลือกระบบปฎิบัติการ</option>                       
 											</select>
               
@@ -321,6 +321,7 @@
 			var end_ ='';
 			var data_ = '';
 			var os_ = '0';
+			var os__ = '0';
 			//alert(account_now);
 
             function refresh_table(sd, ed , ostype) {
@@ -455,13 +456,15 @@
 			}
 			
 			function selectos(os_name){
+				//alert(os_name);
 				$("#listos option[value='blank']").remove();
 				os_ = os_name;
+				os__ = os_name;
 				refresh_table(start_,end_,os_);
 			}
 			
 			function printpdf(){
-				location.href = 'http://byod.excise.go.th/api/v1/pdf/267152/'+start_+'/'+end_+'/'+os_+'/'+'0'+'/'+'0';
+				location.href = 'http://byod.excise.go.th/api/v1/pdf/267152/'+start_+'/'+end_+'/'+os__+'/'+'0'+'/'+'0';
 			}
 
 			list_os();

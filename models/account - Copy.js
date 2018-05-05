@@ -68,10 +68,6 @@ Account.prototype.test = function(opts, done) {
             this._id = entry.uid;
             this.email = entry.uid;
             this.password = entry.userPassword;
-			var tmp = (entry.cn).split(" ");
-			this.firstname = tmp[0];
-			this.lastname = tmp[1];
-			
             console.log('rewriting value');
             console.log(this.email);
 

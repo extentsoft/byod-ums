@@ -764,7 +764,7 @@
 					}
                 });*/
 				
-				$.ajax('http://byod.excise.go.th/systemcenter/api', {
+				$.ajax('http://byod.excise.go.th/api', {
                     type: "get",
                     data: {
                         accname: account_now,
@@ -773,15 +773,14 @@
                     },
                     success: function(json) {
 						//refreshlist();
-						//alert(json);
-						window.location = "/device";
+						//alert(json);					
 					},
                     error: function(err) {
                         //alert(JSON.stringify(fa));
-                        alert(err);
+                        //alert(err);
                     }
                 });
-				
+				window.location = "/device";
             }
 
             function checkcount() {

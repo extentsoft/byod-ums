@@ -1,5 +1,7 @@
 var express = require('express');
 var request = require('request');
+var pool = require('../../modules/mssql').pool;
+var Request = require('tedious').Request;
 var router = express.Router();
 
 
@@ -27,34 +29,47 @@ router.get('/test', function(req, res) {
 
 
 router.get('/profile/:email', function(req, res, next) {
-    if (req.params.email === 'natthawat_a') {
-        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Natthawat', ln: 'Arunweerungroj', email: 'natthawat_a@excise.go.th', position: '13595', level: '0', area: '0', authorized: true });
-    } else if (req.params.email == 'byod1') {
-        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'byod1', ln: 'sky', email: 'byod1@excise.go.th', position: '13596', level: '0', area: '0', authorized: false });
-    } else if (req.params.email == 'byod2') {
-        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'byod2', ln: 'sky', email: 'byod2@excise.go.th', position: '13596', level: '0', area: '0', authorized: false });
-    } else if (req.params.email == 'byod3') {
-        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'byod3', ln: 'sky', email: 'byod3@excise.go.th', position: '13596', level: '0', area: '0', authorized: false });
-    } else if (req.params.email == 'byod4') {
-        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'byod4', ln: 'sky', email: 'byod4@excise.go.th', position: '13596', level: '0', area: '0', authorized: false });
-    } else if (req.params.email == 'pinij') {
-        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Pinij', ln: 'Vitoonsaridsilp', email: 'pinij@excise.go.th', position: '13596', level: '10', area: '1', authorized: false });
-    } else if (req.params.email == 'phanit') {
-        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Phanit', ln: 'Temjai', email: 'phanit@excise.go.th', position: '13596', level: '10', area: '1', authorized: false });
-    } else if (req.params.email == 'usamas') {
-        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Usamas', ln: 'Ruamchai', email: 'usamas@excise.go.th', position: '13596', level: '10', area: '1', authorized: false });
-    } else if (req.params.email == 'supornchai') {
-        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Supornchai', ln: 'Klinfoung', email: 'supornchai@excise.go.th', position: '13596', level: '10', area: '1', authorized: false });
-    } else if (req.params.email == 'maytee') {
-        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Maytee', ln: 'Thangsripong', email: 'maytee@excise.go.th', position: '13596', level: '10', area: '1', authorized: false });
-    } else if (req.params.email == 'ann_chanatya') {
-        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Chanatya', ln: '...', email: 'ann_chanatya@excise.go.th', position: '13596', level: '10', area: '1', authorized: false });
-    } else if (req.params.email == 'thaweesak') {
-        res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Thaweesak', ln: '...', email: 'thaweesak@excise.go.th', position: '13596', level: '10', area: '1', authorized: false });
-    } else {
-        //res.json(null);
-		res.json({ ssn: 'xxxxxxxxxxxxx', fn: 'Natthawat', ln: 'Arunweerungroj', email: 'natthawat_a@excise.go.th', position: '0', level: '0', area: '0', authorized: true });
+    var result = [];
+	pool.acquire(function(err, connection){
+    if(err){
+      console.error(err);
+      return;
     }
+    //console.log('Connection successful');
+
+    var request = new Request("SELECT * FROM [AgileControllerDB].[dbo].[UMS_EOStaging] where [UID]='"+req.params.email+"'" , function(err, rowCount){
+
+	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
+
+      if(err){
+        console.error(err);
+        return;
+      }
+      console.log('rowCount: ' + rowCount);
+	  if(rowCount==0){
+		  res.json({ ssn: '', fn: '', ln: '', email: req.params.email, position: '', level: '', area: '', authorized: '' });
+	  }	  
+
+      //console.log(JSON.stringify(result));
+      connection.release();
+    });
+	//console.log('tong');
+    request.on('row', function(columns){
+      //result.push(columns);
+	  
+	  console.log(columns[1].value);
+	  res.json({ ssn: columns[3].value, fn: columns[6].value, ln: columns[7].value, email: req.params.email, position: columns[12].value, level: columns[15].value, area: columns[16].value, authorized: columns[17].value });
+      /*columns.forEach(function(column){
+        if(column.value === null) {
+          console.log('NULL');
+        }
+        else{			
+			console.log(column.value);
+        }
+      });*/
+    });
+    connection.execSql(request);
+  });
 });
 
 router.put('/profile/:ssn/:token', function(req, res, next) {

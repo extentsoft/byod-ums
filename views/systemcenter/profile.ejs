@@ -140,7 +140,7 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">เลขที่บัตรประจำตัวประชาชน</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input id="u_ssn" type="text" disabled="" placeholder="<%= ssn %>" readonly class="input-border-btm">
+                                                            <input id="u_ssn" type="text"  placeholder="รหัสประชาชน" value="<%= ssn %>" class="input-border-btm">
                                                             <span class="help-inline">เลขที่บัตรประจำตัวประชาชนไม่สามารถแก้ไขได้</span> </div>
                                                     </div>
 
@@ -330,46 +330,7 @@
 
         <script>
 			account_now = $('#email').text().trim();
-            $(document).ready(function() {
-                //alert($('#u_ssn').attr("placeholder"));
-
-                $('#top-right-success').click(function() {
-
-                    $.ajax('http://byod.excise.go.th/api/eoffice/profile/' + $('#u_ssn').attr("placeholder") + '/ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6STFOaUo5LmV5SnBjM01pT2lKRmVIUmxiblJ6YjJaMElFTnZiWEJoYm5rZ1RHbHRhWFJsWkNJc0ltbGhkQ0k2TVRVeE9UWTVOVFk1T0N3aVpYaHdJam94TlRVeE1qTXhOams0TENKaGRXUWlPaUppZVc5a0xtVjRZMmx6WlM1bmJ5NTBhQ0lzSW5OMVlpSTZJbUo1YjJSQVpYaGphWE5sTG1kdkxuUm9JaXdpVUhKdmFtVmpkQ0k2SWtKWlQwUWlMQ0pGYldGcGJDSTZJbUp2ZVdSQVpYaGphWE5sTG1kdkxuUm9JaXdpVUdGeWRHNWxjaUk2SWxOMWJXMXBkQ0JEYjIxd2RYUmxjaUJEYjIxd1lXNTVJRXhwYldsMFpXUWlMQ0pTWlhGMVpYTjBaWElnSWpvaVUydDVJRWxEVkNCUWRXSnNhV01nUTI5dGNHRnVlU0JNYVcxcGRHVmtJbjAudWJ4UGdNNDkxWU9oTWNrYzA5R3lEODBsdG9uU2xMQ29SNENnZGNBdExzZw==', {
-                        type: "put",
-                        data: {
-                            fn: $('#u_fn').val(),
-                            ln: $('#u_ln').val(),
-                            position: $('#u_pos').val(),
-                            level: $('#u_lv').val(),
-                            area: $('#u_area').val(),
-                        },
-                        statusCode: {
-                            401: function() {
-                                notification("topright", "success", "fa fa-check-circle vd_green", "ไม่สามารถปรับเปลี่ยนข้อมูลส่วนบุคคลได้", 'Status 401: ไม่มีสิทธิเข้าใช้งานระบบ e-Office ');
-                            },
-                            403: function() {
-                                notification("topright", "success", "fa fa-check-circle vd_green", "ไม่สามารถปรับเปลี่ยนข้อมูลส่วนบุคคลได้", 'Status 403: สิทธิเข้าใช้งานระบบ e-Office ไม่รองรับ');
-                            }
-                        },
-                        success: function(data, textStatus, jqXHR) {
-                            console.log(JSON.stringify(data));
-                            notification("topright", "success", "fa fa-check-circle vd_green", "เปลี่ยนข้อมูลส่วนบุคคลสำเร็จ", "ข้อมูลถูกนำส่งให้ระบบ e-Office สำเร็จ");
-                        },
-                        error: function(jqXHR, textStatus, errorThrown) {
-                            /*console.log(jqXHR.status);
-                            console.log(jqXHR.statusText);
-                            console.log(textStatus);
-                            console.log(errorThrown);
-                            */
-                            //notification("topright", "success", "fa fa-check-circle vd_green", "ไม่สามารถปรับเปลี่ยนข้อมูลส่วนบุคคลได้", 'พบเหตุขัดข้องกรุณาลองใหม่อีกครั้ง');
-                        }
-                    });
-
-
-                });
-
-            });
+			//alert(account_now);
             $(window).load(function() {
                 var priv = $("#priv").html().trim().split(",");
                 if (priv[1] < 1) {
@@ -382,36 +343,56 @@
         <!-- Specific Page Scripts END -->
 
         <script>
-            function editprofile(){
-				$.ajax('http://byod.excise.go.th/api/addprofilelog', {
-					type: "get",
-					data: {
-						accname: account_now
-					},
-					success: function(json) {
-						$.ajax('http://byod.excise.go.th/api/checkprofilelimit', {
+            function editprofile(){			
+				$.ajax('http://byod.excise.go.th/api/editprofile', {
+                    type: "get",
+                    data: {
+						uid: account_now,
+                        ssn: document.getElementById('u_ssn').value,
+                        fn: document.getElementById('u_fn').value,
+                        ln: document.getElementById('u_ln').value,
+                        pos: document.getElementById('u_pos').value,
+						lv: document.getElementById('u_lv').value,
+						area: document.getElementById('u_area').value
+                    },
+                    success: function(json) {
+						//alert('k');
+						$.ajax('http://byod.excise.go.th/api/addprofilelog', {
 							type: "get",
 							data: {
 								accname: account_now
 							},
 							success: function(json) {
-								//alert(json);
-								if (json == 1) {
-									addviolation('overeditprofile');
-									$.ajax('http://byod.excise.go.th/api/message/email/5/' + account_now, {
-										type: "get",
-										success: function(json) {
-											//alert(JSON.stringify(json));
-										}
-									});
-									//alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
+								$.ajax('http://byod.excise.go.th/api/checkprofilelimit', {
+									type: "get",
+									data: {
+										accname: account_now
+									},
+									success: function(json) {
+										//alert(json);
+										if (json == 1) {
+											addviolation('overeditprofile');
+											$.ajax('http://byod.excise.go.th/api/message/email/5/' + account_now, {
+												type: "get",
+												success: function(json) {
+													//alert(JSON.stringify(json));
+												}
+											});
+										window.location = "/profile";
+											//alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
 
-									
-								}
+											
+										}
+									}
+								});
 							}
 						});
-					}
-				});
+					
+                        
+                    }
+                });
+				
+				//alert(document.getElementById('u_fn').value);				
 			}
 			
 			function addviolation(detail) {

@@ -74,6 +74,7 @@ var getchat = require('./routes/getchat');
 var getconfig = require('./routes/getconfig');
 var getconfig2 = require('./routes/getconfig2');
 var editconfig = require('./routes/editconfig');
+var editprofile = require('./routes/editprofile');
 var getuserpref = require('./routes/getuserpref');
 var edituserpref = require('./routes/edituserpref');
 var addviolation = require('./routes/addviolation');
@@ -225,7 +226,7 @@ app.use('/api/removedevicemon', removedevicemon);
 app.use('/api/getconfig', getconfig);
 app.use('/api/v2/getconfig', getconfig2);
 
-
+app.use('/api/editprofile', editprofile);
 app.use('/api/editconfig', editconfig);
 app.use('/api/getuserpref', getuserpref);
 app.use('/api/edituserpref', edituserpref);

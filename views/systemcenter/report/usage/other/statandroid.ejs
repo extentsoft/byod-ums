@@ -428,8 +428,17 @@
 					//window.location = '/';
 				}
 				function f(e, a, r) {
+					sdt_ = sd_;
+					edt_ = ed_;
 					refresh_table(e.format("Y-M-D"), a.format("Y-M-D"));
-                    var o = "",
+					sd_ = e.format("Y-M-D");
+					ed_ = a.format("Y-M-D");
+					if(sd_ == sdt_ && ed_ == edt_){
+					}
+					else{
+						window.location = '/report/usage/other/statandroid?start='+sd_+'&&end='+ed_;
+					}
+		                    var o = "",
                         l = "";
                     a - e < 100 ? (o = "วันนี้:", l = e.format("MMM D")) : "เมื่อวาน" == r ? (o = "เมื่อวาน:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
                         t.find(".m-subheader__daterange-date").html(l),

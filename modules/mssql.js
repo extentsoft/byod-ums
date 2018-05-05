@@ -29,7 +29,7 @@ var test2 = {
     server: '192.168.191.132'
 };
 
-var config = prod;
+var config = test;
 
 var pool = new ConnectionPool(poolConfig, config);
 //var connection = new Connection(config);
