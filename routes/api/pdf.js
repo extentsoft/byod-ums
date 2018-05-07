@@ -76,7 +76,7 @@ const reportDictionary = {
         filename: "report"
     },
 	"267142": {
-        stmt: "SELECT DATEPART(hh,timestamp) h,count(*) n FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a where CONVERT (date, timestamp) = CONVERT (date, current_timestamp) and [sessionID]!= '' group by DATEPART(hh,timestamp)",
+        stmt: "SELECT DATEPART(hh,timestamp) h,count(*) n FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a where CONVERT (date, timestamp) = CONVERT (date, current_timestamp) and [sessionID]!= '' group by DATEPART(hh,timestamp) order by DATEPART(hh,timestamp) asc",
         header: "ช่วงเวลา,จำนวนการเข้าใช้งาน",
         title: "รายงานการใช้งานทรัพยากรระบบ - ปริมาณจราจรเครือข่ายของวันนี้",
         filename: "report"
@@ -559,6 +559,11 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5', function(req, res, nex
                     .fontSize(12)
                     .text(headers[i], columnOffset += 220, 100);
 				}
+				else if(req.params.report == "267142" && i == 1){
+					doc.font('public/fonts/THSarabunBold.ttf')
+                    .fontSize(12)
+                    .text(headers[i], columnOffset += 250, 100);
+				}
 				else {
 					doc.font('public/fonts/THSarabunBold.ttf')
                     .fontSize(12)
@@ -566,113 +571,208 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5', function(req, res, nex
 				}
             }
             columnOffset = -20;
+			if(req.params.report == "267142"){
+				
+				for (i = 0; i < 24; i++) {					
+						//columnOffset = columnOffset + 20;
+						var time_ = '';
+						var count_ = '';
+						if(result.length > 0){
+							if(result[0][0] == i){
+								if(i < 10){
+									//time_ = "0"+ result[0][0] + ":00 - "+result[0][1];
+									time_ = "0"+ result[0][0] + ":00";
+									//console.log(time_);
+									doc.font('public/fonts/THSarabunBold.ttf')
+									.fontSize(9)
+									.text(time_, columnOffset += 100, rowOffset);
+									doc.font('public/fonts/THSarabunBold.ttf')
+									.fontSize(9)
+									.text(result[0][1], columnOffset += 250, rowOffset);
+									result.splice(0, 1);
+								}
+								else{
+									//time_ = result[0][0] + ":00 - "+result[0][1];
+									//console.log(time_);
+									time_ = result[0][0] + ":00";
+									doc.font('public/fonts/THSarabunBold.ttf')
+									.fontSize(9)
+									.text(time_, columnOffset += 100, rowOffset);
+									doc.font('public/fonts/THSarabunBold.ttf')
+									.fontSize(9)
+									.text(result[0][1], columnOffset += 250, rowOffset);
+									result.splice(0, 1);
+								}
+								
+							} 
+							else {
+								if(i < 10){
+									//time_ = "0"+ i + ":00 - 0";
+									//console.log(time_);
+									time_ = "0"+ i + ":00";
+									doc.font('public/fonts/THSarabunBold.ttf')
+									.fontSize(9)
+									.text(time_, columnOffset += 100, rowOffset);
+									doc.font('public/fonts/THSarabunBold.ttf')
+									.fontSize(9)
+									.text("0", columnOffset += 250, rowOffset);
+								}
+								else{
+									//time_ = i + ":00 - 0";
+									//console.log(time_);
+									time_ = i + ":00";
+									doc.font('public/fonts/THSarabunBold.ttf')
+									.fontSize(9)
+									.text(time_, columnOffset += 100, rowOffset);
+									doc.font('public/fonts/THSarabunBold.ttf')
+									.fontSize(9)
+									.text("0", columnOffset += 250, rowOffset);
+								}							
+							}
+						}
+						else{
+							if(i < 10){
+								//time_ = "0"+ i + ":00 - 0";
+								//console.log(time_);
+								time_ = "0"+ i + ":00";
+								doc.font('public/fonts/THSarabunBold.ttf')
+								.fontSize(9)
+								.text(time_, columnOffset += 100, rowOffset);
+								doc.font('public/fonts/THSarabunBold.ttf')
+								.fontSize(9)
+								.text("0", columnOffset += 250, rowOffset);
+							}
+							else{
+								//time_ = i + ":00 - 0";
+								//console.log(time_);
+								time_ = i + ":00";
+								doc.font('public/fonts/THSarabunBold.ttf')
+								.fontSize(9)
+								.text(time_, columnOffset += 100, rowOffset);
+								doc.font('public/fonts/THSarabunBold.ttf')
+								.fontSize(9)
+								.text("0", columnOffset += 250, rowOffset);
+							}
+							
+						}
+						
+						
+					rowOffset = rowOffset + 20;
+					columnOffset = -20;
+				}
+				
+			}
+			
+			
+			else
+			{
+				for (i = 0; i < result.length; i++) {
+					if ((i % 28 == 0) && (i > 0)) {
+						doc.addPage();
+						rowOffset = 110;
+						var headers = reportDictionary[req.params.report].header.split(",");
+						for (p = 0; p < headers.length; p++) {
+							if(req.params.report == "2674" && p == 2){
+								doc.font('public/fonts/THSarabunBold.ttf')
+								.fontSize(12)
+								.text(headers[p], columnOffset += 200, 80);
+							}
+							else if((req.params.report == "2675" || req.params.report == "267141" || req.params.report == "2688" || req.params.report == "2689" || req.params.report == "26810" || req.params.report == "26811" || req.params.report == "26812") && (p == 2 || p == 3)){
+								doc.font('public/fonts/THSarabunBold.ttf')
+								.fontSize(12)
+								.text(headers[p], columnOffset += 80, 100);
+							}
+							else if((req.params.report == "267154" || req.params.report == "267143") && p == 1){
+								doc.font('public/fonts/THSarabunBold.ttf')
+								.fontSize(12)
+								.text(headers[p], columnOffset += 220, 100);
+							}
+							else {
+								doc.font('public/fonts/THSarabunBold.ttf')
+								.fontSize(12)
+								.text(headers[p], columnOffset += 100, 80);
+							}
+						}
+						columnOffset = -20;
+					}
 
-            for (i = 0; i < result.length; i++) {
-                if ((i % 28 == 0) && (i > 0)) {
-                    doc.addPage();
-                    rowOffset = 110;
-					var headers = reportDictionary[req.params.report].header.split(",");
-					for (p = 0; p < headers.length; p++) {
-						if(req.params.report == "2674" && p == 2){
-							doc.font('public/fonts/THSarabunBold.ttf')
-							.fontSize(12)
-							.text(headers[p], columnOffset += 200, 80);
+					for (j = 0; j < result[i].length; j++) {
+						//columnOffset = columnOffset + 20;
+						var res_ = '';
+						if(result[i][j] == 'People'){
+							res_ = 'Officer';
+						} 
+						
+						else if(result[i][j] == 'overlogin'){
+							res_ = 'เข้าสู่ระบบนอกช่วงเวลาที่ได้รับอนุญาต';
 						}
-						else if((req.params.report == "2675" || req.params.report == "267141" || req.params.report == "2688" || req.params.report == "2689" || req.params.report == "26810" || req.params.report == "26811" || req.params.report == "26812") && (p == 2 || p == 3)){
-							doc.font('public/fonts/THSarabunBold.ttf')
-							.fontSize(12)
-							.text(headers[p], columnOffset += 80, 100);
+						
+						else if(result[i][j] == 'outoftime'){
+							res_ = 'เข้าสู่ระบบนอกช่วงเวลาที่ได้รับอนุญาต';
 						}
-						else if((req.params.report == "267154" || req.params.report == "267143") && p == 1){
+						
+						else if(result[i][j] == 'devicemon'){
+							res_ = 'มีการเข้าใช้งานระบบด้วยอุปกรณ์ที่ถูกกำหนดให้ตรวจสอบ';
+						}
+						
+						else if(result[i][j] == 'editdeivceoverlimit'){
+							res_ = 'มีการลงทะเบียน-เพิกถอนอุปกรณ์มากเกินกว่าที่กำหนดไว้ในหนึ่งวัน';
+						}
+						
+						else if(result[i][j] == 'accessdiffsite'){
+							res_ = 'มีการเข้าใช้งานต่างสถานที่ในระยะเวลาที่สั้นเกินกว่าที่กำหนดไว้ในระบบ';
+						}
+						
+						else if(result[i][j] == 'overeditprofile'){
+							res_ = 'มีการแก้ไขข้อมูลส่วนตัวเกินจำนวนครั้งที่ระบุไว้ในระบบ';
+						}
+						
+						else if(result[i][j] == 'AddDevice'){
+							res_ = 'ลงทะเบียนอุปกรณ์';
+						}
+						
+						else if(result[i][j] == 'DeleteDevice'){
+							res_ = 'เพิกถอนอุปกรณ์';
+						}
+						
+						else if(result[i][j] == 'EditDevice'){
+							res_ = 'แก้ไขข้อมูลอุปกรณ์';
+						}
+						
+						else if(result[i][j] == ''){
+							res_ = 'ไม่สามารถระบุได้';
+						}
+						
+						else {
+							res_ = result[i][j];
+						}
+						
+						if(req.params.report == "2674" && j == 2){
 							doc.font('public/fonts/THSarabunBold.ttf')
-							.fontSize(12)
-							.text(headers[p], columnOffset += 220, 100);
+							.fontSize(9)
+							.text(res_, columnOffset += 200, rowOffset);
+						}
+						else if((req.params.report == "2675" || req.params.report == "267141" || req.params.report == "2688" || req.params.report == "2689" || req.params.report == "26810" || req.params.report == "26811" || req.params.report == "26812") && (j == 2 || j == 3)){
+							doc.font('public/fonts/THSarabunBold.ttf')
+							.fontSize(9)
+							.text(res_, columnOffset += 80, rowOffset);
+						}
+						else if((req.params.report == "267154" || req.params.report == "267143") && j == 1){
+							doc.font('public/fonts/THSarabunBold.ttf')
+							.fontSize(9)
+							.text(res_, columnOffset += 220, rowOffset);
 						}
 						else {
 							doc.font('public/fonts/THSarabunBold.ttf')
-							.fontSize(12)
-							.text(headers[p], columnOffset += 100, 80);
+							.fontSize(9)
+							.text(res_, columnOffset += 100, rowOffset);
 						}
+						
 					}
+					rowOffset = rowOffset + 20;
 					columnOffset = -20;
-                }
-
-                for (j = 0; j < result[i].length; j++) {
-                    //columnOffset = columnOffset + 20;
-					var res_ = '';
-					if(result[i][j] == 'People'){
-						res_ = 'Officer';
-					} 
-					
-					else if(result[i][j] == 'overlogin'){
-						res_ = 'เข้าสู่ระบบนอกช่วงเวลาที่ได้รับอนุญาต';
-					}
-					
-					else if(result[i][j] == 'outoftime'){
-						res_ = 'เข้าสู่ระบบนอกช่วงเวลาที่ได้รับอนุญาต';
-					}
-					
-					else if(result[i][j] == 'devicemon'){
-						res_ = 'มีการเข้าใช้งานระบบด้วยอุปกรณ์ที่ถูกกำหนดให้ตรวจสอบ';
-					}
-					
-					else if(result[i][j] == 'editdeivceoverlimit'){
-						res_ = 'มีการลงทะเบียน-เพิกถอนอุปกรณ์มากเกินกว่าที่กำหนดไว้ในหนึ่งวัน';
-					}
-					
-					else if(result[i][j] == 'accessdiffsite'){
-						res_ = 'มีการเข้าใช้งานต่างสถานที่ในระยะเวลาที่สั้นเกินกว่าที่กำหนดไว้ในระบบ';
-					}
-					
-					else if(result[i][j] == 'overeditprofile'){
-						res_ = 'มีการแก้ไขข้อมูลส่วนตัวเกินจำนวนครั้งที่ระบุไว้ในระบบ';
-					}
-					
-					else if(result[i][j] == 'AddDevice'){
-						res_ = 'ลงทะเบียนอุปกรณ์';
-					}
-					
-					else if(result[i][j] == 'DeleteDevice'){
-						res_ = 'เพิกถอนอุปกรณ์';
-					}
-					
-					else if(result[i][j] == 'EditDevice'){
-						res_ = 'แก้ไขข้อมูลอุปกรณ์';
-					}
-					
-					else if(result[i][j] == ''){
-						res_ = 'ไม่สามารถระบุได้';
-					}
-					
-					else {
-						res_ = result[i][j];
-					}
-					
-					if(req.params.report == "2674" && j == 2){
-						doc.font('public/fonts/THSarabunBold.ttf')
-                        .fontSize(9)
-                        .text(res_, columnOffset += 200, rowOffset);
-					}
-					else if((req.params.report == "2675" || req.params.report == "267141" || req.params.report == "2688" || req.params.report == "2689" || req.params.report == "26810" || req.params.report == "26811" || req.params.report == "26812") && (j == 2 || j == 3)){
-						doc.font('public/fonts/THSarabunBold.ttf')
-                        .fontSize(9)
-                        .text(res_, columnOffset += 80, rowOffset);
-					}
-					else if((req.params.report == "267154" || req.params.report == "267143") && j == 1){
-						doc.font('public/fonts/THSarabunBold.ttf')
-                        .fontSize(9)
-                        .text(res_, columnOffset += 220, rowOffset);
-					}
-					else {
-						doc.font('public/fonts/THSarabunBold.ttf')
-                        .fontSize(9)
-                        .text(res_, columnOffset += 100, rowOffset);
-					}
-                    
-                }
-                rowOffset = rowOffset + 20;
-                columnOffset = -20;
-            }
+				}
+			}
             doc.pipe(res);
             doc.end();
             //res.send('fewfwe');
