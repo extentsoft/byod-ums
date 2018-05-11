@@ -166,7 +166,7 @@
                                                         </li>
                                                         <li class="line"></li>
                                                         <li>
-                                                            <a href="#">
+                                                            <a href="Manual.pdf" target="window">
                                                                 <div class="menu-icon"><i class=" fa fa-question-circle"></i></div>
                                                                 <div class="menu-text">คู่มือการใช้งาน</div>
                                                             </a>
@@ -206,7 +206,7 @@
                 <div class="modal-body">
 
                     <form class="form-horizontal">
-                        <div class="form-group" align="center">
+                        <div class="form-group" align="center" id ="noti-text-modal">
 
                         </div>
                     </form>
@@ -480,8 +480,10 @@
                     if (data[i].chanel <= 1) {
                         //alert(data[i].msg);
                         //var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>" + data[i].msg + "</span><span class='m-list-timeline__time'>" + data[i].timestamp.split("T")[0] + "</span></div>";
+						
+						var q = '"';
+						var msg = "<li><a href='#' data-toggle='modal' data-target='#modal_notification' onclick='setModalNotification(" + q + "_msg_"+ i + q +")'><div class='menu-icon vd_green'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text' id='_msg_"+i+"'>" + data[i].msg.substring(0, 50) + "<div class='menu-info'><span class='menu-date'>" + data[i].timestamp.split("T")[0] + "</span></div></div></a></li>";
 
-                        var msg = "<li><a href='#' data-toggle='modal' data-target='#modal_notification' onclick='setModalNotification(" + i + ")'><div class='menu-icon vd_green'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'>" + data[i].msg.substring(0, 50) + "<div class='menu-info'><span class='menu-date'>" + data[i].timestamp.split("T")[0] + "</span></div></div></a></li>";
 
                         $('#notification_center').append(msg);
                     }
@@ -558,7 +560,8 @@
     get_noti();
     get_chat();
 
-    function setModalNotification(msg) {
+    function setModalNotification(msgid) {
+		document.getElementById('noti-text-modal').innerHTML = document.getElementById(msgid).innerHTML;
         //alert('print message ' + msg);
     }
 

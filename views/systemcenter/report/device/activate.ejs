@@ -302,8 +302,8 @@
 
 
         <!-- Include Date Range Picker -->
-        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+        <script type="text/javascript" src="plugins/daterangepicker/daterangepicker.js"></script>
+        
 		
         <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
@@ -313,7 +313,6 @@
 
 
 
-        <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
 
 
 
@@ -322,7 +321,9 @@
 			var start_ ='';
 			var end_ ='';
 			var data_ = '';
-			var group_ = '0';
+			//var group_ = '0';
+			var group_ = 'People';
+			document.getElementById("listgroup").style.display = 'none';
 			//alert(account_now);
 
             function refresh_table(sd, ed , grp) {

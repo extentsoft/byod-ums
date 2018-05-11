@@ -6,6 +6,7 @@ var router = express.Router();
 var deviceList = function(req, res, next) {
 
     console.log('add chat ');
+	console.log('msgchat');
 
     req.test1 = "test test test";
 
@@ -52,8 +53,11 @@ var deviceList = function(req, res, next) {
 var deviceList2 = function(req, res, next) {
 
     console.log('deviceList middleware');
+	
 
     req.test1 = "test test test";
+	console.log('add chat ');
+	console.log(req.body.msgchat);
 
     var result = [];
     pool.acquire(function(err, connection) {
@@ -63,7 +67,7 @@ var deviceList2 = function(req, res, next) {
         }
         console.log('Connection successful');
         //console.log(rdata);
-        var request = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_Chat] ([name],[msg],[rdata],[created_at])  VALUES ('" + req.body.usr + "','" + req.body.msgchat + "','" + req.body.rdata + "',current_timestamp)", function(err, rowCount) {
+        var request = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_Chat] ([name],[msg],[rdata],[created_at])  VALUES ('" + req.body.usr + "',N'" + req.body.msgchat + "',N'" + req.body.rdata + "',current_timestamp)", function(err, rowCount) {
 
             //    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 

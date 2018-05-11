@@ -667,15 +667,22 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5', function(req, res, nex
 			else
 			{
 				for (i = 0; i < result.length; i++) {
-					if ((i % 28 == 0) && (i > 0)) {
+					if(req.params.report == "2675" || req.params.report == "267141" || req.params.report == "2688" || req.params.report == "2689" || req.params.report == "26810" || req.params.report == "26811" || req.params.report == "26812"){
+						row_page = 14;
+					}
+					else{
+						row_page = 28;
+					}
+					
+					if ((i % row_page == 0) && (i > 0)) {
 						doc.addPage();
-						rowOffset = 110;
+						rowOffset = 130;
 						var headers = reportDictionary[req.params.report].header.split(",");
 						for (p = 0; p < headers.length; p++) {
 							if(req.params.report == "2674" && p == 2){
 								doc.font('public/fonts/THSarabunBold.ttf')
 								.fontSize(12)
-								.text(headers[p], columnOffset += 200, 80);
+								.text(headers[p], columnOffset += 200, 100);
 							}
 							else if((req.params.report == "2675" || req.params.report == "267141" || req.params.report == "2688" || req.params.report == "2689" || req.params.report == "26810" || req.params.report == "26811" || req.params.report == "26812") && (p == 2 || p == 3)){
 								doc.font('public/fonts/THSarabunBold.ttf')
@@ -690,10 +697,11 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5', function(req, res, nex
 							else {
 								doc.font('public/fonts/THSarabunBold.ttf')
 								.fontSize(12)
-								.text(headers[p], columnOffset += 100, 80);
+								.text(headers[p], columnOffset += 100, 100);
 							}
 						}
 						columnOffset = -20;
+
 					}
 
 					for (j = 0; j < result[i].length; j++) {
@@ -745,7 +753,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5', function(req, res, nex
 						
 						else {
 							res_ = result[i][j];
-						}
+						}						
 						
 						if(req.params.report == "2674" && j == 2){
 							doc.font('public/fonts/THSarabunBold.ttf')
@@ -769,7 +777,12 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5', function(req, res, nex
 						}
 						
 					}
-					rowOffset = rowOffset + 20;
+					if(req.params.report == "2675" || req.params.report == "267141" || req.params.report == "2688" || req.params.report == "2689" || req.params.report == "26810" || req.params.report == "26811" || req.params.report == "26812"){
+						rowOffset = rowOffset + 40;
+					}
+					else{
+						rowOffset = rowOffset + 20;
+					}
 					columnOffset = -20;
 				}
 			}

@@ -140,7 +140,7 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">เลือกรูปแบบแสดงผล</label>
                                                         <div class="col-sm-8 controls">
-                                                            <input id="pref_theme" type="checkbox" data-rel="switch" checked="true" data-wrapper-class="inverse" data-on-text="มืด" data-off-text="สว่าง" onchange="change_userpref();">
+                                                            <input id="pref_theme" type="checkbox" data-rel="switch" data-wrapper-class="inverse" data-on-text="มืด" data-off-text="สว่าง" onchange="change_userpref();">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -243,17 +243,16 @@
 
 
         <!-- Include Date Range Picker -->
-        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+        <script type="text/javascript" src="plugins/daterangepicker/daterangepicker.js"></script>
+        
 
 
 
         <script>
             $(document).ready(function() {
                 //alert($.fn.jquery);
-				//$('#pref_theme').attr('checked', false);
-				//document.getElementById("pref_theme").checked = true;
-
+				$('#pref_theme').attr('checked', true);
+	
                 $.ajax('http://byod.excise.go.th/api/getuserpref', {
                     type: "get",
                     data: {
@@ -261,15 +260,15 @@
                     },
                     success: function(json) {
                         //alert(json);
-						document.getElementById("pref_theme").checked = true;
+
                         $('#pref_theme').attr('checked', true);
                         if (json[0] == 0) {
-							//alert('white');
+
                             $('#pref_theme').attr('checked', false);
                         } else {
-							//alert('dark');
-							document.getElementById("pref_theme").checked = true;
-                            //$('#pref_theme').attr('checked', true);
+
+
+                            $('#pref_theme').attr('checked', true);
                             //alert(json[0]);
                         }
 
@@ -314,8 +313,7 @@
                 //console.log($('#pref_notification').is(':checked') ? 1 : 0);
                 var theme_val = $('#pref_theme').is(':checked') ? 1 : 0;
                 var noti_val = $('#pref_notification').is(':checked') ? 1 : 0;
-				//alert(theme_val);
-				//alert(noti_val);
+
 
                 $.ajax('http://byod.excise.go.th/api/edituserpref', {
                     type: "get",

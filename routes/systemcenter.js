@@ -14,7 +14,8 @@ var crypt = new Crypt();
 module.exports = function(app, passport) {
 
 
-    app.get('/api', function(req, res) {
+    app.get('/api/agile', function(req, res) {
+		console.log('api-update');
         //var url = 'http://www.webservicex.net/length.asmx?wsdl';
         var url = 'http://192.168.163.25:8088/secoWS/service/NewAccountManagerServices?wsdl';
 
@@ -54,13 +55,17 @@ module.exports = function(app, passport) {
             client.setSecurity(wsSecurity);
 
             client.modifyAccount(args, function(err, result) {
+				console.log("Agile Result");
+				console.log(req.param('macbind'));
                 console.log(result);
+				res.send('0');
             });
 
 
             //new SoapUIClient('admin', 'P@ssw0rd123', {mustUnderstand: true,hasTimeStamp: false,passwordType: 'PasswordText'}).modifyAccount({in0: 'info',in1: {account: 'info',accountType: 1,orgName: '\\LDAP Users Temp',bindMac: 'AA-BB-CC-DD-EE-FF',loginType: 3,userName: 'Information Center'}});
 
         });
+		
     });
 
     app.get('/', function(req, res) {
@@ -1934,7 +1939,7 @@ function checkSupported(req, res, next) {
                         req.session.user.bsupport = true;
                     }
                 } else {
-                    req.session.user.bsupport = false;
+                    req.session.user.bsupport = true;
                 }
 
                 console.log(' Your browsing with ', req.session.user.browser, req.session.user.bversion, 'which is ', req.session.user.bsupport);
@@ -1958,9 +1963,13 @@ function isSupported(req, res, next) {
     if (!req.session.user) req.session.user = {};
     if (!req.session.user.browser) req.session.user.browser = agent.family;
     if (!req.session.user.bversion) req.session.user.bversion = agent.major;
-
-
-    request('http://' + envConfig.service_address + '/api/getconfig', function(error, response, body) {
+	/*console.log('agent');
+	console.log(agent.family);
+	console.log(useragent.is(req.headers['user-agent']).chrome);
+	console.log(useragent.is(req.headers['user-agent']).ie);
+	console.log(useragent.is(req.headers['user-agent']).firefox);*/
+	if(useragent.is(req.headers['user-agent']).chrome || useragent.is(req.headers['user-agent']).ie || useragent.is(req.headers['user-agent']).firefox){
+		request('http://' + envConfig.service_address + '/api/getconfig', function(error, response, body) {
         if (!error && response.statusCode == 200) {
             if (body != null) {
                 var data = JSON.parse(body);
@@ -2006,6 +2015,14 @@ function isSupported(req, res, next) {
         }
         next();
     });
+	}
+	
+	else{
+		req.session.user.bsupport = true;
+		next();
+	}
+
+    
 
 }
 

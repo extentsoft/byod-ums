@@ -505,8 +505,9 @@
                 }
 
                 //alert(JSON.stringify(data));
+				var limit_dev = data[0].limit;
                 document.getElementById('listterminal').innerHTML = '';
-                for (i = 0; i < data.length; i++) {
+                for (i = 0; i < limit_dev; i++) {
 
                     var div = document.createElement('div');
 
@@ -519,7 +520,7 @@
                         host_name = data[i].hostname;
                     }
                     update_time = new Date(data[i].updatetime);
-                    date_str = update_time.getUTCHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds() + ' - ' + update_time.getUTCDate() + "/" + (update_time.getUTCMonth() + 1) + "/" + update_time.getFullYear();
+                    date_str = update_time.getFullYear() + "/" + (update_time.getUTCMonth() + 1) + "/" + update_time.getUTCDate() + '-' + update_time.getUTCHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds();
 
                     q = "'";
 					var os_edit='';
@@ -568,20 +569,26 @@
 
 
                 }
-				
+				for (j=limit_dev; j< data.length; j++){
+					removedevice(data[j].terminalmac);					
+				}
 				
             }
 
             function removedevice(mac) {
 				//alert(mac);
+				deletedevice(mac);
 				refreshmac(mac)
-                deletedevice(mac);
+                
                 //alert(input.parentNode.id);
                
             }
 
             function adddevice(name, mac, os) {
 				//alert(mac.toUpperCase());
+				document.getElementById('term_name').value ='';
+				document.getElementById('term_mac').value ='';
+				document.getElementById('term_os').value ='';
 				mac = mac.toUpperCase();
                 $.ajax('http://byod.excise.go.th/api/adddevice', {
                     type: "get",
@@ -764,7 +771,7 @@
 					}
                 });*/
 				
-				$.ajax('http://byod.excise.go.th/api', {
+				$.ajax('http://byod.excise.go.th/api/agile', {
                     type: "get",
                     data: {
                         accname: account_now,
@@ -772,15 +779,17 @@
 						uname: username
                     },
                     success: function(json) {
+						window.location = "/device";
 						//refreshlist();
 						//alert(json);					
 					},
                     error: function(err) {
+						window.location = "/device";
                         //alert(JSON.stringify(fa));
                         //alert(err);
                     }
                 });
-				window.location = "/device";
+				
             }
 
             function checkcount() {

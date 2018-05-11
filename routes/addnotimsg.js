@@ -17,7 +17,7 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 
-    var request = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_Message] ([message] ,[receive_group],[created_at])  VALUES ('"+req.param('msg')+"','"+req.param('chanel')+"',current_timestamp)", function(err, rowCount){
+    var request = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_Message] ([message] ,[receive_group],[created_at])  VALUES (N'"+req.param('msg')+"','"+req.param('chanel')+"',current_timestamp)", function(err, rowCount){
 
 	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 
