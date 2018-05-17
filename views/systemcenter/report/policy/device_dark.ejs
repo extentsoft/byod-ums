@@ -132,7 +132,7 @@
 
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
-                                    <h1>รายงานการใช้งานของบุคคลากรที่ครบตามจำนวนอุปกรณ์ที่อนุญาต</h1>
+                                    <h1>รายงานบุคลากรที่ลงทะเบียนอุปกรณ์ครบตามจํานวนที่กำหนด</h1>
 
 
                                     <!-- menu -->
@@ -291,7 +291,16 @@
             }
 			
 			function printpdf(){
-				location.href = 'http://byod.excise.go.th/api/v1/pdf/26710/'+'0'+'/'+'0'+'/'+'0'+'/'+'0'+'/'+'0';
+				var search_ = '';
+				var date_ = moment().format("DD MMM YYYY");
+				if(document.getElementById("table-search").value.trim() == ''){
+					search_ = 0;
+				}
+				else {
+					search_ = document.getElementById("table-search").value.trim();					
+				}
+				location.href = 'http://byod.excise.go.th/api/v1/pdf/26710/'+'0'+'/'+'0'+'/'+'0'+'/'+'0'+'/'+account_now+'/'+search_+'/'+date_;
+				
 			}
             refresh_table();
         </script>

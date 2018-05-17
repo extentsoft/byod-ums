@@ -349,6 +349,13 @@
                 //alert(data_sql);
                 data = [];
                 for (i = 0; i < data_sql.length; i++) {
+					var os_ = '';
+					if(data_sql[3]==''){
+						os_ = 'ไม่สามารถระบุได้';
+					}
+					else{
+						os_ = data_sql[3];
+					}
                     data_json = {};
                     update_time = new Date(data_sql[4]);
                     date_str = update_time.getFullYear() + "/" + ((update_time.getUTCMonth()+1) < 10 ? '0' : '') + (update_time.getUTCMonth()+1) + "/" + (update_time.getUTCDate() < 10 ? '0' : '') + update_time.getUTCDate() + ' - ' + update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds();
@@ -356,7 +363,7 @@
 
 
                     //data_json = {name:data_sql[0],mac:data_sql[2],os:data_sql[3],date:date_str};
-                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[1] + "</td><td>" + data_sql[2] + "</td><td>" + data_sql[3] + "</td><td>" + data_sql[0] + "</td><td>" + date_str + "</td></tr>");
+                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[1] + "</td><td>" + data_sql[2] + "</td><td>" + os_ + "</td><td>" + data_sql[0] + "</td><td>" + date_str + "</td></tr>");
                     //alert(JSON.stringify(data_json));
                     data.push(data_json);
                     //alert(JSON.stringify(data));
@@ -447,8 +454,15 @@
 			}
 			
 			function printpdf(){
-				location.href = 'http://byod.excise.go.th/api/v1/pdf/2675/'+start_+'/'+end_+'/'+site_+'/'+'0'+'/'+'0';
-				
+				var search_ = '';
+				var date_ = moment().format("DD MMM YYYY");
+				if(document.getElementById("table-search").value.trim() == ''){
+					search_ = 0;
+				}
+				else {
+					search_ = document.getElementById("table-search").value.trim();					
+				}
+				location.href = 'http://byod.excise.go.th/api/v1/pdf/2675/'+start_+'/'+end_+'/'+site_+'/'+'0'+'/'+account_now+'/'+search_+'/'+date_;
 			}
 
 			list_site();

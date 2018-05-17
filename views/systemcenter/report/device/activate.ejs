@@ -480,7 +480,21 @@
 			}
 			
 			function printpdf(){
-				location.href = 'http://byod.excise.go.th/api/v1/pdf/2671/'+start_+'/'+end_+'/'+group_+'/'+'0'+'/'+'0';
+				//alert("1");
+				//alert(moment().format("DD MMM YYYY"));
+				//alert(document.getElementById("table-search").value);
+				var search_ = '';
+				var date_ = moment().format("DD MMM YYYY");
+				if(document.getElementById("table-search").value.trim() == ''){
+					search_ = 0;
+				}
+				else {
+					search_ = document.getElementById("table-search").value.trim();					
+				}
+				//search_ = search_.replace(/\s+/g, ',');
+				//var array_ = search_.split(",");			
+				//alert(array_[0]);
+				location.href = 'http://byod.excise.go.th/api/v1/pdf/2671/'+start_+'/'+end_+'/'+group_+'/'+'0'+'/'+account_now+'/'+search_+'/'+date_;
 				
 			}
 

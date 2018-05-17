@@ -132,14 +132,14 @@
                                     <div class="col-md-12">
                                         <div class="panel widget">
                                             <div class="panel-heading vd_bg-grey">
-                                                <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-bar-chart-o"></i> </span> ประวัติส่วนบุคคล </h3>
+                                                <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-users"></i> </span> ประวัติส่วนบุคคล </h3>
                                             </div>
                                             <div class="panel-body">
                                                 <form class="form-horizontal" action="#" role="form">
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">เลขที่บัตรประจำตัวประชาชน</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input id="u_ssn" type="text"  placeholder="รหัสประชาชน" value="<%= ssn %>" class="input-border-btm">
+                                                            <input id="u_ssn" type="text"  placeholder="รหัสประชาชน" value="<%= ssn %>" class="input-border-btm" onpaste="checkID();" onkeyup="checkID();" onfocusout="checkID();">
                                                             <span class="help-inline">เลขที่บัตรประจำตัวประชาชนไม่สามารถแก้ไขได้</span> </div>
                                                     </div>
 
@@ -226,7 +226,7 @@
                                                         <div class="col-sm-7">
                                                             <!--<button class="btn vd_btn vd_bg-green vd_white" type="submit" ><i class="icon-ok"></i> Save</button>
                                                             <button class="btn vd_btn" type="button">Cancel</button>-->
-                                                            <button type="button" class="btn vd_btn vd_bg-green" id="top-right-success" onclick="editprofile()"><!--<i class="fa fa-check-circle append-icon"></i>-->บันทึก</button>
+                                                            <button type="button" class="btn vd_btn vd_bg-blue" disabled id="sbm-btn" onclick="editprofile()"><!--<i class="fa fa-check-circle append-icon"></i>-->บันทึก</button>
 
                                                         </div>
                                                     </div>
@@ -414,6 +414,25 @@
 					}
 				});
 			}
+			
+			function checkID() {
+				var ssn_ = document.getElementById('u_ssn').value;
+				var sum = 0;
+				if(ssn_.length != 13){
+					document.getElementById('sbm-btn').disabled = true;
+				}
+				else{
+					for(i=0, sum=0; i < 12; i++)
+					sum += parseFloat(ssn_.charAt(i))*(13-i);
+					if((11-sum%11)%10!=parseFloat(ssn_.charAt(12))){
+						document.getElementById('sbm-btn').disabled = true;
+					}
+					else{
+						document.getElementById('sbm-btn').disabled = false;
+					}
+				}				
+			}
+			checkID();
         </script>
 
 </body>

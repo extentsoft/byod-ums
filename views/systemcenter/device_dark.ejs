@@ -220,7 +220,7 @@
                                         -->
                                         </div>
                                         <div class="modal-footer background-login">
-                                            <button type="button" id="sbm-btn" disabled class="btn vd_btn vd_bg-green" style="width:47%;" data-dismiss="modal" onclick="adddevice(document.getElementById('term_name').value,document.getElementById('term_mac').value,document.getElementById('term_os').value)">บันทึก</button>
+                                            <button type="button" id="sbm-btn" disabled class="btn vd_btn vd_bg-blue" style="width:47%;" data-dismiss="modal" onclick="adddevice(document.getElementById('term_name').value,document.getElementById('term_mac').value,document.getElementById('term_os').value)">บันทึก</button>
                                             <button type="button" class="btn vd_btn vd_bg-grey" style="width:47%" data-dismiss="modal">ยกเลิก</button>
 
                                         </div>
@@ -244,7 +244,7 @@
                                         </div>
 
                                         <div class="modal-footer background-login">
-                                            <button type="button" class="btn vd_btn vd_bg-green" style="width:47%" data-dismiss="modal" id="modal-del" onclick="removedevice($(this).attr('value'))">ยืนยัน</button>
+                                            <button type="button" class="btn vd_btn vd_bg-blue" style="width:47%" data-dismiss="modal" id="modal-del" onclick="removedevice($(this).attr('value'))">ยืนยัน</button>
 
                                             <button type="button" class="btn vd_btn vd_bg-grey" style="width:47%" data-dismiss="modal">ยกเลิก</button>
 
@@ -540,7 +540,7 @@
                     div.innerHTML =
 
                         '<div class="col-md-12"> \
-                                                <div class="vd_status-widget vd_bg-green widget"> \
+                                                <div class="vd_status-widget vd_bg-blue widget"> \
                                                     <div class="vd_panel-menu"> \
                                                         <div  data-action="refresh" data-original-title="Edit" data-rel="tooltip" class=" menu entypo-icon smaller-font"  data-toggle="modal" data-target="#myModal" data-placement="bottom" onclick="changevent('+q+'edit'+q+');document.getElementById('+q+'myModalLabel1'+q+').innerHTML = '+q+'แก้ไขอุปกรณ์'+q+';document.getElementById('+q+'term_mac'+q+').disabled = true;document.getElementById('+q+'sbm-btn'+q+').disabled = false;document.getElementById('+q+'term_name'+q+').value='+q+host_name+q+';document.getElementById('+q+'term_mac'+q+').value='+q+data[i].terminalmac+q+';document.getElementById('+q+'term_os'+q+').value='+q+os_edit+q+';"> <i class="fa fa-gear" ></i> </div> \
                                                         <div  data-action="refresh" data-original-title="Deactivate" data-rel="tooltip" class=" menu entypo-icon smaller-font" data-toggle="modal" data-target="#myModal3" onclick="$(' + q + '#modal-del' + q + ').val(' + q + data[i].terminalmac + q + ')"> <i class="icon-cross" ></i> </div> \

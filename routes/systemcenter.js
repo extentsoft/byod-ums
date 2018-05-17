@@ -202,7 +202,6 @@ module.exports = function(app, passport) {
     app.get('/setting', isLoggedIn, isSupported, function(req, res) {
         //res.send("/systemcenter/setting");
         console.log('theme - ' + req.session.user.pref_theme);
-
         if (req.session.user.pref_theme == 0) {
             res.render('systemcenter/setting', {
                 title: 'ตั้งค่า',
@@ -226,8 +225,117 @@ module.exports = function(app, passport) {
         }
 
     });
+	
+	app.get('/custsat/do', isLoggedIn, isSupported, function(req, res) {
+        //res.send("/systemcenter/setting");
+        console.log('theme - ' + req.session.user.pref_theme);
+        if (req.session.user.pref_theme == 0) {
+            res.render('systemcenter/custsat/do', {
+                title: 'ตั้งค่า',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        } else {
+            res.render('systemcenter/custsat/do_dark', {
+                title: 'ตั้งค่า',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        }
 
+    });
+	
+	
+	app.get('/custsat/form', isLoggedIn, isSupported, function(req, res) {
+        //res.send("/systemcenter/setting");
+        console.log('theme - ' + req.session.user.pref_theme);
+        if (req.session.user.pref_theme == 0) {
+            res.render('systemcenter/custsat/form', {
+                title: 'ตั้งค่า',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        } else {
+            res.render('systemcenter/custsat/form_dark', {
+                title: 'ตั้งค่า',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        }
 
+    });
+
+	app.get('/custsat/result', isLoggedIn, isSupported, function(req, res) {
+        //res.send("/systemcenter/setting");
+        console.log('theme - ' + req.session.user.pref_theme);
+        if (req.session.user.pref_theme == 0) {
+            res.render('systemcenter/custsat/result', {
+                title: 'ตั้งค่า',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        } else {
+            res.render('systemcenter/custsat/result_dark', {
+                title: 'ตั้งค่า',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        }
+
+    });
+	
+	
+	app.get('/notification', isLoggedIn, isSupported, function(req, res) {
+        //res.send("/systemcenter/setting");
+        console.log('theme - ' + req.session.user.pref_theme);
+
+        if (req.session.user.pref_theme == 0) {
+            res.render('systemcenter/admin/notification', {
+                title: 'ตั้งค่า',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        } else {
+            res.render('systemcenter/admin/notification_dark', {
+                title: 'ตั้งค่า',
+                message: req.flash('message'),
+                email: req.session.user.email,
+                firstname: req.session.user.firstname,
+                lastname: req.session.user.lastname,ipaddr: req.session.user.ipaddr,browser_family: req.session.user.browser,
+                isauthorized: req.session.authorized,
+                privilege: req.session.user.pref_theme + ',' + req.session.user.pref_notification + ',' + req.session.authorized
+            });
+        }
+
+    });
 
 
     //////////////////// TZ /////////////////////////////////////

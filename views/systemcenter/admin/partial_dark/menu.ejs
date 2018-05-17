@@ -48,13 +48,69 @@
                                 <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
                             </a>
                         </li>
+						<li>
+                            <a href="/custsat/do">
+                                <span class="menu-icon"><i class="fa fa-thumbs-up"></i></span>
+                                <span class="menu-text">แบบสำรวจความพึงพอใจ</span>
+                                <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
+                            </a>
+                        </li>
                         <% if(isauthorized){ %>
+							<li>
+								<a href="/notification">
+									<span class="menu-icon"><i class="fa fa-tasks"></i></span>
+									<span class="menu-text">ประวัติการแจ้งเตือน</span>
+									<!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
+								</a>
+							</li>
                             <li>
                                 <a href="/configuration">
                                     <span class="menu-icon"><i class="icon-tools"> </i></span>
                                     <span class="menu-text">ตั้งค่าระบบ</span>
                                     <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
                                 </a>
+                            </li>
+							<li>
+                                <a href="javascript:void(0);" data-action="click-trigger">
+                                    <span class="menu-icon entypo-icon"><i class="icon-screen"> </i></span>
+                                    <span class="menu-text">กำหนดอุปกรณ์</span>
+                                    <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
+                                </a>
+                                <div class="child-menu" data-action="click-target">
+                                    <ul>
+                                        <li>
+											<a href="/report/monitor/device/addmonitor">
+												<span class="menu-text">กำหนดอุปกรณ์เพื่อตรวจสอบการเข้าใช้งาน</span>
+											</a>
+										</li>
+										<li>
+											<a href="/report/monitor/device/listmonitor">
+												<span class="menu-text">รายชื่ออุปกรณ์ที่ถูกตรวจสอบการเข้าใช้งาน</span>
+											</a>
+										</li>
+                                    </ul>
+                                </div>
+                            </li>
+							<li>
+                                <a href="javascript:void(0);" data-action="click-trigger">
+                                    <span class="menu-icon entypo-icon"><i class="fa fa-bar-chart-o"> </i></span>
+                                    <span class="menu-text">ระบบสำรวจความพึงพอใจ</span>
+                                    <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
+                                </a>
+                                <div class="child-menu" data-action="click-target">
+                                    <ul>
+                                        <li>
+											<a href="/custsat/form">
+												<span class="menu-text">สร้างแบบสำรวจความพึงพอใจ</span>
+											</a>
+										</li>
+										<li>
+											<a href="/custsat/result">
+												<span class="menu-text">ผลการสำรวจความพึงพอใจ</span>
+											</a>
+										</li>
+                                    </ul>
+                                </div>
                             </li>
                             <li>
                                 <a href="javascript:void(0);" data-action="click-trigger">
@@ -142,7 +198,7 @@
 										
 										<li>
                                             <a href="/report/policy/device">
-                                                <span class="menu-text">รายงานบุคคลากรที่ลงทะเบียนครบตามจำนวนอุปกรณ์ที่อนุญาต</span>
+                                                <span class="menu-text">รายงานบุคลากรที่ลงทะเบียนอุปกรณ์ครบตามจํานวนที่กำหนด</span>
                                             </a>
                                         </li>
                                         <li>
@@ -306,26 +362,7 @@
                                             </div>
                                         </li>
 										
-										<li>
-                                            <a href="/report/monitor/device/addmonitor" data-action="click-trigger">
-                                                <span class="menu-text">กำหนดอุปกรณ์เพื่อตรวจสอบการเข้าใช้งาน</span>
-                                                <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
-                                            </a>
-                                            <div class="child-menu" data-action="click-target">
-                                                <ul>
-                                                    <li>
-                                                        <a href="/report/monitor/device/addmonitor">
-                                                            <span class="menu-text">กำหนดอุปกรณ์เพื่อตรวจสอบการเข้าใช้งาน</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/report/monitor/device/listmonitor">
-                                                            <span class="menu-text">รายชื่ออุปกรณ์ที่ถูกตรวจสอบการเข้าใช้งาน</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
+										
                                     </ul>
                                 </div>
                             </li>

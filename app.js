@@ -54,6 +54,8 @@ var logdevice = require('./routes/logdevice');
 var deletedevice = require('./routes/deletedevice');
 var alldevices = require('./routes/alldevices');
 var allusers = require('./routes/allusers');
+var allnoti = require('./routes/allnoti');
+var deletenoti = require('./routes/deletenoti');
 var accesslog = require('./routes/accesslog');
 var devicemonlog = require('./routes/devicemonlog');
 var limitdevice = require('./routes/limitdevice');
@@ -62,6 +64,13 @@ var limitdevice_user = require('./routes/limitdevice_user');
 var addprofilelog = require('./routes/addprofilelog');
 var checkprofilelimit = require('./routes/checkprofilelimit');
 var checkip = require('./routes/checkip');
+
+var addcustsat = require('./routes/addcustsat');
+var listcustsat = require('./routes/listcustsat');
+var getcustsat = require('./routes/getcustsat');
+var docustsat = require('./routes/docustsat');
+var clearcustsat = require('./routes/clearcustsat');
+
 
 var addnotimsg = require('./routes/addnotimsg');
 var getnotimsg = require('./routes/getnotimsg');
@@ -199,6 +208,8 @@ app.use('/api/logdevice', logdevice);
 app.use('/api/deletedevice', deletedevice);
 app.use('/api/alldevices', alldevices);
 app.use('/api/allusers', allusers);
+app.use('/api/allnoti', allnoti);
+app.use('/api/deletenoti', deletenoti);
 app.use('/api/accesslog', accesslog);
 app.use('/api/devicemonlog', devicemonlog);
 app.use('/api/limitdevice', limitdevice);
@@ -207,6 +218,12 @@ app.use('/api/limitdevice_user', limitdevice_user);
 app.use('/api/addprofilelog', addprofilelog);
 app.use('/api/checkprofilelimit', checkprofilelimit);
 app.use('/api/checkip', checkip);
+
+app.use('/api/addcustsat', addcustsat);
+app.use('/api/listcustsat', listcustsat);
+app.use('/api/getcustsat', getcustsat);
+app.use('/api/docustsat', docustsat);
+app.use('/api/clearcustsat', clearcustsat);
 
 app.use('/api/addnotimsg', addnotimsg);
 app.use('/api/getnotimsg', getnotimsg);

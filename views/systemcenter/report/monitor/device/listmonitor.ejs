@@ -52,7 +52,6 @@
     <link href="plugins/tagsInput/jquery.tagsinput.css" rel="stylesheet" type="text/css">
     <link href="plugins/bootstrap-switch/bootstrap-switch.css" rel="stylesheet" type="text/css">
     <link href="plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css">
-    <link href="plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css">
 
     <link href="plugins/colorpicker/css/colorpicker.css" rel="stylesheet" type="text/css">
 
@@ -91,7 +90,6 @@
     <script type="text/javascript" src="js/mobile-detect.min.js"></script>
     <script type="text/javascript" src="js/mobile-detect-modernizr.js"></script>
 
-    <script type="text/javascript" src='plugins/bootstrap-timepicker/bootstrap-timepicker.min.js'></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -275,7 +273,6 @@
         <script type="text/javascript" src='plugins/skycons/skycons.js'></script>
         
 
-        <script type="text/javascript" src='plugins/bootstrap-timepicker/bootstrap-timepicker.min.js'></script>
         <script type="text/javascript" src='plugins/ckeditor/ckeditor.js'></script>
         <script type="text/javascript" src='plugins/ckeditor/adapters/jquery.js'></script>
 
@@ -286,22 +283,6 @@
         <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
 
 
-
-        <script>
-            $(window).load(function() {
-                
-
-            $(document).ready(function() {
-                account_now = 'natthawat_a';
-                $("#chat-text").keyup(function(event) {
-                    if (event.keyCode === 13) {
-                        sendchat($('#chat-text').val());
-                    }
-                });
-
-            });
-            $(window).load(function() {});
-        </script>
         <!-- Specific Page Scripts END -->
 
 
@@ -342,7 +323,7 @@
 					else{
 						//alert('b');
 						
-						date_str = update_time.getUTCHours() + ":" + (update_time.getMinutes()<10?'0':'') + update_time.getMinutes() + ":" + (update_time.getSeconds()<10?'0':'') + update_time.getSeconds() +' - ' + update_time.getUTCDate() + "/" + (update_time.getUTCMonth()+1) + "/" + update_time.getFullYear();
+						date_str = update_time.getFullYear() + "/" + ((update_time.getUTCMonth()+1) < 10 ? '0' : '') + (update_time.getUTCMonth()+1) + "/" + (update_time.getUTCDate() < 10 ? '0' : '') + update_time.getUTCDate() + ' - ' + update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds();
 					}
                     $('#data-tables').find('tbody').append('<tr><td>' + data_sql[3] + '</td><td>' + data_sql[1] + '</td><td>' + data_sql[4] + '</td><td>' + data_sql[5] + '</td><td>' + date_str + '</td><td class="menu-action"><a id="' + data_sql[0] + '" data-original-title="edit" data-toggle="modal" data-target="#myModal" data-placement="top" class="btn menu-icon vd_bd-red vd_red" onclick="$(' + q + '#btn-limit' + q + ').val(' + q + data_sql[4] + q + ');" > <i class="fa fa-times"></i> </a> </td></tr>');
                     data.push(data_json);

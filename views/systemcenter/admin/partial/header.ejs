@@ -65,7 +65,7 @@
                                         <div class="vd_mega-menu-content width-xs-3 width-sm-4 width-md-5 width-lg-4 right-xs left-sm" data-action="click-target">
                                             <div class="child-menu">
                                                 <div class="title">
-                                                    สนทนาออนไลน์ <i></i>
+													สนทนาออนไลน์
 
                                                 </div>
                                                 <div class="content-list content-image content-menu">
@@ -80,8 +80,6 @@
                                                             <input type="text" placeholder="chat here.." id="chat-text" />
                                                         </div>
                                                         <div class="vd_panel-menu">
-
-
                                                             <div data-rel="tooltip" data-original-title="Insert Picture" class="menu" style="margin-right: 15px; margin-top: 5px" id="attachment" onClick="getAttach()">
                                                                 <i class="fa fa-paperclip" style="color: #000;"></i>
                                                             </div>
@@ -101,12 +99,12 @@
 
                                             <span class="mega-icon"><i class="fa fa-envelope"></i></span>
                                             <!--<span class="mega-icon"><i class="fa fa-globe"></i></span>-->
-                                            <span class="badge vd_bg-red"><!--51--></span>
+                                            <span class="badge vd_bg-red" id="new-noti"><!--51-->NEW</span>
                                         </a>
                                         <div class="vd_mega-menu-content width-xs-3 width-sm-4 width-md-5 width-lg-4 right-xs left-sm" data-action="click-target">
                                             <div class="child-menu">
                                                 <div class="title">
-                                                    Notifications
+													ข่าวสารแจ้งเตือน
 
                                                 </div>
                                                 <div class="content-list">
@@ -269,7 +267,24 @@
             var filename = fname.substring(startIndex);
             if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
                 filename = filename.substring(1);
-                sendchat(filename, reader.result);
+                //sendchat(filename, reader.result);
+				$.ajax('http://byod.excise.go.th/api/addchat', {
+					type: "post",
+					data: {
+						usr: account_now,
+						msgchat: filename,
+						rdata: reader.result
+					},
+
+					success: function(json) {
+						//alert('a');
+						//$('#chatbox').empty();
+						document.getElementById('chat-text').value = ''
+						get_chat();
+
+
+					}
+				});
             }
             //sendchat(fname, reader.result);
 
@@ -361,6 +376,8 @@
                     data[i].timestamp
                     data[i].msg*/
                     //alert(data[i].channel);
+					update_time = new Date(datac[i].timestamp);
+                    date_str = update_time.getFullYear() + "/" + (update_time.getUTCMonth() + 1) + "/" + update_time.getUTCDate() + ' - ' + update_time.getUTCHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds();
 
                     //var uid = $("#userid").text();
                     if (datac[i].name == account_now) {
@@ -368,9 +385,9 @@
                         //var my_msg = "<div class='m-messenger__datetime'></div><div class='m-messenger__message m-messenger__message--out'><div class='m-messenger__message-body'><div class='m-messenger__message-arrow'></div><div class='m-messenger__message-content'><div class='m-messenger__message-text'>" + datac[i].msg + "</div></div></div></div><br>";
                         var my_msg = "";
                         if (datac[i].rdata == "-") {
-                            my_msg = "<li class='align-right'><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></li>";
+                            my_msg = "<li class='align-right'><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><div class='align-right'>" + datac[i].name + "</div><span class='menu-date'>" + date_str + "</span></div></div></li>";
                         } else {
-                            my_msg = "<li class='align-right'><a href='#'><div class='menu-icon'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text'><a download='" + datac[i].msg + "' href='" + datac[i].rdata + "'>" + datac[i].msg + "</a><div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+                            my_msg = "<li class='align-right'><div class='menu-text'><a download='" + datac[i].msg + "' href='" + datac[i].rdata + "'>" + datac[i].msg + "</a><div class='menu-info'><div class='align-right'>" + datac[i].name + "</div><span class='menu-date'>" + date_str + "</span></div></div></a></li>";
                         }
 
                         $('#chatbox').append(my_msg);
@@ -381,9 +398,9 @@
                         var other_msg = "";
 
                         if (datac[i].rdata == "-") {
-                            other_msg = "<li><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></li>";
+                            other_msg = "<li><div class='menu-text'>" + datac[i].msg + "<div class='menu-info'><div>" + datac[i].name + "</div><span class='menu-date'>" + date_str + "</span></div></div></li>";
                         } else {
-                            other_msg = "<li><a href='#'><div class='menu-text'><a download='" + datac[i].msg + "' href='data:application/octet-stream;base64," + datac[i].rdata + "'>" + datac[i].msg + "</a><div class='menu-info'><span class='menu-date'>" + datac[i].name + "</span></div></div></a></li>";
+                            other_msg = "<li><a href='#'><div class='menu-text'><a download='" + datac[i].msg + "' href='data:application/octet-stream;base64," + datac[i].rdata + "'>" + datac[i].msg + "</a><div class='menu-info'><div>" + datac[i].name + "</div><span class='menu-date'>" + date_str + "</span></div></div></a></li>";
                         }
 
                         $('#chatbox').append(other_msg);
@@ -417,29 +434,35 @@
 
         //console.log(rdt);
         //alert($("#priv").html().trim().split(",")[2]);
-        if ($("#priv").html().trim().split(",")[2] == 'true' && rdt == '-') {
-            msg = '<p style="color:red">' + msg + '</p>';
-        } else {
+		if(msg.length > 40){
+			alert('ไม่สามารถส่งข้อความเกิน 50 ตัวอักษรได้ (จำนวนตัวอักษรปัจจุบัน '+msg.length+'/40)');
+		}
+		else {
+			if ($("#priv").html().trim().split(",")[2] == 'true' && rdt == '-') {
+				msg = '<p style="color:red">' + msg + '</p>';
+			} else {
 
-        }
-        $.ajax('http://byod.excise.go.th/api/addchat', {
-            type: "post",
-            data: {
-                usr: account_now,
-                msgchat: msg,
-                rdata: rdt
-            },
+			}
+			$.ajax('http://byod.excise.go.th/api/addchat', {
+				type: "post",
+				data: {
+					usr: account_now,
+					msgchat: msg,
+					rdata: rdt
+				},
 
-            success: function(json) {
-                //alert('a');
-                //$('#chatbox').empty();
-                document.getElementById('chat-text').value = ''
-                get_chat();
+				success: function(json) {
+					//alert('a');
+					//$('#chatbox').empty();
+					document.getElementById('chat-text').value = ''
+					get_chat();
 
 
-            }
-        });
+				}
+			});
 
+		}
+        
     }
 
     function get_noti() {
