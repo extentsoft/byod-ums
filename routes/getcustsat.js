@@ -13,7 +13,7 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 	q = '"';
-    var request = new Request("if '"+req.param('accname')+"' in (select [user_ref] FROM [AgileControllerDB].[dbo].[UMS_Limitdevice]) update [AgileControllerDB].[dbo].[UMS_Limitdevice] set [limitdevice] = '"+req.param('limit')+"' where [user_ref] =  '"+req.param('accname')+"' else	INSERT INTO [AgileControllerDB].[dbo].[UMS_Limitdevice] ([user_id],[user_ref],[limitdevice],[updated_at]) VALUES ((select [accountID] from [AgileControllerDB].[dbo].[TSM_E_Account] where [account] = '"+req.param('accname')+"'),'"+req.param('accname')+"','"+req.param('limit')+"',current_timestamp)", function(err, rowCount){
+    var request = new Request("SELECT * FROM [AgileControllerDB].[dbo].[UMS_Custsat] a join (SELECT form_id,code_ref,sum(CAST(ch1 AS int)) c1,sum(CAST(ch2 AS int)) c2,sum(CAST(ch3 AS int)) c3,sum(CAST(ch4 AS int)) c4,sum(CAST(ch5 AS int)) c5 FROM [AgileControllerDB].[dbo].[UMS_CustsatResult] group by form_id,code_ref) b on a.form_id = b.form_id and a.code_ref = b.code_ref where a.form_id = '"+req.param('formid')+"'", function(err, rowCount){
 
       if(err){
         console.error(err);

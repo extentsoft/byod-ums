@@ -13,7 +13,7 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 	q = '"';
-    var request = new Request("if '"+req.param('accname')+"' in (select [user_ref] FROM [AgileControllerDB].[dbo].[UMS_Limitdevice]) update [AgileControllerDB].[dbo].[UMS_Limitdevice] set [limitdevice] = '"+req.param('limit')+"' where [user_ref] =  '"+req.param('accname')+"' else	INSERT INTO [AgileControllerDB].[dbo].[UMS_Limitdevice] ([user_id],[user_ref],[limitdevice],[updated_at]) VALUES ((select [accountID] from [AgileControllerDB].[dbo].[TSM_E_Account] where [account] = '"+req.param('accname')+"'),'"+req.param('accname')+"','"+req.param('limit')+"',current_timestamp)", function(err, rowCount){
+    var request = new Request("SELECT [name],[form_id] FROM [AgileControllerDB].[dbo].[UMS_Custsat] where [name] != 'undefined' and [name] is not null and [form_id] != 'undefined' and [form_id] is not null group by [name],[form_id]", function(err, rowCount){
 
       if(err){
         console.error(err);

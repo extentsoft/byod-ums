@@ -58,9 +58,6 @@
     <link href="plugins/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css">
     <link href="plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css">
     <link href="plugins/introjs/css/introjs.min.css" rel="stylesheet" type="text/css">
-	
-    <link href="plugins/dataTables/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
-    <link href="plugins/dataTables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 
     <!-- Theme CSS -->
     <link href="css/theme.min.css" rel="stylesheet" type="text/css">
@@ -99,15 +96,15 @@
 
 </head>
 
-<body id="dashboard" class="full-layout  nav-right-hide nav-right-start-hide  nav-top-fixed      responsive    clearfix" data-active="dashboard " data-smooth-scrolling="1">
+<body id="skin" class="boxed-layout  nav-right-hide nav-right-start-hide  nav-top-fixed background-3 nav-left-medium  enlarge-left-to-medium  responsive    clearfix" data-active="skin " data-smooth-scrolling="1">    <div class="vd_body">
     <div class="vd_body">
-        <%- include('../../../admin/partial/header'); %>
+        <%- include('../admin/partial_dark/header'); %>
 
             <!-- Content start -->
 
             <div class="content">
                 <div class="container">
-                    <%- include('../../../admin/partial/menu'); %>
+                    <%- include('../admin/partial_dark/menu'); %>
 
 
                 </div>
@@ -119,59 +116,42 @@
                         <div class="vd_content clearfix">
 
                             <!-- vd_head-section -->
-
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
-                                    <h1>รายงาน</h1>
-
-                                    <div class="vd_panel-menu  ">
-                                        <div class="menu">
-
-                                            <span class="fa fa-calendar" id="daterangepicker">
-											<span class="m-subheader__daterange-label">
-												<span class="m-subheader__daterange-title"></span>
-                                            <span class="m-subheader__daterange-date m--font-brand"></span>
-                                            <a href="#" class="btn btn-sm btn-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill">
-                                                <i class="la la-angle-down"></i>
-                                            </a>
-                                            </span>
-
-                                            </span>
-                                        </div>
-                                        <!-- menu -->
-                                    </div>
+                                    <!-- <h1>แบบสำรวจความพึงพอใจ</h1> -->
+                                    <!-- menu -->									
                                 </div>
-                                <!-- vd_panel-header -->
                             </div>
                             <!-- vd_title-section -->
 
                             <div class="vd_content-section clearfix">
-                            <!-- start row-->
+                                <!-- start row-->
 
+                                <!-- end row -->
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="panel widget">
-                                        <div class="panel-heading vd_bg-grey">
-                                            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> รายงานการใช้จำแนกตามพื้นที่ - พื้นที่การใช้งาน</h3>
-                                        </div>
-                                        <div class="panel-body table-responsive" id="tab-body">
-                                            <table class="table table-striped" id="data-tables">
-                                                <thead>
-                                                    <tr>
-                                                        <th>พื้นที่</th>												
-														<th>เจ้าของอุปกรณ์</th>
-                                                        <th>MAC</th>
-														<th>ระบบปฏิบัติการ</th>
-                                                        <th>วันที่เข้าใช้งาน</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-
-
-                                                </tbody>
-                                            </table>
-
+                                <div class="row" id="form-basic">
+                                    <div class="col-md-12">
+                                        <div class="panel widget">
+                                            <div class="panel-heading vd_bg-grey">
+                                                <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-pencil"></i> </span> แบบสำรวจความพึงพอใจ</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <form class="form-horizontal" action="#" role="form" id="form-body">
+													<div class="form-group">	
+														<div class="col-sm-4"> </div>
+														<div class="col-sm-7 controls"> 
+															<label class="width-70" id="form-name"></label> 
+														</div>
+													</div>
+                                                                                                      
+                                                </form>
+												<div class="form-group">
+													<div class="col-sm-4"> </div>
+													<div class="col-sm-7">														
+														<button type="button" class="btn vd_btn vd_bg-blue" id="sbm-btn" onclick="submitform()" style="display:none">บันทึก</button>	
+													</div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <!-- Panel Widget -->
                                     </div>
@@ -184,9 +164,6 @@
                             <!-- .vd_content-section -->
 
                         </div>
-                            <!-- .vd_content-section -->
-
-                        </div>
                         <!-- .vd_content -->
                     </div>
                     <!-- .vd_container -->
@@ -195,13 +172,12 @@
 
                 <!-- Middle Content End -->
 
-
             </div>
             <!-- .container -->
     </div>
     <!-- .content -->
 
-    <%- include('../../../admin/partial/footer'); %>
+    <%- include('../admin/partial_dark/footer'); %>
 
 
 
@@ -209,25 +185,7 @@
 
         <!-- .vd_body END  -->
         <a id="back-top " href="# " data-action="backtop " class="vd_back-top visible "> <i class="fa fa-angle-up "> </i> </a>
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!--<div class="modal-header vd_bg-blue vd_white">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
-                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                    </div>-->
-                    <div class="modal-body">
-                        Header
-                        <form class="form-horizontal">
-                            <div class="form-group">
-                                Content
 
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!--
 <a class="back-top " href="# " id="back-top "> <i class="icon-chevron-up icon-white "> </i> </a> -->
 
@@ -286,116 +244,200 @@
         <!-- Include Date Range Picker -->
         <script type="text/javascript" src="plugins/daterangepicker/daterangepicker.js"></script>
         
-		
-        <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
 
 
 
         <script>
-            $(document).ready(function() {
-                account_now = 'natthawat_a';
-
-
+			account_now = $('#email').text().trim();
+			var count_ = 0;			
+			//alert(account_now);
+            $(window).load(function() {
+                var priv = $("#priv").html().trim().split(",");
+                if (priv[1] < 1) {
+                    $('#top-menu-3').hide();
+                } else {
+                    $('#top-menu-3').show();
+                }
             });
-            $(window).load(function() {});
         </script>
         <!-- Specific Page Scripts END -->
 
-
-
-
-
         <script>
-            account_now = '<%= email %>';
-			//alert(account_now);
+            var amount_ = 0;
+			var form_ = '';
+			var st_ = 0;
+			var formname_ = '';
+			function addform(data) {
+				amount_ = data.length/6;
+				form_ = data[0].formid;	
+				formname_ = data[0].formname;
+				document.getElementById('form-name').innerHTML = formname_;
+				for(i = 0; i < amount_; i++){
+					var div = document.createElement('div');
+						div.className = 'form-group';
+						div.innerHTML =
 
-            function refresh_table(sd, ed) {
-                //alert('refresh');
-                document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>พื้นที่</th>													<th>เจ้าของอุปกรณ์</th><th>MAC</th><th>ระบบปฏิบัติการ</th><th>วันที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
-
-                $.ajax('http://byod.excise.go.th/report/report6752', {
-                    type: "get",
-                    data: {
-                        start: sd,
-                        end: ed
-                    },
-                    success: function(json) {
-                        //alert(JSON.stringify(json));
-                        data_res = JSON.parse(JSON.stringify(json));
-                        bindata_table(data_res);
-                    }
-                });
-            }
-
-
-            function bindata_table(data_sql) {
+						'<label class="col-sm-4 control-label">ข้อที่ '+(i+1)+'.</label> \
+						<div class="col-sm-7 controls"> \
+							<label style="max-width: 100%; word-wrap: break-word" id="F'+(i+1)+'"></label> \
+						</div> \
+						<div class="form-group"> \
+							<label class="col-sm-4 control-label"></label> \
+							<div class="col-sm-7 controls"> \
+								<div class="vd_radio radio-success"> \
+									<input type="radio" value="ch1'+(i+1)+'" name="C'+(i+1)+'" id="ch1'+(i+1)+'"> \
+									<label for="ch1'+(i+1)+'" id="C1'+(i+1)+'" style="max-width: 100%; word-wrap: break-word"></label> \
+								</div> \
+								<div class="vd_radio radio-success"> \
+									<input type="radio" value="ch2'+(i+1)+'" name="C'+(i+1)+'" id="ch2'+(i+1)+'"> \
+									<label for="ch2'+(i+1)+'" id="C2'+(i+1)+'" style="max-width: 100%; word-wrap: break-word"></label> \
+								</div> \
+								<div class="vd_radio radio-success"> \
+									<input type="radio" value="ch3'+(i+1)+'" name="C'+(i+1)+'" id="ch3'+(i+1)+'"> \
+									<label for="ch3'+(i+1)+'" id="C3'+(i+1)+'" style="max-width: 100%; word-wrap: break-word"></label> \
+								</div> \
+								<div class="vd_radio radio-success"> \
+									<input type="radio" value="ch4'+(i+1)+'" name="C'+(i+1)+'" id="ch4'+(i+1)+'"> \
+									<label for="ch4'+(i+1)+'" id="C4'+(i+1)+'" style="max-width: 100%; word-wrap: break-word"></label> \
+								</div> \
+								<div class="vd_radio radio-success"> \
+									<input type="radio" value="ch5'+(i+1)+'" name="C'+(i+1)+'" id="ch5'+(i+1)+'"> \
+									<label for="ch5'+(i+1)+'" id="C5'+(i+1)+'" style="max-width: 100%; word-wrap: break-word"></label> \
+								</div> \
+							</div> \
+						</div> \
+						';
+					document.getElementById('form-body').appendChild(div);	
+				}
+				
+				for(i = 0; i < data.length; i++){
+					document.getElementById(data[i].ftype).innerHTML = data[i].ftext;
+				}
+				document.getElementById('sbm-btn').value = data[0].formid;
+			}
+			
+			function docust() {
+				$.ajax('http://byod.excise.go.th/api/docustsat', {
+					type: "get",
+					data: {acc_now: account_now},
+					success: function(json) {
+						data_res = JSON.parse(JSON.stringify(json));
+						bindata(data_res);									
+					}
+				});
+			}
+			
+			function bindata(data_sql) {
                 //alert('bind');
                 //alert(data_sql);
                 data = [];
-                total = 0;
+				if(data_sql.length > 0){
+					document.getElementById('sbm-btn').style.display = "block";
+				}
+				if(data_sql.length <= 0){
+					var div = document.createElement('div');
+						div.className = 'form-group';
+						div.innerHTML =
+
+						'<label class="col-sm-4 control-label"></label> \
+						<div class="col-sm-7 controls"> \
+							<label style="max-width: 100%; word-wrap: break-word">ขณะนี้ยังไม่มีแบบสำรวจที่ผู้ใช้งานต้องทำ</label> \
+						</div> \
+						';
+						document.getElementById('form-body').appendChild(div);
+				}
+				
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
-                    update_time = new Date(data_sql[4]);
-                    date_str = update_time.getFullYear() + "/" + ((update_time.getUTCMonth()+1) < 10 ? '0' : '') + (update_time.getUTCMonth()+1) + "/" + (update_time.getUTCDate() < 10 ? '0' : '') + update_time.getUTCDate() + ' - ' + update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds();
-					
+                    data_json = {
+						ftype: data_sql[1],
+						formname: data_sql[2],
+						formid: data_sql[3],
+						coderef: data_sql[4],
+						ftext: data_sql[5]
+                    };
 
-
-                    //data_json = {name:data_sql[0],mac:data_sql[2],os:data_sql[3],date:date_str};
-                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[0] + "</td><td>" + data_sql[1] + "</td><td>" + data_sql[2] + "</td><td>" + data_sql[3] + "</td><td>" + date_str + "</td></tr>");
-                    total = total + data_sql[1];
                     //alert(JSON.stringify(data_json));
                     data.push(data_json);
                     //alert(JSON.stringify(data));
-                    data_sql.splice(0, 5);
+                    data_sql.splice(0, 8);
                     i = -1;
+				}
+				addform(data);
+			}
 
-                }
-                //alert(JSON.stringify(data));
-                //c1(data);
-
-                $('#data-tables').dataTable();
-
-            }
-
-            function datepick() {
-                function e(e, a, r) {
-                    refresh_table(e.format("Y-M-D"), a.format("Y-M-D"));
-                    //alert(e.format("Y-M-D"));
-                    //alert(a.format("Y-M-D"));
-
-
-                    var o = "",
-                        l = "";
-                    a - e < 100 ? (o = "Today:", l = e.format("MMM D")) : "Yesterday" == r ? (o = "Yesterday:", l = e.format("MMM D")) : l = e.format("MMM D") + " - " + a.format("MMM D"),
-                        t.find(".m-subheader__daterange-date").html(l),
-                        t.find(".m-subheader__daterange-title").html(o)
-                }
-                if (0 != $("#daterangepicker").length) {
-                    var t = $("#daterangepicker"),
-                        a = moment(),
-                        r = moment();
-                    t.daterangepicker({
-                            startDate: a,
-                            endDate: r,
-                            opens: "left",
-                            ranges: {
-                                Today: [moment(), moment()],
-                                //Yesterday: [moment().subtract(1, "days"), moment().subtract(1, "days")],
-                                "Last 7 Days": [moment().subtract(6, "days"), moment()],
-                                "Last 30 Days": [moment().subtract(29, "days"), moment()],
-                                "This Month": [moment().startOf("month"), moment().endOf("month")],
-                                "This Year": [moment().startOf("year"), moment().endOf("year")]
-                                    //"Last Month": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
-                            }
-                        }, e),
-                        e(a, r, "")
-                }
-            }
-
-           
-            datepick();
 			
+			function submitform() {
+				for(i = 0; i < amount_; i++){
+					if (document.getElementById('ch1'+(i+1)).checked) {
+						r1 = 1;
+						r2 = 0;
+						r3 = 0;
+						r4 = 0;
+						r5 = 0;
+					} else if (document.getElementById('ch2'+(i+1)).checked) {
+						r1 = 0;
+						r2 = 1;
+						r3 = 0;
+						r4 = 0;
+						r5 = 0;
+					} else if (document.getElementById('ch3'+(i+1)).checked) {
+						r1 = 0;
+						r2 = 0;
+						r3 = 1;
+						r4 = 0;
+						r5 = 0;
+					} else if (document.getElementById('ch4'+(i+1)).checked) {
+						r1 = 0;
+						r2 = 0;
+						r3 = 0;
+						r4 = 1;
+						r5 = 0;
+					} else if (document.getElementById('ch5'+(i+1)).checked) {
+						r1 = 0;
+						r2 = 0;
+						r3 = 0;
+						r4 = 0;
+						r5 = 1;
+					} else{
+						r1 = 0;
+						r2 = 0;
+						r3 = 0;
+						r4 = 0;
+						r5 = 0;
+					}
+					
+					$.ajax('http://byod.excise.go.th/api/submitcustsat', {
+						type: "get",
+						data: {
+							formid: form_,
+							coderef: form_+i,
+							res1: r1,
+							res2: r2,
+							res3: r3,
+							res4: r4,
+							res5: r5,
+							ctext: '',
+							acc_now: account_now								
+						},
+						success: function(json) {	
+							//alert(st_);
+							if(st_== 0){
+								st_ = 1;
+								alert('บันทึกแบบสำรวจเรียบร้อย ขอบคุณที่ร่วมแสดงความคิดเห็นครับ');
+								clearold();	
+							}								
+						}
+					});					
+				}			
+            }
+			
+			function clearold(){
+				document.getElementById('form-body').innerHTML = '';
+				document.getElementById('sbm-btn').style.display = "none";
+				window.location = "/";
+			}
+			docust();
         </script>
 
 </body>

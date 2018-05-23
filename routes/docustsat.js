@@ -13,7 +13,7 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 	q = '"';
-    var request = new Request("SELECT * FROM [AgileControllerDB].[dbo].[UMS_Custsat] where [status] = '1'", function(err, rowCount){
+    var request = new Request("SELECT * FROM [AgileControllerDB].[dbo].[UMS_Custsat] a where [status] = '1'and a.form_id not in (SELECT [form_id] FROM [AgileControllerDB].[dbo].[UMS_CustsatResult] where account = '"+req.param('acc_now')+"');", function(err, rowCount){
 
       if(err){
         console.error(err);

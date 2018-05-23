@@ -118,7 +118,7 @@
                             <!-- vd_head-section -->
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
-                                    <h1>แบบสำรวจความพึงพอใจ</h1>
+                                    <!-- <h1>แบบสำรวจความพึงพอใจ</h1> -->
                                     <!-- menu -->									
                                 </div>
                             </div>
@@ -133,16 +133,22 @@
                                     <div class="col-md-12">
                                         <div class="panel widget">
                                             <div class="panel-heading vd_bg-grey">
-                                                <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-pencil"></i> </span> สร้างแบบสำรวจความพึงพอใจ</h3>
+                                                <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-pencil"></i> </span> แบบสำรวจความพึงพอใจ</h3>
                                             </div>
                                             <div class="panel-body">
                                                 <form class="form-horizontal" action="#" role="form" id="form-body">
+													<div class="form-group">	
+														<div class="col-sm-4"> </div>
+														<div class="col-sm-7 controls"> 
+															<label class="width-70" id="form-name"></label> 
+														</div>
+													</div>
                                                                                                       
                                                 </form>
 												<div class="form-group">
 													<div class="col-sm-4"> </div>
 													<div class="col-sm-7">														
-														<button type="button" class="btn vd_btn vd_bg-green" id="sbm-btn" onclick="clearold()">บันทึก</button>	
+														<button type="button" class="btn vd_btn vd_bg-green" id="sbm-btn" onclick="submitform()" style="display:none">บันทึก</button>	
 													</div>
                                                 </div>
                                             </div>
@@ -243,7 +249,7 @@
 
         <script>
 			account_now = $('#email').text().trim();
-			var count_ = 0;
+			var count_ = 0;			
 			//alert(account_now);
             $(window).load(function() {
                 var priv = $("#priv").html().trim().split(",");
@@ -257,40 +263,46 @@
         <!-- Specific Page Scripts END -->
 
         <script>
-            			
+            var amount_ = 0;
+			var form_ = '';
+			var st_ = 0;
+			var formname_ = '';
 			function addform(data) {
-				var number_ = data.length/6;
-				for(i = 0; i < number_; i++){
+				amount_ = data.length/6;
+				form_ = data[0].formid;	
+				formname_ = data[0].formname;
+				document.getElementById('form-name').innerHTML = formname_;
+				for(i = 0; i < amount_; i++){
 					var div = document.createElement('div');
 						div.className = 'form-group';
 						div.innerHTML =
 
 						'<label class="col-sm-4 control-label">ข้อที่ '+(i+1)+'.</label> \
 						<div class="col-sm-7 controls"> \
-							<label class="width-70" id="F'+(i+1)+'"></label> \
+							<label style="max-width: 100%; word-wrap: break-word" id="F'+(i+1)+'"></label> \
 						</div> \
 						<div class="form-group"> \
 							<label class="col-sm-4 control-label"></label> \
 							<div class="col-sm-7 controls"> \
 								<div class="vd_radio radio-success"> \
 									<input type="radio" value="ch1'+(i+1)+'" name="C'+(i+1)+'" id="ch1'+(i+1)+'"> \
-									<label for="ch1'+(i+1)+'" id="C1'+(i+1)+'"></label> \
+									<label for="ch1'+(i+1)+'" id="C1'+(i+1)+'" style="max-width: 100%; word-wrap: break-word"></label> \
 								</div> \
 								<div class="vd_radio radio-success"> \
 									<input type="radio" value="ch2'+(i+1)+'" name="C'+(i+1)+'" id="ch2'+(i+1)+'"> \
-									<label for="ch2'+(i+1)+'" id="C2'+(i+1)+'"></label> \
+									<label for="ch2'+(i+1)+'" id="C2'+(i+1)+'" style="max-width: 100%; word-wrap: break-word"></label> \
 								</div> \
 								<div class="vd_radio radio-success"> \
 									<input type="radio" value="ch3'+(i+1)+'" name="C'+(i+1)+'" id="ch3'+(i+1)+'"> \
-									<label for="ch3'+(i+1)+'" id="C3'+(i+1)+'"></label> \
+									<label for="ch3'+(i+1)+'" id="C3'+(i+1)+'" style="max-width: 100%; word-wrap: break-word"></label> \
 								</div> \
 								<div class="vd_radio radio-success"> \
 									<input type="radio" value="ch4'+(i+1)+'" name="C'+(i+1)+'" id="ch4'+(i+1)+'"> \
-									<label for="ch4'+(i+1)+'" id="C4'+(i+1)+'"></label> \
+									<label for="ch4'+(i+1)+'" id="C4'+(i+1)+'" style="max-width: 100%; word-wrap: break-word"></label> \
 								</div> \
 								<div class="vd_radio radio-success"> \
 									<input type="radio" value="ch5'+(i+1)+'" name="C'+(i+1)+'" id="ch5'+(i+1)+'"> \
-									<label for="ch5'+(i+1)+'" id="C5'+(i+1)+'"></label> \
+									<label for="ch5'+(i+1)+'" id="C5'+(i+1)+'" style="max-width: 100%; word-wrap: break-word"></label> \
 								</div> \
 							</div> \
 						</div> \
@@ -301,11 +313,13 @@
 				for(i = 0; i < data.length; i++){
 					document.getElementById(data[i].ftype).innerHTML = data[i].ftext;
 				}
+				document.getElementById('sbm-btn').value = data[0].formid;
 			}
 			
 			function docust() {
 				$.ajax('http://byod.excise.go.th/api/docustsat', {
 					type: "get",
+					data: {acc_now: account_now},
 					success: function(json) {
 						data_res = JSON.parse(JSON.stringify(json));
 						bindata(data_res);									
@@ -317,18 +331,36 @@
                 //alert('bind');
                 //alert(data_sql);
                 data = [];
+				if(data_sql.length > 0){
+					document.getElementById('sbm-btn').style.display = "block";
+				}
+				if(data_sql.length <= 0){
+					var div = document.createElement('div');
+						div.className = 'form-group';
+						div.innerHTML =
+
+						'<label class="col-sm-4 control-label"></label> \
+						<div class="col-sm-7 controls"> \
+							<label style="max-width: 100%; word-wrap: break-word">ขณะนี้ยังไม่มีแบบสำรวจที่ผู้ใช้งานต้องทำ</label> \
+						</div> \
+						';
+						document.getElementById('form-body').appendChild(div);
+				}
+				
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
                     data_json = {
 						ftype: data_sql[1],
-						coderef: data_sql[2],
-						ftext: data_sql[3]
+						formname: data_sql[2],
+						formid: data_sql[3],
+						coderef: data_sql[4],
+						ftext: data_sql[5]
                     };
 
                     //alert(JSON.stringify(data_json));
                     data.push(data_json);
                     //alert(JSON.stringify(data));
-                    data_sql.splice(0, 6);
+                    data_sql.splice(0, 8);
                     i = -1;
 				}
 				addform(data);
@@ -336,13 +368,74 @@
 
 			
 			function submitform() {
-				clearform();
+				for(i = 0; i < amount_; i++){
+					if (document.getElementById('ch1'+(i+1)).checked) {
+						r1 = 1;
+						r2 = 0;
+						r3 = 0;
+						r4 = 0;
+						r5 = 0;
+					} else if (document.getElementById('ch2'+(i+1)).checked) {
+						r1 = 0;
+						r2 = 1;
+						r3 = 0;
+						r4 = 0;
+						r5 = 0;
+					} else if (document.getElementById('ch3'+(i+1)).checked) {
+						r1 = 0;
+						r2 = 0;
+						r3 = 1;
+						r4 = 0;
+						r5 = 0;
+					} else if (document.getElementById('ch4'+(i+1)).checked) {
+						r1 = 0;
+						r2 = 0;
+						r3 = 0;
+						r4 = 1;
+						r5 = 0;
+					} else if (document.getElementById('ch5'+(i+1)).checked) {
+						r1 = 0;
+						r2 = 0;
+						r3 = 0;
+						r4 = 0;
+						r5 = 1;
+					} else{
+						r1 = 0;
+						r2 = 0;
+						r3 = 0;
+						r4 = 0;
+						r5 = 0;
+					}
+					
+					$.ajax('http://byod.excise.go.th/api/submitcustsat', {
+						type: "get",
+						data: {
+							formid: form_,
+							coderef: form_+i,
+							res1: r1,
+							res2: r2,
+							res3: r3,
+							res4: r4,
+							res5: r5,
+							ctext: '',
+							acc_now: account_now								
+						},
+						success: function(json) {	
+							//alert(st_);
+							if(st_== 0){
+								st_ = 1;
+								alert('บันทึกแบบสำรวจเรียบร้อย ขอบคุณที่ร่วมแสดงความคิดเห็นครับ');
+								clearold();	
+							}								
+						}
+					});					
+				}			
             }
 			
-			function clearform(){
+			function clearold(){
 				document.getElementById('form-body').innerHTML = '';
-				count_ = 0;
-				addform();
+				document.getElementById('sbm-btn').style.display = "none";
+				window.location = "/";
 			}
 			docust();
         </script>

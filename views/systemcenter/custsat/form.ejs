@@ -140,12 +140,18 @@
 													<div class="menu no-bg vd_green" data-placement="bottom" onClick="addform()" id="add-btn"> <span class="menu-icon font-md"><i class="fa fa-plus"></i></span> </div>
 												</div>
                                                 <form class="form-horizontal" action="#" role="form" id="form-body">
+													<div class="form-group">
+														<label class="col-sm-4 control-label">ชื่อแบบสำรวจ</label>
+														<div class="col-sm-7 controls">
+															<input type="text" class="width-70" id="form-name" onpaste="validation();" onkeyup="validation();" onfocusout="validation();">
+														</div>
+													</div>
                                                                                                       
                                                 </form>
 												<div class="form-group">
 													<div class="col-sm-4"> </div>
 													<div class="col-sm-7">														
-														<button type="button" class="btn vd_btn vd_bg-green" id="sbm-btn" onclick="clearold()">บันทึก</button>	
+														<button type="button" class="btn vd_btn vd_bg-green" id="sbm-btn" onclick="clearold()" style="display:none">บันทึก</button>	
 													</div>
                                                 </div>
                                             </div>
@@ -262,6 +268,7 @@
         <script>
             			
 			function addform() {
+				document.getElementById("sbm-btn").style.display = "none";
 				count_ = count_+1;
 				if(count_ >= 5){
 					document.getElementById("add-btn").style.display = "none";
@@ -274,36 +281,36 @@
 
                     '<label class="col-sm-4 control-label">ข้อที่ '+count_+'.</label> \
 					<div class="col-sm-7 controls"> \
-						<textarea rows="3" class="width-70" id="form'+count_+'"></textarea> \
+						<textarea rows="3" class="width-70" id="form'+count_+'" onpaste="validation();" onkeyup="validation();" onfocusout="validation();"></textarea> \
                     </div> \
                     <div class="form-group"> \
                         <label class="col-sm-4 control-label">ตัวเลือกที่ 1.</label> \
 						<div class="col-sm-7 controls"> \
-							<input type="text" class="width-70" id="ch1'+count_+'"> \
+							<input type="text" class="width-70" id="ch1'+count_+'" onpaste="validation();" onkeyup="validation();" onfocusout="validation();"> \
 						</div> \
 					</div> \
 					<div class="form-group"> \
                         <label class="col-sm-4 control-label">ตัวเลือกที่ 2.</label> \
 						<div class="col-sm-7 controls"> \
-							<input type="text" class="width-70" id="ch2'+count_+'"> \
+							<input type="text" class="width-70" id="ch2'+count_+'" onpaste="validation();" onkeyup="validation();" onfocusout="validation();"> \
 						</div> \
 					</div> \
 					<div class="form-group"> \
                         <label class="col-sm-4 control-label">ตัวเลือกที่ 3.</label> \
 						<div class="col-sm-7 controls"> \
-							<input type="text" class="width-70" id="ch3'+count_+'"> \
+							<input type="text" class="width-70" id="ch3'+count_+'" onpaste="validation();" onkeyup="validation();" onfocusout="validation();"> \
 						</div> \
 					</div> \
 					<div class="form-group"> \
                         <label class="col-sm-4 control-label">ตัวเลือกที่ 4.</label> \
 						<div class="col-sm-7 controls"> \
-							<input type="text" class="width-70" id="ch4'+count_+'"> \
+							<input type="text" class="width-70" id="ch4'+count_+'" onpaste="validation();" onkeyup="validation();" onfocusout="validation();"> \
 						</div> \
 					</div> \
 					<div class="form-group"> \
                         <label class="col-sm-4 control-label">ตัวเลือกที่ 5.</label> \
 						<div class="col-sm-7 controls"> \
-							<input type="text" class="width-70" id="ch5'+count_+'"> \
+							<input type="text" class="width-70" id="ch5'+count_+'" onpaste="validation();" onkeyup="validation();" onfocusout="validation();"> \
 						</div> \
 					</div> \
 					';
@@ -325,6 +332,7 @@
 				//alert(count_);
 				for(i = 0; i < count_; i++){
 					var today = new Date();
+					fid = "F" + today.getFullYear() + (today.getUTCMonth() + 1) + today.getUTCDate() + today.getUTCHours() + today.getMinutes() + today.getSeconds();
 					newid = "F" + today.getFullYear() + (today.getUTCMonth() + 1) + today.getUTCDate() + today.getUTCHours() + today.getMinutes() + today.getSeconds() + i;
 					//alert(newid);
 					for(j = 0; j < 6; j++){						
@@ -335,6 +343,8 @@
 								type: "get",
 								data: {
 									ftype: 'F'+(i+1),
+									formname: document.getElementById('form-name').value,
+									formid: fid,
 									coderef: newid,
 									ftext: text_									
 								},
@@ -350,6 +360,8 @@
 								type: "get",
 								data: {
 									ftype: 'C'+j+(i+1),
+									formname: document.getElementById('form-name').value,
+									formid: fid,
 									coderef: newid,
 									ftext: text_									
 								},
@@ -361,13 +373,27 @@
 					}
 					
 				}
+				alert('สร้างแบบสำรวจเสร็จเรียบร้อย');
                 clearform();
             }
 			
 			function clearform(){
 				document.getElementById('form-body').innerHTML = '';
 				count_ = 0;
-				addform();
+				window.location = "/custsat/form";
+				//addform();
+			}
+			
+			function validation(){
+			 for(i =0; i < count_; i++){
+				if((document.getElementById('ch1'+(i+1)).value.trim()=='')||(document.getElementById('ch2'+(i+1)).value.trim()=='')||(document.getElementById('ch3'+(i+1)).value.trim()=='')||(document.getElementById('ch4'+(i+1)).value.trim()=='')||(document.getElementById('ch5'+(i+1)).value.trim()=='')||(document.getElementById('form'+(i+1)).value.trim()=='')||(document.getElementById('form-name').value.trim()=='')){
+					document.getElementById("sbm-btn").style.display = "none";
+					i = 99999;
+				}
+				else{
+					document.getElementById("sbm-btn").style.display = "block";
+				}
+			 }
 			}
 			addform();
         </script>

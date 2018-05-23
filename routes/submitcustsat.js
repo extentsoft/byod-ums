@@ -13,7 +13,7 @@ var deviceList = function(req,res,next){
     }
     console.log('Connection successful');
 	q = '"';
-    var request = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_Custsat]([type],[name],[form_id],[code_ref],[detail],[status],[created_at]) VALUES ('"+req.param('ftype')+"',N'"+req.param('formname')+"','"+req.param('formid')+"','"+req.param('coderef')+"',N'"+req.param('ftext')+"',1,current_timestamp)", function(err, rowCount){
+    var request = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_CustsatResult]([form_id],[code_ref],[ch1],[ch2],[ch3],[ch4],[ch5],[text],[account],[created_at]) VALUES('"+req.param('formid')+"','"+req.param('coderef')+"','"+req.param('res1')+"','"+req.param('res2')+"','"+req.param('res3')+"','"+req.param('res4')+"','"+req.param('res5')+"','"+req.param('ctext')+"','"+req.param('acc_now')+"',current_timestamp)", function(err, rowCount){
 
       if(err){
         console.error(err);

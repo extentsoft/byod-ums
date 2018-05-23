@@ -122,6 +122,31 @@
                                     <!-- menu -->
                                 </div>
                             </div>
+							<!-- Modal -->
+                            <div class="modal fade" id="modal_alert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header vd_bg-blue vd_white">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+											<h4 class="modal-title" id="myModalLabel"></h4>
+										</div>
+
+										<div class="modal-body">
+
+											<form class="form-horizontal">
+												<div class="form-group" align="center">
+													บันทึกข้อมูลส่วนตัวเรียบร้อยแล้ว
+												</div>
+											</form>
+										</div>
+										<!-- <div class="modal-footer background-login">
+                                            <button type="button" class="btn vd_btn vd_bg-blue" style="text-align:center;"  data-dismiss="modal" onclick="window.location = '/profile';" >ปิดหน้าต่าง</button>
+                                        </div> -->
+									</div>
+								</div>
+							</div>
+							<!-- /.modal -->
+                            
                             <!-- vd_title-section -->
 
                             <div class="vd_content-section clearfix">
@@ -329,6 +354,7 @@
 
 
         <script>
+			
 			account_now = $('#email').text().trim();
 			//alert(account_now);
             $(window).load(function() {
@@ -357,6 +383,7 @@
                     },
                     success: function(json) {
 						//alert('k');
+						$("#modal_alert").modal();
 						$.ajax('http://byod.excise.go.th/api/addprofilelog', {
 							type: "get",
 							data: {
@@ -376,9 +403,10 @@
 												type: "get",
 												success: function(json) {
 													//alert(JSON.stringify(json));
+													
 												}
 											});
-										window.location = "/profile";
+										//window.location = "/profile";
 											//alert('มีการ Login บ่อยเกินว่าปกติในช่วงเวลาสั้นๆ ระบบจะทำการส่ง Email ไปยังผู้ดูแลระบบ');
 
 											

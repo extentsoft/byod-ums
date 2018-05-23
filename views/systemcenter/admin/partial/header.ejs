@@ -95,11 +95,11 @@
                                     </li>
                                     <li id="top-menu-3" class="one-icon mega-li">
 
-                                        <a href="#" class="mega-link" data-action="click-trigger">
+                                        <a href="#" class="mega-link" data-action="click-trigger" onClick="readnoti();">
 
                                             <span class="mega-icon"><i class="fa fa-envelope"></i></span>
                                             <!--<span class="mega-icon"><i class="fa fa-globe"></i></span>-->
-                                            <span class="badge vd_bg-red" id="new-noti"><!--51-->NEW</span>
+                                            <span class="badge vd_bg-red" id="new-noti" style="display:none"><!--51-->NEW</span>
                                         </a>
                                         <div class="vd_mega-menu-content width-xs-3 width-sm-4 width-md-5 width-lg-4 right-xs left-sm" data-action="click-target">
                                             <div class="child-menu">
@@ -435,7 +435,7 @@
         //console.log(rdt);
         //alert($("#priv").html().trim().split(",")[2]);
 		if(msg.length > 40){
-			alert('ไม่สามารถส่งข้อความเกิน 50 ตัวอักษรได้ (จำนวนตัวอักษรปัจจุบัน '+msg.length+'/40)');
+			alert('ไม่สามารถส่งข้อความเกิน 40 ตัวอักษรได้ (จำนวนตัวอักษรปัจจุบัน '+msg.length+'/40)');
 		}
 		else {
 			if ($("#priv").html().trim().split(",")[2] == 'true' && rdt == '-') {
@@ -480,14 +480,15 @@
                     data_json = {};
                     data_json = {
                         msg_id: data_sql[0],
-                        msg: data_sql[1],
-                        chanel: data_sql[2],
-                        timestamp: data_sql[3]
+						msg_header: data_sql[1],
+                        msg: data_sql[2],
+                        chanel: data_sql[3],
+                        timestamp: data_sql[4]
                     };
                     //alert(JSON.stringify(data_json));
                     data.push(data_json);
                     //alert(JSON.stringify(data));
-                    data_sql.splice(0, 4);
+                    data_sql.splice(0, 5);
                     i = -1;
 
                 }
@@ -504,7 +505,7 @@
                         //alert(data[i].msg);
                         //var msg = "<div class='m-list-timeline__item'><span class='m-list-timeline__badge'></span><span class='m-list-timeline__text'>" + data[i].msg + "</span><span class='m-list-timeline__time'>" + data[i].timestamp.split("T")[0] + "</span></div>";
 						var q = '"';
-                        var msg = "<li><a href='#' data-toggle='modal' data-target='#modal_notification' onclick='setModalNotification(" + q + "_msg_"+ i + q +")'><div class='menu-icon vd_green'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text' id='_msg_"+i+"'>" + data[i].msg.substring(0, 50) + "<div class='menu-info'><span class='menu-date'>" + data[i].timestamp.split("T")[0] + "</span></div></div></a></li>";
+                        var msg = "<li><a href='#' data-toggle='modal' data-target='#modal_notification' onclick='setModalNotification(" + q + data[i].msg_id + q +")'><div class='menu-icon vd_green'><img alt='example image' src='img/avatar/avatar.jpg'></div><div class='menu-text' id='"+ q + data[i].msg_id + q +"'>" + data[i].msg_header + "<div class='menu-info'><span class='menu-date'>" + data[i].timestamp.split("T")[0] + "</span></div></div></a></li>";
 
                         $('#notification_center').append(msg);
                     }
@@ -577,11 +578,58 @@
             }
         });
     }
+	
+	function checknoti() {
+        //alert('refresh');
+        $.ajax('http://byod.excise.go.th/api/checknotimsg', {
+            type: "get",
+            data: {
+                acc_now: account_now
+            },
+            success: function(json) {
+                //alert(json);
+				status_ = JSON.stringify(json);
+				//alert(status_[0]);
+				if(status_[1] == 1){	
+					document.getElementById('new-noti').style.display = 'block';
+				}
+				else{
+					document.getElementById('new-noti').style.display = 'none';
+				}
+            }
+        });
+    }
+	
+	function readnoti() {
+        //alert('read');
+        $.ajax('http://byod.excise.go.th/api/readnotimsg', {
+            type: "get",
+            data: {
+                acc_now: account_now
+            },
+            success: function(json) {
+                //alert(json);
+				checknoti();
+            }
+        });
+    }
+	
+	checknoti();
     get_noti();
     get_chat();
 
     function setModalNotification(msgid) {
-		document.getElementById('noti-text-modal').innerHTML = document.getElementById(msgid).innerHTML;
+		$.ajax('http://byod.excise.go.th/api/getnotimsgdetail', {
+            type: "get",
+            data: {
+                msg_id: msgid
+            },
+            success: function(json) {
+                //alert(json);
+				document.getElementById('noti-text-modal').innerHTML = json[0];
+            }
+        });
+		
         //alert('print message ' + msg);
     }
 

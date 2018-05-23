@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 
 /**
  * Module dependencies.
@@ -74,6 +74,7 @@ app.set('port', port);
 						console.error(err);
 						return;
 					}
+					connection2.release();
 				});
 				connection2.execSql(request2);
 			});
@@ -105,14 +106,17 @@ app.set('port', port);
 			transporter.sendMail(mailOptions, function(err, info) {
 				if (err) {
 					console.log(err)
-					console.log('ERROR');
+					console.log('ERROR1');
+					return;
 					//res.send('0');
 				} else {
 					console.log(info);
 					console.log('Success');
 					//res.send('1');
+					return;
 				}
 			});
+			console.log('different site');
         }
       });
     });
@@ -134,7 +138,7 @@ app.set('port', port);
     }
     //console.log('Connection successful');
 
-    var request = new Request("select userName,terminalMac,terminalIp,radiusClientIp,radiusServerIp,timestamp from [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] join [AgileControllerDB].[dbo].[UMS_DeviceMon] on terminalMac = mac where [sessionID] != '' and  CONVERT (datetime2(0), timestamp) > CONVERT (datetime2(0), case when last_login is null then created_at else last_login end)", function(err, rowCount){
+    var request = new Request("delete from [AgileControllerDB].[dbo].[UMS_DeviceMon] where mac not in (select mac from [AgileControllerDB].[dbo].[TSM_E_Endpoint] join [AgileControllerDB].[dbo].[TSM_E_Account] on [account] = [login_account]);select userName,terminalMac,terminalIp,radiusClientIp,radiusServerIp,CONVERT (datetime2(0), [timestamp],120) from [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] join [AgileControllerDB].[dbo].[UMS_DeviceMon] on terminalMac = mac where [sessionID] != '' and  CONVERT (datetime2(0), [timestamp],120) > CONVERT (datetime2(0), case when last_login is null then created_at else last_login end,120)", function(err, rowCount){
 
 	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 
@@ -174,11 +178,12 @@ app.set('port', port);
 					  return;
 					}
 					
-					var request2 = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_DeviceMonLog] ([userName],[terminalMac],[terminalIp],[radiusClientIp],[radiusServerIp],[timestamp]) VALUES ('"+data_[0]+"','"+data_[1]+"','"+data_[2]+"','"+data_[3]+"','"+data_[4]+"',CONVERT (datetime2(0),'"+date_str+"')); update [AgileControllerDB].[dbo].[UMS_DeviceMon] set last_login = CONVERT (datetime2(0),'"+date_str+"') where mac = '"+data_[1]+"'", function(err, rowCount2){		
+					var request2 = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_DeviceMonLog] ([userName],[terminalMac],[terminalIp],[radiusClientIp],[radiusServerIp],[timestamp]) VALUES ('"+data_[0]+"','"+data_[1]+"','"+data_[2]+"','"+data_[3]+"','"+data_[4]+"',CONVERT (datetime2(0),'"+date_str+"')); update [AgileControllerDB].[dbo].[UMS_DeviceMon] set last_login = CONVERT (datetime2(0),'"+date_str+"',120) where mac = '"+data_[1]+"'", function(err, rowCount2){		
 						if(err){
 							console.error(err);
 							return;
 						}
+						connection2.release();
 					});
 					connection2.execSql(request2);
 				});
@@ -211,7 +216,7 @@ app.set('port', port);
 			transporter.sendMail(mailOptions, function(err, info) {
 				if (err) {
 					console.log(err)
-					console.log('ERROR');
+					console.log('ERROR2');
 					//res.send('0');
 				} else {
 					console.log(info);
@@ -219,6 +224,7 @@ app.set('port', port);
 					//res.send('1');
 				}
 			});
+			console.log('device monitoring');			
         }
       });
     });

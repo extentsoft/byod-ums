@@ -70,10 +70,15 @@ var listcustsat = require('./routes/listcustsat');
 var getcustsat = require('./routes/getcustsat');
 var docustsat = require('./routes/docustsat');
 var clearcustsat = require('./routes/clearcustsat');
+var submitcustsat = require('./routes/submitcustsat');
 
 
 var addnotimsg = require('./routes/addnotimsg');
 var getnotimsg = require('./routes/getnotimsg');
+var getnotimsgdetail = require('./routes/getnotimsgdetail');
+var checknotimsg = require('./routes/checknotimsg');
+var readnotimsg = require('./routes/readnotimsg');
+
 var api_notification = require('./routes/api/notification');
 var api_pdf = require('./routes/api/pdf');
 
@@ -224,9 +229,13 @@ app.use('/api/listcustsat', listcustsat);
 app.use('/api/getcustsat', getcustsat);
 app.use('/api/docustsat', docustsat);
 app.use('/api/clearcustsat', clearcustsat);
+app.use('/api/submitcustsat', submitcustsat);
 
 app.use('/api/addnotimsg', addnotimsg);
 app.use('/api/getnotimsg', getnotimsg);
+app.use('/api/getnotimsgdetail', getnotimsgdetail);
+app.use('/api/checknotimsg', checknotimsg);
+app.use('/api/readnotimsg', readnotimsg);
 
 app.use('/api/v2/notification', api_notification);
 app.use('/api/v1/pdf', api_pdf);

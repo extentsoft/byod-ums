@@ -164,11 +164,11 @@
                                     <div class="panel widget">
 										
                                         <div class="panel-heading vd_bg-grey">
-											
+											<!--
                                             <select id="listgroup" onchange="selectgroup(this.value)" style="width:30%" >
 												<option value="blank" disabled selected>กรุณาเลือกกลุ่มผู้ใช้งาน</option>                       
-											</select>
-											
+											</select> 
+											-->
               
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
@@ -316,7 +316,7 @@
 			var data_ = '';
 			//var group_ = '0';
 			var group_ = 'People';
-			document.getElementById("listgroup").style.display = 'none';
+			//document.getElementById("listgroup").style.display = 'none';
 			//alert(account_now);
 
             function refresh_table(sd, ed , grp) {
@@ -485,7 +485,7 @@
 				
 			}
 
-			list_group();
+			//list_group();
             datepick();
 			
         </script>

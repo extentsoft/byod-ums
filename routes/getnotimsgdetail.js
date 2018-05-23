@@ -15,10 +15,9 @@ var deviceList = function(req,res,next){
       console.error(err);
       return;
     }
-    console.log('Connection successful thz');
-	console.log(req.param('tername'));
+    console.log('Connection successful');
 
-    var request = new Request("if (select count(*) from [AgileControllerDB].[dbo].[TSM_E_Endpoint]) = 0 begin insert into [AgileControllerDB].[dbo].[TSM_E_Endpoint] (id) values('10000000'); end else begin select 0; end; if ('"+req.param('termac')+"') in (select mac  FROM [AgileControllerDB].[dbo].[TSM_E_Endpoint]) BEGIN UPDATE [AgileControllerDB].[dbo].[TSM_E_Endpoint] SET [host_name] = N'"+req.param('tername')+"',[os_name] = '"+req.param('teros')+"',[login_account] = '"+req.param('teracc')+"',[update_time] = CURRENT_TIMESTAMP WHERE mac = '"+req.param('termac')+"'; end else begin INSERT INTO [AgileControllerDB].[dbo].[TSM_E_Endpoint] ([ID],[mac],[os_name],[host_name],[device_type],[update_time],[match_time],[isIdentify],[isPermitUpdateGroup],[isRegister],[isLose],[isAssignPolicy],[isAssignGroup],[login_account])VALUES((select max(id) from [AgileControllerDB].[dbo].[TSM_E_Endpoint])+1,'"+req.param('termac')+"','"+req.param('teros')+"',N'"+req.param('tername')+"',2,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,1,1,0,0,0,0,'"+req.param('teracc')+"');end;", function(err, rowCount){
+    var request = new Request("select [message] from [AgileControllerDB].[dbo].[UMS_Message] where [id] = '"+req.param('msg_id')+"'", function(err, rowCount){
 
 	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 

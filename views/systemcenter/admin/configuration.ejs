@@ -169,6 +169,7 @@
                                         <div class="panel widget">
                                             <div class="panel-heading vd_bg-grey">
                                                 <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-pencil"></i> </span>ส่วนของการแจ้งเตือนผู้ใช้งาน</h3>
+												<input class="width-50" type="text" placeholder="ชื่อหัวข้อที่ต้องการแจ้งเตือน" id="header-noti">
                                             </div>
                                             <div class="panel-body-list">
                                                 <form class="form-horizontal" action="#" role="form">
@@ -176,7 +177,7 @@
                                                         <div class="col-sm-12 controls">
                                                             <textarea name="editor1" data-rel="ckeditor" rows="3" id="noti-text"></textarea>
                                                             <div class="col-sm-2">
-                                                                <button class="btn vd_btn vd_bg-green vd_white" type="submit" onclick="add_noti();"><i class="icon-ok"></i> บันทึก</button>
+                                                                <button class="btn vd_btn vd_bg-green vd_white" onclick="add_noti();"><i class="icon-ok"></i> บันทึก</button>
 
                                                             </div>
                                                         </div>
@@ -336,7 +337,7 @@
                                     <div class="panel widget">
                                         <div class="panel-heading vd_bg-grey">
                                             <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> กำหนดจำนวนอุปกรณ์</h3>
-											<input type="text" id="myInput" placeholder="โปรดระบุชื่อบุคคล" title="Type in a name" style="width:30%">
+											<input type="text" id="myInput" placeholder="โปรดระบุชื่อบุคคล" onkeyup="myFunction();" onfocusout="myFunction();" title="Type in a name" style="width:30%">
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
                                             <table class="table table-striped" id="data-tables">
@@ -678,18 +679,28 @@
             function add_noti() {
                 //alert($('#noti-text').val());
                 //alert($('#notifychannel').val());
-
-                $.ajax('http://byod.excise.go.th/api/addnotimsg', {
-                    type: "get",
-                    data: {
-                        chanel: 0,
-                        msg: $('#noti-text').val()
-                    },
-                    success: function(json) {
-                        //alert(JSON.stringify(json));
-                        //alert('message sent!');
-                    }
-                });
+				if($('#header-noti').val().trim()==''){
+					alert('โปรดระบุชื่อหัวข้อที่ต้องการแจ้งเตือน');
+				}
+				else if($('#header-noti').val().length > 40){
+					alert('ชื่อหัวข้อมีจำนวนตัวอักษารได้ไม่เกิน 40 ตัวอักษร (จำนวนตัวอักษรปัจจุบัน '+$('#header-noti').val().length+'/40)');
+				}
+				else{
+					$.ajax('http://byod.excise.go.th/api/addnotimsg', {
+						type: "get",
+						data: {
+							header: $('#header-noti').val(),
+							chanel: 0,
+							msg: $('#noti-text').val()
+						},
+						success: function(json) {
+							$('#header-noti').val() = '';
+							$('#noti-text').val() = '';
+							//alert(JSON.stringify(json));
+							//alert('message sent!');
+						}
+					});
+				}                
             }
 			
 			function myFunction() {
