@@ -14,28 +14,28 @@ slappasswd -h {SHA} -s Nattha501
 {SHA}LmIAac5WRrZRdvvsVGhNzkuJCiI=
 */
 
-var Crypt = function(){};
+var Crypt = function() {};
 
 // return raw SHA1 string
-function generateSHA1(passwd,salt){
-  //console.log('generating SHA1');
-  var ctx = crypto.createHash('sha1');
-  ctx.update(passwd, 'utf-8');
-  ctx.update(salt, 'binary');
-  var digest = ctx.digest('binary');
-  var sha = new Buffer(digest+salt,'binary').toString('base64');
-  return sha;
+function generateSHA1(passwd, salt) {
+    //console.log('generating SHA1');
+    var ctx = crypto.createHash('sha1');
+    ctx.update(passwd, 'utf-8');
+    ctx.update(salt, 'binary');
+    var digest = ctx.digest('binary');
+    var sha = new Buffer(digest + salt, 'binary').toString('base64');
+    return sha;
 }
 
 // return {SSHA} format string - DONE
-Crypt.prototype.generateSSHA = function(password, salt){
-  return "{SSHA}" + generateSHA1(password,salt);
+Crypt.prototype.generateSSHA = function(password, salt) {
+    return "{SSHA}" + generateSHA1(password, salt);
 }
 
 // return {SHA} format string - CHECKING
 //function generateSHA(password, salt, done){
-Crypt.prototype.generateSHA = function(password, salt){
-  return "{SHA}" + generateSHA1(password,'');
+Crypt.prototype.generateSHA = function(password, salt) {
+    return "{SHA}" + generateSHA1(password, '');
 }
 
 
@@ -43,23 +43,22 @@ Crypt.prototype.generateSHA = function(password, salt){
 password =  Nattha501
 hash = {SSHA}pSwicOfZpLXwXRoSi0+22GlP+FXY8cxm
 */
-Crypt.prototype.checkPassword = function(password, hash){
+Crypt.prototype.checkPassword = function(password, hash) {
+	
+    if (hash.substr(0, 6).toUpperCase() === '{SSHA}') {
+        var bhash = new Buffer(hash.substr(6), 'base64');
+        var salt = bhash.toString('binary', 20); // sha1 digests are 20 bytes long
+        //Create SSHA for considering password with extracted salt
+        passwordHash = this.generateSSHA(password, salt);
+        if (passwordHash.substr(6, (passwordHash.length-6)) === hash.substr(6, (hash.length-6))) return true;
+        else return false;
+    } else if (hash.substr(0, 5).toUpperCase() === '{SHA}') {		
+        //Create SHA for considering password by ignoring salt
+        passwordHash = this.generateSHA(password, null);
+        if (passwordHash.substr(5, (passwordHash.length-5)) === hash.substr(5, (hash.length-5))) return true;
+        else return false;
 
-  if(hash.substr(0,6) === '{SSHA}') {
-    var bhash = new Buffer(hash.substr(6),'base64');
-    var salt = bhash.toString('binary',20); // sha1 digests are 20 bytes long
-    //Create SSHA for considering password with extracted salt
-    passwordHash = this.generateSSHA(password,salt);
-    if( passwordHash === hash) return true;
-    else return false;
-  }
-  else if(hash.substr(0,5) === '{SHA}'){
-    //Create SHA for considering password by ignoring salt
-    passwordHash = this.generateSHA(password,null);
-    if( passwordHash === hash) return true;
-    else return false;
-
-  }
+    }
 
 
 }

@@ -10,8 +10,8 @@ var request = require('request');
 //var stream = doc.pipe(blobStream())
 const reportDictionary = {
 	"2671": {
-        stmt: "SELECT [userName] 'User', [devicemac] MAC,[os_name] 'OS',[created_at] 'Date',[orgName] 'group' FROM [AgileControllerDB].[dbo].[UMS_ActivityLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] c on a.[devicemac] = c.[mac] join [AgileControllerDB].[dbo].[TSM_E_Account] b on a.userId = b.account join [AgileControllerDB].[dbo].[TSM_E_Organization] d on b.orgID = d.orgID where detail = 'AddDevice'  and CONVERT (date, created_at) between '?1' and '?2' and [orgName] = '?3'",
-        header: "เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,วันที่ลงทะเบียนอุปกรณ์,กลุ่มผู้ใช้งาน",
+        stmt: "SELECT ROW_NUMBER() OVER(ORDER BY [created_at] ASC) AS Row#,[userName] 'User', [devicemac] MAC,[os_name] 'OS',[created_at] 'Date',[orgName] 'group' FROM [AgileControllerDB].[dbo].[UMS_ActivityLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] c on a.[devicemac] = c.[mac] join [AgileControllerDB].[dbo].[TSM_E_Account] b on a.userId = b.account join [AgileControllerDB].[dbo].[TSM_E_Organization] d on b.orgID = d.orgID where detail = 'AddDevice'  and CONVERT (date, created_at) between '?1' and '?2' and [orgName] = '?3'",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,วันที่ลงทะเบียนอุปกรณ์,กลุ่มผู้ใช้งาน",
         title: "รายงานการลงทะเบียนอุปกรณ์ : ระหว่างวันที่ ?1 ถึง ?2 แบ่งด้วยกลุ่ม ?3",
         filename: "report"
     },
@@ -1163,33 +1163,40 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
                 .text(title, 50, 50);
 
             var headers = reportDictionary[req.params.report].header.split(",");
-            for (i = 0; i < headers.length; i++) {
-				if(req.params.report == "2674" && i == 2){
+			console.log('1');
+            for (i = 0; i < headers.length; i++) {		
+				if(i == 1){
+					doc.font('public/fonts/THSarabunBold.ttf')
+                    .fontSize(12)
+                    .text(headers[i], columnOffset += 40, 100);
+				}
+				else if(req.params.report == "2674" && i == 3){
 					doc.font('public/fonts/THSarabunBold.ttf')
                     .fontSize(12)
                     .text(headers[i], columnOffset += 200, 100);
 				}
-				else if((req.params.report == "2675" || req.params.report == "267141" || req.params.report == "2688" || req.params.report == "2689" || req.params.report == "26810" || req.params.report == "26811" || req.params.report == "26812") && (i == 2 || i == 3)){
+				else if((req.params.report == "2675" || req.params.report == "267141" || req.params.report == "2688" || req.params.report == "2689" || req.params.report == "26810" || req.params.report == "26811" || req.params.report == "26812") && (i == 3 || i == 4)){
 					doc.font('public/fonts/THSarabunBold.ttf')
                     .fontSize(12)
                     .text(headers[i], columnOffset += 80, 100);
 				}
-				else if((req.params.report == "267154" || req.params.report == "267143") && i == 1){
+				else if((req.params.report == "267154" || req.params.report == "267143") && i == 2){
 					doc.font('public/fonts/THSarabunBold.ttf')
                     .fontSize(12)
                     .text(headers[i], columnOffset += 220, 100);
 				}
-				else if(req.params.report == "267142" && i == 1){
+				else if(req.params.report == "267142" && i == 2){
 					doc.font('public/fonts/THSarabunBold.ttf')
                     .fontSize(12)
                     .text(headers[i], columnOffset += 250, 100);
 				}
-				else {
+				else {					
 					doc.font('public/fonts/THSarabunBold.ttf')
                     .fontSize(12)
-                    .text(headers[i], columnOffset += 100, 100);
+                    .text(headers[i], columnOffset += 80, 100);
 				}
             }
+			console.log('2');
             columnOffset = -20;
 			if(req.params.report == "267142"){
 				
@@ -1317,7 +1324,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 							else {
 								doc.font('public/fonts/THSarabunBold.ttf')
 								.fontSize(12)
-								.text(headers[p], columnOffset += 100, 100);
+								.text(headers[p], columnOffset += 80, 100);
 							}
 						}
 						columnOffset = -20;
@@ -1408,14 +1415,14 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 							.fontSize(9)
 							.text(res_, columnOffset += 220, rowOffset);
 						}
-						else if((req.params.report == "2671" || req.params.report == "2672" || req.params.report == "2673" || req.params.report == "2677" || req.params.report == "2679" || req.params.report == "267152" || req.params.report == "267155") && j == 3){
+						else if((req.params.report == "2671" || req.params.report == "2672" || req.params.report == "2673" || req.params.report == "2677" || req.params.report == "2679" || req.params.report == "267152" || req.params.report == "267155") && j == 4){
 							var date_str = '';
 							var update_time = '';
 							update_time = new Date(result[i][j]);							
 							date_str = update_time.getFullYear() + "/" + ((update_time.getUTCMonth()+1) < 10 ? '0' : '') + (update_time.getUTCMonth()+1) + "/" + (update_time.getUTCDate() < 10 ? '0' : '') + update_time.getUTCDate() + ' - ' + update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds();
 							doc.font('public/fonts/THSarabunBold.ttf')
 							.fontSize(9)
-							.text(date_str, columnOffset += 100, rowOffset);
+							.text(date_str, columnOffset += 80, rowOffset);
 						}
 						else if(req.params.report == "267153" && j == 2){
 							var date_str = '';
@@ -1438,7 +1445,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 						else {
 							doc.font('public/fonts/THSarabunBold.ttf')
 							.fontSize(9)
-							.text(res_, columnOffset += 100, rowOffset);
+							.text(res_, columnOffset += 80, rowOffset);
 						}
 						
 					}

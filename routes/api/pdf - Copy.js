@@ -34,25 +34,25 @@ const reportDictionary = {
         filename: "report"
     },
 	"2675": {
-        stmt: "SELECT a.userName Account,a.terminalMac MAC,os_name,timestamp 'Date',b.[description] Area FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[UMS_Site] b on [radiusClientIp] = [ipaddr] join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on a.terminalMac = e.mac where CONVERT (date, a.timestamp) between '?1' and '?2' and b.[name] = '?3'",
+        stmt: "SELECT a.userName Account,a.terminalMac MAC,os_name,timestamp 'Date',b.[description] Area FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[UMS_Site] b on [radiusClientIp] = [ipaddr] join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on a.terminalMac = e.mac where CONVERT (date, a.timestamp) between '?1' and '?2' and b.[name] = '?3' and sessionID !=''",
         header: "เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,วันที่เข้าใช้งาน,พื้นที่",
         title: "รายงานการใช้งานจําแนกตามพื้นที่ : ระหว่างวันที่ ?1 ถึง ?2 แบ่งด้วยพื้นที่ ?3",
         filename: "report"
     },
 	"2676": {
-        stmt: "SELECT userName account,terminalMac MAC, [orgName] 'group',count(*) FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] where  CONVERT (date, timestamp) between '?1' and '?2' and [orgName] = '?3' and terminalMac != '' group by userName,terminalMac, [orgName]",
+        stmt: "SELECT userName account,terminalMac MAC, [orgName] 'group',count(*) FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] where  CONVERT (date, timestamp) between '?1' and '?2' and [orgName] = '?3' and terminalMac != '' and sessionID !='' group by userName,terminalMac, [orgName]",
         header: "เจ้าของอุปกรณ์,MAC Address,กลุ่มผู้ใช้งาน,จำนวนที่เข้าใช้งาน",
         title: "รายงานการใช้งานจําแนกตามกลุ่ม : ระหว่างวันที่ ?1 ถึง ?2 แบ่งด้วยกลุ่ม ?3",
         filename: "report"
     },
 	"2677": {
-        stmt: "SELECT [userName],[os_name],[terminalIp],[timestamp] FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where terminalIp!= '' and CONVERT (date, timestamp) between '?1' and '?2' and userName like '%?3%'",
+        stmt: "SELECT [userName],[os_name],[terminalIp],[timestamp] FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where terminalIp!= '' and sessionID !='' and CONVERT (date, timestamp) between '?1' and '?2' and userName like '%?3%'",
         header: "เจ้าของอุปกรณ์,ระบบปฏิบัติการ,IP,วันที่ใช้งาน",
         title: "รายงานการใช้งานระบุบุคคล : ระหว่างวันที่ ?1 ถึง ?2",
         filename: "report"
     },
 	"2678": {
-        stmt: "SELECT userName Account,CASE WHEN b.[os_name] = 'Android' or b.[os_name] = 'iOS' THEN 'Mobile' WHEN b.[os_name] like 'Windows%' or b.[os_name] = 'Linux' or b.[os_name] = 'OSX' THEN 'Computer' ELSE 'Unknown' END as 'Type',orgName 'Group',mac,timestamp 'Date' FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where CONVERT (date, a.timestamp) between '?1' and '?2' and CASE WHEN b.[os_name] = 'Android' or b.[os_name] = 'iOS' THEN 'Mobile' WHEN b.[os_name] like 'Windows%' or b.[os_name] = 'Linux' or b.[os_name] = 'OSX' THEN 'Computer' ELSE 'Unknown' END = '?3'",
+        stmt: "SELECT userName Account,CASE WHEN b.[os_name] = 'Android' or b.[os_name] = 'iOS' THEN 'Mobile' WHEN b.[os_name] like 'Windows%' or b.[os_name] = 'Linux' or b.[os_name] = 'OSX' THEN 'Computer' ELSE 'Unknown' END as 'Type',orgName 'Group',mac,timestamp 'Date' FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where CONVERT (date, a.timestamp) between '?1' and '?2' and sessionID !='' and CASE WHEN b.[os_name] = 'Android' or b.[os_name] = 'iOS' THEN 'Mobile' WHEN b.[os_name] like 'Windows%' or b.[os_name] = 'Linux' or b.[os_name] = 'OSX' THEN 'Computer' ELSE 'Unknown' END = '?3'",
         header: "เจ้าของอุปกรณ์,ประเภทอุปกรณ์,กลุ่มผู้ใช้งาน,MAC Address,วันที่เข้าใช้งาน",
         title: "รายงานการใช้งานจําแนกตามประเภทอุปกรณ์ : ระหว่างวันที่ ?1 ถึง ?2 แบ่งด้วยประเภท ?3",
         filename: "report"
@@ -94,7 +94,7 @@ const reportDictionary = {
         filename: "report"
     },
 	"267152": {
-        stmt: "SELECT [os_name] OS,accountName Account, terminalMac MAC, timestamp 'Date' FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where sessionID != '' and CONVERT (date, timestamp) between '?1' and '?2' and [os_name] = '?3'",
+        stmt: "SELECT accountName Account,terminalMac MAC,[os_name] OS, timestamp 'Date' FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where sessionID != '' and CONVERT (date, timestamp) between '?1' and '?2' and [os_name] = '?3'",
         header: "เจ้าของอุปกรณ์,MAC Address,ประเภทระบบปฎิบัติการ,วันที่เข้าใช้งาน",
         title: "รายงานการใช้งานจำแนกตามระบบปฎิบัติการ : ระหว่างวันที่ ?1 ถึง ?2 ประเภทระบบปฎิบัติการ ?3",
         filename: "report"
@@ -261,7 +261,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 		cond3 = 'แก้ไขข้อมูลอุปกรณ์';
 	}
 	
-	else if(req.params.cond3 == ''){
+	else if(req.params.cond3.trim() == ''){
 		cond3 = 'ไม่สามารถระบุได้';
 	}
 	
@@ -378,8 +378,48 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				var array_ = params_.split(",");
 				console.log(array_);
 				for(i = 0; i < array_.length; i++){
+					var chk_emp = ["ไ","ม","่","ส","า","ม","า","ร","ถ","ร","ะ","บ","ุ","ไ","ด","้"];
+					var c = 0;
+					var cc = -2;
+					for(j = 0; j < array_[i].length; j++){						
+						var a = chk_emp.indexOf(array_[i][j]);
+						if(a != -1){
+							if(j==0){
+								cc = a;
+								c = 1;
+							}
+							else if(j!=0){
+								if(((cc+1) == a)||(cc == 7 && a == 10)||(cc == 0 && a == 14)||(cc == 1 && a == 4)||(cc == 4 && a == 1)||(cc == 4 && a == 7)||(cc == 8 && a == 7)){
+									cc = a;
+									c = 1;									
+								}
+								else{
+									cc = 99;
+									c = 0;
+								}
+							}
+							else{
+								cc = 99;
+								c = 0;
+							}							
+							
+						}
+						else{
+							c = 0;
+							cc = -2;
+						}
+					}
+					if(c == 1){
+						array_[i] ='';
+					}
 					console.log(array_[i]);
-					stmt += " and (a.userName like '%" + array_[i] + "%' or a.terminalMac like '%" + array_[i] + "%' or [os_name] like '%" + array_[i] + "%' or CONVERT(varchar, [timestamp],120) like '%" + array_[i] + "%' or [description] like '%" + array_[i] + "%')";
+					if(array_[i]==''){
+						stmt += " and ([os_name] = '')";						
+					}
+					else{
+						stmt += " and (a.userName like '%" + array_[i] + "%' or a.terminalMac like '%" + array_[i] + "%' or [os_name] like '%" + array_[i] + "%' or CONVERT(varchar, [timestamp],120) like '%" + array_[i] + "%')";
+					}
+					
 				}
 				
 				title += " ค้นหาด้วยคำว่า " + params_;
@@ -397,8 +437,9 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				params_ = params_.replace(/\s+/g, ',');	
 				console.log(params_);
 				var array_ = params_.split(",");
-				console.log(array_);				
-				for(i = 0; i < array_.length; i++){
+				console.log(array_);
+				stmt += " having ([userName] like '%" + array_[0] + "%' or [terminalMac] like '%" + array_[0] + "%' or [orgName] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%')";
+				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
 					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or [orgName] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%')";
 				}
@@ -412,15 +453,57 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 			
 			title = title.replace("?1", req.params.cond1);
             title = title.replace("?2", req.params.cond2);
+			
 			if(req.params.cond6 != 0){
 				var params_ = req.params.cond6;
 				params_ = params_.replace(/\s+/g, ',');	
 				console.log(params_);
 				var array_ = params_.split(",");
-				console.log(array_);				
+				console.log(array_);
+				
 				for(i = 0; i < array_.length; i++){
+					var chk_emp = ["ไ","ม","่","ส","า","ม","า","ร","ถ","ร","ะ","บ","ุ","ไ","ด","้"];
+					var c = 0;
+					var cc = -2;
+					for(j = 0; j < array_[i].length; j++){						
+						var a = chk_emp.indexOf(array_[i][j]);
+						if(a != -1){
+							if(j==0){
+								cc = a;
+								c = 1;
+							}
+							else if(j!=0){
+								if(((cc+1) == a)||(cc == 7 && a == 10)||(cc == 0 && a == 14)||(cc == 1 && a == 4)||(cc == 4 && a == 1)||(cc == 4 && a == 7)||(cc == 8 && a == 7)){
+									cc = a;
+									c = 1;									
+								}
+								else{
+									cc = 99;
+									c = 0;
+								}
+							}
+							else{
+								cc = 99;
+								c = 0;
+							}							
+							
+						}
+						else{
+							c = 0;
+							cc = -2;
+						}
+					}
+					if(c == 1){
+						array_[i] ='';
+					}
 					console.log(array_[i]);
-					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalIp] like '%" + array_[i] + "%' or [os_name] like '%" + array_[i] + "%' or CONVERT(varchar, [timestamp],120) like '%" + array_[i] + "%')";
+					if(array_[i]==''){
+						stmt += " and ([os_name] = '')";						
+					}
+					else{
+						stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalIp] like '%" + array_[i] + "%' or [os_name] like '%" + array_[i] + "%' or CONVERT(varchar, [timestamp],120) like '%" + array_[i] + "%')";						
+					}
+					
 				}
 				
 				title += " ค้นหาด้วยคำว่า " + params_;
@@ -441,7 +524,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(array_);				
 				for(i = 0; i < array_.length; i++){
 					console.log(array_[i]);
-					stmt += " and ([userName] like '%" + array_[i] + "%' or (CASE WHEN b.[os_name] = 'Android' or b.[os_name] = 'iOS' THEN 'Mobile' WHEN b.[os_name] like 'Windows%' or b.[os_name] = 'Linux' or b.[os_name] = 'OSX' THEN 'Computer' ELSE 'Unknown' END) like '%" + array_[i] + "%' or CONVERT(varchar, [timestamp],120) like '%" + array_[i] + "%' or [mac] like '%" + array_[i] + "%' or [orgName] like '%" + array_[i] + "%')";
+					stmt += " and ([userName] like '%" + array_[i] + "%' or CONVERT(varchar, [timestamp],120) like '%" + array_[i] + "%' or [mac] like '%" + array_[i] + "%' or [orgName] like '%" + array_[i] + "%')";
 				}
 				
 				title += " ค้นหาด้วยคำว่า " + params_;
@@ -463,8 +546,48 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				var array_ = params_.split(",");
 				console.log(array_);				
 				for(i = 0; i < array_.length; i++){
+					var chk_emp = ["ไ","ม","่","ส","า","ม","า","ร","ถ","ร","ะ","บ","ุ","ไ","ด","้"];
+					var c = 0;
+					var cc = -2;
+					for(j = 0; j < array_[i].length; j++){						
+						var a = chk_emp.indexOf(array_[i][j]);
+						if(a != -1){
+							if(j==0){
+								cc = a;
+								c = 1;
+							}
+							else if(j!=0){
+								if(((cc+1) == a)||(cc == 7 && a == 10)||(cc == 0 && a == 14)||(cc == 1 && a == 4)||(cc == 4 && a == 1)||(cc == 4 && a == 7)||(cc == 8 && a == 7)){
+									cc = a;
+									c = 1;									
+								}
+								else{
+									cc = 99;
+									c = 0;
+								}
+							}
+							else{
+								cc = 99;
+								c = 0;
+							}							
+							
+						}
+						else{
+							c = 0;
+							cc = -2;
+						}
+					}
+					if(c == 1){
+						array_[i] ='';
+					}
 					console.log(array_[i]);
-					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or [os_name] like '%" + array_[i] + "%' or CONVERT(varchar, [timestamp],120) like '%" + array_[i] + "%')";
+					if(array_[i]==''){
+						stmt += " and ([os_name] = '')";						
+					}
+					else{
+						stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or [os_name] like '%" + array_[i] + "%' or CONVERT(varchar, [timestamp],120) like '%" + array_[i] + "%')";
+					}
+					
 				}
 				
 				title += " ค้นหาด้วยคำว่า " + params_;
@@ -496,10 +619,60 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				params_ = params_.replace(/\s+/g, ',');	
 				console.log(params_);
 				var array_ = params_.split(",");
-				console.log(array_);				
+				console.log(array_);
+				
 				for(i = 0; i < array_.length; i++){
+					var chk_emp = ["ไ","ม","่","ส","า","ม","า","ร","ถ","ร","ะ","บ","ุ","ไ","ด","้"];
+					var c = 0;
+					var cc = -2;
+					for(j = 0; j < array_[i].length; j++){						
+						var a = chk_emp.indexOf(array_[i][j]);
+						if(a != -1){
+							if(j==0){
+								cc = a;
+								c = 1;
+							}
+							else if(j!=0){
+								if(((cc+1) == a)||(cc == 7 && a == 10)||(cc == 0 && a == 14)||(cc == 1 && a == 4)||(cc == 4 && a == 1)||(cc == 4 && a == 7)||(cc == 8 && a == 7)){
+									cc = a;
+									c = 1;									
+								}
+								else{
+									cc = 99;
+									c = 0;
+								}
+							}
+							else{
+								cc = 99;
+								c = 0;
+							}							
+							
+						}
+						else{
+							c = 0;
+							cc = -2;
+						}
+					}
+					if(c == 1){
+						array_[i] ='';
+					}
 					console.log(array_[i]);
-					stmt += " and (a.userName like '%" + array_[i] + "%' or [a.terminalMac] like '%" + array_[i] + "%' or [os_name] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or b.[description] like '%" + array_[i] + "%')";
+					if(array_[i]==''){
+						if(i==0){
+							stmt += " having (a.userName like '%" + array_[0] + "%' or a.[terminalMac] like '%" + array_[0] + "%' or [os_name] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or b.[description] like '%" + array_[0] + "%')";
+						}
+						stmt += " and ([os_name] = '')";						
+					}
+					else{
+						if(i==0){
+							stmt += " having (a.userName like '%" + array_[0] + "%' or a.[terminalMac] like '%" + array_[0] + "%' or [os_name] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or b.[description] like '%" + array_[0] + "%')";
+						}
+						else{
+							stmt += " and (a.userName like '%" + array_[i] + "%' or a.[terminalMac] like '%" + array_[i] + "%' or [os_name] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or b.[description] like '%" + array_[i] + "%')";
+						}
+						
+					}
+					
 				}
 				
 				title += " ค้นหาด้วยคำว่า " + params_;
@@ -518,8 +691,9 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				params_ = params_.replace(/\s+/g, ',');	
 				console.log(params_);
 				var array_ = params_.split(",");
-				console.log(array_);				
-				for(i = 0; i < array_.length; i++){
+				console.log(array_);
+				stmt += " having (b.[name] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%')";
+				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
 					stmt += " and (b.[name] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%')";
 				}
@@ -539,8 +713,9 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				params_ = params_.replace(/\s+/g, ',');	
 				console.log(params_);
 				var array_ = params_.split(",");
-				console.log(array_);				
-				for(i = 0; i < array_.length; i++){
+				console.log(array_);
+				stmt += " having ([userName] like '%" + array_[0] + "%' or [terminalMac] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%')";
+				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
 					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%')";
 				}
@@ -554,7 +729,9 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 			
 			title = title.replace("?1", req.params.cond1);
             title = title.replace("?2", req.params.cond2);
-            title = title.replace("?3", cond3);
+			title = title.replace("?3", cond3);
+			
+            
 			if(req.params.cond6 != 0){
 				var params_ = req.params.cond6;
 				params_ = params_.replace(/\s+/g, ',');	
@@ -563,7 +740,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(array_);				
 				for(i = 0; i < array_.length; i++){
 					console.log(array_[i]);
-					stmt += " and ([accountName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or [os_name] like '%" + array_[i] + "%' or CONVERT(varchar, [timestamp],120) like '%" + array_[i] + "%')";
+					stmt += " and ([accountName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or CONVERT(varchar, [timestamp],120) like '%" + array_[i] + "%')";
 				}
 				
 				title += " ค้นหาด้วยคำว่า " + params_;
@@ -584,7 +761,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(array_);				
 				for(i = 0; i < array_.length; i++){
 					console.log(array_[i]);
-					stmt += " and ([userId] like '%" + array_[i] + "%' or [browser] like '%" + array_[i] + "%' or CONVERT(varchar, [created_at],120) like '%" + array_[i] + "%')";
+					stmt += " and ([userId] like '%" + array_[i] + "%' or CONVERT(varchar, [created_at],120) like '%" + array_[i] + "%')";
 				}
 				
 				title += " ค้นหาด้วยคำว่า " + params_;
@@ -621,8 +798,9 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				params_ = params_.replace(/\s+/g, ',');	
 				console.log(params_);
 				var array_ = params_.split(",");
-				console.log(array_);				
-				for(i = 0; i < array_.length; i++){
+				console.log(array_);			
+				stmt += " having ([userName] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%')";
+				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
 					stmt += " and ([userName] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%')";
 				}
@@ -762,8 +940,9 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				params_ = params_.replace(/\s+/g, ',');	
 				console.log(params_);
 				var array_ = params_.split(",");
-				console.log(array_);				
-				for(i = 0; i < array_.length; i++){
+				console.log(array_);
+				stmt += " having ([userName] like '%" + array_[0] + "%' or [terminalMac] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[0] + "%')";
+				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
 					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[i] + "%')";
 				}
@@ -782,7 +961,8 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(params_);
 				var array_ = params_.split(",");
 				console.log(array_);				
-				for(i = 0; i < array_.length; i++){
+				stmt += " having ([userName] like '%" + array_[0] + "%' or [terminalMac] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[0] + "%')";
+				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
 					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[i] + "%')";
 				}
@@ -801,7 +981,8 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(params_);
 				var array_ = params_.split(",");
 				console.log(array_);				
-				for(i = 0; i < array_.length; i++){
+				stmt += " having ([userName] like '%" + array_[0] + "%' or [terminalMac] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[0] + "%')";
+				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
 					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[i] + "%')";
 				}
@@ -820,7 +1001,8 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(params_);
 				var array_ = params_.split(",");
 				console.log(array_);				
-				for(i = 0; i < array_.length; i++){
+				stmt += " having ([userName] like '%" + array_[0] + "%' or [terminalMac] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[0] + "%')";
+				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
 					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[i] + "%')";
 				}
@@ -839,7 +1021,8 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(params_);
 				var array_ = params_.split(",");
 				console.log(array_);				
-				for(i = 0; i < array_.length; i++){
+				stmt += " having ([userName] like '%" + array_[0] + "%' or [terminalMac] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[0] + "%')";
+				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
 					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[i] + "%')";
 				}
@@ -857,8 +1040,9 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				params_ = params_.replace(/\s+/g, ',');	
 				console.log(params_);
 				var array_ = params_.split(",");
-				console.log(array_);				
-				for(i = 0; i < array_.length; i++){
+				console.log(array_);
+				stmt += " having ([userName] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[0] + "%')";
+				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
 					stmt += " and ([userName] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[i] + "%')";
 				}
@@ -877,7 +1061,8 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(params_);
 				var array_ = params_.split(",");
 				console.log(array_);				
-				for(i = 0; i < array_.length; i++){
+				stmt += " having ([userName] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[0] + "%')";
+				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
 					stmt += " and ([userName] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[i] + "%')";
 				}
@@ -896,7 +1081,8 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(params_);
 				var array_ = params_.split(",");
 				console.log(array_);				
-				for(i = 0; i < array_.length; i++){
+				stmt += " having ([userName] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[0] + "%')";
+				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
 					stmt += " and ([userName] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[i] + "%')";
 				}
@@ -919,7 +1105,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(array_);				
 				for(i = 0; i < array_.length; i++){
 					console.log(array_[i]);
-					stmt += " and ([userName] like '%" + array_[i] + "%' or [devicemac] like '%" + array_[i] + "%' or [os_name] like '%" + array_[i] + "%' or CONVERT(varchar, [created_at],120) like '%" + array_[i] + "%' or [detail] like '%" + array_[i] + "%')";
+					stmt += " and ([userName] like '%" + array_[i] + "%' or [devicemac] like '%" + array_[i] + "%' or [os_name] like '%" + array_[i] + "%' or CONVERT(varchar, [created_at],120) like '%" + array_[i] + "%')";
 				}
 				
 				title += " ค้นหาด้วยคำว่า " + params_;
@@ -1198,10 +1384,24 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 							.fontSize(9)
 							.text(date_str, columnOffset += 200, rowOffset);
 						}
-						else if((req.params.report == "2675" || req.params.report == "267141" || req.params.report == "2688" || req.params.report == "2689" || req.params.report == "26810" || req.params.report == "26811" || req.params.report == "26812") && (j == 2 || j == 3)){
+						else if((req.params.report == "267141" || req.params.report == "2688" || req.params.report == "2689" || req.params.report == "26810" || req.params.report == "26811" || req.params.report == "26812") && (j == 2 || j == 3)){
 							doc.font('public/fonts/THSarabunBold.ttf')
 							.fontSize(9)
 							.text(res_, columnOffset += 80, rowOffset);
+						}
+						else if(req.params.report == "2675" && j == 2){
+							doc.font('public/fonts/THSarabunBold.ttf')
+							.fontSize(9)
+							.text(res_, columnOffset += 80, rowOffset);
+						}
+						else if(req.params.report == "2675" && j == 3){
+							var date_str = '';
+							var update_time = '';
+							update_time = new Date(result[i][j]);							
+							date_str = update_time.getFullYear() + "/" + ((update_time.getUTCMonth()+1) < 10 ? '0' : '') + (update_time.getUTCMonth()+1) + "/" + (update_time.getUTCDate() < 10 ? '0' : '') + update_time.getUTCDate() + ' - ' + update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds();
+							doc.font('public/fonts/THSarabunBold.ttf')
+							.fontSize(9)
+							.text(date_str, columnOffset += 80, rowOffset);
 						}
 						else if((req.params.report == "267154" || req.params.report == "267143") && j == 1){
 							doc.font('public/fonts/THSarabunBold.ttf')
@@ -1226,7 +1426,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 							.fontSize(9)
 							.text(date_str, columnOffset += 100, rowOffset);
 						}
-						else if((req.params.report == "2675" || req.params.report == "2678" || req.params.report == "2714") && j == 4){
+						else if((req.params.report == "2678" || req.params.report == "2714") && j == 4){
 							var date_str = '';
 							var update_time = '';
 							update_time = new Date(result[i][j]);							
