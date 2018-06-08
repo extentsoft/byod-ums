@@ -171,7 +171,7 @@
               
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
-											<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div>
+											
                                             <table class="table table-striped" id="data-tables">
                                                 <thead>
                                                     <tr>											
@@ -306,7 +306,7 @@
         <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
 
-        <!-- Specific Page Scripts END -->
+        <!-- Specific Page Scripts END --><script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script><script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script><script type="text/javascript" src="plugins/dataTables/buttons.print.min.js"></script><script type="text/javascript" src="plugins/dataTables/dataTables.buttons.min.js"></script><script type="text/javascript" src="plugins/dataTables/pdfmake.min.long.js"></script><script type="text/javascript" src="plugins/dataTables/vfs_fonts.js"></script><script type="text/javascript" src="plugins/dataTables/buttons.flash.min.js"></script><script type="text/javascript" src="plugins/dataTables/buttons.html5.min.js"></script>
 
 
 
@@ -327,7 +327,7 @@
                 //alert('refresh');
 				//alert(sd);
 				//alert(ed);
-				document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>MAC Address</th><th>ระบบปฏิบัติการ</th><th>พื้นที่</th><th>จำนวนครั้งที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
+				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>MAC Address</th><th>ระบบปฏิบัติการ</th><th>พื้นที่</th><th>จำนวนครั้งที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
                 $.ajax('http://byod.excise.go.th/report/report67141', {
                     type: "get",
                     data: {
@@ -350,15 +350,11 @@
                 data = [];
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
-					var os_ = '';
-					if(data_sql[3]==''){
-						os_ = 'ไม่สามารถระบุได้';
-					}
-					else{
-						os_ = data_sql[3];
-					}
+
+
+
                     //data_json = {name:data_sql[0],mac:data_sql[2],os:data_sql[3],date:date_str};
-                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[1] + "</td><td>" + data_sql[2] + "</td><td>" + os_ + "</td><td>" + data_sql[0] + "</td><td>" + data_sql[4] + "</td></tr>");
+                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[1] + "</td><td>" + data_sql[2] + "</td><td>" + data_sql[3] + "</td><td>" + data_sql[0] + "</td><td>" + data_sql[4] + "</td></tr>");
                     //alert(JSON.stringify(data_json));
                     data.push(data_json);
                     //alert(JSON.stringify(data));
@@ -369,7 +365,21 @@
                 //alert(JSON.stringify(data));
                 //c1(data);
 
-                $('#data-tables').dataTable();
+                var date_ = new Date();							
+				date_str = date_.getFullYear() + "-" + ((date_.getMonth()+1) < 10 ? '0' : '') + (date_.getMonth()+1) + "-" + (date_.getDate() < 10 ? '0' : '') + date_.getDate();
+				
+				$('#data-tables').DataTable( {
+					dom: 'Bfrtip',
+					buttons: [
+						{
+							extend: 'pdf',
+							text: '<div class="text-right"><h1><span class="fa fa-print" id="printer"></h1></div>',customize: function(doc) {doc.defaultStyle.alignment = 'center';doc.styles.tableHeader.alignment = 'center';},
+							title: 'รายงานการใช้งานทรัพยากรระบบ - จำแนกตามพื้นที่การใช้งาน ระหว่างวันที่ '+ start_ + ' ถึงวันที่ ' + end_,
+							messageTop: 'สั่งพิมพ์โดย : '+account_now+" วันที่ : "+date_str
+							
+						}
+					]
+				} );
 
             }
 
@@ -430,7 +440,7 @@
 						for (i = 0; i < data_res.length; i++) {
 							var option = document.createElement("option");
 							option.text = data_res[i];
-							option.value = data_res[i+1];
+							option.value = data_res[i];
 							var select = document.getElementById("listsite");
 							select.appendChild(option);
 							data_res.splice(0, 2);
@@ -449,15 +459,8 @@
 			}
 			
 			function printpdf(){
-				var search_ = '';
-				var date_ = moment().format("DD MMM YYYY");
-				if(document.getElementById("table-search").value.trim() == ''){
-					search_ = 0;
-				}
-				else {
-					search_ = document.getElementById("table-search").value.trim();					
-				}
-				location.href = 'http://byod.excise.go.th/api/v1/pdf/267141/'+start_+'/'+end_+'/'+site_+'/'+'0'+'/'+account_now+'/'+search_+'/'+date_;
+				location.href = 'http://byod.excise.go.th/api/v1/pdf/267141/'+start_+'/'+end_+'/'+site_+'/'+'0'+'/'+'0';
+				
 			}
 
 			list_site();

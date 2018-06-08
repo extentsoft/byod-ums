@@ -8,7 +8,7 @@ var deviceList = function(req,res,next){
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
-      console.error(err);
+      console.error(err);connection.release();
       return;
     }
     console.log('Connection successful');
@@ -17,7 +17,8 @@ var deviceList = function(req,res,next){
     var request = new Request("SELECT userName account,terminalMac MAC, [os_name] 'OS',timestamp FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on a.terminalMac = e.mac where sessionID != '' and CONVERT (date, timestamp) between '"+req.param('start')+"' and '"+req.param('end')+"' and CONVERT (time,timestamp) < CONVERT (time,'"+req.param('end_time')+"' ) and CONVERT (time,timestamp) > CONVERT (time,'"+req.param('start_time')+"')", function(err, rowCount){
 
       if(err){
-        console.error(err);
+        console.error(err);connection.release();
+		connection.release();
         return;
       }
       console.log('rowCount: ' + rowCount);

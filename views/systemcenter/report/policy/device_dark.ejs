@@ -55,7 +55,7 @@
     <link href="plugins/colorpicker/css/colorpicker.css" rel="stylesheet" type="text/css">
 
     <!-- Specific CSS -->
-    <link href="plugins/dataTables/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+    <link href="plugins/dataTables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
     <link href="plugins/dataTables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 
     <!-- Theme CSS -->
@@ -132,7 +132,7 @@
 
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
-                                    <h1>รายงานบุคลากรที่ลงทะเบียนอุปกรณ์ครบตามจํานวนที่กำหนด</h1>
+                                    <h1>รายงานการใช้งานของบุคคลากรที่ครบตามจำนวนอุปกรณ์ที่อนุญาต</h1>
 
 
                                     <!-- menu -->
@@ -153,7 +153,7 @@
                                             
                                         </div>
                                         <div class="panel-body table-responsive">
-											<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div>
+											
                                             <table class="table table-striped" id="data-tables">
                                                 <thead>
                                                     <tr>
@@ -244,7 +244,7 @@
             });
         </script>
 
-        <!-- Specific Page Scripts END -->
+        <!-- Specific Page Scripts END --><script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script><script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script><script type="text/javascript" src="plugins/dataTables/buttons.print.min.js"></script><script type="text/javascript" src="plugins/dataTables/dataTables.buttons.min.js"></script><script type="text/javascript" src="plugins/dataTables/pdfmake.min.js"></script><script type="text/javascript" src="plugins/dataTables/vfs_fonts.js"></script><script type="text/javascript" src="plugins/dataTables/buttons.flash.min.js"></script><script type="text/javascript" src="plugins/dataTables/buttons.html5.min.js"></script>
 
 
 
@@ -286,21 +286,26 @@
                 //alert(JSON.stringify(data));
                 //c1(data);
 
-                $('#data-tables').dataTable();
+                var date_ = new Date();							
+				date_str = date_.getFullYear() + "-" + ((date_.getMonth()+1) < 10 ? '0' : '') + (date_.getMonth()+1) + "-" + (date_.getDate() < 10 ? '0' : '') + date_.getDate();
+				
+				$('#data-tables').DataTable( {
+					dom: 'Bfrtip',
+					buttons: [
+						{
+							extend: 'pdf',
+							text: '<div class="text-right"><h1><span class="fa fa-print" id="printer"></h1></div>',customize: function(doc) {doc.defaultStyle.alignment = 'center';doc.styles.tableHeader.alignment = 'center';},
+							title: 'รายงานการใช้งานของบุคคลากรที่ครบตามจำนวนอุปกรณ์ที่อนุญาต',
+							messageTop: 'สั่งพิมพ์โดย : '+account_now+" วันที่ : "+date_str
+							
+						}
+					]
+				} );
 
             }
 			
 			function printpdf(){
-				var search_ = '';
-				var date_ = moment().format("DD MMM YYYY");
-				if(document.getElementById("table-search").value.trim() == ''){
-					search_ = 0;
-				}
-				else {
-					search_ = document.getElementById("table-search").value.trim();					
-				}
-				location.href = 'http://byod.excise.go.th/api/v1/pdf/26710/'+'0'+'/'+'0'+'/'+'0'+'/'+'0'+'/'+account_now+'/'+search_+'/'+date_;
-				
+				location.href = 'http://byod.excise.go.th/api/v1/pdf/26710/'+'0'+'/'+'0'+'/'+'0'+'/'+'0'+'/'+'0';
 			}
             refresh_table();
         </script>

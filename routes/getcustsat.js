@@ -8,7 +8,7 @@ var deviceList = function(req,res,next){
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
-      console.error(err);
+      console.error(err);connection.release();
       return;
     }
     console.log('Connection successful');
@@ -16,7 +16,7 @@ var deviceList = function(req,res,next){
     var request = new Request("SELECT * FROM [AgileControllerDB].[dbo].[UMS_Custsat] a join (SELECT form_id,code_ref,sum(CAST(ch1 AS int)) c1,sum(CAST(ch2 AS int)) c2,sum(CAST(ch3 AS int)) c3,sum(CAST(ch4 AS int)) c4,sum(CAST(ch5 AS int)) c5 FROM [AgileControllerDB].[dbo].[UMS_CustsatResult] group by form_id,code_ref) b on a.form_id = b.form_id and a.code_ref = b.code_ref where a.form_id = '"+req.param('formid')+"'", function(err, rowCount){
 
       if(err){
-        console.error(err);
+        console.error(err);connection.release();
         return;
       }
       console.log('rowCount: ' + rowCount);

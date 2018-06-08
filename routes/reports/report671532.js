@@ -8,7 +8,7 @@ var deviceList = function(req,res,next){
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
-      console.error(err);
+      console.error(err);connection.release();
       return;
     }
     console.log('Connection successful');
@@ -17,7 +17,7 @@ var deviceList = function(req,res,next){
     var request = new Request("SELECT [browser],[userId] 'User',created_at 'Date' FROM [AgileControllerDB].[dbo].[UMS_AccessLog] where  [browser]!='undefined' and CONVERT (date, created_at) between '"+req.param('start')+"' and '"+req.param('end')+"' and [browser] = '"+req.param('browser')+"'", function(err, rowCount){
 
       if(err){
-        console.error(err);
+        console.error(err);connection.release();
         return;
       }
       console.log('rowCount: ' + rowCount);

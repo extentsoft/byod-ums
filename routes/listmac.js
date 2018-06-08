@@ -12,7 +12,7 @@ var deviceList = function(req,res,next){
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
-      console.error(err);
+      console.error(err);connection.release();
       return;
     }
     console.log('Connection successful');
@@ -22,7 +22,7 @@ var deviceList = function(req,res,next){
     var request = new Request("SELECT [bindMac] FROM [AgileControllerDB].[dbo].[TSM_E_Account] where [account] = '"+req.param('accname')+"'", function(err, rowCount){
 
       if(err){
-        console.error(err);
+        console.error(err);connection.release();
         return;
       }
       console.log('rowCount: ' + rowCount);

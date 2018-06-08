@@ -43,7 +43,7 @@ module.exports = function(app, passport) {
                 //user: '59ad65f3b7fa3b',
                 user: 'byod@excise.go.th',
                 //pass: '7e4387ba355422',
-                pass: 'byod1234'
+                pass: 'P@ssw0rdsky'
             }
         });
         transporter.sendMail(mailOptions, function(err, info) {
@@ -51,10 +51,12 @@ module.exports = function(app, passport) {
                 console.log(err)
                 console.log('ERROR');
                 res.send('0');
+				return;
             } else {
                 console.log(info);
                 console.log('Success');
                 res.send('1');
+				return;
             }
             //res.redirect('/profile/login');
         });
@@ -88,10 +90,12 @@ module.exports = function(app, passport) {
                 console.log(err)
                 console.log('ERROR');
                 res.send('0');
+				return;
             } else {
                 console.log(info);
                 console.log('Success');
                 res.send('1');
+				return;
             }
             //res.redirect('/profile/login');
         });
@@ -126,10 +130,12 @@ module.exports = function(app, passport) {
         smtpTransport.sendMail(mail, function(error, response) {
             smtpTransport.close();
             if (error) {
+				return;
                 //error handler
             } else {
                 //success handler
                 console.log('send email success');
+				return;
             }
         });
     });
@@ -151,7 +157,7 @@ module.exports = function(app, passport) {
             var result = [];
             pool.acquire(function(err, connection) {
                 if (err) {
-                    console.error(err);
+                    console.error(err);connection.release();
                     return;
                 }
                 console.log('Connection successful');
@@ -161,7 +167,7 @@ module.exports = function(app, passport) {
                     //    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 
                     if (err) {
-                        console.error(err);
+                        console.error(err);connection.release();
                         return;
                     }
                     console.log('rowCount: ' + rowCount);
@@ -209,7 +215,7 @@ module.exports = function(app, passport) {
 
         pool.acquire(function(err, connection) {
             if (err) {
-                console.error(err);
+                console.error(err);connection.release();
                 return;
             }
             console.log('Connection successful');
@@ -219,7 +225,7 @@ module.exports = function(app, passport) {
                 //    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 
                 if (err) {
-                    console.error(err);
+                    console.error(err);connection.release();
                     return;
                 }
                 console.log('rowCount: ' + rowCount);

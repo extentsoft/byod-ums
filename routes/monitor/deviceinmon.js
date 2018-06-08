@@ -12,15 +12,15 @@ var deviceList = function(req,res,next){
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
-      console.error(err);
+      console.error(err);connection.release();
       return;
     }
     console.log('Connection successful');
 
-    var request = new Request("delete from [AgileControllerDB].[dbo].[UMS_DeviceMon] where mac not in (select mac from [AgileControllerDB].[dbo].[TSM_E_Endpoint] join [AgileControllerDB].[dbo].[TSM_E_Account] on [account] = [login_account]);SELECT e.[id],[account],[userName],[host_name],u.[mac],[os_name],[created_at],case when u.[last_login] is null then 0 else u.[last_login] end as last_login FROM [AgileControllerDB].[dbo].[TSM_E_Account] a  join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on [account] = [login_account]  join [AgileControllerDB].[dbo].[TSM_E_Organization] b on a.[orgID] = b.[orgID] join [AgileControllerDB].[dbo].[UMS_DeviceMon] u on e.[mac] = u.[mac] where e.mac in (select mac from [AgileControllerDB].[dbo].[UMS_DeviceMon])", function(err, rowCount){
+    var request = new Request("delete from [AgileControllerDB].[dbo].[UMS_DeviceMon] where mac not in (select mac from [AgileControllerDB].[dbo].[TSM_E_Endpoint] join [AgileControllerDB].[dbo].[TSM_E_Account] on [bindMac] like '%'+[mac]+'%');SELECT e.[id],[account],[userName],[host_name],u.[mac],[os_name],[created_at],case when u.[last_login] is null then 0 else u.[last_login] end as last_login FROM [AgileControllerDB].[dbo].[TSM_E_Account] a  join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on [bindMac] like '%'+[mac]+'%'  join [AgileControllerDB].[dbo].[TSM_E_Organization] b on a.[orgID] = b.[orgID] join [AgileControllerDB].[dbo].[UMS_DeviceMon] u on e.[mac] = u.[mac] where e.mac in (select mac from [AgileControllerDB].[dbo].[UMS_DeviceMon])", function(err, rowCount){
 
       if(err){
-        console.error(err);
+        console.error(err);connection.release();
         return;
       }
       console.log('rowCount: ' + rowCount);

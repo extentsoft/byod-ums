@@ -337,7 +337,7 @@
                                     <div class="panel widget">
                                         <div class="panel-heading vd_bg-grey">
                                             <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> กำหนดจำนวนอุปกรณ์</h3>
-											<input type="text" id="myInput" placeholder="โปรดระบุชื่อบุคคล" onkeyup="myFunction();" onfocusout="myFunction();" title="Type in a name" style="width:30%">
+											<input type="text" id="myInput" placeholder="โปรดระบุชื่อบุคคล" title="Type in a name" style="width:30%">
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
                                             <table class="table table-striped" id="data-tables">
@@ -505,6 +505,11 @@
                     }
                 });
             }
+		$("#myInput").keyup(function(event) {
+			if (event.keyCode === 13) {
+				myFunction();
+			}
+		});
 
             function refresh_table(usr) {
                 //alert('refresh');

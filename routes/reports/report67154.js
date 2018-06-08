@@ -8,15 +8,15 @@ var deviceList = function(req,res,next){
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
-      console.error(err);
+      console.error(err);connection.release();
       return;
     }
     console.log('Connection successful');
 
-    var request = new Request("SELECT b.[description],b.[name],count(*) FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[UMS_Site] b on [radiusClientIp] = [ipaddr] where sessionID != '' and CONVERT (date, a.timestamp) between '"+req.param('start')+"' and '"+req.param('end')+"' and b.[name] = '"+req.param('site')+"' group by b.[name],b.[description]", function(err, rowCount){
+    var request = new Request("SELECT b.[description],b.[name],count(*) FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[UMS_Site] b on [radiusClientIp] = [ipaddr] where sessionID != '' and CONVERT (date, a.timestamp) between '"+req.param('start')+"' and '"+req.param('end')+"' and b.[description] = N'"+req.param('site')+"' group by b.[name],b.[description]", function(err, rowCount){
 
       if(err){
-        console.error(err);
+        console.error(err);connection.release();
         return;
       }
       console.log('rowCount: ' + rowCount);

@@ -12,7 +12,7 @@ var deviceList = function(req,res,next){
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
-      console.error(err);
+      console.error(err);connection.release();
       return;
     }
     console.log('Connection successful');
@@ -20,7 +20,7 @@ var deviceList = function(req,res,next){
     var request = new Request("DELETE FROM [AgileControllerDB].[dbo].[UMS_DeviceMon] WHERE mac = ('"+req.param('mac')+"')", function(err, rowCount){
 
       if(err){
-        console.error(err);
+        console.error(err);connection.release();
         return;
       }
       console.log('rowCount: ' + rowCount);

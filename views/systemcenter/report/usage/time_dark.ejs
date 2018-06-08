@@ -18,7 +18,7 @@
 
     <!-- Set the viewport width to device width for mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+	<script type="text/javascript" src="js/jquery.js"></script>
 
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/ico/apple-touch-icon-144-precomposed.png">
@@ -187,10 +187,11 @@
               
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
-											<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div>
+											
                                             <table class="table table-striped" id="data-tables">
                                                 <thead>
-                                                    <tr>													
+                                                    <tr>
+																											
 														<th>เจ้าของอุปกรณ์</th>
                                                         <th>MAC Address</th>
 														<th>ระบบปฏิบัติการ</th>
@@ -264,7 +265,7 @@
 
         <!-- Javascript =============================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/javascript" src="js/jquery.js"></script>
+        
         <!--[if lt IE 9]>
   <script type="text/javascript" src="js/excanvas.js"></script>
 <![endif]-->
@@ -324,7 +325,7 @@
         <script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
 
-        <!-- Specific Page Scripts END -->
+        <!-- Specific Page Scripts END --><script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script><script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script><script type="text/javascript" src="plugins/dataTables/buttons.print.min.js"></script><script type="text/javascript" src="plugins/dataTables/dataTables.buttons.min.js"></script><script type="text/javascript" src="plugins/dataTables/pdfmake.min.js"></script><script type="text/javascript" src="plugins/dataTables/vfs_fonts.js"></script><script type="text/javascript" src="plugins/dataTables/buttons.flash.min.js"></script><script type="text/javascript" src="plugins/dataTables/buttons.html5.min.js"></script>
 
 		<script>
             $(window).load(function() {
@@ -339,20 +340,10 @@
                 $('#timepicker-default').timepicker();
                 $('#timepicker-default-to').timepicker();
 
-                //CKEDITOR.replace( $('[data-rel^="ckeditor"]') );
-                $('[data-rel^="ckeditor"]').ckeditor();
-
-                var priv = $("#priv").html().trim().split(",");
-                if (priv[1] < 1) {
-                    $('#top-menu-3').hide();
-                } else {
-                    $('#top-menu-3').show();
-                }
             });
         </script>
 
 
-        <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
 
 
 
@@ -362,13 +353,14 @@
 			var end_ ='0';
 			var timeto_ = '0';
 			var timefrom_ = '0';
+			var counter_ = 0;
 			//alert(account_now);
 
             function refresh_table(sd, ed , st,et) {
                 //alert('refresh');
 				//alert(sd);
 				//alert(ed);
-				document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>MAC</th><th>ระบบปฏิบัติการ</th><th>วันที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
+				document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>MAC</th><th>ระบบปฏิบัติการ</th><th>วันที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
                 $.ajax('http://byod.excise.go.th/report/report679', {
                     type: "get",
                     data: {
@@ -393,18 +385,23 @@
                 total = 0;
                 for (i = 0; i < data_sql.length; i++) {
 					var os_ = '';
+					var name_ ='';
 					if(data_sql[2]==''){
 						os_ = 'ไม่สามารถระบุได้';
 					}
 					else{
 						os_ = data_sql[2];
 					}
+					
+
+						name_ = data_sql[0];
+					
                     data_json = {};
                     update_time = new Date(data_sql[3]);
-                    date_str = update_time.getFullYear() + "/" + ((update_time.getUTCMonth()+1) < 10 ? '0' : '') + (update_time.getUTCMonth()+1) + "/" + (update_time.getUTCDate() < 10 ? '0' : '') + update_time.getUTCDate() + ' - ' + update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds();
+                    date_str = update_time.getFullYear() + "/" + ((update_time.getUTCMonth()+1) < 10 ? '0' : '') + (update_time.getUTCMonth()+1) + "/" + (update_time.getUTCDate() < 10 ? '0' : '') + update_time.getUTCDate() + ' - ' + (update_time.getUTCHours() < 10 ? '0' : '') + update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds();
 
                     //data_json = {name:data_sql[1],mac:data_sql[3],os:data_sql[4],date:date_str,group:data_sql[6]};
-                    $('#data-tables').find('tbody').append("<tr><td>" + data_sql[0] + "</td><td>" + data_sql[1] + "</td><td>" + os_ + "</td><td>" + date_str + "</td></tr>");
+                    $('#data-tables').find('tbody').append("<tr><td>" + name_ + "</td><td>" + data_sql[1] + "</td><td>" + os_ + "</td><td>" + date_str + "</td></tr>");
                     total = total + data_sql[1];
                     //alert(JSON.stringify(data_json));
                     data.push(data_json);
@@ -416,7 +413,21 @@
                 //alert(JSON.stringify(data));
                 //c1(data);
 
-                $('#data-tables').dataTable();
+                var date_ = new Date();							
+				date_str = date_.getFullYear() + "-" + ((date_.getMonth()+1) < 10 ? '0' : '') + (date_.getMonth()+1) + "-" + (date_.getDate() < 10 ? '0' : '') + date_.getDate();
+				
+				$('#data-tables').DataTable( {
+					dom: 'Bfrtip',
+					buttons: [
+						{
+							extend: 'pdf',
+							text: '<div class="text-right"><h1><span class="fa fa-print" id="printer"></h1></div>',customize: function(doc) {doc.defaultStyle.alignment = 'center';doc.styles.tableHeader.alignment = 'center';},
+							title: 'รายงานการใช้งานจำแนกตามเวลา ระหว่างวันที่ '+ start_ + ' ถึงวันที่ ' + end_,
+							messageTop: 'สั่งพิมพ์โดย : '+account_now+" วันที่ : "+date_str
+							
+						}
+					]
+				} );
 
             }
 
@@ -476,7 +487,12 @@
 				//alert(time_to);
 				timefrom_ = time_from;
 				timeto_ = time_to;
-				refresh_table(start_,end_,timefrom_,timeto_);
+				if(counter_ < 2){
+					counter_++;
+				}
+				else{
+					refresh_table(start_,end_,timefrom_,timeto_);
+				}
 			}
 			
 			function printpdf(){

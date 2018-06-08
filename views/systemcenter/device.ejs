@@ -133,9 +133,9 @@
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
                                     <h1>รายชื่ออุปกรณ์</h1>
-                                    <small class="subtitle"></small>
+                                    <p id="device-sub"></p>
                                     <div class="vd_panel-menu  ">
-                                        <div class="menu no-bg vd_green" data-original-title="Start Layout Tour Guide" data-toggle="modal" data-target="#myModal" data-placement="bottom" onClick="changevent('add');document.getElementById('myModalLabel1').innerHTML='ลงทะเบียนอุปกรณ์ใหม่';document.getElementById('term_mac').disabled = false;" id="add-btn"> <span class="menu-icon font-md"><i class="fa fa-plus"></i></span> </div>
+                                        <div class="menu no-bg vd_green" data-original-title="Start Layout Tour Guide" style="display:none" data-toggle="modal" data-target="#myModal" data-placement="bottom" onClick="changevent('add');document.getElementById('myModalLabel1').innerHTML='ลงทะเบียนอุปกรณ์ใหม่';document.getElementById('term_mac').disabled = false;" id="add-btn"> <span class="menu-icon font-md"><i class="fa fa-plus"></i></span> </div>
                                         <!-- menu -->
                                         <!--
                                         <div class="menu">
@@ -787,7 +787,7 @@
                     success: function(json) {
                         data_res = JSON.parse(JSON.stringify(json));
                         //alert(JSON.stringify(data_res));
-                        if (data_res[0] > 2) {
+                        if (data_res[0] > 0) {
                             //alert('a');
 							addviolation('editdeivceoverlimit');
                             $.ajax('http://byod.excise.go.th/api/message/email/4/' + account_now, {

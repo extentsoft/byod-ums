@@ -8,7 +8,7 @@ var deviceList = function(req,res,next){
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
-      console.error(err);
+      console.error(err);connection.release();
       return;
     }
     console.log('Connection successful');
@@ -18,7 +18,7 @@ var deviceList = function(req,res,next){
     var request = new Request("DELETE [AgileControllerDB].[dbo].[UMS_Message] WHERE [id] = '"+req.param('notiid')+"'", function(err, rowCount){
 
       if(err){
-        console.error(err);
+        console.error(err);connection.release();
         return;
       }
       console.log('rowCount: ' + rowCount);

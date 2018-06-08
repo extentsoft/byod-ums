@@ -8,7 +8,7 @@ var deviceList = function(req,res,next){
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
-      console.error(err);
+      console.error(err);connection.release();
       return;
     }
     console.log('Connection successful');
@@ -17,7 +17,7 @@ var deviceList = function(req,res,next){
     var request = new Request("SELECT [userName] 'User' ,[detail] 'Event',[orgName] 'group',count(*) FROM [AgileControllerDB].[dbo].[UMS_ActivityLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] c on a.[devicemac] = c.[mac] join [AgileControllerDB].[dbo].[TSM_E_Account] b on a.userId = b.account join [AgileControllerDB].[dbo].[TSM_E_Organization] d on b.orgID = d.orgID where detail = 'AddDevice'  and CONVERT (date, created_at) between '"+req.param('start')+"' and '"+req.param('end')+"' and [orgName] = '"+req.param('group')+"' group by [userName],[detail],[orgName]", function(err, rowCount){
 
       if(err){
-        console.error(err);
+        console.error(err);connection.release();
         return;
       }
       console.log('rowCount: ' + rowCount);

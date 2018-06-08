@@ -588,7 +588,13 @@
                     success: function(json) {
                         //alert(JSON.stringify(json));
                         data_res = JSON.parse(JSON.stringify(json));
-                        bindata_group(data_res);
+                        
+						if(data_res.length >0){
+							bindata_group(data_res);
+						}
+						else{
+							document.getElementById('pie-chart-1').innerHTML = '';
+						}
                     }
                 });
             }
@@ -603,6 +609,8 @@
                     data_json = {};
                     if (data_sql[0] == '') {
                         district_name = 'อื่นๆ';
+                    } else if (data_sql[0] == 'People') {
+                        district_name = 'Officer';
                     } else {
                         district_name = data_sql[0];
                     }
@@ -695,7 +703,12 @@
                     success: function(json) {
                         //alert(JSON.stringify(json));
                         data_res = JSON.parse(JSON.stringify(json));
-                        bindata_browser(data_res);
+						if(data_res.length >0){
+							bindata_browser(data_res);
+						}
+						else{
+							document.getElementById('pie-chart-2').innerHTML = '';
+						}
                     }
                 });
             }
@@ -808,6 +821,7 @@
                 data = [];
                 total = 0;
                 var win_count = 0;
+				var ios_count = 0;
                 var amount = 0;
 				document.getElementById('val-iOS').innerHTML = 0;
 				document.getElementById('val-Android').innerHTML = 0;
@@ -825,6 +839,10 @@
                         os_name = 'Windows';
                         win_count = win_count + data_sql[1];
                         amount = win_count;
+                    }  else if (data_sql[0].substr(0, 3) == 'Mac') {
+                        os_name = 'iOS';
+                        ios_count = ios_count + data_sql[1];
+                        amount = ios_count;
                     } else {
                         os_name = data_sql[0];
                         amount = data_sql[1];

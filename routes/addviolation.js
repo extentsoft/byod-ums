@@ -8,7 +8,7 @@ var deviceList = function(req,res,next){
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
-      console.error(err);
+      console.error(err);connection.release();
       return;
     }
     console.log('Connection successful');
@@ -17,7 +17,7 @@ var deviceList = function(req,res,next){
     var request = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_ViolationLog] ([detail],[userId],[created_at]) VALUES ('"+req.param('violation')+"','"+req.param('accname')+"',CURRENT_TIMESTAMP)", function(err, rowCount){
 
       if(err){
-        console.error(err);
+        console.error(err);connection.release();
         return;
       }
       console.log('rowCount: ' + rowCount);

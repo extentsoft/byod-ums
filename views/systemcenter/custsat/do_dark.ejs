@@ -322,7 +322,21 @@
 					data: {acc_now: account_now},
 					success: function(json) {
 						data_res = JSON.parse(JSON.stringify(json));
-						bindata(data_res);									
+						if(data_res.length >0){
+							bindata(data_res);
+						}
+						else {
+							var div = document.createElement('div');
+							div.className = 'form-group';
+							div.innerHTML =
+
+							'<label class="col-sm-4 control-label"></label> \
+							<div class="col-sm-7 controls"> \
+								<label style="max-width: 100%; word-wrap: break-word">ขณะนี้ยังไม่มีแบบสำรวจที่ผู้ใช้งานต้องทำ</label> \
+							</div> \
+							';
+							document.getElementById('form-body').appendChild(div);
+						}									
 					}
 				});
 			}

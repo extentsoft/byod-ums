@@ -59,7 +59,7 @@
     <link href="plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css">
     <link href="plugins/introjs/css/introjs.min.css" rel="stylesheet" type="text/css">
 	
-    <link href="plugins/dataTables/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+    <link href="plugins/dataTables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
     <link href="plugins/dataTables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 
     <!-- Theme CSS -->
@@ -155,7 +155,7 @@
                                         <div class="panel-heading vd_bg-grey">
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
-											<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div>
+											
                                             <table class="table table-striped" id="data-tables">
                                                 <thead>
                                                     <tr>
@@ -290,6 +290,10 @@
         <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
 
 
+        <!-- Specific Page Scripts END --><script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script><script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script><script type="text/javascript" src="plugins/dataTables/buttons.print.min.js"></script><script type="text/javascript" src="plugins/dataTables/dataTables.buttons.min.js"></script><script type="text/javascript" src="plugins/dataTables/pdfmake.min.long.js"></script><script type="text/javascript" src="plugins/dataTables/vfs_fonts.js"></script><script type="text/javascript" src="plugins/dataTables/buttons.flash.min.js"></script><script type="text/javascript" src="plugins/dataTables/buttons.html5.min.js"></script>
+
+
+
 
 
         <script>
@@ -298,16 +302,16 @@
 			var str2 = location.href;
 			var m = str1.indexOf("start");
 			var n = str1.indexOf("end");
-			sd_ = str1.substr(m+6,n-m-8);
-			ed_ = str2.substr(n+4,str2.length-n);
+			start_ = str1.substr(m+6,n-m-8);
+			end_ = str2.substr(n+4,str2.length-n);
 			//var url = new URL(location);
-			//var sd_ = url.searchParams.get("start");
-			//var ed_ = url.searchParams.get("end");
+			//var start_ = url.searchParams.get("start");
+			//var end_ = url.searchParams.get("end");
 			//alert(account_now);
 
             function refresh_table(sd, ed) {
                 //alert('refresh');
-                document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>ระบบปฏิบัติการ</th><th>พื้นที่</th><th>จำนวนครั้งที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
+                document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>เจ้าของอุปกรณ์</th><th>ระบบปฏิบัติการ</th><th>พื้นที่</th><th>จำนวนครั้งที่เข้าใช้งาน</th></tr></thead><tbody></tbody></table>';
 
                 $.ajax('http://byod.excise.go.th/report/report6813', {
                     type: "get",
@@ -349,7 +353,21 @@
                 //alert(JSON.stringify(data));
                 //c1(data);
 
-                $('#data-tables').dataTable();
+                var date_ = new Date();							
+				date_str = date_.getFullYear() + "-" + ((date_.getMonth()+1) < 10 ? '0' : '') + (date_.getMonth()+1) + "-" + (date_.getDate() < 10 ? '0' : '') + date_.getDate();
+				
+				$('#data-tables').DataTable( {
+					dom: 'Bfrtip',
+					buttons: [
+						{
+							extend: 'pdf',
+							text: '<div class="text-right"><h1><span class="fa fa-print" id="printer"></h1></div>',customize: function(doc) {doc.defaultStyle.alignment = 'center';doc.styles.tableHeader.alignment = 'center';},
+							title: 'รายงานสถิติการใช้งานของอุปกรณ์ประเภท Computer ระหว่างวันที่ '+ start_ + ' ถึงวันที่ ' + end_,
+							messageTop: 'สั่งพิมพ์โดย : '+account_now+" วันที่ : "+date_str
+							
+						}
+					]
+				} );
 
             }
 
@@ -393,19 +411,19 @@
 			
 			function init_stat(){
 				moment.locale('th');
-				if(sd_ == null || ed_ == null){
+				if(start_ == null || end_ == null){
 					//window.location = '/';
 				}
 				function f(e, a, r) {
-					sdt_ = sd_;
-					edt_ = ed_;
+					sdt_ = start_;
+					edt_ = end_;
 					refresh_table(e.format("Y-M-D"), a.format("Y-M-D"));
-					sd_ = e.format("Y-M-D");
-					ed_ = a.format("Y-M-D");
-					if(sd_ == sdt_ && ed_ == edt_){
+					start_ = e.format("Y-M-D");
+					end_ = a.format("Y-M-D");
+					if(start_ == sdt_ && end_ == edt_){
 					}
 					else{
-						window.location = '/report/usage/other/statcomputer?start='+sd_+'&&end='+ed_;
+						window.location = '/report/usage/other/statcomputer?start='+start_+'&&end='+end_;
 					}
 		                    var o = "",
                         l = "";
@@ -415,8 +433,8 @@
                 }
                 if (0 != $("#daterangepicker").length) {
                     var t = $("#daterangepicker"),
-                        a = moment(sd_,"YYYY-MM-DD"),
-                        r = moment(ed_,"YYYY-MM-DD")
+                        a = moment(start_,"YYYY-MM-DD"),
+                        r = moment(end_,"YYYY-MM-DD")
                     t.daterangepicker({
                             startDate: a,
                             endDate: r,
@@ -436,17 +454,10 @@
                         f(a, r, "")
                 }
 			}
-
+			
 			function printpdf(){
-				var search_ = '';
-				var date_ = moment().format("DD MMM YYYY");
-				if(document.getElementById("table-search").value.trim() == ''){
-					search_ = 0;
-				}
-				else {
-					search_ = document.getElementById("table-search").value.trim();					
-				}
-				location.href = 'http://byod.excise.go.th/api/v1/pdf/26813/'+sd_+'/'+ed_+'/'+'0'+'/'+'0'+'/'+account_now+'/'+search_+'/'+date_;
+				location.href = 'http://byod.excise.go.th/api/v1/pdf/26813/'+start_+'/'+end_+'/'+'0'+'/'+'0'+'/'+'0';
+				
 			}
 
 			init_stat();

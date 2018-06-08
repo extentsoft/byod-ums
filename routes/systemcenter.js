@@ -1924,6 +1924,17 @@ module.exports = function(app, passport) {
 													}
 													else {
 														//console.log('call');
+														request('http://byod.excise.go.th/api/addviolation?violation=overlogin&accname='+ user.email, function(error, response, body) {
+															if (!error && response.statusCode == 200) {
+																//console.log('sc');
+															}
+															else{
+																var parsed_err = JSON.parse(error);
+																//console.log('fa');
+																console.log(parsed_err);							
+															}
+														});
+														
 														request('http://byod.excise.go.th/api/message/email/1/'+ user.email, function(error, response, body) {
 															if (!error && response.statusCode == 200) {
 																//console.log('sc');

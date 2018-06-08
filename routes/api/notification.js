@@ -39,7 +39,7 @@ function notificationList(req, res, next) {
 
     pool.acquire(function(err, connection) {
         if (err) {
-            console.error(err);
+            console.error(err);connection.release();
             return;
         }
 
@@ -49,7 +49,7 @@ function notificationList(req, res, next) {
 
             //    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
             if (err) {
-                console.error(err);
+                console.error(err);connection.release();
                 return;
             }
             console.log('rowCount: ' + rowCount);

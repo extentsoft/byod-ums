@@ -8,7 +8,7 @@ var deviceList = function(req,res,next){
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
-      console.error(err);
+      console.error(err);connection.release();
       return;
     }
     console.log('Connection successful');
@@ -16,7 +16,7 @@ var deviceList = function(req,res,next){
     var request = new Request("if '"+req.param('accname')+"' in (select [user_ref] FROM [AgileControllerDB].[dbo].[UMS_Limitdevice]) update [AgileControllerDB].[dbo].[UMS_Limitdevice] set [limitdevice] = '"+req.param('limit')+"' where [user_ref] =  '"+req.param('accname')+"' else	INSERT INTO [AgileControllerDB].[dbo].[UMS_Limitdevice] ([user_id],[user_ref],[limitdevice],[updated_at]) VALUES ((select [accountID] from [AgileControllerDB].[dbo].[TSM_E_Account] where [account] = '"+req.param('accname')+"'),'"+req.param('accname')+"','"+req.param('limit')+"',current_timestamp)", function(err, rowCount){
 
       if(err){
-        console.error(err);
+        console.error(err);connection.release();
         return;
       }
       console.log('rowCount: ' + rowCount);

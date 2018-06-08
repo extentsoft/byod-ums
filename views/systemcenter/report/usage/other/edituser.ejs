@@ -59,7 +59,7 @@
     <link href="plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css">
     <link href="plugins/introjs/css/introjs.min.css" rel="stylesheet" type="text/css">
 	
-    <link href="plugins/dataTables/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+    <link href="plugins/dataTables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
     <link href="plugins/dataTables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 
     <!-- Theme CSS -->
@@ -156,7 +156,7 @@
                                             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="โปรดระบุชื่อบุคคล" title="Type in a name" style="width:30%">
                                         </div>
                                         <div class="panel-body table-responsive" id="tab-body">
-											<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div>
+											
                                             <table class="table table-striped" id="data-tables">
                                                 <thead>
                                                     <tr>
@@ -289,6 +289,9 @@
         <script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script>
 
 
+        <!-- Specific Page Scripts END --><script type="text/javascript" src="plugins/dataTables/jquery.dataTables.min.js"></script><script type="text/javascript" src="plugins/dataTables/dataTables.bootstrap.js"></script><script type="text/javascript" src="plugins/dataTables/buttons.print.min.js"></script><script type="text/javascript" src="plugins/dataTables/dataTables.buttons.min.js"></script><script type="text/javascript" src="plugins/dataTables/pdfmake.min.js"></script><script type="text/javascript" src="plugins/dataTables/vfs_fonts.js"></script><script type="text/javascript" src="plugins/dataTables/buttons.flash.min.js"></script><script type="text/javascript" src="plugins/dataTables/buttons.html5.min.js"></script>
+
+
 
 
 
@@ -302,7 +305,7 @@
             function refresh_table(sd, ed, data) {
                 //alert('refresh');
                 //alert(data);
-                document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>ชื่อผู้ใช้งาน</th><th>จำนวนครั้งที่ปรับปรุงข้อมูลส่วนตัว</th></tr></thead><tbody></tbody></table>';
+                document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>ชื่อผู้ใช้งาน</th><th>จำนวนครั้งที่ปรับปรุงข้อมูลส่วนตัว</th></tr></thead><tbody></tbody></table>';
 
                 $.ajax('http://byod.excise.go.th/report/report686', {
                     type: "get",
@@ -337,7 +340,21 @@
                 //alert(JSON.stringify(data));
                 //c1(data);
 
-                $('#data-tables').dataTable();
+                var date_ = new Date();							
+				date_str = date_.getFullYear() + "-" + ((date_.getMonth()+1) < 10 ? '0' : '') + (date_.getMonth()+1) + "-" + (date_.getDate() < 10 ? '0' : '') + date_.getDate();
+				
+				$('#data-tables').DataTable( {
+					dom: 'Bfrtip',
+					buttons: [
+						{
+							extend: 'pdf',
+							text: '<div class="text-right"><h1><span class="fa fa-print" id="printer"></h1></div>',customize: function(doc) {doc.defaultStyle.alignment = 'center';doc.styles.tableHeader.alignment = 'center';},
+							title: 'รายงานสถิติการปรับปรุงข้อมูล แบ่งตาม ชื่อผู้ใช้งาน ระหว่างวันที่ '+ start_ + ' ถึงวันที่ ' + end_,
+							messageTop: 'สั่งพิมพ์โดย : '+account_now+" วันที่ : "+date_str
+							
+						}
+					]
+				} );
 
             }
 
@@ -346,7 +363,7 @@
                 function e(e, a, r) {
 					var input, filter, ul, li, a, i;
 					input = document.getElementById("myInput");
-					document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>ชื่อผู้ใช้งาน</th><th>จำนวนครั้งที่ปรับปรุงข้อมูลส่วนตัว</th></tr></thead><tbody></tbody></table>';
+					document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>ชื่อผู้ใช้งาน</th><th>จำนวนครั้งที่ปรับปรุงข้อมูลส่วนตัว</th></tr></thead><tbody></tbody></table>';
 
 					filter = input.value.toUpperCase();
 					data_ = filter;
@@ -401,7 +418,7 @@
                 var input, filter, ul, li, a, i;
                 input = document.getElementById("myInput");
                 //document.getElementById("tab-body").innerHTML="";
-                document.getElementById("tab-body").innerHTML = '<div class="text-right"><h1><span class="fa fa-print" id="printer" onclick="printpdf()"></h1></div><table class="table table-striped" id="data-tables"><thead><tr><th>ชื่อผู้ใช้งาน</th><th>จำนวนครั้งที่ปรับปรุงข้อมูลส่วนตัว</th></tr></thead><tbody></tbody></table>';
+                document.getElementById("tab-body").innerHTML = '<table class="table table-striped" id="data-tables"><thead><tr><th>ชื่อผู้ใช้งาน</th><th>จำนวนครั้งที่ปรับปรุงข้อมูลส่วนตัว</th></tr></thead><tbody></tbody></table>';
                 //$('#data-tables').find('tbody').empty();
 
                 filter = input.value.toUpperCase();
@@ -418,15 +435,8 @@
             }
 			
 			function printpdf(){
-				var search_ = '';
-				var date_ = moment().format("DD MMM YYYY");
-				if(document.getElementById("table-search").value.trim() == ''){
-					search_ = 0;
-				}
-				else {
-					search_ = document.getElementById("table-search").value.trim();					
-				}
-				location.href = 'http://byod.excise.go.th/api/v1/pdf/2686/'+start_+'/'+end_+'/'+data_+'/'+'0'+'/'+account_now+'/'+search_+'/'+date_;
+				location.href = 'http://byod.excise.go.th/api/v1/pdf/2686/'+start_+'/'+end_+'/'+data_+'/'+'0'+'/'+'0';
+				
 			}
 
            

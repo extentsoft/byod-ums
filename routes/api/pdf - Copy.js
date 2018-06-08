@@ -272,7 +272,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 
     pool.acquire(function(err, connection) {
         if (err) {
-            console.error(err);
+            console.error(err);connection.release();
             return;
         }
         console.log('Connection successful');
@@ -1136,7 +1136,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 
         var request = new Request(stmt, function(err, rowCount) {
             if (err) {
-                console.error(err);
+                console.error(err);connection.release();
                 return;
             }
             console.log('rowCount: ' + rowCount);

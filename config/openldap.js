@@ -18,7 +18,7 @@ module.exports = {
         baseDN: "ou=People,dc=excise,dc=go,dc=th"
     },
     production: {
-        url: 'ldap://192.168.163.31:389',
+        url: 'ldap://192.168.89.8:389',
         rootDN: "cn=ldapadm,dc=excise,dc=go,dc=th",
         rootPassword: "P@ssw0rd",
         baseDN: "ou=People,dc=excise,dc=go,dc=th"

@@ -16,195 +16,195 @@ const reportDictionary = {
         filename: "report"
     },
 	"2672": {
-        stmt: "SELECT userName account,terminalMac MAC, [orgName] 'group',timestamp FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] where CONVERT (date, timestamp) between '?1' and '?2' and [orgName] = '?3' and sessionID !=''",
-        header: "เจ้าของอุปกรณ์,MAC Address,กลุ่มผู้ใช้งาน,วันที่เข้าใช้งาน",
+        stmt: "SELECT ROW_NUMBER() OVER(ORDER BY [timestamp] ASC) AS Row# ,userName account,terminalMac MAC, [orgName] 'group',timestamp FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] where CONVERT (date, timestamp) between '?1' and '?2' and [orgName] = '?3' and sessionID !=''",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,MAC Address,กลุ่มผู้ใช้งาน,วันที่เข้าใช้งาน",
         title: "รายงานการใช้งานของแต่ละกลุ่ม : ระหว่างวันที่ ?1 ถึง ?2 แบ่งด้วยกลุ่ม ?3",
         filename: "report"
     },
 	"2673": {
-        stmt: "SELECT [userName] 'User',[devicemac] 'MAC',[os_name] 'OS',[created_at] 'Date' FROM [AgileControllerDB].[dbo].[UMS_ActivityLog] a join [AgileControllerDB].[dbo].[TSM_E_Account] b on  a.[userId] = b.[account] join [AgileControllerDB].[dbo].[TSM_E_Endpoint] c on a.[devicemac] = c.[mac] where detail = 'DeleteDevice' and CONVERT (date, created_at) between '?1' and '?2'",
-        header: "เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,วันที่ยกเลิกอุปกรณ์",
+        stmt: "SELECT ROW_NUMBER() OVER(ORDER BY [created_at] ASC) AS Row# ,[userName] 'User',[devicemac] 'MAC',[os_name] 'OS',[created_at] 'Date' FROM [AgileControllerDB].[dbo].[UMS_ActivityLog] a join [AgileControllerDB].[dbo].[TSM_E_Account] b on  a.[userId] = b.[account] join [AgileControllerDB].[dbo].[TSM_E_Endpoint] c on a.[devicemac] = c.[mac] where detail = 'DeleteDevice' and CONVERT (date, created_at) between '?1' and '?2'",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,วันที่ยกเลิกอุปกรณ์",
         title: "รายงานการยกเลิกการใช้งานอุปกรณ์ : ระหว่างวันที่ ?1 ถึง ?2",
         filename: "report"
     },
 	"2674": {
-        stmt: "SELECT [userId],[detail],[created_at] FROM [AgileControllerDB].[dbo].[UMS_violationlog] a where CONVERT (date, created_at) between '?1' and '?2' and [detail] = '?3'",
-        header: "ชื่อผู้ใช้งาน,ประเภทกฎที่ผู้ใช้งานละเมิด,วันที่ที่ผู้ใช้งานละเมิดกฎ",
+        stmt: "SELECT ROW_NUMBER() OVER(ORDER BY [created_at] ASC) AS Row# ,[userId],[detail],[created_at] FROM [AgileControllerDB].[dbo].[UMS_violationlog] a where CONVERT (date, created_at) between '?1' and '?2' and [detail] = '?3'",
+        header: "ลำดับที่,ชื่อผู้ใช้งาน,ประเภทกฎที่ผู้ใช้งานละเมิด,วันที่ที่ผู้ใช้งานละเมิดกฎ",
         title: "รายงานการพยายามใช้งานที่ไม่เป็นไปตามกฎ : ระหว่างวันที่ ?1 ถึง ?2 ประเภทกฎที่ผู้ใช้งานละเมิด : ?3",
         filename: "report"
     },
 	"2675": {
-        stmt: "SELECT a.userName Account,a.terminalMac MAC,os_name,timestamp 'Date',b.[description] Area FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[UMS_Site] b on [radiusClientIp] = [ipaddr] join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on a.terminalMac = e.mac where CONVERT (date, a.timestamp) between '?1' and '?2' and b.[name] = '?3' and sessionID !=''",
-        header: "เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,วันที่เข้าใช้งาน,พื้นที่",
+        stmt: "SELECT ROW_NUMBER() OVER(ORDER BY [timestamp] ASC) AS Row# ,a.userName Account,a.terminalMac MAC,os_name,timestamp 'Date',b.[description] Area FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[UMS_Site] b on [radiusClientIp] = [ipaddr] join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on a.terminalMac = e.mac where CONVERT (date, a.timestamp) between '?1' and '?2' and b.[description] = N'?3' and sessionID !=''",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,วันที่เข้าใช้งาน,พื้นที่",
         title: "รายงานการใช้งานจําแนกตามพื้นที่ : ระหว่างวันที่ ?1 ถึง ?2 แบ่งด้วยพื้นที่ ?3",
         filename: "report"
     },
 	"2676": {
-        stmt: "SELECT userName account,terminalMac MAC, [orgName] 'group',count(*) FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] where  CONVERT (date, timestamp) between '?1' and '?2' and [orgName] = '?3' and terminalMac != '' and sessionID !='' group by userName,terminalMac, [orgName]",
-        header: "เจ้าของอุปกรณ์,MAC Address,กลุ่มผู้ใช้งาน,จำนวนที่เข้าใช้งาน",
+        stmt: "SELECT ROW_NUMBER() OVER(ORDER BY [userName],terminalMac ASC) AS Row# ,userName account,terminalMac MAC, [orgName] 'group',count(*) FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] where  CONVERT (date, timestamp) between '?1' and '?2' and [orgName] = '?3' and terminalMac != '' and sessionID !='' group by userName,terminalMac, [orgName]",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,MAC Address,กลุ่มผู้ใช้งาน,จำนวนที่เข้าใช้งาน",
         title: "รายงานการใช้งานจําแนกตามกลุ่ม : ระหว่างวันที่ ?1 ถึง ?2 แบ่งด้วยกลุ่ม ?3",
         filename: "report"
     },
 	"2677": {
-        stmt: "SELECT [userName],[os_name],[terminalIp],[timestamp] FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where terminalIp!= '' and sessionID !='' and CONVERT (date, timestamp) between '?1' and '?2' and userName like '%?3%'",
-        header: "เจ้าของอุปกรณ์,ระบบปฏิบัติการ,IP,วันที่ใช้งาน",
+        stmt: "SELECT ROW_NUMBER() OVER(ORDER BY [timestamp] ASC) AS Row# ,[userName],[os_name],[terminalIp],[timestamp] FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where terminalIp!= '' and sessionID !='' and CONVERT (date, timestamp) between '?1' and '?2' and userName like '%?3%'",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,ระบบปฏิบัติการ,IP,วันที่ใช้งาน",
         title: "รายงานการใช้งานระบุบุคคล : ระหว่างวันที่ ?1 ถึง ?2",
         filename: "report"
     },
 	"2678": {
-        stmt: "SELECT userName Account,CASE WHEN b.[os_name] = 'Android' or b.[os_name] = 'iOS' THEN 'Mobile' WHEN b.[os_name] like 'Windows%' or b.[os_name] = 'Linux' or b.[os_name] = 'OSX' THEN 'Computer' ELSE 'Unknown' END as 'Type',orgName 'Group',mac,timestamp 'Date' FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where CONVERT (date, a.timestamp) between '?1' and '?2' and sessionID !='' and CASE WHEN b.[os_name] = 'Android' or b.[os_name] = 'iOS' THEN 'Mobile' WHEN b.[os_name] like 'Windows%' or b.[os_name] = 'Linux' or b.[os_name] = 'OSX' THEN 'Computer' ELSE 'Unknown' END = '?3'",
-        header: "เจ้าของอุปกรณ์,ประเภทอุปกรณ์,กลุ่มผู้ใช้งาน,MAC Address,วันที่เข้าใช้งาน",
+        stmt: "SELECT ROW_NUMBER() OVER(ORDER BY [timestamp] ASC) AS Row# ,userName Account,CASE WHEN b.[os_name] = 'Android' or b.[os_name] = 'iOS' THEN 'Mobile' WHEN b.[os_name] like 'Windows%' or b.[os_name] = 'Linux' or b.[os_name] = 'OSX' THEN 'Computer' ELSE 'Unknown' END as 'Type',orgName 'Group',mac,timestamp 'Date' FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where CONVERT (date, a.timestamp) between '?1' and '?2' and sessionID !='' and CASE WHEN b.[os_name] = 'Android' or b.[os_name] = 'iOS' THEN 'Mobile' WHEN b.[os_name] like 'Windows%' or b.[os_name] = 'Linux' or b.[os_name] = 'OSX' THEN 'Computer' ELSE 'Unknown' END = '?3'",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,ประเภทอุปกรณ์,กลุ่มผู้ใช้งาน,MAC Address,วันที่เข้าใช้งาน",
         title: "รายงานการใช้งานจําแนกตามประเภทอุปกรณ์ : ระหว่างวันที่ ?1 ถึง ?2 แบ่งด้วยประเภท ?3",
         filename: "report"
     },
 	"2679": {
-        stmt: "SELECT userName account,terminalMac MAC, [os_name] 'OS',timestamp FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on a.terminalMac = e.mac where sessionID != '' and CONVERT (date, timestamp) between '?1' and '?2' and CONVERT (time,timestamp) < CONVERT (time,'?4' ) and CONVERT (time,timestamp) > CONVERT (time,'?3')",
-        header: "เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,วันที่เข้าใช้งาน",
+        stmt: "SELECT ROW_NUMBER() OVER(ORDER BY [timestamp] ASC) AS Row# ,userName account,terminalMac MAC, [os_name] 'OS',timestamp FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on a.terminalMac = e.mac where sessionID != '' and CONVERT (date, timestamp) between '?1' and '?2' and CONVERT (time,timestamp) < CONVERT (time,'?4' ) and CONVERT (time,timestamp) > CONVERT (time,'?3')",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,วันที่เข้าใช้งาน",
         title: "รายงานการใช้งานจําแนกตามเวลา : ระหว่างวันที่ ?1 ถึง ?2 ในช่วงเวลา ?3 ถึง ?4",
         filename: "report"
     },
 	"26710": {
-        stmt: "SELECT [accountID],[account],[userName],[orgName], (select count(*) from [AgileControllerDB].[dbo].[TSM_E_Endpoint] where login_account = t1.account), CASE when t1.[accountID] in (select [user_id] from [AgileControllerDB].[dbo].[UMS_Limitdevice]) then (SELECT [limitdevice] FROM [AgileControllerDB].[dbo].[UMS_Limitdevice] where [user_id] = t1.[accountID]) else (SELECT [limitdevice] FROM [AgileControllerDB].[dbo].[UMS_Limitdevice] where [user_id] = '999999' ) END as limit FROM [AgileControllerDB].[dbo].[TSM_E_Account] t1 join [AgileControllerDB].[dbo].[TSM_E_Organization] t2 on t1.[orgID] = t2.[orgID] where orgName != 'Guest' and (select count(*) from [AgileControllerDB].[dbo].[TSM_E_Endpoint] where login_account = t1.account) = CASE when t1.[accountID] in (select [user_id] from [AgileControllerDB].[dbo].[UMS_Limitdevice]) then (SELECT [limitdevice] FROM [AgileControllerDB].[dbo].[UMS_Limitdevice] where [user_id] = t1.[accountID]) else (SELECT [limitdevice] FROM [AgileControllerDB].[dbo].[UMS_Limitdevice] where [user_id] = '999999' ) END ",
-        header: "ชื่อผู้ใช้งาน,ชื่อ-นามสกุล จริง,กลุ่มผู้ใช้งาน,จำนวนอุปกรณ์ที่ลงทะเบียน,จำนวนอุปกรณ์สูงสุดที่ได้รับอนุญาต",
+        stmt: "SELECT ROW_NUMBER() OVER(ORDER BY [accountID] ASC) AS Row# ,[accountID],[account],[userName],[orgName], (select count(*) from [AgileControllerDB].[dbo].[TSM_E_Endpoint] where login_account = t1.account), CASE when t1.[accountID] in (select [user_id] from [AgileControllerDB].[dbo].[UMS_Limitdevice]) then (SELECT [limitdevice] FROM [AgileControllerDB].[dbo].[UMS_Limitdevice] where [user_id] = t1.[accountID]) else (SELECT [limitdevice] FROM [AgileControllerDB].[dbo].[UMS_Limitdevice] where [user_id] = '999999' ) END as limit FROM [AgileControllerDB].[dbo].[TSM_E_Account] t1 join [AgileControllerDB].[dbo].[TSM_E_Organization] t2 on t1.[orgID] = t2.[orgID] where orgName != 'Guest' and (select count(*) from [AgileControllerDB].[dbo].[TSM_E_Endpoint] where login_account = t1.account) = CASE when t1.[accountID] in (select [user_id] from [AgileControllerDB].[dbo].[UMS_Limitdevice]) then (SELECT [limitdevice] FROM [AgileControllerDB].[dbo].[UMS_Limitdevice] where [user_id] = t1.[accountID]) else (SELECT [limitdevice] FROM [AgileControllerDB].[dbo].[UMS_Limitdevice] where [user_id] = '999999' ) END ",
+        header: "ลำดับที่,ชื่อผู้ใช้งาน,ชื่อ-นามสกุล จริง,กลุ่มผู้ใช้งาน,จำนวนอุปกรณ์ที่ลงทะเบียน,จำนวนอุปกรณ์สูงสุดที่ได้รับอนุญาต",
         title: "รายงานบุคลากรที่ลงทะเบียนอุปกรณ์ครบตามจํานวนที่กำหนด",
         filename: "report"
     },
 	"267141": {
-        stmt: "SELECT a.userName Account,a.terminalMac MAC,os_name,count(*),b.[description] Area FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[UMS_Site] b on [radiusClientIp] = [ipaddr] join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on a.terminalMac = e.mac where CONVERT (date, a.timestamp) between '?1' and '?2' and sessionID !='' and b.[name] = '?3' group by b.[description],a.userName,a.terminalMac,os_name",
-        header: "เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,จำนวนครั้งที่เข้าใช้งาน,พื้นที่",
+        stmt: "SELECT ROW_NUMBER() OVER(ORDER BY [userName] ASC) AS Row# ,a.userName Account,a.terminalMac MAC,os_name,count(*),b.[description] Area FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[UMS_Site] b on [radiusClientIp] = [ipaddr] join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on a.terminalMac = e.mac where CONVERT (date, a.timestamp) between '?1' and '?2' and sessionID !='' and b.[description] = N'?3' group by b.[description],a.userName,a.terminalMac,os_name",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,จำนวนครั้งที่เข้าใช้งาน,พื้นที่",
         title: "รายงานการใช้งานทรัพยากรระบบ - จำแนกตามพื้นที่การใช้งาน : ระหว่างวันที่ ?1 ถึง ?2 แบ่งด้วยพื้นที่ ?3",
         filename: "report"
     },
 	"267142": {
         stmt: "SELECT DATEPART(hh,timestamp) h,count(*) n FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a where CONVERT (date, timestamp) = CONVERT (date, current_timestamp) and [sessionID]!= '' group by DATEPART(hh,timestamp) order by DATEPART(hh,timestamp) asc",
-        header: "ช่วงเวลา,จำนวนการเข้าใช้งาน",
+        header: "ลำดับที่,ช่วงเวลา,จำนวนการเข้าใช้งาน",
         title: "รายงานการใช้งานทรัพยากรระบบ - ปริมาณจราจรเครือข่ายของวันนี้",
         filename: "report"
     },
 	"267143": {
         stmt: "SELECT b.[name],count(*) FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[UMS_Site] b on [radiusClientIp] = [ipaddr] where sessionID != '' and CONVERT (date, a.timestamp) between '?1' and '?2' and b.[name] = '?3' group by b.[name]",
-        header: "Controller,จำนวนการเข้าใช้งาน",
+        header: "ลำดับที่,Controller,จำนวนการเข้าใช้งาน",
         title: "รายงานการใช้งานทรัพยากรระบบ - แสดงจำนวนผู้ใช้งาน : ระหว่างวันที่ ?1 ถึง ?2 แบ่งด้วยพื้นที่ ?3",
         filename: "report"
     },
 	"267151": {
         stmt: "SELECT userName account,terminalMac MAC,count(*) FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] where sessionID != '' and  CONVERT (date, timestamp) between '?1' and '?2' and [orgName] = '?3' and terminalMac != '' group by userName,terminalMac, [orgName]",
-        header: "เจ้าของอุปกรณ์,MAC Address,จำนวนการเข้าใช้งาน",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,MAC Address,จำนวนการเข้าใช้งาน",
         title: "รายงานการใช้งานจำแนกตามอุปกรณ์ผู้ใช้งาน : ระหว่างวันที่ ?1 ถึง ?2 แบ่งด้วยกลุ่ม ?3",
         filename: "report"
     },
 	"267152": {
         stmt: "SELECT accountName Account,terminalMac MAC,[os_name] OS, timestamp 'Date' FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where sessionID != '' and CONVERT (date, timestamp) between '?1' and '?2' and [os_name] = '?3'",
-        header: "เจ้าของอุปกรณ์,MAC Address,ประเภทระบบปฎิบัติการ,วันที่เข้าใช้งาน",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,MAC Address,ประเภทระบบปฎิบัติการ,วันที่เข้าใช้งาน",
         title: "รายงานการใช้งานจำแนกตามระบบปฎิบัติการ : ระหว่างวันที่ ?1 ถึง ?2 ประเภทระบบปฎิบัติการ ?3",
         filename: "report"
     },
 	"267153": {
         stmt: "SELECT [userId] 'User',[browser],created_at 'Date' FROM [AgileControllerDB].[dbo].[UMS_AccessLog] where  [browser]!='undefined' and CONVERT (date, created_at) between '?1' and '?2' and [browser] = '?3'",
-        header: "ชื่อผู้ใช้งาน,ขื่อ Browser,วันที่เข้าใช้งาน",
+        header: "ลำดับที่,ชื่อผู้ใช้งาน,ขื่อ Browser,วันที่เข้าใช้งาน",
         title: "รายงานการใช้งานจำแนกตาม Browser : ระหว่างวันที่ ?1 ถึง ?2 แบ่งประเภท Browser ?3",
         filename: "report"
     },
 	"267154": {
         stmt: "SELECT b.[description],count(*) FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[UMS_Site] b on [radiusClientIp] = [ipaddr] where CONVERT (date, a.timestamp) between '?1' and '?2' and b.[name] = '?3' group by b.[description]",
-        header: "พื้นที่,จำนวนการเข้าใช้งาน",
+        header: "ลำดับที่,พื้นที่,จำนวนการเข้าใช้งาน",
         title: "รายงานการใช้งานจำแนกตามสถานที่การใช้งาน : ระหว่างวันที่ ?1 ถึง ?2 ",
         filename: "report"
     },
 
 	"2681": {
         stmt: "SELECT [userName],count(*) FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where terminalIp!= '' and CONVERT (date, timestamp) between '?1' and '?2' and userName like '%?3%' group by [userName]",
-        header: "ชื่อผู้ใช้งาน,จำนวนครั้งที่เข้าใช้งาน",
+        header: "ลำดับที่,ชื่อผู้ใช้งาน,จำนวนครั้งที่เข้าใช้งาน",
         title: "รายงานสถิติผู้ใช้งาน แบ่งตาม ชื่อผู้ใช้งาน : ระหว่างวันที่ ?1 ถึง ?2",
         filename: "report"
     },
 	"2682": {
         stmt: "SELECT [terminalMac],count(*) FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] where [sessionID] != '' and terminalIp!= '' and CONVERT (date, timestamp) between '?1' and '?2' and [terminalMac] like '%?3%' group by [terminalMac]",
-        header: "MAC Address,จำนวนครั้งที่เข้าใช้งาน",
+        header: "ลำดับที่,MAC Address,จำนวนครั้งที่เข้าใช้งาน",
         title: "รายงานสถิติผู้ใช้งาน แบ่งตาม MAC Address : ระหว่างวันที่ ?1 ถึง ?2",
         filename: "report"
     },
 	"2683": {
         stmt: "SELECT [userNAme],[terminalMac],[timestamp] FROM [AgileControllerDB].[dbo].[UMS_DeviceMonLog] where CONVERT (date, timestamp) between '?1' and '?2'",
-        header: "เจ้าของอุปกรณ์,MAC Address,วันที่เข้าใช้งาน",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,MAC Address,วันที่เข้าใช้งาน",
         title: "รายงานการเข้าใช้งานของอุปกรณ์ที่ถูกระบุไว้ : ระหว่างวันที่ ?1 ถึง ?2",
         filename: "report"
     },
 	"2684": {
         stmt: "SELECT [userName] 'User' ,[orgName] 'group',count(*) FROM [AgileControllerDB].[dbo].[UMS_ActivityLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] c on a.[devicemac] = c.[mac] join [AgileControllerDB].[dbo].[TSM_E_Account] b on a.userId = b.account join [AgileControllerDB].[dbo].[TSM_E_Organization] d on b.orgID = d.orgID where detail = 'AddDevice'  and CONVERT (date, created_at) between '?1' and '?2' and [orgName] = '?3' group by [userName],[detail],[orgName]",
-        header: "เจ้าของอุปกรณ์,กลุ่มผู้ใช้งาน,จำนวนครั้งที่ลงทะเบียน",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,กลุ่มผู้ใช้งาน,จำนวนครั้งที่ลงทะเบียน",
         title: "รายงานสถิติการลงทะเบียนอุปกรณ์ แบ่งตาม กลุ่มผู้ใช้งาน : ระหว่างวันที่ ?1 ถึง ?2 แบ่งด้วยกลุ่ม ?3",
         filename: "report"
     },
 	"2685": {
         stmt: "SELECT [userName] 'User' ,[orgName] 'group',count(*) FROM [AgileControllerDB].[dbo].[UMS_ActivityLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] c on a.[devicemac] = c.[mac] join [AgileControllerDB].[dbo].[TSM_E_Account] b on a.userId = b.account join [AgileControllerDB].[dbo].[TSM_E_Organization] d on b.orgID = d.orgID where detail = 'DeleteDevice'  and CONVERT (date, created_at) between '?1' and '?2' and [orgName] = '?3' group by [userName],[detail],[orgName]",
-        header: "เจ้าของอุปกรณ์,กลุ่มผู้ใช้งาน,จำนวนครั้งที่เพิกถอน",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,กลุ่มผู้ใช้งาน,จำนวนครั้งที่เพิกถอน",
         title: "รายงานสถิติการเพิกถอนอุปกรณ์ แบ่งตาม กลุ่มผู้ใช้งาน : ระหว่างวันที่ ?1 ถึง ?2 แบ่งด้วยกลุ่ม ?3",
         filename: "report"
     },
 	"2686": {
         stmt: "SELECT [userName] 'User' ,count(*) FROM [AgileControllerDB].[dbo].[UMS_ActivityLog] a  join [AgileControllerDB].[dbo].[TSM_E_Account] b on a.userId = b.account join [AgileControllerDB].[dbo].[TSM_E_Organization] d on b.orgID = d.orgID where detail = 'EditProfile' and CONVERT (date, created_at) between '?1' and '?2' and [userName] like '%?3%' group by [userName],[detail]",
-        header: "ชื่อผู้ใช้งาน,จำนวนครั้งที่ปรับปรุงข้อมูลส่วนตัว",
+        header: "ลำดับที่,ชื่อผู้ใช้งาน,จำนวนครั้งที่ปรับปรุงข้อมูลส่วนตัว",
         title: "รายงานสถิติการปรับปรุงข้อมูล แบ่งตาม ชื่อผู้ใช้งาน : ระหว่างวันที่ ?1 ถึง ?2",
         filename: "report"
     },
 	"2687": {
         stmt: "SELECT [orgName] 'group',count(*) FROM [AgileControllerDB].[dbo].[UMS_ActivityLog] a  join [AgileControllerDB].[dbo].[TSM_E_Account] b on a.userId = b.account join [AgileControllerDB].[dbo].[TSM_E_Organization] d on b.orgID = d.orgID where detail = 'EditProfile' and CONVERT (date, created_at) between '?1' and '?2' and [orgName] = '?3' group by [orgName],[detail]",
-        header: "กลุ่มผู้ใช้งาน,จำนวนครั้งที่ปรับปรุงข้อมูลส่วนตัว",
+        header: "ลำดับที่,กลุ่มผู้ใช้งาน,จำนวนครั้งที่ปรับปรุงข้อมูลส่วนตัว",
         title: "รายงานสถิติการปรับปรุงข้อมูล แบ่งตาม กลุ่มผู้ใช้งาน : ระหว่างวันที่ ?1 ถึง ?2 แบ่งด้วยกลุ่ม ?3",
         filename: "report"
     },
 	"2688": {
         stmt: "SELECT userName 'User', terminalMac MAC,[os_name] OS,count(*),case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where sessionID != '' and CONVERT (date, timestamp) between '?1' and '?2' and [os_name] = 'iOS' group by [os_name],userName, terminalMac,radiusClientIp",
-        header: "เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,จำนวนครั้งที่เข้าใช้งาน,พื้นที่",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,จำนวนครั้งที่เข้าใช้งาน,พื้นที่",
         title: "รายงานสถิติการใช้งานระบบปฏิบัติการ iOS : ระหว่างวันที่ ?1 ถึง ?2",
         filename: "report"
     },
 	"2689": {
         stmt: "SELECT userName 'User', terminalMac MAC,[os_name] OS,count(*),case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where sessionID != '' and CONVERT (date, timestamp) between '?1' and '?2' and [os_name] = 'Android' group by [os_name],userName, terminalMac,radiusClientIp",
-        header: "เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,จำนวนครั้งที่เข้าใช้งาน,พื้นที่",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,จำนวนครั้งที่เข้าใช้งาน,พื้นที่",
         title: "รายงานสถิติการใช้งานระบบปฏิบัติการ Android : ระหว่างวันที่ ?1 ถึง ?2",
         filename: "report"
     },
 	"26810": {
         stmt: "SELECT userName 'User', terminalMac MAC,[os_name] OS,count(*),case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where sessionID != '' and CONVERT (date, timestamp) between '?1' and '?2' and [os_name] like '%Windows%' group by [os_name],userName, terminalMac,radiusClientIp",
-        header: "เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,จำนวนครั้งที่เข้าใช้งาน,พื้นที่",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,จำนวนครั้งที่เข้าใช้งาน,พื้นที่",
         title: "รายงานสถิติการใช้งานระบบปฏิบัติการ Windows : ระหว่างวันที่ ?1 ถึง ?2",
         filename: "report"
     },
 	"26811": {
         stmt: "SELECT userName 'User', terminalMac MAC,[os_name] OS,count(*),case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where sessionID != '' and CONVERT (date, timestamp) between '?1' and '?2' and [os_name] = 'Linux' group by [os_name],userName, terminalMac,radiusClientIp",
-        header: "เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,จำนวนครั้งที่เข้าใช้งาน,พื้นที่",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,จำนวนครั้งที่เข้าใช้งาน,พื้นที่",
         title: "รายงานสถิติการใช้งานระบบปฏิบัติการ Linux : ระหว่างวันที่ ?1 ถึง ?2",
         filename: "report"
     },
 	"26812": {
         stmt: "SELECT userName 'User', terminalMac MAC,[os_name] OS,count(*),case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where sessionID != '' and CONVERT (date, timestamp) between '?1' and '?2' and [os_name] = '' group by [os_name],userName, terminalMac,radiusClientIp",
-        header: "เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,จำนวนครั้งที่เข้าใช้งาน,พื้นที่",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,MAC Address,ระบบปฏิบัติการ,จำนวนครั้งที่เข้าใช้งาน,พื้นที่",
         title: "รายงานสถิติการใช้งานระบบปฏิบัติการอื่นๆ : ระหว่างวันที่ ?1 ถึง ?2",
         filename: "report"
     },
 	"26813": {
         stmt: "SELECT userName 'User', b.[os_name] os,count(*),case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where sessionID != '' and CONVERT (date, timestamp) between '?1' and '?2' and CASE WHEN b.[os_name] = 'Android' or b.[os_name] = 'iOS' THEN 'Mobile' WHEN b.[os_name] like '%Windows%' or b.[os_name] = 'Linux' or b.[os_name] = 'OSX' THEN 'Computer' ELSE '' END = 'Computer' group by b.[os_name],userName,radiusClientIp",
-        header: "เจ้าของอุปกรณ์,ประเภทอุปกรณ์,จำนวนครั้งที่เข้าใช้งาน,พื้นที่",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,ประเภทอุปกรณ์,จำนวนครั้งที่เข้าใช้งาน,พื้นที่",
         title: "รายงานสถิติการใช้งานของอุปกรณ์ประเภท Computer : ระหว่างวันที่ ?1 ถึง ?2",
         filename: "report"
     },
 	"26814": {
         stmt: "SELECT userName 'User', b.[os_name] os,count(*),case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where sessionID != '' and CONVERT (date, timestamp) between '?1' and '?2' and CASE WHEN b.[os_name] = 'Android' or b.[os_name] = 'iOS' THEN 'Mobile' WHEN b.[os_name] like '%Windows%' or b.[os_name] = 'Linux' or b.[os_name] = 'OSX' THEN 'Computer' ELSE '' END = 'Mobile' group by b.[os_name],userName,radiusClientIp",
-        header: "เจ้าของอุปกรณ์,ประเภทอุปกรณ์,จำนวนครั้งที่เข้าใช้งาน,พื้นที่",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,ประเภทอุปกรณ์,จำนวนครั้งที่เข้าใช้งาน,พื้นที่",
         title: "รายงานสถิติการใช้งานของอุปกรณ์ประเภท Mobile : ระหว่างวันที่ ?1 ถึง ?2",
         filename: "report"
     },
 	"26815": {
         stmt: "SELECT userName 'User', b.[os_name] os,count(*),case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where sessionID != '' and CONVERT (date, timestamp) between '?1' and '?2' and CASE WHEN b.[os_name] = 'Android' or b.[os_name] = 'iOS' THEN 'Mobile' WHEN b.[os_name] like '%Windows%' or b.[os_name] = 'Linux' or b.[os_name] = 'OSX' THEN 'Computer' ELSE '' END = '' group by b.[os_name],userName,radiusClientIp",
-        header: "เจ้าของอุปกรณ์,ประเภทอุปกรณ์,จำนวนครั้งที่เข้าใช้งาน,พื้นที่",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,ประเภทอุปกรณ์,จำนวนครั้งที่เข้าใช้งาน,พื้นที่",
         title: "รายงานสถิติการใช้งานของอุปกรณ์ประเภทอื่นๆ : ระหว่างวันที่ ?1 ถึง ?2",
         filename: "report"
     },
 	"2714": {
         stmt: "SELECT [userName] 'User',detail 'Event',[devicemac] 'MAC',[os_name] 'OS',[created_at] 'Date' FROM [AgileControllerDB].[dbo].[UMS_ActivityLog] a join [AgileControllerDB].[dbo].[TSM_E_Account] b on  a.[userId] = b.[account] join [AgileControllerDB].[dbo].[TSM_E_Endpoint] c on a.[devicemac] = c.[mac] where detail = '?3' and CONVERT (date, created_at) between '?1' and '?2'",
-        header: "เจ้าของอุปกรณ์,ประเภทการเปลี่ยนแปลง,MAC Address,ระบบปฏิบัติการ,วันที่เข้าใช้งาน",
+        header: "ลำดับที่,เจ้าของอุปกรณ์,ประเภทการเปลี่ยนแปลง,MAC Address,ระบบปฏิบัติการ,วันที่เข้าใช้งาน",
         title: "รายงานการเปลี่ยนแปลงอุปกรณ์ : ระหว่างวันที่ ?1 ถึง ?2 ประเภทการเปลี่ยนแปลง : ?3",
         filename: "report"
     }
@@ -226,7 +226,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 	} 
 	
 	else if(req.params.cond3 == 'overlogin'){
-		cond3 = 'เข้าสู่ระบบนอกช่วงเวลาที่ได้รับอนุญาต';
+		cond3 = 'เข้าสู่ระบบเกินจำนวนครั้งที่กำหนดในช่วงเวลาที่ระบุไว้';
 	}
 	
 	else if(req.params.cond3 == 'outoftime'){
@@ -272,7 +272,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 
     pool.acquire(function(err, connection) {
         if (err) {
-            console.error(err);
+            console.error(err);connection.release();
             return;
         }
         console.log('Connection successful');
@@ -417,7 +417,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 						stmt += " and ([os_name] = '')";						
 					}
 					else{
-						stmt += " and (a.userName like '%" + array_[i] + "%' or a.terminalMac like '%" + array_[i] + "%' or [os_name] like '%" + array_[i] + "%' or CONVERT(varchar, [timestamp],120) like '%" + array_[i] + "%')";
+						stmt += " and (a.userName like '%" + array_[i] + "%' or a.terminalMac like '%" + array_[i] + "%' or [os_name] like '%" + array_[i] + "%' or CONVERT(varchar, [timestamp],120) like '%" + array_[i] + "%' or b.[description] like N'%" + array_[i] + "%')";
 					}
 					
 				}
@@ -659,16 +659,16 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 					console.log(array_[i]);
 					if(array_[i]==''){
 						if(i==0){
-							stmt += " having (a.userName like '%" + array_[0] + "%' or a.[terminalMac] like '%" + array_[0] + "%' or [os_name] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or b.[description] like '%" + array_[0] + "%')";
+							stmt += " having (a.userName like '%" + array_[0] + "%' or a.[terminalMac] like '%" + array_[0] + "%' or [os_name] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or b.[description] like N'%" + array_[0] + "%')";
 						}
 						stmt += " and ([os_name] = '')";						
 					}
 					else{
 						if(i==0){
-							stmt += " having (a.userName like '%" + array_[0] + "%' or a.[terminalMac] like '%" + array_[0] + "%' or [os_name] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or b.[description] like '%" + array_[0] + "%')";
+							stmt += " having (a.userName like '%" + array_[0] + "%' or a.[terminalMac] like '%" + array_[0] + "%' or [os_name] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or b.[description] like N'%" + array_[0] + "%')";
 						}
 						else{
-							stmt += " and (a.userName like '%" + array_[i] + "%' or a.[terminalMac] like '%" + array_[i] + "%' or [os_name] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or b.[description] like '%" + array_[i] + "%')";
+							stmt += " and (a.userName like '%" + array_[i] + "%' or a.[terminalMac] like '%" + array_[i] + "%' or [os_name] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or b.[description] like N'%" + array_[i] + "%')";
 						}
 						
 					}
@@ -781,7 +781,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(array_);				
 				for(i = 0; i < array_.length; i++){
 					console.log(array_[i]);
-					stmt += " and (b.[description] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%')";
+					stmt += " and (b.[description] like N'%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%')";
 				}
 				
 				title += " ค้นหาด้วยคำว่า " + params_;
@@ -941,10 +941,10 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(params_);
 				var array_ = params_.split(",");
 				console.log(array_);
-				stmt += " having ([userName] like '%" + array_[0] + "%' or [terminalMac] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[0] + "%')";
+				stmt += " having ([userName] like '%" + array_[0] + "%' or [terminalMac] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like N'%" + array_[0] + "%')";
 				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
-					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[i] + "%')";
+					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like N'%" + array_[i] + "%')";
 				}
 				
 				title += " ค้นหาด้วยคำว่า " + params_;
@@ -961,10 +961,10 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(params_);
 				var array_ = params_.split(",");
 				console.log(array_);				
-				stmt += " having ([userName] like '%" + array_[0] + "%' or [terminalMac] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[0] + "%')";
+				stmt += " having ([userName] like '%" + array_[0] + "%' or [terminalMac] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like N'%" + array_[0] + "%')";
 				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
-					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[i] + "%')";
+					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like N'%" + array_[i] + "%')";
 				}
 				
 				title += " ค้นหาด้วยคำว่า " + params_;
@@ -981,10 +981,10 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(params_);
 				var array_ = params_.split(",");
 				console.log(array_);				
-				stmt += " having ([userName] like '%" + array_[0] + "%' or [terminalMac] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[0] + "%')";
+				stmt += " having ([userName] like '%" + array_[0] + "%' or [terminalMac] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like N'%" + array_[0] + "%')";
 				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
-					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[i] + "%')";
+					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like N'%" + array_[i] + "%')";
 				}
 				
 				title += " ค้นหาด้วยคำว่า " + params_;
@@ -1001,10 +1001,10 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(params_);
 				var array_ = params_.split(",");
 				console.log(array_);				
-				stmt += " having ([userName] like '%" + array_[0] + "%' or [terminalMac] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[0] + "%')";
+				stmt += " having ([userName] like '%" + array_[0] + "%' or [terminalMac] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like N'%" + array_[0] + "%')";
 				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
-					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[i] + "%')";
+					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like N'%" + array_[i] + "%')";
 				}
 				
 				title += " ค้นหาด้วยคำว่า " + params_;
@@ -1021,10 +1021,10 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(params_);
 				var array_ = params_.split(",");
 				console.log(array_);				
-				stmt += " having ([userName] like '%" + array_[0] + "%' or [terminalMac] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[0] + "%')";
+				stmt += " having ([userName] like '%" + array_[0] + "%' or [terminalMac] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like N'%" + array_[0] + "%')";
 				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
-					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[i] + "%')";
+					stmt += " and ([userName] like '%" + array_[i] + "%' or [terminalMac] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like N'%" + array_[i] + "%')";
 				}
 				
 				title += " ค้นหาด้วยคำว่า " + params_;
@@ -1041,10 +1041,10 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(params_);
 				var array_ = params_.split(",");
 				console.log(array_);
-				stmt += " having ([userName] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[0] + "%')";
+				stmt += " having ([userName] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like N'%" + array_[0] + "%')";
 				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
-					stmt += " and ([userName] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[i] + "%')";
+					stmt += " and ([userName] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like N'%" + array_[i] + "%')";
 				}
 				
 				title += " ค้นหาด้วยคำว่า " + params_;
@@ -1061,10 +1061,10 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(params_);
 				var array_ = params_.split(",");
 				console.log(array_);				
-				stmt += " having ([userName] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[0] + "%')";
+				stmt += " having ([userName] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like N'%" + array_[0] + "%')";
 				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
-					stmt += " and ([userName] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[i] + "%')";
+					stmt += " and ([userName] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like N'%" + array_[i] + "%')";
 				}
 				
 				title += " ค้นหาด้วยคำว่า " + params_;
@@ -1081,10 +1081,10 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				console.log(params_);
 				var array_ = params_.split(",");
 				console.log(array_);				
-				stmt += " having ([userName] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[0] + "%')";
+				stmt += " having ([userName] like '%" + array_[0] + "%' or count(*) like '%" + array_[0] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like N'%" + array_[0] + "%')";
 				for(i = 1; i < array_.length; i++){
 					console.log(array_[i]);
-					stmt += " and ([userName] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like '%" + array_[i] + "%')";
+					stmt += " and ([userName] like '%" + array_[i] + "%' or count(*) like '%" + array_[i] + "%' or (case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end) like N'%" + array_[i] + "%')";
 				}
 				
 				title += " ค้นหาด้วยคำว่า " + params_;
@@ -1136,7 +1136,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 
         var request = new Request(stmt, function(err, rowCount) {
             if (err) {
-                console.error(err);
+                console.error(err);connection.release();
                 return;
             }
             console.log('rowCount: ' + rowCount);
@@ -1161,11 +1161,17 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
             doc.font('public/fonts/THSarabunBold.ttf')
                 .fontSize(14)
                 .text(title, 50, 50);
-
+			
+			///// Header 1 /////
             var headers = reportDictionary[req.params.report].header.split(",");
 			console.log('1');
             for (i = 0; i < headers.length; i++) {		
-				if(i == 1){
+				if(i == 0){
+					doc.font('public/fonts/THSarabunBold.ttf')
+                    .fontSize(12)
+                    .text(headers[i], columnOffset += 70, 100);
+				}
+				else if(i == 1){
 					doc.font('public/fonts/THSarabunBold.ttf')
                     .fontSize(12)
                     .text(headers[i], columnOffset += 40, 100);
@@ -1193,7 +1199,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 				else {					
 					doc.font('public/fonts/THSarabunBold.ttf')
                     .fontSize(12)
-                    .text(headers[i], columnOffset += 80, 100);
+                    .text(headers[i], columnOffset += 100, 100);
 				}
             }
 			console.log('2');
@@ -1304,19 +1310,30 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 					if ((i % row_page == 0) && (i > 0)) {
 						doc.addPage();
 						rowOffset = 130;
+						///// Header 2 /////
 						var headers = reportDictionary[req.params.report].header.split(",");
 						for (p = 0; p < headers.length; p++) {
-							if(req.params.report == "2674" && p == 2){
+							if(p == 0){
+								doc.font('public/fonts/THSarabunBold.ttf')
+								.fontSize(12)
+								.text(headers[p], columnOffset += 70, 100);
+							}
+							else if(p == 1){
+								doc.font('public/fonts/THSarabunBold.ttf')
+								.fontSize(12)
+								.text(headers[p], columnOffset += 40, 100);
+							}
+							else if(req.params.report == "2674" && p == 3){
 								doc.font('public/fonts/THSarabunBold.ttf')
 								.fontSize(12)
 								.text(headers[p], columnOffset += 200, 100);
 							}
-							else if((req.params.report == "2675" || req.params.report == "267141" || req.params.report == "2688" || req.params.report == "2689" || req.params.report == "26810" || req.params.report == "26811" || req.params.report == "26812") && (p == 2 || p == 3)){
+							else if((req.params.report == "2675" || req.params.report == "267141" || req.params.report == "2688" || req.params.report == "2689" || req.params.report == "26810" || req.params.report == "26811" || req.params.report == "26812") && (p == 3 || p == 4)){
 								doc.font('public/fonts/THSarabunBold.ttf')
 								.fontSize(12)
 								.text(headers[p], columnOffset += 80, 100);
 							}
-							else if((req.params.report == "267154" || req.params.report == "267143") && p == 1){
+							else if((req.params.report == "267154" || req.params.report == "267143") && p == 2){
 								doc.font('public/fonts/THSarabunBold.ttf')
 								.fontSize(12)
 								.text(headers[p], columnOffset += 220, 100);
@@ -1324,7 +1341,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 							else {
 								doc.font('public/fonts/THSarabunBold.ttf')
 								.fontSize(12)
-								.text(headers[p], columnOffset += 80, 100);
+								.text(headers[p], columnOffset += 100, 100);
 							}
 						}
 						columnOffset = -20;
@@ -1339,7 +1356,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 						} 
 						
 						else if(result[i][j] == 'overlogin'){
-							res_ = 'เข้าสู่ระบบนอกช่วงเวลาที่ได้รับอนุญาต';
+							res_ = 'เข้าสู่ระบบเกินจำนวนครั้งที่กำหนดในช่วงเวลาที่ระบุไว้';
 						}
 						
 						else if(result[i][j] == 'outoftime'){
@@ -1382,7 +1399,19 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 							res_ = result[i][j];
 						}						
 						
-						if(req.params.report == "2674" && j == 2){
+						
+						//// DataPDF /////
+						if(j == 0){
+							doc.font('public/fonts/THSarabunBold.ttf')
+							.fontSize(9)
+							.text(res_, columnOffset += 70, rowOffset);
+						}
+						else if(j == 1){
+							doc.font('public/fonts/THSarabunBold.ttf')
+							.fontSize(9)
+							.text(res_, columnOffset += 40, rowOffset);
+						}
+						else if(req.params.report == "2674" && j == 3){
 							var date_str = '';
 							var update_time = '';
 							update_time = new Date(result[i][j]);							
@@ -1391,17 +1420,17 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 							.fontSize(9)
 							.text(date_str, columnOffset += 200, rowOffset);
 						}
-						else if((req.params.report == "267141" || req.params.report == "2688" || req.params.report == "2689" || req.params.report == "26810" || req.params.report == "26811" || req.params.report == "26812") && (j == 2 || j == 3)){
-							doc.font('public/fonts/THSarabunBold.ttf')
-							.fontSize(9)
-							.text(res_, columnOffset += 80, rowOffset);
-						}
-						else if(req.params.report == "2675" && j == 2){
+						else if((req.params.report == "267141" || req.params.report == "2688" || req.params.report == "2689" || req.params.report == "26810" || req.params.report == "26811" || req.params.report == "26812") && (j == 3 || j == 4)){
 							doc.font('public/fonts/THSarabunBold.ttf')
 							.fontSize(9)
 							.text(res_, columnOffset += 80, rowOffset);
 						}
 						else if(req.params.report == "2675" && j == 3){
+							doc.font('public/fonts/THSarabunBold.ttf')
+							.fontSize(9)
+							.text(res_, columnOffset += 80, rowOffset);
+						}
+						else if(req.params.report == "2675" && j == 4){
 							var date_str = '';
 							var update_time = '';
 							update_time = new Date(result[i][j]);							
@@ -1410,7 +1439,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 							.fontSize(9)
 							.text(date_str, columnOffset += 80, rowOffset);
 						}
-						else if((req.params.report == "267154" || req.params.report == "267143") && j == 1){
+						else if((req.params.report == "267154" || req.params.report == "267143") && j == 2){
 							doc.font('public/fonts/THSarabunBold.ttf')
 							.fontSize(9)
 							.text(res_, columnOffset += 220, rowOffset);
@@ -1422,9 +1451,9 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 							date_str = update_time.getFullYear() + "/" + ((update_time.getUTCMonth()+1) < 10 ? '0' : '') + (update_time.getUTCMonth()+1) + "/" + (update_time.getUTCDate() < 10 ? '0' : '') + update_time.getUTCDate() + ' - ' + update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds();
 							doc.font('public/fonts/THSarabunBold.ttf')
 							.fontSize(9)
-							.text(date_str, columnOffset += 80, rowOffset);
+							.text(date_str, columnOffset += 100, rowOffset);
 						}
-						else if(req.params.report == "267153" && j == 2){
+						else if(req.params.report == "267153" && j == 3){
 							var date_str = '';
 							var update_time = '';
 							update_time = new Date(result[i][j]);							
@@ -1433,7 +1462,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 							.fontSize(9)
 							.text(date_str, columnOffset += 100, rowOffset);
 						}
-						else if((req.params.report == "2678" || req.params.report == "2714") && j == 4){
+						else if((req.params.report == "2678" || req.params.report == "2714") && j == 5){
 							var date_str = '';
 							var update_time = '';
 							update_time = new Date(result[i][j]);							
@@ -1445,7 +1474,7 @@ router.get('/:report/:cond1/:cond2/:cond3/:cond4/:cond5/:cond6/:cond7', function
 						else {
 							doc.font('public/fonts/THSarabunBold.ttf')
 							.fontSize(9)
-							.text(res_, columnOffset += 80, rowOffset);
+							.text(res_, columnOffset += 100, rowOffset);
 						}
 						
 					}

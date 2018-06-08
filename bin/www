@@ -100,7 +100,7 @@ app.set('port', port);
 					//user: '59ad65f3b7fa3b',
 					user: 'byod@excise.go.th',
 					//pass: '7e4387ba355422',
-					pass: 'byod1234'
+					pass: 'P@ssw0rdsky'
 				}
 			});
 			transporter.sendMail(mailOptions, function(err, info) {
@@ -138,7 +138,7 @@ app.set('port', port);
     }
     //console.log('Connection successful');
 
-    var request = new Request("delete from [AgileControllerDB].[dbo].[UMS_DeviceMon] where mac not in (select mac from [AgileControllerDB].[dbo].[TSM_E_Endpoint] join [AgileControllerDB].[dbo].[TSM_E_Account] on [account] = [login_account]);select userName,terminalMac,terminalIp,radiusClientIp,radiusServerIp,CONVERT (datetime2(0), [timestamp],120) from [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] join [AgileControllerDB].[dbo].[UMS_DeviceMon] on terminalMac = mac where [sessionID] != '' and  CONVERT (datetime2(0), [timestamp],120) > CONVERT (datetime2(0), case when last_login is null then created_at else last_login end,120)", function(err, rowCount){
+    var request = new Request("delete from [AgileControllerDB].[dbo].[UMS_DeviceMon] where mac not in (select mac from [AgileControllerDB].[dbo].[TSM_E_Endpoint] join [AgileControllerDB].[dbo].[TSM_E_Account] on [bindMac] like '%'+[mac]+'%');select userName,terminalMac,terminalIp,radiusClientIp,radiusServerIp,CONVERT (datetime2(0), [timestamp],120) from [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] join [AgileControllerDB].[dbo].[UMS_DeviceMon] on terminalMac = mac where [sessionID] != '' and  CONVERT (datetime2(0), [timestamp],120) > CONVERT (datetime2(0), case when last_login is null then created_at else last_login end,120)", function(err, rowCount){
 
 	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 
@@ -210,7 +210,7 @@ app.set('port', port);
 					//user: '59ad65f3b7fa3b',
 					user: 'byod@excise.go.th',
 					//pass: '7e4387ba355422',
-					pass: 'byod1234'
+					pass: 'P@ssw0rdsky'
 				}
 			});
 			transporter.sendMail(mailOptions, function(err, info) {

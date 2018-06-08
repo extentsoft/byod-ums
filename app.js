@@ -314,6 +314,19 @@ app.use('/api/checkdevicemon', checkdevicemon);
 app.use('/api/checkaccesstime', checkaccesstime);
 app.use('/api/checkdiffsite', checkdiffsite);
 
+var LdapCfg = require('./config/openldap');
+var ldap = require('ldapjs');
+app.use('/test_ldap', function(req, res, next) {
+    var client = ldap.createClient({
+        url: LdapCfg[envConfig.environment]['url']
+    });
+    //client.bind("cn=byod,dc=excise,dc=go,dc=th", "P@ssw0rdsky", function(err) {
+	client.bind("uid=byod,ou=People,dc=excise,dc=go,dc=th", "password", function(err) {
+        //if (err) console.log('Binding with error : ' + err);
+		console.log(err);
+        console.log('successfully binded');
+    });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

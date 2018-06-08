@@ -414,7 +414,7 @@
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
 					//update_time = new Date(data_sql[3]);
-                    //date_str = update_time.getFullYear() + "/" + ((update_time.getUTCMonth()+1) < 10 ? '0' : '') + (update_time.getUTCMonth()+1) + "/" + (update_time.getUTCDate() < 10 ? '0' : '') + update_time.getUTCDate() + ' - ' + update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds();
+                    //date_str = update_time.getFullYear() + "/" + ((update_time.getUTCMonth()+1) < 10 ? '0' : '') + (update_time.getUTCMonth()+1) + "/" + (update_time.getUTCDate() < 10 ? '0' : '') + update_time.getUTCDate() + ' - ' + (update_time.getUTCHours() < 10 ? '0' : '') + update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds();
 
                     $('#data-tables').find('tbody').append('<tr><td>' + data_sql[0] + '</td><td class="menu-action"><a id="' + data_sql[0] + '" data-original-title="edit" data-toggle="modal" data-target="#myModal" data-placement="top" class="btn menu-icon vd_bd-green vd_green" onclick="getcust('+ q + data_sql[1] + q +')" > <i class="fa fa-eye"></i> </a> </td></tr>');
                     data.push(data_json);

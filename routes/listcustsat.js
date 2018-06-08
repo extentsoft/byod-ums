@@ -8,7 +8,7 @@ var deviceList = function(req,res,next){
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
-      console.error(err);
+      console.error(err);connection.release();
       return;
     }
     console.log('Connection successful');
@@ -16,7 +16,7 @@ var deviceList = function(req,res,next){
     var request = new Request("SELECT [name],[form_id] FROM [AgileControllerDB].[dbo].[UMS_Custsat] where [name] != 'undefined' and [name] is not null and [form_id] != 'undefined' and [form_id] is not null group by [name],[form_id]", function(err, rowCount){
 
       if(err){
-        console.error(err);
+        console.error(err);connection.release();
         return;
       }
       console.log('rowCount: ' + rowCount);
