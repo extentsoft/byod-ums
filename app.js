@@ -107,6 +107,7 @@ var deviceoutmon = require('./routes/monitor/deviceoutmon');
 var adddevicemon = require('./routes/monitor/adddevicemon');
 var removedevicemon = require('./routes/monitor/removedevicemon');
 
+var diskusage = require('./routes/reports/diskusage');
 var traffic = require('./routes/reports/traffic');
 var report671 = require('./routes/reports/report671');
 var report678 = require('./routes/reports/report678');
@@ -270,6 +271,7 @@ app.use('/api/chat/attachment', require('./routes/chat/attachment'));
 app.use('/api/eoffice', require('./routes/api/eoffice'));
 app.use('/api/ums', require('./routes/api/ums'));
 
+app.use('/report/diskusage', diskusage);
 app.use('/report/traffic', traffic);
 app.use('/report/report678', report678);
 app.use('/report/report6782', report6782);

@@ -8,7 +8,7 @@ var deviceList = function(req, res, next) {
     var result = [];
     pool.acquire(function(err, connection) {
         if (err) {
-            console.error(err);connection.release();
+            console.error(err);
             return;
         }
         console.log('Connection successful');
@@ -30,7 +30,7 @@ var deviceList = function(req, res, next) {
 
 
             if (err) {
-                console.error(err);connection.release();
+                console.error(err);
                 return;
             }
             console.log('rowCount: ' + rowCount);

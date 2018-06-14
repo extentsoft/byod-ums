@@ -1,0 +1,403 @@
+<div class="vd_navbar vd_nav-width vd_navbar-tabs-profile vd_navbar-left vd_navbar-style-2 background-1 ">
+
+    <div class="navbar-menu clearfix">
+        <h3 class="menu-title hide-nav-medium hide-nav-small">เมนูการใช้งาน</h3>
+
+        <div class="vd_menu">
+		
+            <ul>
+                <% if(isauthorized){ %>
+                    <li>
+                        <a href="/dashboard">
+                            <span class="menu-icon"><i class="fa fa-dashboard"></i></span>
+                            <span class="menu-text">แผงควบคุมหลัก</span>
+
+
+                            </span>
+                            <!--<span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>-->
+                        </a>
+
+                    </li>
+                    <%}%>
+                        <li>
+                            <a href="/profile">
+                                <span class="menu-icon"><i class="fa fa-user"></i></span>
+                                <span class="menu-text">ข้อมูลส่วนบุคคล</span>
+                                <!--<span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>-->
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="/device">
+                                <span class="menu-icon"><i class="fa fa-tablet"></i></span>
+                                <span class="menu-text">ลงทะเบียนอุปกรณ์</span>
+                                <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/history">
+                                <span class="menu-icon"><i class="fa fa-history"></i></span>
+                                <span class="menu-text">ประวัติการเข้าใช้งาน</span>
+                                <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/setting">
+                                <span class="menu-icon"><i class="fa fa-gear"></i></span>
+                                <span class="menu-text">ปรับแต่งการใช้งาน</span>
+                                <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
+                            </a>
+                        </li>
+						<li>
+                            <a href="/custsat/do">
+                                <span class="menu-icon"><i class="fa fa-thumbs-up"></i></span>
+                                <span class="menu-text">แบบสำรวจความพึงพอใจ</span>
+                                <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
+                            </a>
+                        </li>
+                        <% if(isauthorized){ %>
+							<li>
+								<a href="/notification">
+									<span class="menu-icon"><i class="fa fa-tasks"></i></span>
+									<span class="menu-text">ประวัติการแจ้งเตือน</span>
+									<!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
+								</a>
+							</li>
+                            <li>
+                                <a href="/configuration">
+                                    <span class="menu-icon"><i class="icon-tools"> </i></span>
+                                    <span class="menu-text">ตั้งค่าระบบ</span>
+                                    <!--<span class="menu-badge"><span class="badge vd_bg-red">78</span></span>-->
+                                </a>
+                            </li>
+							<li>
+                                <a href="javascript:void(0);" data-action="click-trigger">
+                                    <span class="menu-icon entypo-icon"><i class="icon-screen"> </i></span>
+                                    <span class="menu-text">กำหนดอุปกรณ์</span>
+                                    <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
+                                </a>
+                                <div class="child-menu" data-action="click-target">
+                                    <ul>
+                                        <li>
+											<a href="/report/monitor/device/addmonitor">
+												<span class="menu-text">กำหนดอุปกรณ์เพื่อตรวจสอบการเข้าใช้งาน</span>
+											</a>
+										</li>
+										<li>
+											<a href="/report/monitor/device/listmonitor">
+												<span class="menu-text">รายชื่ออุปกรณ์ที่ถูกตรวจสอบการเข้าใช้งาน</span>
+											</a>
+										</li>
+                                    </ul>
+                                </div>
+                            </li>
+							<li>
+                                <a href="javascript:void(0);" data-action="click-trigger">
+                                    <span class="menu-icon entypo-icon"><i class="fa fa-bar-chart-o"> </i></span>
+                                    <span class="menu-text">ระบบสำรวจความพึงพอใจ</span>
+                                    <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
+                                </a>
+                                <div class="child-menu" data-action="click-target">
+                                    <ul>
+                                        <li>
+											<a href="/custsat/form">
+												<span class="menu-text">สร้างแบบสำรวจความพึงพอใจ</span>
+											</a>
+										</li>
+										<li>
+											<a href="/custsat/result">
+												<span class="menu-text">ผลการสำรวจความพึงพอใจ</span>
+											</a>
+										</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" data-action="click-trigger">
+                                    <span class="menu-icon entypo-icon"><i class="icon-newspaper"> </i></span>
+                                    <span class="menu-text">รายงาน</span>
+                                    <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
+                                </a>
+                                <div class="child-menu" data-action="click-target">
+                                    <ul>
+                                        <li>
+                                            <a href="/report/device/activate">
+                                                <span class="menu-text">รายงานการลงทะเบียนอุปกรณ์</span>
+                                            </a>
+                                        </li>
+										<li>
+                                            <a href="/report/usage/site/today" data-action="click-trigger">
+                                                <span class="menu-text">รายงานการใช้งาน</span>
+                                                <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
+                                            </a>
+                                            <div class="child-menu" data-action="click-target">
+                                                <ul>
+													<li>
+														<a href="/report/usage/group/today">
+															<span class="menu-text">รายงานการใช้งานของแต่ละกลุ่ม</span>
+														</a>                                            
+													</li>
+													<li>
+														<a href="/report/device/deactivate/today">
+															<span class="menu-text">รายงานการยกเลิกอุปกรณ์</span>                                                
+														</a>                                            
+													</li>
+													<li>
+														<a href="/report/policy/usage">
+															<span class="menu-text">รายงานการใช้งานที่ไม่เป็นไปตามกฏ</span>
+														</a>
+													</li>
+													<li>
+														<a href="/report/usage/site/area">
+															<span class="menu-text">รายงานการใช้งานจำแนกตามพื้นที่</span>
+														</a>
+													</li>
+													<li>
+														<a href="/report/usage/group/group">
+															<span class="menu-text">รายงานการใช้งานจําแนกตามกลุ่ม</span>
+														</a>
+													</li>
+													<li>
+														<a href="/report/usage/person/today">
+															<span class="menu-text">รายงานการใช้งานระบุบุคคล</span>
+														</a>                                            
+													</li>
+													<li>
+														<a href="/report/usage/type">
+															<span class="menu-text">รายงานการใช้จำแนกตามประเภทอุปกรณ์</span>
+														</a>
+													</li>
+													<li>
+														<a href="/report/usage/time">
+															<span class="menu-text">รายงานการใช้จำแนกตามเวลา</span>
+														</a>
+													</li>
+													<li>
+														<a href="/report/usage/device">
+															<span class="menu-text">รายงานการใช้งานจำแนกตามอุปกรณ์(MAC Address)ผู้ใช้งาน</span>
+														</a>
+													</li>
+													<li>
+														<a href="/report/usage/os">
+															<span class="menu-text">รายงานการใช้งานจำแนกตาม ระบบปฎิบัติการ</span>
+														</a>
+													</li>
+													<li>
+														<a href="/report/usage/site">
+															<span class="menu-text">รายงานการใช้งานจำแนกตามสถานที่การใช้งาน</span>
+														</a>
+													</li>
+													<li>
+														<a href="/report/usage/level">
+															<span class="menu-text">รายงานการใช้งานจำแนกตามระดับผู้ใช้งาน</span>
+														</a>
+													</li>
+                                                </ul>
+                                            </div>
+                                        </li>
+										
+										<li>
+                                            <a href="/report/policy/device">
+                                                <span class="menu-text">รายงานบุคลากรที่ลงทะเบียนอุปกรณ์ครบตามจํานวนที่กำหนด</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/report/usage/site/today" data-action="click-trigger">
+                                                <span class="menu-text">รายงานการใช้ทรัพยากรของระบบ</span>
+                                                <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
+                                            </a>
+                                            <div class="child-menu" data-action="click-target">
+                                                <ul>
+                                                    <li>
+                                                        <a href="/report/usage/site/today">
+                                                            <span class="menu-text">พื้นที่การใช้งาน</span>
+                                                        </a>
+                                                    </li>
+													<li>
+                                                        <a href="/report/usage/site/traffic">
+                                                            <span class="menu-text">ปริมาณจราจรเครือข่ายของวันนี้</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/report/usage/site/amount">
+                                                            <span class="menu-text">จำนวนผู้ใช้งาน</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>                         
+                                        <li>
+                                            <a href="/report/usage/browser">
+                                                <span class="menu-text">รายงานการใช้งาน Dashboard จำแนกตาม  Browser</span>
+                                            </a>
+                                        </li>
+										<li>
+                                            <a href="/report/usage/activity">
+                                                <span class="menu-text">รายงานการเปลี่ยนแปลงอุปกรณ์</span>
+                                            </a>
+                                        </li>
+										
+										<li>
+                                            <a href="/report/usage/other" data-action="click-trigger">
+                                                <span class="menu-text">รายงานอื่นๆ</span>
+                                                <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
+                                            </a>
+                                            <div class="child-menu" data-action="click-target">
+                                                <ul>
+													<li>
+														<a href="#" data-action="click-trigger">
+															<span class="menu-text">รายงานสถิติการใช้งานแบ่งตามระบบปฏิบัติการ</span>
+															<span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
+														</a>
+														<div class="child-menu" data-action="click-target">
+															<ul>
+																<li>
+																	<a href="#" onclick = "goto('statios')">
+																		<span class="menu-text">รายงานสถิติการใช้งานระบบปฏิบัติการ iOS</span>
+																	</a>
+																</li>
+																<li>
+																	<a href="#" onclick = "goto('statandroid')">
+																		<span class="menu-text">รายงานสถิติการใช้งานระบบปฏิบัติการ Android</span>
+																	</a>
+																</li>
+																<li>
+																	<a href="#" onclick = "goto('statlinux')">
+																		<span class="menu-text">รายงานสถิติการใช้งานระบบปฏิบัติการ Unix/Linux</span>
+																	</a>
+																</li>
+																<li>
+																	<a href="#" onclick = "goto('statwindows')">
+																		<span class="menu-text">รายงานสถิติการใช้งานระบบปฏิบัติการ Windows</span>
+																	</a>
+																</li>
+																<li>
+																	<a href="#" onclick = "goto('statunknownos')">
+																		<span class="menu-text">รายงานสถิติการใช้งานระบบปฏิบัติการที่ไม่สามารถระบุได้</span>
+																	</a>
+																</li>
+															</ul>
+														</div>
+													</li>
+													<li>
+														<a href="#" data-action="click-trigger">
+															<span class="menu-text">รายงานสถิติการใช้งานแบ่งตามประเภทอุปกรณ์</span>
+															<span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
+														</a>
+														<div class="child-menu" data-action="click-target">
+															<ul>
+																<li>
+																	<a href="#" onclick = "goto('statmobile')">
+																		<span class="menu-text">รายงานสถิติการใช้งานของอุปกรณ์ประเภท Mobile</span>
+																	</a>
+																</li>
+																<li>
+																	<a href="#" onclick = "goto('statcomputer')">
+																		<span class="menu-text">รายงานสถิติการใช้งานของอุปกรณ์ประเภท Computer</span>
+																	</a>
+																</li>
+																<li>
+																	<a href="#" onclick = "goto('statunknowntype')">
+																		<span class="menu-text">รายงานสถิติการใช้งานของอุปกรณ์ที่ไม่สามารถระบุประเภทได้</span>
+																	</a>
+																</li>
+																
+															</ul>
+														</div>
+													</li>
+													<li>
+														<a href="#" data-action="click-trigger">
+															<span class="menu-text">รายงานสถิติการใช้งานอื่นๆ</span>
+															<span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
+														</a>
+														<div class="child-menu" data-action="click-target">
+															<ul>
+																<li>
+																	<a href="/report/usage/other/user">
+																		<span class="menu-text">รายงานสถิติผู้ใช้งาน แบ่งตาม ชื่อผู้ใช้งาน</span>
+																	</a>
+																</li>	
+																<li>
+																	<a href="/report/usage/other/mac">
+																		<span class="menu-text">รายงานสถิติผู้ใช้งาน แบ่งตาม MAC Address</span>
+																	</a>
+																</li>
+																<li>
+																	<a href="/report/usage/other/activate">
+																		<span class="menu-text">รายงานสถิติการลงทะเบียนอุปกรณ์ แบ่งตาม กลุ่มผู้ใช้งาน</span>
+																	</a>
+																</li>
+																<li>
+																	<a href="/report/usage/other/deactivate">
+																		<span class="menu-text">รายงานสถิติการเพิกถอนอุปกรณ์ แบ่งตาม กลุ่มผู้ใช้งาน</span>
+																	</a>
+																</li>
+																<li>
+																	<a href="/report/usage/other/edituser">
+																		<span class="menu-text">รายงานสถิติการปรับปรุงข้อมูล แบ่งตาม ชื่อผู้ใช้งาน</span>
+																	</a>
+																</li>
+																<li>
+																	<a href="/report/usage/other/editgroup">
+																		<span class="menu-text">รายงานสถิติการปรับปรุงข้อมูล แบ่งตาม กลุ่มผู้ใช้งาน</span>
+																	</a>
+																</li>
+																
+															</ul>
+														</div>
+													</li>
+                                                    												
+													
+													<li>
+                                                        <a href="/report/usage/other/devicemon">
+                                                            <span class="menu-text">รายงานการเข้าใช้งานของอุปกรณ์ที่ถูกระบุไว้</span>
+                                                        </a>
+                                                    </li>
+													
+													
+													
+													
+
+                                                </ul>
+                                            </div>
+                                        </li>
+										
+										
+                                    </ul>
+                                </div>
+                            </li>
+                            <%}%>
+            </ul>
+            <!-- Head menu search form ends -->
+            <div class="navbar-spacing clearfix">
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src='plugins/moment/moment.min.js'></script>
+    <script>
+        //alert($("#priv").html().trim().split(",")[2]);
+        /*if ($("#priv").html().trim().split(",")[2] == 'false') {
+            //alert('a');
+            //document.getElementById("uu1").children[0].style.display = "none";
+            document.getElementById("aa1").style.display = "none";
+            document.getElementById("aa2").style.display = "none";
+            document.getElementById("aa3").style.display = "none";
+        } else {
+            //alert('b');
+        }*/
+		
+		var sd_ = '';
+		var ed_ = '';
+		moment.locale('th');
+		e = moment(),
+		a = moment();
+		sd_ = e.format("Y-M-D");
+		ed_ = a.format("Y-M-D");
+		
+		//alert(sd_);
+		//alert(ed_);
+		
+		function goto(dest){
+			window.location = '/report/usage/other/'+dest+'?start='+sd_+'&&end='+ed_;			
+		}
+    </script>

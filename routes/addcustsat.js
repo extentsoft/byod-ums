@@ -8,7 +8,7 @@ var deviceList = function(req,res,next){
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
-      console.error(err);connection.release();
+      console.error(err);
       return;
     }
     console.log('Connection successful');
@@ -16,7 +16,7 @@ var deviceList = function(req,res,next){
     var request = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_Custsat]([type],[name],[form_id],[code_ref],[detail],[status],[created_at]) VALUES ('"+req.param('ftype')+"',N'"+req.param('formname')+"','"+req.param('formid')+"','"+req.param('coderef')+"',N'"+req.param('ftext')+"',1,current_timestamp)", function(err, rowCount){
 
       if(err){
-        console.error(err);connection.release();
+        console.error(err);
         return;
       }
       console.log('rowCount: ' + rowCount);

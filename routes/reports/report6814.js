@@ -8,7 +8,7 @@ var deviceList = function(req,res,next){
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
-      console.error(err);connection.release();
+      console.error(err);
       return;
     }
     console.log('Connection successful');
@@ -17,7 +17,7 @@ var deviceList = function(req,res,next){
     var request = new Request("SELECT userName 'User', b.[os_name] os,case when (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp) is not null then (select description from [AgileControllerDB].[dbo].[UMS_Site] where ipaddr = radiusClientIp)  else  '' end, count(*) FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[TSM_E_Endpoint] b on a.[terminalMac] = b.mac where sessionID != '' and CONVERT (date, timestamp) between '"+req.param('start')+"' and '"+req.param('end')+"' and CASE WHEN b.[os_name] = 'Android' or b.[os_name] = 'iOS' THEN 'Mobile' WHEN b.[os_name] like '%Windows%' or b.[os_name] = 'Linux' or b.[os_name] = 'OSX' THEN 'Computer' ELSE '' END = 'Mobile' group by b.[os_name],userName,radiusClientIp", function(err, rowCount){
 
       if(err){
-        console.error(err);connection.release();
+        console.error(err);
         return;
       }
       console.log('rowCount: ' + rowCount);

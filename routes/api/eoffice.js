@@ -32,7 +32,7 @@ router.get('/profile/:email', function(req, res, next) {
     var result = [];
 	pool.acquire(function(err, connection){
     if(err){
-      console.error(err);connection.release();
+      console.error(err);
       return;
     }
     //console.log('Connection successful');
@@ -42,7 +42,7 @@ router.get('/profile/:email', function(req, res, next) {
 	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 
       if(err){
-        console.error(err);connection.release();
+        console.error(err);
         return;
       }
       console.log('rowCount: ' + rowCount);

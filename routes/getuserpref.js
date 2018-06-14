@@ -8,7 +8,7 @@ var deviceList = function(req, res, next) {
     var result = [];
     pool.acquire(function(err, connection) {
         if (err) {
-            console.error(err);connection.release();
+            console.error(err);
             return;
         }
         console.log('Connection successful');
@@ -17,7 +17,7 @@ var deviceList = function(req, res, next) {
         var request = new Request("select [theme],[notification]  from [AgileControllerDB].[dbo].[UMS_UserPreference] where [user_ref] = '" + req.param('accname') + "'", function(err, rowCount) {
 
             if (err) {
-                console.error(err);connection.release();
+                console.error(err);
                 return;
             }
             console.log('rowCount: ' + rowCount);

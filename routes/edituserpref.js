@@ -8,7 +8,7 @@ var deviceList = function(req, res, next) {
     var result = [];
     pool.acquire(function(err, connection) {
         if (err) {
-            console.error(err);connection.release();
+            console.error(err);
             return;
         }
         console.log('Connection successful');
@@ -25,7 +25,7 @@ var deviceList = function(req, res, next) {
         var request = new Request("if '" + req.param('accname') + "' in (select [user_ref] from [AgileControllerDB].[dbo].[UMS_UserPreference]) begin update [AgileControllerDB].[dbo].[UMS_UserPreference] set [notification]='" + req.param('noti') + "',[theme] = '" + req.param('theme') + "',updated_at=CURRENT_TIMESTAMP where user_ref='" + req.param('accname') + "'; end; else begin INSERT INTO [AgileControllerDB].[dbo].[UMS_UserPreference] ([user_ref],[notification],[theme],[updated_at]) VALUES ('" + req.param('accname') + "','" + req.param('noti') + "','" + req.param('theme') + "',CURRENT_TIMESTAMP); end;", function(err, rowCount) {
 
             if (err) {
-                console.error(err);connection.release();
+                console.error(err);
                 return;
             }
             console.log('rowCount: ' + rowCount);

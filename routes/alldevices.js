@@ -8,7 +8,7 @@ var deviceList = function(req,res,next){
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
-      console.error(err);connection.release();
+      console.error(err);
       return;
     }
     console.log('Connection successful');
@@ -16,7 +16,7 @@ var deviceList = function(req,res,next){
     var request = new Request("SELECT [id],[account],[userName],[host_name],[mac],[os_name],[update_time],[match_time] FROM [AgileControllerDB].[dbo].[TSM_E_Account] a  join [AgileControllerDB].[dbo].[TSM_E_Endpoint] on [bindMac] like '%'+[mac]+'%'  join [AgileControllerDB].[dbo].[TSM_E_Organization] b on a.[orgID] = b.[orgID]", function(err, rowCount){
 
       if(err){
-        console.error(err);connection.release();
+        console.error(err);
         return;
       }
       console.log('rowCount: ' + rowCount);

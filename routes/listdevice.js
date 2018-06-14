@@ -12,17 +12,17 @@ var deviceList = function(req,res,next){
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
-      console.error(err);connection.release();
+      console.error(err);
       return;
     }
     console.log('Connection successful');
 
     //var request = new Request('select * from [test].[dbo].t1', function(err, rowCount){
 	var q = '"';
-    var request = new Request("if '"+req.param('accname')+"' in (select user_ref  from [AgileControllerDB].[dbo].[UMS_Limitdevice] ) SELECT e.[id],[account] ,[userName],[orgName],[host_name],[mac],[os_name],[update_time],[match_time],(select limitdevice from [AgileControllerDB].[dbo].[UMS_Limitdevice] where user_ref = '"+req.param('accname')+"') FROM [AgileControllerDB].[dbo].[TSM_E_Account] t1  join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on  [bindMac] like '%'+[mac]+'%'  join [AgileControllerDB].[dbo].[TSM_E_Organization] t2 on t1.[orgID] = t2.[orgID] where [account] = '"+req.param('accname')+"' else SELECT e.[id],[account] ,[userName],[orgName],[host_name],[mac],[os_name],[update_time],[match_time],(select limitdevice from [AgileControllerDB].[dbo].[UMS_Limitdevice] where user_ref = 'default') FROM [AgileControllerDB].[dbo].[TSM_E_Account] t1  join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on  [bindMac] like '%'+[mac]+'%'  join [AgileControllerDB].[dbo].[TSM_E_Organization] t2 on t1.[orgID] = t2.[orgID] where [account] = '"+req.param('accname')+"' order by [update_time] desc", function(err, rowCount){
+    var request = new Request("if '"+req.param('accname')+"' in (select user_ref  from [AgileControllerDB].[dbo].[UMS_Limitdevice] ) SELECT e.[id],[account] ,[userName],[orgName],[host_name],[mac],[os_name],[match_time],[update_time],(select limitdevice from [AgileControllerDB].[dbo].[UMS_Limitdevice] where user_ref = '"+req.param('accname')+"') FROM [AgileControllerDB].[dbo].[TSM_E_Account] t1  join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on  [bindMac] like '%'+[mac]+'%'  join [AgileControllerDB].[dbo].[TSM_E_Organization] t2 on t1.[orgID] = t2.[orgID] where [account] = '"+req.param('accname')+"' order by [match_time] else SELECT e.[id],[account] ,[userName],[orgName],[host_name],[mac],[os_name],[match_time],[update_time],(select limitdevice from [AgileControllerDB].[dbo].[UMS_Limitdevice] where user_ref = 'default') FROM [AgileControllerDB].[dbo].[TSM_E_Account] t1  join [AgileControllerDB].[dbo].[TSM_E_Endpoint] e on  [bindMac] like '%'+[mac]+'%'  join [AgileControllerDB].[dbo].[TSM_E_Organization] t2 on t1.[orgID] = t2.[orgID] where [account] = '"+req.param('accname')+"' order by [match_time]", function(err, rowCount){
 
       if(err){
-        console.error(err);connection.release();
+        console.error(err);
         return;
       }
       console.log('rowCount: ' + rowCount);

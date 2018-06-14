@@ -131,7 +131,7 @@
                             <div class="vd_title-section clearfix">
                                 <div class="vd_panel-header">
                                     <h1>รายชื่ออุปกรณ์</h1>
-                                    <small class="subtitle"></small>
+									<h4 id="device-sub"></h4>
                                     <div class="vd_panel-menu  ">
                                         <div class="menu no-bg vd_green" data-original-title="Start Layout Tour Guide" style="display:none" data-toggle="modal" data-target="#myModal" data-placement="bottom" onClick="changevent('add');document.getElementById('myModalLabel1').innerHTML='ลงทะเบียนอุปกรณ์ใหม่';document.getElementById('term_mac').disabled = false;" id="add-btn"> <span class="menu-icon font-md"><i class="fa fa-plus"></i></span> </div>
                                         
@@ -435,19 +435,42 @@
 
             function bindata(data_sql) {
 				//alert('cc');
+				var dev_limit = 0;
+				var dev_current = (data_sql.length/10);
+				
 				$.ajax('http://byod.excise.go.th/api/checklimit', {
                     type: "get",
                     data: {
                         accname: account_now
                     },
                     success: function(json) {
+						//alert(dev_current);
 						var x = document.getElementById("add-btn");
-						if (json==1) {
+						if (json[0]==1) {
 							x.style.display = "none";
+							dev_limit = json[1];
+							if(data_sql.length <= 0){
+								document.getElementById("device-sub").innerHTML = "";
+								document.getElementById("device-sub").innerHTML = "ท่านมีสิทธิ์ลงทะเบียนอุปกรณ์จำนวน "+ dev_limit +" เครื่อง ปัจจุบันลงทะเบียนแล้ว "+ dev_current +" เครื่อง";
+							}
+							else{
+								document.getElementById("device-sub").innerHTML = "";
+								document.getElementById("device-sub").innerHTML = "ท่านมีสิทธิ์ลงทะเบียนอุปกรณ์จำนวน "+ dev_limit +" เครื่อง ปัจจุบันลงทะเบียนแล้ว "+ dev_current +" เครื่อง";
+							}
+							
 						} else {
-							x.style.display = "block";
+							x.style.display = "block";			
+							dev_limit = json[1];
+							//alert(json);
+							if(data_sql.length <= 0){
+								document.getElementById("device-sub").innerHTML = "";
+								document.getElementById("device-sub").innerHTML = "ท่านมีสิทธิ์ลงทะเบียนอุปกรณ์จำนวน "+ dev_limit +" เครื่อง ปัจจุบันลงทะเบียนแล้ว "+ dev_current +" เครื่อง";
+							}
+							else{
+								document.getElementById("device-sub").innerHTML = "";
+								document.getElementById("device-sub").innerHTML = "ท่านมีสิทธิ์ลงทะเบียนอุปกรณ์จำนวน "+ dev_limit +" เครื่อง ปัจจุบันลงทะเบียนแล้ว "+ dev_current +" เครื่อง";
+							}
 						}
-                        //alert(json);
                     }
                 });
                 //alert('bind');
@@ -455,7 +478,7 @@
                 data = [];
                 for (i = 0; i < data_sql.length; i++) {
                     data_json = {};
-                    if (data_sql[6] == 'Android' || data_sql[6] == 'Windows' || data_sql[6] == 'Linux') {
+                    if (data_sql[6].substring(0, 7).toUpperCase() == 'ANDROID') {
                         data_json = {
                             terminalid: data_sql[0],
                             account: data_sql[1],
@@ -463,12 +486,12 @@
                             group: data_sql[3],
                             hostname: data_sql[4],
                             terminalmac: data_sql[5],
-                            terminalos: data_sql[6].toLowerCase(),
+                            terminalos: 'android',
                             updatetime: data_sql[7],
                             matchtime: data_sql[8],
                             limit: data_sql[9]
                         };
-                    } else if (data_sql[6] == 'iOS') {
+                    } else if (data_sql[6].substring(0, 3).toUpperCase() == 'IOS' || data_sql[6].substring(0, 3).toUpperCase() == 'MAC') {
                         data_json = {
                             terminalid: data_sql[0],
                             account: data_sql[1],
@@ -477,6 +500,32 @@
                             hostname: data_sql[4],
                             terminalmac: data_sql[5],
                             terminalos: 'apple',
+                            updatetime: data_sql[7],
+                            matchtime: data_sql[8],
+                            limit: data_sql[9]
+                        };
+                    } else if (data_sql[6].substring(0, 5).toUpperCase() == 'LINUX' || data_sql[6].substring(0, 4).toUpperCase() == 'UNIX' || data_sql[6].substring(0, 3).toUpperCase() == 'RED') {
+                        data_json = {
+                            terminalid: data_sql[0],
+                            account: data_sql[1],
+                            name: data_sql[2],
+                            group: data_sql[3],
+                            hostname: data_sql[4],
+                            terminalmac: data_sql[5],
+                            terminalos: 'linux',
+                            updatetime: data_sql[7],
+                            matchtime: data_sql[8],
+                            limit: data_sql[9]
+                        };
+                    } else if (data_sql[6].substring(0, 3).toUpperCase() == 'WIN') {
+                        data_json = {
+                            terminalid: data_sql[0],
+                            account: data_sql[1],
+                            name: data_sql[2],
+                            group: data_sql[3],
+                            hostname: data_sql[4],
+                            terminalmac: data_sql[5],
+                            terminalos: 'windows',
                             updatetime: data_sql[7],
                             matchtime: data_sql[8],
                             limit: data_sql[9]
@@ -526,7 +575,7 @@
                         host_name = data[i].hostname;
                     }
                     update_time = new Date(data[i].updatetime);
-                    date_str = update_time.getFullYear() + "/" + (update_time.getUTCMonth() + 1) + "/" + update_time.getUTCDate() + '-' + update_time.getUTCHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds();
+                    date_str = update_time.getFullYear() + "/" + ((update_time.getUTCMonth()+1) < 10 ? '0' : '') + (update_time.getUTCMonth()+1) + "/" + (update_time.getUTCDate() < 10 ? '0' : '') + update_time.getUTCDate() + ' - ' + (update_time.getUTCHours() < 10 ? '0' : '') + update_time.getUTCHours() + ":" + (update_time.getMinutes() < 10 ? '0' : '') + update_time.getMinutes() + ":" + (update_time.getSeconds() < 10 ? '0' : '') + update_time.getSeconds();
 
                     q = "'";
 					var os_edit='';

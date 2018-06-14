@@ -12,7 +12,7 @@ var deviceList = function(req,res,next){
   var result = [];
   pool.acquire(function(err, connection){
     if(err){
-      console.error(err);connection.release();
+      console.error(err);
       return;
     }
     console.log('Connection successful');
@@ -22,7 +22,7 @@ var deviceList = function(req,res,next){
     var request = new Request("delete from [AgileControllerDB].[dbo].[UMS_DeviceMon] where mac not in (select mac from [AgileControllerDB].[dbo].[TSM_E_Endpoint] join [AgileControllerDB].[dbo].[TSM_E_Account] on [bindMac] like '%'+[mac]+'%');SELECT [id],[account],case when ([userName] is not null or [userName] != '') then [userName]  else  '' end,case when ([host_name] is not null or [host_name] != '') then [host_name]  else  '' end,[mac],[os_name],[update_time],[match_time] FROM [AgileControllerDB].[dbo].[TSM_E_Account] a  join [AgileControllerDB].[dbo].[TSM_E_Endpoint] on [bindMac] like '%'+[mac]+'%'  join [AgileControllerDB].[dbo].[TSM_E_Organization] b on a.[orgID] = b.[orgID] where mac not in (select mac from [AgileControllerDB].[dbo].[UMS_DeviceMon])", function(err, rowCount){
 
       if(err){
-        console.error(err);connection.release();
+        console.error(err);
         return;
       }
       console.log('rowCount: ' + rowCount);

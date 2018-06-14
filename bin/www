@@ -161,15 +161,23 @@ app.set('port', port);
         }
         else{
 			//console.log(count_);			
-			//console.log(column.value);			
-			data_.push(column.value);
+			//console.log(column.value);
+			var data_ = [];
+			console.log(column.value);
+			update_time = new Date(columns[5].value);
+            date_str =  update_time.getUTCFullYear() + "-" + (update_time.getUTCMonth() + 1) + "-" + update_time.getUTCDate() +' ' + update_time.getUTCHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds();
+			data_.push(columns[0].value);
+			data_.push(columns[1].value);
+			data_.push(columns[2].value);
+			data_.push(columns[3].value);
+			data_.push(columns[4].value);
+			data_.push(date_str);
 			if(count_ < 5){
 				count_++;
 			}
 			else{
-				update_time = new Date(data_[5]);
-                date_str =  update_time.getUTCFullYear() + "-" + (update_time.getUTCMonth() + 1) + "-" + update_time.getUTCDate() +' ' + update_time.getUTCHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds();
-				console.log('t');
+				//update_time = new Date(data_[5]);
+                //date_str =  update_time.getUTCFullYear() + "-" + (update_time.getUTCMonth() + 1) + "-" + update_time.getUTCDate() +' ' + update_time.getUTCHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds();
 				//console.log(UTCDate);
 			
 				pool2.acquire(function(err, connection2){
@@ -178,7 +186,7 @@ app.set('port', port);
 					  return;
 					}
 					
-					var request2 = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_DeviceMonLog] ([userName],[terminalMac],[terminalIp],[radiusClientIp],[radiusServerIp],[timestamp]) VALUES ('"+data_[0]+"','"+data_[1]+"','"+data_[2]+"','"+data_[3]+"','"+data_[4]+"',CONVERT (datetime2(0),'"+date_str+"')); update [AgileControllerDB].[dbo].[UMS_DeviceMon] set last_login = CONVERT (datetime2(0),'"+date_str+"',120) where mac = '"+data_[1]+"'", function(err, rowCount2){		
+					var request2 = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_DeviceMonLog] ([userName],[terminalMac],[terminalIp],[radiusClientIp],[radiusServerIp],[timestamp]) VALUES ('"+data_[0]+"','"+data_[1]+"','"+data_[2]+"','"+data_[3]+"','"+data_[4]+"',CONVERT (datetime2(0),'"+data_[5]+"')); update [AgileControllerDB].[dbo].[UMS_DeviceMon] set last_login = CONVERT (datetime2(0),'"+data_[5]+"',120) where mac = '"+data_[1]+"'", function(err, rowCount2){		
 						if(err){
 							console.error(err);
 							return;
@@ -187,44 +195,155 @@ app.set('port', port);
 					});
 					connection2.execSql(request2);
 				});
+				
+				var msg = '';
+				var tpl_subject = '';
+				tpl_subject = 'มีการเข้าใช้งานสู่ระบบด้วยอุปกรณ์ที่ถูกกำหนดไว้';
+				msg = 'ในขณะนี้ผู้ใช้งาน ' + data_[0] + ' มีการเข้าใช้งานสู่ระบบด้วยอุปกรณ์ที่ถูกกำหนดไว้';
+
+				const mailOptions = {
+					from: 'byod@excise.go.th', // sender address
+					to: 'byod@excise.go.th', // list of receivers
+					subject: tpl_subject, // Subject line
+					html: msg
+				};
+
+				var transporter = nodemailer.createTransport({
+					//host: 'smtp.mailtrap.io',
+					host: '61.19.233.5',
+					//port: 2525,
+					port: 25,
+					secure: false,
+					auth: {
+						//user: '59ad65f3b7fa3b',
+						user: 'byod@excise.go.th',
+						//pass: '7e4387ba355422',
+						pass: 'P@ssw0rdsky'
+					}
+				});
+				transporter.sendMail(mailOptions, function(err, info) {
+					if (err) {
+						console.log(err)
+						console.log('ERROR2');
+						//res.send('0');
+					} else {
+						console.log(info);
+						console.log('Success');
+						//res.send('1');
+					}
+				});
+				console.log('device monitoring');	
 			}
-			var msg = '';
-			var tpl_subject = '';
-			tpl_subject = 'มีการเข้าใช้งานสู่ระบบด้วยอุปกรณ์ที่ถูกกำหนดไว้';
-			msg = 'ในขณะนี้ผู้ใช้งาน ' + data_[0] + ' มีการเข้าใช้งานสู่ระบบด้วยอุปกรณ์ที่ถูกกำหนดไว้';
+					
+        }
+      });
+    });
+    connection.execSql(request);
+  });
+ });
+ 
+ /**************** check access time ****************/
+ 
+ var accesstime = schedule.scheduleJob('*/60 * * * * *', function() {
+	//console.error('t');
+	var result = [];
+	pool.acquire(function(err, connection){
+    if(err){
+      console.error(err);
+      return;
+    }
+    //console.log('Connection successful');
 
-			const mailOptions = {
-				from: 'byod@excise.go.th', // sender address
-				to: 'byod@excise.go.th', // list of receivers
-				subject: tpl_subject, // Subject line
-				html: msg
-			};
+    var request = new Request("select [accountName],CONVERT(datetime2(0), [timestamp],120) from [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] where CONVERT (date,[timestamp]) = CONVERT (date,CURRENT_TIMESTAMP) and (CONVERT (time,[timestamp]) between (select CONVERT (time,c_value ) from [AgileControllerDB].[dbo].[UMS_Config] where c_name = 'accesstimefrom') and (select CONVERT (time,c_value ) from [AgileControllerDB].[dbo].[UMS_Config] where c_name = 'accesstimeto')) and CONVERT(datetime2(0), [timestamp],120) >  (select CONVERT(datetime2(0), case when max(created_at) is null then '2000-01-01 00:00:00.000' else max(created_at) end,120) from [AgileControllerDB].[dbo].[UMS_ViolationLog] where [userId] = [accountName] and detail ='outoftime')   order by [timestamp]", function(err, rowCount){
 
-			var transporter = nodemailer.createTransport({
-				//host: 'smtp.mailtrap.io',
-				host: '61.19.233.5',
-				//port: 2525,
-				port: 25,
-				secure: false,
-				auth: {
-					//user: '59ad65f3b7fa3b',
-					user: 'byod@excise.go.th',
-					//pass: '7e4387ba355422',
-					pass: 'P@ssw0rdsky'
-				}
-			});
-			transporter.sendMail(mailOptions, function(err, info) {
-				if (err) {
-					console.log(err)
-					console.log('ERROR2');
-					//res.send('0');
-				} else {
-					console.log(info);
-					console.log('Success');
-					//res.send('1');
-				}
-			});
-			console.log('device monitoring');			
+	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
+
+      if(err){
+        console.error(err);
+        return;
+      }
+      //console.log('rowCount: ' + rowCount);
+      //console.log(JSON.stringify(result));
+      connection.release();
+    });
+
+    request.on('row', function(columns){
+      result.push(columns);
+	  console.log(columns.length);	  
+	  var count_ = 0;
+      columns.forEach(function(column){
+        if(column.value === null) {
+          console.log('NULL');
+        }
+        else{
+			var data_ = [];
+			console.log(column.value);
+			update_time = new Date(columns[1].value);
+            date_str =  update_time.getUTCFullYear() + "-" + (update_time.getUTCMonth() + 1) + "-" + update_time.getUTCDate() +' ' + update_time.getUTCHours() + ":" + update_time.getMinutes() + ":" + update_time.getSeconds();
+			data_.push(columns[0].value);
+			data_.push(date_str);
+			if(count_ < 1){
+				count_++;
+			}
+			else{			
+				pool2.acquire(function(err, connection2){
+					if(err){
+					  console.error(err);
+					  return;
+					}
+					
+					var request2 = new Request("INSERT INTO [AgileControllerDB].[dbo].[UMS_ViolationLog] ([detail],[userId],[created_at]) VALUES ('outoftime','"+data_[0]+"','"+data_[1]+"')", function(err, rowCount2){		
+						if(err){
+							console.error(err);
+							return;
+						}
+						connection2.release();
+					});
+					connection2.execSql(request2);
+				});
+				var msg = '';
+				var tpl_subject = '';
+				tpl_subject = 'มีการเข้าใช้งานสู่ระบบในช่วงเวลาที่กำหนดให้ตรวจสอบ';
+				msg = 'ในขณะนี้ผู้ใช้งาน ' + data_[0] + ' มีการเข้าใช้งานสู่ระบบในช่วงเวลาที่กำหนดให้ตรวจสอบ';
+
+				const mailOptions = {
+					from: 'byod@excise.go.th', // sender address
+					to: 'byod@excise.go.th', // list of receivers
+					subject: tpl_subject, // Subject line
+					html: msg
+				};
+
+				var transporter = nodemailer.createTransport({
+					//host: 'smtp.mailtrap.io',
+					host: '61.19.233.5',
+					//port: 2525,
+					port: 25,
+					secure: false,
+					auth: {
+						//user: '59ad65f3b7fa3b',
+						user: 'byod@excise.go.th',
+						//pass: '7e4387ba355422',
+						pass: 'P@ssw0rdsky'
+					}
+				});
+				transporter.sendMail(mailOptions, function(err, info) {
+					if (err) {
+						console.log(err)
+						console.log('ERROR1');
+						return;
+						//res.send('0');
+					} else {
+						console.log(info);
+						console.log('Success');
+						//res.send('1');
+						return;
+					}
+					return;
+				});
+				console.log('access in violation time');
+			}				
+			
+			
         }
       });
     });

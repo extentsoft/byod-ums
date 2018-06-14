@@ -135,7 +135,7 @@
                                     <div class="col-md-12">
                                         <div class="panel widget">
                                             <div class="panel-heading vd_bg-grey">
-                                                <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-clock-o"></i> </span>ช่วงเวลาที่อนุญาติให้ใช้งานระบบ</h3>
+                                                <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-clock-o"></i> </span>ช่วงเวลาใช้งานที่กำหนดให้ตรวจสอบ</h3>
                                             </div>
                                             <div class="panel-body">
                                                 <form class="form-horizontal" action="#" role="form">
@@ -265,26 +265,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row ">
-                                    <div class="col-md-12">
-                                        <div class="panel widget">
-                                            <div class="panel-heading vd_bg-grey">
-                                                <h3 class="panel-title"> นำส่งแบบสำรวจความพึงพอใจงานบริการ&nbsp;&nbsp;&nbsp;<a onclick="sendCustomerSatisfaction()" class="btn vd_btn vd_round-btn vd_bg-grey mgr-10"><i class="fa  fa-headphones fa-fw "></i></a></h3>
-                                            </div>
-
-                                            <div class="panel-body">
-                                                <form class="form-horizontal" action="#" role="form">
-                                                    <div class="form-group">
-
-                                                    </div>
-
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
+                                
                             </div>
 
 
@@ -491,17 +472,7 @@
         <script>
 		account_now = '<%= email %>';
 		var filter_ = '';
-            function sendCustomerSatisfaction() {
-                alert('sendCustomerSatisfaction');
-                $.ajax('http://byod.excise.go.th/sendCustSat', {
-                    type: "get",
-                    success: function(json) {
-                        //alert(JSON.stringify(json));
-                        //data_res = JSON.parse(JSON.stringify(json));
-                        //bindata_group(data_res);
-                    }
-                });
-            }
+           
 		$("#myInput").keyup(function(event) {
 			if (event.keyCode === 13) {
 				myFunction();

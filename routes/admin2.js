@@ -82,7 +82,7 @@ module.exports = function(app, passport) {
                 //user: '59ad65f3b7fa3b',
                 user: 'byod@excise.go.th',
                 //pass: '7e4387ba355422'
-                pass: 'byod1234'
+                pass: 'P@ssw0rdsky'
             }
         });
         transporter.sendMail(mailOptions, function(err, info) {
@@ -157,7 +157,7 @@ module.exports = function(app, passport) {
             var result = [];
             pool.acquire(function(err, connection) {
                 if (err) {
-                    console.error(err);connection.release();
+                    console.error(err);
                     return;
                 }
                 console.log('Connection successful');
@@ -167,7 +167,7 @@ module.exports = function(app, passport) {
                     //    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 
                     if (err) {
-                        console.error(err);connection.release();
+                        console.error(err);
                         return;
                     }
                     console.log('rowCount: ' + rowCount);
@@ -215,7 +215,7 @@ module.exports = function(app, passport) {
 
         pool.acquire(function(err, connection) {
             if (err) {
-                console.error(err);connection.release();
+                console.error(err);
                 return;
             }
             console.log('Connection successful');
@@ -225,7 +225,7 @@ module.exports = function(app, passport) {
                 //    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 
                 if (err) {
-                    console.error(err);connection.release();
+                    console.error(err);
                     return;
                 }
                 console.log('rowCount: ' + rowCount);
