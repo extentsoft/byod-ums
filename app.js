@@ -142,7 +142,7 @@ var report6812 = require('./routes/reports/report6812');
 var report6813 = require('./routes/reports/report6813');
 var report6814 = require('./routes/reports/report6814');
 var report6815 = require('./routes/reports/report6815');
-report679
+
 var report679 = require('./routes/reports/report679');
 
 var violation_report = require('./routes/reports/violation_report');
@@ -151,6 +151,10 @@ var checkaccesstime = require('./routes/policy/checkaccesstime');
 var checkdevicemon = require('./routes/policy/checkdevicemon');
 var checkcountdevice = require('./routes/policy/checkcountdevice');
 var checkdiffsite = require('./routes/policy/checkdiffsite');
+
+var syncdp = require('./routes/syncdp');
+var synceo = require('./routes/synceo');
+var syncuser = require('./routes/syncuser');
 
 var app = express();
 
@@ -314,7 +318,12 @@ app.use('/report/report679', report679);
 app.use('/api/checkcountdevice', checkcountdevice);
 app.use('/api/checkdevicemon', checkdevicemon);
 app.use('/api/checkaccesstime', checkaccesstime);
-app.use('/api/checkdiffsite', checkdiffsite);
+app.use('/api/checkdiffsite', checkdiffsite);synceo
+
+
+app.use('/api/synceo', synceo);
+app.use('/api/syncdp', syncdp);
+app.use('/api/syncuser', syncuser);
 
 var LdapCfg = require('./config/openldap');
 var ldap = require('ldapjs');

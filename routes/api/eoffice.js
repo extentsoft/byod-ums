@@ -37,7 +37,7 @@ router.get('/profile/:email', function(req, res, next) {
     }
     //console.log('Connection successful');
 
-    var request = new Request("SELECT * FROM [AgileControllerDB].[dbo].[UMS_EOStaging] where [UID]='"+req.params.email+"'" , function(err, rowCount){
+    var request = new Request("SELECT ISNULL(UID,''),ISNULL(PERSON_NID,''),ISNULL(PERSON_TH_NAME,''),ISNULL(PERSON_TH_SURNAME,''),ISNULL(LINE_POSITION_NAME,''),ISNULL(WORK_DEPT_LEVEL,''),ISNULL(PERSON_TYPE_CODE,''),ISNULL(WORK_DEPT_NAME,'') FROM [AgileControllerDB].[dbo].[UMS_UserStaging] where [UID]='"+req.params.email+"'" , function(err, rowCount){
 
 	//    var request = new Request("SELECT '"+req.param('name')+"'", function(err, rowCount){
 
@@ -57,8 +57,8 @@ router.get('/profile/:email', function(req, res, next) {
     request.on('row', function(columns){
       //result.push(columns);
 	  
-	  console.log(columns[1].value);
-	  res.json({ ssn: columns[3].value, fn: columns[6].value, ln: columns[7].value, email: req.params.email, position: columns[12].value, level: columns[15].value, area: columns[16].value, authorized: columns[17].value });
+	  console.log(columns[0].value);
+	  res.json({ ssn: columns[1].value, fn: columns[2].value, ln: columns[3].value, email: req.params.email, position: columns[4].value, level: columns[5].value, area: columns[6].value, authorized: columns[7].value });
       /*columns.forEach(function(column){
         if(column.value === null) {
           console.log('NULL');
