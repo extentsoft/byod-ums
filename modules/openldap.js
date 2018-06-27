@@ -14,8 +14,61 @@ var OpenLdap = function(){
   this.bind();
 };
 
-
 OpenLdap.prototype.test = function(params, done){
+  //client.bind("cn=byod,dc=excise,dc=go,dc=th", "P@ssw0rdsky", function(err) {
+  client.bind("uid=" + params.uid + ",ou=People,dc=excise,dc=go,dc=th", params.password, function(err) {
+    if(err){
+      console.log('Binding with error : ' + err);
+      done(new Error('Connection failure'));
+    } 
+
+    console.log('authenticated');
+    // start new bind
+    var opts = {
+      filter: 'uid=' + params.uid,
+      scope: 'sub',
+      attributes: []
+    };
+  
+    client.search(LdapCfg[envConfig.environment]['baseDN'], opts, function(err,res){
+      if(err){
+        console.log('Searching error : ' + err);
+        done(new Error('Connection failure'));
+      }
+      var tmp;
+      // 1st step
+      res.on('searchEntry', function(entry) {
+        console.log('entry: ' + JSON.stringify(entry.object));
+        tmp = entry.object;
+      });
+  
+      res.on('searchReference', function(referral) {
+        console.log('referral: ' + referral.uris.join());
+      });
+      res.on('error', function(err) {
+        console.error('error: ' + err.message);
+        done(new Error('Connection failure'));
+      });
+  
+      //2nd step
+      res.on('end', function(result) {
+        console.log('found LDAP record');
+  
+        if( typeof(tmp) === "undefined"){
+            console.log('no user');
+            done(new Error('No user found'));
+        }
+        else{
+          done(tmp);
+        }
+      });
+    });
+
+    //end new bind
+  });
+}
+
+OpenLdap.prototype.test2 = function(params, done){
 
 
   var opts = {
