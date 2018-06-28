@@ -3,8 +3,9 @@ var ConnectionPool = require('tedious-connection-pool');
 var Request = require('tedious').Request;
 
 var poolConfig = {
-    min: 2,
-    max: 4,
+    min: 100,
+    max: 500,
+    acquireTimeout: 300000,
     log: true
 };
 
