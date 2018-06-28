@@ -133,7 +133,7 @@
                                     <h1>รายชื่ออุปกรณ์</h1>
 									<h4 id="device-sub"></h4>
                                     <div class="vd_panel-menu  ">
-                                        <div class="menu no-bg vd_green" data-original-title="Start Layout Tour Guide" style="display:none" data-toggle="modal" data-target="#myModal" data-placement="bottom" onClick="changevent('add');document.getElementById('myModalLabel1').innerHTML='ลงทะเบียนอุปกรณ์ใหม่';document.getElementById('term_mac').disabled = false;" id="add-btn"> <span class="menu-icon font-md"><i class="fa fa-plus"></i></span> </div>
+                                        <div class="menu no-bg vd_green" data-original-title="Start Layout Tour Guide" style="display:block" data-toggle="modal" data-target="#myModal" data-placement="bottom" onClick="changevent('add');document.getElementById('myModalLabel1').innerHTML='ลงทะเบียนอุปกรณ์ใหม่';document.getElementById('term_mac').disabled = false;" id="add-btn"> <span class="menu-icon font-md"><i class="fa fa-plus"></i></span> </div>
                                         
 										<!-- menu -->
                                         <!--
@@ -256,7 +256,27 @@
                                 </div>
                                 <!-- /.modal-dialog -->
                             </div>
+							<!-- /.modal -->
+							
+							<div class="modal fade" id="mymodal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header vd_bg-blue vd_white">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+											<h4 class="modal-title" id="myModalLabel">การแจ้งเตือนจากระบบ</h4>
+										</div>
 
+										<div class="modal-body">
+
+											<form class="form-horizontal">
+												<div class="form-group" align="center" id ="noti-text-modal">
+													ท่านมีจำนวนอุปกรณ์ที่ทำการลงทะเบียนครบตามจำนวนที่กำหนดแล้ว
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
 
 
 
@@ -447,7 +467,8 @@
 						//alert(dev_current);
 						var x = document.getElementById("add-btn");
 						if (json[0]==1) {
-							x.style.display = "none";
+							//x.style.display = "none";
+							$('#add-btn').attr('data-target','#mymodal2');
 							dev_limit = json[1];
 							if(data_sql.length <= 0){
 								document.getElementById("device-sub").innerHTML = "";
@@ -459,7 +480,8 @@
 							}
 							
 						} else {
-							x.style.display = "block";			
+							//x.style.display = "block";	
+							$('#add-btn').attr('data-target','#myModal');			
 							dev_limit = json[1];
 							//alert(json);
 							if(data_sql.length <= 0){
