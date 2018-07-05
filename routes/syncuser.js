@@ -2,6 +2,7 @@ var express = require('express');
 var pool = require('../modules/mssql').pool;
 var Request = require('tedious').Request;
 var router = express.Router();
+var ipaddr = require('ipaddr.js');
 
 var deviceList = function(req, res, next) {
 
@@ -50,10 +51,32 @@ var deviceList = function(req, res, next) {
 }
 
 
-router.get('/', deviceList, function(req, res, next) {
+router.get('/:user/:pw', deviceList, function(req, res, next) {
     //console.log('middleware 1 ' + req.test2);
     //console.log('middleware 2 ' + JSON.stringify(req.test2));
-    res.send(req.test2);
+	console.log('ok');
+	var clientInfo = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+	var ipString = req.connection.remoteAddress;
+	var ip = '';
+	ip = ipaddr.IPv6.parse(ipString);
+	ip = ip.toIPv4Address().toString();
+	
+	console.log(ip);
+	console.log(req.params.user);
+	console.log(req.params.pw);
+	if(ip.trim()== '127.0.0.1' && req.params.user.trim() == 'byod' && req.params.pw.trim() == 'password'){
+		console.log('IP Valid');
+		console.log('Authorized');
+		res.send(req.test2);
+		return;
+	}
+	else{
+		console.log('IP Invalid');
+		console.log('Unauthorized');
+		res.send('Unauthorized');
+		return;
+	}
+    
     //res.send('respond with a resource');
 });
 

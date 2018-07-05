@@ -19,7 +19,6 @@
     <!-- Set the viewport width to device width for mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/ico/apple-touch-icon-114-precomposed.png">
@@ -127,7 +126,7 @@
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header vd_bg-blue vd_white">
-											<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="window.location = '/profile';"><i class="fa fa-times"></i></button>
 											<h4 class="modal-title" id="myModalLabel"></h4>
 										</div>
 
@@ -166,38 +165,45 @@
                                                         <label class="col-sm-4 control-label">เลขที่บัตรประจำตัวประชาชน</label>
                                                         <div class="col-sm-7 controls">
                                                             <input id="u_ssn" type="text"  placeholder="รหัสประชาชน" value="<%= ssn %>" class="input-border-btm" onpaste="checkID();" onkeyup="checkID();" onfocusout="checkID();">
-                                                            <span class="help-inline">เลขที่บัตรประจำตัวประชาชนไม่สามารถแก้ไขได้</span> </div>
+                                                            <span class="help-inline"></span> </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label class="col-sm-4 control-label">ชื่อจริง </label>
+                                                        <label class="col-sm-4 control-label">ชื่อ </label>
                                                         <div class="col-sm-7 controls">
                                                             <input id="u_fn" type="text" placeholder="ชื่อจริง" value="<%= firstname %>" class="input-border-btm">
-                                                            <span class="help-inline">เช่น Natthawat</span> </div>
+                                                            <span class="help-inline">เช่น สมชาย</span> </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-4 control-label">นามสกุลจริง </label>
+                                                        <label class="col-sm-4 control-label">นามสกุล</label>
                                                         <div class="col-sm-7 controls">
                                                             <input id="u_ln" type="text" placeholder="นามสกุลจริง" value="<%= lastname %>" class="input-border-btm">
-                                                            <span class="help-inline">เช่น Arunwattana</span> </div>
+                                                            <span class="help-inline">เช่น มุ่งมานะ</span> </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">เลขตำแหน่ง/สังกัด</label>
                                                         <div class="col-sm-7 controls">
                                                             <input id="u_pos" type="text" placeholder="เลขตำแหน่งหรือสังกัด" value="<%= position %>" class="input-border-btm">
-                                                            <span class="help-inline">เช่น 501</span> </div>
+                                                            <span class="help-inline">เช่น นักวิชาการคอมพิวเตอร์</span> </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">ระดับพนักงานหรือข้าราชการ</label>
                                                         <div class="col-sm-7 controls">
-                                                            <input id="u_lv" type="text" placeholder="ระดับ" value="<%= level %>" class="input-border-btm">
-                                                            <span class="help-inline">เช่น 8</span> </div>
+                                                            <select id="listlvl" onchange="selectlvl(this.value)" style="width:30%" >
+																<option value="0" disabled selected>กรุณาเลือกระดับผู้ใช้งาน(ระดับหน่วยงาน )</option>  
+																<option value="1">กรม</option>
+																<option value="2">สำนัก/กลุ่ม/ศูนย์/สรรพสามิตภาค</option>
+																<option value="3">ส่วน(ส่วนกลาง/สภ.)/ฝ่าย (ส่วนกลาง/สภ.)/สรรพสามิตพื้นที่</option>
+																<option value="4">งาน(ส่วนกลาง)/ฝ่าย(สพ.)/สรรพสามิตพื้นที่สาขา</option>
+																<option value="5">ฝ่าย(สข.)/งาน(สข.)</option>
+															</select> </div>
+
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">พื้นที่</label>
                                                         <div class="col-sm-7 controls">
                                                             <input id="u_area" type="text" placeholder="สังกัดพื้นที่" value="<%= area %>" class="input-border-btm">
-                                                            <span class="help-inline">เช่น 52</span> </div>
+                                                            <span class="help-inline">เช่น ศูนย์เทคโนโลยีสารสนเทศ</span> </div>
                                                     </div>
                                                     <!--
                                                     <div class="form-group">
@@ -369,7 +375,8 @@
         <!-- Specific Page Scripts END -->
 
         <script>
-            function editprofile(){			
+		var lvl_ = '0';
+            function editprofile(){	
 				$.ajax('http://byod.excise.go.th/api/editprofile', {
                     type: "get",
                     data: {
@@ -378,7 +385,7 @@
                         fn: document.getElementById('u_fn').value,
                         ln: document.getElementById('u_ln').value,
                         pos: document.getElementById('u_pos').value,
-						lv: document.getElementById('u_lv').value,
+						lv: document.getElementById('listlvl').value,
 						area: document.getElementById('u_area').value
                     },
                     success: function(json) {
@@ -414,8 +421,7 @@
 									}
 								});
 							}
-						});
-					
+						});			
                         
                     }
                 });
@@ -454,7 +460,29 @@
 					}
 				}				
 			}
+			function selectlvl(lvl){
+				$("#listlvl option[value='0']").remove();
+				lvl_ = lvl;
+				//refresh_table(start_,end_,lvl_);
+			}
+			
+			function checklevel(){
+
+				//alert(('<%= level %>').trim());				
+				if(('<%= level %>').trim()!='' && ('<%= level %>').trim() != '0'){
+					var selected_lv = parseInt(('<%= level %>').trim()) - 1 ;
+					selectlvl(selected_lv);
+					document.getElementById("listlvl").options[selected_lv].selected = true;
+				}
+				else{
+					document.getElementById("listlvl").options[0].selected = true;
+				}
+				
+			}
+			
+			
 			checkID();
+			checklevel();
         </script>
 
 </body>

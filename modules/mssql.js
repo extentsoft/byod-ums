@@ -12,7 +12,7 @@ var poolConfig = {
 
 
 var prod = {
-    userName: 'AgileControllerDBA',
+    userName: 'sa',
     password: 'Huawei@123',
     server: '192.168.163.25'
 };

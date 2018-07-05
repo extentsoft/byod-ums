@@ -20,6 +20,7 @@ OpenLdap.prototype.test = function(params, done){
     if(err){
       console.log('Binding with error : ' + err);
       done(new Error('Connection failure'));
+	  return;
     } 
 
     console.log('authenticated');
@@ -34,6 +35,7 @@ OpenLdap.prototype.test = function(params, done){
       if(err){
         console.log('Searching error : ' + err);
         done(new Error('Connection failure'));
+		return;
       }
       var tmp;
       // 1st step
@@ -48,6 +50,7 @@ OpenLdap.prototype.test = function(params, done){
       res.on('error', function(err) {
         console.error('error: ' + err.message);
         done(new Error('Connection failure'));
+		return;
       });
   
       //2nd step

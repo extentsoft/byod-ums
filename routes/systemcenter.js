@@ -13,7 +13,6 @@ var envConfig = require('../config/environment');
 var crypt = new Crypt();
 module.exports = function(app, passport) {
 
-
     app.get('/api/agile', function(req, res) {
 		console.log('api-update');
         //var url = 'http://www.webservicex.net/length.asmx?wsdl';
@@ -1996,11 +1995,11 @@ module.exports = function(app, passport) {
                             req.session.user.position = parsed_body.position;
                             req.session.user.level = parsed_body.level;
                             req.session.user.area = parsed_body.area;
-							if(req.session.user.email === 'byod'){
-								req.session.authorized = "TRUE";
+							if(req.session.user.email === 'byod' || parsed_body.authorized =='TRUE'){
+								req.session.authorized = true;
 							}
 							else{
-								req.session.authorized = parsed_body.authorized;
+								req.session.authorized = false;
 							}
 							
                             
@@ -2011,12 +2010,18 @@ module.exports = function(app, passport) {
                                         var parsed_body = JSON.parse(body);
                                         console.log("profiling --> " + parsed_body[0]);
                                         console.log("profiling --> " + parsed_body[1]);
-
+										console.log(parsed_body);
                                         req.session.user.pref_theme = parsed_body[0];
                                         req.session.user.pref_notification = parsed_body[1];
 										request('http://byod.excise.go.th/api/accesslog?browser='+ req.session.user.browser + '&ip=' + req.session.user.ipaddr + '&status=Login' + '&accname=' + user.email, function(error, response, body) {
 											if (!error && response.statusCode == 200) {
 												console.log('Login Logged');
+											}
+											else{
+												var parsed_err = JSON.parse(error);
+												//console.log('fa');
+												console.log(parsed_err);
+												return;
 											}
 										});
 										
@@ -2038,7 +2043,8 @@ module.exports = function(app, passport) {
 															else{
 																var parsed_err = JSON.parse(error);
 																//console.log('fa');
-																console.log(parsed_err);							
+																console.log(parsed_err);	
+																return;
 															}
 														});
 														
@@ -2049,7 +2055,8 @@ module.exports = function(app, passport) {
 															else{
 																var parsed_err = JSON.parse(error);
 																//console.log('fa');
-																console.log(parsed_err);							
+																console.log(parsed_err);
+																return;
 															}
 														});
 													}
@@ -2057,12 +2064,18 @@ module.exports = function(app, passport) {
 												}                                        
 											}
 										});
-                                        res.redirect('/dashboard');
+										if(req.session.authorized){
+											res.redirect('/dashboard');
+										}
+                                        else{
+											res.redirect('/profile');
+										}
                                     } else {
                                         console.log('Profiling Failure');
                                         req.session.authenticated = false;
                                         req.session.authorized = false;
                                         res.redirect('/login');
+										return;
                                     }
                                 } else {
 
@@ -2070,6 +2083,7 @@ module.exports = function(app, passport) {
                                     req.session.authenticated = false;
                                     req.session.authorized = false;
                                     res.redirect('/login');
+									return;
                                 }
 
                             });
@@ -2079,6 +2093,7 @@ module.exports = function(app, passport) {
                             req.session.authenticated = false;
                             req.session.authorized = false;
                             res.redirect('/login');
+							return;
                         }
 
                     } else {
@@ -2087,6 +2102,7 @@ module.exports = function(app, passport) {
                         req.session.authenticated = false;
                         req.session.authorized = false;
                         res.redirect('/login');
+						return;
                     }
                 })
 
