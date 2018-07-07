@@ -1,4 +1,4 @@
-var bcrypt = require('bcrypt-nodejs');
+
 var OpenLdap = require('../modules/openldap');
 
 var openldap = new OpenLdap();

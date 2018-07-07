@@ -14,7 +14,7 @@ var deviceList = function(req,res,next){
     console.log('Connection successful');
 
     //var request = new Request('select * from [test].[dbo].t1', function(err, rowCount){
-    var request = new Request("SELECT ISNULL(WORK_DEPT_LEVEL,'') LV,accountName Account, terminalMac MAC, timestamp 'Date' FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[UMS_UserStaging] b on a.[accountName] = b.[UID] where sessionID != '' and CONVERT (date, timestamp) between '"+req.param('start')+"' and '"+req.param('end')+"' and [WORK_DEPT_LEVEL] = '"+req.param('lv')+"'", function(err, rowCount){
+    var request = new Request("SELECT ISNULL(WORK_DEPT_LEVEL,'') LV,accountName Account, terminalMac MAC, timestamp 'Date' FROM [AgileControllerDB].[dbo].[TSM_E_RadiusLoginOrLogoutLog] a join [AgileControllerDB].[dbo].[UMS_UserStaging] b on a.[accountName] = b.[UID] COLLATE Thai_CI_AS where sessionID != '' and CONVERT (date, timestamp) between '"+req.param('start')+"' and '"+req.param('end')+"' and [WORK_DEPT_LEVEL] = '"+req.param('lv')+"'", function(err, rowCount){
 
       if(err){
         console.error(err);

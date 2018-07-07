@@ -13,7 +13,6 @@ winston.level = envConfig.log_level;
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
-var bCrypt = require('bcrypt-nodejs');
 var mailer = require("nodemailer");
 
 require('./config/passport_local')(passport);

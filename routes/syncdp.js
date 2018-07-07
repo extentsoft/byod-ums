@@ -64,7 +64,7 @@ router.get('/:user/:pw', deviceList, function(req, res, next) {
 	console.log(ip);
 	console.log(req.params.user);
 	console.log(req.params.pw);
-	if(ip.trim()== '127.0.0.1' && req.params.user.trim() == 'byod' && req.params.pw.trim() == 'password'){
+	if(ip.trim()== '192.168.163.29' && req.params.user.trim() == 'byod' && req.params.pw.trim() == 'password'){
 		console.log('IP Valid');
 		console.log('Authorized');
 		res.send(req.test2);

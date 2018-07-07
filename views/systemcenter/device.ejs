@@ -410,6 +410,9 @@
             //account_now = 'natthawat_a';
 			account_now = $('#email').text().trim();
 			username = $('#uname').text().trim();
+			if(username.trim()==''){
+				username = account_now;
+			}
 			event_ = '';
 			//alert(username);
 
